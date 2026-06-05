@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://akarshitraj.github.io/sitemap.xml
