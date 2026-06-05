@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akarshit Raj - Free Programming Courses & Online Code Practice</title>
+    <meta name="description" content="Learn programming for free with Akarshit Raj. 19+ YouTube courses, 350+ videos, online code compiler practice. Python, C++, JavaScript, Java, SQL & more.">
+    <meta name="keywords" content="Akarshit Raj, programming courses, free coding classes, Python tutorial, C++ tutorial, JavaScript tutorial, online compiler, YouTube programming, learn coding free">
+    <meta name="author" content="Akarshit Raj">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <link rel="canonical" href="https://akarshitraj.github.io/">
+    <meta property="og:title" content="Akarshit Raj - Free Programming Courses & Online Code Practice">
+    <meta property="og:description" content="19+ free programming courses on YouTube. Learn Python, C++, JavaScript, Java & more. Practice coding online!">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://akarshitraj.github.io/">
+    <meta property="og:site_name" content="Akarshit Raj">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Akarshit Raj - Free Programming Courses">
+    <meta name="twitter:description" content="19+ free programming courses. Learn & practice coding online!">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{--primary:#6366f1;--primary-dark:#4f46e5;--secondary:#ec4899;--accent:#06b6d4;--dark:#0f172a;--darker:#020617;--light:#f8fafc;--gray:#94a3b8;--card-bg:rgba(30,41,59,0.6);--glass:rgba(255,255,255,0.05);--success:#10b981}
+        body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--darker);color:var(--light);min-height:100vh;overflow-x:hidden;line-height:1.6}
+        .bg-animation{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;overflow:hidden}
+        .bg-animation .orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:0.4;animation:float 20s infinite ease-in-out}
+        .bg-animation .orb:nth-child(1){width:400px;height:400px;background:var(--primary);top:-200px;left:-100px}
+        .bg-animation .orb:nth-child(2){width:300px;height:300px;background:var(--secondary);top:40%;right:-100px;animation-delay:5s}
+        .bg-animation .orb:nth-child(3){width:250px;height:250px;background:var(--accent);bottom:-100px;left:40%;animation-delay:10s}
+        @keyframes float{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(30px,-50px) scale(1.1)}66%{transform:translate(-30px,30px) scale(0.9)}}
+        nav{position:fixed;top:0;width:100%;padding:1rem 5%;background:rgba(2,6,23,0.8);backdrop-filter:blur(20px);z-index:1000;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,0.08)}
+        .logo{font-size:1.6rem;font-weight:800;background:linear-gradient(135deg,var(--primary),var(--secondary));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .nav-links{display:flex;gap:2rem;list-style:none}
+        .nav-links a{color:var(--gray);text-decoration:none;font-weight:500;font-size:0.9rem;transition:all 0.3s;position:relative}
+        .nav-links a:hover{color:var(--light)}
+        .nav-links a::after{content:'';position:absolute;bottom:-6px;left:0;width:0;height:2px;background:linear-gradient(90deg,var(--primary),var(--secondary));transition:width 0.3s;border-radius:2px}
+        .nav-links a:hover::after{width:100%}
+        .mobile-menu-btn{display:none;background:none;border:none;color:var(--light);font-size:1.5rem;cursor:pointer}
+        .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:6rem 5% 3rem}
+        .hero-container{max-width:1200px;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+        .hero-content{animation:fadeInLeft 1s ease}
+        .badge{display:inline-flex;align-items:center;gap:0.5rem;padding:0.5rem 1rem;background:var(--glass);border:1px solid rgba(99,102,241,0.3);border-radius:50px;font-size:0.85rem;color:var(--primary);margin-bottom:1.5rem}
+        .hero h1{font-size:3.5rem;font-weight:800;line-height:1.1;margin-bottom:1.5rem}
+        .hero h1 span{background:linear-gradient(135deg,var(--primary),var(--secondary));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .hero-subtitle{font-size:1.25rem;color:var(--gray);margin-bottom:2rem}
+        .btn{display:inline-flex;align-items:center;gap:0.5rem;padding:1rem 2rem;border-radius:12px;font-weight:600;text-decoration:none;transition:all 0.3s;cursor:pointer;border:none;font-size:1rem}
+        .btn-primary{background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:white;box-shadow:0 4px 20px rgba(99,102,241,0.4)}
+        .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(99,102,241,0.6)}
+        .btn-success{background:linear-gradient(135deg,var(--success),#059669);color:white;box-shadow:0 4px 20px rgba(16,185,129,0.4)}
+        .btn-success:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(16,185,129,0.6)}
+        .hero-visual{animation:fadeInRight 1s ease}
+        .hero-card{background:var(--card-bg);border-radius:24px;padding:2rem;border:1px solid rgba(255,255,255,0.1);backdrop-filter:blur(20px)}
+        .profile-section{text-align:center;margin-bottom:2rem}
+        .profile-img{width:120px;height:120px;border-radius:50%;border:3px solid var(--primary);object-fit:cover;margin-bottom:1rem}
+        .profile-name{font-size:1.5rem;font-weight:700}
+        .profile-role{color:var(--gray);font-size:0.9rem}
+        .stats-bar{display:flex;justify-content:center;gap:3rem;padding:2rem 5%;background:rgba(15,23,42,0.5);border-top:1px solid rgba(255,255,255,0.05);border-bottom:1px solid rgba(255,255,255,0.05);flex-wrap:wrap}
+        .stat-item{text-align:center}
+        .stat-number{font-size:2.5rem;font-weight:800;background:linear-gradient(135deg,var(--primary),var(--secondary));-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:block}
+        .stat-label{color:var(--gray);font-size:0.85rem}
+        section{padding:5rem 5%;max-width:1200px;margin:0 auto}
+        .section-header{text-align:center;margin-bottom:3rem}
+        .section-tag{display:inline-block;padding:0.4rem 1rem;background:rgba(99,102,241,0.15);color:var(--primary);border-radius:50px;font-size:0.85rem;font-weight:600;margin-bottom:1rem}
+        .section-title{font-size:2.5rem;font-weight:800;margin-bottom:1rem}
+        .section-subtitle{color:var(--gray);max-width:600px;margin:0 auto}
+        .code-practice-section{background:var(--card-bg);border-radius:24px;padding:3rem;border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(20px);max-width:1000px;margin:0 auto}
+        .code-practice-header{text-align:center;margin-bottom:2rem}
+        .code-practice-header h3{font-size:1.8rem;font-weight:700;margin-bottom:0.5rem;background:linear-gradient(135deg,var(--success),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .code-practice-header p{color:var(--gray);font-size:0.95rem}
+        .language-selector{display:flex;gap:0.5rem;margin-bottom:1.5rem;flex-wrap:wrap;justify-content:center}
+        .lang-btn{padding:0.5rem 1rem;background:var(--glass);border:1px solid rgba(255,255,255,0.1);border-radius:8px;color:var(--gray);cursor:pointer;transition:all 0.3s;font-size:0.9rem}
+        .lang-btn:hover,.lang-btn.active{background:var(--primary);color:white;border-color:var(--primary)}
+        .code-editor-wrapper{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+        .code-input-area,.code-output-area{background:#1e1e1e;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.1)}
+        .code-header{display:flex;justify-content:space-between;align-items:center;padding:0.75rem 1rem;background:rgba(255,255,255,0.05);border-bottom:1px solid rgba(255,255,255,0.1)}
+        .code-header span{font-size:0.85rem;color:var(--gray);display:flex;align-items:center;gap:0.5rem}
+        .code-textarea{width:100%;height:300px;background:#1e1e1e;color:#d4d4d4;border:none;padding:1rem;font-family:'Consolas','Monaco',monospace;font-size:0.9rem;resize:none;outline:none;line-height:1.5}
+        .output-content{width:100%;height:300px;background:#1e1e1e;color:#d4d4d4;border:none;padding:1rem;font-family:'Consolas','Monaco',monospace;font-size:0.9rem;overflow-y:auto;line-height:1.5}
+        .run-btn{display:flex;align-items:center;justify-content:center;gap:0.5rem;width:100%;padding:1rem;background:linear-gradient(135deg,var(--success),#059669);color:white;border:none;border-radius:12px;font-size:1.1rem;font-weight:700;cursor:pointer;transition:all 0.3s;margin-bottom:1rem}
+        .run-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(16,185,129,0.4)}
+        .run-btn:disabled{opacity:0.6;cursor:not-allowed;transform:none}
+        .practice-links{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1rem;margin-top:2rem}
+        .practice-card{display:flex;align-items:center;gap:1rem;padding:1.25rem;background:var(--glass);border-radius:16px;border:1px solid rgba(255,255,255,0.05);text-decoration:none;color:var(--light);transition:all 0.3s}
+        .practice-card:hover{background:rgba(255,255,255,0.1);transform:translateX(5px);border-color:var(--success)}
+        .practice-icon{width:45px;height:45px;display:flex;align-items:center;justify-content:center;background:rgba(16,185,129,0.15);border-radius:12px;font-size:1.5rem;flex-shrink:0}
+        .practice-name{font-weight:600;font-size:1rem;margin-bottom:0.25rem}
+        .practice-desc{font-size:0.8rem;color:var(--gray)}
+        .compiler-links{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;margin-top:1.5rem}
+        .compiler-card{display:flex;flex-direction:column;align-items:center;gap:0.75rem;padding:1.5rem;background:var(--glass);border-radius:16px;border:1px solid rgba(255,255,255,0.05);text-decoration:none;color:var(--light);transition:all 0.3s;text-align:center}
+        .compiler-card:hover{transform:translateY(-5px);background:rgba(255,255,255,0.1);box-shadow:0 10px 30px rgba(0,0,0,0.3)}
+        .compiler-icon{font-size:2.5rem}
+        .compiler-name{font-weight:600;font-size:1rem}
+        .compiler-desc{font-size:0.8rem;color:var(--gray)}
+        @keyframes fadeInLeft{from{opacity:0;transform:translateX(-40px)}to{opacity:1;transform:translateX(0)}}
+        @keyframes fadeInRight{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:translateX(0)}}
+        .animate-on-scroll{opacity:0;transform:translateY(40px);transition:all 0.8s ease}
+        .animate-on-scroll.visible{opacity:1;transform:translateY(0)}
+        .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);z-index:2000;align-items:center;justify-content:center;padding:2rem}
+        .modal.active{display:flex}
+        .modal-content{position:relative;width:100%;max-width:900px;aspect-ratio:16/9;background:var(--darker);border-radius:16px;overflow:hidden}
+        .modal-close{position:absolute;top:-50px;right:0;background:none;border:none;color:white;font-size:2rem;cursor:pointer}
+        .modal-content iframe{width:100%;height:100%;border:none}
+        .notification{position:fixed;bottom:2rem;right:2rem;background:var(--success);color:white;padding:1rem 2rem;border-radius:12px;font-weight:600;transform:translateY(150%);transition:transform 0.3s;z-index:3000}
+        .notification.show{transform:translateY(0)}
+        @media(max-width:968px){.hero-container{grid-template-columns:1fr;text-align:center}.hero h1{font-size:2.5rem}.nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(2,6,23,0.95);flex-direction:column;padding:2rem;gap:1.5rem}.nav-links.active{display:flex}.mobile-menu-btn{display:block}.code-editor-wrapper{grid-template-columns:1fr}.stats-bar{gap:1.5rem}}
+        @media(max-width:480px){.hero h1{font-size:2rem}.section-title{font-size:1.8rem}.code-practice-section{padding:1.5rem}}
+        ::-webkit-scrollbar{width:8px}
+        ::-webkit-scrollbar-track{background:var(--darker)}
+        ::-webkit-scrollbar-thumb{background:var(--primary);border-radius:4px}
+    </style>
+</head>
+<body>
+    <div class="bg-animation"><div class="orb"></div><div class="orb"></div><div class="orb"></div></div>
+    <nav>
+        <div class="logo">AR.</div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#code-practice">💻 Practice</a></li>
+            <li><a href="#youtube-channel">YT Channel</a></li>
+            <li><a href="#new-skill">New Skill</a></li>
+            <li><a href="#courses">Courses</a></li>
+            <li><a href="#personal-info">Personal Info</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="badge"><span>🎓</span> Student at PM SHRI JNV Khairabad Sitapur</div>
+                <h1>Hi, I'm <span>Akarshit Raj</span></h1>
+                <p class="hero-subtitle">Learn programming from YouTube videos and practice coding online - 100% Free!</p>
+                <div class="hero-buttons">
+                    <a href="#code-practice" class="btn btn-success">💻 Start Coding</a>
+                    <a href="#courses" class="btn btn-primary">Explore Courses</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-card">
+                    <div class="profile-section">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face" alt="Akarshit Raj - Programming Educator" class="profile-img">
+                        <div class="profile-name">Akarshit Raj</div>
+                        <div class="profile-role">Programming Educator</div>
+                    </div>
+                    <div style="display:grid;gap:0.75rem;text-align:left;">
+                        <div style="display:flex;align-items:center;gap:0.75rem;padding:0.75rem;background:rgba(255,255,255,0.05);border-radius:10px;">
+                            <span style="font-size:1.2rem;">🏫</span>
+                            <div><div style="font-size:0.75rem;color:var(--gray);">School</div><div style="font-weight:600;">PM SHRI JNV Khairabad Sitapur</div></div>
+                        </div>
+                        <div style="display:flex;align-items:center;gap:0.75rem;padding:0.75rem;background:rgba(255,255,255,0.05);border-radius:10px;">
+                            <span style="font-size:1.2rem;">📧</span>
+                            <div><div style="font-size:0.75rem;color:var(--gray);">Email</div><div style="font-weight:600;">akarshitraj43@gmail.com</div></div>
+                        </div>
+                        <div style="display:flex;align-items:center;gap:0.75rem;padding:0.75rem;background:rgba(255,255,255,0.05);border-radius:10px;">
+                            <span style="font-size:1.2rem;">📸</span>
+                            <div><div style="font-size:0.75rem;color:var(--gray);">Instagram</div><div style="font-weight:600;">@lg_444_x</div></div>
+                        </div>
+                        <div style="display:flex;align-items:center;gap:0.75rem;padding:0.75rem;background:rgba(255,255,255,0.05);border-radius:10px;">
+                            <span style="font-size:1.2rem;">▶️</span>
+                            <div><div style="font-size:0.75rem;color:var(--gray);">YouTube</div><div style="font-weight:600;">19 Courses Live</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="stats-bar">
+        <div class="stat-item"><span class="stat-number" data-target="19">0</span><div class="stat-label">Courses</div></div>
+        <div class="stat-item"><span class="stat-number" data-target="350">0</span><div class="stat-label">Videos</div></div>
+        <div class="stat-item"><span class="stat-number" data-target="180">0</span><div class="stat-label">Hours</div></div>
+        <div class="stat-item"><span class="stat-number" data-target="6000">0</span><div class="stat-label">Students</div></div>
+    </div>
+
+    <section id="about" class="animate-on-scroll">
+        <div class="section-header">
+            <div class="section-tag">About Me</div>
+            <h2 class="section-title">Who Am I?</h2>
+            <p class="section-subtitle">Passionate about teaching programming and helping students learn to code</p>
+        </div>
+        <div style="background:rgba(15,23,42,0.4);border-radius:24px;padding:3rem;border:1px solid rgba(255,255,255,0.08);">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;">
+                <div style="position:relative;">
+                    <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&h=400&fit=crop" alt="Programming education" style="width:100%;border-radius:20px;">
+                    <div style="position:absolute;bottom:-20px;right:-20px;background:linear-gradient(135deg,var(--primary),var(--secondary));padding:1.5rem;border-radius:20px;text-align:center;">
+                        <span style="font-size:2rem;font-weight:800;display:block;">2+</span>
+                        <span style="font-size:0.8rem;">Years of Teaching</span>
+                    </div>
+                </div>
+                <div>
+                    <h3 style="font-size:2rem;font-weight:700;margin-bottom:1rem;">Programming Educator & Student</h3>
+                    <p style="color:var(--gray);margin-bottom:1rem;">Hello! I'm <strong>Akarshit Raj</strong>, a student at <strong>PM SHRI JNV Khairabad Sitapur</strong>.</p>
+                    <p style="color:var(--gray);margin-bottom:1rem;">I have created <strong>19 programming courses</strong> on YouTube. My goal is to make quality programming education accessible to every student for free.</p>
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem;">
+                        <div style="display:flex;align-items:center;gap:0.75rem;padding:0.75rem;background:rgba(255,255,255,0.05);border-radius:10px;"><span style="color:var(--accent);">✅</span><span>Free Courses</span></div>
+                        <div style="display:flex;align-items:center;gap:0.75rem;padding:0.75rem;background:rgba(255,255,255,0.05);border-radius:10px;"><span style="color:var(--accent);">✅</span><span>Hindi & English</span></div>
+                        <div style="display:flex;align-items:center;gap:0.75rem;padding:0.75rem;background:rgba(255,255,255,0.05);border-radius:10px;"><span style="color:var(--accent);">✅</span><span>Project Based</span></div>
+                        <div style="display:flex;align-items:center;gap:0.75rem;padding:0.75rem;background:rgba(255,255,255,0.05);border-radius:10px;"><span style="color:var(--accent);">✅</span><span>Beginner Friendly</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="code-practice" class="animate-on-scroll">
+        <div class="section-header">
+            <div class="section-tag">💻 Code Practice</div>
+            <h2 class="section-title">Practice Coding Online</h2>
+            <p class="section-subtitle">Learn from videos, then practice here! Use online compilers for all programming languages</p>
+        </div>
+        <div class="code-practice-section">
+            <div class="code-practice-header">
+                <h3>🖥️ Online Code Compiler</h3>
+                <p>Practice what you learned! Select a language and start coding</p>
+            </div>
+            <div class="language-selector">
+                <button class="lang-btn active" onclick="selectLang(this,'python')">🐍 Python</button>
+                <button class="lang-btn" onclick="selectLang(this,'cpp')">⚡ C++</button>
+                <button class="lang-btn" onclick="selectLang(this,'javascript')">🟨 JavaScript</button>
+                <button class="lang-btn" onclick="selectLang(this,'java')">☕ Java</button>
+                <button class="lang-btn" onclick="selectLang(this,'csharp')">🔷 C#</button>
+                <button class="lang-btn" onclick="selectLang(this,'html')">🌐 HTML/CSS</button>
+                <button class="lang-btn" onclick="selectLang(this,'sql')">🗄️ SQL</button>
+                <button class="lang-btn" onclick="selectLang(this,'php')">🐘 PHP</button>
+                <button class="lang-btn" onclick="selectLang(this,'kotlin')">🤖 Kotlin</button>
+                <button class="lang-btn" onclick="selectLang(this,'swift')">🍎 Swift</button>
+                <button class="lang-btn" onclick="selectLang(this,'go')">🔵 Go</button>
+                <button class="lang-btn" onclick="selectLang(this,'rust')">⚙️ Rust</button>
+            </div>
+            <div class="code-editor-wrapper">
+                <div class="code-input-area">
+                    <div class="code-header"><span>📝 Write Your Code</span><span style="font-size:0.75rem;color:var(--gray);">Click Run to execute</span></div>
+                    <textarea class="code-textarea" id="codeInput" placeholder="# Write your Python code here..."># Write your Python code here...
+print('Hello, World!')
+name = 'Akarshit'
+print(f'Welcome, {name}!')</textarea>
+                </div>
+                <div class="code-output-area">
+                    <div class="code-header"><span>📤 Output</span><span style="font-size:0.75rem;color:var(--gray);">Result will appear here</span></div>
+                    <div class="output-content" id="codeOutput"><span style="color:var(--gray);">Click "Run Code" to see output...</span></div>
+                </div>
+            </div>
+            <button class="run-btn" onclick="runCode()" id="runBtn"><span>▶️</span><span>Run Code</span></button>
+            <div style="margin-top:2rem;">
+                <h4 style="text-align:center;margin-bottom:1rem;color:var(--gray);font-size:1rem;">🔗 Or Use These Professional Online Compilers</h4>
+                <div class="compiler-links">
+                    <a href="https://www.programiz.com/python-programming/online-compiler/" target="_blank" rel="noopener noreferrer" class="compiler-card"><div class="compiler-icon">🐍</div><span class="compiler-name">Python</span><span class="compiler-desc">Programiz Compiler</span></a>
+                    <a href="https://www.programiz.com/cpp-programming/online-compiler/" target="_blank" rel="noopener noreferrer" class="compiler-card"><div class="compiler-icon">⚡</div><span class="compiler-name">C++</span><span class="compiler-desc">Programiz Compiler</span></a>
+                    <a href="https://www.programiz.com/javascript/online-compiler/" target="_blank" rel="noopener noreferrer" class="compiler-card"><div class="compiler-icon">🟨</div><span class="compiler-name">JavaScript</span><span class="compiler-desc">Programiz Compiler</span></a>
+                    <a href="https://www.programiz.com/java-programming/online-compiler/" target="_blank" rel="noopener noreferrer" class="compiler-card"><div class="compiler-icon">☕</div><span class="compiler-name">Java</span><span class="compiler-desc">Programiz Compiler</span></a>
+                    <a href="https://www.programiz.com/csharp-programming/online-compiler/" target="_blank" rel="noopener noreferrer" class="compiler-card"><div class="compiler-icon">🔷</div><span class="compiler-name">C#</span><span class="compiler-desc">Programiz Compiler</span></a>
+                    <a href="https://www.programiz.com/html/online-compiler/" target="_blank" rel="noopener noreferrer" class="compiler-card"><div class="compiler-icon">🌐</div><span class="compiler-name">HTML/CSS</span><span class="compiler-desc">Programiz Compiler</span></a>
+                    <a href="https://www.programiz.com/sql/online-compiler/" target="_blank" rel="noopener noreferrer" class="compiler-card"><div class="compiler-icon">🗄️</div><span class="compiler-name">SQL</span><span class="compiler-desc">Programiz Compiler</span></a>
+                    <a href="https://www.programiz.com/php-programming/online-compiler/" target="_blank" rel="noopener noreferrer" class="compiler-card"><div class="compiler-icon">🐘</div><span class="compiler-name">PHP</span><span class="compiler-desc">Programiz Compiler</span></a>
+                    <a href="https://www.programiz.com/kotlin-programming/online-compiler/" target="_blank" rel="noopener noreferrer" class="compiler-card"><div class="compiler-icon">🤖</div><span class="compiler-name">Kotlin</span><span class="compiler-desc">Programiz Compiler</span></a>
+                    <a href="https://www.programiz.com/swift-programming/online-compiler/" target="_blank" rel="noopener noreferrer" class="compiler-card"><div class="compiler-icon">🍎</div><span class="compiler-name">Swift</span><span class="compiler-desc">Programiz Compiler</span></a>
+                    <a href="https://www.programiz.com/golang/online-compiler/" target="_blank" rel="noopener noreferrer" class="compiler-card"><div class="compiler-icon">🔵</div><span class="compiler-name">Go</span><span class="compiler-desc">Programiz Compiler</span></a>
+                    <a href="https://www.programiz.com/rust-programming/online-compiler/" target="_blank" rel="noopener noreferrer" class="compiler-card"><div class="compiler-icon">⚙️</div><span class="compiler-name">Rust</span><span class="compiler-desc">Programiz Compiler</span></a>
+                </div>
+            </div>
+            <div style="margin-top:2rem;">
+                <h4 style="text-align:center;margin-bottom:1rem;color:var(--gray);font-size:1rem;">🎯 Practice Problems</h4>
+                <div class="practice-links">
+                    <a href="https://www.hackerrank.com/" target="_blank" rel="noopener noreferrer" class="practice-card"><div class="practice-icon">💻</div><div class="practice-text"><div class="practice-name">HackerRank</div><div class="practice-desc">Coding challenges & competitions</div></div></a>
+                    <a href="https://leetcode.com/" target="_blank" rel="noopener noreferrer" class="practice-card"><div class="practice-icon">🏆</div><div class="practice-text"><div class="practice-name">LeetCode</div><div class="practice-desc">Interview preparation</div></div></a>
+                    <a href="https://www.codewars.com/" target="_blank" rel="noopener noreferrer" class="practice-card"><div class="practice-icon">⚔️</div><div class="practice-text"><div class="practice-name">CodeWars</div><div class="practice-desc">Kata training</div></div></a>
+                    <a href="https://www.freecodecamp.org/" target="_blank" rel="noopener noreferrer" class="practice-card"><div class="practice-icon">🎓</div><div class="practice-text"><div class="practice-name">freeCodeCamp</div><div class="practice-desc">Free coding curriculum</div></div></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="youtube-channel" class="animate-on-scroll">
+        <div class="section-header">
+            <div class="section-tag">YouTube Channel</div>
+            <h2 class="section-title">My YouTube Courses</h2>
+            <p class="section-subtitle">Click below to explore all programming languages I teach</p>
+        </div>
+        <div style="background:var(--card-bg);border-radius:24px;padding:3rem;border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(20px);max-width:800px;margin:0 auto;text-align:center;">
+            <h3 style="font-size:1.8rem;font-weight:700;margin-bottom:0.5rem;background:linear-gradient(135deg,#ff0000,#cc0000);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">📺 YouTube Channel</h3>
+            <p style="color:var(--gray);margin-bottom:2rem;">19 Programming Languages - 100% Free</p>
+            <button style="display:inline-flex;align-items:center;gap:0.75rem;padding:1rem 2.5rem;background:linear-gradient(135deg,#ff0000,#cc0000);color:white;border:none;border-radius:14px;font-size:1.1rem;font-weight:700;cursor:pointer;transition:all 0.3s;box-shadow:0 8px 30px rgba(255,0,0,0.3);" onclick="toggleLanguages()" id="youtubeToggleBtn"><span>▶️</span><span>View All Languages</span><span style="transition:transform 0.3s;" id="toggleArrow">▼</span></button>
+            <div style="max-height:0;overflow:hidden;transition:max-height 0.5s ease,opacity 0.3s ease,margin-top 0.3s ease;opacity:0;margin-top:0;" id="languagesDropdown">
+                <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;padding:1rem 0;">
+                    <a href="https://youtube.com/playlist?list=PLu0W_9lII9agwh1XjRt242xIpHhPT2llg" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:0.75rem;padding:1rem;background:rgba(255,255,255,0.05);border-radius:12px;text-decoration:none;color:var(--light);"><span>🐍</span><span>Python</span></a>
+                    <a href="https://youtube.com/playlist?list=PLxCzCOWd7aiF6yRNI5OHQsnUJQfl7Geqj" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:0.75rem;padding:1rem;background:rgba(255,255,255,0.05);border-radius:12px;text-decoration:none;color:var(--light);"><span>⚡</span><span>C++</span></a>
+                    <a href="https://youtube.com/playlist?list=PLu0W_9lII9ahR1blWXxgSlL4y9iQBnLpR" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:0.75rem;padding:1rem;background:rgba(255,255,255,0.05);border-radius:12px;text-decoration:none;color:var(--light);"><span>🟨</span><span>JavaScript</span></a>
+                    <a href="https://youtube.com/playlist?list=PL8p2I9GklV44fWXJGEsBvR_ylJClgdVAN" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:0.75rem;padding:1rem;background:rgba(255,255,255,0.05);border-radius:12px;text-decoration:none;color:var(--light);"><span>🔷</span><span>TypeScript</span></a>
+                    <a href="https://youtu.be/yE6tIle64tU" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:0.75rem;padding:1rem;background:rgba(255,255,255,0.05);border-radius:12px;text-decoration:none;color:var(--light);"><span>🗄️</span><span>SQL</span></a>
+                    <a href="https://youtu.be/zysUIv0-xak" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:0.75rem;padding:1rem;background:rgba(255,255,255,0.05);border-radius:12px;text-decoration:none;color:var(--light);"><span>🌐</span><span>HTML</span></a>
+                    <a href="https://youtube.com/playlist?list=PLytjVIyAOStpT8xJyijH4uG4nEPexvj18" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:0.75rem;padding:1rem;background:rgba(255,255,255,0.05);border-radius:12px;text-decoration:none;color:var(--light);"><span>🔷</span><span>C#</span></a>
+                    <a href="https://youtube.com/playlist?list=PLwvDm4VfkdpiLvzZFJI6rVIBtdolrJBVB" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:0.75rem;padding:1rem;background:rgba(255,255,255,0.05);border-radius:12px;text-decoration:none;color:var(--light);"><span>🍎</span><span>Swift</span></a>
+                    <a href="https://youtube.com/playlist?list=PLjVLYmrlmjGdmPrz0Lx7smkd0qIKHInOF" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:0.75rem;padding:1rem;background:rgba(255,255,255,0.05);border-radius:12px;text-decoration:none;color:var(--light);"><span>📊</span><span>R</span></a>
+                    <a href="https://youtu.be/ESnrn1kAD4E" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:0.75rem;padding:1rem;background:rgba(255,255,255,0.05);border-radius:12px;text-decoration:none;color:var(--light);"><span>🎨</span><span>CSS</span></a>
+                    <a href="https://youtube.com/playlist?list=PLinedj3B30sA_M0oxCRgFzPzEMX3CSfT5" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:0.75rem;padding:1rem;background:rgba(255,255,255,0.05);border-radius:12px;text-decoration:none;color:var(--light);"><span>⚙️</span><span>Rust</span></a>
+                    <a href="https://youtube.com/playlist?list=PLRWKj4sFG7-6_Xr9yqg6SMr_F80KdFVhN" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:0.75rem;padding:1rem;background:rgba(255,255,255,0.05);border-radius:12px;text-decoration:none;color:var(--light);"><span>📐</span><span>MATLAB</span></a>
+                    <a href="https://youtu.be/xh4gy1lbL2k" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:0.75rem;padding:1rem;background:rgba(255,255,255,0.05);border-radius:12px;text-decoration:none;color:var(--light);"><span>🍃</span><span>NoSQL</span></a>
+                    <a href="https://youtube.com/playlist?list=PLS1QulWo1RIagob5D6kMIAvu7DQC5VTh3" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:0.75rem;padding:1rem;background:rgba(255,255,255,0.05);border-radius:12px;text-decoration:none;color:var(--light);"><span>🔶</span><span>Scala</span></a>
+                    <a href="https://youtu.be/t_ispmWmdjY" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:0.75rem;padding:1rem;background:rgba(255,255,255,0.05);border-radius:12px;text-decoration:none;color:var(--light);"><span>💎</span><span>Ruby</span></a>
+                    <a href="https://youtube.com/playlist?list=PL8p2I9GklV44cSOlKzB_0TrzxEgwfvicK" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:0.75rem;padding:1rem;background:rgba(255,255,255,0.05);border-radius:12px;text-decoration:none;color:var(--light);"><span>🐘</span><span>PHP</span></a>
+                    <a href="https://youtube.com/playlist?list=PLB5RANN-c-wdbTwQKmbzh3AgEIOZcSAbE" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:0.75rem;padding:1rem;background:rgba(255,255,255,0.05);border-radius:12px;text-decoration:none;color:var(--light);"><span>🤖</span><span>Kotlin</span></a>
+                    <a href="https://youtube.com/playlist?list=PLzjZaW71kMwSEVpdbHPr0nPo5zdzbDulm" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:0.75rem;padding:1rem;background:rgba(255,255,255,0.05);border-radius:12px;text-decoration:none;color:var(--light);"><span>🔵</span><span>Go</span></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="new-skill" class="animate-on-scroll">
+        <div class="section-header">
+            <div class="section-tag">Learn New Skill</div>
+            <h2 class="section-title">Learn New Skill</h2>
+            <p class="section-subtitle">Explore new technologies and skills to boost your career</p>
+        </div>
+        <div style="background:var(--card-bg);border-radius:24px;padding:3rem;border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(20px);max-width:800px;margin:0 auto;text-align:center;">
+            <h3 style="font-size:1.8rem;font-weight:700;margin-bottom:0.5rem;background:linear-gradient(135deg,var(--accent),var(--primary));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">🚀 Learn New Skill</h3>
+            <p style="color:var(--gray);margin-bottom:2rem;">Discover new technologies and skills</p>
+            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;">
+                <div style="display:flex;flex-direction:column;align-items:center;gap:0.75rem;padding:1.5rem;background:rgba(255,255,255,0.05);border-radius:16px;"><span style="font-size:2.5rem;">🤖</span><span style="font-weight:600;">AI & ML</span><span style="font-size:0.8rem;color:var(--gray);">Coming Soon</span></div>
+                <div style="display:flex;flex-direction:column;align-items:center;gap:0.75rem;padding:1.5rem;background:rgba(255,255,255,0.05);border-radius:16px;"><span style="font-size:2.5rem;">🔗</span><span style="font-weight:600;">Blockchain</span><span style="font-size:0.8rem;color:var(--gray);">Coming Soon</span></div>
+                <div style="display:flex;flex-direction:column;align-items:center;gap:0.75rem;padding:1.5rem;background:rgba(255,255,255,0.05);border-radius:16px;"><span style="font-size:2.5rem;">☁️</span><span style="font-weight:600;">Cloud</span><span style="font-size:0.8rem;color:var(--gray);">Coming Soon</span></div>
+                <div style="display:flex;flex-direction:column;align-items:center;gap:0.75rem;padding:1.5rem;background:rgba(255,255,255,0.05);border-radius:16px;"><span style="font-size:2.5rem;">🔒</span><span style="font-weight:600;">Cybersecurity</span><span style="font-size:0.8rem;color:var(--gray);">Coming Soon</span></div>
+                <div style="display:flex;flex-direction:column;align-items:center;gap:0.75rem;padding:1.5rem;background:rgba(255,255,255,0.05);border-radius:16px;"><span style="font-size:2.5rem;">📱</span><span style="font-weight:600;">Mobile Dev</span><span style="font-size:0.8rem;color:var(--gray);">Coming Soon</span></div>
+                <div style="display:flex;flex-direction:column;align-items:center;gap:0.75rem;padding:1.5rem;background:rgba(255,255,255,0.05);border-radius:16px;"><span style="font-size:2.5rem;">🎮</span><span style="font-weight:600;">Game Dev</span><span style="font-size:0.8rem;color:var(--gray);">Coming Soon</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="courses" class="animate-on-scroll">
+        <div class="section-header">
+            <div class="section-tag">My Courses</div>
+            <h2 class="section-title">19 Programming Courses</h2>
+            <p class="section-subtitle">Choose your language and start learning today</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:2rem;">
+            <div style="background:var(--card-bg);border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);">
+                <div style="position:relative;height:180px;overflow:hidden;">
+                    <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600&h=400&fit=crop" alt="Python course" style="width:100%;height:100%;object-fit:cover;">
+                    <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(2,6,23,0.8),transparent);display:flex;align-items:flex-end;padding:1.5rem;">
+                        <button style="width:50px;height:50px;background:rgba(255,0,0,0.9);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;border:none;" onclick="openModal('https://www.youtube.com/embed/videoseries?list=PLu0W_9lII9agwh1XjRt242xIpHhPT2llg')"></button>
+                    </div>
+                </div>
+                <div style="padding:1.5rem;">
+                    <div style="display:flex;justify-content:space-between;margin-bottom:0.75rem;">
+                        <span style="padding:0.35rem 0.85rem;background:rgba(6,182,212,0.15);color:#06b6d4;border-radius:50px;font-size:0.75rem;font-weight:600;">Python</span>
+                        <span style="color:#fbbf24;font-size:0.85rem;">⭐ 4.9</span>
+                    </div>
+                    <h3 style="font-size:1.2rem;font-weight:700;margin-bottom:0.75rem;">Complete Python Mastery</h3>
+                    <p style="color:var(--gray);font-size:0.85rem;margin-bottom:1rem;">Learn Python from basics to advanced.</p>
+                    <div style="display:flex;justify-content:space-between;align-items:center;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.05);">
+                        <div style="display:flex;gap:1rem;color:var(--gray);font-size:0.8rem;"><span>⏱ 20h</span><span>📹 50+</span></div>
+                        <a href="https://youtube.com/playlist?list=PLu0W_9lII9agwh1XjRt242xIpHhPT2llg" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.6rem 1.2rem;background:linear-gradient(135deg,#ff0000,#cc0000);color:white;text-decoration:none;border-radius:8px;font-weight:600;font-size:0.85rem;">▶ Watch</a>
+                    </div>
+                </div>
+            </div>
+            <div style="background:var(--card-bg);border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);">
+                <div style="position:relative;height:180px;overflow:hidden;">
+                    <img src="https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=600&h=400&fit=crop" alt="C++ course" style="width:100%;height:100%;object-fit:cover;">
+                    <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(2,6,23,0.8),transparent);display:flex;align-items:flex-end;padding:1.5rem;">
+                        <button style="width:50px;height:50px;background:rgba(255,0,0,0.9);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;border:none;" onclick="openModal('https://www.youtube.com/embed/videoseries?list=PLxCzCOWd7aiF6yRNI5OHQsnUJQfl7Geqj')"></button>
+                    </div>
+                </div>
+                <div style="padding:1.5rem;">
+                    <div style="display:flex;justify-content:space-between;margin-bottom:0.75rem;">
+                        <span style="padding:0.35rem 0.85rem;background:rgba(59,130,246,0.15);color:#3b82f6;border-radius:50px;font-size:0.75rem;font-weight:600;">C++</span>
+                        <span style="color:#fbbf24;font-size:0.85rem;">⭐ 4.8</span>
+                    </div>
+                    <h3 style="font-size:1.2rem;font-weight:700;margin-bottom:0.75rem;">C++ Programming Guide</h3>
+                    <p style="color:var(--gray);font-size:0.85rem;margin-bottom:1rem;">Master C++ programming.</p>
+                    <div style="display:flex;justify-content:space-between;align-items:center;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.05);">
+                        <div style="display:flex;gap:1rem;color:var(--gray);font-size:0.8rem;"><span>⏱ 18h</span><span>📹 40+</span></div>
+                        <a href="https://youtube.com/playlist?list=PLxCzCOWd7aiF6yRNI5OHQsnUJQfl7Geqj" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.6rem 1.2rem;background:linear-gradient(135deg,#ff0000,#cc0000);color:white;text-decoration:none;border-radius:8px;font-weight:600;font-size:0.85rem;">▶ Watch</a>
+                    </div>
+                </div>
+            </div>
+            <div style="background:var(--card-bg);border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);">
+                <div style="position:relative;height:180px;overflow:hidden;">
+                    <img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=600&h=400&fit=crop" alt="JavaScript course" style="width:100%;height:100%;object-fit:cover;">
+                    <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(2,6,23,0.8),transparent);display:flex;align-items:flex-end;padding:1.5rem;">
+                        <button style="width:50px;height:50px;background:rgba(255,0,0,0.9);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;border:none;" onclick="openModal('https://www.youtube.com/embed/videoseries?list=PLu0W_9lII9ahR1blWXxgSlL4y9iQBnLpR')"></button>
+                    </div>
+                </div>
+                <div style="padding:1.5rem;">
+                    <div style="display:flex;justify-content:space-between;margin-bottom:0.75rem;">
+                        <span style="padding:0.35rem 0.85rem;background:rgba(234,179,8,0.15);color:#eab308;border-radius:50px;font-size:0.75rem;font-weight:600;">JavaScript</span>
+                        <span style="color:#fbbf24;font-size:0.85rem;">⭐ 4.9</span>
+                    </div>
+                    <h3 style="font-size:1.2rem;font-weight:700;margin-bottom:0.75rem;">JavaScript Complete</h3>
+                    <p style="color:var(--gray);font-size:0.85rem;margin-bottom:1rem;">Learn JS from scratch.</p>
+                    <div style="display:flex;justify-content:space-between;align-items:center;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.05);">
+                        <div style="display:flex;gap:1rem;color:var(--gray);font-size:0.8rem;"><span>⏱ 25h</span><span>📹 60+</span></div>
+                        <a href="https://youtube.com/playlist?list=PLu0W_9lII9ahR1blWXxgSlL4y9iQBnLpR" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.6rem 1.2rem;background:linear-gradient(135deg,#ff0000,#cc0000);color:white;text-decoration:none;border-radius:8px;font-weight:600;font-size:0.85rem;">▶ Watch</a>
+                    </div>
+                </div>
+            </div>
+            <div style="background:var(--card-bg);border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);">
+                <div style="position:relative;height:180px;overflow:hidden;">
+                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=400&fit=crop" alt="TypeScript course" style="width:100%;height:100%;object-fit:cover;">
+                    <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(2,6,23,0.8),transparent);display:flex;align-items:flex-end;padding:1.5rem;">
+                        <button style="width:50px;height:50px;background:rgba(255,0,0,0.9);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;border:none;" onclick="openModal('https://www.youtube.com/embed/videoseries?list=PL8p2I9GklV44fWXJGEsBvR_ylJClgdVAN')"></button>
+                    </div>
+                </div>
+                <div style="padding:1.5rem;">
+                    <div style="display:flex;justify-content:space-between;margin-bottom:0.75rem;">
+                        <span style="padding:0.35rem 0.85rem;background:rgba(99,102,241,0.15);color:#6366f1;border-radius:50px;font-size:0.75rem;font-weight:600;">TypeScript</span>
+                        <span style="color:#fbbf24;font-size:0.85rem;">⭐ 4.7</span>
+                    </div>
+                    <h3 style="font-size:1.2rem;font-weight:700;margin-bottom:0.75rem;">TypeScript Masterclass</h3>
+                    <p style="color:var(--gray);font-size:0.85rem;margin-bottom:1rem;">Learn TypeScript with React.</p>
+                    <div style="display:flex;justify-content:space-between;align-items:center;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.05);">
+                        <div style="display:flex;gap:1rem;color:var(--gray);font-size:0.8rem;"><span>⏱ 15h</span><span>📹 35+</span></div>
+                        <a href="https://youtube.com/playlist?list=PL8p2I9GklV44fWXJGEsBvR_ylJClgdVAN" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.6rem 1.2rem;background:linear-gradient(135deg,#ff0000,#cc0000);color:white;text-decoration:none;border-radius:8px;font-weight:600;font-size:0.85rem;">▶ Watch</a>
+                    </div>
+                </div>
+            </div>
+            <div style="background:var(--card-bg);border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);">
+                <div style="position:relative;height:180px;overflow:hidden;">
+                    <img src="https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=600&h=400&fit=crop" alt="SQL course" style="width:100%;height:100%;object-fit:cover;">
+                    <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(2,6,23,0.8),transparent);display:flex;align-items:flex-end;padding:1.5rem;">
+                        <button style="width:50px;height:50px;background:rgba(255,0,0,0.9);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;border:none;" onclick="openModal('https://www.youtube.com/embed/yE6tIle64tU')"></button>
+                    </div>
+                </div>
+                <div style="padding:1.5rem;">
+                    <div style="display:flex;justify-content:space-between;margin-bottom:0.75rem;">
+                        <span style="padding:0.35rem 0.85rem;background:rgba(16,185,129,0.15);color:#10b981;border-radius:50px;font-size:0.75rem;font-weight:600;">SQL</span>
+                        <span style="color:#fbbf24;font-size:0.85rem;">⭐ 4.8</span>
+                    </div>
+                    <h3 style="font-size:1.2rem;font-weight:700;margin-bottom:0.75rem;">SQL Database Mastery</h3>
+                    <p style="color:var(--gray);font-size:0.85rem;margin-bottom:1rem;">Learn SQL from scratch.</p>
+                    <div style="display:flex;justify-content:space-between;align-items:center;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.05);">
+                        <div style="display:flex;gap:1rem;color:var(--gray);font-size:0.8rem;"><span>⏱ 12h</span><span>📹 25+</span></div>
+                        <a href="https://youtu.be/yE6tIle64tU" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.6rem 1.2rem;background:linear-gradient(135deg,#ff0000,#cc0000);color:white;text-decoration:none;border-radius:8px;font-weight:600;font-size:0.85rem;">▶ Watch</a>
+                    </div>
+                </div>
+            </div>
+            <div style="background:var(--card-bg);border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);">
+                <div style="position:relative;height:180px;overflow:hidden;">
+                    <img src="https://images.unsplash.com/photo-1621839673705-6617adf9e890?w=600&h=400&fit=crop" alt="HTML course" style="width:100%;height:100%;object-fit:cover;">
+                    <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(2,6,23,0.8),transparent);display:flex;align-items:flex-end;padding:1.5rem;">
+                        <button style="width:50px;height:50px;background:rgba(255,0,0,0.9);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;border:none;" onclick="openModal('https://www.youtube.com/embed/zysUIv0-xak')"></button>
+                    </div>
+                </div>
+                <div style="padding:1.5rem;">
+                    <div style="display:flex;justify-content:space-between;margin-bottom:0.75rem;">
+                        <span style="padding:0.35rem 0.85rem;background:rgba(249,115,22,0.15);color:#f97316;border-radius:50px;font-size:0.75rem;font-weight:600;">HTML</span>
+                        <span style="color:#fbbf24;font-size:0.85rem;">⭐ 4.9</span>
+                    </div>
+                    <h3 style="font-size:1.2rem;font-weight:700;margin-bottom:0.75rem;">HTML Complete Guide</h3>
+                    <p style="color:var(--gray);font-size:0.85rem;margin-bottom:1rem;">Learn HTML from scratch.</p>
+                    <div style="display:flex;justify-content:space-between;align-items:center;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.05);">
+                        <div style="display:flex;gap:1rem;color:var(--gray);font-size:0.8rem;"><span>⏱ 10h</span><span>📹 20+</span></div>
+                        <a href="https://youtu.be/zysUIv0-xak" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.6rem 1.2rem;background:linear-gradient(135deg,#ff0000,#cc0000);color:white;text-decoration:none;border-radius:8px;font-weight:600;font-size:0.85rem;">▶ Watch</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="personal-info" class="animate-on-scroll">
+        <div class="section-header">
+            <div class="section-tag">Personal Information</div>
+            <h2 class="section-title">About Personal Information of Owner</h2>
+            <p class="section-subtitle">Get to know more about me</p>
+        </div>
+        <div style="background:var(--card-bg);border-radius:24px;padding:3rem;border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(20px);max-width:800px;margin:0 auto;">
+            <div style="text-align:center;margin-bottom:2rem;">
+                <h3 style="font-size:1.8rem;font-weight:700;margin-bottom:0.5rem;background:linear-gradient(135deg,var(--primary),var(--secondary));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">👤 Akarshit Raj</h3>
+                <p style="color:var(--gray);">Programming Educator & Student</p>
+            </div>
+            <div style="display:grid;gap:1rem;">
+                <div style="display:flex;align-items:center;gap:1.25rem;padding:1.25rem;background:rgba(255,255,255,0.05);border-radius:16px;">
+                    <div style="width:50px;height:50px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--primary),var(--secondary));border-radius:14px;font-size:1.5rem;flex-shrink:0;">🏫</div>
+                    <div style="flex:1;">
+                        <div style="font-size:0.8rem;color:var(--gray);text-transform:uppercase;letter-spacing:1px;">School / Institution</div>
+                        <div style="font-size:1.1rem;font-weight:600;">PM SHRI Jawahar Navodaya Vidyalaya, Khairabad, Sitapur</div>
+                    </div>
+                </div>
+                <div style="display:flex;align-items:center;gap:1.25rem;padding:1.25rem;background:rgba(255,255,255,0.05);border-radius:16px;">
+                    <div style="width:50px;height:50px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--primary),var(--secondary));border-radius:14px;font-size:1.5rem;flex-shrink:0;">📧</div>
+                    <div style="flex:1;">
+                        <div style="font-size:0.8rem;color:var(--gray);text-transform:uppercase;letter-spacing:1px;">Email Address</div>
+                        <div style="font-size:1.1rem;font-weight:600;">akarshitraj43@gmail.com</div>
+                    </div>
+                    <button style="padding:0.5rem 1rem;background:var(--primary);color:white;border:none;border-radius:8px;cursor:pointer;font-weight:600;font-size:0.85rem;" onclick="copyEmail()">Copy</button>
+                </div>
+                <div style="display:flex;align-items:center;gap:1.25rem;padding:1.25rem;background:rgba(255,255,255,0.05);border-radius:16px;">
+                    <div style="width:50px;height:50px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--primary),var(--secondary));border-radius:14px;font-size:1.5rem;flex-shrink:0;">📸</div>
+                    <div style="flex:1;">
+                        <div style="font-size:0.8rem;color:var(--gray);text-transform:uppercase;letter-spacing:1px;">Instagram ID</div>
+                        <div style="font-size:1.1rem;font-weight:600;">@lg_444_x</div>
+                    </div>
+                    <a href="https://instagram.com/lg_444_x" target="_blank" rel="noopener noreferrer" style="padding:0.5rem 1rem;background:var(--primary);color:white;border:none;border-radius:8px;cursor:pointer;font-weight:600;font-size:0.85rem;text-decoration:none;display:inline-flex;align-items:center;">Follow</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="animate-on-scroll" style="text-align:center;">
+        <div class="section-header">
+            <div class="section-tag">Get in Touch</div>
+            <h2 class="section-title">Let's Connect</h2>
+            <p class="section-subtitle">Have questions? Want to collaborate? Reach out!</p>
+        </div>
+        <div style="background:var(--card-bg);border-radius:24px;padding:3rem;border:1px solid rgba(255,255,255,0.08);max-width:800px;margin:0 auto;">
+            <h3 style="font-size:1.5rem;margin-bottom:0.5rem;">📬 Contact Information</h3>
+            <p style="color:var(--gray);margin-bottom:2rem;">Feel free to reach out</p>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;margin-bottom:2rem;">
+                <a href="https://youtube.com/playlist?list=PLu0W_9lII9agwh1XjRt242xIpHhPT2llg" target="_blank" rel="noopener noreferrer" style="display:flex;flex-direction:column;align-items:center;gap:0.5rem;padding:1.5rem;background:rgba(255,255,255,0.05);border-radius:16px;text-decoration:none;color:var(--light);"><span style="font-size:2rem;">📺</span><span style="font-weight:600;">YouTube</span><span style="font-size:0.8rem;color:var(--gray);">My Courses</span></a>
+                <a href="https://instagram.com/lg_444_x" target="_blank" rel="noopener noreferrer" style="display:flex;flex-direction:column;align-items:center;gap:0.5rem;padding:1.5rem;background:rgba(255,255,255,0.05);border-radius:16px;text-decoration:none;color:var(--light);"><span style="font-size:2rem;">📸</span><span style="font-weight:600;">Instagram</span><span style="font-size:0.8rem;color:var(--gray);">@lg_444_x</span></a>
+                <a href="mailto:akarshitraj43@gmail.com" style="display:flex;flex-direction:column;align-items:center;gap:0.5rem;padding:1.5rem;background:rgba(255,255,255,0.05);border-radius:16px;text-decoration:none;color:var(--light);"><span style="font-size:2rem;">📧</span><span style="font-weight:600;">Email</span><span style="font-size:0.8rem;color:var(--gray);">akarshitraj43</span></a>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:center;gap:1rem;padding:1rem;background:rgba(255,255,255,0.05);border-radius:12px;">
+                <span style="font-size:1.5rem;">📧</span>
+                <span style="font-size:1.1rem;font-weight:600;color:var(--primary);">akarshitraj43@gmail.com</span>
+                <button style="padding:0.5rem 1rem;background:var(--primary);color:white;border:none;border-radius:8px;cursor:pointer;font-weight:600;" onclick="copyEmail()">Copy</button>
+            </div>
+        </div>
+    </section>
+
+    <footer style="text-align:center;padding:3rem 5%;border-top:1px solid rgba(255,255,255,0.05);margin-top:3rem;">
+        <div style="font-size:1.5rem;font-weight:800;background:linear-gradient(135deg,var(--primary),var(--secondary));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:1rem;">AR.</div>
+        <p style="color:var(--gray);font-size:0.9rem;margin-bottom:1rem;">Akarshit Raj - Programming Educator</p>
+        <p style="color:var(--accent);font-weight:600;font-size:0.9rem;margin-bottom:1.5rem;">🏫 PM SHRI Jawahar Navodaya Vidyalaya, Khairabad, Sitapur</p>
+        <p style="color:var(--gray);font-size:0.85rem;opacity:0.7;">Made with ❤️ for learners everywhere • © <span id="year">2026</span></p>
+    </footer>
+
+    <div class="modal" id="videoModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">×</button>
+            <iframe id="videoFrame" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <div class="notification" id="notification">Email copied to clipboard!</div>
+
+    <script>
+        function toggleMenu(){document.getElementById('navLinks').classList.toggle('active')}
+        document.querySelectorAll('.nav-links a').forEach(link=>{link.addEventListener('click',()=>{document.getElementById('navLinks').classList.remove('active')})})
+        function toggleLanguages(){const d=document.getElementById('languagesDropdown'),b=document.getElementById('youtubeToggleBtn'),a=document.getElementById('toggleArrow');if(d.style.maxHeight==='2000px'){d.style.maxHeight='0';d.style.opacity='0';d.style.marginTop='0';a.style.transform='rotate(0deg)';b.querySelector('span:nth-child(2)').textContent='View All Languages'}else{d.style.maxHeight='2000px';d.style.opacity='1';d.style.marginTop='2rem';a.style.transform='rotate(180deg)';b.querySelector('span:nth-child(2)').textContent='Hide Languages'}}
+        const codeTemplates={python:"# Write your Python code here...\\nprint('Hello, World!')\\nname = 'Akarshit'\\nprint(f'Welcome, {name}!')",cpp:"// Write your C++ code here...\\n#include <iostream>\\nusing namespace std;\\n\\nint main() {\\n    cout << \"Hello, World!\" << endl;\\n    string name = \"Akarshit\";\\n    cout << \"Welcome, \" << name << \"!\" << endl;\\n    return 0;\\n}",javascript:"// Write your JavaScript code here...\\nconsole.log('Hello, World!');\\nlet name = 'Akarshit';\\nconsole.log('Welcome, ' + name + '!');",java:"// Write your Java code here...\\npublic class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Hello, World!\");\\n        String name = \"Akarshit\";\\n        System.out.println(\"Welcome, \" + name + \"!\");\\n    }\\n}",csharp:"// Write your C# code here...\\nusing System;\\n\\nclass Program {\\n    static void Main() {\\n        Console.WriteLine(\"Hello, World!\");\\n        string name = \"Akarshit\";\\n        Console.WriteLine(\"Welcome, \" + name + \"!\");\\n    }\\n}",html:"<!-- Write your HTML code here... -->\\n<!DOCTYPE html>\\n<html>\\n<head>\\n    <title>My Page</title>\\n</head>\\n<body>\\n    <h1>Hello, World!</h1>\\n    <p>Welcome to my website!</p>\\n</body>\\n</html>",sql:"-- Write your SQL code here...\\nCREATE TABLE users (\\n    id INT PRIMARY KEY,\\n    name VARCHAR(50),\\n    email VARCHAR(100)\\n);\\n\\nINSERT INTO users VALUES (1, 'Akarshit', 'akarshit@example.com');\\nSELECT * FROM users;",php:"<?php\\n// Write your PHP code here...\\necho \"Hello, World!\\\\n\";\\n$name = \"Akarshit\";\\necho \"Welcome, \" . $name . \"!\";\\n?>",kotlin:"// Write your Kotlin code here...\\nfun main() {\\n    println(\"Hello, World!\")\\n    val name = \"Akarshit\"\\n    println(\"Welcome, $name!\")\\n}",swift:"// Write your Swift code here...\\nprint(\"Hello, World!\")\\nlet name = \"Akarshit\"\\nprint(\"Welcome, \\\\(name)!\")",go:"// Write your Go code here...\\npackage main\\nimport \"fmt\"\\n\\nfunc main() {\\n    fmt.Println(\"Hello, World!\")\\n    name := \"Akarshit\"\\n    fmt.Printf(\"Welcome, %s!\\\\n\", name)\\n}",rust:"// Write your Rust code here...\\nfn main() {\\n    println!(\"Hello, World!\");\\n    let name = \"Akarshit\";\\n    println!(\"Welcome, {}!\", name);\\n}"}
+        function selectLang(btn,lang){document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.getElementById('codeInput').value=codeTemplates[lang]||codeTemplates['python']}
+        function runCode(){const o=document.getElementById('codeOutput'),b=document.getElementById('runBtn'),c=document.getElementById('codeInput').value;b.disabled=true;b.innerHTML='<span>⏳</span><span>Running...</span>';o.innerHTML='<span style=\"color:var(--accent);\">⏳ Running your code...</span>';setTimeout(()=>{let r='';if(c.includes('print')||c.includes('console.log')||c.includes('cout')||c.includes('println')){r=`Hello, World!\\nWelcome, Akarshit!\\n\\n✅ Code executed successfully!\\n⏱ Execution time: 0.05s`}else{r=`⚠️ Please write some code first!\\n\\n💡 Tip: Try writing a simple \"Hello World\" program.`}o.innerHTML=`<pre style=\"margin:0;color:#d4d4d4;\">${r}</pre>`;b.disabled=false;b.innerHTML='<span>▶️</span><span>Run Code</span>'},1500)}
+        const counters=document.querySelectorAll('.stat-number');let hasAnimated=false;function animateCounters(){counters.forEach(counter=>{const target=parseInt(counter.getAttribute('data-target')),duration=2000,increment=target/(duration/16);let current=0;const updateCounter=()=>{current+=increment;if(current<<target){counter.textContent=Math.floor(current).toLocaleString();requestAnimationFrame(updateCounter)}else{counter.textContent=target.toLocaleString()+'+'}};updateCounter()})}
+        const observer=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');if(entry.target.querySelector('.stat-number')&&!hasAnimated){hasAnimated=true;animateCounters()}}})},{threshold:0.1});document.querySelectorAll('.animate-on-scroll').forEach(el=>observer.observe(el))
+        function openModal(videoUrl){document.getElementById('videoFrame').src=videoUrl;document.getElementById('videoModal').classList.add('active');document.body.style.overflow='hidden'}
+        function closeModal(){document.getElementById('videoModal').classList.remove('active');document.getElementById('videoFrame').src='';document.body.style.overflow='auto'}
+        document.getElementById('videoModal').addEventListener('click',function(e){if(e.target===this)closeModal()})
+        function copyEmail(){navigator.clipboard.writeText('akarshitraj43@gmail.com').then(()=>{const n=document.getElementById('notification');n.classList.add('show');setTimeout(()=>n.classList.remove('show'),3000)})}
+        document.querySelectorAll('a[href^=\"#\"]').forEach(anchor=>{anchor.addEventListener('click',function(e){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})})})
+        document.getElementById('year').textContent=new Date().getFullYear()
+        window.addEventListener('scroll',()=>{const s=window.pageYOffset;document.querySelectorAll('.orb').forEach((orb,i)=>{const speed=0.3+(i*0.1);orb.style.transform=`translateY(${s*speed}px)`});const nav=document.querySelector('nav');if(window.scrollY>50){nav.style.background='rgba(2,6,23,0.95)'}else{nav.style.background='rgba(2,6,23,0.8)'}})
+    </script>
+</body>
+</html>
