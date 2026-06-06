@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/png" href="file_000000004984720882e69f4dad44966a.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Tutorials - Akarshit Raj</title>
+    <meta name="description" content="All programming tutorials by Akarshit Raj. Learn Python, C++, JavaScript and more. Date-wise organized tutorials.">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{--primary:#6366f1;--primary-dark:#4f46e5;--secondary:#ec4899;--accent:#06b6d4;--dark:#0f172a;--darker:#020617;--light:#f8fafc;--gray:#94a3b8;--card-bg:rgba(30,41,59,0.6);--glass:rgba(255,255,255,0.05);--success:#10b981}
+        body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--darker);color:var(--light);min-height:100vh;line-height:1.6}
+        .bg-animation{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;overflow:hidden}
+        .bg-animation .orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:0.4;animation:float 20s infinite ease-in-out}
+        .bg-animation .orb:nth-child(1){width:400px;height:400px;background:var(--primary);top:-200px;left:-100px}
+        .bg-animation .orb:nth-child(2){width:300px;height:300px;background:var(--secondary);top:40%;right:-100px;animation-delay:5s}
+        .bg-animation .orb:nth-child(3){width:250px;height:250px;background:var(--accent);bottom:-100px;left:40%;animation-delay:10s}
+        @keyframes float{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(30px,-50px) scale(1.1)}66%{transform:translate(-30px,30px) scale(0.9)}}
+        nav{position:fixed;top:0;width:100%;padding:1rem 5%;background:rgba(2,6,23,0.8);backdrop-filter:blur(20px);z-index:1000;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,0.08)}
+        .logo{font-size:1.6rem;font-weight:800;background:linear-gradient(135deg,var(--primary),var(--secondary));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-decoration:none}
+        .nav-links{display:flex;gap:2rem;list-style:none;align-items:center}
+        .nav-links a{color:var(--gray);text-decoration:none;font-weight:500;font-size:0.9rem;transition:all 0.3s;position:relative}
+        .nav-links a:hover{color:var(--light)}
+        .nav-links a::after{content:'';position:absolute;bottom:-6px;left:0;width:0;height:2px;background:linear-gradient(90deg,var(--primary),var(--secondary));transition:width 0.3s;border-radius:2px}
+        .nav-links a:hover::after{width:100%}
+        .mobile-menu-btn{display:none;background:none;border:none;color:var(--light);font-size:1.5rem;cursor:pointer}
+        .search-box{position:relative;display:flex;align-items:center}
+        .search-box input{padding:0.5rem 1rem 0.5rem 2.5rem;border-radius:50px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);color:var(--light);font-size:0.85rem;outline:none;width:200px;transition:all 0.3s}
+        .search-box input:focus{border-color:var(--primary);width:250px;background:rgba(255,255,255,0.08)}
+        .search-box::before{content:"🔍";position:absolute;left:0.8rem;font-size:0.9rem;opacity:0.6}
+        .container{max-width:1000px;margin:0 auto;padding:7rem 5% 3rem}
+        .page-header{text-align:center;margin-bottom:3rem}
+        .page-title{font-size:2.5rem;font-weight:800;margin-bottom:0.5rem;background:linear-gradient(135deg,var(--primary),var(--secondary));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .page-subtitle{color:var(--gray);font-size:1rem}
+        .date-group{margin-bottom:2rem}
+        .date-header{display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem;padding-bottom:0.5rem;border-bottom:1px solid rgba(255,255,255,0.1)}
+        .date-dot{width:10px;height:10px;background:var(--primary);border-radius:50%}
+        .date-text{font-size:0.9rem;color:var(--gray);font-weight:500}
+        .post-card{background:var(--card-bg);border-radius:16px;padding:1.5rem;border:1px solid rgba(255,255,255,0.08);margin-bottom:1rem;transition:all 0.3s;display:flex;gap:1.5rem;align-items:flex-start}
+        .post-card:hover{background:rgba(255,255,255,0.08);transform:translateX(5px);border-color:var(--primary)}
+        .post-icon{width:50px;height:50px;display:flex;align-items:center;justify-content:center;background:rgba(99,102,241,0.15);border-radius:12px;font-size:1.5rem;flex-shrink:0}
+        .post-content{flex:1}
+        .post-title{font-size:1.2rem;font-weight:700;margin-bottom:0.5rem;color:var(--light)}
+        .post-desc{color:var(--gray);font-size:0.9rem;margin-bottom:0.75rem;line-height:1.5}
+        .post-meta{display:flex;gap:1rem;align-items:center;flex-wrap:wrap}
+        .post-tag{padding:0.25rem 0.75rem;background:rgba(99,102,241,0.15);color:var(--primary);border-radius:50px;font-size:0.75rem;font-weight:600}
+        .post-date{font-size:0.8rem;color:var(--gray)}
+        .read-btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.5rem 1rem;background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:white;text-decoration:none;border-radius:8px;font-size:0.85rem;font-weight:600;transition:all 0.3s}
+        .read-btn:hover{transform:translateY(-2px);box-shadow:0 4px 15px rgba(99,102,241,0.4)}
+        .empty-state{text-align:center;padding:4rem 2rem;background:var(--card-bg);border-radius:24px;border:1px solid rgba(255,255,255,0.08)}
+        .empty-icon{font-size:4rem;margin-bottom:1rem}
+        .empty-title{font-size:1.5rem;font-weight:700;margin-bottom:0.5rem}
+        .empty-desc{color:var(--gray);margin-bottom:1.5rem}
+        .add-btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.75rem 1.5rem;background:var(--success);color:white;text-decoration:none;border-radius:10px;font-weight:600;transition:all 0.3s}
+        .add-btn:hover{transform:translateY(-2px)}
+        footer{text-align:center;padding:3rem 5%;border-top:1px solid rgba(255,255,255,0.05);margin-top:3rem}
+        .footer-links{text-align:center;padding:1rem 0;margin-top:1rem}
+        .footer-links a{color:var(--primary);text-decoration:none;margin:0 10px;font-size:0.85rem}
+        .footer-links a:hover{text-decoration:underline}
+        @media(max-width:968px){.nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(2,6,23,0.95);flex-direction:column;padding:2rem;gap:1.5rem}.nav-links.active{display:flex}.mobile-menu-btn{display:block}.post-card{flex-direction:column}.search-box{display:none}}
+        @media(max-width:480px){.page-title{font-size:1.8rem}.container{padding:6rem 5% 2rem}}
+    </style>
+</head>
+<body>
+    <div class="bg-animation"><div class="orb"></div><div class="orb"></div><div class="orb"></div></div>
+    <nav>
+        <a href="index.html" class="logo">AK.R</a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#code-practice">💻 Practice</a></li>
+            <li><a href="tutorials.html">📚 Tutorials</a></li>
+            <li><a href="index.html#courses">Courses</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+            <li><div class="search-box"><input type="text" id="searchInput" placeholder="Search tutorials..." onkeyup="searchTutorials()"></div></li>
+        </ul>
+        <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+    </nav>
+
+    <div class="container">
+        <div class="page-header">
+            <h1 class="page-title">📚 All Tutorials</h1>
+            <p class="page-subtitle">All programming tutorials organized by date. Newest first!</p>
+        </div>
+
+        <!-- June 2026 -->
+        <div class="date-group">
+            <div class="date-header">
+                <div class="date-dot"></div>
+                <span class="date-text">June 2026</span>
+            </div>
+            
+            <div class="post-card" data-title="python variables">
+                <div class="post-icon">🐍</div>
+                <div class="post-content">
+                    <h3 class="post-title">Python Variables Kya Hain?</h3>
+                    <p class="post-desc">Learn what variables are in Python, how to declare them, and practice with code examples. Perfect for beginners!</p>
+                    <div class="post-meta">
+                        <span class="post-tag">Python</span>
+                        <span class="post-date">📅 June 6, 2026</span>
+                        <a href="python-variables.html" class="read-btn">Read More →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="post-card" data-title="c++ basics">
+                <div class="post-icon">⚡</div>
+                <div class="post-content">
+                    <h3 class="post-title">C++ Basics - Getting Started</h3>
+                    <p class="post-desc">Introduction to C++ programming. Learn about data types, variables, and write your first C++ program.</p>
+                    <div class="post-meta">
+                        <span class="post-tag">C++</span>
+                        <span class="post-date">📅 June 5, 2026</span>
+                        <a href="cpp-basics.html" class="read-btn">Read More →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add More Posts Here -->
+        <!-- Copy the post-card block above and paste below for new posts -->
+
+        <div class="empty-state" style="margin-top:2rem;">
+            <div class="empty-icon">📝</div>
+            <h3 class="empty-title">Want to Add More Tutorials?</h3>
+            <p class="empty-desc">Create a new HTML file and add it here. All posts will appear date-wise automatically!</p>
+            <a href="index.html" class="add-btn">← Back to Home</a>
+        </div>
+    </div>
+
+    <footer>
+        <p style="color:var(--gray);font-size:0.9rem;margin-bottom:1rem;">Akarshit Raj - Programming Educator</p>
+        <p style="color:var(--gray);font-size:0.85rem;opacity:0.7;">Made with ❤️ for learners everywhere • © 2026</p>
+        <div class="footer-links">
+            <a href="privacy-policy.html">Privacy Policy</a> | 
+            <a href="disclaimer.html">Disclaimer</a> | 
+            <a href="index.html">Home</a>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu(){document.getElementById('navLinks').classList.toggle('active')}
+        function searchTutorials(){const input=document.getElementById('searchInput').value.toLowerCase();const cards=document.querySelectorAll('.post-card');cards.forEach(card=>{const title=card.getAttribute('data-title');if(title.includes(input)){card.style.display='flex'}else{card.style.display='none'}})}
+    </script>
+</body>
+</html>
+
