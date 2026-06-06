@@ -527,6 +527,10 @@ print(f'Welcome, {name}!')</textarea>
         <p style="color:var(--gray);font-size:0.9rem;margin-bottom:1rem;">Akarshit Raj - Programming Educator</p>
         <p style="color:var(--accent);font-weight:600;font-size:0.9rem;margin-bottom:1.5rem;">🏫 PM SHRI Jawahar Navodaya Vidyalaya, Khairabad, Sitapur</p>
         <p style="color:var(--gray);font-size:0.85rem;opacity:0.7;">Made with ❤️ for learners everywhere • © <span id="year">2026</span></p>
+        <p style="margin-top:1.5rem;">
+            <a href="privacy-policy.html" style="color:var(--primary);margin:0 10px;text-decoration:none;">Privacy Policy</a> | 
+            <a href="disclaimer.html" style="color:var(--primary);margin:0 10px;text-decoration:none;">Disclaimer</a>
+        </p>
     </footer>
 
     <div class="modal" id="videoModal">
@@ -554,14 +558,7 @@ print(f'Welcome, {name}!')</textarea>
         document.querySelectorAll('a[href^=\"#\"]').forEach(anchor=>{anchor.addEventListener('click',function(e){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})})})
         document.getElementById('year').textContent=new Date().getFullYear()
         window.addEventListener('scroll',()=>{const s=window.pageYOffset;document.querySelectorAll('.orb').forEach((orb,i)=>{const speed=0.3+(i*0.1);orb.style.transform=`translateY(${s*speed}px)`});const nav=document.querySelector('nav');if(window.scrollY>50){nav.style.background='rgba(2,6,23,0.95)'}else{nav.style.background='rgba(2,6,23,0.8)'}})
-        <footer style="background: #1a1a2e; color: white; text-align: center; padding: 20px; margin-top: 50px;">
-    <p>© 2026 Akarshit Raj - Free Programming Education</p>
-    <p>
-        <a href="privacy-policy.html" style="color: #4da6ff; margin: 0 10px;">Privacy Policy</a> | 
-        <a href="disclaimer.html" style="color: #4da6ff; margin: 0 10px;">Disclaimer</a>
-    </p>
-</footer>
-        
     </script>
 </body>
 </html>
+
