@@ -554,7 +554,7 @@ print(f'Welcome, {name}!')</textarea>
         document.querySelectorAll('a[href^=\"#\"]').forEach(anchor=>{anchor.addEventListener('click',function(e){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})})})
         document.getElementById('year').textContent=new Date().getFullYear()
         window.addEventListener('scroll',()=>{const s=window.pageYOffset;document.querySelectorAll('.orb').forEach((orb,i)=>{const speed=0.3+(i*0.1);orb.style.transform=`translateY(${s*speed}px)`});const nav=document.querySelector('nav');if(window.scrollY>50){nav.style.background='rgba(2,6,23,0.95)'}else{nav.style.background='rgba(2,6,23,0.8)'}})
-        <<footer style="background: #1a1a2e; color: white; text-align: center; padding: 20px; margin-top: 50px;">
+        <footer style="background: #1a1a2e; color: white; text-align: center; padding: 20px; margin-top: 50px;">
     <p>© 2026 Akarshit Raj - Free Programming Education</p>
     <p>
         <a href="privacy-policy.html" style="color: #4da6ff; margin: 0 10px;">Privacy Policy</a> | 
