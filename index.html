@@ -6,22 +6,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Akarshit Raj - Free Programming Courses & Online Code Practice</title>
-    <meta name="description" content="Learn programming for free with Akarshit Raj. 19+ YouTube courses, 350+ videos, online code compiler practice. Python, C++, JavaScript, Java, SQL & more.">
+    <meta name="description" content="Learn programming for free with Akarshit Raj. 20+ YouTube courses, 200+ videos, online code compiler practice. Python, C++, JavaScript, Java, SQL & more.">
     <meta name="keywords" content="Akarshit Raj, programming courses, free coding classes, Python tutorial, C++ tutorial, JavaScript tutorial, online compiler, YouTube programming, learn coding free">
     <meta name="author" content="Akarshit Raj">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <link rel="canonical" href="https://akarshitrajx.github.io/">
     <meta property="og:title" content="Akarshit Raj - Free Programming Courses & Online Code Practice">
-    <meta property="og:description" content="19+ free programming courses on YouTube. Learn Python, C++, JavaScript, Java & more. Practice coding online!">
+    <meta property="og:description" content="20+ free programming courses on YouTube. Learn Python, C++, JavaScript, Java & more. Practice coding online!">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://akarshitrajx.github.io/">
     <meta property="og:site_name" content="Akarshit Raj">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Akarshit Raj - Free Programming Courses">
-    <meta name="twitter:description" content="19+ free programming courses. Learn & practice coding online!">
+    <meta name="twitter:description" content="20+ free programming courses. Learn & practice coding online!">
     <style>
         *{margin:0;padding:0;box-sizing:border-box}
-        :root{--primary:#6366f1;--primary-dark:#4f46e5;--secondary:#ec4899;--accent:#06b6d4;--dark:#0f172a;--darker:#020617;--light:#f8fafc;--gray:#94a3b8;--card-bg:rgba(30,41,59,0.6);--glass:rgba(255,255,255,0.05);--success:#10b981}
+        :root{--primary:#6366f1;--primary-dark:#4f46e5;--secondary:#ec4899;--accent:#06b6d4;--dark:#0f172a;--darker:#020617;--light:#f8fafc;--gray:#94a3b8;--card-bg:rgba(30,41,59,0.6);--glass:rgba(255,255,255,0.05);--success:#10b981;--web-dev:#f59e0b;--app-dev:#8b5cf6}
         body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--darker);color:var(--light);min-height:100vh;overflow-x:hidden;line-height:1.6}
         .bg-animation{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;overflow:hidden}
         .bg-animation .orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:0.4;animation:float 20s infinite ease-in-out}
@@ -30,7 +30,10 @@
         .bg-animation .orb:nth-child(3){width:250px;height:250px;background:var(--accent);bottom:-100px;left:40%;animation-delay:10s}
         @keyframes float{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(30px,-50px) scale(1.1)}66%{transform:translate(-30px,30px) scale(0.9)}}
         nav{position:fixed;top:0;width:100%;padding:1rem 5%;background:rgba(2,6,23,0.8);backdrop-filter:blur(20px);z-index:1000;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,0.08)}
+        .nav-left{display:flex;align-items:center;gap:1rem}
         .logo{font-size:1.6rem;font-weight:800;background:linear-gradient(135deg,var(--primary),var(--secondary));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .welcome-text{font-size:0.85rem;color:var(--gray);background:var(--glass);padding:0.4rem 1rem;border-radius:50px;border:1px solid rgba(255,255,255,0.08);animation:pulse 2s infinite}
+        @keyframes pulse{0%,100%{opacity:0.7}50%{opacity:1}}
         .nav-links{display:flex;gap:2rem;list-style:none;align-items:center}
         .nav-links a{color:var(--gray);text-decoration:none;font-weight:500;font-size:0.9rem;transition:all 0.3s;position:relative}
         .nav-links a:hover{color:var(--light)}
@@ -53,6 +56,10 @@
         .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(99,102,241,0.6)}
         .btn-success{background:linear-gradient(135deg,var(--success),#059669);color:white;box-shadow:0 4px 20px rgba(16,185,129,0.4)}
         .btn-success:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(16,185,129,0.6)}
+        .btn-web{background:linear-gradient(135deg,var(--web-dev),#d97706);color:white;box-shadow:0 4px 20px rgba(245,158,11,0.4)}
+        .btn-web:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(245,158,11,0.6)}
+        .btn-app{background:linear-gradient(135deg,var(--app-dev),#7c3aed);color:white;box-shadow:0 4px 20px rgba(139,92,246,0.4)}
+        .btn-app:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(139,92,246,0.6)}
         .hero-visual{animation:fadeInRight 1s ease}
         .hero-card{background:var(--card-bg);border-radius:24px;padding:2rem;border:1px solid rgba(255,255,255,0.1);backdrop-filter:blur(20px)}
         .profile-section{text-align:center;margin-bottom:2rem}
@@ -121,11 +128,44 @@
         .skill-icon{font-size:2.5rem;margin-bottom:0.5rem}
         .skill-name{font-weight:600;font-size:1rem}
         .skill-desc{font-size:0.8rem;color:var(--gray)}
-        .profile-info-box{display:flex;align-items:center;gap:0.75rem;padding:0.75rem;background:rgba(255,255,255,0.05);border-radius:10px;text-decoration:none;color:var(--light);transition:all 0.3s}
+        .profile-info-box{display:flex;align-items:center;gap:0.75rem;padding:0.75rem;background:rgba(255,255,255,0.05);border-radius:10px;text-decoration:none;color:var(--light);transition:all 0.3s;cursor:pointer;border:none;width:100%;font-family:inherit;font-size:1rem}
         .profile-info-box:hover{background:rgba(255,255,255,0.1)}
-        .profile-info-icon{font-size:1.2rem}
+        .profile-info-icon{font-size:1.2rem;flex-shrink:0}
         .profile-info-label{font-size:0.75rem;color:var(--gray)}
         .profile-info-value{font-weight:600}
+        .ai-chat-modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:var(--darker);z-index:3000;flex-direction:column}
+        .ai-chat-modal.active{display:flex}
+        .ai-chat-header{display:flex;align-items:center;gap:1rem;padding:1rem 5%;background:rgba(2,6,23,0.95);border-bottom:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(20px)}
+        .ai-chat-header .ai-avatar{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;background:var(--card-bg);border:2px solid var(--primary)}
+        .ai-chat-header .ai-title{font-size:1.1rem;font-weight:700}
+        .ai-chat-header .ai-status{font-size:0.75rem;color:var(--success);display:flex;align-items:center;gap:0.3rem}
+        .ai-chat-header .ai-status::before{content:'';width:8px;height:8px;background:var(--success);border-radius:50%;display:inline-block;animation:blink 2s infinite}
+        @keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+        .ai-close-btn{margin-left:auto;background:none;border:none;color:var(--light);font-size:1.5rem;cursor:pointer;padding:0.5rem}
+        .ai-chat-body{flex:1;overflow-y:auto;padding:2rem 5%;max-width:900px;margin:0 auto;width:100%}
+        .ai-message{display:flex;gap:1rem;margin-bottom:1.5rem;animation:msgIn 0.4s ease}
+        .ai-message.user{flex-direction:row-reverse}
+        @keyframes msgIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+        .ai-message-bubble{max-width:80%;padding:1rem 1.25rem;border-radius:18px;line-height:1.6;font-size:0.95rem}
+        .ai-message.ai .ai-message-bubble{background:var(--card-bg);border:1px solid rgba(255,255,255,0.08);border-top-left-radius:4px}
+        .ai-message.user .ai-message-bubble{background:linear-gradient(135deg,var(--primary),var(--primary-dark));border-top-right-radius:4px}
+        .ai-message-avatar{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;background:var(--card-bg);border:1px solid rgba(255,255,255,0.1);flex-shrink:0}
+        .ai-message.ai .ai-message-avatar{background:rgba(99,102,241,0.2);border-color:var(--primary)}
+        .ai-message.user .ai-message-avatar{background:rgba(16,185,129,0.2);border-color:var(--success)}
+        .ai-chat-input-area{padding:1rem 5%;background:rgba(2,6,23,0.95);border-top:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(20px)}
+        .ai-chat-input-wrapper{max-width:900px;margin:0 auto;display:flex;gap:0.75rem;align-items:center}
+        .ai-chat-input{flex:1;padding:0.9rem 1.25rem;border-radius:50px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);color:var(--light);font-size:0.95rem;outline:none;transition:all 0.3s;font-family:inherit}
+        .ai-chat-input:focus{border-color:var(--primary);background:rgba(255,255,255,0.08)}
+        .ai-chat-send{padding:0.9rem 1.5rem;border-radius:50px;border:none;background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:white;font-weight:600;cursor:pointer;transition:all 0.3s;font-size:0.9rem}
+        .ai-chat-send:hover{transform:translateY(-2px);box-shadow:0 4px 20px rgba(99,102,241,0.4)}
+        .ai-quick-actions{display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:1rem;max-width:900px;margin:0 auto 1rem;padding:0 5%}
+        .ai-quick-btn{padding:0.5rem 1rem;background:var(--glass);border:1px solid rgba(255,255,255,0.1);border-radius:50px;color:var(--gray);cursor:pointer;transition:all 0.3s;font-size:0.85rem}
+        .ai-quick-btn:hover{background:var(--primary);color:white;border-color:var(--primary)}
+        .ai-typing{display:flex;gap:0.3rem;padding:1rem 1.25rem}
+        .ai-typing-dot{width:8px;height:8px;background:var(--gray);border-radius:50%;animation:typing 1.4s infinite ease-in-out both}
+        .ai-typing-dot:nth-child(1){animation-delay:-0.32s}
+        .ai-typing-dot:nth-child(2){animation-delay:-0.16s}
+        @keyframes typing{0%,80%,100%{transform:scale(0)}40%{transform:scale(1)}}
         @keyframes fadeInLeft{from{opacity:0;transform:translateX(-40px)}to{opacity:1;transform:translateX(0)}}
         @keyframes fadeInRight{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:translateX(0)}}
         .animate-on-scroll{opacity:0;transform:translateY(40px);transition:all 0.8s ease}
@@ -140,8 +180,8 @@
         .footer-links{text-align:center;padding:1rem 0;border-top:1px solid rgba(255,255,255,0.05);margin-top:1rem}
         .footer-links a{color:var(--primary);text-decoration:none;margin:0 10px;font-size:0.85rem}
         .footer-links a:hover{text-decoration:underline}
-        @media(max-width:968px){.hero-container{grid-template-columns:1fr;text-align:center}.hero h1{font-size:2.5rem}.nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(2,6,23,0.95);flex-direction:column;padding:2rem;gap:1.5rem;z-index:999}.nav-links.active{display:flex}.mobile-menu-btn{display:block}.code-editor-wrapper{grid-template-columns:1fr}.stats-bar{gap:1.5rem}.search-box{display:none}}
-        @media(max-width:480px){.hero h1{font-size:2rem}.section-title{font-size:1.8rem}.code-practice-section{padding:1.5rem}}
+        @media(max-width:968px){.hero-container{grid-template-columns:1fr;text-align:center}.hero h1{font-size:2.5rem}.nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(2,6,23,0.95);flex-direction:column;padding:2rem;gap:1.5rem;z-index:999}.nav-links.active{display:flex}.mobile-menu-btn{display:block}.code-editor-wrapper{grid-template-columns:1fr}.stats-bar{gap:1.5rem}.search-box{display:none}.welcome-text{display:none}.ai-message-bubble{max-width:90%}}
+        @media(max-width:480px){.hero h1{font-size:2rem}.section-title{font-size:1.8rem}.code-practice-section{padding:1.5rem}.ai-chat-body{padding:1rem}.ai-chat-header{padding:1rem}}
         ::-webkit-scrollbar{width:8px}
         ::-webkit-scrollbar-track{background:var(--darker)}
         ::-webkit-scrollbar-thumb{background:var(--primary);border-radius:4px}
@@ -150,7 +190,10 @@
 <body>
     <div class="bg-animation"><div class="orb"></div><div class="orb"></div><div class="orb"></div></div>
     <nav>
-        <div class="logo">AK.R</div>
+        <div class="nav-left">
+            <div class="logo">AK.R</div>
+            <div class="welcome-text">👋 Welcome</div>
+        </div>
         <ul class="nav-links" id="navLinks">
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
@@ -183,22 +226,18 @@
                         <div class="profile-role">Programming Educator</div>
                     </div>
                     <div style="display:grid;gap:0.75rem;text-align:left;">
-                        <div class="profile-info-box">
-                            <span class="profile-info-icon">🏫</span>
-                            <div><div class="profile-info-label">School</div><div class="profile-info-value">PM SHRI JNV Khairabad Sitapur</div></div>
-                        </div>
-                        <a href="mailto:akarshitraj43@gmail.com" class="profile-info-box">
-                            <span class="profile-info-icon">📧</span>
-                            <div><div class="profile-info-label">Email</div><div class="profile-info-value">akarshitraj43@gmail.com</div></div>
-                        </a>
                         <a href="tutorials.html" class="profile-info-box">
                             <span class="profile-info-icon">📚</span>
                             <div><div class="profile-info-label">Tutorials</div><div class="profile-info-value">Read All Tutorials</div></div>
                         </a>
-                        <div class="profile-info-box">
-                            <span class="profile-info-icon">▶️</span>
-                            <div><div class="profile-info-label">YouTube</div><div class="profile-info-value">19 Courses Live</div></div>
-                        </div>
+                        <button class="profile-info-box" onclick="openAIChat('web')" style="cursor:pointer">
+                            <span class="profile-info-icon">🌐</span>
+                            <div><div class="profile-info-label">AI Assistant</div><div class="profile-info-value">Web Development</div></div>
+                        </button>
+                        <button class="profile-info-box" onclick="openAIChat('app')" style="cursor:pointer">
+                            <span class="profile-info-icon">📱</span>
+                            <div><div class="profile-info-label">AI Assistant</div><div class="profile-info-value">App Development</div></div>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -206,10 +245,10 @@
     </section>
 
     <div class="stats-bar">
-        <div class="stat-item"><span class="stat-number" data-target="19">0</span><div class="stat-label">Courses</div></div>
-        <div class="stat-item"><span class="stat-number" data-target="350">0</span><div class="stat-label">Videos</div></div>
-        <div class="stat-item"><span class="stat-number" data-target="180">0</span><div class="stat-label">Hours</div></div>
-        <div class="stat-item"><span class="stat-number" data-target="6000">0</span><div class="stat-label">Students</div></div>
+        <div class="stat-item"><span class="stat-number" data-target="20">0</span><div class="stat-label">Courses</div></div>
+        <div class="stat-item"><span class="stat-number" data-target="200">0</span><div class="stat-label">Videos</div></div>
+        <div class="stat-item"><span class="stat-number" data-target="1000">0</span><div class="stat-label">Hours</div></div>
+        <div class="stat-item"><span class="stat-number" data-target="1000000">0</span><div class="stat-label">Students</div></div>
     </div>
 
     <section id="about" class="animate-on-scroll">
@@ -230,7 +269,7 @@
                 <div>
                     <h3 style="font-size:2rem;font-weight:700;margin-bottom:1rem;">Programming Educator & Student</h3>
                     <p style="color:var(--gray);margin-bottom:1rem;">Hello! I'm <strong>Akarshit Raj</strong>, a student at <strong>PM SHRI JNV Khairabad Sitapur</strong>.</p>
-                    <p style="color:var(--gray);margin-bottom:1rem;">I have created <strong>19 programming courses</strong> on YouTube. My goal is to make quality programming education accessible to every student for free.</p>
+                    <p style="color:var(--gray);margin-bottom:1rem;">I have created <strong>20+ programming courses</strong> on YouTube. My goal is to make quality programming education accessible to every student for free.</p>
                     <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem;">
                         <div style="display:flex;align-items:center;gap:0.75rem;padding:0.75rem;background:rgba(255,255,255,0.05);border-radius:10px;"><span style="color:var(--accent);">✅</span><span>Free Courses</span></div>
                         <div style="display:flex;align-items:center;gap:0.75rem;padding:0.75rem;background:rgba(255,255,255,0.05);border-radius:10px;"><span style="color:var(--accent);">✅</span><span>Hindi & English</span></div>
@@ -318,7 +357,7 @@ print(f'Welcome, {name}!')</textarea>
         </div>
         <div style="background:var(--card-bg);border-radius:24px;padding:3rem;border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(20px);max-width:800px;margin:0 auto;text-align:center;">
             <h3 style="font-size:1.8rem;font-weight:700;margin-bottom:0.5rem;background:linear-gradient(135deg,#ff0000,#cc0000);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">📺 YouTube Channel</h3>
-            <p style="color:var(--gray);margin-bottom:2rem;">19 Programming Languages - 100% Free</p>
+            <p style="color:var(--gray);margin-bottom:2rem;">20+ Programming Languages - 100% Free</p>
             <button style="display:inline-flex;align-items:center;gap:0.75rem;padding:1rem 2.5rem;background:linear-gradient(135deg,#ff0000,#cc0000);color:white;border:none;border-radius:14px;font-size:1.1rem;font-weight:700;cursor:pointer;transition:all 0.3s;box-shadow:0 8px 30px rgba(255,0,0,0.3);" onclick="toggleLanguages()" id="youtubeToggleBtn"><span>▶️</span><span>View All Languages</span><span style="transition:transform 0.3s;" id="toggleArrow">▼</span></button>
             <div style="max-height:0;overflow:hidden;transition:max-height 0.5s ease,opacity 0.3s ease,margin-top 0.3s ease;opacity:0;margin-top:0;" id="languagesDropdown">
                 <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;padding:1rem 0;">
@@ -390,7 +429,7 @@ print(f'Welcome, {name}!')</textarea>
     <section id="courses" class="animate-on-scroll">
         <div class="section-header">
             <div class="section-tag">My Courses</div>
-            <h2 class="section-title">19 Programming Courses</h2>
+            <h2 class="section-title">20+ Programming Courses</h2>
             <p class="section-subtitle">Choose your language and start learning today</p>
         </div>
         <div class="course-grid" id="coursesGrid">
@@ -605,26 +644,574 @@ print(f'Welcome, {name}!')</textarea>
 
     <div class="notification" id="notification">Email copied to clipboard!</div>
 
+    <!-- Web Development AI Chat -->
+    <div class="ai-chat-modal" id="webAIChat">
+        <div class="ai-chat-header">
+            <div class="ai-avatar">🌐</div>
+            <div>
+                <div class="ai-title">Web Development AI</div>
+                <div class="ai-status">Online</div>
+            </div>
+            <button class="ai-close-btn" onclick="closeAIChat()">×</button>
+        </div>
+        <div class="ai-chat-body" id="webChatBody">
+            <div class="ai-message ai">
+                <div class="ai-message-avatar">🤖</div>
+                <div class="ai-message-bubble">
+                    <strong>Hello! I'm your Web Development AI Assistant. 🌐</strong><br><br>
+                    I can help you with:<br>
+                    • HTML, CSS, JavaScript basics<br>
+                    • Responsive design & frameworks<br>
+                    • GitHub Pages hosting (free!)<<br>
+                    • Website publish karne ka tarika<br>
+                    • Domain & hosting setup<br><br>
+                    <em>Neeche quick questions bhi hain ya aap khud bhi pooch sakte hain!</em>
+                </div>
+            </div>
+        </div>
+        <div class="ai-quick-actions" id="webQuickActions">
+            <button class="ai-quick-btn" onclick="sendAIQuestion('web','Website kaise banaye?')">🌐 Website kaise banaye?</button>
+            <button class="ai-quick-btn" onclick="sendAIQuestion('web','GitHub Pages pe kaise publish karein?')">📤 GitHub Pages publish?</button>
+            <button class="ai-quick-btn" onclick="sendAIQuestion('web','HTML CSS JS kya hai?')">📝 HTML/CSS/JS kya hai?</button>
+            <button class="ai-quick-btn" onclick="sendAIQuestion('web','Free hosting kaise karein?')">🆓 Free hosting?</button>
+            <button class="ai-quick-btn" onclick="sendAIQuestion('web','Responsive website kaise banaye?')">📱 Responsive design?</button>
+            <button class="ai-quick-btn" onclick="sendAIQuestion('web','Domain name kaise kharide?')">🌐 Domain name?</button>
+        </div>
+        <div class="ai-chat-input-area">
+            <div class="ai-chat-input-wrapper">
+                <input type="text" class="ai-chat-input" id="webChatInput" placeholder="Apna sawal likhein..." onkeypress="if(event.key==='Enter')sendAIQuestion('web')">
+                <button class="ai-chat-send" onclick="sendAIQuestion('web')">➤ Send</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- App Development AI Chat -->
+    <div class="ai-chat-modal" id="appAIChat">
+        <div class="ai-chat-header">
+            <div class="ai-avatar" style="border-color:var(--app-dev)">📱</div>
+            <div>
+                <div class="ai-title">App Development AI</div>
+                <div class="ai-status">Online</div>
+            </div>
+            <button class="ai-close-btn" onclick="closeAIChat()">×</button>
+        </div>
+        <div class="ai-chat-body" id="appChatBody">
+            <div class="ai-message ai">
+                <div class="ai-message-avatar" style="background:rgba(139,92,246,0.2);border-color:var(--app-dev)">🤖</div>
+                <div class="ai-message-bubble">
+                    <strong>Hello! I'm your App Development AI Assistant. 📱</strong><br><br>
+                    I can help you with:<br>
+                    • Android app development (Kotlin/Java)<br>
+                    • Flutter & React Native<br>
+                    • Play Store pe publish kaise karein<br>
+                    • App design & UI/UX<br>
+                    • APK banane ka tarika<br><br>
+                    <em>Neeche quick questions bhi hain ya aap khud bhi pooch sakte hain!</em>
+                </div>
+            </div>
+        </div>
+        <div class="ai-quick-actions" id="appQuickActions">
+            <button class="ai-quick-btn" onclick="sendAIQuestion('app','Android app kaise banaye?')">📱 Android app kaise banaye?</button>
+            <button class="ai-quick-btn" onclick="sendAIQuestion('app','Play Store pe kaise publish karein?')">🎮 Play Store publish?</button>
+            <button class="ai-quick-btn" onclick="sendAIQuestion('app','Kotlin vs Flutter kya hai?')">⚡ Kotlin vs Flutter?</button>
+            <button class="ai-quick-btn" onclick="sendAIQuestion('app','Free mein app kaise banaye?')">🆓 Free app dev?</button>
+            <button class="ai-quick-btn" onclick="sendAIQuestion('app','APK file kaise banaye?')">📦 APK kaise banaye?</button>
+            <button class="ai-quick-btn" onclick="sendAIQuestion('app','App UI design kaise karein?')">🎨 App UI design?</button>
+        </div>
+        <div class="ai-chat-input-area">
+            <div class="ai-chat-input-wrapper">
+                <input type="text" class="ai-chat-input" id="appChatInput" placeholder="Apna sawal likhein..." onkeypress="if(event.key==='Enter')sendAIQuestion('app')">
+                <button class="ai-chat-send" onclick="sendAIQuestion('app')">➤ Send</button>
+            </div>
+        </div>
+    </div>
+
     <script>
         function toggleMenu(){document.getElementById('navLinks').classList.toggle('active')}
         document.querySelectorAll('.nav-links a').forEach(link=>{link.addEventListener('click',()=>{document.getElementById('navLinks').classList.remove('active')})})
         function toggleLanguages(){const d=document.getElementById('languagesDropdown'),b=document.getElementById('youtubeToggleBtn'),a=document.getElementById('toggleArrow');if(d.style.maxHeight==='2000px'){d.style.maxHeight='0';d.style.opacity='0';d.style.marginTop='0';a.style.transform='rotate(0deg)';b.querySelector('span:nth-child(2)').textContent='View All Languages'}else{d.style.maxHeight='2000px';d.style.opacity='1';d.style.marginTop='2rem';a.style.transform='rotate(180deg)';b.querySelector('span:nth-child(2)').textContent='Hide Languages'}}
-        const codeTemplates={python:"# Write your Python code here...\\nprint('Hello, World!')\\nname = 'Akarshit'\\nprint(f'Welcome, {name}!')",cpp:"// Write your C++ code here...\\n#include <iostream>\\nusing namespace std;\\n\\nint main() {\\n    cout << \"Hello, World!\" << endl;\\n    string name = \"Akarshit\";\\n    cout << \"Welcome, \" << name << \"!\" << endl;\\n    return 0;\\n}",javascript:"// Write your JavaScript code here...\\nconsole.log('Hello, World!');\\nlet name = 'Akarshit';\\nconsole.log('Welcome, ' + name + '!');",java:"// Write your Java code here...\\npublic class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Hello, World!\");\\n        String name = \"Akarshit\";\\n        System.out.println(\"Welcome, \" + name + \"!\");\\n    }\\n}",csharp:"// Write your C# code here...\\nusing System;\\n\\nclass Program {\\n    static void Main() {\\n        Console.WriteLine(\"Hello, World!\");\\n        string name = \"Akarshit\";\\n        Console.WriteLine(\"Welcome, \" + name + \"!\");\\n    }\\n}",html:"<!-- Write your HTML code here... -->\\n<!DOCTYPE html>\\n<html>\\n<head>\\n    <title>My Page</title>\\n</head>\\n<body>\\n    <h1>Hello, World!</h1>\\n    <p>Welcome to my website!</p>\\n</body>\\n</html>",sql:"-- Write your SQL code here...\\nCREATE TABLE users (\\n    id INT PRIMARY KEY,\\n    name VARCHAR(50),\\n    email VARCHAR(100)\\n);\\n\\nINSERT INTO users VALUES (1, 'Akarshit', 'akarshit@example.com');\\nSELECT * FROM users;",php:"<?php\\n// Write your PHP code here...\\necho \"Hello, World!\\\\n\";\\n$name = \"Akarshit\";\\necho \"Welcome, \" . $name . \"!\";\\n?>",kotlin:"// Write your Kotlin code here...\\nfun main() {\\n    println(\"Hello, World!\")\\n    val name = \"Akarshit\"\\n    println(\"Welcome, $name!\")\\n}",swift:"// Write your Swift code here...\\nprint(\"Hello, World!\")\\nlet name = \"Akarshit\"\\nprint(\"Welcome, \\\\(name)!\")",go:"// Write your Go code here...\\npackage main\\nimport \"fmt\"\\n\\nfunc main() {\\n    fmt.Println(\"Hello, World!\")\\n    name := \"Akarshit\"\\n    fmt.Printf(\"Welcome, %s!\\\\n\", name)\\n}",rust:"// Write your Rust code here...\\nfn main() {\\n    println!(\"Hello, World!\");\\n    let name = \"Akarshit\";\\n    println!(\"Welcome, {}!\", name);\\n}"}
+        
+        const codeTemplates={
+            python:`# Write your Python code here...
+print('Hello, World!')
+name = 'Akarshit'
+print(f'Welcome, {name}!')`,
+            cpp:`// Write your C++ code here...
+#include <iostream>
+using namespace std;
+
+int main() {
+    cout << "Hello, World!" << endl;
+    string name = "Akarshit";
+    cout << "Welcome, " << name << "!" << endl;
+    return 0;
+}`,
+            javascript:`// Write your JavaScript code here...
+console.log('Hello, World!');
+let name = 'Akarshit';
+console.log('Welcome, ' + name + '!');`,
+            java:`// Write your Java code here...
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+        String name = "Akarshit";
+        System.out.println("Welcome, " + name + "!");
+    }
+}`,
+            csharp:`// Write your C# code here...
+using System;
+
+class Program {
+    static void Main() {
+        Console.WriteLine("Hello, World!");
+        string name = "Akarshit";
+        Console.WriteLine("Welcome, " + name + "!");
+    }
+}`,
+            html:`<!-- Write your HTML code here... -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Page</title>
+</head>
+<body>
+    <h1>Hello, World!</h1>
+    <p>Welcome to my website!</p>
+</body>
+</html>`,
+            sql:`-- Write your SQL code here...
+CREATE TABLE users (
+    id INT PRIMARY KEY,
+    name VARCHAR(50),
+    email VARCHAR(100)
+);
+
+INSERT INTO users VALUES (1, 'Akarshit', 'akarshit@example.com');
+SELECT * FROM users;`,
+            php:`<?php
+// Write your PHP code here...
+echo "Hello, World!\\n";
+$name = "Akarshit";
+echo "Welcome, " . $name . "!";
+?>`,
+            kotlin:`// Write your Kotlin code here...
+fun main() {
+    println("Hello, World!")
+    val name = "Akarshit"
+    println("Welcome, $name!")
+}`,
+            swift:`// Write your Swift code here...
+print("Hello, World!")
+let name = "Akarshit"
+print("Welcome, \\(name)!")`,
+            go:`// Write your Go code here...
+package main
+import "fmt"
+
+func main() {
+    fmt.Println("Hello, World!")
+    name := "Akarshit"
+    fmt.Printf("Welcome, %s!\\n", name)
+}`,
+            rust:`// Write your Rust code here...
+fn main() {
+    println!("Hello, World!");
+    let name = "Akarshit";
+    println!("Welcome, {}!", name);
+}`
+        }
+        
         function selectLang(btn,lang){document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.getElementById('codeInput').value=codeTemplates[lang]||codeTemplates['python']}
-        function runCode(){const o=document.getElementById('codeOutput'),b=document.getElementById('runBtn'),c=document.getElementById('codeInput').value;b.disabled=true;b.innerHTML='<span>⏳</span><span>Running...</span>';o.innerHTML='<span style=\"color:var(--accent);\">⏳ Running your code...</span>';setTimeout(()=>{let r='';if(c.includes('print')||c.includes('console.log')||c.includes('cout')||c.includes('println')||c.includes('echo')||c.includes('fmt.Println')||c.includes('printf')){r=`Hello, World!\\nWelcome, Akarshit!\\n\\n✅ Code executed successfully!\\n⏱ Execution time: 0.05s`}else{r=`⚠️ Please write some code first!\\n\\n💡 Tip: Try writing a simple \"Hello World\" program.`}o.innerHTML=`<pre style=\"margin:0;color:#d4d4d4;\">${r}</pre>`;b.disabled=false;b.innerHTML='<span>▶️</span><span>Run Code</span>'},1500)}
-        const counters=document.querySelectorAll('.stat-number');let hasAnimated=false;function animateCounters(){counters.forEach(counter=>{const target=parseInt(counter.getAttribute('data-target')),duration=2000,increment=target/(duration/16);let current=0;const updateCounter=()=>{current+=increment;if(current<<target){counter.textContent=Math.floor(current).toLocaleString();requestAnimationFrame(updateCounter)}else{counter.textContent=target.toLocaleString()+'+'}};updateCounter()})}
-        const observer=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');if(entry.target.querySelector('.stat-number')&&!hasAnimated){hasAnimated=true;animateCounters()}}})},{threshold:0.1});document.querySelectorAll('.animate-on-scroll').forEach(el=>observer.observe(el))
+        
+        function runCode(){
+            const o=document.getElementById('codeOutput'),
+            b=document.getElementById('runBtn'),
+            c=document.getElementById('codeInput').value.trim();
+            b.disabled=true;
+            b.innerHTML='<span>⏳</span><span>Running...</span>';
+            o.innerHTML='<span style="color:var(--accent);">⏳ Running your code...</span>';
+            setTimeout(()=>{
+                let r='';
+                if(c.length===0||c==='# Write your Python code here...'){
+                    r=`⚠️ Please write some code first!\\n\\n💡 Tip: Try writing a simple "Hello World" program.`;
+                } else if(c.includes('print')||c.includes('console.log')||c.includes('cout')||c.includes('println')||c.includes('echo')||c.includes('fmt.Println')||c.includes('printf')||c.includes('document.write')||c.includes('System.out')){
+                    r=`Hello, World!\\nWelcome, Akarshit!\\n\\n✅ Code executed successfully!\\n⏱ Execution time: 0.05s`;
+                } else if(c.includes('SELECT')||c.includes('INSERT')||c.includes('CREATE TABLE')){
+                    r=`id | name     | email\\n---|----------|-------------------\\n1  | Akarshit | akarshit@example.com\\n\\n✅ Query executed successfully!\\n⏱ Execution time: 0.02s`;
+                } else if(c.includes('<!DOCTYPE html>')||c.includes('<html>')||c.includes('<body>')){
+                    r=`[HTML Output Preview]\\n\\nHello, World!\\nWelcome to my website!\\n\\n✅ HTML rendered successfully!`;
+                } else {
+                    r=`⚠️ Code mein kuch missing lag raha hai!\\n\\n💡 Tip: Try adding a print/output statement.`;
+                }
+                o.innerHTML=`<pre style="margin:0;color:#d4d4d4;">${r}</pre>`;
+                b.disabled=false;
+                b.innerHTML='<span>▶️</span><span>Run Code</span>';
+            },1500);
+        }
+        
+        const counters=document.querySelectorAll('.stat-number');
+        let hasAnimated=false;
+        function animateCounters(){
+            counters.forEach(counter=>{
+                const target=parseInt(counter.getAttribute('data-target')),
+                duration=2000,
+                increment=target/(duration/16);
+                let current=0;
+                const updateCounter=()=>{
+                    current+=increment;
+                    if(current<<target){
+                        counter.textContent=Math.floor(current).toLocaleString();
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        let suffix='';
+                        if(target>=1000000) suffix='M+';
+                        else if(target>=1000) suffix='k+';
+                        else suffix='+';
+                        if(target>=1000000) counter.textContent='1M+';
+                        else if(target>=1000) counter.textContent='1k+';
+                        else counter.textContent=target+suffix;
+                    }
+                };
+                updateCounter();
+            });
+        }
+        
+        const observer=new IntersectionObserver((entries)=>{
+            entries.forEach(entry=>{
+                if(entry.isIntersecting){
+                    entry.target.classList.add('visible');
+                    if(entry.target.querySelector('.stat-number')&&!hasAnimated){
+                        hasAnimated=true;
+                        animateCounters();
+                    }
+                }
+            });
+        },{threshold:0.1});
+        document.querySelectorAll('.animate-on-scroll').forEach(el=>observer.observe(el));
+        
         function openModal(videoUrl){document.getElementById('videoFrame').src=videoUrl;document.getElementById('videoModal').classList.add('active');document.body.style.overflow='hidden'}
         function closeModal(){document.getElementById('videoModal').classList.remove('active');document.getElementById('videoFrame').src='';document.body.style.overflow='auto'}
         document.getElementById('videoModal').addEventListener('click',function(e){if(e.target===this)closeModal()})
+        
         function copyEmail(){navigator.clipboard.writeText('akarshitraj43@gmail.com').then(()=>{const n=document.getElementById('notification');n.classList.add('show');setTimeout(()=>n.classList.remove('show'),3000)})}
-        document.querySelectorAll('a[href^=\"#\"]').forEach(anchor=>{anchor.addEventListener('click',function(e){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})})})
-        document.getElementById('year').textContent=new Date().getFullYear()
-        window.addEventListener('scroll',()=>{const s=window.pageYOffset;document.querySelectorAll('.orb').forEach((orb,i)=>{const speed=0.3+(i*0.1);orb.style.transform=`translateY(${s*speed}px)`});const nav=document.querySelector('nav');if(window.scrollY>50){nav.style.background='rgba(2,6,23,0.95)'}else{nav.style.background='rgba(2,6,23,0.8)'}})
-        function searchCourses(){const input=document.getElementById('searchInput').value.toLowerCase();const cards=document.querySelectorAll('.course-card');cards.forEach(card=>{const name=card.getAttribute('data-name');if(name.includes(input)){card.style.display='block'}else{card.style.display='none'}})}
+        
+        document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
+            anchor.addEventListener('click',function(e){
+                e.preventDefault();
+                const t=document.querySelector(this.getAttribute('href'));
+                if(t)t.scrollIntoView({behavior:'smooth',block:'start'});
+            });
+        });
+        
+        document.getElementById('year').textContent=new Date().getFullYear();
+        
+        window.addEventListener('scroll',()=>{
+            const s=window.pageYOffset;
+            document.querySelectorAll('.orb').forEach((orb,i)=>{
+                const speed=0.3+(i*0.1);
+                orb.style.transform=`translateY(${s*speed}px)`;
+            });
+            const nav=document.querySelector('nav');
+            if(window.scrollY>50){nav.style.background='rgba(2,6,23,0.95)'}
+            else{nav.style.background='rgba(2,6,23,0.8)'}
+        });
+        
+        function searchCourses(){
+            const input=document.getElementById('searchInput').value.toLowerCase();
+            const cards=document.querySelectorAll('.course-card');
+            cards.forEach(card=>{
+                const name=card.getAttribute('data-name');
+                if(name.includes(input)){card.style.display='block'}
+                else{card.style.display='none'}
+            });
+        }
+        
+        let currentAIType='';
+        
+        const aiResponses={
+            web:{
+                'Website kaise banaye?':`🌐 <strong>Website Banane ka Step-by-Step Guide:</strong><br><br>
+                <strong>Step 1:</strong> HTML se structure banayein<br>
+                &lt;!DOCTYPE html&gt;<br>
+                &lt;html&gt;<br>
+                &nbsp;&nbsp;&lt;head&gt;&lt;title&gt;Meri Website&lt;/title&gt;&lt;/head&gt;<br>
+                &nbsp;&nbsp;&lt;body&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;Hello World!&lt;/h1&gt;<br>
+                &nbsp;&nbsp;&lt;/body&gt;<br>
+                &lt;/html&gt;<br><br>
+                <strong>Step 2:</strong> CSS se styling karein<br>
+                <strong>Step 3:</strong> JavaScript se interactive banayein<br><br>
+                💡 <em>Tip: VS Code editor use karein — free aur best hai!</em>`,
+                
+                'GitHub Pages pe kaise publish karein?':`📤 <strong>GitHub Pages pe Website Publish Karna:</strong><br><br>
+                <strong>Step 1:</strong> GitHub account banayein (github.com)<br>
+                <strong>Step 2:</strong> Naya repository banayein — naam rakhein: <code>yourusername.github.io</code><br>
+                <strong>Step 3:</strong> HTML, CSS, JS files upload karein<br>
+                <strong>Step 4:</strong> Settings → Pages → Source select karein (main branch)<br>
+                <strong>Step 5:</strong> 2-5 minute wait karein, fir <code>https://yourusername.github.io</code> pe visit karein!<br><br>
+                ✅ <strong>100% Free hosting!</strong> Koi paise nahi lagte!<br>
+                💡 <em>Custom domain bhi add kar sakte hain!</em>`,
+                
+                'HTML CSS JS kya hai?':`📝 <strong>Web Development ke 3 Pillars:</strong><br><br>
+                <strong>🔷 HTML (HyperText Markup Language)</strong><br>
+                → Website ka skeleton/structure<br>
+                → Headings, paragraphs, images, links<br><br>
+                <strong>🎨 CSS (Cascading Style Sheets)</strong><br>
+                → Website ka look & design<br>
+                → Colors, fonts, layout, animations<br><br>
+                <strong>⚡ JavaScript (JS)</strong><br>
+                → Website ka brain/behavior<br>
+                → Interactive features, animations, logic<br><br>
+                💡 <em>HTML = Body, CSS = Kapde, JS = Brain</em>`,
+                
+                'Free hosting kaise karein?':`🆓 <strong>Free Website Hosting Options:</strong><br><br>
+                <strong>1. GitHub Pages</strong> ⭐ (Best for static sites)<br>
+                → 100% Free, Custom domain support<br><br>
+                <strong>2. Netlify</strong><br>
+                → Drag & drop deploy, Free SSL<br><br>
+                <strong>3. Vercel</strong><br>
+                → React/Next.js ke liye best<br><br>
+                <strong>4. Firebase Hosting</strong><br>
+                → Google ka free hosting<br><br>
+                <strong>5. InfinityFree</strong><br>
+                → PHP/MySQL support ke saath<br><br>
+                💡 <em>Beginners ke liye GitHub Pages best hai!</em>`,
+                
+                'Responsive website kaise banaye?':`📱 <strong>Responsive Website Banana:</strong><br><br>
+                <strong>CSS Media Queries use karein:</strong><br><br>
+                <code>@media (max-width: 768px) {</code><br>
+                <code>&nbsp;&nbsp;.container { width: 100%; }</code><br>
+                <code>&nbsp;&nbsp;.menu { display: none; }</code><br>
+                <code>}</code><br><br>
+                <strong>Key Tips:</strong><br>
+                • <code>viewport</code> meta tag lagayein<br>
+                • Flexible grids use karein (%, flex, grid)<br>
+                • Mobile-first approach<br>
+                • Images ko <code>max-width: 100%</code> karein<br><br>
+                💡 <em>Frameworks: Bootstrap, Tailwind CSS</em>`,
+                
+                'Domain name kaise kharide?':`🌐 <strong>Domain Name Kharidna:</strong><br><br>
+                <strong>Popular Domain Registrars:</strong><br><br>
+                <strong>1. Namecheap</strong> ⭐ (Best prices)<br>
+                → .com ~ ₹800-1000/year<br><br>
+                <strong>2. GoDaddy</strong><br>
+                → First year cheap, renewal mehnga<br><br>
+                <strong>3. Google Domains</strong><br>
+                → Simple, reliable<br><br>
+                <strong>4. Hostinger</strong><br>
+                → Domain + Hosting combo<br><br>
+                <strong>Free Alternative:</strong><br>
+                • Freenom (.tk, .ml free)<br>
+                • GitHub Pages subdomain free<br><br>
+                💡 <em>Pehle free subdomain try karein!</em>`
+            },
+            app:{
+                'Android app kaise banaye?':`📱 <strong>Android App Banane ka Guide:</strong><br><br>
+                <strong>Option 1: Android Studio + Kotlin</strong><br>
+                • Official Google tool<br>
+                • Kotlin language (Java se better)<br>
+                • XML se UI design<br><br>
+                <strong>Option 2: Flutter</strong><br>
+                • Google ka framework<br>
+                • Dart language<br>
+                • Android + iOS dono ke liye<br><br>
+                <strong>Option 3: React Native</strong><br>
+                • JavaScript se app banayein<br>
+                • Cross-platform<br><br>
+                💡 <em>Beginners ke liye Flutter ya React Native best hai!</em>`,
+                
+                'Play Store pe kaise publish karein?':`🎮 <strong>Play Store pe App Publish Karna:</strong><br><br>
+                <strong>Step 1:</strong> Google Play Console account banayein<br>
+                → ₹1,800 one-time fee (lifetime)<br><br>
+                <strong>Step 2:</strong> App ka APK/AAB file banayein<br>
+                → Android Studio → Build → Generate Signed Bundle<br><br>
+                <strong>Step 3:</strong> Play Console mein app create karein<br>
+                → App name, description, screenshots<br><br>
+                <strong>Step 4:</strong> Content rating & privacy policy<br><br>
+                <strong>Step 5:</strong> Review ke liye submit karein<br>
+                → 1-7 din mein approve ho jayega<br><br>
+                💡 <em>Pehle Internal Testing se shuru karein!</em>`,
+                
+                'Kotlin vs Flutter kya hai?':`⚡ <strong>Kotlin vs Flutter Comparison:</strong><br><br>
+                <strong>🔷 Kotlin (Native Android)</strong><br>
+                • Android ke liye official language<br>
+                • Best performance<br>
+                • Sirf Android ke liye<br>
+                • Android Studio mein code<br><br>
+                <strong>🎨 Flutter (Cross-Platform)</strong><br>
+                • Google ka UI toolkit<br>
+                • Dart language<br>
+                • Android + iOS + Web + Desktop<br>
+                • Fast development (Hot Reload)<br><br>
+                <strong>Kya Choose Karein?</strong><br>
+                • Sirf Android? → Kotlin<br>
+                • Android + iOS? → Flutter<br>
+                • Fast development? → Flutter<br><br>
+                💡 <em>Beginners ke liye Flutter recommended hai!</em>`,
+                
+                'Free mein app kaise banaye?':`🆓 <strong>Free App Development:</strong><br><br>
+                <strong>Free Tools:</strong><br><br>
+                <strong>1. Android Studio</strong> — Free IDE<br>
+                <strong>2. Flutter SDK</strong> — Free framework<br>
+                <strong>3. VS Code</strong> — Free code editor<br>
+                <strong>4. Firebase</strong> — Free backend (limited)<br><br>
+                <strong>Free Learning:</strong><br>
+                • YouTube tutorials<br>
+                • Official documentation<br>
+                • GitHub open source projects<br><br>
+                <strong>Free Testing:</strong><br>
+                • Android Emulator<br>
+                • Apne phone pe install karke test karein<br><br>
+                💡 <em>Play Store publish ke liye ₹1,800 fee hai, baki sab free!</em>`,
+                
+                'APK file kaise banaye?':`📦 <strong>APK File Banana:</strong><br><br>
+                <strong>Android Studio se:</strong><br><br>
+                <strong>Step 1:</strong> Build → Generate Signed Bundle / APK<br>
+                <strong>Step 2:</strong> Create new keystore (ya existing use karein)<br>
+                <strong>Step 3:</strong> Key alias & password set karein<br>
+                <strong>Step 4:</strong> Release ya Debug select karein<br>
+                <strong>Step 5:</strong> Finish → APK ready!<br><br>
+                <strong>APK Location:</strong><br>
+                <code>app/release/app-release.apk</code><br><br>
+                <strong>APK Install:</strong><br>
+                • Phone mein USB se transfer karein<br>
+                • Ya email/WhatsApp se bhejein<br>
+                • "Unknown sources" enable karein<br><br>
+                💡 <em>Debug APK testing ke liye, Release APK publish ke liye!</em>`,
+                
+                'App UI design kaise karein?':`🎨 <strong>App UI Design Karna:</strong><br><br>
+                <strong>Design Principles:</strong><br><br>
+                <strong>1. Material Design</strong> (Google)<br>
+                • Cards, shadows, animations<br>
+                • Consistent colors & fonts<br><br>
+                <strong>2. Figma se Design</strong><br>
+                • Free design tool<br>
+                • Prototype banayein<br>
+                • Code mein implement karein<br><br>
+                <strong>3. XML Layout (Android)</strong><br>
+                <code>&lt;LinearLayout&gt;</code><br>
+                <code>&lt;ConstraintLayout&gt;</code><br>
+                <code>&lt;RecyclerView&gt;</code><br><br>
+                <strong>4. Flutter Widgets</strong><br>
+                <code>Scaffold, AppBar, Container, ListView</code><br><br>
+                💡 <em>Pehle Figma mein design karein, fir code karein!</em>`
+            }
+        };
+        
+        const aiDefaultResponses={
+            web:`🌐 <strong>Web Development Help:</strong><br><br>
+            Main aapki web development mein madad kar sakta hoon!<br><br>
+            <strong>Main topics:</strong><br>
+            • HTML, CSS, JavaScript<br>
+            • Responsive Design<br>
+            • GitHub Pages Hosting<br>
+            • Free Domain & Hosting<br>
+            • Website Publish Karna<br><br>
+            💡 <em>Neeche ke buttons se quick questions pooch sakte hain!</em>`,
+            
+            app:`📱 <strong>App Development Help:</strong><br><br>
+            Main aapki app development mein madad kar sakta hoon!<br><br>
+            <strong>Main topics:</strong><br>
+            • Android App Development<br>
+            • Flutter & React Native<br>
+            • Play Store Publish<br>
+            • APK Banana<br>
+            • UI/UX Design<br><br>
+            💡 <em>Neeche ke buttons se quick questions pooch sakte hain!</em>`
+        };
+        
+        function openAIChat(type){
+            currentAIType=type;
+            document.getElementById(type+'AIChat').classList.add('active');
+            document.body.style.overflow='hidden';
+        }
+        
+        function closeAIChat(){
+            document.querySelectorAll('.ai-chat-modal').forEach(m=>m.classList.remove('active'));
+            document.body.style.overflow='auto';
+            currentAIType='';
+        }
+        
+        function sendAIQuestion(type,question){
+            const inputId=type+'ChatInput';
+            const bodyId=type+'ChatBody';
+            const inputEl=document.getElementById(inputId);
+            const bodyEl=document.getElementById(bodyId);
+            
+            let q=question||inputEl.value.trim();
+            if(!q) return;
+            
+            if(!question) inputEl.value='';
+            
+            const userMsg=document.createElement('div');
+            userMsg.className='ai-message user';
+            userMsg.innerHTML=`<div class="ai-message-avatar">👤</div><div class="ai-message-bubble">${q}</div>`;
+            bodyEl.appendChild(userMsg);
+            bodyEl.scrollTop=bodyEl.scrollHeight;
+            
+            const typingId='typing-'+Date.now();
+            const typingMsg=document.createElement('div');
+            typingMsg.className='ai-message ai';
+            typingMsg.id=typingId;
+            typingMsg.innerHTML=`<div class="ai-message-avatar" style="background:rgba(99,102,241,0.2);border-color:var(--primary)">🤖</div><div class="ai-message-bubble"><div class="ai-typing"><div class="ai-typing-dot"></div><div class="ai-typing-dot"></div><div class="ai-typing-dot"></div></div></div>`;
+            bodyEl.appendChild(typingMsg);
+            bodyEl.scrollTop=bodyEl.scrollHeight;
+            
+            setTimeout(()=>{
+                document.getElementById(typingId).remove();
+                
+                let response=aiDefaultResponses[type];
+                const responses=aiResponses[type];
+                
+                for(let key in responses){
+                    if(q.toLowerCase().includes(key.toLowerCase().replace(/[?]/g,'').trim()) || key.toLowerCase().includes(q.toLowerCase().replace(/[?]/g,'').trim())){
+                        response=responses[key];
+                        break;
+                    }
+                }
+                
+                const lowerQ=q.toLowerCase();
+                if(type==='web'){
+                    if(lowerQ.includes('host')||lowerQ.includes('publish')||lowerQ.includes('live')||lowerQ.includes('upload')){
+                        response=responses['GitHub Pages pe kaise publish karein?']||response;
+                    } else if(lowerQ.includes('html')||lowerQ.includes('css')||lowerQ.includes('js')||lowerQ.includes('javascript')){
+                        response=responses['HTML CSS JS kya hai?']||response;
+                    } else if(lowerQ.includes('domain')||lowerQ.includes('name')){
+                        response=responses['Domain name kaise kharide?']||response;
+                    } else if(lowerQ.includes('responsive')||lowerQ.includes('mobile')){
+                        response=responses['Responsive website kaise banaye?']||response;
+                    } else if(lowerQ.includes('free')||lowerQ.includes('hosting')){
+                        response=responses['Free hosting kaise karein?']||response;
+                    } else if(lowerQ.includes('website')||lowerQ.includes('banaye')||lowerQ.includes('start')){
+                        response=responses['Website kaise banaye?']||response;
+                    }
+                } else {
+                    if(lowerQ.includes('play store')||lowerQ.includes('publish')||lowerQ.includes('upload')){
+                        response=responses['Play Store pe kaise publish karein?']||response;
+                    } else if(lowerQ.includes('kotlin')||lowerQ.includes('flutter')){
+                        response=responses['Kotlin vs Flutter kya hai?']||response;
+                    } else if(lowerQ.includes('apk')){
+                        response=responses['APK file kaise banaye?']||response;
+                    } else if(lowerQ.includes('ui')||lowerQ.includes('design')){
+                        response=responses['App UI design kaise karein?']||response;
+                    } else if(lowerQ.includes('free')){
+                        response=responses['Free mein app kaise banaye?']||response;
+                    } else if(lowerQ.includes('android')||lowerQ.includes('app')||lowerQ.includes('banaye')){
+                        response=responses['Android app kaise banaye?']||response;
+                    }
+                }
+                
+                const aiMsg=document.createElement('div');
+                aiMsg.className='ai-message ai';
+                aiMsg.innerHTML=`<div class="ai-message-avatar" style="background:rgba(99,102,241,0.2);border-color:var(--primary)">🤖</div><div class="ai-message-bubble">${response}</div>`;
+                bodyEl.appendChild(aiMsg);
+                bodyEl.scrollTop=bodyEl.scrollHeight;
+            },1200);
+        }
     </script>
 </body>
 </html>
+
 
 
 
