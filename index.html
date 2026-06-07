@@ -184,6 +184,27 @@
         ::-webkit-scrollbar{width:8px}
         ::-webkit-scrollbar-track{background:var(--darker)}
         ::-webkit-scrollbar-thumb{background:var(--primary);border-radius:4px}
+        /* NEW FEATURES CSS */
+        .feature-input{width:100%;padding:0.9rem 1rem;border-radius:12px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);color:var(--light);font-size:0.95rem;outline:none;margin-bottom:0.75rem;font-family:inherit;transition:all 0.3s}
+        .feature-input:focus{border-color:var(--primary);background:rgba(255,255,255,0.08)}
+        .feature-btn{width:100%;padding:0.9rem;border:none;border-radius:12px;background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:white;font-weight:700;cursor:pointer;transition:all 0.3s;font-size:0.95rem;margin-bottom:0.5rem}
+        .feature-btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(99,102,241,0.4)}
+        .feature-btn.success{background:linear-gradient(135deg,var(--success),#059669)}
+        .feature-btn.secondary{background:linear-gradient(135deg,var(--secondary),#db2777)}
+        .feature-output{background:#1e1e1e;border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:1rem;margin-top:1rem;font-family:'Consolas','Monaco',monospace;font-size:0.85rem;overflow-x:auto;color:#d4d4d4;max-height:300px;overflow-y:auto;line-height:1.5;white-space:pre-wrap}
+        .feature-output:empty{display:none}
+        .cert-preview{background:white;color:var(--dark);border-radius:16px;padding:2rem;text-align:center;margin-top:1rem;display:none}
+        .cert-preview.active{display:block}
+        .cert-preview h2{color:#1e40af;font-size:1.5rem;margin-bottom:0.5rem}
+        .cert-preview h1{color:#1e3a8a;font-size:2rem;margin:1rem 0}
+        .cert-preview p{color:#4b5563;font-size:1rem}
+        .cert-seal{width:80px;height:80px;background:linear-gradient(135deg,#fbbf24,#f59e0b);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:1rem auto;font-size:2rem}
+        .login-status{text-align:center;padding:0.75rem;background:rgba(16,185,129,0.15);border-radius:12px;color:var(--success);font-weight:600;margin-bottom:1rem;display:none}
+        .login-status.active{display:block}
+        .premium-badge{display:inline-flex;align-items:center;gap:0.5rem;padding:0.5rem 1rem;background:linear-gradient(135deg,#fbbf24,#f59e0b);color:var(--dark);border-radius:50px;font-weight:700;font-size:0.85rem;margin-bottom:1rem}
+        .price-tag{font-size:2.5rem;font-weight:800;background:linear-gradient(135deg,var(--primary),var(--secondary));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .feature-list{text-align:left;margin:1.5rem 0}
+        .feature-list li{display:flex;align-items:center;gap:0.75rem;padding:0.5rem 0;color:var(--gray)}
     </style>
 </head>
 <body>
@@ -200,6 +221,10 @@
             <li><a href="tutorials.html">📚 Tutorials</a></li>
             <li><a href="#youtube-channel">YT Channel</a></li>
             <li><a href="#courses">Courses</a></li>
+            <li><a href="#ai-code">🤖 AI Code</a></li>
+            <li><a href="#certificate">🏆 Certificate</a></li>
+            <li><a href="#login">🔐 Login</a></li>
+            <li><a href="#premium">💎 Premium</a></li>
             <li><a href="#contact">Contact</a></li>
             <li><div class="search-box"><input type="text" id="searchInput" placeholder="Search courses..." onkeyup="searchCourses()"></div></li>
         </ul>
@@ -622,6 +647,92 @@ print(f'Welcome, {name}!')</textarea>
         </div>
     </section>
 
+    <!-- AI CODE GENERATOR -->
+    <section id="ai-code" class="animate-on-scroll">
+        <div class="section-header">
+            <div class="section-tag">🤖 AI Code Generator</div>
+            <h2 class="section-title">Generate Code with AI</h2>
+            <p class="section-subtitle">Bas apna idea likhein, AI aapke liye complete code generate karega!</p>
+        </div>
+        <div style="background:var(--card-bg);border-radius:24px;padding:3rem;border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(20px);max-width:800px;margin:0 auto;">
+            <input type="text" class="feature-input" id="codeGenPrompt" placeholder="e.g., Mujhe calculator app bana ke do HTML/CSS/JS mein...">
+            <button class="feature-btn" onclick="generateAICode()">⚡ Generate Code</button>
+            <div class="feature-output" id="codeGenOutput"></div>
+        </div>
+    </section>
+
+    <!-- CERTIFICATE GENERATOR -->
+    <section id="certificate" class="animate-on-scroll">
+        <div class="section-header">
+            <div class="section-tag">🏆 Certificate</div>
+            <h2 class="section-title">Generate Your Certificate</h2>
+            <p class="section-subtitle">Course complete karne ka certificate generate karein!</p>
+        </div>
+        <div style="background:var(--card-bg);border-radius:24px;padding:3rem;border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(20px);max-width:800px;margin:0 auto;">
+            <input type="text" class="feature-input" id="certName" placeholder="Apna naam likhein...">
+            <input type="text" class="feature-input" id="certCourse" placeholder="Course name (e.g., Complete Python Mastery)" value="Programming Course">
+            <button class="feature-btn success" onclick="generateCertificate()">🏆 Generate Certificate</button>
+            <button class="feature-btn" onclick="downloadCertificate()" id="downloadCertBtn" style="display:none;">📥 Download Certificate</button>
+            <div class="cert-preview" id="certPreview">
+                <div class="cert-seal">🏆</div>
+                <h2>Certificate of Completion</h2>
+                <p>This is to certify that</p>
+                <h1 id="certPreviewName">Student Name</h1>
+                <p>has successfully completed</p>
+                <h3 id="certPreviewCourse" style="color:var(--primary);margin:0.5rem 0;">Programming Course</h3>
+                <p style="margin-top:1rem;">Date: <span id="certDate"></span></p>
+                <p style="margin-top:0.5rem;font-size:0.85rem;">Instructor: <strong>Akarshit Raj</strong></p>
+                <p style="font-size:0.75rem;color:#9ca3af;margin-top:1rem;">PM SHRI Jawahar Navodaya Vidyalaya, Khairabad, Sitapur</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- LOGIN / SIGNUP -->
+    <section id="login" class="animate-on-scroll">
+        <div class="section-header">
+            <div class="section-tag">🔐 Login</div>
+            <h2 class="section-title">Student Login</h2>
+            <p class="section-subtitle">Apna progress track karein aur certificates save karein!</p>
+        </div>
+        <div style="background:var(--card-bg);border-radius:24px;padding:3rem;border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(20px);max-width:500px;margin:0 auto;">
+            <div class="login-status" id="loginStatus">✅ Logged in as <span id="loggedInEmail"></span></div>
+            <div id="loginForm">
+                <input type="email" class="feature-input" id="loginEmail" placeholder="Email address...">
+                <input type="password" class="feature-input" id="loginPassword" placeholder="Password...">
+                <button class="feature-btn" onclick="signup()">📝 Sign Up</button>
+                <button class="feature-btn success" onclick="login()">🔐 Login</button>
+            </div>
+            <div id="logoutForm" style="display:none;text-align:center;">
+                <p style="color:var(--gray);margin-bottom:1rem;">Welcome back! Aap logged in hain.</p>
+                <button class="feature-btn secondary" onclick="logout()">🚪 Logout</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- PREMIUM -->
+    <section id="premium" class="animate-on-scroll">
+        <div class="section-header">
+            <div class="section-tag">💎 Premium</div>
+            <h2 class="section-title">Premium Membership</h2>
+            <p class="section-subtitle">Advanced features unlock karein aur coding master ban jayein!</p>
+        </div>
+        <div style="background:var(--card-bg);border-radius:24px;padding:3rem;border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(20px);max-width:500px;margin:0 auto;text-align:center;">
+            <div class="premium-badge">⭐ MOST POPULAR</div>
+            <h3 style="font-size:1.5rem;font-weight:700;margin-bottom:0.5rem;">🚀 Pro Coder Plan</h3>
+            <div class="price-tag">₹99<span style="font-size:1rem;color:var(--gray);">/month</span></div>
+            <ul class="feature-list" style="list-style:none;">
+                <li><span style="color:var(--success);">✅</span> Unlimited AI Code Generation</li>
+                <li><span style="color:var(--success);">✅</span> Priority AI Chat Support</li>
+                <li><span style="color:var(--success);">✅</span> Advanced Project Templates</li>
+                <li><span style="color:var(--success);">✅</span> Certificate with Digital Signature</li>
+                <li><span style="color:var(--success);">✅</span> Download All Course Notes</li>
+                <li><span style="color:var(--success);">✅</span> 1-on-1 Doubt Clearing</li>
+            </ul>
+            <button class="feature-btn" onclick="buyPremium()" style="font-size:1.1rem;padding:1rem;">💎 Get Premium</button>
+            <p style="color:var(--gray);font-size:0.8rem;margin-top:1rem;">💡 Abhi free plan use karein, upgrade anytime!</p>
+        </div>
+    </section>
+
     <footer style="text-align:center;padding:3rem 5%;border-top:1px solid rgba(255,255,255,0.05);margin-top:3rem;">
         <div style="font-size:1.5rem;font-weight:800;background:linear-gradient(135deg,var(--primary),var(--secondary));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:1rem;">AR.</div>
         <p style="color:var(--gray);font-size:0.9rem;margin-bottom:1rem;">Akarshit Raj - Programming Educator</p>
@@ -642,6 +753,21 @@ print(f'Welcome, {name}!')</textarea>
     </div>
 
     <div class="notification" id="notification">Email copied to clipboard!</div>
+
+    <!-- API Key Input Modal -->
+    <div id="apiKeyModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:4000;align-items:center;justify-content:center;padding:2rem;">
+        <div style="background:var(--card-bg);border-radius:24px;padding:2.5rem;max-width:450px;width:100%;border:1px solid rgba(255,255,255,0.1);text-align:center;">
+            <div style="font-size:3rem;margin-bottom:1rem;">🔐</div>
+            <h3 style="font-size:1.4rem;font-weight:700;margin-bottom:0.5rem;">Gemini API Key Required</h3>
+            <p style="color:var(--gray);font-size:0.9rem;margin-bottom:1.5rem;">AI Chat use karne ke liye apni free Gemini API key enter karein. Ek baar enter karein, browser mein save ho jayegi.</p>
+            <input type="text" id="apiKeyInput" placeholder="Apni Gemini API Key yahan paste karein..." style="width:100%;padding:0.9rem 1rem;border-radius:12px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);color:var(--light);font-size:0.9rem;outline:none;margin-bottom:1rem;font-family:inherit;">
+            <div style="display:flex;gap:0.75rem;">
+                <button onclick="saveApiKey()" style="flex:1;padding:0.8rem;background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:white;border:none;border-radius:12px;font-weight:600;cursor:pointer;font-size:0.95rem;">✅ Save Key</button>
+                <button onclick="closeApiKeyModal()" style="flex:1;padding:0.8rem;background:var(--glass);color:var(--gray);border:1px solid rgba(255,255,255,0.1);border-radius:12px;font-weight:600;cursor:pointer;font-size:0.95rem;">❌ Cancel</button>
+            </div>
+            <p style="color:var(--gray);font-size:0.8rem;margin-top:1rem;">💡 Key free mein milegi: <a href="https://aistudio.google.com/app/apikey" target="_blank" style="color:var(--primary);">Google AI Studio</a></p>
+        </div>
+    </div>
 
     <!-- Web Development AI Chat -->
     <div class="ai-chat-modal" id="webAIChat">
@@ -729,8 +855,10 @@ print(f'Welcome, {name}!')</textarea>
 
     <script>
         // ====== CONFIG ======
-        const GEMINI_API_KEY = 'AQ.Ab8RN6LOIUYPk01mQA3YuVgr3fcabzogcOm7YAEYVFdtBg_yww';
-        const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=' + GEMINI_API_KEY;
+        // API Key is NOT hardcoded for security
+        // User enters their own key once, saved in browser
+        let GEMINI_API_KEY = localStorage.getItem('gemini_api_key') || '';
+        const GEMINI_BASE_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=';
 
         // ====== SYSTEM PROMPTS ======
         const SYSTEM_PROMPTS = {
@@ -886,9 +1014,41 @@ Topics you know: Android, Kotlin, Flutter, Dart, React Native, Play Store, APK, 
         let chatHistory = { web: [], app: [] };
         
         function openAIChat(type){
+            GEMINI_API_KEY = localStorage.getItem('gemini_api_key') || '';
+            if(!GEMINI_API_KEY){
+                document.getElementById('apiKeyModal').style.display='flex';
+                return;
+            }
             currentAIType=type;
             document.getElementById(type+'AIChat').classList.add('active');
             document.body.style.overflow='hidden';
+        }
+        
+        function saveApiKey(){
+            const key = document.getElementById('apiKeyInput').value.trim();
+            if(key){
+                localStorage.setItem('gemini_api_key', key);
+                GEMINI_API_KEY = key;
+                document.getElementById('apiKeyModal').style.display='none';
+                showNotification('API Key saved successfully!');
+                if(currentAIType){
+                    document.getElementById(currentAIType+'AIChat').classList.add('active');
+                    document.body.style.overflow='hidden';
+                }
+            } else {
+                alert('Please enter a valid API key');
+            }
+        }
+        
+        function closeApiKeyModal(){
+            document.getElementById('apiKeyModal').style.display='none';
+        }
+        
+        function showNotification(msg){
+            const n = document.getElementById('notification');
+            n.textContent = msg;
+            n.classList.add('show');
+            setTimeout(()=>n.classList.remove('show'), 3000);
         }
         
         function closeAIChat(){
@@ -898,12 +1058,9 @@ Topics you know: Android, Kotlin, Flutter, Dart, React Native, Play Store, APK, 
         }
         
         function formatAIResponse(text) {
-            // Convert markdown code blocks to styled HTML
             text = text.replace(/```(\w+)?\n([\s\S]*?)```/g, '<div class="ai-code-block"><pre>$2</pre></div>');
             text = text.replace(/`([^`]+)`/g, '<code style="background:rgba(255,255,255,0.1);padding:0.2rem 0.4rem;border-radius:4px;font-family:monospace;">$1</code>');
-            // Convert newlines to <br>
             text = text.replace(/\n/g, '<br>');
-            // Bold
             text = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
             return text;
         }
@@ -921,18 +1078,15 @@ Topics you know: Android, Kotlin, Flutter, Dart, React Native, Play Store, APK, 
             
             if(!question) inputEl.value = '';
             
-            // Add user message
             const userMsg = document.createElement('div');
             userMsg.className = 'ai-message user';
             userMsg.innerHTML = `<div class="ai-message-avatar">👤</div><div class="ai-message-bubble">${q}</div>`;
             bodyEl.appendChild(userMsg);
             bodyEl.scrollTop = bodyEl.scrollHeight;
             
-            // Disable send button
             sendBtn.disabled = true;
             sendBtn.textContent = '⏳';
             
-            // Show typing
             const typingId = 'typing-' + Date.now();
             const typingMsg = document.createElement('div');
             typingMsg.className = 'ai-message ai';
@@ -942,7 +1096,6 @@ Topics you know: Android, Kotlin, Flutter, Dart, React Native, Play Store, APK, 
             bodyEl.scrollTop = bodyEl.scrollHeight;
             
             try {
-                // Build conversation history
                 const history = chatHistory[type].map(h => ({
                     role: h.role === 'user' ? 'user' : 'model',
                     parts: [{ text: h.text }]
@@ -962,12 +1115,11 @@ Topics you know: Android, Kotlin, Flutter, Dart, React Native, Play Store, APK, 
                     }
                 };
                 
-                // Add history if exists
                 if(history.length > 0) {
                     payload.contents = history.concat(payload.contents);
                 }
                 
-                const response = await fetch(GEMINI_API_URL, {
+                const response = await fetch(GEMINI_BASE_URL + GEMINI_API_KEY, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(payload)
@@ -992,11 +1144,9 @@ Topics you know: Android, Kotlin, Flutter, Dart, React Native, Play Store, APK, 
                     aiText = 'Sorry, response mein kuch issue hai. Dobara try karein!';
                 }
                 
-                // Save to history
                 chatHistory[type].push({ role: 'user', text: q });
                 chatHistory[type].push({ role: 'model', text: aiText });
                 
-                // Limit history to last 10 messages
                 if(chatHistory[type].length > 10) {
                     chatHistory[type] = chatHistory[type].slice(-10);
                 }
@@ -1022,9 +1172,151 @@ Topics you know: Android, Kotlin, Flutter, Dart, React Native, Play Store, APK, 
                 sendBtn.textContent = '➤ Send';
             }
         }
+        
+        // ====== NEW FEATURES ======
+        
+        // AI Code Generator
+        async function generateAICode(){
+            const prompt = document.getElementById('codeGenPrompt').value.trim();
+            const output = document.getElementById('codeGenOutput');
+            if(!prompt){
+                output.textContent = '⚠️ Pehle apna idea likhein!';
+                return;
+            }
+            
+            GEMINI_API_KEY = localStorage.getItem('gemini_api_key') || '';
+            if(!GEMINI_API_KEY){
+                output.innerHTML = '<span style="color:var(--accent);">🔐 AI Code Generator ke liye API Key chahiye. Neeche AI Chat button se key enter karein!</span>';
+                return;
+            }
+            
+            output.innerHTML = '<span style="color:var(--accent);">⏳ Code generate ho raha hai... thoda wait karein!</span>';
+            
+            try{
+                const response = await fetch(GEMINI_BASE_URL + GEMINI_API_KEY, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{
+                            role: 'user',
+                            parts: [{ text: 'You are a coding expert. Write complete, clean, working code with comments. User request: ' + prompt + '\n\nRules:\n1. Provide complete code only\n2. Add comments in Hindi + English\n3. Explain briefly how to use it\n4. Format code properly' }]
+                        }],
+                        generationConfig: { temperature: 0.5, maxOutputTokens: 3000 }
+                    })
+                });
+                
+                const data = await response.json();
+                let codeText = '';
+                if(data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts){
+                    codeText = data.candidates[0].content.parts[0].text || 'Sorry, code generate nahi ho paya!';
+                } else {
+                    codeText = '❌ Error: Response sahi nahi aaya. Dobara try karein!';
+                }
+                
+                output.textContent = codeText;
+                
+            } catch(error){
+                output.innerHTML = `<span style="color:var(--error);">❌ Error: ${error.message}<br><br>API key check karein ya baad mein try karein.</span>`;
+            }
+        }
+        
+        // Certificate Generator
+        function generateCertificate(){
+            const name = document.getElementById('certName').value.trim() || 'Student';
+            const course = document.getElementById('certCourse').value.trim() || 'Programming Course';
+            
+            document.getElementById('certPreviewName').textContent = name;
+            document.getElementById('certPreviewCourse').textContent = course;
+            document.getElementById('certDate').textContent = new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' });
+            document.getElementById('certPreview').classList.add('active');
+            document.getElementById('downloadCertBtn').style.display = 'block';
+            
+            showNotification('Certificate generated successfully! 🏆');
+        }
+        
+        function downloadCertificate(){
+            const certHtml = document.getElementById('certPreview').outerHTML;
+            const fullHtml = `<!DOCTYPE html><html><head><style>body{font-family:Arial,sans-serif;display:flex;justify-content:center;align-items:center;min-height:100vh;background:#f3f4f6;margin:0;}</style></head><body>${certHtml}</body></html>`;
+            const blob = new Blob([fullHtml], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'AkarshitRaj_Certificate.html';
+            a.click();
+            URL.revokeObjectURL(url);
+            showNotification('Certificate downloaded! 📥');
+        }
+        
+        // Login System
+        function signup(){
+            const email = document.getElementById('loginEmail').value.trim();
+            const password = document.getElementById('loginPassword').value;
+            if(!email || !password){
+                alert('❌ Email aur password dono daalein!');
+                return;
+            }
+            if(!email.includes('@')){
+                alert('❌ Valid email daalein!');
+                return;
+            }
+            localStorage.setItem('akr_user_email', email);
+            localStorage.setItem('akr_user_pass', password);
+            alert('✅ Signup Successful! Ab login karein.');
+        }
+        
+        function login(){
+            const email = document.getElementById('loginEmail').value.trim();
+            const password = document.getElementById('loginPassword').value;
+            const savedEmail = localStorage.getItem('akr_user_email');
+            const savedPass = localStorage.getItem('akr_user_pass');
+            
+            if(!email || !password){
+                alert('❌ Email aur password dono daalein!');
+                return;
+            }
+            
+            if(email === savedEmail && password === savedPass){
+                localStorage.setItem('akr_logged_in', 'true');
+                updateLoginUI();
+                showNotification('✅ Login Successful!');
+            } else {
+                alert('❌ Email ya password galat hai!');
+            }
+        }
+        
+        function logout(){
+            localStorage.removeItem('akr_logged_in');
+            updateLoginUI();
+            showNotification('🚪 Logged out successfully!');
+        }
+        
+        function updateLoginUI(){
+            const isLoggedIn = localStorage.getItem('akr_logged_in') === 'true';
+            const email = localStorage.getItem('akr_user_email') || '';
+            
+            if(isLoggedIn){
+                document.getElementById('loginForm').style.display = 'none';
+                document.getElementById('logoutForm').style.display = 'block';
+                document.getElementById('loginStatus').classList.add('active');
+                document.getElementById('loggedInEmail').textContent = email;
+            } else {
+                document.getElementById('loginForm').style.display = 'block';
+                document.getElementById('logoutForm').style.display = 'none';
+                document.getElementById('loginStatus').classList.remove('active');
+            }
+        }
+        
+        // Check login status on load
+        updateLoginUI();
+        
+        // Premium
+        function buyPremium(){
+            alert('💎 Premium plan jaldi aa raha hai!\n\nAbhi free plan use karein:\n• AI Chat\n• Code Practice\n• Tutorials\n• Certificate Generator\n\nSab kuch free mein available hai! 🎉');
+        }
     </script>
 </body>
 </html>
+
 
 
 
