@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="hi">
 <head>
@@ -21,7 +22,7 @@
     <meta name="twitter:description" content="20+ free programming courses. Learn & practice coding online!">
     <style>
         *{margin:0;padding:0;box-sizing:border-box}
-        :root{--primary:#6366f1;--primary-dark:#4f46e5;--secondary:#ec4899;--accent:#06b6d4;--dark:#0f172a;--darker:#020617;--light:#f8fafc;--gray:#94a3b8;--card-bg:rgba(30,41,59,0.6);--glass:rgba(255,255,255,0.05);--success:#10b981;--web-dev:#f59e0b;--app-dev:#8b5cf6}
+        :root{--primary:#6366f1;--primary-dark:#4f46e5;--secondary:#ec4899;--accent:#06b6d4;--dark:#0f172a;--darker:#020617;--light:#f8fafc;--gray:#94a3b8;--card-bg:rgba(30,41,59,0.6);--glass:rgba(255,255,255,0.05);--success:#10b981;--web-dev:#f59e0b;--app-dev:#8b5cf6;--error:#ef4444}
         body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--darker);color:var(--light);min-height:100vh;overflow-x:hidden;line-height:1.6}
         .bg-animation{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;overflow:hidden}
         .bg-animation .orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:0.4;animation:float 20s infinite ease-in-out}
@@ -56,10 +57,6 @@
         .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(99,102,241,0.6)}
         .btn-success{background:linear-gradient(135deg,var(--success),#059669);color:white;box-shadow:0 4px 20px rgba(16,185,129,0.4)}
         .btn-success:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(16,185,129,0.6)}
-        .btn-web{background:linear-gradient(135deg,var(--web-dev),#d97706);color:white;box-shadow:0 4px 20px rgba(245,158,11,0.4)}
-        .btn-web:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(245,158,11,0.6)}
-        .btn-app{background:linear-gradient(135deg,var(--app-dev),#7c3aed);color:white;box-shadow:0 4px 20px rgba(139,92,246,0.4)}
-        .btn-app:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(139,92,246,0.6)}
         .hero-visual{animation:fadeInRight 1s ease}
         .hero-card{background:var(--card-bg);border-radius:24px;padding:2rem;border:1px solid rgba(255,255,255,0.1);backdrop-filter:blur(20px)}
         .profile-section{text-align:center;margin-bottom:2rem}
@@ -158,6 +155,7 @@
         .ai-chat-input:focus{border-color:var(--primary);background:rgba(255,255,255,0.08)}
         .ai-chat-send{padding:0.9rem 1.5rem;border-radius:50px;border:none;background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:white;font-weight:600;cursor:pointer;transition:all 0.3s;font-size:0.9rem}
         .ai-chat-send:hover{transform:translateY(-2px);box-shadow:0 4px 20px rgba(99,102,241,0.4)}
+        .ai-chat-send:disabled{opacity:0.5;cursor:not-allowed}
         .ai-quick-actions{display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:1rem;max-width:900px;margin:0 auto 1rem;padding:0 5%}
         .ai-quick-btn{padding:0.5rem 1rem;background:var(--glass);border:1px solid rgba(255,255,255,0.1);border-radius:50px;color:var(--gray);cursor:pointer;transition:all 0.3s;font-size:0.85rem}
         .ai-quick-btn:hover{background:var(--primary);color:white;border-color:var(--primary)}
@@ -166,6 +164,8 @@
         .ai-typing-dot:nth-child(1){animation-delay:-0.32s}
         .ai-typing-dot:nth-child(2){animation-delay:-0.16s}
         @keyframes typing{0%,80%,100%{transform:scale(0)}40%{transform:scale(1)}}
+        .ai-error{background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);color:#fca5a5;padding:1rem;border-radius:12px;margin:1rem 0;font-size:0.9rem}
+        .ai-code-block{background:#1e1e1e;border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:0.75rem 1rem;margin:0.5rem 0;font-family:'Consolas','Monaco',monospace;font-size:0.85rem;overflow-x:auto;color:#d4d4d4}
         @keyframes fadeInLeft{from{opacity:0;transform:translateX(-40px)}to{opacity:1;transform:translateX(0)}}
         @keyframes fadeInRight{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:translateX(0)}}
         .animate-on-scroll{opacity:0;transform:translateY(40px);transition:all 0.8s ease}
@@ -664,7 +664,8 @@ print(f'Welcome, {name}!')</textarea>
                     • Responsive design & frameworks<br>
                     • GitHub Pages hosting (free!)<<br>
                     • Website publish karne ka tarika<br>
-                    • Domain & hosting setup<br><br>
+                    • Domain & hosting setup<br>
+                    • Code likh ke dunga step-by-step!<br><br>
                     <em>Neeche quick questions bhi hain ya aap khud bhi pooch sakte hain!</em>
                 </div>
             </div>
@@ -675,12 +676,12 @@ print(f'Welcome, {name}!')</textarea>
             <button class="ai-quick-btn" onclick="sendAIQuestion('web','HTML CSS JS kya hai?')">📝 HTML/CSS/JS kya hai?</button>
             <button class="ai-quick-btn" onclick="sendAIQuestion('web','Free hosting kaise karein?')">🆓 Free hosting?</button>
             <button class="ai-quick-btn" onclick="sendAIQuestion('web','Responsive website kaise banaye?')">📱 Responsive design?</button>
-            <button class="ai-quick-btn" onclick="sendAIQuestion('web','Domain name kaise kharide?')">🌐 Domain name?</button>
+            <button class="ai-quick-btn" onclick="sendAIQuestion('web','Mujhe portfolio website bana ke do')">💼 Portfolio website code?</button>
         </div>
         <div class="ai-chat-input-area">
             <div class="ai-chat-input-wrapper">
                 <input type="text" class="ai-chat-input" id="webChatInput" placeholder="Apna sawal likhein..." onkeypress="if(event.key==='Enter')sendAIQuestion('web')">
-                <button class="ai-chat-send" onclick="sendAIQuestion('web')">➤ Send</button>
+                <button class="ai-chat-send" id="webSendBtn" onclick="sendAIQuestion('web')">➤ Send</button>
             </div>
         </div>
     </div>
@@ -705,7 +706,8 @@ print(f'Welcome, {name}!')</textarea>
                     • Flutter & React Native<br>
                     • Play Store pe publish kaise karein<br>
                     • App design & UI/UX<br>
-                    • APK banane ka tarika<br><br>
+                    • APK banane ka tarika<br>
+                    • Code likh ke dunga step-by-step!<br><br>
                     <em>Neeche quick questions bhi hain ya aap khud bhi pooch sakte hain!</em>
                 </div>
             </div>
@@ -716,109 +718,67 @@ print(f'Welcome, {name}!')</textarea>
             <button class="ai-quick-btn" onclick="sendAIQuestion('app','Kotlin vs Flutter kya hai?')">⚡ Kotlin vs Flutter?</button>
             <button class="ai-quick-btn" onclick="sendAIQuestion('app','Free mein app kaise banaye?')">🆓 Free app dev?</button>
             <button class="ai-quick-btn" onclick="sendAIQuestion('app','APK file kaise banaye?')">📦 APK kaise banaye?</button>
-            <button class="ai-quick-btn" onclick="sendAIQuestion('app','App UI design kaise karein?')">🎨 App UI design?</button>
+            <button class="ai-quick-btn" onclick="sendAIQuestion('app','Mujhe calculator app bana ke do')">🧮 Calculator app code?</button>
         </div>
         <div class="ai-chat-input-area">
             <div class="ai-chat-input-wrapper">
                 <input type="text" class="ai-chat-input" id="appChatInput" placeholder="Apna sawal likhein..." onkeypress="if(event.key==='Enter')sendAIQuestion('app')">
-                <button class="ai-chat-send" onclick="sendAIQuestion('app')">➤ Send</button>
+                <button class="ai-chat-send" id="appSendBtn" onclick="sendAIQuestion('app')">➤ Send</button>
             </div>
         </div>
     </div>
 
     <script>
+        // ====== CONFIG ======
+        const GEMINI_API_KEY = 'AQ.Ab8RN6LOIUYPk01mQA3YuVgr3fcabzogcOm7YAEYVFdtBg_yww';
+        const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=' + GEMINI_API_KEY;
+
+        // ====== SYSTEM PROMPTS ======
+        const SYSTEM_PROMPTS = {
+            web: `You are an expert Web Development AI Assistant. You help users learn web development and write code.
+
+Rules:
+1. Always give step-by-step explanations in Hindi + English mix (Hinglish)
+2. When user asks for code, provide complete, working HTML/CSS/JS code
+3. Format code in clean blocks
+4. Be encouraging and friendly
+5. If user says "bana ke do" or "code do", write full code immediately
+6. Explain concepts simply for beginners
+7. Always give practical examples
+
+Topics you know: HTML, CSS, JavaScript, React, Bootstrap, Tailwind, GitHub Pages, Hosting, Domain, Responsive Design, Web Projects`,
+
+            app: `You are an expert App Development AI Assistant. You help users learn Android/iOS app development and write code.
+
+Rules:
+1. Always give step-by-step explanations in Hindi + English mix (Hinglish)
+2. When user asks for code, provide complete, working Kotlin/Flutter/Dart code
+3. Format code in clean blocks
+4. Be encouraging and friendly
+5. If user says "bana ke do" or "code do", write full code immediately
+6. Explain concepts simply for beginners
+7. Always give practical examples
+
+Topics you know: Android, Kotlin, Flutter, Dart, React Native, Play Store, APK, UI Design, Material Design, App Projects`
+        };
+
         function toggleMenu(){document.getElementById('navLinks').classList.toggle('active')}
         document.querySelectorAll('.nav-links a').forEach(link=>{link.addEventListener('click',()=>{document.getElementById('navLinks').classList.remove('active')})})
         function toggleLanguages(){const d=document.getElementById('languagesDropdown'),b=document.getElementById('youtubeToggleBtn'),a=document.getElementById('toggleArrow');if(d.style.maxHeight==='2000px'){d.style.maxHeight='0';d.style.opacity='0';d.style.marginTop='0';a.style.transform='rotate(0deg)';b.querySelector('span:nth-child(2)').textContent='View All Languages'}else{d.style.maxHeight='2000px';d.style.opacity='1';d.style.marginTop='2rem';a.style.transform='rotate(180deg)';b.querySelector('span:nth-child(2)').textContent='Hide Languages'}}
         
         const codeTemplates={
-            python:`# Write your Python code here...
-print('Hello, World!')
-name = 'Akarshit'
-print(f'Welcome, {name}!')`,
-            cpp:`// Write your C++ code here...
-#include <iostream>
-using namespace std;
-
-int main() {
-    cout << "Hello, World!" << endl;
-    string name = "Akarshit";
-    cout << "Welcome, " << name << "!" << endl;
-    return 0;
-}`,
-            javascript:`// Write your JavaScript code here...
-console.log('Hello, World!');
-let name = 'Akarshit';
-console.log('Welcome, ' + name + '!');`,
-            java:`// Write your Java code here...
-public class Main {
-    public static void main(String[] args) {
-        System.out.println("Hello, World!");
-        String name = "Akarshit";
-        System.out.println("Welcome, " + name + "!");
-    }
-}`,
-            csharp:`// Write your C# code here...
-using System;
-
-class Program {
-    static void Main() {
-        Console.WriteLine("Hello, World!");
-        string name = "Akarshit";
-        Console.WriteLine("Welcome, " + name + "!");
-    }
-}`,
-            html:`<!-- Write your HTML code here... -->
-<!DOCTYPE html>
-<html>
-<head>
-    <title>My Page</title>
-</head>
-<body>
-    <h1>Hello, World!</h1>
-    <p>Welcome to my website!</p>
-</body>
-</html>`,
-            sql:`-- Write your SQL code here...
-CREATE TABLE users (
-    id INT PRIMARY KEY,
-    name VARCHAR(50),
-    email VARCHAR(100)
-);
-
-INSERT INTO users VALUES (1, 'Akarshit', 'akarshit@example.com');
-SELECT * FROM users;`,
-            php:`<?php
-// Write your PHP code here...
-echo "Hello, World!\\n";
-$name = "Akarshit";
-echo "Welcome, " . $name . "!";
-?>`,
-            kotlin:`// Write your Kotlin code here...
-fun main() {
-    println("Hello, World!")
-    val name = "Akarshit"
-    println("Welcome, $name!")
-}`,
-            swift:`// Write your Swift code here...
-print("Hello, World!")
-let name = "Akarshit"
-print("Welcome, \\(name)!")`,
-            go:`// Write your Go code here...
-package main
-import "fmt"
-
-func main() {
-    fmt.Println("Hello, World!")
-    name := "Akarshit"
-    fmt.Printf("Welcome, %s!\\n", name)
-}`,
-            rust:`// Write your Rust code here...
-fn main() {
-    println!("Hello, World!");
-    let name = "Akarshit";
-    println!("Welcome, {}!", name);
-}`
+            python:`# Write your Python code here...\nprint('Hello, World!')\nname = 'Akarshit'\nprint(f'Welcome, {name}!')`,
+            cpp:`// Write your C++ code here...\n#include <iostream>\nusing namespace std;\n\nint main() {\n    cout << "Hello, World!" << endl;\n    string name = "Akarshit";\n    cout << "Welcome, " << name << "!" << endl;\n    return 0;\n}`,
+            javascript:`// Write your JavaScript code here...\nconsole.log('Hello, World!');\nlet name = 'Akarshit';\nconsole.log('Welcome, ' + name + '!');`,
+            java:`// Write your Java code here...\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println("Hello, World!");\n        String name = "Akarshit";\n        System.out.println("Welcome, " + name + "!");\n    }\n}`,
+            csharp:`// Write your C# code here...\nusing System;\n\nclass Program {\n    static void Main() {\n        Console.WriteLine("Hello, World!");\n        string name = "Akarshit";\n        Console.WriteLine("Welcome, " + name + "!");\n    }\n}`,
+            html:`<!-- Write your HTML code here... -->\n<!DOCTYPE html>\n<html>\n<head>\n    <title>My Page</title>\n</head>\n<body>\n    <h1>Hello, World!</h1>\n    <p>Welcome to my website!</p>\n</body>\n</html>`,
+            sql:`-- Write your SQL code here...\nCREATE TABLE users (\n    id INT PRIMARY KEY,\n    name VARCHAR(50),\n    email VARCHAR(100)\n);\n\nINSERT INTO users VALUES (1, 'Akarshit', 'akarshit@example.com');\nSELECT * FROM users;`,
+            php:`<?php\n// Write your PHP code here...\necho "Hello, World!\\n";\n$name = "Akarshit";\necho "Welcome, " . $name . "!";\n?>`,
+            kotlin:`// Write your Kotlin code here...\nfun main() {\n    println("Hello, World!")\n    val name = "Akarshit"\n    println("Welcome, $name!")\n}`,
+            swift:`// Write your Swift code here...\nprint("Hello, World!")\nlet name = "Akarshit"\nprint("Welcome, \\(name)!")`,
+            go:`// Write your Go code here...\npackage main\nimport "fmt"\n\nfunc main() {\n    fmt.Println("Hello, World!")\n    name := "Akarshit"\n    fmt.Printf("Welcome, %s!\\n", name)\n}`,
+            rust:`// Write your Rust code here...\nfn main() {\n    println!("Hello, World!");\n    let name = "Akarshit";\n    println!("Welcome, {}!", name);\n}`
         }
         
         function selectLang(btn,lang){document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.getElementById('codeInput').value=codeTemplates[lang]||codeTemplates['python']}
@@ -863,13 +823,9 @@ fn main() {
                         counter.textContent=Math.floor(current).toLocaleString();
                         requestAnimationFrame(updateCounter);
                     } else {
-                        let suffix='';
-                        if(target>=1000000) suffix='M+';
-                        else if(target>=1000) suffix='k+';
-                        else suffix='+';
                         if(target>=1000000) counter.textContent='1M+';
                         else if(target>=1000) counter.textContent='1k+';
-                        else counter.textContent=target+suffix;
+                        else counter.textContent=target+'+';
                     }
                 };
                 updateCounter();
@@ -926,199 +882,9 @@ fn main() {
             });
         }
         
+        // ====== AI CHAT FUNCTIONS ======
         let currentAIType='';
-        
-        const aiResponses={
-            web:{
-                'Website kaise banaye?':`🌐 <strong>Website Banane ka Step-by-Step Guide:</strong><br><br>
-                <strong>Step 1:</strong> HTML se structure banayein<br>
-                &lt;!DOCTYPE html&gt;<br>
-                &lt;html&gt;<br>
-                &nbsp;&nbsp;&lt;head&gt;&lt;title&gt;Meri Website&lt;/title&gt;&lt;/head&gt;<br>
-                &nbsp;&nbsp;&lt;body&gt;<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;Hello World!&lt;/h1&gt;<br>
-                &nbsp;&nbsp;&lt;/body&gt;<br>
-                &lt;/html&gt;<br><br>
-                <strong>Step 2:</strong> CSS se styling karein<br>
-                <strong>Step 3:</strong> JavaScript se interactive banayein<br><br>
-                💡 <em>Tip: VS Code editor use karein — free aur best hai!</em>`,
-                
-                'GitHub Pages pe kaise publish karein?':`📤 <strong>GitHub Pages pe Website Publish Karna:</strong><br><br>
-                <strong>Step 1:</strong> GitHub account banayein (github.com)<br>
-                <strong>Step 2:</strong> Naya repository banayein — naam rakhein: <code>yourusername.github.io</code><br>
-                <strong>Step 3:</strong> HTML, CSS, JS files upload karein<br>
-                <strong>Step 4:</strong> Settings → Pages → Source select karein (main branch)<br>
-                <strong>Step 5:</strong> 2-5 minute wait karein, fir <code>https://yourusername.github.io</code> pe visit karein!<br><br>
-                ✅ <strong>100% Free hosting!</strong> Koi paise nahi lagte!<br>
-                💡 <em>Custom domain bhi add kar sakte hain!</em>`,
-                
-                'HTML CSS JS kya hai?':`📝 <strong>Web Development ke 3 Pillars:</strong><br><br>
-                <strong>🔷 HTML (HyperText Markup Language)</strong><br>
-                → Website ka skeleton/structure<br>
-                → Headings, paragraphs, images, links<br><br>
-                <strong>🎨 CSS (Cascading Style Sheets)</strong><br>
-                → Website ka look & design<br>
-                → Colors, fonts, layout, animations<br><br>
-                <strong>⚡ JavaScript (JS)</strong><br>
-                → Website ka brain/behavior<br>
-                → Interactive features, animations, logic<br><br>
-                💡 <em>HTML = Body, CSS = Kapde, JS = Brain</em>`,
-                
-                'Free hosting kaise karein?':`🆓 <strong>Free Website Hosting Options:</strong><br><br>
-                <strong>1. GitHub Pages</strong> ⭐ (Best for static sites)<br>
-                → 100% Free, Custom domain support<br><br>
-                <strong>2. Netlify</strong><br>
-                → Drag & drop deploy, Free SSL<br><br>
-                <strong>3. Vercel</strong><br>
-                → React/Next.js ke liye best<br><br>
-                <strong>4. Firebase Hosting</strong><br>
-                → Google ka free hosting<br><br>
-                <strong>5. InfinityFree</strong><br>
-                → PHP/MySQL support ke saath<br><br>
-                💡 <em>Beginners ke liye GitHub Pages best hai!</em>`,
-                
-                'Responsive website kaise banaye?':`📱 <strong>Responsive Website Banana:</strong><br><br>
-                <strong>CSS Media Queries use karein:</strong><br><br>
-                <code>@media (max-width: 768px) {</code><br>
-                <code>&nbsp;&nbsp;.container { width: 100%; }</code><br>
-                <code>&nbsp;&nbsp;.menu { display: none; }</code><br>
-                <code>}</code><br><br>
-                <strong>Key Tips:</strong><br>
-                • <code>viewport</code> meta tag lagayein<br>
-                • Flexible grids use karein (%, flex, grid)<br>
-                • Mobile-first approach<br>
-                • Images ko <code>max-width: 100%</code> karein<br><br>
-                💡 <em>Frameworks: Bootstrap, Tailwind CSS</em>`,
-                
-                'Domain name kaise kharide?':`🌐 <strong>Domain Name Kharidna:</strong><br><br>
-                <strong>Popular Domain Registrars:</strong><br><br>
-                <strong>1. Namecheap</strong> ⭐ (Best prices)<br>
-                → .com ~ ₹800-1000/year<br><br>
-                <strong>2. GoDaddy</strong><br>
-                → First year cheap, renewal mehnga<br><br>
-                <strong>3. Google Domains</strong><br>
-                → Simple, reliable<br><br>
-                <strong>4. Hostinger</strong><br>
-                → Domain + Hosting combo<br><br>
-                <strong>Free Alternative:</strong><br>
-                • Freenom (.tk, .ml free)<br>
-                • GitHub Pages subdomain free<br><br>
-                💡 <em>Pehle free subdomain try karein!</em>`
-            },
-            app:{
-                'Android app kaise banaye?':`📱 <strong>Android App Banane ka Guide:</strong><br><br>
-                <strong>Option 1: Android Studio + Kotlin</strong><br>
-                • Official Google tool<br>
-                • Kotlin language (Java se better)<br>
-                • XML se UI design<br><br>
-                <strong>Option 2: Flutter</strong><br>
-                • Google ka framework<br>
-                • Dart language<br>
-                • Android + iOS dono ke liye<br><br>
-                <strong>Option 3: React Native</strong><br>
-                • JavaScript se app banayein<br>
-                • Cross-platform<br><br>
-                💡 <em>Beginners ke liye Flutter ya React Native best hai!</em>`,
-                
-                'Play Store pe kaise publish karein?':`🎮 <strong>Play Store pe App Publish Karna:</strong><br><br>
-                <strong>Step 1:</strong> Google Play Console account banayein<br>
-                → ₹1,800 one-time fee (lifetime)<br><br>
-                <strong>Step 2:</strong> App ka APK/AAB file banayein<br>
-                → Android Studio → Build → Generate Signed Bundle<br><br>
-                <strong>Step 3:</strong> Play Console mein app create karein<br>
-                → App name, description, screenshots<br><br>
-                <strong>Step 4:</strong> Content rating & privacy policy<br><br>
-                <strong>Step 5:</strong> Review ke liye submit karein<br>
-                → 1-7 din mein approve ho jayega<br><br>
-                💡 <em>Pehle Internal Testing se shuru karein!</em>`,
-                
-                'Kotlin vs Flutter kya hai?':`⚡ <strong>Kotlin vs Flutter Comparison:</strong><br><br>
-                <strong>🔷 Kotlin (Native Android)</strong><br>
-                • Android ke liye official language<br>
-                • Best performance<br>
-                • Sirf Android ke liye<br>
-                • Android Studio mein code<br><br>
-                <strong>🎨 Flutter (Cross-Platform)</strong><br>
-                • Google ka UI toolkit<br>
-                • Dart language<br>
-                • Android + iOS + Web + Desktop<br>
-                • Fast development (Hot Reload)<br><br>
-                <strong>Kya Choose Karein?</strong><br>
-                • Sirf Android? → Kotlin<br>
-                • Android + iOS? → Flutter<br>
-                • Fast development? → Flutter<br><br>
-                💡 <em>Beginners ke liye Flutter recommended hai!</em>`,
-                
-                'Free mein app kaise banaye?':`🆓 <strong>Free App Development:</strong><br><br>
-                <strong>Free Tools:</strong><br><br>
-                <strong>1. Android Studio</strong> — Free IDE<br>
-                <strong>2. Flutter SDK</strong> — Free framework<br>
-                <strong>3. VS Code</strong> — Free code editor<br>
-                <strong>4. Firebase</strong> — Free backend (limited)<br><br>
-                <strong>Free Learning:</strong><br>
-                • YouTube tutorials<br>
-                • Official documentation<br>
-                • GitHub open source projects<br><br>
-                <strong>Free Testing:</strong><br>
-                • Android Emulator<br>
-                • Apne phone pe install karke test karein<br><br>
-                💡 <em>Play Store publish ke liye ₹1,800 fee hai, baki sab free!</em>`,
-                
-                'APK file kaise banaye?':`📦 <strong>APK File Banana:</strong><br><br>
-                <strong>Android Studio se:</strong><br><br>
-                <strong>Step 1:</strong> Build → Generate Signed Bundle / APK<br>
-                <strong>Step 2:</strong> Create new keystore (ya existing use karein)<br>
-                <strong>Step 3:</strong> Key alias & password set karein<br>
-                <strong>Step 4:</strong> Release ya Debug select karein<br>
-                <strong>Step 5:</strong> Finish → APK ready!<br><br>
-                <strong>APK Location:</strong><br>
-                <code>app/release/app-release.apk</code><br><br>
-                <strong>APK Install:</strong><br>
-                • Phone mein USB se transfer karein<br>
-                • Ya email/WhatsApp se bhejein<br>
-                • "Unknown sources" enable karein<br><br>
-                💡 <em>Debug APK testing ke liye, Release APK publish ke liye!</em>`,
-                
-                'App UI design kaise karein?':`🎨 <strong>App UI Design Karna:</strong><br><br>
-                <strong>Design Principles:</strong><br><br>
-                <strong>1. Material Design</strong> (Google)<br>
-                • Cards, shadows, animations<br>
-                • Consistent colors & fonts<br><br>
-                <strong>2. Figma se Design</strong><br>
-                • Free design tool<br>
-                • Prototype banayein<br>
-                • Code mein implement karein<br><br>
-                <strong>3. XML Layout (Android)</strong><br>
-                <code>&lt;LinearLayout&gt;</code><br>
-                <code>&lt;ConstraintLayout&gt;</code><br>
-                <code>&lt;RecyclerView&gt;</code><br><br>
-                <strong>4. Flutter Widgets</strong><br>
-                <code>Scaffold, AppBar, Container, ListView</code><br><br>
-                💡 <em>Pehle Figma mein design karein, fir code karein!</em>`
-            }
-        };
-        
-        const aiDefaultResponses={
-            web:`🌐 <strong>Web Development Help:</strong><br><br>
-            Main aapki web development mein madad kar sakta hoon!<br><br>
-            <strong>Main topics:</strong><br>
-            • HTML, CSS, JavaScript<br>
-            • Responsive Design<br>
-            • GitHub Pages Hosting<br>
-            • Free Domain & Hosting<br>
-            • Website Publish Karna<br><br>
-            💡 <em>Neeche ke buttons se quick questions pooch sakte hain!</em>`,
-            
-            app:`📱 <strong>App Development Help:</strong><br><br>
-            Main aapki app development mein madad kar sakta hoon!<br><br>
-            <strong>Main topics:</strong><br>
-            • Android App Development<br>
-            • Flutter & React Native<br>
-            • Play Store Publish<br>
-            • APK Banana<br>
-            • UI/UX Design<br><br>
-            💡 <em>Neeche ke buttons se quick questions pooch sakte hain!</em>`
-        };
+        let chatHistory = { web: [], app: [] };
         
         function openAIChat(type){
             currentAIType=type;
@@ -1132,81 +898,130 @@ fn main() {
             currentAIType='';
         }
         
-        function sendAIQuestion(type,question){
-            const inputId=type+'ChatInput';
-            const bodyId=type+'ChatBody';
-            const inputEl=document.getElementById(inputId);
-            const bodyEl=document.getElementById(bodyId);
+        function formatAIResponse(text) {
+            // Convert markdown code blocks to styled HTML
+            text = text.replace(/```(\w+)?\n([\s\S]*?)```/g, '<div class="ai-code-block"><pre>$2</pre></div>');
+            text = text.replace(/`([^`]+)`/g, '<code style="background:rgba(255,255,255,0.1);padding:0.2rem 0.4rem;border-radius:4px;font-family:monospace;">$1</code>');
+            // Convert newlines to <br>
+            text = text.replace(/\n/g, '<br>');
+            // Bold
+            text = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+            return text;
+        }
+        
+        async function sendAIQuestion(type, question){
+            const inputId = type + 'ChatInput';
+            const bodyId = type + 'ChatBody';
+            const sendBtnId = type + 'SendBtn';
+            const inputEl = document.getElementById(inputId);
+            const bodyEl = document.getElementById(bodyId);
+            const sendBtn = document.getElementById(sendBtnId);
             
-            let q=question||inputEl.value.trim();
+            let q = question || inputEl.value.trim();
             if(!q) return;
             
-            if(!question) inputEl.value='';
+            if(!question) inputEl.value = '';
             
-            const userMsg=document.createElement('div');
-            userMsg.className='ai-message user';
-            userMsg.innerHTML=`<div class="ai-message-avatar">👤</div><div class="ai-message-bubble">${q}</div>`;
+            // Add user message
+            const userMsg = document.createElement('div');
+            userMsg.className = 'ai-message user';
+            userMsg.innerHTML = `<div class="ai-message-avatar">👤</div><div class="ai-message-bubble">${q}</div>`;
             bodyEl.appendChild(userMsg);
-            bodyEl.scrollTop=bodyEl.scrollHeight;
+            bodyEl.scrollTop = bodyEl.scrollHeight;
             
-            const typingId='typing-'+Date.now();
-            const typingMsg=document.createElement('div');
-            typingMsg.className='ai-message ai';
-            typingMsg.id=typingId;
-            typingMsg.innerHTML=`<div class="ai-message-avatar" style="background:rgba(99,102,241,0.2);border-color:var(--primary)">🤖</div><div class="ai-message-bubble"><div class="ai-typing"><div class="ai-typing-dot"></div><div class="ai-typing-dot"></div><div class="ai-typing-dot"></div></div></div>`;
+            // Disable send button
+            sendBtn.disabled = true;
+            sendBtn.textContent = '⏳';
+            
+            // Show typing
+            const typingId = 'typing-' + Date.now();
+            const typingMsg = document.createElement('div');
+            typingMsg.className = 'ai-message ai';
+            typingMsg.id = typingId;
+            typingMsg.innerHTML = `<div class="ai-message-avatar" style="background:rgba(99,102,241,0.2);border-color:var(--primary)">🤖</div><div class="ai-message-bubble"><div class="ai-typing"><div class="ai-typing-dot"></div><div class="ai-typing-dot"></div><div class="ai-typing-dot"></div></div></div>`;
             bodyEl.appendChild(typingMsg);
-            bodyEl.scrollTop=bodyEl.scrollHeight;
+            bodyEl.scrollTop = bodyEl.scrollHeight;
             
-            setTimeout(()=>{
+            try {
+                // Build conversation history
+                const history = chatHistory[type].map(h => ({
+                    role: h.role === 'user' ? 'user' : 'model',
+                    parts: [{ text: h.text }]
+                }));
+                
+                const payload = {
+                    contents: [
+                        {
+                            role: 'user',
+                            parts: [{ text: SYSTEM_PROMPTS[type] + "\\n\\nUser question: " + q }]
+                        }
+                    ],
+                    generationConfig: {
+                        temperature: 0.7,
+                        maxOutputTokens: 2048,
+                        topP: 0.95
+                    }
+                };
+                
+                // Add history if exists
+                if(history.length > 0) {
+                    payload.contents = history.concat(payload.contents);
+                }
+                
+                const response = await fetch(GEMINI_API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                
                 document.getElementById(typingId).remove();
                 
-                let response=aiDefaultResponses[type];
-                const responses=aiResponses[type];
-                
-                for(let key in responses){
-                    if(q.toLowerCase().includes(key.toLowerCase().replace(/[?]/g,'').trim()) || key.toLowerCase().includes(q.toLowerCase().replace(/[?]/g,'').trim())){
-                        response=responses[key];
-                        break;
-                    }
+                if(!response.ok){
+                    throw new Error('API Error: ' + response.status);
                 }
                 
-                const lowerQ=q.toLowerCase();
-                if(type==='web'){
-                    if(lowerQ.includes('host')||lowerQ.includes('publish')||lowerQ.includes('live')||lowerQ.includes('upload')){
-                        response=responses['GitHub Pages pe kaise publish karein?']||response;
-                    } else if(lowerQ.includes('html')||lowerQ.includes('css')||lowerQ.includes('js')||lowerQ.includes('javascript')){
-                        response=responses['HTML CSS JS kya hai?']||response;
-                    } else if(lowerQ.includes('domain')||lowerQ.includes('name')){
-                        response=responses['Domain name kaise kharide?']||response;
-                    } else if(lowerQ.includes('responsive')||lowerQ.includes('mobile')){
-                        response=responses['Responsive website kaise banaye?']||response;
-                    } else if(lowerQ.includes('free')||lowerQ.includes('hosting')){
-                        response=responses['Free hosting kaise karein?']||response;
-                    } else if(lowerQ.includes('website')||lowerQ.includes('banaye')||lowerQ.includes('start')){
-                        response=responses['Website kaise banaye?']||response;
-                    }
+                const data = await response.json();
+                
+                if(data.error){
+                    throw new Error(data.error.message || 'Unknown API error');
+                }
+                
+                let aiText = '';
+                if(data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts){
+                    aiText = data.candidates[0].content.parts[0].text || 'Sorry, main samajh nahi paya. Dobara poochiye!';
                 } else {
-                    if(lowerQ.includes('play store')||lowerQ.includes('publish')||lowerQ.includes('upload')){
-                        response=responses['Play Store pe kaise publish karein?']||response;
-                    } else if(lowerQ.includes('kotlin')||lowerQ.includes('flutter')){
-                        response=responses['Kotlin vs Flutter kya hai?']||response;
-                    } else if(lowerQ.includes('apk')){
-                        response=responses['APK file kaise banaye?']||response;
-                    } else if(lowerQ.includes('ui')||lowerQ.includes('design')){
-                        response=responses['App UI design kaise karein?']||response;
-                    } else if(lowerQ.includes('free')){
-                        response=responses['Free mein app kaise banaye?']||response;
-                    } else if(lowerQ.includes('android')||lowerQ.includes('app')||lowerQ.includes('banaye')){
-                        response=responses['Android app kaise banaye?']||response;
-                    }
+                    aiText = 'Sorry, response mein kuch issue hai. Dobara try karein!';
                 }
                 
-                const aiMsg=document.createElement('div');
-                aiMsg.className='ai-message ai';
-                aiMsg.innerHTML=`<div class="ai-message-avatar" style="background:rgba(99,102,241,0.2);border-color:var(--primary)">🤖</div><div class="ai-message-bubble">${response}</div>`;
+                // Save to history
+                chatHistory[type].push({ role: 'user', text: q });
+                chatHistory[type].push({ role: 'model', text: aiText });
+                
+                // Limit history to last 10 messages
+                if(chatHistory[type].length > 10) {
+                    chatHistory[type] = chatHistory[type].slice(-10);
+                }
+                
+                const aiMsg = document.createElement('div');
+                aiMsg.className = 'ai-message ai';
+                aiMsg.innerHTML = `<div class="ai-message-avatar" style="background:rgba(99,102,241,0.2);border-color:var(--primary)">🤖</div><div class="ai-message-bubble">${formatAIResponse(aiText)}</div>`;
                 bodyEl.appendChild(aiMsg);
-                bodyEl.scrollTop=bodyEl.scrollHeight;
-            },1200);
+                bodyEl.scrollTop = bodyEl.scrollHeight;
+                
+            } catch(error) {
+                document.getElementById(typingId).remove();
+                
+                const errorMsg = document.createElement('div');
+                errorMsg.className = 'ai-message ai';
+                errorMsg.innerHTML = `<div class="ai-message-avatar" style="background:rgba(239,68,68,0.2);border-color:#ef4444">⚠️</div><div class="ai-message-bubble"><div class="ai-error">❌ Error: ${error.message}<br><br>API temporarily unavailable. Please try again in a moment.</div></div>`;
+                bodyEl.appendChild(errorMsg);
+                bodyEl.scrollTop = bodyEl.scrollHeight;
+                
+                console.error('Gemini API Error:', error);
+            } finally {
+                sendBtn.disabled = false;
+                sendBtn.textContent = '➤ Send';
+            }
         }
     </script>
 </body>
