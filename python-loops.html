@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Loops Complete Guide - Akarshit Raj</title>
+    <meta name="description" content="For, While, Break, Continue, Else, Nested Loops, List Comprehension — sab kuch!">
+    <meta name="author" content="Akarshit Raj">
+    <link rel="canonical" href="https://akarshitrajx.github.io/python-loops.html">
+    <link rel="icon" type="image/png" href="file_000000004984720882e69f4dad44966a.png">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{--primary:#6366f1;--primary-dark:#4f46e5;--secondary:#ec4899;--accent:#06b6d4;--dark:#0f172a;--darker:#020617;--light:#f8fafc;--gray:#94a3b8;--card-bg:rgba(30,41,59,0.6);--glass:rgba(255,255,255,0.05);--success:#10b981;--error:#ef4444}
+        body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--darker);color:var(--light);min-height:100vh;line-height:1.6}
+        .bg{position:fixed;inset:0;z-index:-1;overflow:hidden}
+        .orb{position:absolute;border-radius:50%;filter:blur(100px);opacity:0.4;animation:float 15s infinite ease-in-out}
+        .orb:nth-child(1){width:400px;height:400px;background:#6366f1;top:-100px;left:-100px}
+        .orb:nth-child(2){width:300px;height:300px;background:#ec4899;right:-100px;bottom:-100px}
+        .orb:nth-child(3){width:250px;height:250px;background:#06b6d4;left:40%;top:30%}
+        @keyframes float{50%{transform:translateY(-40px)}}
+        nav{position:fixed;top:0;width:100%;padding:18px 5%;display:flex;justify-content:space-between;align-items:center;background:rgba(2,6,23,0.7);backdrop-filter:blur(20px);z-index:999}
+        .logo{font-size:1.8rem;font-weight:900;background:linear-gradient(135deg,#6366f1,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .nav-links{display:flex;gap:20px;list-style:none}
+        .nav-links a{text-decoration:none;color:#cbd5e1;font-weight:600;transition:0.3s}
+        .nav-links a:hover{color:white}
+        .container{max-width:900px;margin:0 auto;padding:120px 5% 60px}
+        .tutorial-header{text-align:center;margin-bottom:3rem}
+        .tutorial-header h1{font-size:2.5rem;font-weight:800;background:linear-gradient(135deg,var(--primary),var(--secondary));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:1rem}
+        .tutorial-header p{color:var(--gray);font-size:1.1rem}
+        .content{background:var(--card-bg);border-radius:24px;padding:3rem;border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(20px)}
+        .content h2{font-size:1.5rem;font-weight:700;margin:2rem 0 1rem;color:var(--primary)}
+        .content h3{font-size:1.2rem;font-weight:600;margin:1.5rem 0 0.75rem;color:var(--accent)}
+        .content p{color:var(--gray);margin-bottom:1rem}
+        .content ul{margin:1rem 0 1rem 1.5rem;color:var(--gray)}
+        .content li{margin-bottom:0.5rem}
+        .content strong{color:var(--light)}
+        .content code{background:rgba(255,255,255,0.1);padding:0.2rem 0.4rem;border-radius:4px;font-family:'Consolas','Monaco',monospace;font-size:0.9rem;color:#d4d4d4}
+        .code-block{background:#1e1e1e;border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:1.5rem;margin:1rem 0;font-family:'Consolas','Monaco',monospace;font-size:0.9rem;overflow-x:auto;color:#d4d4d4;line-height:1.6}
+        .code-block .comment{color:#6a9955}
+        .code-block .keyword{color:#569cd6}
+        .code-block .string{color:#ce9178}
+        .code-block .number{color:#b5cea8}
+        .code-block .function{color:#dcdcaa}
+        .back-btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.8rem 1.5rem;background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:white;border:none;border-radius:12px;font-weight:600;text-decoration:none;margin-bottom:2rem;transition:0.3s}
+        .back-btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(99,102,241,0.4)}
+        .next-prev{display:flex;justify-content:space-between;margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.1)}
+        .next-prev a{text-decoration:none;color:var(--primary);font-weight:600;display:flex;align-items:center;gap:0.5rem}
+        .next-prev a:hover{text-decoration:underline}
+        .tip{background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);border-radius:12px;padding:1rem;margin:1rem 0;color:var(--success)}
+        footer{text-align:center;padding:3rem 5%;border-top:1px solid rgba(255,255,255,0.05);margin-top:3rem;color:var(--gray)}
+        @media(max-width:768px){.container{padding:100px 5% 40px}.content{padding:1.5rem}.tutorial-header h1{font-size:1.8rem}}
+    </style>
+</head>
+<body>
+    <div class="bg"><div class="orb"></div><div class="orb"></div><div class="orb"></div></div>
+    <nav>
+        <div class="logo">AK.R</div>
+        <ul class="nav-links">
+            <li><a href="index.html">🏠 Home</a></li>
+            <li><a href="tutorials.html">📚 Tutorials</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <a href="tutorials.html" class="back-btn">← Back to Tutorials</a>
+        <div class="tutorial-header">
+            <h1>Python Loops Complete Guide</h1>
+            <p>For, While, Break, Continue, Else, Nested Loops, List Comprehension — sab kuch!</p>
+        </div>
+        <div class="content">
+            <h2>🔄 Python Loops Kya Hain?</h2>
+            <p>Loops se aap ek hi kaam baar-baar bina code likhe kar sakte hain. Python mein 2 types ke loops hain: <code>for</code> aur <code>while</code>.</p>
+            
+            <h2>1️⃣ For Loop</h2>
+            <p>Sequence (list, string, range) ke har item par kaam karne ke liye:</p>
+            <div class="code-block">
+<span class="comment"># For loop with list</span>
+fruits = [<span class="string">"Apple"</span>, <span class="string">"Banana"</span>, <span class="string">"Mango"</span>]
+
+<span class="keyword">for</span> fruit <span class="keyword">in</span> fruits:
+    <span class="function">print</span>(fruit)
+
+<span class="comment"># Output:</span>
+<span class="comment"># Apple</span>
+<span class="comment"># Banana</span>
+<span class="comment"># Mango</span>
+            </div>
+
+            <h2>2️⃣ For Loop with range()</h2>
+            <div class="code-block">
+<span class="comment"># range() function</span>
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="function">range</span>(<<span class="number">5</span>):
+    <span class="function">print</span>(i)  <span class="comment"># Output: 0, 1, 2, 3, 4</span>
+
+<span class="comment"># range(start, stop)</span>
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="function">range</span>(<<span class="number">1</span>, <span class="number">6</span>):
+    <span class="function">print</span>(i)  <span class="comment"># Output: 1, 2, 3, 4, 5</span>
+
+<span class="comment"># range(start, stop, step)</span>
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="function">range</span>(<<span class="number">0</span>, <span class="number">10</span>, <span class="number">2</span>):
+    <span class="function">print</span>(i)  <span class="comment"># Output: 0, 2, 4, 6, 8</span>
+            </div>
+
+            <h2>3️⃣ While Loop</h2>
+            <p>Jab tak condition true hai, tab tak loop chalta hai:</p>
+            <div class="code-block">
+<span class="comment"># While loop</span>
+count = <span class="number">1</span>
+
+<span class="keyword">while</span> count <= <span class="number">5</span>:
+    <span class="function">print</span>(<<span class="string">f"Count: {count}"</span>)
+    count += <span class="number">1</span>
+
+<span class="comment"># Output:</span>
+<span class="comment"># Count: 1</span>
+<span class="comment"># Count: 2</span>
+<span class="comment"># Count: 3</span>
+<span class="comment"># Count: 4</span>
+<span class="comment"># Count: 5</span>
+            </div>
+
+            <h2>4️⃣ Break Statement</h2>
+            <p>Loop ko beech mein hi rokne ke liye:</p>
+            <div class="code-block">
+<span class="comment"># Break</span>
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="function">range</span>(<<span class="number">1</span>, <span class="number">10</span>):
+    <span class="keyword">if</span> i == <span class="number">5</span>:
+        <span class="keyword">break</span>  <span class="comment"># Loop yahin ruk jayega</span>
+    <span class="function">print</span>(i)
+
+<span class="comment"># Output: 1, 2, 3, 4</span>
+            </div>
+
+            <h2>5️⃣ Continue Statement</h2>
+            <p>Current iteration skip karne ke liye:</p>
+            <div class="code-block">
+<span class="comment"># Continue</span>
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="function">range</span>(<<span class="number">1</span>, <span class="number">6</span>):
+    <span class="keyword">if</span> i == <span class="number">3</span>:
+        <span class="keyword">continue</span>  <span class="comment"># 3 skip ho jayega</span>
+    <span class="function">print</span>(i)
+
+<span class="comment"># Output: 1, 2, 4, 5</span>
+            </div>
+
+            <h2>6️⃣ Else with Loop</h2>
+            <p>Loop complete hone ke baad chalta hai (agar break nahi hua):</p>
+            <div class="code-block">
+<span class="comment"># Else with for loop</span>
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="function">range</span>(<<span class="number">5</span>):
+    <span class="function">print</span>(i)
+<span class="keyword">else</span>:
+    <span class="function">print</span>(<<span class="string">"Loop complete!"</span>)
+
+<span class="comment"># Output: 0, 1, 2, 3, 4, Loop complete!</span>
+            </div>
+
+            <h2>7️⃣ Nested Loops</h2>
+            <p>Loop ke andar loop:</p>
+            <div class="code-block">
+<span class="comment"># Nested loops - Pattern printing</span>
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="function">range</span>(<<span class="number">1</span>, <span class="number">6</span>):
+    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="function">range</span>(i):
+        <span class="function">print</span>(<<span class="string">"*"</span>, end=<span class="string">" "</span>)
+    <span class="function">print</span>()  <span class="comment"># New line</span>
+
+<span class="comment"># Output:</span>
+<span class="comment"># *</span>
+<span class="comment"># * *</span>
+<span class="comment"># * * *</span>
+<span class="comment"># * * * *</span>
+<span class="comment"># * * * * *</span>
+            </div>
+
+            <h2>8️⃣ List Comprehension (One-line Loop)</h2>
+            <div class="code-block">
+<span class="comment"># List Comprehension</span>
+numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]
+
+<span class="comment"># Squares</span>
+squares = [x**<<span class="number">2</span> <span class="keyword">for</span> x <span class="keyword">in</span> numbers]
+<span class="function">print</span>(squares)  <span class="comment"># [1, 4, 9, 16, 25]</span>
+
+<span class="comment"># With condition</span>
+evens = [x <span class="keyword">for</span> x <span class="keyword">in</span> <span class="function">range</span>(<<span class="number">20</span>) <span class="keyword">if</span> x % <span class="number">2</span> == <span class="number">0</span>]
+<span class="function">print</span>(evens)  <span class="comment"># [0, 2, 4, 6, 8, 10, 12, 14, 16, 18]</span>
+            </div>
+
+            <div class="tip">
+                💡 <strong>Yaad Rakhein:</strong> <code>for</code> loop jab items ki list pe kaam karna ho, <code>while</code> loop jab condition based kaam karna ho. <code>break</code> loop rokne ke liye, <code>continue</code> skip karne ke liye!
+            </div>
+        </div>
+        <div class="next-prev">
+            <a href="python-ifelse.html">← Previous: If-Else</a>
+            <a href="python-functions.html">Next: Functions →</a>
+        </div>
+    </div>
+    <footer>
+        <p>© 2026 Akarshit Raj | PM SHRI JNV Khairabad, Sitapur</p>
+        <p style="margin-top:0.5rem;font-size:0.85rem;">Learn programming for free 🎓</p>
+    </footer>
+</body>
+</html>
