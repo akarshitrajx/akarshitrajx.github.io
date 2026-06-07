@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python If-Else Complete Guide - Akarshit Raj</title>
+    <meta name="description" content="If, Elif, Else, Nested If, Ternary Operator — conditions master karein!">
+    <meta name="author" content="Akarshit Raj">
+    <link rel="canonical" href="https://akarshitrajx.github.io/python-ifelse.html">
+    <link rel="icon" type="image/png" href="file_000000004984720882e69f4dad44966a.png">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{--primary:#6366f1;--primary-dark:#4f46e5;--secondary:#ec4899;--accent:#06b6d4;--dark:#0f172a;--darker:#020617;--light:#f8fafc;--gray:#94a3b8;--card-bg:rgba(30,41,59,0.6);--glass:rgba(255,255,255,0.05);--success:#10b981;--error:#ef4444}
+        body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--darker);color:var(--light);min-height:100vh;line-height:1.6}
+        .bg{position:fixed;inset:0;z-index:-1;overflow:hidden}
+        .orb{position:absolute;border-radius:50%;filter:blur(100px);opacity:0.4;animation:float 15s infinite ease-in-out}
+        .orb:nth-child(1){width:400px;height:400px;background:#6366f1;top:-100px;left:-100px}
+        .orb:nth-child(2){width:300px;height:300px;background:#ec4899;right:-100px;bottom:-100px}
+        .orb:nth-child(3){width:250px;height:250px;background:#06b6d4;left:40%;top:30%}
+        @keyframes float{50%{transform:translateY(-40px)}}
+        nav{position:fixed;top:0;width:100%;padding:18px 5%;display:flex;justify-content:space-between;align-items:center;background:rgba(2,6,23,0.7);backdrop-filter:blur(20px);z-index:999}
+        .logo{font-size:1.8rem;font-weight:900;background:linear-gradient(135deg,#6366f1,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .nav-links{display:flex;gap:20px;list-style:none}
+        .nav-links a{text-decoration:none;color:#cbd5e1;font-weight:600;transition:0.3s}
+        .nav-links a:hover{color:white}
+        .container{max-width:900px;margin:0 auto;padding:120px 5% 60px}
+        .tutorial-header{text-align:center;margin-bottom:3rem}
+        .tutorial-header h1{font-size:2.5rem;font-weight:800;background:linear-gradient(135deg,var(--primary),var(--secondary));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:1rem}
+        .tutorial-header p{color:var(--gray);font-size:1.1rem}
+        .content{background:var(--card-bg);border-radius:24px;padding:3rem;border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(20px)}
+        .content h2{font-size:1.5rem;font-weight:700;margin:2rem 0 1rem;color:var(--primary)}
+        .content h3{font-size:1.2rem;font-weight:600;margin:1.5rem 0 0.75rem;color:var(--accent)}
+        .content p{color:var(--gray);margin-bottom:1rem}
+        .content ul{margin:1rem 0 1rem 1.5rem;color:var(--gray)}
+        .content li{margin-bottom:0.5rem}
+        .content strong{color:var(--light)}
+        .content code{background:rgba(255,255,255,0.1);padding:0.2rem 0.4rem;border-radius:4px;font-family:'Consolas','Monaco',monospace;font-size:0.9rem;color:#d4d4d4}
+        .code-block{background:#1e1e1e;border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:1.5rem;margin:1rem 0;font-family:'Consolas','Monaco',monospace;font-size:0.9rem;overflow-x:auto;color:#d4d4d4;line-height:1.6}
+        .code-block .comment{color:#6a9955}
+        .code-block .keyword{color:#569cd6}
+        .code-block .string{color:#ce9178}
+        .code-block .number{color:#b5cea8}
+        .code-block .function{color:#dcdcaa}
+        .back-btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.8rem 1.5rem;background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:white;border:none;border-radius:12px;font-weight:600;text-decoration:none;margin-bottom:2rem;transition:0.3s}
+        .back-btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(99,102,241,0.4)}
+        .next-prev{display:flex;justify-content:space-between;margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.1)}
+        .next-prev a{text-decoration:none;color:var(--primary);font-weight:600;display:flex;align-items:center;gap:0.5rem}
+        .next-prev a:hover{text-decoration:underline}
+        .tip{background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);border-radius:12px;padding:1rem;margin:1rem 0;color:var(--success)}
+        footer{text-align:center;padding:3rem 5%;border-top:1px solid rgba(255,255,255,0.05);margin-top:3rem;color:var(--gray)}
+        @media(max-width:768px){.container{padding:100px 5% 40px}.content{padding:1.5rem}.tutorial-header h1{font-size:1.8rem}}
+    </style>
+</head>
+<body>
+    <div class="bg"><div class="orb"></div><div class="orb"></div><div class="orb"></div></div>
+    <nav>
+        <div class="logo">AK.R</div>
+        <ul class="nav-links">
+            <li><a href="index.html">🏠 Home</a></li>
+            <li><a href="tutorials.html">📚 Tutorials</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <a href="tutorials.html" class="back-btn">← Back to Tutorials</a>
+        <div class="tutorial-header">
+            <h1>Python If-Else Complete Guide</h1>
+            <p>If, Elif, Else, Nested If, Ternary Operator — conditions master karein!</p>
+        </div>
+        <div class="content">
+            <h2>🔄 If-Else Statements Kya Hain?</h2>
+            <p>If-else se program decision le sakta hai. Agar kuch condition true hai toh ek kaam karo, nahi toh doosra kaam karo.</p>
+            
+            <h2>1️⃣ Basic If Statement</h2>
+            <div class="code-block">
+<span class="comment"># Basic if</span>
+age = <span class="number">18</span>
+
+<span class="keyword">if</span> age >= <span class="number">18</span>:
+    <span class="function">print</span>(<<span class="string">"Aap vote de sakte hain!"</span>)
+            </div>
+
+            <h2>2️⃣ If-Else Statement</h2>
+            <div class="code-block">
+<span class="comment"># If-Else</span>
+marks = <span class="number">75</span>
+
+<span class="keyword">if</span> marks >= <span class="number">40</span>:
+    <span class="function">print</span>(<<span class="string">"Pass! 🎉"</span>)
+<span class="keyword">else</span>:
+    <span class="function">print</span>(<<span class="string">"Fail. Dobara try karein."</span>)
+            </div>
+
+            <h2>3️⃣ If-Elif-Else (Multiple Conditions)</h2>
+            <div class="code-block">
+<span class="comment"># If-Elif-Else</span>
+marks = <span class="number">85</span>
+
+<span class="keyword">if</span> marks >= <span class="number">90</span>:
+    <span class="function">print</span>(<<span class="string">"Grade A+ 🏆"</span>)
+<span class="keyword">elif</span> marks >= <span class="number">80</span>:
+    <span class="function">print</span>(<<span class="string">"Grade A 👍"</span>)
+<span class="keyword">elif</span> marks >= <span class="number">70</span>:
+    <span class="function">print</span>(<<span class="string">"Grade B ✅"</span>)
+<span class="keyword">elif</span> marks >= <span class="number">60</span>:
+    <span class="function">print</span>(<<span class="string">"Grade C"</span>)
+<span class="keyword">else</span>:
+    <span class="function">print</span>(<<span class="string">"Grade D - Improvement needed"</span>)
+            </div>
+
+            <h2>4️⃣ Nested If (If ke andar If)</h2>
+            <div class="code-block">
+<span class="comment"># Nested If</span>
+age = <span class="number">20</span>
+has_id = <span class="keyword">True</span>
+
+<span class="keyword">if</span> age >= <span class="number">18</span>:
+    <span class="keyword">if</span> has_id:
+        <span class="function">print</span>(<<span class="string">"Aap andar ja sakte hain!"</span>)
+    <span class="keyword">else</span>:
+        <span class="function">print</span>(<<span class="string">"ID card laiye!"</span>)
+<span class="keyword">else</span>:
+    <span class="function">print</span>(<<span class="string">"Aap chhote hain."</span>)
+            </div>
+
+            <h2>5️⃣ Ternary Operator (One-line If-Else)</h2>
+            <div class="code-block">
+<span class="comment"># Ternary Operator</span>
+age = <span class="number">17</span>
+status = <span class="string">"Adult"</span> <span class="keyword">if</span> age >= <span class="number">18</span> <span class="keyword">else</span> <span class="string">"Minor"</span>
+<span class="function">print</span>(status)  <span class="comment"># Output: Minor</span>
+
+<span class="comment"># Another example</span>
+marks = <span class="number">85</span>
+result = <span class="string">"Pass"</span> <span class="keyword">if</span> marks >= <span class="number">40</span> <span class="keyword">else</span> <span class="string">"Fail"</span>
+<span class="function">print</span>(result)  <span class="comment"># Output: Pass</span>
+            </div>
+
+            <h2>6️⃣ Logical Operators ke saath If</h2>
+            <div class="code-block">
+<span class="comment"># and, or, not with if</span>
+age = <span class="number">17</span>
+marks = <span class="number">85</span>
+
+<span class="keyword">if</span> age >= <span class="number">15</span> <span class="keyword">and</span> marks >= <span class="number">80</span>:
+    <span class="function">print</span>(<<span class="string">"Scholarship mil sakti hai! 🎓"</span>)
+
+<span class="keyword">if</span> age < <span class="number">18</span> <span class="keyword">or</span> marks > <span class="number">90</span>:
+    <span class="function">print</span>(<<span class="string">"Special category"</span>)
+
+<span class="keyword">if</span> <span class="keyword">not</span> (age < <span class="number">13</span>):
+    <span class="function">print</span>(<<span class="string">"Teenager ya adult hai"</span>)
+            </div>
+
+            <h2>7️⃣ Real Example: Calculator</h2>
+            <div class="code-block">
+<span class="comment"># Simple calculator using if-elif</span>
+a = <span class="number">10</span>
+b = <span class="number">5</span>
+operator = <span class="string">"+"</span>
+
+<span class="keyword">if</span> operator == <span class="string">"+"</span>:
+    result = a + b
+<span class="keyword">elif</span> operator == <span class="string">"-"</span>:
+    result = a - b
+<span class="keyword">elif</span> operator == <span class="string">"*"</span>:
+    result = a * b
+<span class="keyword">elif</span> operator == <span class="string">"/"</span>:
+    <span class="keyword">if</span> b != <span class="number">0</span>:
+        result = a / b
+    <span class="keyword">else</span>:
+        result = <span class="string">"Cannot divide by zero!"</span>
+<span class="keyword">else</span>:
+    result = <span class="string">"Invalid operator"</span>
+
+<span class="function">print</span>(<<span class="string">f"Result: {result}"</span>)
+            </div>
+
+            <div class="tip">
+                💡 <strong>Indentation Important:</strong> Python mein if-else ke andar wala code 4 spaces indent hona chahiye. Indentation galat hui toh error aayega!
+            </div>
+        </div>
+        <div class="next-prev">
+            <a href="python-operators.html">← Previous: Operators</a>
+            <a href="python-loops.html">Next: Loops →</a>
+        </div>
+    </div>
+    <footer>
+        <p>© 2026 Akarshit Raj | PM SHRI JNV Khairabad, Sitapur</p>
+        <p style="margin-top:0.5rem;font-size:0.85rem;">Learn programming for free 🎓</p>
+    </footer>
+</body>
+</html>
