@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Variables Kya Hain? - Akarshit Raj</title>
+    <link rel="icon" type="image/png" href="file_000000004984720882e69f4dad44966a.png">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{--primary:#6366f1;--primary-dark:#4f46e5;--secondary:#ec4899;--accent:#06b6d4;--dark:#0f172a;--darker:#020617;--light:#f8fafc;--gray:#94a3b8;--card-bg:rgba(30,41,59,0.6);--code-bg:#1e1e1e}
+        body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--darker);color:var(--light);min-height:100vh;line-height:1.6}
+        nav{position:fixed;top:0;width:100%;padding:1rem 5%;background:rgba(2,6,23,0.95);backdrop-filter:blur(20px);z-index:1000;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,0.08)}
+        .logo{font-size:1.6rem;font-weight:800;background:linear-gradient(135deg,var(--primary),var(--secondary));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .nav-links{display:flex;gap:2rem;list-style:none}
+        .nav-links a{color:var(--gray);text-decoration:none;font-weight:500;transition:all 0.3s}
+        .nav-links a:hover{color:var(--light)}
+        .mobile-menu-btn{display:none;background:none;border:none;color:var(--light);font-size:1.5rem;cursor:pointer}
+        .container{max-width:800px;margin:0 auto;padding:7rem 5% 3rem}
+        .post-header{text-align:center;margin-bottom:3rem;padding-bottom:2rem;border-bottom:1px solid rgba(255,255,255,0.08)}
+        .post-icon{font-size:4rem;margin-bottom:1rem}
+        .post-title{font-size:2.2rem;font-weight:800;margin-bottom:1rem}
+        .post-meta{display:flex;justify-content:center;gap:1.5rem;color:var(--gray);font-size:0.9rem;margin-bottom:1rem}
+        .post-tag{padding:0.35rem 1rem;border-radius:50px;font-size:0.85rem;font-weight:600;background:rgba(99,102,241,0.15);color:var(--primary)}
+        .content{font-size:1.1rem;line-height:1.9;color:var(--gray)}
+        .content h2{font-size:1.8rem;font-weight:700;color:var(--light);margin:2.5rem 0 1rem}
+        .content h3{font-size:1.4rem;font-weight:600;color:var(--light);margin:2rem 0 1rem}
+        .content p{margin-bottom:1.5rem}
+        .content strong{color:var(--light)}
+        .code-block{background:var(--code-bg);border-radius:12px;padding:1.5rem;margin:1.5rem 0;overflow-x:auto;border:1px solid rgba(255,255,255,0.1)}
+        .code-block pre{margin:0;font-family:'Consolas','Monaco',monospace;font-size:0.95rem;color:#d4d4d4;line-height:1.6}
+        .code-block .comment{color:#6a9955}
+        .code-block .keyword{color:#569cd6}
+        .code-block .string{color:#ce9178}
+        .code-block .function{color:#dcdcaa}
+        .tip-box{background:rgba(16,185,129,0.1);border-left:4px solid var(--success);padding:1.25rem;border-radius:0 12px 12px 0;margin:1.5rem 0}
+        .tip-box strong{color:var(--success);display:block;margin-bottom:0.5rem}
+        .back-btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.8rem 1.5rem;background:var(--glass);color:var(--light);text-decoration:none;border-radius:12px;font-weight:600;margin-bottom:2rem;transition:all 0.3s;border:1px solid rgba(255,255,255,0.1)}
+        .back-btn:hover{background:rgba(255,255,255,0.1)}
+        footer{text-align:center;padding:3rem 5%;border-top:1px solid rgba(255,255,255,0.05);margin-top:3rem}
+        .footer-logo{font-size:1.5rem;font-weight:800;background:linear-gradient(135deg,var(--primary),var(--secondary));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:1rem}
+        .footer-text{color:var(--gray);font-size:0.9rem}
+        @media(max-width:768px){.mobile-menu-btn{display:block}.nav-links{display:none}.post-title{font-size:1.7rem}.container{padding:6rem 5% 2rem}}
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">AK.R</div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#courses">Courses</a></li>
+            <li><a href="tutorials.html">Tutorials</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        <button class="mobile-menu-btn" onclick="document.getElementById('navLinks').classList.toggle('active')">☰</button>
+    </nav>
+
+    <div class="container">
+        <a href="tutorials.html" class="back-btn">← Back to Tutorials</a>
+
+        <div class="post-header">
+            <div class="post-icon">🐍</div>
+            <h1 class="post-title">Python Variables Kya Hain?</h1>
+            <div class="post-meta">
+                <span class="post-tag">Python</span>
+                <span>📅 June 6, 2026</span>
+                <span>⏱ 8 min read</span>
+            </div>
+        </div>
+
+        <div class="content">
+            <p><strong>Variables programming ka sabse important aur basic concept hai.</strong> Bina variables ke koi bhi program complete nahi ho sakta. Aaj hum Python mein variables ko detail mein samjhenge — ye kya hain, kaise kaam karte hain, aur inhe kaise use karte hain.</p>
+
+            <h2>🔷 Variable Kya Hai?</h2>
+            <p>Simple words mein, <strong>variable ek container hai jismein aap data store kar sakte hain.</strong> Jaise aap ek dabbe mein kuch rakh ke uska naam likh dete hain, waise hi variable ek memory location ka naam hai jismein aap values store karte hain. Python mein variables dynamically typed hote hain, matlab aapko batane ki zarurat nahi ki ismein number hoga ya text — Python khud samajh jata hai!</p>
+
+            <p>Example ke taur par, agar aapko kisi ka naam ya age store karni hai, toh aap ek variable bana ke usmein value rakh sakte hain. Ye value baad mein change bhi ho sakti hai, isliye iska naam "variable" hai — matlab jo badal sakta hai.</p>
+
+            <h2>📝 Variables Kaise Banayein?</h2>
+            <p>Python mein variable banane ke liye koi special keyword nahi chahiye. Bas naam likhiye, equal sign lagaiye, aur value de dijiye. Itna simple!</p>
+
+            <div class="code-block">
+                <pre><span class="comment"># String variable</span>
+name = <span class="string">"Akarshit"</span>
+
+<span class="comment"># Integer variable</span>
+age = <span class="string">17</span>
+
+<span class="comment"># Float variable</span>
+height = <span class="string">5.8</span>
+
+<span class="comment"># Boolean variable</span>
+is_student = <span class="keyword">True</span>
+
+<span class="function">print</span>(name)
+<span class="function">print</span>(age)
+<span class="function">print</span>(height)
+<span class="function">print</span>(is_student)</pre>
+            </div>
+
+            <h2>🔢 Python Ke Data Types</h2>
+            <p>Python mein alag-alag types ke variables hote hain. Har type ka apna use hota hai:</p>
+
+            <p><strong>1. int (Integer):</strong> Ye whole numbers ke liye hota hai jaise 10, 25, 1000, -5. Jab aap counting, age, ya koi bhi number bina decimal ke store karna chahte hain, tab int use hota hai.</p>
+
+            <p><strong>2. float (Floating Point):</strong> Ye decimal numbers ke liye hota hai jaise 5.8, 3.14, 99.99. Jab precise value chahiye ho jaise height, weight, ya percentage, tab float use karte hain.</p>
+
+            <p><strong>3. str (String):</strong> Ye text ke liye hota hai. Single quotes ya double quotes ke andar likha jata hai. Naam, address, email — sab string mein store hote hain.</p>
+
+            <p><strong>4. bool (Boolean):</strong> Ye sirf do values le sakta hai — True ya False. Conditions check karne mein, if-else statements mein ye bahut kaam aata hai.</p>
+
+            <p><strong>5. list, tuple, dict:</strong> Ye advanced data types hain jo multiple values ek saath store karne ke liye use hote hain. Inke baare mein hum agli tutorial mein detail mein padhenge.</p>
+
+            <div class="code-block">
+                <pre><span class="comment"># Different data types</span>
+name = <span class="string">"Akarshit"</span>           <span class="comment"># str</span>
+age = <span class="string">17</span>                  <span class="comment"># int</span>
+marks = <span class="string">89.5</span>              <span class="comment"># float</span>
+passed = <span class="keyword">True</span>              <span class="comment"># bool</span>
+
+<span class="function">print</span>(<<span class="function">type</span>(name))       <span class="comment"># &lt;class 'str'&gt;</span>
+<span class="function">print</span>(<<span class="function">type</span>(age))        <span class="comment"># &lt;class 'int'&gt;</span>
+<span class="function">print</span>(<<span class="function">type</span>(marks))      <span class="comment"># &lt;class 'float'&gt;</span>
+<span class="function">print</span>(<<span class="function">type</span>(passed))     <span class="comment"># &lt;class 'bool'&gt;</span></pre>
+            </div>
+
+            <h2>✏️ Variable Ki Value Kaise Change Karein?</h2>
+            <p>Variables ka sabse bada fayda ye hai ki inki value baad mein change ki ja sakti hai. Aap ek hi variable ko baar-baar alag-alag values assign kar sakte hain.</p>
+
+            <div class="code-block">
+                <pre>score = <span class="string">50</span>
+<span class="function">print</span>(<<span class="string">"Pehla score:"</span>, score)    <span class="comment"># 50</span>
+
+score = <span class="string">75</span>
+<span class="function">print</span>(<<span class="string">"Naya score:"</span>, score)      <span class="comment"># 75</span>
+
+score = score + <span class="string">10</span>
+<span class="function">print</span>(<<span class="string">"Final score:"</span>, score)    <span class="comment"># 85</span></pre>
+            </div>
+
+            <h2>⚠️ Variable Naming Rules</h2>
+            <p>Python mein variables ke naam rakhne ke kuch rules hain jo aapko follow karne hain:</p>
+
+            <p>• Variable ka naam letter (a-z, A-Z) ya underscore (_) se shuru hona chahiye. Number se nahi.</p>
+            <p>• Naam mein sirf letters, numbers, aur underscores hi allowed hain. Spaces nahi!</p>
+            <p>• Python case-sensitive hai, matlab <code>Name</code> aur <code>name</code> alag variables hain.</p>
+            <p>• Reserved keywords jaise <code>if</code>, <code>for</code>, <code>class</code>, <code>True</code> ko variable naam nahi bana sakte.</p>
+
+            <div class="code-block">
+                <pre><span class="comment"># Sahi naam</span>
+my_name = <span class="string">"Akarshit"</span>
+_age = <span class="string">17</span>
+student1 = <span class="string">"Rahul"</span>
+
+<span class="comment"># Galat naam — ye error dega!</span>
+<span class="comment"># 1student = "Rahul"    # Number se start</span>
+<span class="comment"># my-name = "Akarshit"  # Hyphen allowed nahi</span>
+<span class="comment"># class = "Python"      # Reserved keyword</span></pre>
+            </div>
+
+            <div class="tip-box">
+                <strong>💡 Pro Tip:</strong>
+                Hamesha meaningful naam use karein! <code>x</code> ya <code>a</code> ke bajaye <code>student_name</code> ya <code>total_marks</code> likhein. Isse code padhne mein aasani hoti hai aur baad mein samajhne mein bhi madad milti hai.
+            </div>
+
+            <h2>🎯 Multiple Variables Ek Saath Banana</h2>
+            <p>Python mein aap ek hi line mein multiple variables assign kar sakte hain. Ye code chhota aur clean dikhta hai.</p>
+
+            <div class="code-block">
+                <pre><span class="comment"># Ek line mein multiple variables</span>
+a, b, c = <span class="string">10</span>, <span class="string">20</span>, <span class="string">30</span>
+<span class="function">print</span>(a, b, c)    <span class="comment"># 10 20 30</span>
+
+<span class="comment"># Same value multiple variables</span>
+x = y = z = <span class="string">100</span>
+<span class="function">print</span>(x, y, z)    <span class="comment"># 100 100 100</span></pre>
+            </div>
+
+            <h2>🚀 Conclusion</h2>
+            <p>Variables Python programming ka foundation hai. Inke bina koi bhi program complete nahi ho sakta. Aaj humne samjha ki variable kya hai, kaise banate hain, alag-alag data types kya hain, aur naming rules kya hain. Practice karein — jitna zyada code likhenge, utna accha samajh aayega!</p>
+
+            <p><strong>Next Tutorial:</strong> Python Operators aur Expressions ke baare mein padhenge. Stay tuned!</p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-logo">AK.R</div>
+        <p class="footer-text">Akarshit Raj - Programming Educator | © 2026</p>
+    </footer>
+</body>
+</html>
+  
