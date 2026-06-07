@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Strings Complete Guide - Akarshit Raj</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0f172a; color: #e2e8f0; line-height: 1.8; }
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+        h1 { color: #38bdf8; font-size: 2.2rem; margin-bottom: 10px; border-bottom: 3px solid #38bdf8; padding-bottom: 10px; }
+        h2 { color: #a78bfa; font-size: 1.5rem; margin-top: 30px; margin-bottom: 15px; }
+        h3 { color: #fbbf24; font-size: 1.2rem; margin-top: 20px; margin-bottom: 10px; }
+        p { margin-bottom: 15px; font-size: 1.05rem; }
+        pre { background: #1e293b; border: 1px solid #334155; border-radius: 8px; padding: 15px; overflow-x: auto; margin: 15px 0; }
+        code { font-family: 'Consolas', 'Monaco', monospace; color: #7dd3fc; font-size: 0.95rem; }
+        .tip { background: #064e3b; border-left: 4px solid #34d399; padding: 15px; margin: 20px 0; border-radius: 0 8px 8px 0; }
+        .tip strong { color: #34d399; }
+        .warning { background: #451a03; border-left: 4px solid #fbbf24; padding: 15px; margin: 20px 0; border-radius: 0 8px 8px 0; }
+        .warning strong { color: #fbbf24; }
+        ul { margin-left: 25px; margin-bottom: 15px; }
+        li { margin-bottom: 8px; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { border: 1px solid #334155; padding: 12px; text-align: left; }
+        th { background: #1e293b; color: #38bdf8; }
+        td { background: #0f172a; }
+        .back-btn { display: inline-block; background: #38bdf8; color: #0f172a; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: bold; margin-bottom: 20px; }
+        .back-btn:hover { background: #7dd3fc; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="tutorials.html" class="back-btn">← Back to Tutorials</a>
+        
+        <h1>📝 Python Strings Complete Guide</h1>
+        
+        <p>String Python mein text data store karne ka sabse common way hai. Single quotes ya double quotes ke andar likha jata hai. <strong>Strings immutable hain</strong> — matlab ek baar banne ke baad change nahi ho sakti!</p>
+
+        <h2>1️⃣ String Kaise Banayein?</h2>
+        <pre><code>name = "Akarshit Raj"
+city = 'Sitapur'
+message = """Ye multi-line
+string hai!"""
+single_char = 'A'
+
+print(name)
+print(city)
+print(message)
+print(single_char)</code></pre>
+
+        <h2>2️⃣ String Indexing & Slicing</h2>
+        <p>Har character ka apna index hota hai — 0 se shuru hota hai.</p>
+        <pre><code>text = "Python"
+
+print(text[0])      # P
+print(text[1])      # y
+print(text[-1])     # n (last character)
+print(text[-2])     # o (second last)
+
+# Slicing [start:end:step]
+print(text[0:3])    # Pyt
+print(text[:4])     # Pyth
+print(text[2:])     # thon
+print(text[::2])    # Pto (har doosra character)
+print(text[::-1])   # nohtyP (reverse)</code></pre>
+
+        <h2>3️⃣ String Length & Check</h2>
+        <pre><code>text = "Hello World"
+
+print(len(text))              # 11
+print("World" in text)       # True
+print("Python" not in text)  # True</code></pre>
+
+        <h2>4️⃣ String Methods (Important!)</h2>
+        <pre><code>text = "  Hello Python  "
+
+print(text.upper())           # HELLO PYTHON
+print(text.lower())           # hello python
+print(text.strip())           # Hello Python (spaces hata dega)
+print(text.replace("Python", "World"))
+print(text.split())           # ['Hello', 'Python']
+
+name = "akarshit raj"
+print(name.capitalize())      # Akarshit raj
+print(name.title())           # Akarshit Raj
+print(name.startswith("akar")) # True
+print(name.endswith("raj"))   # True
+print(name.find("shit"))      # 4
+print(name.count("a"))        # 3
+
+# Join method
+print("-".join(["a", "b", "c"]))  # a-b-c</code></pre>
+
+        <h2>5️⃣ String Formatting</h2>
+        <p>3 tarike hain strings mein variables insert karne ke:</p>
+        <pre><code>name = "Akarshit"
+age = 17
+marks = 85.5
+
+# f-strings (Sabse Best aur Easy!)
+print(f"Mera naam {name} hai, age {age} hai, aur marks {marks} hain.")
+
+# format() method
+print("Mera naam {} hai aur age {} hai.".format(name, age))
+
+# % formatting (Purana tarika)
+print("Mera naam %s hai aur age %d hai." % (name, age))</code></pre>
+
+        <div class="tip">
+            <strong>💡 Pro Tip:</strong> f-strings Python 3.6+ mein sabse fast aur readable hai. Hamesha f-strings use karein!
+        </div>
+
+        <h2>6️⃣ Escape Characters</h2>
+        <p>Special characters string mein dikhane ke liye:</p>
+        <pre><code>print("Line 1\\nLine 2")        # New line
+print("Tab\\tSpace")            # Tab space
+print("Ye \\"quotes\\" hain")     # Double quotes
+print('Ye \\'quotes\\' hain')     # Single quotes
+print("Path: C:\\\\Users\\\\Akarshit")  # Backslash</code></pre>
+
+        <h2>7️⃣ String Immutability</h2>
+        <p>String ek baar banne ke baad change nahi ho sakti:</p>
+        <pre><code>name = "Python"
+# name[0] = "J"      # ❌ Error! String change nahi ho sakti
+
+# Lekin nayi string bana sakte hain:
+name = "Java"                    # ✅ Nayi string assign
+new_name = "J" + name[1:]        # ✅ Nayi string bana sakte hain
+print(new_name)
+
+# Replace bhi nayi string deta hai, purani nahi badalta
+text = "Hello World"
+new_text = text.replace("World", "Python")
+print(text)       # Hello World (purani same)
+print(new_text)   # Hello Python (nayi string)</code></pre>
+
+        <div class="warning">
+            <strong>⚠️ Dhyaan:</strong> String immutable hai — har method nayi string return karta hai. Original string kabhi change nahi hoti!
+        </div>
+
+        <h2>8️⃣ String Loop</h2>
+        <pre><code>for char in "Python":
+    print(char)
+
+# Output:
+# P
+# y
+# t
+# h
+# o
+# n</code></pre>
+
+        <h2>9️⃣ Practical Examples</h2>
+        <pre><code># Reverse a string
+text = "Akarshit"
+print(text[::-1])           # tihsrakA
+
+# Palindrome check
+word = "madam"
+print(word == word[::-1])   # True
+
+# Count vowels
+text = "Hello World"
+vowels = sum(1 for char in text.lower() if char in "aeiou")
+print(f"Vowels: {vowels}")  # Vowels: 3
+
+# Remove all spaces
+sentence = "Hello World Python"
+print(sentence.replace(" ", ""))  # HelloWorldPython
+
+# Check if string is digit
+num = "12345"
+print(num.isdigit())        # True
+
+# Check if alphabetic
+name = "Akarshit"
+print(name.isalpha())       # True</code></pre>
+
+        <div class="tip">
+            <strong>💡 Yaad Rakhein:</strong><br>
+            • Strings immutable hain — direct change nahi kar sakte<br>
+            • f-strings sabse easy formatting method hai<br>
+            • Slicing [start:end:step] bahut powerful hai<br>
+            • Always use .strip() user input se pehle!<br>
+            • String methods hamesha nayi string return karte hain
+        </div>
+    </div>
+</body>
+</html>
