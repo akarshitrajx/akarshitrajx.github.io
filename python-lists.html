@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Lists Complete Guide - Akarshit Raj</title>
+    <meta name="description" content="Create, Access, Slice, Modify, Methods, Comprehension, 2D Lists — sab kuch!">
+    <meta name="author" content="Akarshit Raj">
+    <link rel="canonical" href="https://akarshitrajx.github.io/python-lists.html">
+    <link rel="icon" type="image/png" href="file_000000004984720882e69f4dad44966a.png">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{--primary:#6366f1;--primary-dark:#4f46e5;--secondary:#ec4899;--accent:#06b6d4;--dark:#0f172a;--darker:#020617;--light:#f8fafc;--gray:#94a3b8;--card-bg:rgba(30,41,59,0.6);--glass:rgba(255,255,255,0.05);--success:#10b981;--error:#ef4444}
+        body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--darker);color:var(--light);min-height:100vh;line-height:1.6}
+        .bg{position:fixed;inset:0;z-index:-1;overflow:hidden}
+        .orb{position:absolute;border-radius:50%;filter:blur(100px);opacity:0.4;animation:float 15s infinite ease-in-out}
+        .orb:nth-child(1){width:400px;height:400px;background:#6366f1;top:-100px;left:-100px}
+        .orb:nth-child(2){width:300px;height:300px;background:#ec4899;right:-100px;bottom:-100px}
+        .orb:nth-child(3){width:250px;height:250px;background:#06b6d4;left:40%;top:30%}
+        @keyframes float{50%{transform:translateY(-40px)}}
+        nav{position:fixed;top:0;width:100%;padding:18px 5%;display:flex;justify-content:space-between;align-items:center;background:rgba(2,6,23,0.7);backdrop-filter:blur(20px);z-index:999}
+        .logo{font-size:1.8rem;font-weight:900;background:linear-gradient(135deg,#6366f1,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .nav-links{display:flex;gap:20px;list-style:none}
+        .nav-links a{text-decoration:none;color:#cbd5e1;font-weight:600;transition:0.3s}
+        .nav-links a:hover{color:white}
+        .container{max-width:900px;margin:0 auto;padding:120px 5% 60px}
+        .tutorial-header{text-align:center;margin-bottom:3rem}
+        .tutorial-header h1{font-size:2.5rem;font-weight:800;background:linear-gradient(135deg,var(--primary),var(--secondary));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:1rem}
+        .tutorial-header p{color:var(--gray);font-size:1.1rem}
+        .content{background:var(--card-bg);border-radius:24px;padding:3rem;border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(20px)}
+        .content h2{font-size:1.5rem;font-weight:700;margin:2rem 0 1rem;color:var(--primary)}
+        .content h3{font-size:1.2rem;font-weight:600;margin:1.5rem 0 0.75rem;color:var(--accent)}
+        .content p{color:var(--gray);margin-bottom:1rem}
+        .content ul{margin:1rem 0 1rem 1.5rem;color:var(--gray)}
+        .content li{margin-bottom:0.5rem}
+        .content strong{color:var(--light)}
+        .content code{background:rgba(255,255,255,0.1);padding:0.2rem 0.4rem;border-radius:4px;font-family:'Consolas','Monaco',monospace;font-size:0.9rem;color:#d4d4d4}
+        .code-block{background:#1e1e1e;border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:1.5rem;margin:1rem 0;font-family:'Consolas','Monaco',monospace;font-size:0.9rem;overflow-x:auto;color:#d4d4d4;line-height:1.6}
+        .code-block .comment{color:#6a9955}
+        .code-block .keyword{color:#569cd6}
+        .code-block .string{color:#ce9178}
+        .code-block .number{color:#b5cea8}
+        .code-block .function{color:#dcdcaa}
+        .back-btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.8rem 1.5rem;background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:white;border:none;border-radius:12px;font-weight:600;text-decoration:none;margin-bottom:2rem;transition:0.3s}
+        .back-btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(99,102,241,0.4)}
+        .next-prev{display:flex;justify-content:space-between;margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.1)}
+        .next-prev a{text-decoration:none;color:var(--primary);font-weight:600;display:flex;align-items:center;gap:0.5rem}
+        .next-prev a:hover{text-decoration:underline}
+        .tip{background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);border-radius:12px;padding:1rem;margin:1rem 0;color:var(--success)}
+        footer{text-align:center;padding:3rem 5%;border-top:1px solid rgba(255,255,255,0.05);margin-top:3rem;color:var(--gray)}
+        @media(max-width:768px){.container{padding:100px 5% 40px}.content{padding:1.5rem}.tutorial-header h1{font-size:1.8rem}}
+    </style>
+</head>
+<body>
+    <div class="bg"><div class="orb"></div><div class="orb"></div><div class="orb"></div></div>
+    <nav>
+        <div class="logo">AK.R</div>
+        <ul class="nav-links">
+            <li><a href="index.html">🏠 Home</a></li>
+            <li><a href="tutorials.html">📚 Tutorials</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <a href="tutorials.html" class="back-btn">← Back to Tutorials</a>
+        <div class="tutorial-header">
+            <h1>Python Lists Complete Guide</h1>
+            <p>Create, Access, Slice, Modify, Methods, Comprehension, 2D Lists — sab kuch!</p>
+        </div>
+        <div class="content">
+            <h2>📋 Python Lists Complete Guide</h2>
+            <p>List Python ka sabse versatile data type hai. Ismein aap multiple values ek saath store kar sakte hain, aur ye mutable hai — matlab change ho sakti hai!</p>
+            
+            <h2>1️⃣ List Kaise Banayein?</h2>
+            <div class="code-block">
+<span class="comment"># Creating lists</span>
+fruits = [<span class="string">"Apple"</span>, <span class="string">"Banana"</span>, <span class="string">"Mango"</span>]
+numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]
+mixed = [<span class="number">1</span>, <span class="string">"hello"</span>, <span class="number">3.14</span>, <span class="keyword">True</span>]
+empty = []
+
+<span class="function">print</span>(fruits)   <span class="comment"># ['Apple', 'Banana', 'Mango']</span>
+<span class="function">print</span>(numbers)  <span class="comment"># [1, 2, 3, 4, 5]</span>
+            </div>
+
+            <h2>2️⃣ Accessing Items (Indexing)</h2>
+            <div class="code-block">
+<span class="comment"># Indexing</span>
+fruits = [<span class="string">"Apple"</span>, <span class="string">"Banana"</span>, <span class="string">"Mango"</span>, <span class="string">"Orange"</span>]
+
+<span class="function">print</span>(fruits[<span class="number">0</span>])   <span class="comment"># Apple (first item)</span>
+<span class="function">print</span>(fruits[<span class="number">1</span>])   <span class="comment"># Banana</span>
+<span class="function">print</span>(fruits[-<<span class="number">1</span>])  <span class="comment"># Orange (last item)</span>
+<span class="function">print</span>(fruits[-<<span class="number">2</span>])  <span class="comment"># Mango (second last)</span>
+            </div>
+
+            <h2>3️⃣ Slicing Lists</h2>
+            <div class="code-block">
+<span class="comment"># Slicing [start:stop:step]</span>
+numbers = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]
+
+<span class="function">print</span>(numbers[<span class="number">2</span>:<<span class="number">5</span>])   <span class="comment"># [2, 3, 4]</span>
+<span class="function">print</span>(numbers[:<<span class="number">4</span>])    <span class="comment"># [0, 1, 2, 3] (start se)</span>
+<span class="function">print</span>(numbers[<span class="number">6</span>:])    <span class="comment"># [6, 7, 8, 9] (end tak)</span>
+<span class="function">print</span>(numbers[::<span class="number">2</span>])   <span class="comment"># [0, 2, 4, 6, 8] (every 2nd)</span>
+<span class="function">print</span>(numbers[::-<<span class="number">1</span>])  <span class="comment"># [9, 8, 7, 6, 5, 4, 3, 2, 1, 0] (reverse)</span>
+            </div>
+
+            <h2>4️⃣ Modifying Lists</h2>
+            <div class="code-block">
+<span class="comment"># Change items</span>
+fruits = [<span class="string">"Apple"</span>, <span class="string">"Banana"</span>, <span class="string">"Mango"</span>]
+fruits[<span class="number">1</span>] = <span class="string">"Grapes"</span>  <span class="comment"># Replace</span>
+<span class="function">print</span>(fruits)  <span class="comment"># ['Apple', 'Grapes', 'Mango']</span>
+
+<span class="comment"># Add items</span>
+fruits.append(<span class="string">"Orange"</span>)       <span class="comment"># End mein add</span>
+fruits.insert(<span class="number">1</span>, <span class="string">"Kiwi"</span>)        <span class="comment"># Specific position</span>
+fruits.extend([<<span class="string">"Peach"</span>, <span class="string">"Plum"</span>])  <span class="comment"># Multiple add</span>
+
+<span class="comment"># Remove items</span>
+fruits.remove(<span class="string">"Grapes"</span>)  <span class="comment"># By value</span>
+popped = fruits.pop()      <span class="comment"># Last item remove</span>
+popped = fruits.pop(<span class="number">0</span>)   <span class="comment"># By index</span>
+<span class="keyword">del</span> fruits[<span class="number">1</span>]            <span class="comment"># Delete by index</span>
+            </div>
+
+            <h2>5️⃣ List Methods</h2>
+            <div class="code-block">
+<span class="comment"># Useful methods</span>
+numbers = [<span class="number">3</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">9</span>, <span class="number">2</span>, <span class="number">6</span>]
+
+numbers.sort()           <span class="comment"># Sort ascending</span>
+numbers.sort(reverse=<span class="keyword">True</span>)  <span class="comment"># Sort descending</span>
+numbers.reverse()        <span class="comment"># Reverse list</span>
+
+<span class="function">print</span>(numbers.count(<span class="number">1</span>))   <span class="comment"># 2 (kitni baar hai)</span>
+<span class="function">print</span>(numbers.index(<span class="number">5</span>))   <span class="comment"># Index of 5</span>
+<span class="function">print</span>(<<span class="function">len</span>(numbers))       <span class="comment"># 8 (total items)</span>
+<span class="function">print</span>(<<span class="function">sum</span>(numbers))       <span class="comment"># 31 (total sum)</span>
+<span class="function">print</span>(<<span class="function">min</span>(numbers))       <span class="comment"># 1 (minimum)</span>
+<span class="function">print</span>(<<span class="function">max</span>(numbers))       <span class="comment"># 9 (maximum)</span>
+            </div>
+
+            <h2>6️⃣ List Comprehension</h2>
+            <div class="code-block">
+<span class="comment"># List Comprehension</span>
+numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]
+
+<span class="comment"># Squares</span>
+squares = [x**<<span class="number">2</span> <span class="keyword">for</span> x <span class="keyword">in</span> numbers]
+<span class="function">print</span>(squares)  <span class="comment"># [1, 4, 9, 16, 25]</span>
+
+<span class="comment"># Even numbers</span>
+evens = [x <span class="keyword">for</span> x <span class="keyword">in</span> <span class="function">range</span>(<<span class="number">20</span>) <span class="keyword">if</span> x % <span class="number">2</span> == <span class="number">0</span>]
+<span class="function">print</span>(evens)  <span class="comment"># [0, 2, 4, 6, 8, 10, 12, 14, 16, 18]</span>
+
+<span class="comment"># Uppercase strings</span>
+fruits = [<span class="string">"apple"</span>, <span class="string">"banana"</span>, <span class="string">"mango"</span>]
+upper = [fruit.upper() <span class="keyword">for</span> fruit <span class="keyword">in</span> fruits]
+<span class="function">print</span>(upper)  <span class="comment"># ['APPLE', 'BANANA', 'MANGO']</span>
+            </div>
+
+            <h2>7️⃣ Nested Lists</h2>
+            <div class="code-block">
+<span class="comment"># 2D List (Matrix)</span>
+matrix = [
+    [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>],
+    [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>],
+    [<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]
+]
+
+<span class="function">print</span>(matrix[<span class="number">0</span>])       <span class="comment"># [1, 2, 3] (first row)</span>
+<span class="function">print</span>(matrix[<span class="number">1</span>][<<span class="number">2</span>])   <span class="comment"># 6 (second row, third column)</span>
+
+<span class="comment"># Loop through 2D list</span>
+<span class="keyword">for</span> row <span class="keyword">in</span> matrix:
+    <span class="keyword">for</span> item <span class="keyword">in</span> row:
+        <span class="function">print</span>(item, end=<span class="string">" "</span>)
+    <span class="function">print</span>()
+            </div>
+
+            <div class="tip">
+                💡 <strong>Yaad Rakhein:</strong> List mutable hai — change ho sakti hai. Tuple immutable hai — change nahi ho sakti. Agar fixed data chahiye toh tuple use karein, dynamic data ke liye list!
+            </div>
+        </div>
+        <div class="next-prev">
+            <a href="python-functions.html">← Previous: Functions</a>
+            <a href="python-dictionaries.html">Next: Dictionaries →</a>
+        </div>
+    </div>
+    <footer>
+        <p>© 2026 Akarshit Raj | PM SHRI JNV Khairabad, Sitapur</p>
+        <p style="margin-top:0.5rem;font-size:0.85rem;">Learn programming for free 🎓</p>
+    </footer>
+</body>
+</html>
