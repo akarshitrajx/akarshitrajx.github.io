@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C++ Variables Complete Guide - Akarshit Raj</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0f172a; color: #e2e8f0; line-height: 1.8; }
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+        h1 { color: #38bdf8; font-size: 2.2rem; margin-bottom: 10px; border-bottom: 3px solid #38bdf8; padding-bottom: 10px; }
+        h2 { color: #a78bfa; font-size: 1.5rem; margin-top: 30px; margin-bottom: 15px; }
+        p { margin-bottom: 15px; font-size: 1.05rem; }
+        pre { background: #1e293b; border: 1px solid #334155; border-radius: 8px; padding: 15px; overflow-x: auto; margin: 15px 0; }
+        code { font-family: 'Consolas', 'Monaco', monospace; color: #7dd3fc; font-size: 0.95rem; }
+        .tip { background: #064e3b; border-left: 4px solid #34d399; padding: 15px; margin: 20px 0; border-radius: 0 8px 8px 0; }
+        .tip strong { color: #34d399; }
+        .warning { background: #451a03; border-left: 4px solid #fbbf24; padding: 15px; margin: 20px 0; border-radius: 0 8px 8px 0; }
+        .warning strong { color: #fbbf24; }
+        ul { margin-left: 25px; margin-bottom: 15px; }
+        li { margin-bottom: 8px; }
+        .back-btn { display: inline-block; background: #38bdf8; color: #0f172a; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: bold; margin-bottom: 20px; }
+        .back-btn:hover { background: #7dd3fc; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="tutorials.html" class="back-btn">← Back to Tutorials</a>
+        <h1>📝 C++ Variables Complete Guide</h1>
+        <p><strong>Variables C++ programming ka sabse important concept hai.</strong> C++ mein har variable ka ek fixed type hota hai — isliye isse statically typed language kehte hain.</p>
+
+        <h2>🔷 Variable Kya Hai?</h2>
+        <p>Variable ek memory location ka naam hai jismein aap data store karte hain. C++ mein variable banane se pehle uska type batana <strong>zaruri</strong> hai.</p>
+
+        <h2>📝 Variables Kaise Banayein?</h2>
+        <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int age = 17;
+    float height = 5.8;
+    char grade = 'A';
+    string name = "Akarshit";
+    
+    cout &lt;&lt; "Name: " &lt;&lt; name &lt;&lt; endl;
+    cout &lt;&lt; "Age: " &lt;&lt; age &lt;&lt; endl;
+    cout &lt;&lt; "Height: " &lt;&lt; height &lt;&lt; endl;
+    cout &lt;&lt; "Grade: " &lt;&lt; grade &lt;&lt; endl;
+    
+    return 0;
+}</code></pre>
+
+        <h2>🔢 C++ Ke Data Types</h2>
+        <pre><code>int number = 100;           // Whole numbers
+float decimal = 5.5;      // Decimal numbers (4 bytes)
+double bigDecimal = 5.555555; // Bade decimal (8 bytes)
+char letter = 'A';          // Single character
+bool isTrue = true;         // True ya False
+string text = "Hello";       // Text string</code></pre>
+
+        <h2>✏️ Variable Ki Value Kaise Change Karein?</h2>
+        <pre><code>int score = 50;
+cout &lt;&lt; "Pehla score: " &lt;&lt; score &lt;&lt; endl;
+
+score = 75;
+cout &lt;&lt; "Naya score: " &lt;&lt; score &lt;&lt; endl;
+
+score = score + 10;
+cout &lt;&lt; "Final score: " &lt;&lt; score &lt;&lt; endl;</code></pre>
+
+        <h2>⚠️ Variable Naming Rules</h2>
+        <ul>
+            <li>Naam letter (a-z, A-Z) ya underscore (_) se shuru hona chahiye.</li>
+            <li>Number se shuru nahi ho sakta.</li>
+            <li>Spaces nahi allowed — use underscore.</li>
+            <li>Case-sensitive hai — <code>Age</code> aur <code>age</code> alag hain.</li>
+            <li>Reserved keywords (int, float, return, etc.) use nahi kar sakte.</li>
+        </ul>
+        <pre><code>int my_age = 17;      // ✅ Sahi
+int _score = 85;      // ✅ Sahi
+int student1 = 1;     // ✅ Sahi
+// int 1student = 1;  // ❌ Galat — number se shuru
+// int my age = 17;   // ❌ Galat — space hai</code></pre>
+
+        <div class="tip">
+            <strong>💡 Pro Tip:</strong> C++ mein variable declare karte waqt hamesha type likhein! <code>int age = 17;</code> — type + name + value.
+        </div>
+
+        <h2>🎯 Multiple Variables Ek Saath</h2>
+        <pre><code>int a = 10, b = 20, c = 30;
+cout &lt;&lt; a &lt;&lt; " " &lt;&lt; b &lt;&lt; " " &lt;&lt; c &lt;&lt; endl;
+
+int x, y, z;
+x = y = z = 100;
+cout &lt;&lt; x &lt;&lt; " " &lt;&lt; y &lt;&lt; " " &lt;&lt; z &lt;&lt; endl;</code></pre>
+
+        <div class="tip">
+            <strong>🚀 Next Tutorial:</strong> C++ Data Types Complete Guide mein detail mein padhenge!
+        </div>
+    </div>
+</body>
+</html>
