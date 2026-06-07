@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C++ Basics - Getting Started - Akarshit Raj</title>
+    <link rel="icon" type="image/png" href="file_000000004984720882e69f4dad44966a.png">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{--primary:#6366f1;--primary-dark:#4f46e5;--secondary:#ec4899;--accent:#06b6d4;--dark:#0f172a;--darker:#020617;--light:#f8fafc;--gray:#94a3b8;--card-bg:rgba(30,41,59,0.6);--code-bg:#1e1e1e}
+        body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--darker);color:var(--light);min-height:100vh;line-height:1.6}
+        nav{position:fixed;top:0;width:100%;padding:1rem 5%;background:rgba(2,6,23,0.95);backdrop-filter:blur(20px);z-index:1000;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,0.08)}
+        .logo{font-size:1.6rem;font-weight:800;background:linear-gradient(135deg,var(--primary),var(--secondary));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .nav-links{display:flex;gap:2rem;list-style:none}
+        .nav-links a{color:var(--gray);text-decoration:none;font-weight:500;transition:all 0.3s}
+        .nav-links a:hover{color:var(--light)}
+        .mobile-menu-btn{display:none;background:none;border:none;color:var(--light);font-size:1.5rem;cursor:pointer}
+        .container{max-width:800px;margin:0 auto;padding:7rem 5% 3rem}
+        .post-header{text-align:center;margin-bottom:3rem;padding-bottom:2rem;border-bottom:1px solid rgba(255,255,255,0.08)}
+        .post-icon{font-size:4rem;margin-bottom:1rem}
+        .post-title{font-size:2.2rem;font-weight:800;margin-bottom:1rem}
+        .post-meta{display:flex;justify-content:center;gap:1.5rem;color:var(--gray);font-size:0.9rem;margin-bottom:1rem}
+        .post-tag{padding:0.35rem 1rem;border-radius:50px;font-size:0.85rem;font-weight:600;background:rgba(59,130,246,0.15);color:#3b82f6}
+        .content{font-size:1.1rem;line-height:1.9;color:var(--gray)}
+        .content h2{font-size:1.8rem;font-weight:700;color:var(--light);margin:2.5rem 0 1rem}
+        .content h3{font-size:1.4rem;font-weight:600;color:var(--light);margin:2rem 0 1rem}
+        .content p{margin-bottom:1.5rem}
+        .content strong{color:var(--light)}
+        .code-block{background:var(--code-bg);border-radius:12px;padding:1.5rem;margin:1.5rem 0;overflow-x:auto;border:1px solid rgba(255,255,255,0.1)}
+        .code-block pre{margin:0;font-family:'Consolas','Monaco',monospace;font-size:0.95rem;color:#d4d4d4;line-height:1.6}
+        .code-block .comment{color:#6a9955}
+        .code-block .keyword{color:#569cd6}
+        .code-block .string{color:#ce9178}
+        .code-block .function{color:#dcdcaa}
+        .tip-box{background:rgba(16,185,129,0.1);border-left:4px solid var(--success);padding:1.25rem;border-radius:0 12px 12px 0;margin:1.5rem 0}
+        .tip-box strong{color:var(--success);display:block;margin-bottom:0.5rem}
+        .back-btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.8rem 1.5rem;background:var(--glass);color:var(--light);text-decoration:none;border-radius:12px;font-weight:600;margin-bottom:2rem;transition:all 0.3s;border:1px solid rgba(255,255,255,0.1)}
+        .back-btn:hover{background:rgba(255,255,255,0.1)}
+        footer{text-align:center;padding:3rem 5%;border-top:1px solid rgba(255,255,255,0.05);margin-top:3rem}
+        .footer-logo{font-size:1.5rem;font-weight:800;background:linear-gradient(135deg,var(--primary),var(--secondary));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:1rem}
+        .footer-text{color:var(--gray);font-size:0.9rem}
+        @media(max-width:768px){.mobile-menu-btn{display:block}.nav-links{display:none}.post-title{font-size:1.7rem}.container{padding:6rem 5% 2rem}}
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">AK.R</div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#courses">Courses</a></li>
+            <li><a href="tutorials.html">Tutorials</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        <button class="mobile-menu-btn" onclick="document.getElementById('navLinks').classList.toggle('active')">☰</button>
+    </nav>
+
+    <div class="container">
+        <a href="tutorials.html" class="back-btn">← Back to Tutorials</a>
+
+        <div class="post-header">
+            <div class="post-icon">⚡</div>
+            <h1 class="post-title">C++ Basics - Getting Started</h1>
+            <div class="post-meta">
+                <span class="post-tag">C++</span>
+                <span>📅 June 5, 2026</span>
+                <span>⏱ 10 min read</span>
+            </div>
+        </div>
+
+        <div class="content">
+            <p><strong>C++ ek powerful programming language hai</strong> jo Bjarne Stroustrup ne 1985 mein banayi thi. Ye C language ka extended version hai jismein Object-Oriented Programming (OOP) features add kiye gaye hain. Aaj C++ games, operating systems, browsers, aur high-performance applications banane mein use hoti hai. Agar aapko programming seriously seekhni hai, toh C++ se behtar start koi nahi!</p>
+
+            <h2>🔷 C++ Kyun Seekhein?</h2>
+            <p>C++ seekhne ke bahut saare reasons hain. Sabse pehla reason ye hai ki <strong>C++ fast hai.</strong> Ye directly machine code mein compile hoti hai, isliye ye Python ya Java se zyada tez chalti hai. Agar aapko game development ya system programming mein interest hai, toh C++ must hai.</p>
+
+            <p>Dusra reason ye hai ki <strong>C++ OOP concepts</strong> classes, objects, inheritance, polymorphism — sab sikhati hai. Ye concepts aapko Java, C#, Python ki OOP samajhne mein bhi madad karte hain. Ek baar C++ mein OOP clear ho jaye, baaki languages aasani se aa jati hain.</p>
+
+            <p>Teesra reason — <strong>C++ memory management</strong> sikhati hai. Aap khud control karte hain ki memory kaise allocate aur free hogi. Ye deep understanding baad mein debugging aur optimization mein kaam aati hai.</p>
+
+            <h2>🛠️ Pehla C++ Program</h2>
+            <p>Har programmer ki journey "Hello, World!" se shuru hoti hai. C++ mein ye program likhne ke liye aapko kuch basic cheezein samajhni hongi.</p>
+
+            <div class="code-block">
+                <pre><span class="comment">// Pehla C++ Program</span>
+<span class="keyword">#include</span> <span class="string">&lt;iostream&gt;</span>
+<span class="keyword">using namespace</span> std;
+
+<span class="keyword">int</span> <span class="function">main</span>() {
+    cout &lt;&lt; <span class="string">"Hello, World!"</span> &lt;&lt; endl;
+    <span class="keyword">return</span> <span class="string">0</span>;
+}</pre>
+            </div>
+
+            <p><strong>Line-by-line samajhte hain:</strong></p>
+            <p>• <code>#include &lt;iostream&gt;</code> — Ye header file input-output operations ke liye hoti hai. <code>cout</code> aur <code>cin</code> isi se aate hain.</p>
+            <p>• <code>using namespace std;</code> — Ye line standard library ke functions ko bina <code>std::</code> likhe use karne deti hai. Code chhota dikhata hai.</p>
+            <p>• <code>int main()</code> — Ye program ka entry point hai. Har C++ program <code>main()</code> function se shuru hota hai.</p>
+            <p>• <code>cout</code> — Console output ke liye. Screen pe print karne ke liye use hota hai.</p>
+            <p>• <code>return 0;</code> — Ye batata hai ki program successfully complete hua.</p>
+
+            <h2>📦 Data Types in C++</h2>
+            <p>C++ mein har variable ka ek type hota hai. Type batata hai ki variable mein kis type ka data store hoga aur kitni memory use hogi.</p>
+
+            <p><strong>Basic Data Types:</strong></p>
+            <p>• <code>int</code> — Integer numbers ke liye (4 bytes). Example: 10, -5, 1000.</p>
+            <p>• <code>float</code> — Decimal numbers ke liye (4 bytes). Example: 5.5, 3.14.</p>
+            <p>• <code>double</code> — Bade decimal numbers ke liye (8 bytes). Float se zyada precise.</p>
+            <p>• <code>char</code> — Single character ke liye (1 byte). Example: 'A', 'x', '@'.</p>
+            <p>• <code>bool</code> — True ya False value ke liye (1 byte).</p>
+            <p>• <code>string</code> — Text ke liye. Multiple characters ek saath.</p>
+
+            <div class="code-block">
+                <pre><span class="keyword">#include</span> <span class="string">&lt;iostream&gt;</span>
+<span class="keyword">#include</span> <span class="string">&lt;string&gt;</span>
+<span class="keyword">using namespace</span> std;
+
+<span class="keyword">int</span> <span class="function">main</span>() {
+    <span class="keyword">int</span> age = <span class="string">17</span>;
+    <span class="keyword">float</span> height = <span class="string">5.8</span>;
+    <span class="keyword">char</span> grade = <span class="string">'A'</span>;
+    <span class="keyword">bool</span> isPassed = <span class="keyword">true</span>;
+    string name = <span class="string">"Akarshit"</span>;
+
+    cout &lt;&lt; <span class="string">"Name: "</span> &lt;&lt; name &lt;&lt; endl;
+    cout &lt;&lt; <span class="string">"Age: "</span> &lt;&lt; age &lt;&lt; endl;
+    cout &lt;&lt; <span class="string">"Height: "</span> &lt;&lt; height &lt;&lt; endl;
+    cout &lt;&lt; <span class="string">"Grade: "</span> &lt;&lt; grade &lt;&lt; endl;
+    cout &lt;&lt; <span class="string">"Passed: "</span> &lt;&lt; isPassed &lt;&lt; endl;
+
+    <span class="keyword">return</span> <span class="string">0</span>;
+}</pre>
+            </div>
+
+            <h2>✏️ Variables aur Constants</h2>
+            <p>C++ mein variable banane ke liye aapko pehle type batana padta hai, fir naam, fir value. Ye C++ ko statically typed language banata hai.</p>
+
+            <div class="code-block">
+                <pre><span class="keyword">int</span> marks = <span class="string">85</span>;           <span class="comment">// Integer variable</span>
+<span class="keyword">float</span> percentage = <span class="string">85.5</span>;  <span class="comment">// Float variable</span>
+<span class="keyword">char</span> section = <span class="string">'B'</span>;      <span class="comment">// Character variable</span>
+
+<span class="comment">// Constant — value change nahi ho sakti</span>
+<span class="keyword">const</span> <span class="keyword">float</span> PI = <span class="string">3.14159</span>;
+<span class="comment">// PI = 3.14;    // Ye error dega!</span></pre>
+            </div>
+
+            <p><code>const</code> keyword se aap constant bana sakte hain jiski value ek baar set hone ke baad change nahi hoti. Ye security aur reliability ke liye use hota hai.</p>
+
+            <h2>🧮 Operators in C++</h2>
+            <p>Operators variables par operations perform karne ke liye hote hain. C++ mein alag-alag types ke operators hain:</p>
+
+            <p><strong>Arithmetic Operators:</strong> + (addition), - (subtraction), * (multiplication), / (division), % (modulo/remainder).</p>
+            <p><strong>Comparison Operators:</strong> == (equal), != (not equal), > (greater than), < (less than), >=, <=.</p>
+            <p><strong>Logical Operators:</strong> && (AND), || (OR), ! (NOT).</p>
+
+            <div class="code-block">
+                <pre><span class="keyword">int</span> a = <span class="string">10</span>, b = <span class="string">3</span>;
+
+cout &lt;&lt; <span class="string">"Sum: "</span> &lt;&lt; (a + b) &lt;&lt; endl;        <span class="comment">// 13</span>
+cout &lt;&lt; <span class="string">"Difference: "</span> &lt;&lt; (a - b) &lt;&lt; endl; <span class="comment">// 7</span>
+cout &lt;&lt; <span class="string">"Product: "</span> &lt;&lt; (a * b) &lt;&lt; endl;    <span class="comment">// 30</span>
+cout &lt;&lt; <span class="string">"Quotient: "</span> &lt;&lt; (a / b) &lt;&lt; endl;   <span class="comment">// 3</span>
+cout &lt;&lt; <span class="string">"Remainder: "</span> &lt;&lt; (a % b) &lt;&lt; endl;  <span class="comment">// 1</span></pre>
+            </div>
+
+            <div class="tip-box">
+                <strong>💡 Pro Tip:</strong>
+                <code>cin</code> se user input le sakte hain! <code>cin >> variable;</code> likhne se program user se value maangta hai. Isse interactive programs bana sakte hain.
+            </div>
+
+            <h2>🎯 User Input Lena</h2>
+            <p>Static values ke alawa, aap user se real-time input bhi le sakte hain. Isse aapke programs dynamic aur useful hote hain.</p>
+
+            <div class="code-block">
+                <pre><span class="keyword">#include</span> <span class="string">&lt;iostream&gt;</span>
+<span class="keyword">using namespace</span> std;
+
+<span class="keyword">int</span> <span class="function">main</span>() {
+    string name;
+    <span class="keyword">int</span> age;
+
+    cout &lt;&lt; <span class="string">"Apna naam likhein: "</span>;
+    cin &gt;&gt; name;
+
+    cout &lt;&lt; <span class="string">"Apni age likhein: "</span>;
+    cin &gt;&gt; age;
+
+    cout &lt;&lt; <span class="string">"Hello, "</span> &lt;&lt; name &lt;&lt; <span class="string">"! Aap "</span> &lt;&lt; age &lt;&lt; <span class="string">" saal ke hain."</span> &lt;&lt; endl;
+
+    <span class="keyword">return</span> <span class="string">0</span>;
+}</pre>
+            </div>
+
+            <h2>🚀 Conclusion</h2>
+            <p>Aaj humne C++ ke basics samjhe — program structure, data types, variables, constants, operators, aur user input. Ye sab concepts aapke programming foundation ke liye bahut important hain. C++ seekhna shuru mein thoda tough lag sakta hai, lekin practice se sab aasan ho jata hai.</p>
+
+            <p><strong>Next Tutorial:</strong> C++ mein if-else statements aur loops ke baare mein detail mein padhenge. Conditions aur repetition ke bina koi bhi program complete nahi hota!</p>
+
+            <p>Keep coding, keep learning! 💻</p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-logo">AK.R</div>
+        <p class="footer-text">Akarshit Raj - Programming Educator | © 2026</p>
+    </footer>
+</body>
+</html>
