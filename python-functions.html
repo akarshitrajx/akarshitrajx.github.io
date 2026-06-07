@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Functions Complete Guide - Akarshit Raj</title>
+    <meta name="description" content="Def, Parameters, Return, Default Args, *args, **kwargs, Lambda — sab functions!">
+    <meta name="author" content="Akarshit Raj">
+    <link rel="canonical" href="https://akarshitrajx.github.io/python-functions.html">
+    <link rel="icon" type="image/png" href="file_000000004984720882e69f4dad44966a.png">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{--primary:#6366f1;--primary-dark:#4f46e5;--secondary:#ec4899;--accent:#06b6d4;--dark:#0f172a;--darker:#020617;--light:#f8fafc;--gray:#94a3b8;--card-bg:rgba(30,41,59,0.6);--glass:rgba(255,255,255,0.05);--success:#10b981;--error:#ef4444}
+        body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--darker);color:var(--light);min-height:100vh;line-height:1.6}
+        .bg{position:fixed;inset:0;z-index:-1;overflow:hidden}
+        .orb{position:absolute;border-radius:50%;filter:blur(100px);opacity:0.4;animation:float 15s infinite ease-in-out}
+        .orb:nth-child(1){width:400px;height:400px;background:#6366f1;top:-100px;left:-100px}
+        .orb:nth-child(2){width:300px;height:300px;background:#ec4899;right:-100px;bottom:-100px}
+        .orb:nth-child(3){width:250px;height:250px;background:#06b6d4;left:40%;top:30%}
+        @keyframes float{50%{transform:translateY(-40px)}}
+        nav{position:fixed;top:0;width:100%;padding:18px 5%;display:flex;justify-content:space-between;align-items:center;background:rgba(2,6,23,0.7);backdrop-filter:blur(20px);z-index:999}
+        .logo{font-size:1.8rem;font-weight:900;background:linear-gradient(135deg,#6366f1,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .nav-links{display:flex;gap:20px;list-style:none}
+        .nav-links a{text-decoration:none;color:#cbd5e1;font-weight:600;transition:0.3s}
+        .nav-links a:hover{color:white}
+        .container{max-width:900px;margin:0 auto;padding:120px 5% 60px}
+        .tutorial-header{text-align:center;margin-bottom:3rem}
+        .tutorial-header h1{font-size:2.5rem;font-weight:800;background:linear-gradient(135deg,var(--primary),var(--secondary));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:1rem}
+        .tutorial-header p{color:var(--gray);font-size:1.1rem}
+        .content{background:var(--card-bg);border-radius:24px;padding:3rem;border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(20px)}
+        .content h2{font-size:1.5rem;font-weight:700;margin:2rem 0 1rem;color:var(--primary)}
+        .content h3{font-size:1.2rem;font-weight:600;margin:1.5rem 0 0.75rem;color:var(--accent)}
+        .content p{color:var(--gray);margin-bottom:1rem}
+        .content ul{margin:1rem 0 1rem 1.5rem;color:var(--gray)}
+        .content li{margin-bottom:0.5rem}
+        .content strong{color:var(--light)}
+        .content code{background:rgba(255,255,255,0.1);padding:0.2rem 0.4rem;border-radius:4px;font-family:'Consolas','Monaco',monospace;font-size:0.9rem;color:#d4d4d4}
+        .code-block{background:#1e1e1e;border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:1.5rem;margin:1rem 0;font-family:'Consolas','Monaco',monospace;font-size:0.9rem;overflow-x:auto;color:#d4d4d4;line-height:1.6}
+        .code-block .comment{color:#6a9955}
+        .code-block .keyword{color:#569cd6}
+        .code-block .string{color:#ce9178}
+        .code-block .number{color:#b5cea8}
+        .code-block .function{color:#dcdcaa}
+        .back-btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.8rem 1.5rem;background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:white;border:none;border-radius:12px;font-weight:600;text-decoration:none;margin-bottom:2rem;transition:0.3s}
+        .back-btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(99,102,241,0.4)}
+        .next-prev{display:flex;justify-content:space-between;margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.1)}
+        .next-prev a{text-decoration:none;color:var(--primary);font-weight:600;display:flex;align-items:center;gap:0.5rem}
+        .next-prev a:hover{text-decoration:underline}
+        .tip{background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);border-radius:12px;padding:1rem;margin:1rem 0;color:var(--success)}
+        footer{text-align:center;padding:3rem 5%;border-top:1px solid rgba(255,255,255,0.05);margin-top:3rem;color:var(--gray)}
+        @media(max-width:768px){.container{padding:100px 5% 40px}.content{padding:1.5rem}.tutorial-header h1{font-size:1.8rem}}
+    </style>
+</head>
+<body>
+    <div class="bg"><div class="orb"></div><div class="orb"></div><div class="orb"></div></div>
+    <nav>
+        <div class="logo">AK.R</div>
+        <ul class="nav-links">
+            <li><a href="index.html">🏠 Home</a></li>
+            <li><a href="tutorials.html">📚 Tutorials</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <a href="tutorials.html" class="back-btn">← Back to Tutorials</a>
+        <div class="tutorial-header">
+            <h1>Python Functions Complete Guide</h1>
+            <p>Def, Parameters, Return, Default Args, *args, **kwargs, Lambda — sab functions!</p>
+        </div>
+        <div class="content">
+            <h2>🔧 Python Functions Kya Hain?</h2>
+            <p>Function ek reusable code block hai jo specific kaam karta hai. Baar-baar use hone wala code ek function mein daal dein, aur jab chahiye tab call kar lein!</p>
+            
+            <h2>1️⃣ Function Kaise Banayein?</h2>
+            <div class="code-block">
+<span class="comment"># Basic function</span>
+<span class="keyword">def</span> <span class="function">greet</span>():
+    <span class="function">print</span>(<<span class="string">"Hello, Welcome to Python!"</span>)
+
+<span class="comment"># Function call</span>
+<span class="function">greet</span>()  <span class="comment"># Output: Hello, Welcome to Python!</span>
+<span class="function">greet</span>()  <span class="comment"># Output: Hello, Welcome to Python!</span>
+            </div>
+
+            <h2>2️⃣ Function with Parameters</h2>
+            <div class="code-block">
+<span class="comment"># Function with parameters</span>
+<span class="keyword">def</span> <span class="function">greet_user</span>(name):
+    <span class="function">print</span>(<<span class="string">f"Hello, {name}! Kaise hain aap?"</span>)
+
+<span class="function">greet_user</span>(<<span class="string">"Akarshit"</span>)  <span class="comment"># Hello, Akarshit! Kaise hain aap?</span>
+<span class="function">greet_user</span>(<<span class="string">"Rahul"</span>)    <span class="comment"># Hello, Rahul! Kaise hain aap?</span>
+            </div>
+
+            <h2>3️⃣ Function with Return Value</h2>
+            <div class="code-block">
+<span class="comment"># Function with return</span>
+<span class="keyword">def</span> <span class="function">add_numbers</span>(a, b):
+    result = a + b
+    <span class="keyword">return</span> result
+
+sum = <span class="function">add_numbers</span>(<<span class="number">10</span>, <span class="number">20</span>)
+<span class="function">print</span>(sum)  <span class="comment"># Output: 30</span>
+
+<span class="comment"># Direct use</span>
+<span class="function">print</span>(<<span class="function">add_numbers</span>(<<span class="number">5</span>, <span class="number">3</span>))  <span class="comment"># Output: 8</span>
+            </div>
+
+            <h2>4️⃣ Default Parameters</h2>
+            <div class="code-block">
+<span class="comment"># Default parameter values</span>
+<span class="keyword">def</span> <span class="function">greet</span>(name=<span class="string">"Guest"</span>, message=<span class="string">"Welcome"</span>):
+    <span class="function">print</span>(<<span class="string">f"{message}, {name}!"</span>)
+
+<span class="function">greet</span>()                      <span class="comment"># Welcome, Guest!</span>
+<span class="function">greet</span>(<<span class="string">"Akarshit"</span>)            <span class="comment"># Welcome, Akarshit!</span>
+<span class="function">greet</span>(<<span class="string">"Rahul"</span>, <span class="string">"Hello"</span>)      <span class="comment"># Hello, Rahul!</span>
+            </div>
+
+            <h2>5️⃣ Keyword Arguments</h2>
+            <div class="code-block">
+<span class="comment"># Keyword arguments</span>
+<span class="keyword">def</span> <span class="function">student_info</span>(name, age, school):
+    <span class="function">print</span>(<<span class="string">f"{name} is {age} years old and studies at {school}"</span>)
+
+<span class="function">student_info</span>(age=<span class="number">17</span>, school=<span class="string">"JNV"</span>, name=<span class="string">"Akarshit"</span>)
+<span class="comment"># Output: Akarshit is 17 years old and studies at JNV</span>
+            </div>
+
+            <h2>6️⃣ *args (Variable Arguments)</h2>
+            <div class="code-block">
+<span class="comment"># *args - multiple arguments</span>
+<span class="keyword">def</span> <span class="function">total_marks</span>(*marks):
+    <span class="keyword">return</span> <span class="function">sum</span>(marks)
+
+result = <span class="function">total_marks</span>(<<span class="number">85</span>, <span class="number">90</span>, <span class="number">78</span>, <span class="number">92</span>)
+<span class="function">print</span>(result)  <span class="comment"># Output: 345</span>
+            </div>
+
+            <h2>7️⃣ **kwargs (Keyword Arguments)</h2>
+            <div class="code-block">
+<span class="comment"># **kwargs - dictionary of arguments</span>
+<span class="keyword">def</span> <span class="function">print_details</span>(**kwargs):
+    <span class="keyword">for</span> key, value <span class="keyword">in</span> kwargs.items():
+        <span class="function">print</span>(<<span class="string">f"{key}: {value}"</span>)
+
+<span class="function">print_details</span>(name=<span class="string">"Akarshit"</span>, age=<span class="number">17</span>, city=<span class="string">"Sitapur"</span>)
+<span class="comment"># Output:</span>
+<span class="comment"># name: Akarshit</span>
+<span class="comment"># age: 17</span>
+<span class="comment"># city: Sitapur</span>
+            </div>
+
+            <h2>8️⃣ Lambda Functions (One-line)</h2>
+            <div class="code-block">
+<span class="comment"># Lambda function</span>
+square = <span class="keyword">lambda</span> x: x ** <span class="number">2</span>
+<span class="function">print</span>(<<span class="function">square</span>(<<span class="number">5</span>))  <span class="comment"># Output: 25</span>
+
+add = <span class="keyword">lambda</span> a, b: a + b
+<span class="function">print</span>(<<span class="function">add</span>(<<span class="number">10</span>, <span class="number">20</span>))  <span class="comment"># Output: 30</span>
+
+<span class="comment"># With map()</span>
+numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]
+squares = <span class="function">list</span>(<<span class="function">map</span>(<<span class="keyword">lambda</span> x: x**<<span class="number">2</span>, numbers))
+<span class="function">print</span>(squares)  <span class="comment"># [1, 4, 9, 16, 25]</span>
+            </div>
+
+            <h2>9️⃣ Real Example: Calculator Function</h2>
+            <div class="code-block">
+<span class="comment"># Complete calculator</span>
+<span class="keyword">def</span> <span class="function">calculator</span>(a, b, operation=<span class="string">"+"</span>):
+    <span class="keyword">if</span> operation == <span class="string">"+"</span>:
+        <span class="keyword">return</span> a + b
+    <span class="keyword">elif</span> operation == <span class="string">"-"</span>:
+        <span class="keyword">return</span> a - b
+    <span class="keyword">elif</span> operation == <span class="string">"*"</span>:
+        <span class="keyword">return</span> a * b
+    <span class="keyword">elif</span> operation == <span class="string">"/"</span>:
+        <span class="keyword">return</span> a / b <span class="keyword">if</span> b != <span class="number">0</span> <span class="keyword">else</span> <span class="string">"Error: Division by zero"</span>
+    <span class="keyword">else</span>:
+        <span class="keyword">return</span> <span class="string">"Invalid operation"</span>
+
+<span class="function">print</span>(<<span class="function">calculator</span>(<<span class="number">10</span>, <span class="number">5</span>, <span class="string">"+"</span>))  <span class="comment"># 15</span>
+<span class="function">print</span>(<<span class="function">calculator</span>(<<span class="number">10</span>, <span class="number">5</span>, <span class="string">"*"</span>))  <span class="comment"># 50</span>
+            </div>
+
+            <div class="tip">
+                💡 <strong>DRY Principle:</strong> Don't Repeat Yourself! Jo code baar-baar use hota hai, usse function mein daal dein. Code clean aur maintainable rahega!
+            </div>
+        </div>
+        <div class="next-prev">
+            <a href="python-loops.html">← Previous: Loops</a>
+            <a href="python-lists.html">Next: Lists →</a>
+        </div>
+    </div>
+    <footer>
+        <p>© 2026 Akarshit Raj | PM SHRI JNV Khairabad, Sitapur</p>
+        <p style="margin-top:0.5rem;font-size:0.85rem;">Learn programming for free 🎓</p>
+    </footer>
+</body>
+</html>
