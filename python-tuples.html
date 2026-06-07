@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Tuples Complete Guide - Akarshit Raj</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0f172a; color: #e2e8f0; line-height: 1.8; }
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+        h1 { color: #38bdf8; font-size: 2.2rem; margin-bottom: 10px; border-bottom: 3px solid #38bdf8; padding-bottom: 10px; }
+        h2 { color: #a78bfa; font-size: 1.5rem; margin-top: 30px; margin-bottom: 15px; }
+        h3 { color: #fbbf24; font-size: 1.2rem; margin-top: 20px; margin-bottom: 10px; }
+        p { margin-bottom: 15px; font-size: 1.05rem; }
+        pre { background: #1e293b; border: 1px solid #334155; border-radius: 8px; padding: 15px; overflow-x: auto; margin: 15px 0; }
+        code { font-family: 'Consolas', 'Monaco', monospace; color: #7dd3fc; font-size: 0.95rem; }
+        .tip { background: #064e3b; border-left: 4px solid #34d399; padding: 15px; margin: 20px 0; border-radius: 0 8px 8px 0; }
+        .tip strong { color: #34d399; }
+        .warning { background: #451a03; border-left: 4px solid #fbbf24; padding: 15px; margin: 20px 0; border-radius: 0 8px 8px 0; }
+        .warning strong { color: #fbbf24; }
+        ul { margin-left: 25px; margin-bottom: 15px; }
+        li { margin-bottom: 8px; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { border: 1px solid #334155; padding: 12px; text-align: left; }
+        th { background: #1e293b; color: #38bdf8; }
+        td { background: #0f172a; }
+        .back-btn { display: inline-block; background: #38bdf8; color: #0f172a; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: bold; margin-bottom: 20px; }
+        .back-btn:hover { background: #7dd3fc; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="tutorials.html" class="back-btn">← Back to Tutorials</a>
+        
+        <h1>📦 Python Tuples Complete Guide</h1>
+        
+        <p>Tuple list jaisa hi hai, lekin <strong>immutable</strong> — matlab ek baar banne ke baad change nahi ho sakta. Round brackets <code>()</code> mein likha jata hai. Fixed data store karne ke liye best hai!</p>
+
+        <h2>1️⃣ Tuple Kaise Banayein?</h2>
+        <pre><code>fruits = ("Apple", "Banana", "Mango")
+numbers = (1, 2, 3, 4, 5)
+mixed = (1, "hello", 3.14, True)
+single = ("Python",)    # Single item ke baad comma zaruri hai!
+empty = ()
+
+print(fruits)
+print(numbers)
+print(type(single))     # &lt;class 'tuple'&gt;
+
+# Without comma, string ban jayegi
+not_tuple = ("Python")
+print(type(not_tuple))  # &lt;class 'str'&gt; — Ye tuple nahi hai!</code></pre>
+
+        <div class="warning">
+            <strong>⚠️ Dhyaan:</strong> Single item tuple mein comma (,) zaruri hai! Bina comma ke string ban jayegi.
+        </div>
+
+        <h2>2️⃣ Accessing Items (Indexing & Slicing)</h2>
+        <pre><code>fruits = ("Apple", "Banana", "Mango", "Orange", "Grapes")
+
+print(fruits[0])        # Apple
+print(fruits[2])        # Mango
+print(fruits[-1])       # Grapes (last)
+print(fruits[-2])       # Orange (second last)
+
+# Slicing
+print(fruits[1:4])      # ('Banana', 'Mango', 'Orange')
+print(fruits[:3])       # ('Apple', 'Banana', 'Mango')
+print(fruits[::2])      # ('Apple', 'Mango', 'Grapes')
+print(fruits[::-1])     # ('Grapes', 'Orange', 'Mango', 'Banana', 'Apple')</code></pre>
+
+        <h2>3️⃣ Tuple Immutability</h2>
+        <pre><code>fruits = ("Apple", "Banana", "Mango")
+# fruits[0] = "Orange"    # ❌ TypeError! Tuple change nahi ho sakta
+
+# Lekin agar andar mutable item ho toh usko change kar sakte hain
+t = (1, 2, [3, 4])
+t[2][0] = 30            # ✅ List andar change ho sakti hai
+print(t)                # (1, 2, [30, 4])
+
+# Tuple ko list mein convert karke change kar sakte hain
+fruits = ("Apple", "Banana", "Mango")
+fruits_list = list(fruits)
+fruits_list[0] = "Orange"
+fruits = tuple(fruits_list)
+print(fruits)           # ('Orange', 'Banana', 'Mango')</code></pre>
+
+        <h2>4️⃣ Tuple Methods</h2>
+        <pre><code>numbers = (1, 2, 3, 2, 4, 2, 5)
+
+print(numbers.count(2))     # 3 — kitni baar 2 aaya
+print(numbers.index(4))     # 4 — 4 kis index par hai
+print(len(numbers))         # 7 — total items</code></pre>
+
+        <h2>5️⃣ Tuple Unpacking</h2>
+        <pre><code># Basic unpacking
+a, b, c = (10, 20, 30)
+print(a, b, c)            # 10 20 30
+
+# Asterisk unpacking
+fruits = ("Apple", "Banana", "Mango", "Orange")
+first, *rest = fruits
+print(first)              # Apple
+print(rest)               # ['Banana', 'Mango', 'Orange']
+
+first, second, *remaining = fruits
+print(first, second)      # Apple Banana
+print(remaining)          # ['Mango', 'Orange']
+
+# Ignore karna ho toh underscore use karein
+a, _, c = (1, 2, 3)
+print(a, c)               # 1 3</code></pre>
+
+        <h2>6️⃣ Tuple vs List</h2>
+        <table>
+            <tr><th>Feature</th><th>List</th><th>Tuple</th></tr>
+            <tr><td>Syntax</td><td>[]</td><td>()</td></tr>
+            <tr><td>Mutable</td><td>✅ Haan</td><td>❌ Nahi</td></tr>
+            <tr><td>Speed</td><td>Slow</td><td>Fast</td></tr>
+            <tr><td>Memory</td><td>Zyada</td><td>Kam</td></tr>
+            <tr><td>Use Case</td><td>Dynamic data</td><td>Fixed data</td></tr>
+        </table>
+
+        <h2>7️⃣ Tuple as Dictionary Key</h2>
+        <p>Tuple immutable hone ki wajah se dictionary key ban sakta hai (list nahi ban sakti):</p>
+        <pre><code>locations = {
+    (0, 0): "Origin",
+    (10, 20): "Point A",
+    (30, 40): "Point B"
+}
+
+print(locations[(10, 20)])    # Point A
+print(locations[(0, 0)])      # Origin</code></pre>
+
+        <h2>8️⃣ Tuple Comprehension (Generator Expression)</h2>
+        <pre><code>numbers = (1, 2, 3, 4, 5)
+
+# Generator expression se tuple banana
+squares = tuple(x**2 for x in numbers)
+print(squares)              # (1, 4, 9, 16, 25)
+
+evens = tuple(x for x in range(10) if x % 2 == 0)
+print(evens)                # (0, 2, 4, 6, 8)</code></pre>
+
+        <h2>9️⃣ Nested Tuples</h2>
+        <pre><code>matrix = (
+    (1, 2, 3),
+    (4, 5, 6),
+    (7, 8, 9)
+)
+
+print(matrix[0])            # (1, 2, 3)
+print(matrix[1][2])         # 6
+
+for row in matrix:
+    for item in row:
+        print(item, end=" ")
+    print()
+# Output: 1 2 3
+#         4 5 6
+#         7 8 9</code></pre>
+
+        <h2>🔟 Practical Examples</h2>
+        <pre><code># Multiple values return karna
+def min_max(numbers):
+    return min(numbers), max(numbers)
+
+result = min_max([3, 1, 4, 1, 5, 9])
+print(result)               # (1, 9)
+
+minimum, maximum = result
+print(f"Min: {minimum}, Max: {maximum}")  # Min: 1, Max: 9
+
+# Swap values (Python magic!)
+a, b = 10, 20
+a, b = b, a
+print(f"a: {a}, b: {b}")    # a: 20, b: 10
+
+# Coordinates store karna
+point = (10, 20)
+x, y = point
+print(f"X: {x}, Y: {y}")    # X: 10, Y: 20</code></pre>
+
+        <div class="tip">
+            <strong>💡 Yaad Rakhein:</strong><br>
+            • Tuple immutable hai — data safety ke liye best<br>
+            • List se fast aur memory efficient hai<br>
+            • Dictionary key ban sakta hai (list nahi ban sakti)<br>
+            • Single item mein comma zaruri hai<br>
+            • Agar data change nahi hoga toh hamesha tuple prefer karein!
+        </div>
+    </div>
+</body>
+</html>
