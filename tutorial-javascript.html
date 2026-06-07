@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Complete Guide - Zero to Hero - Akarshit Raj</title>
+    <link rel="icon" type="image/png" href="file_000000004984720882e69f4dad44966a.png">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{--primary:#6366f1;--primary-dark:#4f46e5;--secondary:#ec4899;--accent:#06b6d4;--dark:#0f172a;--darker:#020617;--light:#f8fafc;--gray:#94a3b8;--card-bg:rgba(30,41,59,0.6);--code-bg:#1e1e1e}
+        body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--darker);color:var(--light);min-height:100vh;line-height:1.6}
+        nav{position:fixed;top:0;width:100%;padding:1rem 5%;background:rgba(2,6,23,0.95);backdrop-filter:blur(20px);z-index:1000;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,0.08)}
+        .logo{font-size:1.6rem;font-weight:800;background:linear-gradient(135deg,var(--primary),var(--secondary));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .nav-links{display:flex;gap:2rem;list-style:none}
+        .nav-links a{color:var(--gray);text-decoration:none;font-weight:500;transition:all 0.3s}
+        .nav-links a:hover{color:var(--light)}
+        .mobile-menu-btn{display:none;background:none;border:none;color:var(--light);font-size:1.5rem;cursor:pointer}
+        .container{max-width:800px;margin:0 auto;padding:7rem 5% 3rem}
+        .post-header{text-align:center;margin-bottom:3rem;padding-bottom:2rem;border-bottom:1px solid rgba(255,255,255,0.08)}
+        .post-icon{font-size:4rem;margin-bottom:1rem}
+        .post-title{font-size:2.2rem;font-weight:800;margin-bottom:1rem}
+        .post-meta{display:flex;justify-content:center;gap:1.5rem;color:var(--gray);font-size:0.9rem;margin-bottom:1rem;flex-wrap:wrap}
+        .post-tag{padding:0.35rem 1rem;border-radius:50px;font-size:0.85rem;font-weight:600;background:rgba(234,179,8,0.15);color:#eab308}
+        .content{font-size:1.1rem;line-height:1.9;color:var(--gray)}
+        .content h2{font-size:1.8rem;font-weight:700;color:var(--light);margin:2.5rem 0 1rem}
+        .content h3{font-size:1.4rem;font-weight:600;color:var(--light);margin:2rem 0 1rem}
+        .content p{margin-bottom:1.5rem}
+        .content strong{color:var(--light)}
+        .content ul{margin:1rem 0 1.5rem 2rem}
+        .content li{margin-bottom:0.5rem}
+        .code-block{background:var(--code-bg);border-radius:12px;padding:1.5rem;margin:1.5rem 0;overflow-x:auto;border:1px solid rgba(255,255,255,0.1)}
+        .code-block pre{margin:0;font-family:'Consolas','Monaco',monospace;font-size:0.95rem;color:#d4d4d4;line-height:1.6}
+        .code-block .comment{color:#6a9955}
+        .code-block .keyword{color:#569cd6}
+        .code-block .string{color:#ce9178}
+        .code-block .function{color:#dcdcaa}
+        .code-block .number{color:#b5cea8}
+        .tip-box{background:rgba(16,185,129,0.1);border-left:4px solid var(--success);padding:1.25rem;border-radius:0 12px 12px 0;margin:1.5rem 0}
+        .tip-box strong{color:var(--success);display:block;margin-bottom:0.5rem}
+        .warning-box{background:rgba(239,68,68,0.1);border-left:4px solid #ef4444;padding:1.25rem;border-radius:0 12px 12px 0;margin:1.5rem 0}
+        .warning-box strong{color:#ef4444;display:block;margin-bottom:0.5rem}
+        .back-btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.8rem 1.5rem;background:var(--glass);color:var(--light);text-decoration:none;border-radius:12px;font-weight:600;margin-bottom:2rem;transition:all 0.3s;border:1px solid rgba(255,255,255,0.1)}
+        .back-btn:hover{background:rgba(255,255,255,0.1)}
+        footer{text-align:center;padding:3rem 5%;border-top:1px solid rgba(255,255,255,0.05);margin-top:3rem}
+        .footer-logo{font-size:1.5rem;font-weight:800;background:linear-gradient(135deg,var(--primary),var(--secondary));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:1rem}
+        .footer-text{color:var(--gray);font-size:0.9rem}
+        @media(max-width:768px){.mobile-menu-btn{display:block}.nav-links{display:none}.post-title{font-size:1.7rem}.container{padding:6rem 5% 2rem}}
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">AK.R</div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#courses">Courses</a></li>
+            <li><a href="tutorials.html">Tutorials</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        <button class="mobile-menu-btn" onclick="document.getElementById('navLinks').classList.toggle('active')">☰</button>
+    </nav>
+
+    <div class="container">
+        <a href="tutorials.html" class="back-btn">← Back to Tutorials</a>
+
+        <div class="post-header">
+            <div class="post-icon">🟨</div>
+            <h1 class="post-title">JavaScript Complete Guide - Zero to Hero</h1>
+            <div class="post-meta">
+                <span class="post-tag">JavaScript</span>
+                <span>📅 June 7, 2026</span>
+                <span>⏱ 15 min read</span>
+                <span>🎯 Beginner to Advanced</span>
+            </div>
+        </div>
+
+        <div class="content">
+            <p><strong>JavaScript web development ki jaan hai!</strong> Agar aapko websites interactive aur dynamic banani hain, toh JavaScript seekhna must hai. Ye sirf ek programming language nahi hai — ye poori web development ecosystem ka foundation hai. Aaj ke is comprehensive guide mein hum JavaScript ke har concept ko detail mein samjhenge — variables se leke DOM manipulation, events, ES6+ features, aur real projects tak!</p>
+
+            <h2>🔷 JavaScript Kya Hai?</h2>
+            <p>JavaScript ek lightweight, interpreted programming language hai jo primarily web pages ko interactive banane ke liye banayi gayi thi. 1995 mein Brendan Eich ne isse sirf 10 din mein create kiya tha, aur aaj ye duniya ki sabse popular programming language hai.</p>
+
+            <p>JavaScript ka sabse bada advantage ye hai ki ye <strong>directly browser mein chalti hai.</strong> Aapko koi special software install karne ki zarurat nahi hai — bas ek text editor aur browser kaafi hai. Chrome, Firefox, Safari, Edge — sab mein JavaScript built-in hoti hai.</p>
+
+            <p>Aaj JavaScript sirf websites tak limited nahi hai. Node.js ke through ye server-side programming bhi kar sakti hai, React Native se mobile apps bana sakti hai, aur Electron se desktop applications bhi develop ho sakti hain. Isliye isse "JavaScript Everywhere" bhi kaha jata hai.</p>
+
+            <h2>📝 JavaScript Ko Kahan Likhain?</h2>
+            <p>JavaScript ko 3 tarike se HTML mein add kar sakte hain:</p>
+
+            <p><strong>1. Inline JavaScript:</strong> Directly HTML tag ke andar <code>onclick</code> jaise attributes mein.</p>
+            <p><strong>2. Internal JavaScript:</strong> <code>&lt;script&gt;</code> tag ke andar HTML file mein hi.</p>
+            <p><strong>3. External JavaScript:</strong> Alag .js file mein likh ke <code>src</code> attribute se link karein.</p>
+
+            <div class="code-block">
+                <pre><span class="comment">&lt;!-- External JS (Best Practice) --&gt;</span>
+<span class="keyword">&lt;!DOCTYPE html&gt;</span>
+<span class="keyword">&lt;html&gt;</span>
+<span class="keyword">&lt;head&gt;</span>
+    <span class="keyword">&lt;title&gt;</span>My Page<span class="keyword">&lt;/title&gt;</span>
+<span class="keyword">&lt;/head&gt;</span>
+<span class="keyword">&lt;body&gt;</span>
+    <span class="keyword">&lt;h1</span> <span class="function">id</span>=<<span class="string">"heading"</span><span class="keyword">&gt;</span>Hello!<span class="keyword">&lt;/h1&gt;</span>
+    <span class="keyword">&lt;button</span> <span class="function">onclick</span>=<<span class="string">"changeText()"</span><span class="keyword">&gt;</span>Click Me<span class="keyword">&lt;/button&gt;</span>
+
+    <span class="keyword">&lt;script</span> <span class="function">src</span>=<<span class="string">"script.js"</span><span class="keyword">&gt;&lt;/script&gt;</span>
+<span class="keyword">&lt;/body&gt;</span>
+<span class="keyword">&lt;/html&gt;</span></pre>
+            </div>
+
+            <div class="code-block">
+                <pre><span class="comment">// script.js</span>
+<span class="keyword">function</span> <span class="function">changeText</span>() {
+    <span class="keyword">const</span> heading = document.<span class="function">getElementById</span>(<<span class="string">'heading'</span>);
+    heading.innerText = <span class="string">"JavaScript is Awesome! 🚀"</span>;
+}</pre>
+            </div>
+
+            <h2>📦 Variables aur Data Types</h2>
+            <p>JavaScript mein variables declare karne ke 3 tareeke hain:</p>
+
+            <p><strong>• var:</strong> Old way, function-scoped, re-declare ho sakta hai. Avoid karein.</p>
+            <p><strong>• let:</strong> New way, block-scoped, re-assign ho sakta hai. Use karein jab value change hogi.</p>
+            <p><strong>• const:</strong> New way, block-scoped, re-assign nahi ho sakta. Use karein jab value fixed ho.</p>
+
+            <div class="code-block">
+                <pre><span class="comment">// Variables in JavaScript</span>
+<span class="keyword">let</span> name = <span class="string">"Akarshit"</span>;      <span class="comment">// String</span>
+<span class="keyword">let</span> age = <span class="number">17</span>;             <span class="comment">// Number</span>
+<span class="keyword">let</span> isStudent = <span class="keyword">true</span>;    <span class="comment">// Boolean</span>
+<span class="keyword">let</span> marks = [<span class="number">85</span>, <span class="number">90</span>, <span class="number">78</span>]; <span class="comment">// Array</span>
+<span class="keyword">const</span> PI = <span class="number">3.14159</span>;       <span class="comment">// Constant</span>
+
+<span class="function">console</span>.<<span class="function">log</span>(<<span class="keyword">typeof</span> name);    <span class="comment">// "string"</span>
+<span class="function">console</span>.<<span class="function">log</span>(<<span class="keyword">typeof</span> age);    <span class="comment">// "number"</span>
+<span class="function">console</span>.<<span class="function">log</span>(<<span class="keyword">typeof</span> marks);  <span class="comment">// "object"</span></pre>
+            </div>
+
+            <div class="warning-box">
+                <strong>⚠️ Important:</strong>
+                <code>var</code> mat use karein! Ye hoisting ki wajah se unexpected behavior de sakta hai. Hamesha <code>let</code> ya <code>const</code> prefer karein. Ye modern JavaScript (ES6+) ka part hai aur zyada safe hai.
+            </div>
+
+            <h2>🧮 Operators aur Expressions</h2>
+            <p>JavaScript mein C++ jaisa hi operators hain, lekin kuch special operators bhi hain:</p>
+
+            <div class="code-block">
+                <pre><span class="keyword">let</span> a = <span class="number">10</span>, b = <span class="number">3</span>;
+
+<span class="comment">// Arithmetic</span>
+<span class="function">console</span>.<<span class="function">log</span>(a + b);   <span class="comment">// 13</span>
+<span class="function">console</span>.<<span class="function">log</span>(a - b);   <span class="comment">// 7</span>
+<span class="function">console</span>.<<span class="function">log</span>(a * b);   <span class="comment">// 30</span>
+<span class="function">console</span>.<<span class="function">log</span>(a / b);   <span class="comment">// 3.33</span>
+<span class="function">console</span>.<<span class="function">log</span>(a % b);   <span class="comment">// 1</span>
+<span class="function">console</span>.<<span class="function">log</span>(a ** b);  <span class="comment">// 1000 (Exponent)</span>
+
+<span class="comment">// Comparison</span>
+<span class="function">console</span>.<<span class="function">log</span>(a == <span class="string">"10"</span>);   <span class="comment">// true (loose equality)</span>
+<span class="function">console</span>.<<span class="function">log</span>(a === <span class="string">"10"</span>);  <span class="comment">// false (strict equality)</span>
+
+<span class="comment">// Logical</span>
+<span class="function">console</span>.<<span class="function">log</span>(a > <span class="number">5</span> && b < <span class="number">5</span>);  <span class="comment">// true</span>
+<span class="function">console</span>.<<span class="function">log</span>(a > <span class="number">15</span> || b < <span class="number">5</span>); <span class="comment">// true</span></pre>
+            </div>
+
+            <p><strong>=== vs ==</strong> bahut important hai! <code>===</code> strict equality check karta hai (value + type dono), jabki <code>==</code> sirf value check karta hai aur type conversion kar deta hai. Hamesha <code>===</code> use karein!</p>
+
+            <h2>🔄 Conditions: if-else aur switch</h2>
+            <p>Conditions se aap apne program ko decision-making capability dete hain. Agar kuch condition true hai toh ye karo, nahi toh wo karo.</p>
+
+            <div class="code-block">
+                <pre><span class="keyword">let</span> marks = <span class="number">85</span>;
+
+<span class="keyword">if</span> (marks >= <span class="number">90</span>) {
+    <span class="function">console</span>.<<span class="function">log</span>(<<span class="string">"Grade A+"</span>);
+} <span class="keyword">else if</span> (marks >= <span class="number">80</span>) {
+    <span class="function">console</span>.<<span class="function">log</span>(<<span class="string">"Grade A"</span>);
+} <span class="keyword">else if</span> (marks >= <span class="number">70</span>) {
+    <span class="function">console</span>.<<span class="function">log</span>(<<span class="string">"Grade B"</span>);
+} <span class="keyword">else</span> {
+    <span class="function">console</span>.<<span class="function">log</span>(<<span class="string">"Grade C"</span>);
+}
+
+<span class="comment">// Ternary operator (shortcut)</span>
+<span class="keyword">let</span> result = marks >= <span class="number">40</span> ? <span class="string">"Pass"</span> : <span class="string">"Fail"</span>;
+<span class="function">console</span>.<<span class="function">log</span>(result);  <span class="comment">// Pass</span></pre>
+            </div>
+
+            <h2>🔁 Loops: for, while, forEach</h2>
+            <p>Loops se aap ek hi kaam baar-baar bina code likhe kar sakte hain. Ye repetitive tasks ke liye bahut useful hain.</p>
+
+            <div class="code-block">
+                <pre><span class="comment">// for loop</span>
+<span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i <= <span class="number">5</span>; i++) {
+    <span class="function">console</span>.<<span class="function">log</span>(<<span class="string">"Count: "</span> + i);
+}
+
+<span class="comment">// while loop</span>
+<span class="keyword">let</span> count = <span class="number">1</span>;
+<span class="keyword">while</span> (count <= <span class="number">5</span>) {
+    <span class="function">console</span>.<<span class="function">log</span>(<<span class="string">"While: "</span> + count);
+    count++;
+}
+
+<span class="comment">// for...of (arrays ke liye)</span>
+<span class="keyword">let</span> fruits = [<span class="string">"Apple"</span>, <span class="string">"Banana"</span>, <span class="string">"Mango"</span>];
+<span class="keyword">for</span> (<span class="keyword">let</span> fruit <span class="keyword">of</span> fruits) {
+    <span class="function">console</span>.<<span class="function">log</span>(fruit);
+}
+
+<span class="comment">// forEach (modern way)</span>
+fruits.<span class="function">forEach</span>((fruit, index) => {
+    <span class="function">console</span>.<<span class="function">log</span>(<<span class="string">`${index + 1}. ${fruit}`</span>);
+});</pre>
+            </div>
+
+            <h2>📦 Arrays aur Objects</h2>
+            <p>Arrays multiple values ek saath store karte hain, aur objects key-value pairs store karte hain. Ye dono JavaScript ke sabse powerful features hain.</p>
+
+            <div class="code-block">
+                <pre><span class="comment">// Array</span>
+<span class="keyword">let</span> students = [<span class="string">"Akarshit"</span>, <span class="string">"Rahul"</span>, <span class="string">"Priya"</span>];
+students.<span class="function">push</span>(<<span class="string">"Amit"</span>);        <span class="comment">// Add at end</span>
+students.<span class="function">pop</span>();              <span class="comment">// Remove from end</span>
+<span class="function">console</span>.<<span class="function">log</span>(students.<span class="function">length</span>);  <span class="comment">// 3</span>
+
+<span class="comment">// Object</span>
+<span class="keyword">let</span> student = {
+    name: <span class="string">"Akarshit"</span>,
+    age: <span class="number">17</span>,
+    school: <span class="string">"JNV Khairabad"</span>,
+    subjects: [<span class="string">"Math"</span>, <span class="string">"Science"</span>, <span class="string">"CS"</span>]
+};
+
+<span class="function">console</span>.<<span class="function">log</span>(student.name);       <span class="comment">// "Akarshit"</span>
+<span class="function">console</span>.<<span class="function">log</span>(student[<span class="string">"age"</span>]);     <span class="comment">// 17</span>
+
+<span class="comment">// Destructuring (ES6)</span>
+<span class="keyword">const</span> { name, age } = student;
+<span class="function">console</span>.<<span class="function">log</span>(name, age);          <span class="comment">// "Akarshit" 17</span></pre>
+            </div>
+
+            <h2>⚡ Functions: Regular, Arrow, Callback</h2>
+            <p>Functions reusable code blocks hain. JavaScript mein functions first-class citizens hain — matlab unhe variables mein store, arguments ke taur pe pass, aur return bhi kar sakte hain.</p>
+
+            <div class="code-block">
+                <pre><span class="comment">// Regular function</span>
+<span class="keyword">function</span> <span class="function">greet</span>(name) {
+    <span class="keyword">return</span> <span class="string">"Hello, "</span> + name + <span class="string">"!"</span>;
+}
+
+<span class="comment">// Arrow function (ES6) — modern way</span>
+<span class="keyword">const</span> <span class="function">add</span> = (a, b) => a + b;
+
+<span class="comment">// Default parameters</span>
+<span class="keyword">const</span> <span class="function">welcome</span> = (name = <span class="string">"Guest"</span>) => {
+    <span class="function">console</span>.<<span class="function">log</span>(<<span class="string">`Welcome, ${name}!`</span>);
+};
+
+<span class="comment">// Callback function</span>
+<span class="keyword">const</span> <span class="function">calculate</span> = (a, b, operation) => {
+    <span class="keyword">return</span> <span class="function">operation</span>(a, b);
+};
+
+<span class="keyword">const</span> result = <span class="function">calculate</span>(<<span class="number">5</span>, <span class="number">3</span>, (x, y) => x * y);
+<span class="function">console</span>.<<span class="function">log</span>(result);  <span class="comment">// 15</span></pre>
+            </div>
+
+            <div class="tip-box">
+                <strong>💡 Pro Tip:</strong>
+                Arrow functions <code>=&gt;</code> hamesha use karein jab context (this) ki zarurat na ho. Ye chhote, clean, aur modern hain. Lekin object methods aur event listeners mein regular functions zyada safe hain.
+            </div>
+
+            <h2>🌐 DOM Manipulation</h2>
+            <p>DOM (Document Object Model) HTML page ka tree structure hai. JavaScript se aap is tree ko modify kar sakte hain — elements add, remove, style change, content update — sab kuch!</p>
+
+            <div class="code-block">
+                <pre><span class="comment">// Select elements</span>
+<span class="keyword">const</span> heading = document.<span class="function">getElementById</span>(<<span class="string">"title"</span>);
+<span class="keyword">const</span> buttons = document.<span class="function">querySelectorAll</span>(<<span class="string">".btn"</span>);
+
+<span class="comment">// Change content</span>
+heading.innerText = <span class="string">"New Title!"</span>;
+heading.innerHTML = <span class="string">"&lt;span&gt;Styled&lt;/span&gt; Title"</span>;
+
+<span class="comment">// Change styles</span>
+heading.style.color = <span class="string">"#6366f1"</span>;
+heading.style.fontSize = <span class="string">"2rem"</span>;
+heading.classList.<span class="function">add</span>(<<span class="string">"highlight"</span>);
+
+<span class="comment">// Create new element</span>
+<span class="keyword">const</span> newDiv = document.<span class="function">createElement</span>(<<span class="string">"div"</span>);
+newDiv.innerText = <span class="string">"I am new!"</span>;
+document.body.<span class="function">appendChild</span>(newDiv);</pre>
+            </div>
+
+            <h2>🎮 Event Handling</h2>
+            <p>Events user actions hain — click, hover, keypress, scroll, submit. JavaScript se aap in events ko "listen" kar sakte hain aur response de sakte hain.</p>
+
+            <div class="code-block">
+                <pre><span class="keyword">const</span> btn = document.<span class="function">getElementById</span>(<<span class="string">"myButton"</span>);
+
+<span class="comment">// Add event listener</span>
+btn.<span class="function">addEventListener</span>(<<span class="string">"click"</span>, () => {
+    <span class="function">alert</span>(<<span class="string">"Button clicked!"</span>);
+});
+
+<span class="comment">// Mouse events</span>
+btn.<span class="function">addEventListener</span>(<<span class="string">"mouseenter"</span>, () => {
+    btn.style.backgroundColor = <span class="string">"#6366f1"</span>;
+});
+
+btn.<span class="function">addEventListener</span>(<<span class="string">"mouseleave"</span>, () => {
+    btn.style.backgroundColor = <span class="string">"#4f46e5"</span>;
+});
+
+<span class="comment">// Form submit</span>
+document.<span class="function">getElementById</span>(<<span class="string">"form"</span>).<<span class="function">addEventListener</span>(<<span class="string">"submit"</span>, (e) => {
+    e.<span class="function">preventDefault</span>();  <span class="comment">// Page reload rokna</span>
+    <span class="function">console</span>.<<span class="function">log</span>(<<span class="string">"Form submitted!"</span>);
+});</pre>
+            </div>
+
+            <h2>🚀 ES6+ Modern Features</h2>
+            <p>ES6 (2015) se JavaScript mein bahut saare powerful features aaye hain jo code ko clean aur efficient banate hain:</p>
+
+            <ul>
+                <li><strong>Template Literals:</strong> Backticks <code>`Hello ${name}`</code> se dynamic strings bana sakte hain.</li>
+                <li><strong>Spread Operator:</strong> <code>[...array1, ...array2]</code> se arrays/objects easily merge/clone hote hain.</li>
+                <li><strong>Rest Parameters:</strong> <code>function sum(...numbers)</code> se unlimited arguments handle kar sakte hain.</li>
+                <li><strong>Promises & Async/Await:</strong> Asynchronous programming ko simple banate hain — API calls, file reading, etc.</li>
+                <li><strong>Modules:</strong> <code>import/export</code> se code ko alag-alag files mein organize kar sakte hain.</li>
+                <li><strong>Map & Set:</strong> Advanced data structures jo objects aur arrays se zyada powerful hain.</li>
+            </ul>
+
+            <div class="code-block">
+                <pre><span class="comment">// Async/Await — API call example</span>
+<span class="keyword">const</span> <span class="function">fetchData</span> = <span class="keyword">async</span> () => {
+    <span class="keyword">try</span> {
+        <span class="keyword">const</span> response = <span class="keyword">await</span> <span class="function">fetch</span>(<<span class="string">"https://api.example.com/data"</span>);
+        <span class="keyword">const</span> data = <span class="keyword">await</span> response.<span class="function">json</span>();
+        <span class="function">console</span>.<<span class="function">log</span>(data);
+    } <span class="keyword">catch</span> (error) {
+        <span class="function">console</span>.<<span class="function">error</span>(<<span class="string">"Error:"</span>, error);
+    }
+};
+
+<span class="function">fetchData</span>();</pre>
+            </div>
+
+            <h2>🎯 Real Project: Simple Calculator</h2>
+            <p>Chaliye jo sikha hai usse ek real project mein use karte hain — ek simple calculator banate hain!</p>
+
+            <div class="code-block">
+                <pre><span class="comment">// Calculator using Functions</span>
+<span class="keyword">const</span> <span class="function">calculate</span> = (num1, num2, operator) => {
+    <span class="keyword">switch</span>(operator) {
+        <span class="keyword">case</span> <span class="string">'+'</span>: <span class="keyword">return</span> num1 + num2;
+        <span class="keyword">case</span> <span class="string">'-'</span>: <span class="keyword">return</span> num1 - num2;
+        <span class="keyword">case</span> <span class="string">'*'</span>: <span class="keyword">return</span> num1 * num2;
+        <span class="keyword">case</span> <span class="string">'/'</span>: 
+            <span class="keyword">return</span> num2 !== <span class="number">0</span> ? num1 / num2 : <span class="string">"Cannot divide by zero!"</span>;
+        <span class="keyword">default</span>: <span class="keyword">return</span> <span class="string">"Invalid operator"</span>;
+    }
+};
+
+<span class="function">console</span>.<<span class="function">log</span>(<<span class="function">calculate</span>(<<span class="number">10</span>, <span class="number">5</span>, <span class="string">'+'</span>));  <span class="comment">// 15</span>
+<span class="function">console</span>.<<span class="function">log</span>(<<span class="function">calculate</span>(<<span class="number">10</span>, <span class="number">5</span>, <span class="string">'*'</span>));  <span class="comment">// 50</span>
+<span class="function">console</span>.<<span class="function">log</span>(<<span class="function">calculate</span>(<<span class="number">10</span>, <span class="number">0</span>, <span class="string">'/'</span>));  <span class="comment">// "Cannot divide by zero!"</span></pre>
+            </div>
+
+            <h2>🚀 Conclusion</h2>
+            <p>Aaj ke is comprehensive guide mein humne JavaScript ke sabse important concepts cover kiye — variables, data types, operators, conditions, loops, arrays, objects, functions, DOM manipulation, events, ES6+ features, aur ek real project bhi. Ye sab concepts aapke web development journey ke liye foundation hain.</p>
+
+            <p>JavaScript seekhna ek journey hai, ek din mein expert nahi bante. <strong>Roz thoda-thoda practice karein</strong> — small projects banayein, CodePen pe experiment karein, aur apni khud ki website banayein. Jitna zyada code likhenge, utna confidence badhega.</p>
+
+            <p><strong>Next Tutorials:</strong></p>
+            <ul>
+                <li>JavaScript DOM Projects — To-Do List, Weather App, Calculator</li>
+                <li>LocalStorage & SessionStorage — Data browser mein kaise store karein</li>
+                <li>Fetch API & AJAX — Server se data kaise lein</li>
+                <li>React.js Basics — Modern JavaScript framework</li>
+            </ul>
+
+            <p>Keep coding, keep building! 🚀💻</p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-logo">AK.R</div>
+        <p class="footer-text">Akarshit Raj - Programming Educator | © 2026</p>
+    </footer>
+</body>
+</html>
