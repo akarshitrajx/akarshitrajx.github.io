@@ -2,7 +2,6 @@
 <html lang="hi">
 <head>
     <link rel="icon" type="image/png" href="file_000000004984720882e69f4dad44966a.png">
-    
     <meta name="google-site-verification" content="uuGs6LF2wJNRxdUerOQ4bxWY3GAazSrGeq21JnEdtDE" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -37,8 +36,8 @@
         .nav-links a:hover{color:var(--light)}
         .nav-links a::after{content:'';position:absolute;bottom:-6px;left:0;width:0;height:2px;background:linear-gradient(90deg,var(--primary),var(--secondary));transition:width 0.3s;border-radius:2px}
         .nav-links a:hover::after{width:100%}
-        .mobile-menu-btn{display:none;background:none;border:none;color:var(--light);font-size:1.5rem;cursor:pointer}
-        .search-box{position:relative;display:flex;align-items:center}
+        .mobile-menu-btn{display:none;background:none;border:none;color:var(--light);font-size:1.5rem;cursor:pointer;z-index:1001}
+        .search-box{position:relative;display:flex;align-items:center;margin-left:1rem}
         .search-box input{padding:0.5rem 1rem 0.5rem 2.5rem;border-radius:50px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);color:var(--light);font-size:0.85rem;outline:none;width:200px;transition:all 0.3s}
         .search-box input:focus{border-color:var(--primary);width:250px;background:rgba(255,255,255,0.08)}
         .search-box::before{content:"🔍";position:absolute;left:0.8rem;font-size:0.9rem;opacity:0.6}
@@ -122,6 +121,11 @@
         .skill-icon{font-size:2.5rem;margin-bottom:0.5rem}
         .skill-name{font-weight:600;font-size:1rem}
         .skill-desc{font-size:0.8rem;color:var(--gray)}
+        .profile-info-box{display:flex;align-items:center;gap:0.75rem;padding:0.75rem;background:rgba(255,255,255,0.05);border-radius:10px;text-decoration:none;color:var(--light);transition:all 0.3s}
+        .profile-info-box:hover{background:rgba(255,255,255,0.1)}
+        .profile-info-icon{font-size:1.2rem}
+        .profile-info-label{font-size:0.75rem;color:var(--gray)}
+        .profile-info-value{font-weight:600}
         @keyframes fadeInLeft{from{opacity:0;transform:translateX(-40px)}to{opacity:1;transform:translateX(0)}}
         @keyframes fadeInRight{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:translateX(0)}}
         .animate-on-scroll{opacity:0;transform:translateY(40px);transition:all 0.8s ease}
@@ -136,7 +140,7 @@
         .footer-links{text-align:center;padding:1rem 0;border-top:1px solid rgba(255,255,255,0.05);margin-top:1rem}
         .footer-links a{color:var(--primary);text-decoration:none;margin:0 10px;font-size:0.85rem}
         .footer-links a:hover{text-decoration:underline}
-        @media(max-width:968px){.hero-container{grid-template-columns:1fr;text-align:center}.hero h1{font-size:2.5rem}.nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(2,6,23,0.95);flex-direction:column;padding:2rem;gap:1.5rem}.nav-links.active{display:flex}.mobile-menu-btn{display:block}.code-editor-wrapper{grid-template-columns:1fr}.stats-bar{gap:1.5rem}.search-box{display:none}}
+        @media(max-width:968px){.hero-container{grid-template-columns:1fr;text-align:center}.hero h1{font-size:2.5rem}.nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(2,6,23,0.95);flex-direction:column;padding:2rem;gap:1.5rem;z-index:999}.nav-links.active{display:flex}.mobile-menu-btn{display:block}.code-editor-wrapper{grid-template-columns:1fr}.stats-bar{gap:1.5rem}.search-box{display:none}}
         @media(max-width:480px){.hero h1{font-size:2rem}.section-title{font-size:1.8rem}.code-practice-section{padding:1.5rem}}
         ::-webkit-scrollbar{width:8px}
         ::-webkit-scrollbar-track{background:var(--darker)}
@@ -179,21 +183,21 @@
                         <div class="profile-role">Programming Educator</div>
                     </div>
                     <div style="display:grid;gap:0.75rem;text-align:left;">
-                        <div style="display:flex;align-items:center;gap:0.75rem;padding:0.75rem;background:rgba(255,255,255,0.05);border-radius:10px;">
-                            <span style="font-size:1.2rem;">🏫</span>
-                            <div><div style="font-size:0.75rem;color:var(--gray);">School</div><div style="font-weight:600;">PM SHRI JNV Khairabad Sitapur</div></div>
+                        <div class="profile-info-box">
+                            <span class="profile-info-icon">🏫</span>
+                            <div><div class="profile-info-label">School</div><div class="profile-info-value">PM SHRI JNV Khairabad Sitapur</div></div>
                         </div>
-                        <div style="display:flex;align-items:center;gap:0.75rem;padding:0.75rem;background:rgba(255,255,255,0.05);border-radius:10px;">
-                            <span style="font-size:1.2rem;">📧</span>
-                            <div><div style="font-size:0.75rem;color:var(--gray);">Email</div><div style="font-weight:600;">akarshitraj43@gmail.com</div></div>
-                        </div>
-                        <div style="display:flex;align-items:center;gap:0.75rem;padding:0.75rem;background:rgba(255,255,255,0.05);border-radius:10px;">
-                            <span style="font-size:1.2rem;">📸</span>
-                            <div><div style="font-size:0.75rem;color:var(--gray);">Instagram</div><div style="font-weight:600;">@lg_444_x</div></div>
-                        </div>
-                        <div style="display:flex;align-items:center;gap:0.75rem;padding:0.75rem;background:rgba(255,255,255,0.05);border-radius:10px;">
-                            <span style="font-size:1.2rem;">▶️</span>
-                            <div><div style="font-size:0.75rem;color:var(--gray);">YouTube</div><div style="font-weight:600;">19 Courses Live</div></div>
+                        <a href="mailto:akarshitraj43@gmail.com" class="profile-info-box">
+                            <span class="profile-info-icon">📧</span>
+                            <div><div class="profile-info-label">Email</div><div class="profile-info-value">akarshitraj43@gmail.com</div></div>
+                        </a>
+                        <a href="tutorials.html" class="profile-info-box">
+                            <span class="profile-info-icon">📚</span>
+                            <div><div class="profile-info-label">Tutorials</div><div class="profile-info-value">Read All Tutorials</div></div>
+                        </a>
+                        <div class="profile-info-box">
+                            <span class="profile-info-icon">▶️</span>
+                            <div><div class="profile-info-label">YouTube</div><div class="profile-info-value">19 Courses Live</div></div>
                         </div>
                     </div>
                 </div>
@@ -544,7 +548,7 @@ print(f'Welcome, {name}!')</textarea>
                         <div style="font-size:0.8rem;color:var(--gray);text-transform:uppercase;letter-spacing:1px;">Email Address</div>
                         <div style="font-size:1.1rem;font-weight:600;">akarshitraj43@gmail.com</div>
                     </div>
-                    <button style="padding:0.5rem 1rem;background:var(--primary);color:white;border:none;border-radius:8px;cursor:pointer;font-weight:600;font-size:0.85rem;" onclick="copyEmail()">Copy</button>
+                    <a href="mailto:akarshitraj43@gmail.com" style="padding:0.5rem 1rem;background:var(--primary);color:white;border:none;border-radius:8px;cursor:pointer;font-weight:600;font-size:0.85rem;text-decoration:none;display:inline-flex;align-items:center;">Email</a>
                 </div>
                 <div style="display:flex;align-items:center;gap:1.25rem;padding:1.25rem;background:rgba(255,255,255,0.05);border-radius:16px;">
                     <div style="width:50px;height:50px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--primary),var(--secondary));border-radius:14px;font-size:1.5rem;flex-shrink:0;">📸</div>
@@ -575,7 +579,7 @@ print(f'Welcome, {name}!')</textarea>
             <div style="display:flex;align-items:center;justify-content:center;gap:1rem;padding:1rem;background:rgba(255,255,255,0.05);border-radius:12px;">
                 <span style="font-size:1.5rem;">📧</span>
                 <span style="font-size:1.1rem;font-weight:600;color:var(--primary);">akarshitraj43@gmail.com</span>
-                <button style="padding:0.5rem 1rem;background:var(--primary);color:white;border:none;border-radius:8px;cursor:pointer;font-weight:600;" onclick="copyEmail()">Copy</button>
+                <a href="mailto:akarshitraj43@gmail.com" style="padding:0.5rem 1rem;background:var(--primary);color:white;border:none;border-radius:8px;cursor:pointer;font-weight:600;text-decoration:none;">Send Email</a>
             </div>
         </div>
     </section>
@@ -607,7 +611,7 @@ print(f'Welcome, {name}!')</textarea>
         function toggleLanguages(){const d=document.getElementById('languagesDropdown'),b=document.getElementById('youtubeToggleBtn'),a=document.getElementById('toggleArrow');if(d.style.maxHeight==='2000px'){d.style.maxHeight='0';d.style.opacity='0';d.style.marginTop='0';a.style.transform='rotate(0deg)';b.querySelector('span:nth-child(2)').textContent='View All Languages'}else{d.style.maxHeight='2000px';d.style.opacity='1';d.style.marginTop='2rem';a.style.transform='rotate(180deg)';b.querySelector('span:nth-child(2)').textContent='Hide Languages'}}
         const codeTemplates={python:"# Write your Python code here...\\nprint('Hello, World!')\\nname = 'Akarshit'\\nprint(f'Welcome, {name}!')",cpp:"// Write your C++ code here...\\n#include <iostream>\\nusing namespace std;\\n\\nint main() {\\n    cout << \"Hello, World!\" << endl;\\n    string name = \"Akarshit\";\\n    cout << \"Welcome, \" << name << \"!\" << endl;\\n    return 0;\\n}",javascript:"// Write your JavaScript code here...\\nconsole.log('Hello, World!');\\nlet name = 'Akarshit';\\nconsole.log('Welcome, ' + name + '!');",java:"// Write your Java code here...\\npublic class Main {\\n    public static void main(String[] args) {\\n        System.out.println(\"Hello, World!\");\\n        String name = \"Akarshit\";\\n        System.out.println(\"Welcome, \" + name + \"!\");\\n    }\\n}",csharp:"// Write your C# code here...\\nusing System;\\n\\nclass Program {\\n    static void Main() {\\n        Console.WriteLine(\"Hello, World!\");\\n        string name = \"Akarshit\";\\n        Console.WriteLine(\"Welcome, \" + name + \"!\");\\n    }\\n}",html:"<!-- Write your HTML code here... -->\\n<!DOCTYPE html>\\n<html>\\n<head>\\n    <title>My Page</title>\\n</head>\\n<body>\\n    <h1>Hello, World!</h1>\\n    <p>Welcome to my website!</p>\\n</body>\\n</html>",sql:"-- Write your SQL code here...\\nCREATE TABLE users (\\n    id INT PRIMARY KEY,\\n    name VARCHAR(50),\\n    email VARCHAR(100)\\n);\\n\\nINSERT INTO users VALUES (1, 'Akarshit', 'akarshit@example.com');\\nSELECT * FROM users;",php:"<?php\\n// Write your PHP code here...\\necho \"Hello, World!\\\\n\";\\n$name = \"Akarshit\";\\necho \"Welcome, \" . $name . \"!\";\\n?>",kotlin:"// Write your Kotlin code here...\\nfun main() {\\n    println(\"Hello, World!\")\\n    val name = \"Akarshit\"\\n    println(\"Welcome, $name!\")\\n}",swift:"// Write your Swift code here...\\nprint(\"Hello, World!\")\\nlet name = \"Akarshit\"\\nprint(\"Welcome, \\\\(name)!\")",go:"// Write your Go code here...\\npackage main\\nimport \"fmt\"\\n\\nfunc main() {\\n    fmt.Println(\"Hello, World!\")\\n    name := \"Akarshit\"\\n    fmt.Printf(\"Welcome, %s!\\\\n\", name)\\n}",rust:"// Write your Rust code here...\\nfn main() {\\n    println!(\"Hello, World!\");\\n    let name = \"Akarshit\";\\n    println!(\"Welcome, {}!\", name);\\n}"}
         function selectLang(btn,lang){document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.getElementById('codeInput').value=codeTemplates[lang]||codeTemplates['python']}
-        function runCode(){const o=document.getElementById('codeOutput'),b=document.getElementById('runBtn'),c=document.getElementById('codeInput').value;b.disabled=true;b.innerHTML='<span>⏳</span><span>Running...</span>';o.innerHTML='<span style=\"color:var(--accent);\">⏳ Running your code...</span>';setTimeout(()=>{let r='';if(c.includes('print')||c.includes('console.log')||c.includes('cout')||c.includes('println')){r=`Hello, World!\\nWelcome, Akarshit!\\n\\n✅ Code executed successfully!\\n⏱ Execution time: 0.05s`}else{r=`⚠️ Please write some code first!\\n\\n💡 Tip: Try writing a simple \"Hello World\" program.`}o.innerHTML=`<pre style=\"margin:0;color:#d4d4d4;\">${r}</pre>`;b.disabled=false;b.innerHTML='<span>▶️</span><span>Run Code</span>'},1500)}
+        function runCode(){const o=document.getElementById('codeOutput'),b=document.getElementById('runBtn'),c=document.getElementById('codeInput').value;b.disabled=true;b.innerHTML='<span>⏳</span><span>Running...</span>';o.innerHTML='<span style=\"color:var(--accent);\">⏳ Running your code...</span>';setTimeout(()=>{let r='';if(c.includes('print')||c.includes('console.log')||c.includes('cout')||c.includes('println')||c.includes('echo')||c.includes('fmt.Println')||c.includes('printf')){r=`Hello, World!\\nWelcome, Akarshit!\\n\\n✅ Code executed successfully!\\n⏱ Execution time: 0.05s`}else{r=`⚠️ Please write some code first!\\n\\n💡 Tip: Try writing a simple \"Hello World\" program.`}o.innerHTML=`<pre style=\"margin:0;color:#d4d4d4;\">${r}</pre>`;b.disabled=false;b.innerHTML='<span>▶️</span><span>Run Code</span>'},1500)}
         const counters=document.querySelectorAll('.stat-number');let hasAnimated=false;function animateCounters(){counters.forEach(counter=>{const target=parseInt(counter.getAttribute('data-target')),duration=2000,increment=target/(duration/16);let current=0;const updateCounter=()=>{current+=increment;if(current<<target){counter.textContent=Math.floor(current).toLocaleString();requestAnimationFrame(updateCounter)}else{counter.textContent=target.toLocaleString()+'+'}};updateCounter()})}
         const observer=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');if(entry.target.querySelector('.stat-number')&&!hasAnimated){hasAnimated=true;animateCounters()}}})},{threshold:0.1});document.querySelectorAll('.animate-on-scroll').forEach(el=>observer.observe(el))
         function openModal(videoUrl){document.getElementById('videoFrame').src=videoUrl;document.getElementById('videoModal').classList.add('active');document.body.style.overflow='hidden'}
@@ -621,5 +625,6 @@ print(f'Welcome, {name}!')</textarea>
     </script>
 </body>
 </html>
+
 
 
