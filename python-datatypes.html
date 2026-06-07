@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Data Types Complete Guide - Akarshit Raj</title>
+    <meta name="description" content="int, float, str, bool, list, tuple, dict, set — sab kuch detail mein!">
+    <meta name="author" content="Akarshit Raj">
+    <link rel="canonical" href="https://akarshitrajx.github.io/python-datatypes.html">
+    <link rel="icon" type="image/png" href="file_000000004984720882e69f4dad44966a.png">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{--primary:#6366f1;--primary-dark:#4f46e5;--secondary:#ec4899;--accent:#06b6d4;--dark:#0f172a;--darker:#020617;--light:#f8fafc;--gray:#94a3b8;--card-bg:rgba(30,41,59,0.6);--glass:rgba(255,255,255,0.05);--success:#10b981;--error:#ef4444}
+        body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--darker);color:var(--light);min-height:100vh;line-height:1.6}
+        .bg{position:fixed;inset:0;overflow:hidden;z-index:-1}
+        .orb{position:absolute;border-radius:50%;filter:blur(100px);opacity:0.4;animation:float 15s infinite ease-in-out}
+        .orb:nth-child(1){width:400px;height:400px;background:#6366f1;top:-100px;left:-100px}
+        .orb:nth-child(2){width:300px;height:300px;background:#ec4899;right:-100px;bottom:-100px}
+        .orb:nth-child(3){width:250px;height:250px;background:#06b6d4;left:40%;top:30%}
+        @keyframes float{50%{transform:translateY(-40px)}}
+        nav{position:fixed;top:0;width:100%;padding:18px 5%;display:flex;justify-content:space-between;align-items:center;background:rgba(2,6,23,0.7);backdrop-filter:blur(20px);z-index:999}
+        .logo{font-size:1.8rem;font-weight:900;background:linear-gradient(135deg,#6366f1,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .nav-links{display:flex;gap:20px;list-style:none}
+        .nav-links a{text-decoration:none;color:#cbd5e1;font-weight:600;transition:0.3s}
+        .nav-links a:hover{color:white}
+        .container{max-width:900px;margin:0 auto;padding:120px 5% 60px}
+        .tutorial-header{text-align:center;margin-bottom:3rem}
+        .tutorial-header h1{font-size:2.5rem;font-weight:800;background:linear-gradient(135deg,var(--primary),var(--secondary));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:1rem}
+        .tutorial-header p{color:var(--gray);font-size:1.1rem}
+        .content{background:var(--card-bg);border-radius:24px;padding:3rem;border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(20px)}
+        .content h2{font-size:1.5rem;font-weight:700;margin:2rem 0 1rem;color:var(--primary)}
+        .content h3{font-size:1.2rem;font-weight:600;margin:1.5rem 0 0.75rem;color:var(--accent)}
+        .content p{color:var(--gray);margin-bottom:1rem}
+        .content ul{margin:1rem 0 1rem 1.5rem;color:var(--gray)}
+        .content li{margin-bottom:0.5rem}
+        .content strong{color:var(--light)}
+        .content code{background:rgba(255,255,255,0.1);padding:0.2rem 0.4rem;border-radius:4px;font-family:'Consolas','Monaco',monospace;font-size:0.9rem;color:#d4d4d4}
+        .code-block{background:#1e1e1e;border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:1.5rem;margin:1rem 0;font-family:'Consolas','Monaco',monospace;font-size:0.9rem;overflow-x:auto;color:#d4d4d4;line-height:1.6}
+        .code-block .comment{color:#6a9955}
+        .code-block .keyword{color:#569cd6}
+        .code-block .string{color:#ce9178}
+        .code-block .number{color:#b5cea8}
+        .code-block .function{color:#dcdcaa}
+        .back-btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.8rem 1.5rem;background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:white;border:none;border-radius:12px;font-weight:600;text-decoration:none;margin-bottom:2rem;transition:0.3s}
+        .back-btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(99,102,241,0.4)}
+        .next-prev{display:flex;justify-content:space-between;margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.1)}
+        .next-prev a{text-decoration:none;color:var(--primary);font-weight:600;display:flex;align-items:center;gap:0.5rem}
+        .next-prev a:hover{text-decoration:underline}
+        .tip{background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);border-radius:12px;padding:1rem;margin:1rem 0;color:var(--success)}
+        .warning{background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);border-radius:12px;padding:1rem;margin:1rem 0;color:#fca5a5}
+        footer{text-align:center;padding:3rem 5%;border-top:1px solid rgba(255,255,255,0.05);margin-top:3rem;color:var(--gray)}
+        @media(max-width:768px){.container{padding:100px 5% 40px}.content{padding:1.5rem}.tutorial-header h1{font-size:1.8rem}}
+    </style>
+</head>
+<body>
+    <div class="bg"><div class="orb"></div><div class="orb"></div><div class="orb"></div></div>
+    <nav>
+        <div class="logo">AK.R</div>
+        <ul class="nav-links">
+            <li><a href="index.html">🏠 Home</a></li>
+            <li><a href="tutorials.html">📚 Tutorials</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <a href="tutorials.html" class="back-btn">← Back to Tutorials</a>
+        <div class="tutorial-header">
+            <h1>Python Data Types Complete Guide</h1>
+            <p>int, float, str, bool, list, tuple, dict, set — sab kuch detail mein!</p>
+        </div>
+        <div class="content">
+            <h2>🔢 Python Data Types Kya Hain?</h2>
+            <p>Data type batata hai ki ek variable mein kis type ka data stored hai. Python mein har value ka ek data type hota hai. Ye automatically detect ho jata hai — aapko explicitly declare karne ki zarurat nahi!</p>
+            
+            <h3>1️⃣ int (Integer)</h3>
+            <p>Whole numbers ke liye use hota hai — positive, negative, ya zero.</p>
+            <div class="code-block">
+<span class="comment"># Integer examples</span>
+age = <span class="number">17</span>
+year = <span class="number">2026</span>
+temperature = <span class="number">-5</span>
+
+<span class="function">print</span>(age)        <span class="comment"># Output: 17</span>
+<span class="function">print</span>(year)       <span class="comment"># Output: 2026</span>
+<span class="function">print</span>(temperature) <span class="comment"># Output: -5</span>
+            </div>
+
+            <h3>2️⃣ float (Floating Point)</h3>
+            <p>Decimal numbers ke liye — jinmein point ke baad digits hain.</p>
+            <div class="code-block">
+<span class="comment"># Float examples</span>
+height = <span class="number">5.8</span>
+pi = <span class="number">3.14159</span>
+price = <span class="number">99.99</span>
+
+<span class="function">print</span>(height)  <span class="comment"># Output: 5.8</span>
+<span class="function">print</span>(pi)      <span class="comment"># Output: 3.14159</span>
+            </div>
+
+            <h3>3️⃣ str (String)</h3>
+            <p>Text ya characters ke liye. Single quotes ya double quotes mein likha jata hai.</p>
+            <div class="code-block">
+<span class="comment"># String examples</span>
+name = <span class="string">"Akarshit Raj"</span>
+city = <span class="string">'Sitapur'</span>
+message = <span class="string">"Hello, World! 🌍"</span>
+
+<span class="function">print</span>(name)    <span class="comment"># Output: Akarshit Raj</span>
+<span class="function">print</span>(city)    <span class="comment"># Output: Sitapur</span>
+            </div>
+
+            <h3>4️⃣ bool (Boolean)</h3>
+            <p>Sirf do values — <code>True</code> ya <code>False</code>. Conditions aur comparisons mein use hota hai.</p>
+            <div class="code-block">
+<span class="comment"># Boolean examples</span>
+is_student = <span class="keyword">True</span>
+is_raining = <span class="keyword">False</span>
+passed = <span class="number">85</span> > <span class="number">40</span>  <span class="comment"># True</span>
+
+<span class="function">print</span>(is_student)  <span class="comment"># Output: True</span>
+<span class="function">print</span>(is_raining)  <span class="comment"># Output: False</span>
+            </div>
+
+            <h3>5️⃣ list (List)</h3>
+            <p>Multiple values ek saath store karne ke liye. Square brackets <code>[]</code> mein likha jata hai.</p>
+            <div class="code-block">
+<span class="comment"># List examples</span>
+marks = [<span class="number">85</span>, <span class="number">90</span>, <span class="number">78</span>, <span class="number">92</span>]
+fruits = [<span class="string">"Apple"</span>, <span class="string">"Banana"</span>, <span class="string">"Mango"</span>]
+mixed = [<span class="number">1</span>, <span class="string">"hello"</span>, <span class="number">3.14</span>, <span class="keyword">True</span>]
+
+<span class="function">print</span>(marks)   <span class="comment"># Output: [85, 90, 78, 92]</span>
+<span class="function">print</span>(fruits)  <span class="comment"># Output: ['Apple', 'Banana', 'Mango']</span>
+            </div>
+
+            <h3>6️⃣ tuple (Tuple)</h3>
+            <p>List jaisa hi hai, lekin <strong>immutable</strong> — ek baar banane ke baad change nahi ho sakta. Round brackets <code>()</code> mein likha jata hai.</p>
+            <div class="code-block">
+<span class="comment"># Tuple examples</span>
+coordinates = (<span class="number">10</span>, <span class="number">20</span>)
+colors = (<span class="string">"Red"</span>, <span class="string">"Green"</span>, <span class="string">"Blue"</span>)
+
+<span class="function">print</span>(coordinates)  <span class="comment"># Output: (10, 20)</span>
+<span class="function">print</span>(colors[<span class="number">0</span>])      <span class="comment"># Output: Red</span>
+            </div>
+
+            <h3>7️⃣ dict (Dictionary)</h3>
+            <p>Key-value pairs store karne ke liye. Curly brackets <code>{}</code> mein likha jata hai.</p>
+            <div class="code-block">
+<span class="comment"># Dictionary examples</span>
+student = {
+    <span class="string">"name"</span>: <span class="string">"Akarshit"</span>,
+    <span class="string">"age"</span>: <span class="number">17</span>,
+    <span class="string">"school"</span>: <span class="string">"JNV Khairabad"</span>,
+    <span class="string">"marks"</span>: [<span class="number">85</span>, <span class="number">90</span>, <span class="number">78</span>]
+}
+
+<span class="function">print</span>(student[<span class="string">"name"</span>])   <span class="comment"># Output: Akarshit</span>
+<span class="function">print</span>(student[<span class="string">"age"</span>])    <span class="comment"># Output: 17</span>
+            </div>
+
+            <h3>8️⃣ set (Set)</h3>
+            <p>Unique values store karne ke liye. Duplicate values automatically remove ho jati hain.</p>
+            <div class="code-block">
+<span class="comment"># Set examples</span>
+numbers = {<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">3</span>}  <span class="comment"># Duplicates removed</span>
+<span class="function">print</span>(numbers)  <span class="comment"># Output: {1, 2, 3}</span>
+
+fruits = {<span class="string">"Apple"</span>, <span class="string">"Banana"</span>, <span class="string">"Apple"</span>}
+<span class="function">print</span>(fruits)  <span class="comment"># Output: {'Apple', 'Banana'}</span>
+            </div>
+
+            <h2>🎯 type() Function se Data Type Check Karein</h2>
+            <div class="code-block">
+name = <span class="string">"Akarshit"</span>
+age = <span class="number">17</span>
+height = <span class="number">5.8</span>
+is_student = <span class="keyword">True</span>
+
+<span class="function">print</span>(<<span class="function">type</span>(name))       <span class="comment"># &lt;class 'str'&gt;</span>
+<span class="function">print</span>(<<span class="function">type</span>(age))        <span class="comment"># &lt;class 'int'&gt;</span>
+<span class="function">print</span>(<<span class="function">type</span>(height))    <span class="comment"># &lt;class 'float'&gt;</span>
+<span class="function">print</span>(<<span class="function">type</span>(is_student)) <span class="comment"># &lt;class 'bool'&gt;</span>
+            </div>
+
+            <div class="tip">
+                💡 <strong>Pro Tip:</strong> Python dynamically typed hai — matlab aapko pehle se type batane ki zarurat nahi. Python khud samajh jata hai! Lekin type() function se check karna acchi practice hai.
+            </div>
+
+            <h2>🚀 Type Conversion (Casting)</h2>
+            <p>Ek type ko doosre type mein convert kar sakte hain:</p>
+            <div class="code-block">
+<span class="comment"># int to float</span>
+x = <span class="number">10</span>
+<span class="function">print</span>(<<span class="function">float</span>(x))  <span class="comment"># Output: 10.0</span>
+
+<span class="comment"># float to int</span>
+y = <span class="number">3.7</span>
+<span class="function">print</span>(<<span class="function">int</span>(y))    <span class="comment"># Output: 3 (decimal hata deta hai)</span>
+
+<span class="comment"># int to string</span>
+z = <span class="number">100</span>
+<span class="function">print</span>(<<span class="function">str</span>(z))    <span class="comment"># Output: "100"</span>
+
+<span class="comment"># string to int</span>
+s = <span class="string">"50"</span>
+<span class="function">print</span>(<<span class="function">int</span>(s))    <span class="comment"># Output: 50</span>
+            </div>
+
+            <div class="warning">
+                ⚠️ <strong>Dhyaan:</strong> "hello" ko int mein convert nahi kar sakte! Isse error aayegi. Sirf valid strings hi convert hongi.
+            </div>
+        </div>
+        <div class="next-prev">
+            <a href="tutorials.html">← All Tutorials</a>
+            <a href="python-operators.html">Next: Operators →</a>
+        </div>
+    </div>
+    <footer>
+        <p>© 2026 Akarshit Raj | PM SHRI JNV Khairabad, Sitapur</p>
+        <p style="margin-top:0.5rem;font-size:0.85rem;">Learn programming for free 🎓</p>
+    </footer>
+</body>
+</html>
