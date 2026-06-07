@@ -1,246 +1,394 @@
-
 <!DOCTYPE html>
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Tutorials - Akarshit Raj | Programming Tutorials</title>
-    <meta name="description" content="Free programming tutorials by Akarshit Raj. Python, C++, JavaScript, HTML, CSS and more. Learn coding step by step!">
-    <meta name="author" content="Akarshit Raj">
-    <link rel="canonical" href="https://akarshitrajx.github.io/tutorials.html">
-    <link rel="icon" type="image/png" href="file_000000004984720882e69f4dad44966a.png">
-    <meta property="og:title" content="All Programming Tutorials - Akarshit Raj">
-    <meta property="og:description" content="Free Python, C++, JavaScript tutorials with code examples">
+    <title>All Programming Tutorials - Akarshit Raj</title>
     <style>
-        *{margin:0;padding:0;box-sizing:border-box}
-        :root{--primary:#6366f1;--primary-dark:#4f46e5;--secondary:#ec4899;--accent:#06b6d4;--dark:#0f172a;--darker:#020617;--light:#f8fafc;--gray:#94a3b8;--card-bg:rgba(30,41,59,0.6);--glass:rgba(255,255,255,0.05);--success:#10b981;--python:#fbbf24;--cpp:#3b82f6;--js:#eab308;--html:#f97316}
-        body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--darker);color:var(--light);min-height:100vh;line-height:1.6}
-        .bg{position:fixed;inset:0;overflow:hidden;z-index:-1}
-        .orb{position:absolute;border-radius:50%;filter:blur(100px);opacity:0.4;animation:float 15s infinite ease-in-out}
-        .orb:nth-child(1){width:400px;height:400px;background:#6366f1;top:-100px;left:-100px}
-        .orb:nth-child(2){width:300px;height:300px;background:#ec4899;right:-100px;bottom:-100px}
-        .orb:nth-child(3){width:250px;height:250px;background:#06b6d4;left:40%;top:30%}
-        @keyframes float{50%{transform:translateY(-40px)}}
-        nav{position:fixed;top:0;width:100%;padding:18px 5%;display:flex;justify-content:space-between;align-items:center;background:rgba(2,6,23,0.7);backdrop-filter:blur(20px);z-index:999}
-        .logo{font-size:1.8rem;font-weight:900;background:linear-gradient(135deg,#6366f1,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-        .nav-links{display:flex;gap:20px;list-style:none}
-        .nav-links a{text-decoration:none;color:#cbd5e1;font-weight:600;transition:0.3s}
-        .nav-links a:hover{color:white}
-        .container{max-width:1000px;margin:0 auto;padding:120px 5% 60px}
-        .page-header{text-align:center;margin-bottom:3rem}
-        .page-header h1{font-size:2.5rem;font-weight:800;background:linear-gradient(135deg,var(--primary),var(--secondary));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:0.5rem}
-        .page-header p{color:var(--gray);font-size:1.1rem}
-        .category-tag{display:inline-flex;align-items:center;gap:0.5rem;padding:0.5rem 1rem;background:var(--glass);border:1px solid rgba(255,255,255,0.1);border-radius:50px;color:var(--gray);font-weight:600;margin-bottom:2rem}
-        .tutorials-list{display:flex;flex-direction:column;gap:1.5rem}
-        .tutorial-card{background:var(--card-bg);border-radius:20px;padding:1.5rem;border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(20px);display:flex;gap:1.5rem;align-items:flex-start;transition:0.3s;text-decoration:none;color:var(--light)}
-        .tutorial-card:hover{transform:translateX(5px);border-color:var(--primary);box-shadow:0 10px 30px rgba(0,0,0,0.3)}
-        .tutorial-icon{width:60px;height:60px;display:flex;align-items:center;justify-content:center;border-radius:16px;font-size:2rem;flex-shrink:0}
-        .tutorial-icon.python{background:rgba(251,191,36,0.15);color:var(--python)}
-        .tutorial-icon.cpp{background:rgba(59,130,246,0.15);color:var(--cpp)}
-        .tutorial-icon.js{background:rgba(234,179,8,0.15);color:var(--js)}
-        .tutorial-icon.html{background:rgba(249,115,22,0.15);color:var(--html)}
-        .tutorial-content{flex:1}
-        .tutorial-content h3{font-size:1.3rem;font-weight:700;margin-bottom:0.5rem}
-        .tutorial-content p{color:var(--gray);font-size:0.95rem;margin-bottom:0.75rem}
-        .tutorial-meta{display:flex;gap:1rem;align-items:center;font-size:0.85rem;color:var(--gray)}
-        .tutorial-tag{padding:0.3rem 0.8rem;border-radius:50px;font-size:0.75rem;font-weight:600}
-        .read-more{color:var(--primary);font-weight:600;display:inline-flex;align-items:center;gap:0.5rem;margin-top:0.5rem;transition:0.3s}
-        .read-more:hover{color:var(--secondary)}
-        .back-btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.8rem 1.5rem;background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:white;border:none;border-radius:12px;font-weight:600;text-decoration:none;margin-bottom:2rem;transition:0.3s}
-        .back-btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(99,102,241,0.4)}
-        footer{text-align:center;padding:3rem 5%;border-top:1px solid rgba(255,255,255,0.05);margin-top:3rem;color:var(--gray)}
-        @media(max-width:768px){.container{padding:100px 5% 40px}.tutorial-card{flex-direction:column}.tutorial-icon{width:50px;height:50px;font-size:1.5rem}}
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%); color: #e2e8f0; min-height: 100vh; }
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+        
+        .header { text-align: center; padding: 40px 20px; margin-bottom: 30px; }
+        .header h1 { font-size: 2.5rem; background: linear-gradient(135deg, #38bdf8, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 10px; }
+        .header p { color: #94a3b8; font-size: 1.1rem; }
+        
+        .back-btn { display: inline-block; background: rgba(56, 189, 248, 0.2); color: #38bdf8; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; margin-bottom: 20px; border: 1px solid rgba(56, 189, 248, 0.3); transition: all 0.3s; }
+        .back-btn:hover { background: rgba(56, 189, 248, 0.3); transform: translateX(-5px); }
+        
+        .category-header { display: flex; align-items: center; gap: 10px; margin: 40px 0 20px 0; padding: 12px 20px; background: rgba(30, 41, 59, 0.6); border-radius: 12px; border-left: 4px solid #38bdf8; font-size: 1.3rem; font-weight: 700; }
+        .category-icon { font-size: 1.5rem; }
+        
+        .tutorial-card { display: flex; gap: 20px; background: rgba(30, 41, 59, 0.4); border: 1px solid rgba(148, 163, 184, 0.1); border-radius: 16px; padding: 20px; margin-bottom: 16px; transition: all 0.3s; backdrop-filter: blur(10px); }
+        .tutorial-card:hover { transform: translateY(-5px); border-color: rgba(56, 189, 248, 0.3); box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3); }
+        .card-icon { width: 60px; height: 60px; background: rgba(56, 189, 248, 0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 2rem; flex-shrink: 0; }
+        .card-content { flex: 1; }
+        .card-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 8px; color: #f1f5f9; }
+        .card-desc { color: #94a3b8; font-size: 0.95rem; margin-bottom: 12px; line-height: 1.5; }
+        .card-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+        .tag { padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; }
+        .tag-python { background: rgba(234, 179, 8, 0.2); color: #eab308; }
+        .tag-cpp { background: rgba(99, 102, 241, 0.2); color: #6366f1; }
+        .tag-javascript { background: rgba(245, 158, 11, 0.2); color: #f59e0b; }
+        .date { color: #64748b; font-size: 0.85rem; display: flex; align-items: center; gap: 4px; }
+        .read-more { color: #38bdf8; text-decoration: none; font-weight: 600; font-size: 0.95rem; display: inline-flex; align-items: center; gap: 5px; transition: all 0.3s; }
+        .read-more:hover { color: #7dd3fc; gap: 10px; }
+        
+        .footer { text-align: center; padding: 40px 20px; color: #64748b; font-size: 0.9rem; }
+        
+        @media (max-width: 600px) {
+            .tutorial-card { flex-direction: column; }
+            .card-icon { width: 50px; height: 50px; font-size: 1.5rem; }
+            .header h1 { font-size: 1.8rem; }
+        }
     </style>
 </head>
 <body>
-    <div class="bg"><div class="orb"></div><div class="orb"></div><div class="orb"></div></div>
-    <nav>
-        <div class="logo">AK.R</div>
-        <ul class="nav-links">
-            <li><a href="index.html">🏠 Home</a></li>
-            <li><a href="index.html#courses">📚 Courses</a></li>
-            <li><a href="index.html#code-practice">💻 Practice</a></li>
-        </ul>
-    </nav>
     <div class="container">
         <a href="index.html" class="back-btn">← Back to Home</a>
-        <div class="page-header">
-            <h1>📚 All Programming Tutorials</h1>
-            <p>Learn programming step by step with free tutorials!</p>
-        </div>
         
-        <div class="category-tag">🐍 Python Tutorials</div>
-        <div class="tutorials-list">
-            <a href="tutorial-python-variables.html" class="tutorial-card">
-                <div class="tutorial-icon python">🐍</div>
-                <div class="tutorial-content">
-                    <h3>Python Variables Kya Hain?</h3>
-                    <p>Learn what variables are in Python, how to declare them, and practice with code examples. Perfect for beginners!</p>
-                    <div class="tutorial-meta">
-                        <span class="tutorial-tag" style="background:rgba(251,191,36,0.15);color:var(--python)">Python</span>
-                        <span>📅 June 6, 2026</span>
-                    </div>
-                    <span class="read-more">Read More →</span>
-                </div>
-            </a>
-            <a href="python-datatypes.html" class="tutorial-card">
-                <div class="tutorial-icon python">🔢</div>
-                <div class="tutorial-content">
-                    <h3>Python Data Types Complete Guide</h3>
-                    <p>int, float, str, bool, list, tuple, dict, set — sab kuch detail mein! Type conversion bhi seekhein.</p>
-                    <div class="tutorial-meta">
-                        <span class="tutorial-tag" style="background:rgba(251,191,36,0.15);color:var(--python)">Python</span>
-                        <span>📅 June 7, 2026</span>
-                    </div>
-                    <span class="read-more">Read More →</span>
-                </div>
-            </a>
-            <a href="python-operators.html" class="tutorial-card">
-                <div class="tutorial-icon python">➕</div>
-                <div class="tutorial-content">
-                    <h3>Python Operators Complete Guide</h3>
-                    <p>Arithmetic, Comparison, Logical, Assignment, Identity, Membership, Bitwise — sab operators!</p>
-                    <div class="tutorial-meta">
-                        <span class="tutorial-tag" style="background:rgba(251,191,36,0.15);color:var(--python)">Python</span>
-                        <span>📅 June 7, 2026</span>
-                    </div>
-                    <span class="read-more">Read More →</span>
-                </div>
-            </a>
-            <a href="python-ifelse.html" class="tutorial-card">
-                <div class="tutorial-icon python">🔄</div>
-                <div class="tutorial-content">
-                    <h3>Python If-Else Complete Guide</h3>
-                    <p>If, Elif, Else, Nested If, Ternary Operator — conditions master karein!</p>
-                    <div class="tutorial-meta">
-                        <span class="tutorial-tag" style="background:rgba(251,191,36,0.15);color:var(--python)">Python</span>
-                        <span>📅 June 7, 2026</span>
-                    </div>
-                    <span class="read-more">Read More →</span>
-                </div>
-            </a>
-            <a href="python-loops.html" class="tutorial-card">
-                <div class="tutorial-icon python">🔄</div>
-                <div class="tutorial-content">
-                    <h3>Python Loops Complete Guide</h3>
-                    <p>For, While, Break, Continue, Else, Nested Loops, List Comprehension — sab kuch!</p>
-                    <div class="tutorial-meta">
-                        <span class="tutorial-tag" style="background:rgba(251,191,36,0.15);color:var(--python)">Python</span>
-                        <span>📅 June 7, 2026</span>
-                    </div>
-                    <span class="read-more">Read More →</span>
-                </div>
-            </a>
-            <a href="python-functions.html" class="tutorial-card">
-                <div class="tutorial-icon python">🔧</div>
-                <div class="tutorial-content">
-                    <h3>Python Functions Complete Guide</h3>
-                    <p>Def, Parameters, Return, Default Args, *args, **kwargs, Lambda — sab functions!</p>
-                    <div class="tutorial-meta">
-                        <span class="tutorial-tag" style="background:rgba(251,191,36,0.15);color:var(--python)">Python</span>
-                        <span>📅 June 7, 2026</span>
-                    </div>
-                    <span class="read-more">Read More →</span>
-                </div>
-            </a>
-            <a href="python-lists.html" class="tutorial-card">
-                <div class="tutorial-icon python">📋</div>
-                <div class="tutorial-content">
-                    <h3>Python Lists Complete Guide</h3>
-                    <p>Create, Access, Slice, Modify, Methods, Comprehension, 2D Lists — sab kuch!</p>
-                    <div class="tutorial-meta">
-                        <span class="tutorial-tag" style="background:rgba(251,191,36,0.15);color:var(--python)">Python</span>
-                        <span>📅 June 7, 2026</span>
-                    </div>
-                    <span class="read-more">Read More →</span>
-                </div>
-            </a>
-            <a href="python-dictionaries.html" class="tutorial-card">
-                <div class="tutorial-icon python">📖</div>
-                <div class="tutorial-content">
-                    <h3>Python Dictionaries Complete Guide</h3>
-                    <p>Create, Access, Modify, Methods, Loop, Nested, Comprehension — sab kuch!</p>
-                    <div class="tutorial-meta">
-                        <span class="tutorial-tag" style="background:rgba(251,191,36,0.15);color:var(--python)">Python</span>
-                        <span>📅 June 7, 2026</span>
-                    </div>
-                    <span class="read-more">Read More →</span>
-                </div>
-            </a>
-            <a href="python-strings.html" class="tutorial-card">
-                <div class="tutorial-icon python">📝</div>
-                <div class="tutorial-content">
-                    <h3>Python Strings Complete Guide</h3>
-                    <p>Create, Index, Slice, Methods, Formatting, f-strings, Escape — sab kuch!</p>
-                    <div class="tutorial-meta">
-                        <span class="tutorial-tag" style="background:rgba(251,191,36,0.15);color:var(--python)">Python</span>
-                        <span>📅 June 7, 2026</span>
-                    </div>
-                    <span class="read-more">Read More →</span>
-                </div>
-            </a>
-            <a href="python-tuples.html" class="tutorial-card">
-                <div class="tutorial-icon python">📦</div>
-                <div class="tutorial-content">
-                    <h3>Python Tuples Complete Guide</h3>
-                    <p>Create, Access, Immutability, Methods, Unpacking, Tuple vs List — sab kuch!</p>
-                    <div class="tutorial-meta">
-                        <span class="tutorial-tag" style="background:rgba(251,191,36,0.15);color:var(--python)">Python</span>
-                        <span>📅 June 7, 2026</span>
-                    </div>
-                    <span class="read-more">Read More →</span>
-                </div>
-            </a>
-            <a href="python-sets.html" class="tutorial-card">
-                <div class="tutorial-icon python">🔵</div>
-                <div class="tutorial-content">
-                    <h3>Python Sets Complete Guide</h3>
-                    <p>Create, Methods, Union, Intersection, Difference, Comprehension, Frozen Set — sab kuch!</p>
-                    <div class="tutorial-meta">
-                        <span class="tutorial-tag" style="background:rgba(251,191,36,0.15);color:var(--python)">Python</span>
-                        <span>📅 June 7, 2026</span>
-                    </div>
-                    <span class="read-more">Read More →</span>
-                </div>
-            </a>
+        <div class="header">
+            <h1>📚 All Programming Tutorials</h1>
+            <p>Python, C++, JavaScript — step by step seekhein!</p>
         </div>
 
-        <div class="category-tag" style="margin-top:3rem">⚡ C++ Tutorials</div>
-        <div class="tutorials-list">
-            <a href="tutorial-cpp-basics.html" class="tutorial-card">
-                <div class="tutorial-icon cpp">⚡</div>
-                <div class="tutorial-content">
-                    <h3>C++ Basics - Getting Started</h3>
-                    <p>Introduction to C++ programming. Learn about data types, variables, and write your first C++ program.</p>
-                    <div class="tutorial-meta">
-                        <span class="tutorial-tag" style="background:rgba(59,130,246,0.15);color:var(--cpp)">C++</span>
-                        <span>📅 June 5, 2026</span>
-                    </div>
-                    <span class="read-more">Read More →</span>
-                </div>
-            </a>
+        <!-- ==================== PYTHON TUTORIALS ==================== -->
+        <div class="category-header">
+            <span class="category-icon">🐍</span>
+            <span>Python Tutorials</span>
         </div>
 
-        <div class="category-tag" style="margin-top:3rem">🟨 JavaScript Tutorials</div>
-        <div class="tutorials-list">
-            <a href="tutorial-javascript.html" class="tutorial-card">
-                <div class="tutorial-icon js">🟨</div>
-                <div class="tutorial-content">
-                    <h3>JavaScript Basics</h3>
-                    <p>Learn JavaScript fundamentals, DOM manipulation, and build interactive web pages.</p>
-                    <div class="tutorial-meta">
-                        <span class="tutorial-tag" style="background:rgba(234,179,8,0.15);color:var(--js)">JavaScript</span>
-                        <span>📅 June 5, 2026</span>
-                    </div>
-                    <span class="read-more">Read More →</span>
+        <div class="tutorial-card">
+            <div class="card-icon">📝</div>
+            <div class="card-content">
+                <h3 class="card-title">Python Variables Kya Hain?</h3>
+                <p class="card-desc">Learn what variables are in Python, how to declare them, and practice with code examples. Perfect for beginners!</p>
+                <div class="card-meta">
+                    <span class="tag tag-python">Python</span>
+                    <span class="date">📅 June 6, 2026</span>
                 </div>
-            </a>
+                <a href="tutorial-python-variables.html" class="read-more">Read More →</a>
+            </div>
+        </div>
+
+        <div class="tutorial-card">
+            <div class="card-icon">🔢</div>
+            <div class="card-content">
+                <h3 class="card-title">Python Data Types Complete Guide</h3>
+                <p class="card-desc">int, float, str, bool, list, tuple, dict, set — sab kuch detail mein! Type conversion bhi seekhein.</p>
+                <div class="card-meta">
+                    <span class="tag tag-python">Python</span>
+                    <span class="date">📅 June 7, 2026</span>
+                </div>
+                <a href="python-datatypes.html" class="read-more">Read More →</a>
+            </div>
+        </div>
+
+        <div class="tutorial-card">
+            <div class="card-icon">➕</div>
+            <div class="card-content">
+                <h3 class="card-title">Python Operators Complete Guide</h3>
+                <p class="card-desc">Arithmetic, Comparison, Logical, Assignment, Identity, Membership, Bitwise — sab operators!</p>
+                <div class="card-meta">
+                    <span class="tag tag-python">Python</span>
+                    <span class="date">📅 June 7, 2026</span>
+                </div>
+                <a href="python-operators.html" class="read-more">Read More →</a>
+            </div>
+        </div>
+
+        <div class="tutorial-card">
+            <div class="card-icon">🔄</div>
+            <div class="card-content">
+                <h3 class="card-title">Python If-Else Complete Guide</h3>
+                <p class="card-desc">If, Elif, Else, Nested If, Ternary Operator — conditions master karein!</p>
+                <div class="card-meta">
+                    <span class="tag tag-python">Python</span>
+                    <span class="date">📅 June 7, 2026</span>
+                </div>
+                <a href="python-ifelse.html" class="read-more">Read More →</a>
+            </div>
+        </div>
+
+        <div class="tutorial-card">
+            <div class="card-icon">🔁</div>
+            <div class="card-content">
+                <h3 class="card-title">Python Loops Complete Guide</h3>
+                <p class="card-desc">For, While, Break, Continue, Else, Nested Loops, List Comprehension — sab kuch!</p>
+                <div class="card-meta">
+                    <span class="tag tag-python">Python</span>
+                    <span class="date">📅 June 7, 2026</span>
+                </div>
+                <a href="python-loops.html" class="read-more">Read More →</a>
+            </div>
+        </div>
+
+        <div class="tutorial-card">
+            <div class="card-icon">🔧</div>
+            <div class="card-content">
+                <h3 class="card-title">Python Functions Complete Guide</h3>
+                <p class="card-desc">Def, Parameters, Return, Default Args, *args, **kwargs, Lambda — sab functions!</p>
+                <div class="card-meta">
+                    <span class="tag tag-python">Python</span>
+                    <span class="date">📅 June 7, 2026</span>
+                </div>
+                <a href="python-functions.html" class="read-more">Read More →</a>
+            </div>
+        </div>
+
+        <div class="tutorial-card">
+            <div class="card-icon">📋</div>
+            <div class="card-content">
+                <h3 class="card-title">Python Lists Complete Guide</h3>
+                <p class="card-desc">Create, Access, Slice, Modify, Methods, Comprehension, 2D Lists — sab kuch!</p>
+                <div class="card-meta">
+                    <span class="tag tag-python">Python</span>
+                    <span class="date">📅 June 7, 2026</span>
+                </div>
+                <a href="python-lists.html" class="read-more">Read More →</a>
+            </div>
+        </div>
+
+        <div class="tutorial-card">
+            <div class="card-icon">📖</div>
+            <div class="card-content">
+                <h3 class="card-title">Python Dictionaries Complete Guide</h3>
+                <p class="card-desc">Create, Access, Modify, Methods, Loop, Nested, Comprehension — sab kuch!</p>
+                <div class="card-meta">
+                    <span class="tag tag-python">Python</span>
+                    <span class="date">📅 June 7, 2026</span>
+                </div>
+                <a href="python-dictionaries.html" class="read-more">Read More →</a>
+            </div>
+        </div>
+
+        <div class="tutorial-card">
+            <div class="card-icon">📝</div>
+            <div class="card-content">
+                <h3 class="card-title">Python Strings Complete Guide</h3>
+                <p class="card-desc">Create, Index, Slice, Methods, Formatting, f-strings, Escape — sab kuch!</p>
+                <div class="card-meta">
+                    <span class="tag tag-python">Python</span>
+                    <span class="date">📅 June 7, 2026</span>
+                </div>
+                <a href="python-strings.html" class="read-more">Read More →</a>
+            </div>
+        </div>
+
+        <div class="tutorial-card">
+            <div class="card-icon">📦</div>
+            <div class="card-content">
+                <h3 class="card-title">Python Tuples Complete Guide</h3>
+                <p class="card-desc">Create, Access, Immutability, Methods, Unpacking, Tuple vs List — sab kuch!</p>
+                <div class="card-meta">
+                    <span class="tag tag-python">Python</span>
+                    <span class="date">📅 June 7, 2026</span>
+                </div>
+                <a href="python-tuples.html" class="read-more">Read More →</a>
+            </div>
+        </div>
+
+        <div class="tutorial-card">
+            <div class="card-icon">🔵</div>
+            <div class="card-content">
+                <h3 class="card-title">Python Sets Complete Guide</h3>
+                <p class="card-desc">Create, Methods, Union, Intersection, Difference, Comprehension, Frozen Set — sab kuch!</p>
+                <div class="card-meta">
+                    <span class="tag tag-python">Python</span>
+                    <span class="date">📅 June 7, 2026</span>
+                </div>
+                <a href="python-sets.html" class="read-more">Read More →</a>
+            </div>
+        </div>
+
+        <!-- ==================== C++ TUTORIALS ==================== -->
+        <div class="category-header">
+            <span class="category-icon">⚡</span>
+            <span>C++ Tutorials</span>
+        </div>
+
+        <div class="tutorial-card">
+            <div class="card-icon">⚡</div>
+            <div class="card-content">
+                <h3 class="card-title">C++ Basics - Getting Started</h3>
+                <p class="card-desc">Introduction to C++ programming. Learn about data types, variables, and write your first C++ program.</p>
+                <div class="card-meta">
+                    <span class="tag tag-cpp">C++</span>
+                    <span class="date">📅 June 5, 2026</span>
+                </div>
+                <a href="tutorial-cpp-basics.html" class="read-more">Read More →</a>
+            </div>
+        </div>
+
+        <div class="tutorial-card">
+            <div class="card-icon">📝</div>
+            <div class="card-content">
+                <h3 class="card-title">C++ Variables Complete Guide</h3>
+                <p class="card-desc">Variables, naming rules, declaration, initialization, multiple variables — sab kuch!</p>
+                <div class="card-meta">
+                    <span class="tag tag-cpp">C++</span>
+                    <span class="date">📅 June 7, 2026</span>
+                </div>
+                <a href="cpp-variables.html" class="read-more">Read More →</a>
+            </div>
+        </div>
+
+        <div class="tutorial-card">
+            <div class="card-icon">🔢</div>
+            <div class="card-content">
+                <h3 class="card-title">C++ Data Types Complete Guide</h3>
+                <p class="card-desc">int, float, double, char, bool, string — size, use, aur type casting sab kuch!</p>
+                <div class="card-meta">
+                    <span class="tag tag-cpp">C++</span>
+                    <span class="date">📅 June 7, 2026</span>
+                </div>
+                <a href="cpp-datatypes.html" class="read-more">Read More →</a>
+            </div>
+        </div>
+
+        <div class="tutorial-card">
+            <div class="card-icon">➕</div>
+            <div class="card-content">
+                <h3 class="card-title">C++ Operators Complete Guide</h3>
+                <p class="card-desc">Arithmetic, Comparison, Logical, Assignment, Increment, Bitwise, Ternary — sab operators!</p>
+                <div class="card-meta">
+                    <span class="tag tag-cpp">C++</span>
+                    <span class="date">📅 June 7, 2026</span>
+                </div>
+                <a href="cpp-operators.html" class="read-more">Read More →</a>
+            </div>
+        </div>
+
+        <div class="tutorial-card">
+            <div class="card-icon">🔄</div>
+            <div class="card-content">
+                <h3 class="card-title">C++ If-Else Complete Guide</h3>
+                <p class="card-desc">If, Else If, Nested If, Switch Statement, Logical Operators — decision making!</p>
+                <div class="card-meta">
+                    <span class="tag tag-cpp">C++</span>
+                    <span class="date">📅 June 7, 2026</span>
+                </div>
+                <a href="cpp-ifelse.html" class="read-more">Read More →</a>
+            </div>
+        </div>
+
+        <div class="tutorial-card">
+            <div class="card-icon">🔁</div>
+            <div class="card-content">
+                <h3 class="card-title">C++ Loops Complete Guide</h3>
+                <p class="card-desc">For, While, Do-While, Break, Continue, Nested Loops, Range-based For — sab loops!</p>
+                <div class="card-meta">
+                    <span class="tag tag-cpp">C++</span>
+                    <span class="date">📅 June 7, 2026</span>
+                </div>
+                <a href="cpp-loops.html" class="read-more">Read More →</a>
+            </div>
+        </div>
+
+        <div class="tutorial-card">
+            <div class="card-icon">🔧</div>
+            <div class="card-content">
+                <h3 class="card-title">C++ Functions Complete Guide</h3>
+                <p class="card-desc">Function creation, parameters, return, default args, overloading, pass by reference!</p>
+                <div class="card-meta">
+                    <span class="tag tag-cpp">C++</span>
+                    <span class="date">📅 June 7, 2026</span>
+                </div>
+                <a href="cpp-functions.html" class="read-more">Read More →</a>
+            </div>
+        </div>
+
+        <div class="tutorial-card">
+            <div class="card-icon">📋</div>
+            <div class="card-content">
+                <h3 class="card-title">C++ Arrays Complete Guide</h3>
+                <p class="card-desc">1D Array, 2D Array, size, sum, max/min, array as function parameter — sab kuch!</p>
+                <div class="card-meta">
+                    <span class="tag tag-cpp">C++</span>
+                    <span class="date">📅 June 7, 2026</span>
+                </div>
+                <a href="cpp-arrays.html" class="read-more">Read More →</a>
+            </div>
+        </div>
+
+        <div class="tutorial-card">
+            <div class="card-icon">📝</div>
+            <div class="card-content">
+                <h3 class="card-title">C++ Strings Complete Guide</h3>
+                <p class="card-desc">String class, methods, concatenation, conversion, C-style strings — sab kuch!</p>
+                <div class="card-meta">
+                    <span class="tag tag-cpp">C++</span>
+                    <span class="date">📅 June 7, 2026</span>
+                </div>
+                <a href="cpp-strings.html" class="read-more">Read More →</a>
+            </div>
+        </div>
+
+        <div class="tutorial-card">
+            <div class="card-icon">📍</div>
+            <div class="card-content">
+                <h3 class="card-title">C++ Pointers Complete Guide</h3>
+                <p class="card-desc">Memory address, dereference, pointer arithmetic, dynamic memory — sab kuch!</p>
+                <div class="card-meta">
+                    <span class="tag tag-cpp">C++</span>
+                    <span class="date">📅 June 7, 2026</span>
+                </div>
+                <a href="cpp-pointers.html" class="read-more">Read More →</a>
+            </div>
+        </div>
+
+        <div class="tutorial-card">
+            <div class="card-icon">🏗️</div>
+            <div class="card-content">
+                <h3 class="card-title">C++ Structures Complete Guide</h3>
+                <p class="card-desc">struct, initialization, array of structures, nested, pointer to struct — sab kuch!</p>
+                <div class="card-meta">
+                    <span class="tag tag-cpp">C++</span>
+                    <span class="date">📅 June 7, 2026</span>
+                </div>
+                <a href="cpp-structures.html" class="read-more">Read More →</a>
+            </div>
+        </div>
+
+        <div class="tutorial-card">
+            <div class="card-icon">🎯</div>
+            <div class="card-content">
+                <h3 class="card-title">C++ OOP Basics Complete Guide</h3>
+                <p class="card-desc">Classes, Objects, Inheritance, Polymorphism, Encapsulation, Constructor, Destructor!</p>
+                <div class="card-meta">
+                    <span class="tag tag-cpp">C++</span>
+                    <span class="date">📅 June 7, 2026</span>
+                </div>
+                <a href="cpp-oop-basics.html" class="read-more">Read More →</a>
+            </div>
+        </div>
+
+        <!-- ==================== JAVASCRIPT TUTORIALS ==================== -->
+        <div class="category-header">
+            <span class="category-icon">🟨</span>
+            <span>JavaScript Tutorials</span>
+        </div>
+
+        <div class="tutorial-card">
+            <div class="card-icon">🟨</div>
+            <div class="card-content">
+                <h3 class="card-title">JavaScript Basics</h3>
+                <p class="card-desc">Learn JavaScript fundamentals, DOM manipulation, and build interactive web pages.</p>
+                <div class="card-meta">
+                    <span class="tag tag-javascript">JavaScript</span>
+                    <span class="date">📅 June 5, 2026</span>
+                </div>
+                <a href="tutorial-javascript.html" class="read-more">Read More →</a>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>© 2026 Akarshit Raj | PM SHRI JNV Khairabad, Sitapur</p>
+            <p>Learn programming for free 🚀</p>
         </div>
     </div>
-    <footer>
-        <p>© 2026 Akarshit Raj | PM SHRI JNV Khairabad, Sitapur</p>
-        <p style="margin-top:0.5rem;font-size:0.85rem;">Learn programming for free 🎓</p>
-    </footer>
 </body>
 </html>
+
 
