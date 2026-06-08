@@ -3,105 +3,1067 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HTML Complete Guide - Akarshit Raj</title>
+    <title>HTML Complete Guide - Zero to Hero | Akarshit Raj</title>
     <style>
-        *{margin:0;padding:0;box-sizing:border-box}
-        body{font-family:'Segoe UI',sans-serif;background:linear-gradient(135deg,#0f172a,#1e1b4b);color:#e2e8f0;line-height:1.6;min-height:100vh}
-        .container{max-width:800px;margin:0 auto;padding:20px}
-        .back{display:inline-block;background:rgba(56,189,248,0.2);color:#38bdf8;padding:10px 20px;border-radius:8px;text-decoration:none;font-weight:600;margin-bottom:20px;border:1px solid rgba(56,189,248,0.3)}
-        h1{font-size:2rem;background:linear-gradient(135deg,#38bdf8,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:10px}
-        .section{background:rgba(30,41,59,0.6);border:1px solid rgba(148,163,184,0.1);border-radius:16px;padding:25px;margin-bottom:20px}
-        h2{color:#38bdf8;margin-bottom:15px;font-size:1.3rem}
-        p{color:#94a3b8;margin-bottom:15px}
-        pre{background:#1e1e1e;border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:15px;overflow-x:auto;color:#d4d4d4;font-family:'Consolas',monospace;font-size:0.9rem;margin:15px 0}
-        code{background:rgba(56,189,248,0.15);color:#38bdf8;padding:2px 6px;border-radius:4px;font-family:monospace}
-        .footer{text-align:center;padding:40px;color:#64748b;font-size:0.9rem}
-        ul{color:#94a3b8;margin-left:20px}
-        li{margin-bottom:8px}
+        :root {
+            --bg: #0f172a;
+            --card: #1e293b;
+            --text: #e2e8f0;
+            --muted: #94a3b8;
+            --accent: #f97316;
+            --accent2: #3b82f6;
+            --code-bg: #0b1120;
+            --border: #334155;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+        .back {
+            display: inline-flex; align-items: center; gap: 8px;
+            color: var(--accent); text-decoration: none; margin-bottom: 20px;
+            font-weight: 600; font-size: 0.95rem;
+        }
+        .back:hover { text-decoration: underline; }
+        header {
+            text-align: center; padding: 40px 20px;
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+        }
+        header h1 { font-size: 2.2rem; margin-bottom: 10px; }
+        header p { color: var(--muted); font-size: 1.1rem; }
+        .badge {
+            display: inline-block; background: var(--accent); color: #fff;
+            padding: 4px 14px; border-radius: 20px; font-size: 0.8rem;
+            font-weight: 700; margin-top: 10px;
+        }
+        .toc {
+            background: var(--card); border-radius: 12px; padding: 20px;
+            margin-bottom: 30px; border: 1px solid var(--border);
+        }
+        .toc h3 { color: var(--accent); margin-bottom: 12px; font-size: 1.1rem; }
+        .toc ul { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 8px; }
+        .toc a { color: var(--muted); text-decoration: none; font-size: 0.9rem; }
+        .toc a:hover { color: var(--accent); }
+        section {
+            background: var(--card); border-radius: 12px; padding: 25px;
+            margin-bottom: 25px; border: 1px solid var(--border);
+        }
+        section h2 {
+            color: var(--accent); font-size: 1.4rem; margin-bottom: 15px;
+            display: flex; align-items: center; gap: 10px;
+        }
+        section h3 { color: var(--accent2); font-size: 1.15rem; margin: 20px 0 10px; }
+        p { margin-bottom: 12px; color: var(--text); }
+        ul, ol { margin-left: 20px; margin-bottom: 15px; color: var(--text); }
+        li { margin-bottom: 6px; }
+        code {
+            background: var(--code-bg); color: #fbbf24; padding: 2px 6px;
+            border-radius: 4px; font-family: 'Fira Code', monospace; font-size: 0.9em;
+        }
+        pre {
+            background: var(--code-bg); border-radius: 10px; padding: 16px;
+            overflow-x: auto; margin: 15px 0; border: 1px solid var(--border);
+        }
+        pre code { background: none; padding: 0; color: #e2e8f0; font-size: 0.85rem; line-height: 1.6; }
+        .note {
+            background: rgba(59, 130, 246, 0.1); border-left: 4px solid var(--accent2);
+            padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 15px 0;
+        }
+        .warning {
+            background: rgba(249, 115, 22, 0.1); border-left: 4px solid var(--accent);
+            padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 15px 0;
+        }
+        table {
+            width: 100%; border-collapse: collapse; margin: 15px 0;
+            font-size: 0.9rem;
+        }
+        th, td { border: 1px solid var(--border); padding: 10px; text-align: left; }
+        th { background: var(--code-bg); color: var(--accent); }
+        footer {
+            text-align: center; padding: 30px; color: var(--muted);
+            border-top: 1px solid var(--border); margin-top: 30px;
+        }
+        @media (max-width: 600px) {
+            header h1 { font-size: 1.5rem; }
+            .toc ul { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
+    <header>
+        <h1>🌐 HTML Complete Guide</h1>
+        <p>Zero to Hero — Master Web Structure from Scratch</p>
+        <span class="badge">Beginner to Advanced</span>
+    </header>
+
     <div class="container">
         <a href="tutorials.html" class="back">← Back to Tutorials</a>
-        <h1>HTML & CSS Complete Tutorial</h1>
-        
-        <div class="section">
-            <h2>What is HTML?</h2>
-            <p>HTML (HyperText Markup Language) is the skeleton of web pages. It uses tags to structure content.</p>
+
+        <div class="toc">
+            <h3>📑 Table of Contents</h3>
+            <ul>
+                <li><a href="#intro">Introduction</a></li>
+                <li><a href="#structure">Basic Structure</a></li>
+                <li><a href="#text">Text Formatting</a></li>
+                <li><a href="#links">Links & Navigation</a></li>
+                <li><a href="#images">Images & Media</a></li>
+                <li><a href="#lists">Lists</a></li>
+                <li><a href="#tables">Tables</a></li>
+                <li><a href="#forms">Forms</a></li>
+                <li><a href="#semantic">Semantic HTML5</a></li>
+                <li><a href="#meta">Meta Tags & SEO</a></li>
+                <li><a href="#accessibility">Accessibility</a></li>
+                <li><a href="#projects">Mini Projects</a></li>
+            </ul>
         </div>
 
-        <div class="section">
-            <h2>Basic Structure</h2>
-            <pre>&lt;!DOCTYPE html&gt;
+        <section id="intro">
+            <h2>🚀 Introduction</h2>
+            <p>HTML (HyperText Markup Language) web pages ka skeleton hai. Har website HTML se shuru hoti hai. Ye sirf text nahi — structure, meaning, aur content organize karta hai.</p>
+            <p><strong>Kya seekhenge:</strong></p>
+            <ul>
+                <li>HTML document structure (DOCTYPE, html, head, body)</li>
+                <li>Text formatting, headings, paragraphs</li>
+                <li>Links, images, lists, tables</li>
+                <li>Forms — user input handle karna</li>
+                <li>Semantic HTML5 tags (header, nav, section, article, footer)</li>
+                <li>Meta tags, SEO, Accessibility</li>
+            </ul>
+            <div class="note">
+                <strong>Tools:</strong> Koi bhi text editor chalega — Notepad, VS Code, Sublime Text. Browser mein file open karo aur result dekho!
+            </div>
+        </section>
+
+        <section id="structure">
+            <h2>🏗️ Basic Structure</h2>
+            <h3>HTML Document Skeleton</h3>
+            <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 &lt;head&gt;
     &lt;meta charset="UTF-8"&gt;
     &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-    &lt;title&gt;My Website&lt;/title&gt;
-    &lt;style&gt;
-        body { font-family: Arial; background: #f0f0f0; }
-        h1 { color: blue; text-align: center; }
-        .btn { padding: 10px 20px; background: green; color: white; border: none; }
-    &lt;/style&gt;
+    &lt;title&gt;My First Page&lt;/title&gt;
+    &lt;link rel="stylesheet" href="style.css"&gt;
 &lt;/head&gt;
 &lt;body&gt;
-    &lt;h1&gt;Hello World!&lt;/h1&gt;
-    &lt;p&gt;This is a paragraph.&lt;/p&gt;
-    &lt;button class="btn"&gt;Click Me&lt;/button&gt;
+    &lt;!-- Content yahan aayega --&gt;
+    &lt;h1&gt;Hello, World!&lt;/h1&gt;
+    &lt;p&gt;This is my first web page.&lt;/p&gt;
+    &lt;script src="script.js"&gt;&lt;/script&gt;
 &lt;/body&gt;
-&lt;/html&gt;</pre>
-        </div>
+&lt;/html&gt;</code></pre>
 
-        <div class="section">
-            <h2>Common Tags</h2>
+            <h3>Essential Tags Explained</h3>
+            <table>
+                <tr><th>Tag</th><th>Purpose</th></tr>
+                <tr><td><code>&lt;!DOCTYPE html&gt;</code></td><td>HTML5 document declare karta hai</td></tr>
+                <tr><td><code>&lt;html&gt;</code></td><td>Root element, sab kuch iske andar</td></tr>
+                <tr><td><code>&lt;head&gt;</code></td><td>Meta info, title, styles, scripts (visible nahi)</td></tr>
+                <tr><td><code>&lt;body&gt;</code></td><td>Visible content yahan</td></tr>
+                <tr><td><code>&lt;title&gt;</code></td><td>Browser tab ka title</td></tr>
+                <tr><td><code>&lt;meta charset&gt;</code></td><td>Character encoding (UTF-8 = universal)</td></tr>
+                <tr><td><code>&lt;meta viewport&gt;</code></td><td>Mobile responsive banana</td></tr>
+                <tr><td><code>&lt;link&gt;</code></td><td>CSS file attach karna</td></tr>
+                <tr><td><code>&lt;script&gt;</code></td><td>JavaScript attach karna</td></tr>
+            </table>
+
+            <h3>Comments</h3>
+            <pre><code>&lt;!-- Ye comment hai, browser mein nahi dikhega --&gt;
+&lt;!-- Multi-line comment
+     bhi aise hi banate hain --&gt;</code></pre>
+        </section>
+
+        <section id="text">
+            <h2>📝 Text Formatting</h2>
+            <h3>Headings</h3>
+            <pre><code>&lt;h1&gt;Main Heading (Sabse bada)&lt;/h1&gt;
+&lt;h2&gt;Sub Heading&lt;/h2&gt;
+&lt;h3&gt;Section Heading&lt;/h3&gt;
+&lt;h4&gt;Sub-section&lt;/h4&gt;
+&lt;h5&gt;Smaller heading&lt;/h5&gt;
+&lt;h6&gt;Smallest heading&lt;/h6&gt;</code></pre>
+            <div class="note">
+                <strong>SEO Tip:</strong> Page mein sirf <strong>ek h1</strong> use karo. Hierarchy maintain karo — h1 -> h2 -> h3.
+            </div>
+
+            <h3>Paragraphs & Line Breaks</h3>
+            <pre><code>&lt;p&gt;Ye ek paragraph hai. Ismein text wrap hota hai automatically.&lt;/p&gt;
+
+&lt;p&gt;Ye dusra paragraph hai.&lt;br&gt;
+Ye line break ke baad hai.&lt;br&gt;
+Aur ye ek aur line.&lt;/p&gt;
+
+&lt;hr&gt;
+&lt;!-- Horizontal line --&gt;</code></pre>
+
+            <h3>Text Formatting Tags</h3>
+            <pre><code>&lt;p&gt;Ye &lt;strong&gt;important&lt;/strong&gt; text hai.&lt;/p&gt;
+&lt;p&gt;Ye &lt;em&gt;emphasized&lt;/em&gt; text hai.&lt;/p&gt;
+&lt;p&gt;Ye &lt;mark&gt;highlighted&lt;/mark&gt; text hai.&lt;/p&gt;
+&lt;p&gt;Ye &lt;del&gt;deleted&lt;/del&gt; aur &lt;ins&gt;inserted&lt;/ins&gt; text hai.&lt;/p&gt;
+&lt;p&gt;Ye &lt;sub&gt;subscript&lt;/sub&gt; aur &lt;sup&gt;superscript&lt;/sup&gt; hai.&lt;/p&gt;
+&lt;p&gt;Ye &lt;code&gt;inline code&lt;/code&gt; hai.&lt;/p&gt;
+&lt;p&gt;Ye &lt;small&gt;small&lt;/small&gt; text hai.&lt;/p&gt;
+&lt;p&gt;Ye &lt;b&gt;bold&lt;/b&gt; aur &lt;i&gt;italic&lt;/i&gt; hai (presentation only).&lt;/p&gt;
+
+&lt;pre&gt;
+Preformatted text —
+    Spaces aur line breaks
+    preserve hote hain.
+&lt;/pre&gt;</code></pre>
+
+            <h3>Blockquote</h3>
+            <pre><code>&lt;blockquote cite="https://example.com"&gt;
+    &lt;p&gt;Ye ek quotation hai kisi source se.&lt;/p&gt;
+    &lt;footer&gt;— Author Name, &lt;cite&gt;Book Title&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;As Einstein said, &lt;q&gt;Imagination is more important than knowledge.&lt;/q&gt;&lt;/p&gt;</code></pre>
+        </section>
+
+        <section id="links">
+            <h2>🔗 Links & Navigation</h2>
+            <h3>Basic Links</h3>
+            <pre><code>&lt;!-- External link --&gt;
+&lt;a href="https://google.com"&gt;Google par jao&lt;/a&gt;
+
+&lt;!-- New tab mein open --&gt;
+&lt;a href="https://google.com" target="_blank" rel="noopener noreferrer"&gt;
+    New Tab mein Google
+&lt;/a&gt;
+
+&lt;!-- Same page link --&gt;
+&lt;a href="about.html"&gt;About Us&lt;/a&gt;
+&lt;a href="contact.html"&gt;Contact&lt;/a&gt;
+
+&lt;!-- Email link --&gt;
+&lt;a href="mailto:akarshit@example.com"&gt;Email bhejo&lt;/a&gt;
+
+&lt;!-- Phone link (mobile pe call karega) --&gt;
+&lt;a href="tel:+919876543210"&gt;Call karo&lt;/a&gt;
+
+&lt;!-- Download link --&gt;
+&lt;a href="file.pdf" download&gt;PDF Download karo&lt;/a&gt;</code></pre>
+
+            <h3>Page Navigation (Anchors)</h3>
+            <pre><code>&lt;!-- Navigation menu --&gt;
+&lt;nav&gt;
+    &lt;a href="#home"&gt;Home&lt;/a&gt;
+    &lt;a href="#about"&gt;About&lt;/a&gt;
+    &lt;a href="#services"&gt;Services&lt;/a&gt;
+    &lt;a href="#contact"&gt;Contact&lt;/a&gt;
+&lt;/nav&gt;
+
+&lt;!-- Sections with IDs --&gt;
+&lt;section id="home"&gt;
+    &lt;h2&gt;Home&lt;/h2&gt;
+    &lt;p&gt;Home section content...&lt;/p&gt;
+&lt;/section&gt;
+
+&lt;section id="about"&gt;
+    &lt;h2&gt;About&lt;/h2&gt;
+    &lt;p&gt;About section content...&lt;/p&gt;
+    &lt;a href="#home"&gt;↑ Back to top&lt;/a&gt;
+&lt;/section&gt;</code></pre>
+
+            <h3>Link States (CSS ke saath)</h3>
+            <pre><code>/* CSS mein link states style karte hain */
+a:link { color: blue; }      /* Unvisited */
+a:visited { color: purple; } /* Visited */
+a:hover { color: red; }      /* Mouse hover */
+a:active { color: green; }   /* Click ke waqt */</code></pre>
+        </section>
+
+        <section id="images">
+            <h2>🖼️ Images & Media</h2>
+            <h3>Images</h3>
+            <pre><code>&lt;!-- Basic image --&gt;
+&lt;img src="photo.jpg" alt="Beautiful landscape"&gt;
+
+&lt;!-- With width and height --&gt;
+&lt;img src="photo.jpg" alt="Landscape" width="500" height="300"&gt;
+
+&lt;!-- Responsive image --&gt;
+&lt;img src="photo.jpg" alt="Landscape" style="max-width:100%; height:auto;"&gt;
+
+&lt;!-- Figure with caption --&gt;
+&lt;figure&gt;
+    &lt;img src="photo.jpg" alt="Sunset"&gt;
+    &lt;figcaption&gt;A beautiful sunset over mountains&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;!-- Picture tag (responsive images) --&gt;
+&lt;picture&gt;
+    &lt;source media="(min-width: 800px)" srcset="large.jpg"&gt;
+    &lt;source media="(min-width: 400px)" srcset="medium.jpg"&gt;
+    &lt;img src="small.jpg" alt="Responsive image"&gt;
+&lt;/picture&gt;</code></pre>
+
+            <h3>Video</h3>
+            <pre><code>&lt;!-- Basic video --&gt;
+&lt;video src="movie.mp4" controls&gt;
+    Browser video support nahi karta.
+&lt;/video&gt;
+
+&lt;!-- With multiple sources --&gt;
+&lt;video controls width="640" height="360" poster="thumbnail.jpg"&gt;
+    &lt;source src="movie.mp4" type="video/mp4"&gt;
+    &lt;source src="movie.webm" type="video/webm"&gt;
+    &lt;track src="subtitles.vtt" kind="subtitles" srclang="en" label="English"&gt;
+    Browser video support nahi karta.
+&lt;/video&gt;</code></pre>
+
+            <h3>Audio</h3>
+            <pre><code>&lt;!-- Basic audio --&gt;
+&lt;audio src="song.mp3" controls&gt;
+    Browser audio support nahi karta.
+&lt;/audio&gt;
+
+&lt;!-- With multiple sources --&gt;
+&lt;audio controls&gt;
+    &lt;source src="song.mp3" type="audio/mpeg"&gt;
+    &lt;source src="song.ogg" type="audio/ogg"&gt;
+    Browser audio support nahi karta.
+&lt;/audio&gt;</code></pre>
+
+            <h3>Embed & Iframe</h3>
+            <pre><code>&lt;!-- YouTube video embed --&gt;
+&lt;iframe 
+    width="560" 
+    height="315" 
+    src="https://www.youtube.com/embed/VIDEO_ID" 
+    title="YouTube video" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    allowfullscreen&gt;
+&lt;/iframe&gt;
+
+&lt;!-- Google Maps --&gt;
+&lt;iframe 
+    src="https://maps.google.com/maps?q=LOCATION&amp;output=embed" 
+    width="400" 
+    height="300"&gt;
+&lt;/iframe&gt;
+
+&lt;!-- Embed PDF --&gt;
+&lt;embed src="document.pdf" type="application/pdf" width="100%" height="600px"&gt;</code></pre>
+        </section>
+
+        <section id="lists">
+            <h2>📋 Lists</h2>
+            <h3>Unordered List (Bullets)</h3>
+            <pre><code>&lt;ul&gt;
+    &lt;li&gt;Apple&lt;/li&gt;
+    &lt;li&gt;Banana&lt;/li&gt;
+    &lt;li&gt;Mango&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- Nested list --&gt;
+&lt;ul&gt;
+    &lt;li&gt;Fruits
+        &lt;ul&gt;
+            &lt;li&gt;Apple&lt;/li&gt;
+            &lt;li&gt;Banana&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;Vegetables
+        &lt;ul&gt;
+            &lt;li&gt;Carrot&lt;/li&gt;
+            &lt;li&gt;Tomato&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+
+            <h3>Ordered List (Numbers)</h3>
+            <pre><code>&lt;!-- Default (1, 2, 3...) --&gt;
+&lt;ol&gt;
+    &lt;li&gt;Step 1: Open the box&lt;/li&gt;
+    &lt;li&gt;Step 2: Read instructions&lt;/li&gt;
+    &lt;li&gt;Step 3: Assemble parts&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;!-- Start from specific number --&gt;
+&lt;ol start="5"&gt;
+    &lt;li&gt;Item 5&lt;/li&gt;
+    &lt;li&gt;Item 6&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;!-- Reverse order --&gt;
+&lt;ol reversed&gt;
+    &lt;li&gt;Last item&lt;/li&gt;
+    &lt;li&gt;Second last&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;!-- Type attribute --&gt;
+&lt;ol type="A"&gt;    &lt;!-- A, B, C... --&gt;
+&lt;ol type="a"&gt;    &lt;!-- a, b, c... --&gt;
+&lt;ol type="I"&gt;    &lt;!-- I, II, III... --&gt;
+&lt;ol type="i"&gt;    &lt;!-- i, ii, iii... --&gt;</code></pre>
+
+            <h3>Description List</h3>
+            <pre><code>&lt;dl&gt;
+    &lt;dt&gt;HTML&lt;/dt&gt;
+    &lt;dd&gt;HyperText Markup Language — web pages ka structure.&lt;/dd&gt;
+
+    &lt;dt&gt;CSS&lt;/dt&gt;
+    &lt;dd&gt;Cascading Style Sheets — web pages ka design.&lt;/dd&gt;
+
+    &lt;dt&gt;JavaScript&lt;/dt&gt;
+    &lt;dd&gt;Web pages ko interactive banane ki language.&lt;/dd&gt;
+&lt;/dl&gt;</code></pre>
+        </section>
+
+        <section id="tables">
+            <h2>📊 Tables</h2>
+            <h3>Basic Table</h3>
+            <pre><code>&lt;table&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Name&lt;/th&gt;
+            &lt;th&gt;Age&lt;/th&gt;
+            &lt;th&gt;Grade&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Akarshit&lt;/td&gt;
+            &lt;td&gt;20&lt;/td&gt;
+            &lt;td&gt;A&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Raj&lt;/td&gt;
+            &lt;td&gt;21&lt;/td&gt;
+            &lt;td&gt;B&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+    &lt;tfoot&gt;
+        &lt;tr&gt;
+            &lt;td colspan="3"&gt;Total Students: 2&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tfoot&gt;
+&lt;/table&gt;</code></pre>
+
+            <h3>Advanced Table</h3>
+            <pre><code>&lt;table border="1"&gt;
+    &lt;caption&gt;Student Marks&lt;/caption&gt;
+    &lt;colgroup&gt;
+        &lt;col style="background-color:#f0f0f0"&gt;
+        &lt;col span="2" style="background-color:#e0e0e0"&gt;
+    &lt;/colgroup&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th rowspan="2"&gt;Student&lt;/th&gt;
+            &lt;th colspan="2"&gt;Marks&lt;/th&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Math&lt;/th&gt;
+            &lt;th&gt;Science&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Akarshit&lt;/td&gt;
+            &lt;td&gt;85&lt;/td&gt;
+            &lt;td&gt;92&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+
+            <h3>Table Tags Reference</h3>
+            <table>
+                <tr><th>Tag</th><th>Description</th></tr>
+                <tr><td><code>&lt;table&gt;</code></td><td>Table container</td></tr>
+                <tr><td><code>&lt;thead&gt;</code></td><td>Table header group</td></tr>
+                <tr><td><code>&lt;tbody&gt;</code></td><td>Table body group</td></tr>
+                <tr><td><code>&lt;tfoot&gt;</code></td><td>Table footer group</td></tr>
+                <tr><td><code>&lt;tr&gt;</code></td><td>Table row</td></tr>
+                <tr><td><code>&lt;th&gt;</code></td><td>Header cell (bold, centered)</td></tr>
+                <tr><td><code>&lt;td&gt;</code></td><td>Data cell</td></tr>
+                <tr><td><code>&lt;caption&gt;</code></td><td>Table title</td></tr>
+                <tr><td><code>&lt;colgroup&gt;</code></td><td>Column group styling</td></tr>
+                <tr><td><code>colspan</code></td><td>Multiple columns merge</td></tr>
+                <tr><td><code>rowspan</code></td><td>Multiple rows merge</td></tr>
+            </table>
+        </section>
+
+        <section id="forms">
+            <h2>📝 Forms</h2>
+            <h3>Complete Form Example</h3>
+            <pre><code>&lt;form action="/submit" method="POST"&gt;
+    &lt;!-- Text input --&gt;
+    &lt;label for="name"&gt;Full Name:&lt;/label&gt;
+    &lt;input type="text" id="name" name="name" 
+           placeholder="Enter your name" required&gt;
+
+    &lt;!-- Email --&gt;
+    &lt;label for="email"&gt;Email:&lt;/label&gt;
+    &lt;input type="email" id="email" name="email" 
+           placeholder="your@email.com" required&gt;
+
+    &lt;!-- Password --&gt;
+    &lt;label for="password"&gt;Password:&lt;/label&gt;
+    &lt;input type="password" id="password" name="password" 
+           minlength="8" required&gt;
+
+    &lt;!-- Number --&gt;
+    &lt;label for="age"&gt;Age:&lt;/label&gt;
+    &lt;input type="number" id="age" name="age" 
+           min="1" max="120" value="18"&gt;
+
+    &lt;!-- Telephone --&gt;
+    &lt;label for="phone"&gt;Phone:&lt;/label&gt;
+    &lt;input type="tel" id="phone" name="phone" 
+           pattern="[0-9]{10}" placeholder="10 digit number"&gt;
+
+    &lt;!-- Date --&gt;
+    &lt;label for="dob"&gt;Date of Birth:&lt;/label&gt;
+    &lt;input type="date" id="dob" name="dob"&gt;
+
+    &lt;!-- URL --&gt;
+    &lt;label for="website"&gt;Website:&lt;/label&gt;
+    &lt;input type="url" id="website" name="website" 
+           placeholder="https://example.com"&gt;
+
+    &lt;!-- File upload --&gt;
+    &lt;label for="resume"&gt;Upload Resume:&lt;/label&gt;
+    &lt;input type="file" id="resume" name="resume" 
+           accept=".pdf,.doc,.docx"&gt;
+
+    &lt;!-- Range slider --&gt;
+    &lt;label for="rating"&gt;Rating (1-10):&lt;/label&gt;
+    &lt;input type="range" id="rating" name="rating" 
+           min="1" max="10" value="5"&gt;
+
+    &lt;!-- Color picker --&gt;
+    &lt;label for="color"&gt;Favorite Color:&lt;/label&gt;
+    &lt;input type="color" id="color" name="color" value="#ff0000"&gt;
+
+    &lt;!-- Radio buttons --&gt;
+    &lt;fieldset&gt;
+        &lt;legend&gt;Gender:&lt;/legend&gt;
+        &lt;input type="radio" id="male" name="gender" value="male"&gt;
+        &lt;label for="male"&gt;Male&lt;/label&gt;
+        &lt;input type="radio" id="female" name="gender" value="female"&gt;
+        &lt;label for="female"&gt;Female&lt;/label&gt;
+        &lt;input type="radio" id="other" name="gender" value="other"&gt;
+        &lt;label for="other"&gt;Other&lt;/label&gt;
+    &lt;/fieldset&gt;
+
+    &lt;!-- Checkboxes --&gt;
+    &lt;fieldset&gt;
+        &lt;legend&gt;Hobbies:&lt;/legend&gt;
+        &lt;input type="checkbox" id="coding" name="hobbies" value="coding"&gt;
+        &lt;label for="coding"&gt;Coding&lt;/label&gt;
+        &lt;input type="checkbox" id="gaming" name="hobbies" value="gaming"&gt;
+        &lt;label for="gaming"&gt;Gaming&lt;/label&gt;
+        &lt;input type="checkbox" id="reading" name="hobbies" value="reading"&gt;
+        &lt;label for="reading"&gt;Reading&lt;/label&gt;
+    &lt;/fieldset&gt;
+
+    &lt;!-- Dropdown --&gt;
+    &lt;label for="country"&gt;Country:&lt;/label&gt;
+    &lt;select id="country" name="country"&gt;
+        &lt;option value=""&gt;Select a country&lt;/option&gt;
+        &lt;option value="in"&gt;India&lt;/option&gt;
+        &lt;option value="us"&gt;United States&lt;/option&gt;
+        &lt;option value="uk"&gt;United Kingdom&lt;/option&gt;
+        &lt;option value="ca"&gt;Canada&lt;/option&gt;
+    &lt;/select&gt;
+
+    &lt;!-- Multi-select --&gt;
+    &lt;label for="skills"&gt;Skills (Ctrl+Click for multiple):&lt;/label&gt;
+    &lt;select id="skills" name="skills" multiple size="4"&gt;
+        &lt;option value="html"&gt;HTML&lt;/option&gt;
+        &lt;option value="css"&gt;CSS&lt;/option&gt;
+        &lt;option value="js"&gt;JavaScript&lt;/option&gt;
+        &lt;option value="python"&gt;Python&lt;/option&gt;
+    &lt;/select&gt;
+
+    &lt;!-- Optgroup --&gt;
+    &lt;label for="language"&gt;Programming Language:&lt;/label&gt;
+    &lt;select id="language" name="language"&gt;
+        &lt;optgroup label="Frontend"&gt;
+            &lt;option value="html"&gt;HTML&lt;/option&gt;
+            &lt;option value="css"&gt;CSS&lt;/option&gt;
+            &lt;option value="js"&gt;JavaScript&lt;/option&gt;
+        &lt;/optgroup&gt;
+        &lt;optgroup label="Backend"&gt;
+            &lt;option value="python"&gt;Python&lt;/option&gt;
+            &lt;option value="java"&gt;Java&lt;/option&gt;
+            &lt;option value="csharp"&gt;C#&lt;/option&gt;
+        &lt;/optgroup&gt;
+    &lt;/select&gt;
+
+    &lt;!-- Textarea --&gt;
+    &lt;label for="message"&gt;Message:&lt;/label&gt;
+    &lt;textarea id="message" name="message" rows="5" cols="50" 
+              placeholder="Enter your message here..."&gt;&lt;/textarea&gt;
+
+    &lt;!-- Datalist (Autocomplete) --&gt;
+    &lt;label for="browser"&gt;Browser:&lt;/label&gt;
+    &lt;input list="browsers" id="browser" name="browser"&gt;
+    &lt;datalist id="browsers"&gt;
+        &lt;option value="Chrome"&gt;
+        &lt;option value="Firefox"&gt;
+        &lt;option value="Safari"&gt;
+        &lt;option value="Edge"&gt;
+        &lt;option value="Opera"&gt;
+    &lt;/datalist&gt;
+
+    &lt;!-- Hidden field --&gt;
+    &lt;input type="hidden" name="token" value="abc123"&gt;
+
+    &lt;!-- Submit & Reset --&gt;
+    &lt;button type="submit"&gt;Submit&lt;/button&gt;
+    &lt;button type="reset"&gt;Reset&lt;/button&gt;
+    &lt;button type="button" onclick="alert('Hello!')"&gt;Click Me&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+
+            <h3>Input Types Reference</h3>
+            <table>
+                <tr><th>Type</th><th>Description</th></tr>
+                <tr><td><code>text</code></td><td>Single line text</td></tr>
+                <tr><td><code>password</code></td><td>Hidden characters</td></tr>
+                <tr><td><code>email</code></td><td>Email validation</td></tr>
+                <tr><td><code>tel</code></td><td>Phone number</td></tr>
+                <tr><td><code>number</code></td><td>Numeric input</td></tr>
+                <tr><td><code>url</code></td><td>URL validation</td></tr>
+                <tr><td><code>search</code></td><td>Search field</td></tr>
+                <tr><td><code>date</code></td><td>Date picker</td></tr>
+                <tr><td><code>time</code></td><td>Time picker</td></tr>
+                <tr><td><code>datetime-local</code></td><td>Date + Time</td></tr>
+                <tr><td><code>month</code></td><td>Month picker</td></tr>
+                <tr><td><code>week</code></td><td>Week picker</td></tr>
+                <tr><td><code>color</code></td><td>Color picker</td></tr>
+                <tr><td><code>range</code></td><td>Slider</td></tr>
+                <tr><td><code>file</code></td><td>File upload</td></tr>
+                <tr><td><code>checkbox</code></td><td>Multiple selection</td></tr>
+                <tr><td><code>radio</code></td><td>Single selection</td></tr>
+                <tr><td><code>hidden</code></td><td>Invisible field</td></tr>
+                <tr><td><code>submit</code></td><td>Submit button</td></tr>
+                <tr><td><code>reset</code></td><td>Reset button</td></tr>
+                <tr><td><code>button</code></td><td>Generic button</td></tr>
+            </table>
+
+            <h3>Form Validation Attributes</h3>
+            <pre><code>&lt;input type="text" required&gt;                    &lt;!-- Mandatory --&gt;
+&lt;input type="text" minlength="3" maxlength="20"&gt; &lt;!-- Length limit --&gt;
+&lt;input type="number" min="0" max="100" step="5"&gt;  &lt;!-- Range & step --&gt;
+&lt;input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"&gt;
+&lt;input type="text" placeholder="Hint text"&gt;         &lt;!-- Hint --&gt;
+&lt;input type="text" disabled&gt;                       &lt;!-- Disabled --&gt;
+&lt;input type="text" readonly value="Fixed"&gt;         &lt;!-- Read only --&gt;
+&lt;input type="text" autofocus&gt;                      &lt;!-- Auto focus --&gt;
+&lt;input type="text" autocomplete="off"&gt;             &lt;!-- Auto complete off --&gt;</code></pre>
+        </section>
+
+        <section id="semantic">
+            <h2>🏛️ Semantic HTML5</h2>
+            <p>Semantic tags content ka meaning batate hain. Ye SEO aur accessibility ke liye best hain.</p>
+
+            <h3>Complete Semantic Page Structure</h3>
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Semantic Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- Header --&gt;
+    &lt;header&gt;
+        &lt;h1&gt;Website Name&lt;/h1&gt;
+        &lt;nav&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href="#home"&gt;Home&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#about"&gt;About&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#contact"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+
+    &lt;!-- Main Content --&gt;
+    &lt;main&gt;
+        &lt;!-- Article --&gt;
+        &lt;article&gt;
+            &lt;header&gt;
+                &lt;h2&gt;Article Title&lt;/h2&gt;
+                &lt;time datetime="2026-06-08"&gt;June 8, 2026&lt;/time&gt;
+            &lt;/header&gt;
+            &lt;p&gt;Article content...&lt;/p&gt;
+            &lt;section&gt;
+                &lt;h3&gt;Section 1&lt;/h3&gt;
+                &lt;p&gt;Section content...&lt;/p&gt;
+            &lt;/section&gt;
+            &lt;section&gt;
+                &lt;h3&gt;Section 2&lt;/h3&gt;
+                &lt;p&gt;More content...&lt;/p&gt;
+            &lt;/section&gt;
+            &lt;footer&gt;
+                &lt;p&gt;Written by Akarshit Raj&lt;/p&gt;
+            &lt;/footer&gt;
+        &lt;/article&gt;
+
+        &lt;!-- Sidebar --&gt;
+        &lt;aside&gt;
+            &lt;h3&gt;Related Articles&lt;/h3&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href="#"&gt;Article 1&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#"&gt;Article 2&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/aside&gt;
+    &lt;/main&gt;
+
+    &lt;!-- Footer --&gt;
+    &lt;footer&gt;
+        &lt;p&gt;&amp;copy; 2026 My Website. All rights reserved.&lt;/p&gt;
+        &lt;address&gt;
+            Contact: &lt;a href="mailto:info@example.com"&gt;info@example.com&lt;/a&gt;
+        &lt;/address&gt;
+    &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+            <h3>Semantic Tags Reference</h3>
+            <table>
+                <tr><th>Tag</th><th>Use</th></tr>
+                <tr><td><code>&lt;header&gt;</code></td><td>Page/section header (logo, nav, title)</td></tr>
+                <tr><td><code>&lt;nav&gt;</code></td><td>Navigation links</td></tr>
+                <tr><td><code>&lt;main&gt;</code></td><td>Main content (page mein sirf ek)</td></tr>
+                <tr><td><code>&lt;article&gt;</code></td><td>Independent content (blog post, news)</td></tr>
+                <tr><td><code>&lt;section&gt;</code></td><td>Thematic group of content</td></tr>
+                <tr><td><code>&lt;aside&gt;</code></td><td>Sidebar, related content</td></tr>
+                <tr><td><code>&lt;footer&gt;</code></td><td>Page/section footer (copyright, links)</td></tr>
+                <tr><td><code>&lt;figure&gt;</code></td><td>Image, diagram, chart + caption</td></tr>
+                <tr><td><code>&lt;figcaption&gt;</code></td><td>Figure ka caption</td></tr>
+                <tr><td><code>&lt;details&gt;</code></td><td>Collapsible content</td></tr>
+                <tr><td><code>&lt;summary&gt;</code></td><td>Details ka heading</td></tr>
+                <tr><td><code>&lt;mark&gt;</code></td><td>Highlighted text</td></tr>
+                <tr><td><code>&lt;time&gt;</code></td><td>Date/time</td></tr>
+                <tr><td><code>&lt;address&gt;</code></td><td>Contact information</td></tr>
+                <tr><td><code>&lt;progress&gt;</code></td><td>Progress bar</td></tr>
+                <tr><td><code>&lt;meter&gt;</code></td><td>Scalar measurement</td></tr>
+            </table>
+
+            <h3>Details & Summary</h3>
+            <pre><code>&lt;details&gt;
+    &lt;summary&gt;Click to expand&lt;/summary&gt;
+    &lt;p&gt;Ye hidden content hai jo click karne pe dikhega.&lt;/p&gt;
+    &lt;ul&gt;
+        &lt;li&gt;Item 1&lt;/li&gt;
+        &lt;li&gt;Item 2&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/details&gt;
+
+&lt;details open&gt;
+    &lt;summary&gt;Already open&lt;/summary&gt;
+    &lt;p&gt;Ye by default open hai.&lt;/p&gt;
+&lt;/details&gt;</code></pre>
+
+            <h3>Progress & Meter</h3>
+            <pre><code>&lt;!-- Progress bar --&gt;
+&lt;label for="file"&gt;Downloading:&lt;/label&gt;
+&lt;progress id="file" value="70" max="100"&gt;70%&lt;/progress&gt;
+
+&lt;!-- Meter (measurement) --&gt;
+&lt;label for="disk"&gt;Disk Usage:&lt;/label&gt;
+&lt;meter id="disk" value="0.6" min="0" max="1" 
+       low="0.3" high="0.8" optimum="0.5"&gt;60%&lt;/meter&gt;</code></pre>
+        </section>
+
+        <section id="meta">
+            <h2>🔍 Meta Tags & SEO</h2>
+            <h3>Essential Meta Tags</h3>
+            <pre><code>&lt;head&gt;
+    &lt;!-- Character encoding --&gt;
+    &lt;meta charset="UTF-8"&gt;
+
+    &lt;!-- Viewport (mobile responsive) --&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+
+    &lt;!-- Title (SEO mein sabse important) --&gt;
+    &lt;title&gt;Akarshit Raj - Programming Educator | Free Coding Courses&lt;/title&gt;
+
+    &lt;!-- Description (search results mein dikhta hai) --&gt;
+    &lt;meta name="description" content="Learn programming for free with Akarshit Raj. Free courses in Python, JavaScript, C++, Java, and more."&gt;
+
+    &lt;!-- Keywords --&gt;
+    &lt;meta name="keywords" content="programming, coding, free courses, python, javascript, c++"&gt;
+
+    &lt;!-- Author --&gt;
+    &lt;meta name="author" content="Akarshit Raj"&gt;
+
+    &lt;!-- Robots (search engine indexing) --&gt;
+    &lt;meta name="robots" content="index, follow"&gt;
+
+    &lt;!-- Open Graph (Facebook/LinkedIn sharing) --&gt;
+    &lt;meta property="og:title" content="Akarshit Raj - Programming Educator"&gt;
+    &lt;meta property="og:description" content="Free programming courses for everyone."&gt;
+    &lt;meta property="og:image" content="https://akarshitrajx.github.io/og-image.jpg"&gt;
+    &lt;meta property="og:url" content="https://akarshitrajx.github.io"&gt;
+    &lt;meta property="og:type" content="website"&gt;
+
+    &lt;!-- Twitter Card --&gt;
+    &lt;meta name="twitter:card" content="summary_large_image"&gt;
+    &lt;meta name="twitter:title" content="Akarshit Raj - Programming Educator"&gt;
+    &lt;meta name="twitter:description" content="Free programming courses for everyone."&gt;
+    &lt;meta name="twitter:image" content="https://akarshitrajx.github.io/twitter-image.jpg"&gt;
+
+    &lt;!-- Theme color (mobile browser) --&gt;
+    &lt;meta name="theme-color" content="#0f172a"&gt;
+
+    &lt;!-- Favicon --&gt;
+    &lt;link rel="icon" type="image/x-icon" href="favicon.ico"&gt;
+    &lt;link rel="apple-touch-icon" href="apple-touch-icon.png"&gt;
+
+    &lt;!-- Canonical URL (duplicate content avoid) --&gt;
+    &lt;link rel="canonical" href="https://akarshitrajx.github.io"&gt;
+
+    &lt;!-- CSS --&gt;
+    &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;</code></pre>
+
+            <h3>Structured Data (JSON-LD)</h3>
+            <pre><code>&lt;script type="application/ld+json"&gt;
+{
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Akarshit Raj",
+    "url": "https://akarshitrajx.github.io",
+    "jobTitle": "Programming Educator",
+    "sameAs": [
+        "https://youtube.com/@akarshitraj",
+        "https://github.com/akarshitrajx"
+    ]
+}
+&lt;/script&gt;</code></pre>
+        </section>
+
+        <section id="accessibility">
+            <h2>♿ Accessibility (A11y)</h2>
+            <p>Accessibility ensure karti hai ki aapki website sab users ke liye accessible ho — including visually impaired, motor disabled, aur keyboard users.</p>
+
+            <h3>Key Principles</h3>
             <ul>
-                <li><code>&lt;h1&gt;</code> to <code>&lt;h6&gt;</code> — Headings</li>
-                <li><code>&lt;p&gt;</code> — Paragraph</li>
-                <li><code>&lt;a href=""&gt;</code> — Link</li>
-                <li><code>&lt;img src=""&gt;</code> — Image</li>
-                <li><code>&lt;div&gt;</code> — Division/Container</li>
-                <li><code>&lt;span&gt;</code> — Inline container</li>
-                <li><code>&lt;ul&gt; &lt;li&gt;</code> — Unordered list</li>
-                <li><code>&lt;table&gt;</code> — Table</li>
-                <li><code>&lt;form&gt;</code> — Form</li>
+                <li><strong>Perceivable:</strong> Information sab ko mil sake</li>
+                <li><strong>Operable:</strong> Sab interface elements use kar sake</li>
+                <li><strong>Understandable:</strong> Content clear ho</li>
+                <li><strong>Robust:</strong> Assistive technologies ke saath kaam kare</li>
             </ul>
-        </div>
 
-        <div class="section">
-            <h2>CSS Flexbox</h2>
-            <pre>.container {
-    display: flex;
-    justify-content: center;   /* Horizontal center */
-    align-items: center;       /* Vertical center */
-    gap: 20px;
-    flex-wrap: wrap;
-}</pre>
-        </div>
+            <h3>Alt Text for Images</h3>
+            <pre><code>&lt;!-- Good --&gt;
+&lt;img src="chart.jpg" alt="Bar chart showing 50% increase in sales from 2024 to 2026"&gt;
 
-        <div class="section">
-            <h2>CSS Grid</h2>
-            <pre>.grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-}</pre>
-        </div>
+&lt;!-- Decorative image (empty alt) --&gt;
+&lt;img src="decoration.jpg" alt=""&gt;
 
-        <div class="section">
-            <h2>Responsive Design</h2>
-            <pre>@media (max-width: 768px) {
-    .container {
-        flex-direction: column;
+&lt;!-- Complex image with detailed description --&gt;
+&lt;figure&gt;
+    &lt;img src="diagram.jpg" alt="Flowchart of user registration process"&gt;
+    &lt;figcaption&gt;
+        Detailed description: Step 1: User enters email. 
+        Step 2: Verification email sent. Step 3: User clicks link...
+    &lt;/figcaption&gt;
+&lt;/figure&gt;</code></pre>
+
+            <h3>ARIA Labels</h3>
+            <pre><code>&lt;!-- Icon buttons without text --&gt;
+&lt;button aria-label="Close menu"&gt;
+    &lt;span class="icon-close"&gt;&lt;/span&gt;
+&lt;/button&gt;
+
+&lt;!-- Current page indicator --&gt;
+&lt;nav aria-label="Main navigation"&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="/" aria-current="page"&gt;Home&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/about"&gt;About&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;
+
+&lt;!-- Live regions (dynamic content) --&gt;
+&lt;div role="alert" aria-live="assertive"&gt;
+    Form submitted successfully!
+&lt;/div&gt;
+
+&lt;!-- Landmark roles --&gt;
+&lt;div role="banner"&gt;...&lt;/div&gt;       &lt;!-- Header --&gt;
+&lt;div role="navigation"&gt;...&lt;/div&gt;   &lt;!-- Nav --&gt;
+&lt;div role="main"&gt;...&lt;/div&gt;        &lt;!-- Main --&gt;
+&lt;div role="complementary"&gt;...&lt;/div&gt; &lt;!-- Aside --&gt;
+&lt;div role="contentinfo"&gt;...&lt;/div&gt;  &lt;!-- Footer --&gt;</code></pre>
+
+            <h3>Form Accessibility</h3>
+            <pre><code>&lt;!-- Always associate label with input --&gt;
+&lt;label for="email"&gt;Email Address&lt;/label&gt;
+&lt;input type="email" id="email" name="email" required 
+       aria-required="true" aria-describedby="email-help"&gt;
+&lt;span id="email-help"&gt;We'll never share your email.&lt;/span&gt;
+
+&lt;!-- Error message --&gt;
+&lt;input type="email" id="email" aria-invalid="true" 
+       aria-describedby="email-error"&gt;
+&lt;span id="email-error" role="alert"&gt;Please enter a valid email.&lt;/span&gt;
+
+&lt;!-- Fieldset for grouped inputs --&gt;
+&lt;fieldset&gt;
+    &lt;legend&gt;Choose your preferred contact method&lt;/legend&gt;
+    &lt;input type="radio" id="email-contact" name="contact"&gt;
+    &lt;label for="email-contact"&gt;Email&lt;/label&gt;
+    &lt;input type="radio" id="phone-contact" name="contact"&gt;
+    &lt;label for="phone-contact"&gt;Phone&lt;/label&gt;
+&lt;/fieldset&gt;</code></pre>
+
+            <h3>Keyboard Navigation</h3>
+            <pre><code>&lt;!-- Tabindex --&gt;
+&lt;div tabindex="0"&gt;Focusable div&lt;/div&gt;    &lt;!-- Tab se focus --&gt;
+&lt;div tabindex="-1"&gt;Programmatic focus&lt;/div&gt; &lt;!-- JS se focus --&gt;
+
+&lt;!-- Skip link (screen readers ke liye) --&gt;
+&lt;a href="#main-content" class="skip-link"&gt;Skip to main content&lt;/a&gt;
+&lt;main id="main-content"&gt;...&lt;/main&gt;
+
+&lt;!-- Focus visible styles --&gt;
+&lt;style&gt;
+    :focus-visible {
+        outline: 3px solid #f97316;
+        outline-offset: 2px;
     }
-    .grid {
-        grid-template-columns: 1fr;
-    }
-}</pre>
-        </div>
+&lt;/style&gt;</code></pre>
+        </section>
 
-        <div class="footer">
-            <p>© 2026 Akarshit Raj | <a href="tutorials.html" style="color:#38bdf8">More Tutorials</a></p>
-        </div>
+        <section id="projects">
+            <h2>🛠️ Mini Projects</h2>
+            <h3>1. Personal Portfolio Page</h3>
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Akarshit Raj - Portfolio&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;h1&gt;Akarshit Raj&lt;/h1&gt;
+        &lt;p&gt;Programming Educator & Student&lt;/p&gt;
+        &lt;nav&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href="#about"&gt;About&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#skills"&gt;Skills&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#projects"&gt;Projects&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#contact"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+
+    &lt;main&gt;
+        &lt;section id="about"&gt;
+            &lt;h2&gt;About Me&lt;/h2&gt;
+            &lt;img src="profile.jpg" alt="Akarshit Raj profile photo" width="200"&gt;
+            &lt;p&gt;I teach programming for free on YouTube...&lt;/p&gt;
+        &lt;/section&gt;
+
+        &lt;section id="skills"&gt;
+            &lt;h2&gt;Skills&lt;/h2&gt;
+            &lt;ul&gt;
+                &lt;li&gt;HTML5 & CSS3&lt;/li&gt;
+                &lt;li&gt;JavaScript & TypeScript&lt;/li&gt;
+                &lt;li&gt;Python & C++&lt;/li&gt;
+                &lt;li&gt;React & Node.js&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/section&gt;
+
+        &lt;section id="projects"&gt;
+            &lt;h2&gt;Projects&lt;/h2&gt;
+            &lt;article&gt;
+                &lt;h3&gt;Programming Course Website&lt;/h3&gt;
+                &lt;p&gt;Free coding tutorials for everyone.&lt;/p&gt;
+                &lt;a href="https://akarshitrajx.github.io"&gt;View Live&lt;/a&gt;
+            &lt;/article&gt;
+        &lt;/section&gt;
+
+        &lt;section id="contact"&gt;
+            &lt;h2&gt;Contact&lt;/h2&gt;
+            &lt;form action="/contact" method="POST"&gt;
+                &lt;label for="name"&gt;Name:&lt;/label&gt;
+                &lt;input type="text" id="name" name="name" required&gt;
+
+                &lt;label for="email"&gt;Email:&lt;/label&gt;
+                &lt;input type="email" id="email" name="email" required&gt;
+
+                &lt;label for="message"&gt;Message:&lt;/label&gt;
+                &lt;textarea id="message" name="message" required&gt;&lt;/textarea&gt;
+
+                &lt;button type="submit"&gt;Send Message&lt;/button&gt;
+            &lt;/form&gt;
+        &lt;/section&gt;
+    &lt;/main&gt;
+
+    &lt;footer&gt;
+        &lt;p&gt;&amp;copy; 2026 Akarshit Raj. All rights reserved.&lt;/p&gt;
+        &lt;nav&gt;
+            &lt;a href="https://github.com/akarshitrajx"&gt;GitHub&lt;/a&gt;
+            &lt;a href="https://youtube.com/@akarshitraj"&gt;YouTube&lt;/a&gt;
+        &lt;/nav&gt;
+    &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+            <h3>2. Product Card Component</h3>
+            <pre><code>&lt;article class="product-card"&gt;
+    &lt;figure&gt;
+        &lt;img src="laptop.jpg" alt="Gaming Laptop with RGB keyboard"&gt;
+        &lt;figcaption&gt;Gaming Laptop Pro X1&lt;/figcaption&gt;
+    &lt;/figure&gt;
+    &lt;header&gt;
+        &lt;h2&gt;Gaming Laptop Pro X1&lt;/h2&gt;
+        &lt;p class="price"&gt;&lt;data value="89999"&gt;₹89,999&lt;/data&gt;&lt;/p&gt;
+    &lt;/header&gt;
+    &lt;section&gt;
+        &lt;h3&gt;Specifications&lt;/h3&gt;
+        &lt;ul&gt;
+            &lt;li&gt;Intel i9 Processor&lt;/li&gt;
+            &lt;li&gt;32GB RAM&lt;/li&gt;
+            &lt;li&gt;1TB SSD&lt;/li&gt;
+            &lt;li&gt;RTX 4080 GPU&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/section&gt;
+    &lt;footer&gt;
+        &lt;button type="button"&gt;Add to Cart&lt;/button&gt;
+        &lt;button type="button"&gt;Add to Wishlist&lt;/button&gt;
+    &lt;/footer&gt;
+&lt;/article&gt;</code></pre>
+
+            <h3>3. FAQ Section with Details</h3>
+            <pre><code>&lt;section id="faq"&gt;
+    &lt;h2&gt;Frequently Asked Questions&lt;/h2&gt;
+
+    &lt;details&gt;
+        &lt;summary&gt;What courses do you offer?&lt;/summary&gt;
+        &lt;p&gt;We offer free courses in Python, JavaScript, C++, Java, C#, SQL, HTML, CSS, and more!&lt;/p&gt;
+    &lt;/details&gt;
+
+    &lt;details&gt;
+        &lt;summary&gt;Are the courses really free?&lt;/summary&gt;
+        &lt;p&gt;Yes! All our programming courses are 100% free. No hidden charges.&lt;/p&gt;
+    &lt;/details&gt;
+
+    &lt;details&gt;
+        &lt;summary&gt;How do I start learning?&lt;/summary&gt;
+        &lt;p&gt;Just visit our website, choose a language, and start with the basics tutorial!&lt;/p&gt;
+    &lt;/details&gt;
+&lt;/section&gt;</code></pre>
+        </section>
+
+        <footer>
+            <p>© 2026 Akarshit Raj | PM SHRI JNV Khairabad, Sitapur</p>
+            <p>Learn programming for free 🚀</p>
+        </footer>
     </div>
 </body>
 </html>
