@@ -3,83 +3,1095 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>C# Basics - Akarshit Raj</title>
+    <title>C# Complete Guide - Zero to Hero | Akarshit Raj</title>
     <style>
-        *{margin:0;padding:0;box-sizing:border-box}
-        body{font-family:'Segoe UI',sans-serif;background:linear-gradient(135deg,#0f172a,#1e1b4b);color:#e2e8f0;line-height:1.6;min-height:100vh}
-        .container{max-width:800px;margin:0 auto;padding:20px}
-        .back{display:inline-block;background:rgba(56,189,248,0.2);color:#38bdf8;padding:10px 20px;border-radius:8px;text-decoration:none;font-weight:600;margin-bottom:20px;border:1px solid rgba(56,189,248,0.3)}
-        h1{font-size:2rem;background:linear-gradient(135deg,#38bdf8,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:10px}
-        .section{background:rgba(30,41,59,0.6);border:1px solid rgba(148,163,184,0.1);border-radius:16px;padding:25px;margin-bottom:20px}
-        h2{color:#38bdf8;margin-bottom:15px;font-size:1.3rem}
-        p{color:#94a3b8;margin-bottom:15px}
-        pre{background:#1e1e1e;border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:15px;overflow-x:auto;color:#d4d4d4;font-family:'Consolas',monospace;font-size:0.9rem;margin:15px 0}
-        code{background:rgba(56,189,248,0.15);color:#38bdf8;padding:2px 6px;border-radius:4px;font-family:monospace}
-        .footer{text-align:center;padding:40px;color:#64748b;font-size:0.9rem}
+        :root {
+            --bg: #0f172a;
+            --card: #1e293b;
+            --text: #e2e8f0;
+            --muted: #94a3b8;
+            --accent: #f97316;
+            --accent2: #3b82f6;
+            --code-bg: #0b1120;
+            --border: #334155;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+        .back {
+            display: inline-flex; align-items: center; gap: 8px;
+            color: var(--accent); text-decoration: none; margin-bottom: 20px;
+            font-weight: 600; font-size: 0.95rem;
+        }
+        .back:hover { text-decoration: underline; }
+        header {
+            text-align: center; padding: 40px 20px;
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+        }
+        header h1 { font-size: 2.2rem; margin-bottom: 10px; }
+        header p { color: var(--muted); font-size: 1.1rem; }
+        .badge {
+            display: inline-block; background: var(--accent); color: #fff;
+            padding: 4px 14px; border-radius: 20px; font-size: 0.8rem;
+            font-weight: 700; margin-top: 10px;
+        }
+        .toc {
+            background: var(--card); border-radius: 12px; padding: 20px;
+            margin-bottom: 30px; border: 1px solid var(--border);
+        }
+        .toc h3 { color: var(--accent); margin-bottom: 12px; font-size: 1.1rem; }
+        .toc ul { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 8px; }
+        .toc a { color: var(--muted); text-decoration: none; font-size: 0.9rem; }
+        .toc a:hover { color: var(--accent); }
+        section {
+            background: var(--card); border-radius: 12px; padding: 25px;
+            margin-bottom: 25px; border: 1px solid var(--border);
+        }
+        section h2 {
+            color: var(--accent); font-size: 1.4rem; margin-bottom: 15px;
+            display: flex; align-items: center; gap: 10px;
+        }
+        section h3 { color: var(--accent2); font-size: 1.15rem; margin: 20px 0 10px; }
+        p { margin-bottom: 12px; color: var(--text); }
+        ul, ol { margin-left: 20px; margin-bottom: 15px; color: var(--text); }
+        li { margin-bottom: 6px; }
+        code {
+            background: var(--code-bg); color: #fbbf24; padding: 2px 6px;
+            border-radius: 4px; font-family: 'Fira Code', monospace; font-size: 0.9em;
+        }
+        pre {
+            background: var(--code-bg); border-radius: 10px; padding: 16px;
+            overflow-x: auto; margin: 15px 0; border: 1px solid var(--border);
+        }
+        pre code { background: none; padding: 0; color: #e2e8f0; font-size: 0.85rem; line-height: 1.6; }
+        .note {
+            background: rgba(59, 130, 246, 0.1); border-left: 4px solid var(--accent2);
+            padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 15px 0;
+        }
+        .warning {
+            background: rgba(249, 115, 22, 0.1); border-left: 4px solid var(--accent);
+            padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 15px 0;
+        }
+        table {
+            width: 100%; border-collapse: collapse; margin: 15px 0;
+            font-size: 0.9rem;
+        }
+        th, td { border: 1px solid var(--border); padding: 10px; text-align: left; }
+        th { background: var(--code-bg); color: var(--accent); }
+        footer {
+            text-align: center; padding: 30px; color: var(--muted);
+            border-top: 1px solid var(--border); margin-top: 30px;
+        }
+        @media (max-width: 600px) {
+            header h1 { font-size: 1.5rem; }
+            .toc ul { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
+    <header>
+        <h1>🔷 C# Complete Guide</h1>
+        <p>Zero to Hero — Master C# and .NET Development</p>
+        <span class="badge">Beginner to Advanced</span>
+    </header>
+
     <div class="container">
         <a href="tutorials.html" class="back">← Back to Tutorials</a>
-        <h1>C# Complete Tutorial</h1>
-        
-        <div class="section">
-            <h2>What is C#?</h2>
-            <p>C# (C-Sharp) is a modern, object-oriented language developed by Microsoft. It runs on the .NET framework and is used for web, desktop, and game development (Unity).</p>
+
+        <div class="toc">
+            <h3>📑 Table of Contents</h3>
+            <ul>
+                <li><a href="#intro">Introduction</a></li>
+                <li><a href="#setup">Setup & First Program</a></li>
+                <li><a href="#variables">Variables & Data Types</a></li>
+                <li><a href="#operators">Operators</a></li>
+                <li><a href="#control">Control Flow</a></li>
+                <li><a href="#methods">Methods</a></li>
+                <li><a href="#arrays">Arrays & Collections</a></li>
+                <li><a href="#strings">Strings</a></li>
+                <li><a href="#oop">OOP — Classes & Objects</a></li>
+                <li><a href="#inheritance">Inheritance & Polymorphism</a></li>
+                <li><a href="#encapsulation">Encapsulation</a></li>
+                <li><a href="#exception">Exception Handling</a></li>
+                <li><a href="#linq">LINQ Basics</a></li>
+                <li><a href="#file">File I/O</a></li>
+                <li><a href="#projects">Mini Projects</a></li>
+            </ul>
         </div>
 
-        <div class="section">
-            <h2>Hello World</h2>
-            <pre>using System;
+        <section id="intro">
+            <h2>🚀 Introduction</h2>
+            <p>C# (C Sharp) Microsoft dwara develop ki gayi ek powerful, modern programming language hai. Ye .NET framework ka hissa hai aur Windows apps, web apps, games (Unity), aur mobile apps (Xamarin) banane ke liye use hoti hai.</p>
+            <p><strong>Kya seekhenge:</strong></p>
+            <ul>
+                <li>Variables, Data Types, Operators</li>
+                <li>Control Flow, Methods, Arrays</li>
+                <li>OOP — Classes, Objects, Inheritance, Polymorphism</li>
+                <li>Exception Handling, LINQ</li>
+                <li>File I/O & Real-world Projects</li>
+            </ul>
+            <div class="note">
+                <strong>Note:</strong> C# code run karne ke liye <strong>.NET SDK</strong> install karo: <code>https://dotnet.microsoft.com/download</code>
+            </div>
+        </section>
 
-class Program {
-    static void Main() {
-        Console.WriteLine("Hello, World!");
+        <section id="setup">
+            <h2>⚙️ Setup & First Program</h2>
+            <h3>Installation</h3>
+            <ol>
+                <li><code>dotnet.microsoft.com</code> se .NET SDK download karo</li>
+                <li>Install karo aur <code>dotnet --version</code> se verify karo</li>
+                <li>VS Code ya Visual Studio use karo</li>
+            </ol>
+
+            <h3>First C# Program</h3>
+            <pre><code>// Program.cs
+using System;
+
+namespace HelloWorld
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Hello, World!");
+            Console.WriteLine("Welcome to C# Programming!");
+        }
     }
-}</pre>
-        </div>
+}</code></pre>
 
-        <div class="section">
-            <h2>Variables</h2>
-            <pre>int age = 18;
-double price = 99.99;
-string name = "Akarshit";
-bool isActive = true;
-var x = 10;  // implicit type</pre>
-        </div>
+            <h3>Run Commands</h3>
+            <pre><code>// New project create karo
+dotnet new console -n MyApp
+cd MyApp
 
-        <div class="section">
-            <h2>Classes & Objects</h2>
-            <pre>class Student {
-    public string Name { get; set; }
-    public int Age { get; set; }
-    
-    public void Display() {
-        Console.WriteLine($"{Name} - {Age}");
+// Run karo
+dotnet run</code></pre>
+
+            <h3>Input/Output</h3>
+            <pre><code>// Output
+Console.Write("Enter your name: ");       // Same line
+Console.WriteLine("Hello");               // New line
+
+// Input (string)
+string name = Console.ReadLine();
+
+// Input (number)
+Console.Write("Enter age: ");
+int age = Convert.ToInt32(Console.ReadLine());
+
+// Alternative
+int age2 = int.Parse(Console.ReadLine());</code></pre>
+        </section>
+
+        <section id="variables">
+            <h2>📦 Variables & Data Types</h2>
+            <h3>Value Types</h3>
+            <table>
+                <tr><th>Type</th><th>Size</th><th>Range</th><th>Example</th></tr>
+                <tr><td><code>byte</code></td><td>1 byte</td><td>0 to 255</td><td><code>byte b = 100;</code></td></tr>
+                <tr><td><code>sbyte</code></td><td>1 byte</td><td>-128 to 127</td><td><code>sbyte sb = -50;</code></td></tr>
+                <tr><td><code>short</code></td><td>2 bytes</td><td>-32,768 to 32,767</td><td><code>short s = 1000;</code></td></tr>
+                <tr><td><code>ushort</code></td><td>2 bytes</td><td>0 to 65,535</td><td><code>ushort us = 50000;</code></td></tr>
+                <tr><td><code>int</code></td><td>4 bytes</td><td>-2B to 2B</td><td><code>int i = 100000;</code></td></tr>
+                <tr><td><code>uint</code></td><td>4 bytes</td><td>0 to 4B</td><td><code>uint ui = 100000;</code></td></tr>
+                <tr><td><code>long</code></td><td>8 bytes</td><td>Very large</td><td><code>long l = 10000000000L;</code></td></tr>
+                <tr><td><code>float</code></td><td>4 bytes</td><td>~6-9 digits</td><td><code>float f = 3.14f;</code></td></tr>
+                <tr><td><code>double</code></td><td>8 bytes</td><td>~15-17 digits</td><td><code>double d = 3.14159;</code></td></tr>
+                <tr><td><code>decimal</code></td><td>16 bytes</td><td>Money ke liye</td><td><code>decimal m = 99.99m;</code></td></tr>
+                <tr><td><code>char</code></td><td>2 bytes</td><td>Single character</td><td><code>char c = 'A';</code></td></tr>
+                <tr><td><code>bool</code></td><td>1 bit</td><td>true/false</td><td><code>bool flag = true;</code></td></tr>
+            </table>
+
+            <h3>Reference Types</h3>
+            <pre><code>// String
+string name = "Akarshit Raj";
+string multiLine = @"This is
+a multi-line
+string";
+
+// Object (sabka parent)
+object obj = 10;
+obj = "Hello";
+obj = 3.14;
+
+// Dynamic (compile-time type check nahi)
+dynamic dyn = 10;
+dyn = "Now I'm a string";
+
+// Var (compiler decide karta hai)
+var num = 10;      // int
+var text = "Hi";   // string
+var price = 9.99;  // double</code></pre>
+
+            <h3>Type Conversion</h3>
+            <pre><code>// Implicit (chota se bada)
+int num = 100;
+long bigNum = num;     // OK
+
+// Explicit (bada se chota)
+double d = 3.99;
+int i = (int)d;        // 3 (decimal lost)
+
+// Convert class methods
+string str = "123";
+int n = Convert.ToInt32(str);
+double db = Convert.ToDouble(str);
+bool b = Convert.ToBoolean("true");
+
+// Parse & TryParse
+int result = int.Parse("456");
+
+// TryParse (safe)
+if (int.TryParse("abc", out int value)) {
+    Console.WriteLine(value);
+} else {
+    Console.WriteLine("Invalid number!");
+}</code></pre>
+        </section>
+
+        <section id="operators">
+            <h2>➕ Operators</h2>
+            <h3>Arithmetic</h3>
+            <pre><code>int a = 10, b = 3;
+Console.WriteLine(a + b);  // 13
+Console.WriteLine(a - b);  // 7
+Console.WriteLine(a * b);  // 30
+Console.WriteLine(a / b);  // 3 (integer division)
+Console.WriteLine(a % b);  // 1 (remainder)
+Console.WriteLine((double)a / b); // 3.33</code></pre>
+
+            <h3>Assignment & Compound</h3>
+            <pre><code>int x = 10;
+x += 5;   // x = x + 5  -> 15
+x -= 3;   // x = x - 3  -> 12
+x *= 2;   // x = x * 2  -> 24
+x /= 4;   // x = x / 4  -> 6
+x %= 4;   // x = x % 4  -> 2
+
+// Increment/Decrement
+int y = 5;
+Console.WriteLine(y++);  // 5 (post)
+Console.WriteLine(++y);  // 7 (pre)</code></pre>
+
+            <h3>Comparison & Logical</h3>
+            <pre><code>Console.WriteLine(5 == 5);   // true
+Console.WriteLine(5 != 3);   // true
+Console.WriteLine(10 > 5);   // true
+Console.WriteLine(10 <= 10); // true
+
+bool a = true, b = false;
+Console.WriteLine(a && b);   // false (AND)
+Console.WriteLine(a || b);   // true (OR)
+Console.WriteLine(!a);       // false (NOT)</code></pre>
+
+            <h3>Ternary Operator</h3>
+            <pre><code>int marks = 85;
+string grade = marks >= 90 ? "A+" : marks >= 80 ? "A" : "B";
+Console.WriteLine(grade); // "A"</code></pre>
+
+            <h3>Null Coalescing</h3>
+            <pre><code>string name = null;
+string display = name ?? "Guest";
+Console.WriteLine(display); // "Guest"
+
+// Null coalescing assignment
+name ??= "Default"; // agar null hai toh assign karo</code></pre>
+        </section>
+
+        <section id="control">
+            <h2>🔄 Control Flow</h2>
+            <h3>If-Else If-Else</h3>
+            <pre><code>int marks = 85;
+
+if (marks >= 90) {
+    Console.WriteLine("Grade: A+");
+} else if (marks >= 80) {
+    Console.WriteLine("Grade: A");
+} else if (marks >= 70) {
+    Console.WriteLine("Grade: B");
+} else if (marks >= 60) {
+    Console.WriteLine("Grade: C");
+} else {
+    Console.WriteLine("Fail");
+}</code></pre>
+
+            <h3>Switch Case</h3>
+            <pre><code>int day = 3;
+
+switch (day) {
+    case 1:
+        Console.WriteLine("Monday");
+        break;
+    case 2:
+        Console.WriteLine("Tuesday");
+        break;
+    case 3:
+        Console.WriteLine("Wednesday");
+        break;
+    case 4:
+        Console.WriteLine("Thursday");
+        break;
+    case 5:
+        Console.WriteLine("Friday");
+        break;
+    case 6:
+    case 7:
+        Console.WriteLine("Weekend!");
+        break;
+    default:
+        Console.WriteLine("Invalid day");
+        break;
+}
+
+// Switch expression (C# 8+)
+string dayName = day switch {
+    1 => "Monday",
+    2 => "Tuesday",
+    3 => "Wednesday",
+    _ => "Other"
+};</code></pre>
+
+            <h3>Loops</h3>
+            <pre><code>// For loop
+for (int i = 0; i < 5; i++) {
+    Console.WriteLine(i); // 0,1,2,3,4
+}
+
+// While loop
+int j = 0;
+while (j < 5) {
+    Console.WriteLine(j);
+    j++;
+}
+
+// Do-While
+int k = 0;
+do {
+    Console.WriteLine(k);
+    k++;
+} while (k < 5);
+
+// Foreach (arrays/collections ke liye)
+int[] numbers = { 1, 2, 3, 4, 5 };
+foreach (int num in numbers) {
+    Console.WriteLine(num);
+}
+
+// Break & Continue
+for (int i = 0; i < 10; i++) {
+    if (i == 3) continue; // skip
+    if (i == 7) break;    // stop
+    Console.WriteLine(i);
+}</code></pre>
+        </section>
+
+        <section id="methods">
+            <h2>🔧 Methods</h2>
+            <h3>Basic Method</h3>
+            <pre><code>// No parameters, no return
+void SayHello() {
+    Console.WriteLine("Hello!");
+}
+
+// With parameters, no return
+void Greet(string name) {
+    Console.WriteLine($"Hello, {name}!");
+}
+
+// With return value
+int Add(int a, int b) {
+    return a + b;
+}
+
+// Call methods
+SayHello();
+Greet("Akarshit");
+int sum = Add(5, 3); // 8</code></pre>
+
+            <h3>Default Parameters</h3>
+            <pre><code>void Greet(string name = "Guest", string greeting = "Hello") {
+    Console.WriteLine($"{greeting}, {name}!");
+}
+
+Greet();                    // Hello, Guest!
+Greet("Raj");               // Hello, Raj!
+Greet("Raj", "Hi");         // Hi, Raj!</code></pre>
+
+            <h3>Named Arguments</h3>
+            <pre><code>void Display(string name, int age, string city) {
+    Console.WriteLine($"{name}, {age}, {city}");
+}
+
+// Named arguments (order doesn't matter)
+Display(age: 20, city: "Sitapur", name: "Akarshit");</code></pre>
+
+            <h3>Ref & Out Parameters</h3>
+            <pre><code>// Ref (value modify kar sakte ho)
+void Double(ref int num) {
+    num = num * 2;
+}
+int x = 5;
+Double(ref x);
+Console.WriteLine(x); // 10
+
+// Out (multiple values return)
+void GetStats(int a, int b, out int sum, out int product) {
+    sum = a + b;
+    product = a * b;
+}
+GetStats(3, 4, out int s, out int p);
+Console.WriteLine($"Sum: {s}, Product: {p}"); // Sum: 7, Product: 12</code></pre>
+
+            <h3>Params (Variable Arguments)</h3>
+            <pre><code>int Sum(params int[] numbers) {
+    int total = 0;
+    foreach (int n in numbers) total += n;
+    return total;
+}
+
+Console.WriteLine(Sum(1, 2, 3, 4, 5)); // 15
+Console.WriteLine(Sum(10, 20));        // 30</code></pre>
+
+            <h3>Method Overloading</h3>
+            <pre><code>// Same name, different parameters
+int Add(int a, int b) => a + b;
+double Add(double a, double b) => a + b;
+int Add(int a, int b, int c) => a + b + c;
+
+Console.WriteLine(Add(2, 3));       // 5
+Console.WriteLine(Add(2.5, 3.5));   // 6.0
+Console.WriteLine(Add(1, 2, 3));    // 6</code></pre>
+        </section>
+
+        <section id="arrays">
+            <h2>📋 Arrays & Collections</h2>
+            <h3>Arrays</h3>
+            <pre><code>// Declaration
+int[] numbers = new int[5];
+int[] nums = { 1, 2, 3, 4, 5 };
+string[] names = { "Akarshit", "Raj", "Amit" };
+
+// Access & Modify
+Console.WriteLine(nums[0]); // 1
+nums[0] = 100;
+
+// Length
+Console.WriteLine(nums.Length); // 5
+
+// 2D Array
+int[,] matrix = new int[3, 3] {
+    { 1, 2, 3 },
+    { 4, 5, 6 },
+    { 7, 8, 9 }
+};
+Console.WriteLine(matrix[1, 2]); // 6
+
+// Jagged Array
+int[][] jagged = new int[][] {
+    new int[] { 1, 2 },
+    new int[] { 3, 4, 5 },
+    new int[] { 6 }
+};</code></pre>
+
+            <h3>Array Methods</h3>
+            <pre><code>int[] arr = { 3, 1, 4, 1, 5, 9, 2 };
+
+Array.Sort(arr);           // { 1, 1, 2, 3, 4, 5, 9 }
+Array.Reverse(arr);        // { 9, 5, 4, 3, 2, 1, 1 }
+int index = Array.IndexOf(arr, 5); // index of 5
+int max = arr.Max();       // 9 (using System.Linq)
+int min = arr.Min();       // 1
+int sum = arr.Sum();       // 25
+
+// Foreach
+foreach (int n in arr) {
+    Console.WriteLine(n);
+}</code></pre>
+
+            <h3>List&lt;T&gt; (Dynamic Array)</h3>
+            <pre><code>using System.Collections.Generic;
+
+List&lt;string&gt; fruits = new List&lt;string&gt;();
+fruits.Add("Apple");
+fruits.Add("Banana");
+fruits.Add("Mango");
+
+fruits.Insert(1, "Orange");   // Insert at index
+fruits.Remove("Banana");       // Remove by value
+fruits.RemoveAt(0);            // Remove by index
+fruits.Sort();
+fruits.Reverse();
+
+Console.WriteLine(fruits.Count); // Number of items
+Console.WriteLine(fruits[0]);    // Access
+
+// List with initialization
+List&lt;int&gt; nums = new List&lt;int&gt; { 1, 2, 3, 4, 5 };</code></pre>
+
+            <h3>Dictionary&lt;K,V&gt;</h3>
+            <pre><code>Dictionary&lt;string, int&gt; ages = new Dictionary&lt;string, int&gt;();
+ages["Akarshit"] = 20;
+ages["Raj"] = 21;
+ages.Add("Amit", 19);
+
+Console.WriteLine(ages["Akarshit"]); // 20
+
+// Check key exists
+if (ages.ContainsKey("Raj")) {
+    Console.WriteLine(ages["Raj"]);
+}
+
+// Iterate
+foreach (var pair in ages) {
+    Console.WriteLine($"{pair.Key}: {pair.Value}");
+}</code></pre>
+        </section>
+
+        <section id="strings">
+            <h2>📝 Strings</h2>
+            <h3>String Operations</h3>
+            <pre><code>string text = "  Hello World  ";
+
+// Length
+Console.WriteLine(text.Length);
+
+// Access character
+Console.WriteLine(text[1]); // 'e'
+
+// Methods
+Console.WriteLine(text.ToUpper());      // "  HELLO WORLD  "
+Console.WriteLine(text.ToLower());      // "  hello world  "
+Console.WriteLine(text.Trim());         // "Hello World"
+Console.WriteLine(text.TrimStart());    // "Hello World  "
+Console.WriteLine(text.TrimEnd());      // "  Hello World"
+
+// Search
+Console.WriteLine(text.Contains("World")); // true
+Console.WriteLine(text.StartsWith("  "));   // true
+Console.WriteLine(text.EndsWith("  "));    // true
+Console.WriteLine(text.IndexOf("o"));      // 6
+Console.WriteLine(text.LastIndexOf("o"));  // 10
+
+// Substring
+string sub = text.Substring(2, 5); // "Hello"
+
+// Replace
+string replaced = text.Replace("World", "C#");</code></pre>
+
+            <h3>String Concatenation & Interpolation</h3>
+            <pre><code>string first = "Akarshit";
+string last = "Raj";
+
+// + operator
+string full = first + " " + last;
+
+// String.Format
+string msg = string.Format("Hello {0} {1}", first, last);
+
+// Interpolation (best way!)
+string greet = $"Hello, {first} {last}!";
+int age = 20;
+string info = $"Name: {first}, Age: {age}, Next year: {age + 1}";
+
+// Verbatim string (@)
+string path = @"C:\Users\Akarshit\Documents";
+string multiLine = @"Line 1
+Line 2
+Line 3";</code></pre>
+
+            <h3>StringBuilder (Efficient)</h3>
+            <pre><code>using System.Text;
+
+StringBuilder sb = new StringBuilder();
+sb.Append("Hello");
+sb.Append(" ");
+sb.Append("World");
+sb.AppendLine("!");      // New line ke saath
+sb.Insert(5, " C#");     // Insert at index
+sb.Replace("World", "Universe");
+
+string result = sb.ToString();
+Console.WriteLine(result);</code></pre>
+        </section>
+
+        <section id="oop">
+            <h2>🏗️ OOP — Classes & Objects</h2>
+            <h3>Class Definition</h3>
+            <pre><code>public class Student {
+    // Fields
+    public string Name;
+    public int Age;
+    public int RollNo;
+
+    // Constructor
+    public Student(string name, int age, int rollNo) {
+        Name = name;
+        Age = age;
+        RollNo = rollNo;
+    }
+
+    // Method
+    public void DisplayInfo() {
+        Console.WriteLine($"Name: {Name}, Age: {Age}, Roll: {RollNo}");
+    }
+
+    // Method with return
+    public bool IsAdult() {
+        return Age >= 18;
     }
 }
 
-Student s1 = new Student { Name = "Akarshit", Age = 18 };
-s1.Display();</pre>
-        </div>
+// Usage
+Student s1 = new Student("Akarshit", 20, 101);
+s1.DisplayInfo();
+Console.WriteLine(s1.IsAdult()); // true</code></pre>
 
-        <div class="section">
-            <h2>Lists</h2>
-            <pre>using System.Collections.Generic;
+            <h3>Properties (Getters & Setters)</h3>
+            <pre><code>public class BankAccount {
+    // Auto-implemented property
+    public string AccountHolder { get; set; }
 
-List&lt;string&gt; names = new List&lt;string&gt;();
-names.Add("Akarshit");
-names.Add("Rahul");
-names.Remove("Rahul");
+    // Property with validation
+    private double _balance;
+    public double Balance {
+        get { return _balance; }
+        set {
+            if (value >= 0) _balance = value;
+            else Console.WriteLine("Balance cannot be negative!");
+        }
+    }
 
-foreach (string name in names) {
-    Console.WriteLine(name);
-}</pre>
-        </div>
+    // Read-only property
+    public string AccountNumber { get; }
 
-        <div class="footer">
-            <p>© 2026 Akarshit Raj | <a href="tutorials.html" style="color:#38bdf8">More Tutorials</a></p>
-        </div>
+    // Write-only property
+    private string _password;
+    public string Password {
+        set { _password = value; }
+    }
+
+    public BankAccount(string accNum) {
+        AccountNumber = accNum;
+    }
+}
+
+// Usage
+BankAccount acc = new BankAccount("ACC123456");
+acc.AccountHolder = "Akarshit Raj";
+acc.Balance = 5000;
+Console.WriteLine(acc.Balance); // 5000
+acc.Balance = -100;             // Error message
+Console.WriteLine(acc.AccountNumber); // ACC123456</code></pre>
+
+            <h3>Static Members</h3>
+            <pre><code>public class MathHelper {
+    // Static field
+    public static double PI = 3.14159;
+
+    // Static method
+    public static int Square(int x) => x * x;
+
+    // Static constructor (ek baar chalta hai)
+    static MathHelper() {
+        Console.WriteLine("MathHelper initialized!");
+    }
+}
+
+// Usage (object banane ki zaroorat nahi)
+Console.WriteLine(MathHelper.PI);        // 3.14159
+Console.WriteLine(MathHelper.Square(5)); // 25</code></pre>
+        </section>
+
+        <section id="inheritance">
+            <h2>🔗 Inheritance & Polymorphism</h2>
+            <h3>Inheritance</h3>
+            <pre><code>// Base class
+public class Animal {
+    public string Name { get; set; }
+
+    public void Eat() {
+        Console.WriteLine($"{Name} is eating.");
+    }
+
+    public virtual void MakeSound() {
+        Console.WriteLine("Some generic sound");
+    }
+}
+
+// Derived class
+public class Dog : Animal {
+    public string Breed { get; set; }
+
+    public void Fetch() {
+        Console.WriteLine($"{Name} is fetching!");
+    }
+
+    // Override base method
+    public override void MakeSound() {
+        Console.WriteLine("Woof! Woof!");
+    }
+}
+
+// Usage
+Dog dog = new Dog();
+dog.Name = "Buddy";
+dog.Breed = "Golden Retriever";
+dog.Eat();        // Inherited method
+dog.Fetch();      // Own method
+dog.MakeSound();  // Overridden method -> "Woof! Woof!"</code></pre>
+
+            <h3>Abstract Classes</h3>
+            <pre><code>public abstract class Shape {
+    public abstract double GetArea();
+    public abstract double GetPerimeter();
+
+    public void Display() {
+        Console.WriteLine($"Area: {GetArea()}, Perimeter: {GetPerimeter()}");
+    }
+}
+
+public class Circle : Shape {
+    public double Radius { get; set; }
+
+    public Circle(double r) => Radius = r;
+
+    public override double GetArea() => Math.PI * Radius * Radius;
+    public override double GetPerimeter() => 2 * Math.PI * Radius;
+}
+
+public class Rectangle : Shape {
+    public double Width { get; set; }
+    public double Height { get; set; }
+
+    public Rectangle(double w, double h) {
+        Width = w; Height = h;
+    }
+
+    public override double GetArea() => Width * Height;
+    public override double GetPerimeter() => 2 * (Width + Height);
+}
+
+// Usage
+Shape c = new Circle(5);
+Shape r = new Rectangle(4, 6);
+c.Display();
+r.Display();</code></pre>
+
+            <h3>Interfaces</h3>
+            <pre><code>public interface IPlayable {
+    void Play();
+    void Pause();
+    void Stop();
+}
+
+public interface IRecordable {
+    void Record();
+}
+
+public class MediaPlayer : IPlayable, IRecordable {
+    public void Play() => Console.WriteLine("Playing...");
+    public void Pause() => Console.WriteLine("Paused");
+    public void Stop() => Console.WriteLine("Stopped");
+    public void Record() => Console.WriteLine("Recording...");
+}
+
+// Usage
+IPlayable player = new MediaPlayer();
+player.Play();
+player.Stop();</code></pre>
+        </section>
+
+        <section id="encapsulation">
+            <h2>🔒 Encapsulation</h2>
+            <h3>Access Modifiers</h3>
+            <table>
+                <tr><th>Modifier</th><th>Access</th></tr>
+                <tr><td><code>public</code></td><td>Sab jagah</td></tr>
+                <tr><td><code>private</code></td><td>Sirf class ke andar</td></tr>
+                <tr><td><code>protected</code></td><td>Class + derived classes</td></tr>
+                <tr><td><code>internal</code></td><td>Same assembly/project</td></tr>
+                <tr><td><code>protected internal</code></td><td>Same assembly OR derived</td></tr>
+                <tr><td><code>private protected</code></td><td>Same assembly + derived</td></tr>
+            </table>
+
+            <h3>Example</h3>
+            <pre><code>public class BankAccount {
+    private double _balance; // Sirf class ke andar
+
+    public double Balance {
+        get { return _balance; }
+    }
+
+    public void Deposit(double amount) {
+        if (amount > 0) _balance += amount;
+    }
+
+    public bool Withdraw(double amount) {
+        if (amount > 0 && amount <= _balance) {
+            _balance -= amount;
+            return true;
+        }
+        return false;
+    }
+}
+
+// Usage
+BankAccount acc = new BankAccount();
+acc.Deposit(1000);
+acc.Withdraw(300);
+Console.WriteLine(acc.Balance); // 700
+// acc._balance = 999999; // Error! Private hai</code></pre>
+        </section>
+
+        <section id="exception">
+            <h2>⚠️ Exception Handling</h2>
+            <h3>Try-Catch-Finally</h3>
+            <pre><code>try {
+    Console.Write("Enter a number: ");
+    int num = int.Parse(Console.ReadLine());
+    int result = 100 / num;
+    Console.WriteLine($"Result: {result}");
+}
+catch (FormatException) {
+    Console.WriteLine("Invalid format! Number enter karo.");
+}
+catch (DivideByZeroException) {
+    Console.WriteLine("Zero se divide nahi kar sakte!");
+}
+catch (Exception ex) {
+    Console.WriteLine($"Error: {ex.Message}");
+}
+finally {
+    Console.WriteLine("Finally block hamesha chalega!");
+}</code></pre>
+
+            <h3>Throwing Exceptions</h3>
+            <pre><code>public void Withdraw(double amount) {
+    if (amount < 0) {
+        throw new ArgumentException("Amount negative nahi ho sakti!");
+    }
+    if (amount > _balance) {
+        throw new InvalidOperationException("Insufficient balance!");
+    }
+    _balance -= amount;
+}
+
+// Custom Exception
+public class InsufficientFundsException : Exception {
+    public InsufficientFundsException(string msg) : base(msg) { }
+}</code></pre>
+
+            <h3>Using Statement (Disposable)</h3>
+            <pre><code>// File automatically close hoga
+using (StreamReader reader = new StreamReader("file.txt")) {
+    string content = reader.ReadToEnd();
+    Console.WriteLine(content);
+} // reader.Dispose() automatically call hoga</code></pre>
+        </section>
+
+        <section id="linq">
+            <h2>🔍 LINQ Basics</h2>
+            <p>LINQ (Language Integrated Query) data ko query karne ka powerful tareeka hai.</p>
+
+            <h3>Query Syntax</h3>
+            <pre><code>using System.Linq;
+
+List&lt;int&gt; numbers = new List&lt;int&gt; { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+// Where (filter)
+var evens = from n in numbers
+            where n % 2 == 0
+            select n;
+// Result: 2, 4, 6, 8, 10
+
+// OrderBy
+var sorted = from n in numbers
+             orderby n descending
+             select n;</code></pre>
+
+            <h3>Method Syntax</h3>
+            <pre><code>// Where
+var evens = numbers.Where(n => n % 2 == 0);
+
+// Select (transform)
+var squares = numbers.Select(n => n * n);
+
+// OrderBy
+var sorted = numbers.OrderBy(n => n);
+var desc = numbers.OrderByDescending(n => n);
+
+// First/Last
+int first = numbers.First();
+int firstEven = numbers.First(n => n % 2 == 0);
+int last = numbers.Last();
+
+// Any/All
+bool hasEven = numbers.Any(n => n % 2 == 0);
+bool allPositive = numbers.All(n => n > 0);
+
+// Sum, Average, Min, Max, Count
+int sum = numbers.Sum();
+double avg = numbers.Average();
+int max = numbers.Max();
+int count = numbers.Count();</code></pre>
+
+            <h3>LINQ with Objects</h3>
+            <pre><code>public class Student {
+    public string Name { get; set; }
+    public int Marks { get; set; }
+    public string Subject { get; set; }
+}
+
+List&lt;Student&gt; students = new List&lt;Student&gt; {
+    new Student { Name = "Akarshit", Marks = 85, Subject = "Math" },
+    new Student { Name = "Raj", Marks = 92, Subject = "Science" },
+    new Student { Name = "Amit", Marks = 78, Subject = "Math" }
+};
+
+// Filter
+var toppers = students.Where(s => s.Marks >= 80);
+
+// Sort
+var sorted = students.OrderByDescending(s => s.Marks);
+
+// Group
+var bySubject = students.GroupBy(s => s.Subject);
+foreach (var group in bySubject) {
+    Console.WriteLine($"Subject: {group.Key}");
+    foreach (var s in group) {
+        Console.WriteLine($"  {s.Name}: {s.Marks}");
+    }
+}
+
+// Select specific fields
+var names = students.Select(s => new { s.Name, s.Marks });</code></pre>
+        </section>
+
+        <section id="file">
+            <h2>📁 File I/O</h2>
+            <h3>File Operations</h3>
+            <pre><code>using System.IO;
+
+// Write text
+File.WriteAllText("data.txt", "Hello, World!");
+
+// Append text
+File.AppendAllText("data.txt", "\nNew line added!");
+
+// Read text
+string content = File.ReadAllText("data.txt");
+Console.WriteLine(content);
+
+// Read lines
+string[] lines = File.ReadAllLines("data.txt");
+foreach (string line in lines) {
+    Console.WriteLine(line);
+}
+
+// Check exists
+if (File.Exists("data.txt")) {
+    Console.WriteLine("File exists!");
+}
+
+// Copy & Delete
+File.Copy("data.txt", "backup.txt", true); // true = overwrite
+File.Delete("data.txt");</code></pre>
+
+            <h3>Directory Operations</h3>
+            <pre><code>// Create directory
+Directory.CreateDirectory("MyFolder");
+
+// List files
+string[] files = Directory.GetFiles(".");
+string[] dirs = Directory.GetDirectories(".");
+
+// Check exists
+if (Directory.Exists("MyFolder")) {
+    Console.WriteLine("Folder exists!");
+}
+
+// Delete
+Directory.Delete("MyFolder", true); // true = recursive</code></pre>
+
+            <h3>StreamWriter & StreamReader</h3>
+            <pre><code>// Write with StreamWriter
+using (StreamWriter writer = new StreamWriter("log.txt")) {
+    writer.WriteLine("Log entry 1");
+    writer.WriteLine("Log entry 2");
+}
+
+// Read with StreamReader
+using (StreamReader reader = new StreamReader("log.txt")) {
+    string line;
+    while ((line = reader.ReadLine()) != null) {
+        Console.WriteLine(line);
+    }
+}</code></pre>
+        </section>
+
+        <section id="projects">
+            <h2>🛠️ Mini Projects</h2>
+            <h3>1. Student Management System</h3>
+            <pre><code>public class StudentManager {
+    private List&lt;Student&gt; students = new List&lt;Student&gt;();
+
+    public void AddStudent(Student s) => students.Add(s);
+    public void RemoveStudent(int rollNo) {
+        students.RemoveAll(s => s.RollNo == rollNo);
+    }
+    public Student FindStudent(int rollNo) {
+        return students.Find(s => s.RollNo == rollNo);
+    }
+    public List&lt;Student&gt; GetToppers() {
+        return students.Where(s => s.Marks >= 80).ToList();
+    }
+    public double GetAverage() => students.Average(s => s.Marks);
+    public void DisplayAll() {
+        foreach (var s in students) s.DisplayInfo();
+    }
+}</code></pre>
+
+            <h3>2. Calculator App</h3>
+            <pre><code>public class Calculator {
+    public double Add(double a, double b) => a + b;
+    public double Subtract(double a, double b) => a - b;
+    public double Multiply(double a, double b) => a * b;
+    public double Divide(double a, double b) {
+        if (b == 0) throw new DivideByZeroException();
+        return a / b;
+    }
+    public double Power(double a, double b) => Math.Pow(a, b);
+    public double SquareRoot(double a) => Math.Sqrt(a);
+}</code></pre>
+
+            <h3>3. To-Do List Console App</h3>
+            <pre><code>public class TodoApp {
+    private List&lt;string&gt; tasks = new List&lt;string&gt;();
+
+    public void AddTask(string task) => tasks.Add(task);
+    public void RemoveTask(int index) {
+        if (index >= 0 && index < tasks.Count) tasks.RemoveAt(index);
+    }
+    public void DisplayTasks() {
+        for (int i = 0; i < tasks.Count; i++) {
+            Console.WriteLine($"{i + 1}. {tasks[i]}");
+        }
+    }
+}</code></pre>
+        </section>
+
+        <footer>
+            <p>© 2026 Akarshit Raj | PM SHRI JNV Khairabad, Sitapur</p>
+            <p>Learn programming for free 🚀</p>
+        </footer>
     </div>
 </body>
 </html>
