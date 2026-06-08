@@ -3,88 +3,1137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TypeScript Basics - Akarshit Raj</title>
+    <title>TypeScript Complete Guide - Zero to Hero | Akarshit Raj</title>
     <style>
-        *{margin:0;padding:0;box-sizing:border-box}
-        body{font-family:'Segoe UI',sans-serif;background:linear-gradient(135deg,#0f172a,#1e1b4b);color:#e2e8f0;line-height:1.6;min-height:100vh}
-        .container{max-width:800px;margin:0 auto;padding:20px}
-        .back{display:inline-block;background:rgba(56,189,248,0.2);color:#38bdf8;padding:10px 20px;border-radius:8px;text-decoration:none;font-weight:600;margin-bottom:20px;border:1px solid rgba(56,189,248,0.3)}
-        h1{font-size:2rem;background:linear-gradient(135deg,#38bdf8,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:10px}
-        .section{background:rgba(30,41,59,0.6);border:1px solid rgba(148,163,184,0.1);border-radius:16px;padding:25px;margin-bottom:20px}
-        h2{color:#38bdf8;margin-bottom:15px;font-size:1.3rem}
-        p{color:#94a3b8;margin-bottom:15px}
-        pre{background:#1e1e1e;border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:15px;overflow-x:auto;color:#d4d4d4;font-family:'Consolas',monospace;font-size:0.9rem;margin:15px 0}
-        code{background:rgba(56,189,248,0.15);color:#38bdf8;padding:2px 6px;border-radius:4px;font-family:monospace}
-        .footer{text-align:center;padding:40px;color:#64748b;font-size:0.9rem}
+        :root {
+            --bg: #0f172a;
+            --card: #1e293b;
+            --text: #e2e8f0;
+            --muted: #94a3b8;
+            --accent: #f97316;
+            --accent2: #3b82f6;
+            --code-bg: #0b1120;
+            --border: #334155;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+        .back {
+            display: inline-flex; align-items: center; gap: 8px;
+            color: var(--accent); text-decoration: none; margin-bottom: 20px;
+            font-weight: 600; font-size: 0.95rem;
+        }
+        .back:hover { text-decoration: underline; }
+        header {
+            text-align: center; padding: 40px 20px;
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+        }
+        header h1 { font-size: 2.2rem; margin-bottom: 10px; }
+        header p { color: var(--muted); font-size: 1.1rem; }
+        .badge {
+            display: inline-block; background: var(--accent); color: #fff;
+            padding: 4px 14px; border-radius: 20px; font-size: 0.8rem;
+            font-weight: 700; margin-top: 10px;
+        }
+        .toc {
+            background: var(--card); border-radius: 12px; padding: 20px;
+            margin-bottom: 30px; border: 1px solid var(--border);
+        }
+        .toc h3 { color: var(--accent); margin-bottom: 12px; font-size: 1.1rem; }
+        .toc ul { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 8px; }
+        .toc a { color: var(--muted); text-decoration: none; font-size: 0.9rem; }
+        .toc a:hover { color: var(--accent); }
+        section {
+            background: var(--card); border-radius: 12px; padding: 25px;
+            margin-bottom: 25px; border: 1px solid var(--border);
+        }
+        section h2 {
+            color: var(--accent); font-size: 1.4rem; margin-bottom: 15px;
+            display: flex; align-items: center; gap: 10px;
+        }
+        section h3 { color: var(--accent2); font-size: 1.15rem; margin: 20px 0 10px; }
+        p { margin-bottom: 12px; color: var(--text); }
+        ul, ol { margin-left: 20px; margin-bottom: 15px; color: var(--text); }
+        li { margin-bottom: 6px; }
+        code {
+            background: var(--code-bg); color: #fbbf24; padding: 2px 6px;
+            border-radius: 4px; font-family: 'Fira Code', monospace; font-size: 0.9em;
+        }
+        pre {
+            background: var(--code-bg); border-radius: 10px; padding: 16px;
+            overflow-x: auto; margin: 15px 0; border: 1px solid var(--border);
+        }
+        pre code { background: none; padding: 0; color: #e2e8f0; font-size: 0.85rem; line-height: 1.6; }
+        .note {
+            background: rgba(59, 130, 246, 0.1); border-left: 4px solid var(--accent2);
+            padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 15px 0;
+        }
+        .warning {
+            background: rgba(249, 115, 22, 0.1); border-left: 4px solid var(--accent);
+            padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 15px 0;
+        }
+        table {
+            width: 100%; border-collapse: collapse; margin: 15px 0;
+            font-size: 0.9rem;
+        }
+        th, td { border: 1px solid var(--border); padding: 10px; text-align: left; }
+        th { background: var(--code-bg); color: var(--accent); }
+        footer {
+            text-align: center; padding: 30px; color: var(--muted);
+            border-top: 1px solid var(--border); margin-top: 30px;
+        }
+        @media (max-width: 600px) {
+            header h1 { font-size: 1.5rem; }
+            .toc ul { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
+    <header>
+        <h1>🔷 TypeScript Complete Guide</h1>
+        <p>Zero to Hero — Master Typed JavaScript</p>
+        <span class="badge">Beginner to Advanced</span>
+    </header>
+
     <div class="container">
         <a href="tutorials.html" class="back">← Back to Tutorials</a>
-        <h1>TypeScript Complete Tutorial</h1>
-        
-        <div class="section">
-            <h2>What is TypeScript?</h2>
-            <p>TypeScript is JavaScript with added types. It catches errors at compile time and makes code more maintainable.</p>
+
+        <div class="toc">
+            <h3>📑 Table of Contents</h3>
+            <ul>
+                <li><a href="#intro">Introduction</a></li>
+                <li><a href="#setup">Setup & First Program</a></li>
+                <li><a href="#types">Basic Types</a></li>
+                <li><a href="#variables">Variables & Type Inference</a></li>
+                <li><a href="#arrays">Arrays & Tuples</a></li>
+                <li><a href="#functions">Functions</a></li>
+                <li><a href="#objects">Objects & Interfaces</a></li>
+                <li><a href="#classes">Classes</a></li>
+                <li><a href="#enums">Enums</a></li>
+                <li><a href="#union">Union & Intersection Types</a></li>
+                <li><a href="#generics">Generics</a></li>
+                <li><a href="#typealias">Type Aliases</a></li>
+                <li><a href="#modules">Modules</a></li>
+                <li><a href="#utility">Utility Types</a></li>
+                <li><a href="#react">TypeScript with React</a></li>
+                <li><a href="#projects">Mini Projects</a></li>
+            </ul>
         </div>
 
-        <div class="section">
-            <h2>Basic Types</h2>
-            <pre>let name: string = "Akarshit";
-let age: number = 18;
-let isActive: boolean = true;
-let hobbies: string[] = ["coding", "gaming"];
-let user: [string, number] = ["Akarshit", 18];  // tuple</pre>
-        </div>
+        <section id="intro">
+            <h2>🚀 Introduction</h2>
+            <p>TypeScript JavaScript ka superset hai — matlab sab valid JS code TS mein bhi chalega, lekin TS extra features deta hai: <strong>Static Typing</strong>, <strong>Interfaces</strong>, <strong>Classes</strong>, <strong>Generics</strong>, aur bohot kuch.</p>
+            <p><strong>Kyun use karein?</strong></p>
+            <ul>
+                <li>Compile-time errors catch karta hai (runtime bugs kam hote hain)</li>
+                <li>IDE mein better autocomplete aur suggestions</li>
+                <li>Large projects manage karna easy ho jata hai</li>
+                <li>Self-documenting code — types se samajh aa jata hai</li>
+            </ul>
+            <p><strong>Kya seekhenge:</strong></p>
+            <ul>
+                <li>Types, Interfaces, Classes</li>
+                <li>Generics, Enums, Union Types</li>
+                <li>Modules, Utility Types</li>
+                <li>TypeScript with React</li>
+            </ul>
+        </section>
 
-        <div class="section">
-            <h2>Interfaces</h2>
-            <pre>interface Student {
-    name: string;
-    age: number;
-    grade?: string;  // optional
+        <section id="setup">
+            <h2>⚙️ Setup & First Program</h2>
+            <h3>Installation</h3>
+            <pre><code>// Node.js install hone ke baad
+npm install -g typescript
+
+// Verify
+tsc --version
+
+// Project setup
+mkdir ts-project
+cd ts-project
+tsc --init  // tsconfig.json create karega</code></pre>
+
+            <h3>tsconfig.json</h3>
+            <pre><code>{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "commonjs",
+    "strict": true,
+    "esModuleInterop": true,
+    "outDir": "./dist",
+    "rootDir": "./src"
+  },
+  "include": ["src/**/*"]
+}</code></pre>
+
+            <h3>First Program</h3>
+            <pre><code>// src/index.ts
+function greet(name: string): string {
+    return `Hello, ${name}!`;
 }
 
-const s1: Student = {
-    name: "Akarshit",
-    age: 18,
-    grade: "A"
-};</pre>
-        </div>
+console.log(greet("Akarshit"));</code></pre>
 
-        <div class="section">
-            <h2>Functions with Types</h2>
-            <pre>function add(a: number, b: number): number {
+            <h3>Compile & Run</h3>
+            <pre><code>// Compile
+npx tsc
+
+// Watch mode (auto compile on save)
+npx tsc --watch
+
+// Run compiled JS
+node dist/index.js
+
+// Direct run (ts-node se)
+npx ts-node src/index.ts</code></pre>
+        </section>
+
+        <section id="types">
+            <h2>📦 Basic Types</h2>
+            <table>
+                <tr><th>Type</th><th>Description</th><th>Example</th></tr>
+                <tr><td><code>string</code></td><td>Text</td><td><code>let name: string = "Akarshit";</code></td></tr>
+                <tr><td><code>number</code></td><td>Int & Float</td><td><code>let age: number = 20;</code></td></tr>
+                <tr><td><code>boolean</code></td><td>true/false</td><td><code>let isActive: boolean = true;</code></td></tr>
+                <tr><td><code>undefined</code></td><td>Not assigned</td><td><code>let x: undefined;</code></td></tr>
+                <tr><td><code>null</code></td><td>Intentional empty</td><td><code>let y: null = null;</code></td></tr>
+                <tr><td><code>any</code></td><td>Any type (avoid!)</td><td><code>let z: any = 10;</code></td></tr>
+                <tr><td><code>unknown</code></td><td>Unknown type (safe any)</td><td><code>let data: unknown;</code></td></tr>
+                <tr><td><code>never</code></td><td>No value possible</td><td><code>function error(): never { throw new Error(); }</code></td></tr>
+                <tr><td><code>void</code></td><td>No return value</td><td><code>function log(): void { console.log("Hi"); }</code></td></tr>
+            </table>
+
+            <h3>Type Annotations</h3>
+            <pre><code>// Explicit types
+let name: string = "Akarshit";
+let age: number = 20;
+let isStudent: boolean = true;
+
+// Array types
+let numbers: number[] = [1, 2, 3, 4, 5];
+let names: string[] = ["A", "B", "C"];
+let mixed: (string | number)[] = [1, "two", 3];
+
+// Alternative syntax
+let nums: Array&lt;number&gt; = [1, 2, 3];
+
+// Multi-dimensional
+let matrix: number[][] = [[1, 2], [3, 4]];</code></pre>
+
+            <h3>Type Inference</h3>
+            <pre><code>// TypeScript auto detect kar leta hai
+let name = "Akarshit";  // string
+let age = 20;           // number
+let isActive = true;    // boolean
+
+// Error agar type change karo
+name = 123;  // ❌ Error: Type 'number' not assignable to 'string'
+
+// Any (avoid karo jab possible ho)
+let data: any = 10;
+data = "hello";
+data = true;  // ✅ No error, but not recommended</code></pre>
+
+            <h3>Unknown (Safe Any)</h3>
+            <pre><code>let data: unknown = 10;
+
+// Type check ke baad hi use kar sakte hain
+if (typeof data === "number") {
+    console.log(data.toFixed(2)); // ✅ OK
+}
+
+// Type assertion
+let str = data as string;
+let num = &lt;number&gt;data; // Alternative syntax</code></pre>
+        </section>
+
+        <section id="variables">
+            <h2>📝 Variables & Type Inference</h2>
+            <h3>let, const, var</h3>
+            <pre><code>let name: string = "Akarshit";     // Reassign possible
+const PI: number = 3.14159;        // Constant
+var oldWay: string = "avoid";      // Function scope (avoid)</code></pre>
+
+            <h3>Type Assertions</h3>
+            <pre><code>let someValue: unknown = "Hello World";
+
+// Angle bracket syntax
+let strLength: number = (&lt;string&gt;someValue).length;
+
+// as syntax (JSX mein preferred)
+let strLength2: number = (someValue as string).length;
+
+// const assertion (literal types)
+let person = { name: "Akarshit", age: 20 } as const;
+// person.name = "Raj"; // ❌ Error! Readonly</code></pre>
+
+            <h3>Literal Types</h3>
+            <pre><code>// Specific values only
+let direction: "north" | "south" | "east" | "west";
+direction = "north";  // ✅
+// direction = "up";  // ❌ Error
+
+// Numeric literals
+let diceRoll: 1 | 2 | 3 | 4 | 5 | 6;
+diceRoll = 4;  // ✅
+// diceRoll = 7; // ❌ Error
+
+// Boolean literal
+let isTrue: true = true;
+// isTrue = false; // ❌ Error</code></pre>
+        </section>
+
+        <section id="arrays">
+            <h2>📋 Arrays & Tuples</h2>
+            <h3>Arrays</h3>
+            <pre><code>let numbers: number[] = [1, 2, 3, 4, 5];
+let names: Array&lt;string&gt; = ["Akarshit", "Raj", "Amit"];
+let mixed: (string | number)[] = [1, "two", 3];
+
+// Readonly array
+let readonlyNums: readonly number[] = [1, 2, 3];
+// readonlyNums.push(4); // ❌ Error
+
+// Array methods (types preserved)
+let doubled = numbers.map(n => n * 2);  // number[]
+let evens = numbers.filter(n => n % 2 === 0);  // number[]</code></pre>
+
+            <h3>Tuples</h3>
+            <p>Tuple fixed length array hai jisme har position ka alag type ho sakta hai.</p>
+            <pre><code>// Basic tuple
+let person: [string, number] = ["Akarshit", 20];
+// person = [20, "Akarshit"]; // ❌ Error! Order matters
+
+// Named tuple (TS 4.0+)
+let user: [name: string, age: number] = ["Akarshit", 20];
+
+// Optional elements
+let coords: [number, number, number?] = [10, 20];
+
+// Rest elements
+let headAndTail: [string, ...number[]] = ["scores", 1, 2, 3, 4];</code></pre>
+
+            <h3>Readonly Tuples</h3>
+            <pre><code>let readonlyTuple: readonly [string, number] = ["Akarshit", 20];
+// readonlyTuple[0] = "Raj"; // ❌ Error</code></pre>
+        </section>
+
+        <section id="functions">
+            <h2>🔧 Functions</h2>
+            <h3>Function Types</h3>
+            <pre><code>// Named function with types
+function add(a: number, b: number): number {
     return a + b;
 }
 
-const greet = (name: string): string => {
-    return `Hello, ${name}`;
-};</pre>
-        </div>
+// Arrow function
+const multiply = (a: number, b: number): number => a * b;
 
-        <div class="section">
-            <h2>Classes</h2>
-            <pre>class Animal {
-    private name: string;
-    
-    constructor(n: string) {
-        this.name = n;
+// Function type annotation
+let operation: (x: number, y: number) => number;
+operation = add;
+operation = multiply;
+// operation = (a: string) => a; // ❌ Error</code></pre>
+
+            <h3>Optional & Default Parameters</h3>
+            <pre><code>// Optional parameter (?)
+function greet(name: string, greeting?: string): string {
+    return `${greeting || "Hello"}, ${name}!`;
+}
+console.log(greet("Akarshit"));        // "Hello, Akarshit!"
+console.log(greet("Akarshit", "Hi"));  // "Hi, Akarshit!"
+
+// Default parameter
+function greet2(name: string, greeting: string = "Hello"): string {
+    return `${greeting}, ${name}!`;
+}
+
+// Optional must be last
+function createUser(name: string, age?: number, email?: string) { }</code></pre>
+
+            <h3>Rest Parameters</h3>
+            <pre><code>function sum(...numbers: number[]): number {
+    return numbers.reduce((total, n) => total + n, 0);
+}
+console.log(sum(1, 2, 3, 4, 5)); // 15</code></pre>
+
+            <h3>Function Overloads</h3>
+            <pre><code>// Multiple signatures
+function process(input: string): string;
+function process(input: number): number;
+function process(input: string | number): string | number {
+    if (typeof input === "string") {
+        return input.toUpperCase();
+    } else {
+        return input * 2;
     }
-    
-    move(distance: number): void {
+}
+
+console.log(process("hello")); // "HELLO"
+console.log(process(5));       // 10</code></pre>
+
+            <h3>Void vs Never</h3>
+            <pre><code>// void — returns nothing
+function logMessage(msg: string): void {
+    console.log(msg);
+    // return "hi"; // ❌ Error
+}
+
+// never — never returns (error ya infinite loop)
+function throwError(msg: string): never {
+    throw new Error(msg);
+}
+
+function infiniteLoop(): never {
+    while (true) { }
+}</code></pre>
+        </section>
+
+        <section id="objects">
+            <h2>📦 Objects & Interfaces</h2>
+            <h3>Object Types</h3>
+            <pre><code>// Inline type
+let person: { name: string; age: number; isStudent?: boolean } = {
+    name: "Akarshit",
+    age: 20
+};
+
+// Optional property (?)
+let user: { name: string; email?: string } = { name: "A" };</code></pre>
+
+            <h3>Interfaces</h3>
+            <pre><code>interface Person {
+    name: string;
+    age: number;
+    email?: string;       // Optional
+    readonly id: number;  // Readonly
+}
+
+let akarshit: Person = {
+    name: "Akarshit Raj",
+    age: 20,
+    id: 101
+};
+
+// akarshit.id = 102; // ❌ Error! Readonly
+
+// Function in interface
+interface Calculator {
+    add(a: number, b: number): number;
+    subtract(a: number, b: number): number;
+}
+
+let calc: Calculator = {
+    add: (a, b) => a + b,
+    subtract: (a, b) => a - b
+};</code></pre>
+
+            <h3>Interface Extension</h3>
+            <pre><code>interface Animal {
+    name: string;
+    age: number;
+}
+
+interface Dog extends Animal {
+    breed: string;
+    bark(): void;
+}
+
+let myDog: Dog = {
+    name: "Buddy",
+    age: 3,
+    breed: "Golden Retriever",
+    bark: () => console.log("Woof!")
+};
+
+// Multiple inheritance
+interface Employee extends Person, HasDepartment { }</code></pre>
+
+            <h3>Interface vs Type</h3>
+            <pre><code>// Interface (preferred for objects)
+interface User { name: string; }
+interface User { age: number; } // Merged! ✅
+
+// Type alias (union, tuple, primitive ke liye)
+type ID = string | number;
+type Point = [number, number];
+type Status = "active" | "inactive" | "pending";
+
+// Type cannot be merged
+type User2 = { name: string; };
+// type User2 = { age: number; }; // ❌ Error!</code></pre>
+        </section>
+
+        <section id="classes">
+            <h2>🏗️ Classes</h2>
+            <h3>Basic Class</h3>
+            <pre><code>class Student {
+    // Properties
+    name: string;
+    age: number;
+    private rollNo: number;      // Private
+    protected grade: string;     // Protected
+    readonly id: number;         // Readonly
+
+    // Constructor
+    constructor(name: string, age: number, rollNo: number, id: number) {
+        this.name = name;
+        this.age = age;
+        this.rollNo = rollNo;
+        this.id = id;
+        this.grade = "A";
+    }
+
+    // Method
+    displayInfo(): void {
+        console.log(`${this.name}, ${this.age}, Roll: ${this.rollNo}`);
+    }
+
+    // Getter
+    getRollNo(): number {
+        return this.rollNo;
+    }
+}
+
+let s = new Student("Akarshit", 20, 101, 1);
+s.displayInfo();</code></pre>
+
+            <h3>Parameter Properties (Shorthand)</h3>
+            <pre><code>class Student {
+    constructor(
+        public name: string,
+        public age: number,
+        private rollNo: number,
+        readonly id: number
+    ) { }
+}
+
+// Same as above, but shorter!
+let s = new Student("Akarshit", 20, 101, 1);
+console.log(s.name); // ✅ Public</code></pre>
+
+            <h3>Inheritance</h3>
+            <pre><code>class Animal {
+    constructor(public name: string) { }
+
+    move(distance: number = 0): void {
         console.log(`${this.name} moved ${distance}m`);
     }
 }
 
-const dog = new Animal("Dog");
-dog.move(10);</pre>
-        </div>
+class Dog extends Animal {
+    constructor(name: string, public breed: string) {
+        super(name); // Parent constructor
+    }
 
-        <div class="footer">
-            <p>© 2026 Akarshit Raj | <a href="tutorials.html" style="color:#38bdf8">More Tutorials</a></p>
-        </div>
+    bark(): void {
+        console.log("Woof! Woof!");
+    }
+
+    // Override
+    move(distance = 5): void {
+        console.log("Running...");
+        super.move(distance);
+    }
+}
+
+let dog = new Dog("Buddy", "Golden Retriever");
+dog.bark();
+dog.move();</code></pre>
+
+            <h3>Abstract Classes</h3>
+            <pre><code>abstract class Shape {
+    abstract getArea(): number;
+    abstract getPerimeter(): number;
+
+    display(): void {
+        console.log(`Area: ${this.getArea()}`);
+    }
+}
+
+class Circle extends Shape {
+    constructor(private radius: number) {
+        super();
+    }
+
+    getArea(): number {
+        return Math.PI * this.radius ** 2;
+    }
+
+    getPerimeter(): number {
+        return 2 * Math.PI * this.radius;
+    }
+}</code></pre>
+
+            <h3>Access Modifiers</h3>
+            <table>
+                <tr><th>Modifier</th><th>Accessible</th></tr>
+                <tr><td><code>public</code></td><td>Sab jagah (default)</td></tr>
+                <tr><td><code>private</code></td><td>Sirf class ke andar</td></tr>
+                <tr><td><code>protected</code></td><td>Class + derived classes</td></tr>
+                <tr><td><code>readonly</code></td><td>Sirf constructor mein assign</td></tr>
+            </table>
+        </section>
+
+        <section id="enums">
+            <h2>🔢 Enums</h2>
+            <h3>Numeric Enums</h3>
+            <pre><code>enum Direction {
+    North,      // 0
+    South,      // 1
+    East,       // 2
+    West        // 3
+}
+
+console.log(Direction.North); // 0
+console.log(Direction[0]);  // "North"
+
+// Custom values
+enum Status {
+    Pending = 1,
+    Approved = 2,
+    Rejected = 3
+}
+
+// String enums
+enum Color {
+    Red = "RED",
+    Green = "GREEN",
+    Blue = "BLUE"
+}
+
+let myColor: Color = Color.Red;
+console.log(myColor); // "RED"</code></pre>
+
+            <h3>Const Enums</h3>
+            <pre><code>// Compile-time pe inline ho jata hai
+const enum Permission {
+    Read = 1,
+    Write = 2,
+    Execute = 4
+}
+
+let p = Permission.Read | Permission.Write; // 3</code></pre>
+        </section>
+
+        <section id="union">
+            <h2>🔗 Union & Intersection Types</h2>
+            <h3>Union Types (|)</h3>
+            <pre><code>// Multiple types possible
+let id: string | number;
+id = 101;      // ✅
+id = "ABC101"; // ✅
+// id = true;  // ❌ Error
+
+// Function parameter
+function printId(id: string | number): void {
+    if (typeof id === "string") {
+        console.log(id.toUpperCase()); // String method
+    } else {
+        console.log(id.toFixed(2));    // Number method
+    }
+}
+
+// Union with literal types
+type Status = "loading" | "success" | "error";
+let currentStatus: Status = "success";
+// currentStatus = "done"; // ❌ Error</code></pre>
+
+            <h3>Intersection Types (&)</h3>
+            <pre><code>// Sab properties dono types se
+interface HasName { name: string; }
+interface HasAge { age: number; }
+
+type Person = HasName & HasAge;
+
+let person: Person = {
+    name: "Akarshit",
+    age: 20
+};
+
+// Multiple interfaces combine
+interface Employee extends HasName, HasAge {
+    employeeId: number;
+}</code></pre>
+
+            <h3>Type Guards</h3>
+            <pre><code>// typeof
+function process(value: string | number) {
+    if (typeof value === "string") {
+        return value.length;
+    } else {
+        return value.toFixed(2);
+    }
+}
+
+// instanceof
+class Dog { bark() { } }
+class Cat { meow() { } }
+
+function makeSound(animal: Dog | Cat) {
+    if (animal instanceof Dog) {
+        animal.bark();
+    } else {
+        animal.meow();
+    }
+}
+
+// in operator
+interface Bird { fly(): void; }
+function move(animal: Dog | Bird) {
+    if ("fly" in animal) {
+        animal.fly();
+    }
+}</code></pre>
+        </section>
+
+        <section id="generics">
+            <h2>🧬 Generics</h2>
+            <p>Generics reusable components banate hain jo multiple types ke saath kaam kar sakein.</p>
+
+            <h3>Generic Functions</h3>
+            <pre><code>// Generic function
+function identity&lt;T&gt;(arg: T): T {
+    return arg;
+}
+
+let num = identity&lt;number&gt;(10);    // number
+let str = identity&lt;string&gt;("Hi");  // string
+let bool = identity(true);         // boolean (inferred)
+
+// Generic with multiple types
+function pair&lt;T, U&gt;(first: T, second: U): [T, U] {
+    return [first, second];
+}
+let p = pair(1, "one"); // [number, string]</code></pre>
+
+            <h3>Generic Constraints</h3>
+            <pre><code>// T must have length property
+function logLength&lt;T extends { length: number }&gt;(arg: T): T {
+    console.log(arg.length);
+    return arg;
+}
+
+logLength("hello");     // ✅ string has length
+logLength([1, 2, 3]);   // ✅ array has length
+// logLength(123);      // ❌ Error! number has no length
+
+// Keyof constraint
+function getProperty&lt;T, K extends keyof T&gt;(obj: T, key: K): T[K] {
+    return obj[key];
+}
+
+let person = { name: "Akarshit", age: 20 };
+getProperty(person, "name");  // ✅
+// getProperty(person, "email"); // ❌ Error!</code></pre>
+
+            <h3>Generic Classes</h3>
+            <pre><code>class GenericStack&lt;T&gt; {
+    private items: T[] = [];
+
+    push(item: T): void {
+        this.items.push(item);
+    }
+
+    pop(): T | undefined {
+        return this.items.pop();
+    }
+
+    peek(): T | undefined {
+        return this.items[this.items.length - 1];
+    }
+
+    isEmpty(): boolean {
+        return this.items.length === 0;
+    }
+}
+
+let numberStack = new GenericStack&lt;number&gt;();
+numberStack.push(10);
+numberStack.push(20);
+console.log(numberStack.pop()); // 20
+
+let stringStack = new GenericStack&lt;string&gt;();
+stringStack.push("Hello");</code></pre>
+
+            <h3>Generic Interfaces</h3>
+            <pre><code>interface KeyValuePair&lt;K, V&gt; {
+    key: K;
+    value: V;
+}
+
+let userPair: KeyValuePair&lt;number, string&gt; = {
+    key: 1,
+    value: "Akarshit"
+};
+
+// Generic with default type
+interface Container&lt;T = string&gt; {
+    value: T;
+}
+
+let defaultContainer: Container = { value: "hello" }; // T = string</code></pre>
+        </section>
+
+        <section id="typealias">
+            <h2>🏷️ Type Aliases</h2>
+            <h3>Basic Aliases</h3>
+            <pre><code>type StringOrNumber = string | number;
+type Point = { x: number; y: number };
+type ID = string | number;
+
+let userId: ID = 123;
+let coords: Point = { x: 10, y: 20 };</code></pre>
+
+            <h3>Mapped Types</h3>
+            <pre><code>// Make all properties optional
+type PartialPoint = Partial&lt;Point&gt;;
+// { x?: number; y?: number; }
+
+// Make all properties required
+type RequiredPoint = Required&lt;Point&gt;;
+
+// Make all properties readonly
+type ReadonlyPoint = Readonly&lt;Point&gt;;
+
+// Pick specific properties
+type PointX = Pick&lt;Point, "x"&gt;;
+// { x: number; }
+
+// Omit specific properties
+type PointWithoutY = Omit&lt;Point, "y"&gt;;
+// { x: number; }
+
+// Record (key-value pairs)
+type PageInfo = Record&lt;string, { title: string }&gt;;
+let pages: PageInfo = {
+    home: { title: "Home" },
+    about: { title: "About" }
+};</code></pre>
+
+            <h3>Conditional Types</h3>
+            <pre><code>type IsString&lt;T&gt; = T extends string ? true : false;
+
+type A = IsString&lt;string&gt;;  // true
+type B = IsString&lt;number&gt;;  // false
+
+// Extract from union
+type StringsOnly = Extract&lt;string | number | boolean, string&gt;;
+// string
+
+// Exclude from union
+type NoStrings = Exclude&lt;string | number | boolean, string&gt;;
+// number | boolean</code></pre>
+        </section>
+
+        <section id="modules">
+            <h2>📦 Modules</h2>
+            <h3>Export</h3>
+            <pre><code>// math.ts
+export const PI = 3.14159;
+
+export function add(a: number, b: number): number {
+    return a + b;
+}
+
+export function subtract(a: number, b: number): number {
+    return a - b;
+}
+
+// Default export
+export default class Calculator {
+    add(a: number, b: number): number { return a + b; }
+}
+
+// Re-export
+export { add, subtract } from "./math";
+export * as utils from "./utils";</code></pre>
+
+            <h3>Import</h3>
+            <pre><code>// main.ts
+import { add, subtract, PI } from "./math";
+import Calculator from "./calculator";
+import * as MathUtils from "./math";
+
+console.log(add(2, 3));
+console.log(MathUtils.PI);
+
+// Type-only import
+import type { Person } from "./types";
+
+// Re-export from
+export { Person } from "./types";</code></pre>
+
+            <h3>Module Resolution</h3>
+            <pre><code>// tsconfig.json
+{
+  "compilerOptions": {
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "baseUrl": "./src",
+    "paths": {
+      "@/*": ["*"],
+      "@components/*": ["components/*"]
+    }
+  }
+}</code></pre>
+        </section>
+
+        <section id="utility">
+            <h2>🛠️ Utility Types</h2>
+            <table>
+                <tr><th>Type</th><th>Description</th><th>Example</th></tr>
+                <tr><td><code>Partial&lt;T&gt;</code></td><td>All properties optional</td><td><code>Partial&lt;User&gt;</code></td></tr>
+                <tr><td><code>Required&lt;T&gt;</code></td><td>All properties required</td><td><code>Required&lt;User&gt;</code></td></tr>
+                <tr><td><code>Readonly&lt;T&gt;</code></td><td>All properties readonly</td><td><code>Readonly&lt;User&gt;</code></td></tr>
+                <tr><td><code>Pick&lt;T, K&gt;</code></td><td>Pick specific keys</td><td><code>Pick&lt;User, "name"&gt;</code></td></tr>
+                <tr><td><code>Omit&lt;T, K&gt;</code></td><td>Omit specific keys</td><td><code>Omit&lt;User, "password"&gt;</code></td></tr>
+                <tr><td><code>Record&lt;K, V&gt;</code></td><td>Key-value map</td><td><code>Record&lt;string, number&gt;</code></td></tr>
+                <tr><td><code>Exclude&lt;T, U&gt;</code></td><td>Remove types from union</td><td><code>Exclude&lt;A|B|C, B&gt;</code></td></tr>
+                <tr><td><code>Extract&lt;T, U&gt;</code></td><td>Keep only matching types</td><td><code>Extract&lt;A|B|C, A|B&gt;</code></td></tr>
+                <tr><td><code>NonNullable&lt;T&gt;</code></td><td>Remove null/undefined</td><td><code>NonNullable&lt;string|null&gt;</code></td></tr>
+                <tr><td><code>ReturnType&lt;T&gt;</code></td><td>Function ka return type</td><td><code>ReturnType&lt;typeof fn&gt;</code></td></tr>
+                <tr><td><code>Parameters&lt;T&gt;</code></td><td>Function ke parameters</td><td><code>Parameters&lt;typeof fn&gt;</code></td></tr>
+            </table>
+
+            <h3>Examples</h3>
+            <pre><code>interface User {
+    id: number;
+    name: string;
+    email: string;
+    password: string;
+    age?: number;
+}
+
+// Update function ke liye — id & password nahi chahiye
+type UpdateUser = Partial&lt;Omit&lt;User, "id" | "password"&gt;&gt;;
+
+// Public profile — sensitive data hide
+type PublicUser = Omit&lt;User, "password" | "email"&gt;;
+
+// API response
+type ApiResponse&lt;T&gt; = {
+    data: T;
+    status: number;
+    message: string;
+};
+
+type UserResponse = ApiResponse&lt;User&gt;;</code></pre>
+        </section>
+
+        <section id="react">
+            <h2>⚛️ TypeScript with React</h2>
+            <h3>Component Props</h3>
+            <pre><code>import React from 'react';
+
+// Props interface
+interface ButtonProps {
+    label: string;
+    onClick: () => void;
+    disabled?: boolean;
+    variant?: 'primary' | 'secondary' | 'danger';
+}
+
+const Button: React.FC&lt;ButtonProps&gt; = ({ 
+    label, 
+    onClick, 
+    disabled = false, 
+    variant = 'primary' 
+}) => {
+    return (
+        &lt;button 
+            onClick={onClick} 
+            disabled={disabled}
+            className={`btn btn-${variant}`}
+        &gt;
+            {label}
+        &lt;/button&gt;
+    );
+};
+
+export default Button;</code></pre>
+
+            <h3>State with Types</h3>
+            <pre><code>import React, { useState } from 'react';
+
+interface User {
+    id: number;
+    name: string;
+    email: string;
+}
+
+const UserList: React.FC = () => {
+    const [users, setUsers] = useState&lt;User[]&gt;([]);
+    const [loading, setLoading] = useState&lt;boolean&gt;(false);
+    const [selectedUser, setSelectedUser] = useState&lt;User | null&gt;(null);
+
+    const addUser = (user: Omit&lt;User, "id"&gt;) => {
+        const newUser: User = { ...user, id: Date.now() };
+        setUsers(prev => [...prev, newUser]);
+    };
+
+    return (
+        &lt;div&gt;
+            {users.map(user => (
+                &lt;div key={user.id}&gt;{user.name}&lt;/div&gt;
+            ))}
+        &lt;/div&gt;
+    );
+};</code></pre>
+
+            <h3>Event Types</h3>
+            <pre><code>const Form: React.FC = () => {
+    const handleChange = (e: React.ChangeEvent&lt;HTMLInputElement&gt;) => {
+        console.log(e.target.value);
+    };
+
+    const handleSubmit = (e: React.FormEvent&lt;HTMLFormElement&gt;) => {
+        e.preventDefault();
+    };
+
+    const handleClick = (e: React.MouseEvent&lt;HTMLButtonElement&gt;) => {
+        console.log(e.clientX, e.clientY);
+    };
+
+    return (
+        &lt;form onSubmit={handleSubmit}&gt;
+            &lt;input type="text" onChange={handleChange} /&gt;
+            &lt;button onClick={handleClick}&gt;Submit&lt;/button&gt;
+        &lt;/form&gt;
+    );
+};</code></pre>
+
+            <h3>Custom Hooks</h3>
+            <pre><code>import { useState, useEffect } from 'react';
+
+function useFetch&lt;T&gt;(url: string) {
+    const [data, setData] = useState&lt;T | null&gt;(null);
+    const [loading, setLoading] = useState&lt;boolean&gt;(true);
+    const [error, setError] = useState&lt;string | null&gt;(null);
+
+    useEffect(() => {
+        fetch(url)
+            .then(res => res.json())
+            .then((data: T) => {
+                setData(data);
+                setLoading(false);
+            })
+            .catch(err => {
+                setError(err.message);
+                setLoading(false);
+            });
+    }, [url]);
+
+    return { data, loading, error };
+}
+
+// Usage
+interface Post { id: number; title: string; }
+const { data: posts } = useFetch&lt;Post[]&gt;('/api/posts');</code></pre>
+        </section>
+
+        <section id="projects">
+            <h2>🛠️ Mini Projects</h2>
+            <h3>1. Generic Todo List</h3>
+            <pre><code>interface Todo {
+    id: number;
+    text: string;
+    completed: boolean;
+}
+
+class TodoList {
+    private todos: Todo[] = [];
+    private nextId: number = 1;
+
+    add(text: string): Todo {
+        const todo: Todo = { id: this.nextId++, text, completed: false };
+        this.todos.push(todo);
+        return todo;
+    }
+
+    toggle(id: number): void {
+        const todo = this.todos.find(t => t.id === id);
+        if (todo) todo.completed = !todo.completed;
+    }
+
+    remove(id: number): void {
+        this.todos = this.todos.filter(t => t.id !== id);
+    }
+
+    getAll(): readonly Todo[] {
+        return this.todos;
+    }
+
+    getActive(): Todo[] {
+        return this.todos.filter(t => !t.completed);
+    }
+
+    getCompleted(): Todo[] {
+        return this.todos.filter(t => t.completed);
+    }
+}</code></pre>
+
+            <h3>2. API Client with Generics</h3>
+            <pre><code>class ApiClient {
+    async get&lt;T&gt;(url: string): Promise&lt;T&gt; {
+        const res = await fetch(url);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return res.json() as Promise&lt;T&gt;;
+    }
+
+    async post&lt;T, D&gt;(url: string, data: D): Promise&lt;T&gt; {
+        const res = await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        });
+        return res.json() as Promise&lt;T&gt;;
+    }
+}
+
+interface User { id: number; name: string; }
+interface CreateUser { name: string; email: string; }
+
+const api = new ApiClient();
+const user = await api.get&lt;User&gt;('/api/users/1');
+const newUser = await api.post&lt;User, CreateUser&gt;('/api/users', { name: "A", email: "a@a.com" });</code></pre>
+
+            <h3>3. Form Validation Utility</h3>
+            <pre><code>type Validator&lt;T&gt; = (value: T) => string | null;
+
+function required&lt;T&gt;(msg: string = "Required"): Validator&lt;T&gt; {
+    return (value) => value ? null : msg;
+}
+
+function minLength(min: number): Validator&lt;string&gt; {
+    return (value) => value.length >= min ? null : `Min ${min} chars`;
+}
+
+function validate&lt;T&gt;(value: T, validators: Validator&lt;T&gt;[]): string[] {
+    return validators
+        .map(v => v(value))
+        .filter((msg): msg is string => msg !== null);
+}
+
+// Usage
+const errors = validate("Hi", [
+    required(),
+    minLength(3)
+]);
+console.log(errors); // ["Min 3 chars"]</code></pre>
+        </section>
+
+        <footer>
+            <p>© 2026 Akarshit Raj | PM SHRI JNV Khairabad, Sitapur</p>
+            <p>Learn programming for free 🚀</p>
+        </footer>
     </div>
 </body>
 </html>
-
