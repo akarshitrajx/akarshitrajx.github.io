@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Complete Guide - Akarshit Raj</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Segoe UI',sans-serif;background:linear-gradient(135deg,#0f172a,#1e1b4b);color:#e2e8f0;line-height:1.6;min-height:100vh}
+        .container{max-width:800px;margin:0 auto;padding:20px}
+        .back{display:inline-block;background:rgba(56,189,248,0.2);color:#38bdf8;padding:10px 20px;border-radius:8px;text-decoration:none;font-weight:600;margin-bottom:20px;border:1px solid rgba(56,189,248,0.3)}
+        h1{font-size:2rem;background:linear-gradient(135deg,#38bdf8,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:10px}
+        .section{background:rgba(30,41,59,0.6);border:1px solid rgba(148,163,184,0.1);border-radius:16px;padding:25px;margin-bottom:20px}
+        h2{color:#38bdf8;margin-bottom:15px;font-size:1.3rem}
+        p{color:#94a3b8;margin-bottom:15px}
+        pre{background:#1e1e1e;border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:15px;overflow-x:auto;color:#d4d4d4;font-family:'Consolas',monospace;font-size:0.9rem;margin:15px 0}
+        code{background:rgba(56,189,248,0.15);color:#38bdf8;padding:2px 6px;border-radius:4px;font-family:monospace}
+        .footer{text-align:center;padding:40px;color:#64748b;font-size:0.9rem}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="tutorials.html" class="back">← Back to Tutorials</a>
+        <h1>SQL Complete Tutorial</h1>
+        
+        <div class="section">
+            <h2>What is SQL?</h2>
+            <p>SQL (Structured Query Language) is used to manage databases. It helps you store, retrieve, and manipulate data.</p>
+        </div>
+
+        <div class="section">
+            <h2>Create Table</h2>
+            <pre>CREATE TABLE students (
+    id INT PRIMARY KEY,
+    name VARCHAR(50),
+    age INT,
+    grade CHAR(1)
+);</pre>
+        </div>
+
+        <div class="section">
+            <h2>INSERT Data</h2>
+            <pre>INSERT INTO students VALUES (1, 'Akarshit', 18, 'A');
+INSERT INTO students (name, age) VALUES ('Rahul', 17);</pre>
+        </div>
+
+        <div class="section">
+            <h2>SELECT Queries</h2>
+            <pre>SELECT * FROM students;
+SELECT name, age FROM students WHERE grade = 'A';
+SELECT * FROM students ORDER BY age DESC;
+SELECT COUNT(*) FROM students;</pre>
+        </div>
+
+        <div class="section">
+            <h2>UPDATE & DELETE</h2>
+            <pre>UPDATE students SET age = 19 WHERE id = 1;
+DELETE FROM students WHERE id = 2;</pre>
+        </div>
+
+        <div class="section">
+            <h2>JOIN Tables</h2>
+            <pre>SELECT s.name, m.subject, m.marks
+FROM students s
+JOIN marks m ON s.id = m.student_id;</pre>
+        </div>
+
+        <div class="footer">
+            <p>© 2026 Akarshit Raj | <a href="tutorials.html" style="color:#38bdf8">More Tutorials</a></p>
+        </div>
+    </div>
+</body>
+</html>
+
