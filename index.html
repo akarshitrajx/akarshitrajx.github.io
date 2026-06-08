@@ -29,6 +29,18 @@
         .bg-animation .orb:nth-child(2){width:300px;height:300px;background:var(--secondary);top:40%;right:-100px;animation-delay:5s}
         .bg-animation .orb:nth-child(3){width:250px;height:250px;background:var(--accent);bottom:-100px;left:40%;animation-delay:10s}
         @keyframes float{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(30px,-50px) scale(1.1)}66%{transform:translate(-30px,30px) scale(0.9)}}
+        .sidebar-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);z-index:2000;backdrop-filter:blur(5px)}
+        .sidebar-overlay.active{display:block}
+        .sidebar{position:fixed;top:0;left:0;width:280px;height:100%;background:var(--darker);border-right:1px solid rgba(255,255,255,0.08);z-index:2001;transform:translateX(-100%);transition:transform 0.3s ease;padding:2rem 0;overflow-y:auto}
+        .sidebar.active{transform:translateX(0)}
+        .sidebar-header{padding:0 1.5rem 1.5rem;border-bottom:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:space-between}
+        .sidebar-logo{font-size:1.5rem;font-weight:800;background:linear-gradient(135deg,var(--primary),var(--secondary));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .sidebar-close{background:none;border:none;color:var(--light);font-size:1.5rem;cursor:pointer}
+        .sidebar-nav{list-style:none;padding:1rem 0}
+        .sidebar-nav li{padding:0.75rem 1.5rem;cursor:pointer;transition:all 0.3s;display:flex;align-items:center;gap:0.75rem;color:var(--gray)}
+        .sidebar-nav li:hover{background:rgba(255,255,255,0.05);color:var(--light)}
+        .sidebar-nav a{color:inherit;text-decoration:none;display:flex;align-items:center;gap:0.75rem;width:100%}
+        .sidebar-icon{font-size:1.2rem}
         nav{position:fixed;top:0;width:100%;padding:1rem 5%;background:rgba(2,6,23,0.8);backdrop-filter:blur(20px);z-index:1000;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,0.08)}
         .nav-left{display:flex;align-items:center;gap:1rem}
         .logo{font-size:1.6rem;font-weight:800;background:linear-gradient(135deg,var(--primary),var(--secondary));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
@@ -179,12 +191,11 @@
         .footer-links{text-align:center;padding:1rem 0;border-top:1px solid rgba(255,255,255,0.05);margin-top:1rem}
         .footer-links a{color:var(--primary);text-decoration:none;margin:0 10px;font-size:0.85rem}
         .footer-links a:hover{text-decoration:underline}
-        @media(max-width:968px){.hero-container{grid-template-columns:1fr;text-align:center}.hero h1{font-size:2.5rem}.nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(2,6,23,0.95);flex-direction:column;padding:2rem;gap:1.5rem;z-index:999}.nav-links.active{display:flex}.mobile-menu-btn{display:block}.code-editor-wrapper{grid-template-columns:1fr}.stats-bar{gap:1.5rem}.search-box{display:none}.welcome-text{display:none}.ai-message-bubble{max-width:90%}}
+        @media(max-width:968px){.hero-container{grid-template-columns:1fr;text-align:center}.hero h1{font-size:2.5rem}.nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(2,6,23,0.95);flex-direction:column;padding:2rem;gap:1.5rem;z-index:999}.nav-links.active{display:flex}.mobile-menu-btn{display:block}.code-editor-wrapper{grid-template-columns:1fr}.stats-bar{gap:1.5rem}.search-box{display:none}.welcome-text{display:none}.ai-message-bubble{max-width:90%}.sidebar{width:260px}}
         @media(max-width:480px){.hero h1{font-size:2rem}.section-title{font-size:1.8rem}.code-practice-section{padding:1.5rem}.ai-chat-body{padding:1rem}.ai-chat-header{padding:1rem}}
         ::-webkit-scrollbar{width:8px}
         ::-webkit-scrollbar-track{background:var(--darker)}
         ::-webkit-scrollbar-thumb{background:var(--primary);border-radius:4px}
-        /* NEW FEATURES CSS */
         .feature-input{width:100%;padding:0.9rem 1rem;border-radius:12px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);color:var(--light);font-size:0.95rem;outline:none;margin-bottom:0.75rem;font-family:inherit;transition:all 0.3s}
         .feature-input:focus{border-color:var(--primary);background:rgba(255,255,255,0.08)}
         .feature-btn{width:100%;padding:0.9rem;border:none;border-radius:12px;background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:white;font-weight:700;cursor:pointer;transition:all 0.3s;font-size:0.95rem;margin-bottom:0.5rem}
@@ -205,12 +216,81 @@
         .price-tag{font-size:2.5rem;font-weight:800;background:linear-gradient(135deg,var(--primary),var(--secondary));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
         .feature-list{text-align:left;margin:1.5rem 0}
         .feature-list li{display:flex;align-items:center;gap:0.75rem;padding:0.5rem 0;color:var(--gray)}
+        .auth-modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:5000;align-items:center;justify-content:center;padding:2rem;backdrop-filter:blur(10px)}
+        .auth-modal.active{display:flex}
+        .auth-box{background:var(--card-bg);border-radius:24px;padding:2.5rem;max-width:450px;width:100%;border:1px solid rgba(255,255,255,0.1);text-align:center;position:relative}
+        .auth-close{position:absolute;top:1rem;right:1rem;background:none;border:none;color:var(--gray);font-size:1.5rem;cursor:pointer}
+        .auth-title{font-size:1.5rem;font-weight:700;margin-bottom:0.5rem}
+        .auth-subtitle{color:var(--gray);font-size:0.9rem;margin-bottom:1.5rem}
+        .social-login{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.75rem;margin-bottom:1.5rem}
+        .social-btn{padding:0.75rem;border-radius:12px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);color:var(--light);cursor:pointer;transition:all 0.3s;font-size:0.85rem;display:flex;align-items:center;justify-content:center;gap:0.5rem}
+        .social-btn:hover{background:rgba(255,255,255,0.1);transform:translateY(-2px)}
+        .auth-divider{display:flex;align-items:center;gap:1rem;margin:1rem 0;color:var(--gray);font-size:0.85rem}
+        .auth-divider::before,.auth-divider::after{content:'';flex:1;height:1px;background:rgba(255,255,255,0.1)}
+        .auth-gate-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(2,6,23,0.95);z-index:4500;align-items:center;justify-content:center;flex-direction:column;gap:1rem;padding:2rem;text-align:center}
+        .auth-gate-overlay.active{display:flex}
+        .auth-gate-overlay h3{font-size:1.5rem}
+        .auth-gate-overlay p{color:var(--gray);max-width:400px}
+        .quiz-section{background:var(--card-bg);border-radius:24px;padding:3rem;border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(20px);max-width:1000px;margin:0 auto}
+        .quiz-lang-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;margin-bottom:2rem}
+        .quiz-lang-card{padding:1.5rem;background:var(--glass);border-radius:16px;border:1px solid rgba(255,255,255,0.05);text-align:center;cursor:pointer;transition:all 0.3s}
+        .quiz-lang-card:hover{transform:translateY(-5px);background:rgba(255,255,255,0.1);border-color:var(--primary)}
+        .quiz-lang-icon{font-size:2.5rem;margin-bottom:0.5rem}
+        .quiz-lang-name{font-weight:600}
+        .quiz-lang-progress{font-size:0.8rem;color:var(--gray);margin-top:0.25rem}
+        .quiz-container{display:none;max-width:700px;margin:0 auto}
+        .quiz-container.active{display:block}
+        .quiz-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid rgba(255,255,255,0.1)}
+        .quiz-level{font-size:1.2rem;font-weight:700}
+        .quiz-score{color:var(--accent);font-weight:600}
+        .quiz-progress-bar{width:100%;height:8px;background:rgba(255,255,255,0.1);border-radius:4px;margin-bottom:2rem;overflow:hidden}
+        .quiz-progress-fill{height:100%;background:linear-gradient(90deg,var(--primary),var(--secondary));transition:width 0.3s;border-radius:4px}
+        .quiz-question{font-size:1.2rem;font-weight:600;margin-bottom:1.5rem;padding:1.5rem;background:rgba(255,255,255,0.05);border-radius:16px;border-left:4px solid var(--primary)}
+        .quiz-options{display:grid;gap:0.75rem}
+        .quiz-option{padding:1rem;background:var(--glass);border:1px solid rgba(255,255,255,0.1);border-radius:12px;cursor:pointer;transition:all 0.3s;text-align:left;color:var(--light);font-size:1rem}
+        .quiz-option:hover{background:rgba(255,255,255,0.1);border-color:var(--primary)}
+        .quiz-option.correct{background:rgba(16,185,129,0.2);border-color:var(--success)}
+        .quiz-option.wrong{background:rgba(239,68,68,0.2);border-color:var(--error)}
+        .quiz-option.disabled{pointer-events:none;opacity:0.7}
+        .quiz-actions{display:flex;gap:1rem;margin-top:1.5rem;justify-content:center}
+        .quiz-btn{padding:0.75rem 1.5rem;border-radius:12px;border:none;font-weight:600;cursor:pointer;transition:all 0.3s}
+        .quiz-btn-primary{background:var(--primary);color:white}
+        .quiz-btn-secondary{background:var(--glass);color:var(--light);border:1px solid rgba(255,255,255,0.1)}
+        .quiz-result{text-align:center;padding:2rem}
+        .quiz-result h3{font-size:1.8rem;margin-bottom:1rem}
+        .quiz-result p{color:var(--gray);margin-bottom:1.5rem}
+        .file-actions{display:flex;gap:0.5rem;margin-bottom:0.5rem;flex-wrap:wrap}
+        .file-btn{padding:0.4rem 0.8rem;background:var(--glass);border:1px solid rgba(255,255,255,0.1);border-radius:8px;color:var(--gray);cursor:pointer;transition:all 0.3s;font-size:0.8rem;display:flex;align-items:center;gap:0.4rem}
+        .file-btn:hover{background:var(--primary);color:white;border-color:var(--primary)}
+        #fileInput{display:none}
     </style>
 </head>
 <body>
     <div class="bg-animation"><div class="orb"></div><div class="orb"></div><div class="orb"></div></div>
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <span class="sidebar-logo">AK.R</span>
+            <button class="sidebar-close" onclick="toggleSidebar()">×</button>
+        </div>
+        <ul class="sidebar-nav">
+            <li onclick="goToSection('home')"><span class="sidebar-icon">🏠</span> Home</li>
+            <li onclick="goToSection('about')"><span class="sidebar-icon">👤</span> About</li>
+            <li onclick="goToSection('code-practice')"><span class="sidebar-icon">💻</span> Practice</li>
+            <li onclick="goToSection('quiz-section')"><span class="sidebar-icon">🎯</span> Quizzes</li>
+            <li onclick="window.location.href='tutorials.html'"><span class="sidebar-icon">📚</span> Tutorials</li>
+            <li onclick="goToSection('youtube-channel')"><span class="sidebar-icon">📺</span> YT Channel</li>
+            <li onclick="goToSection('courses')"><span class="sidebar-icon">🎓</span> Courses</li>
+            <li onclick="goToSection('ai-code')"><span class="sidebar-icon">🤖</span> AI Code</li>
+            <li onclick="goToSection('certificate')"><span class="sidebar-icon">🏆</span> Certificate</li>
+            <li onclick="goToSection('login')"><span class="sidebar-icon">🔐</span> Login</li>
+            <li onclick="goToSection('premium')"><span class="sidebar-icon">💎</span> Premium</li>
+            <li onclick="goToSection('contact')"><span class="sidebar-icon">📧</span> Contact</li>
+        </ul>
+    </aside>
     <nav>
         <div class="nav-left">
+            <button class="mobile-menu-btn" onclick="toggleSidebar()" style="display:block;margin-right:0.5rem">☰</button>
             <div class="logo">AK.R</div>
             <div class="welcome-text">👋 Welcome</div>
         </div>
@@ -230,7 +310,6 @@
         </ul>
         <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
     </nav>
-
     <section class="hero" id="home">
         <div class="hero-container">
             <div class="hero-content">
@@ -254,11 +333,11 @@
                             <span class="profile-info-icon">📚</span>
                             <div><div class="profile-info-label">Tutorials</div><div class="profile-info-value">Read All Tutorials</div></div>
                         </a>
-                        <button class="profile-info-box" onclick="openAIChat('web')" style="cursor:pointer">
+                        <button class="profile-info-box" onclick="openProtectedFeature('aiweb')" style="cursor:pointer">
                             <span class="profile-info-icon">🌐</span>
                             <div><div class="profile-info-label">AI Assistant</div><div class="profile-info-value">Web Development</div></div>
                         </button>
-                        <button class="profile-info-box" onclick="openAIChat('app')" style="cursor:pointer">
+                        <button class="profile-info-box" onclick="openProtectedFeature('aiapp')" style="cursor:pointer">
                             <span class="profile-info-icon">📱</span>
                             <div><div class="profile-info-label">AI Assistant</div><div class="profile-info-value">App Development</div></div>
                         </button>
@@ -267,14 +346,12 @@
             </div>
         </div>
     </section>
-
     <div class="stats-bar">
         <div class="stat-item"><span class="stat-number" data-target="20">0</span><div class="stat-label">Courses</div></div>
         <div class="stat-item"><span class="stat-number" data-target="200">0</span><div class="stat-label">Videos</div></div>
         <div class="stat-item"><span class="stat-number" data-target="1000">0</span><div class="stat-label">Hours</div></div>
         <div class="stat-item"><span class="stat-number" data-target="1000000">0</span><div class="stat-label">Students</div></div>
     </div>
-
     <section id="about" class="animate-on-scroll">
         <div class="section-header">
             <div class="section-tag">About Me</div>
@@ -330,6 +407,13 @@
                 <button class="lang-btn" onclick="selectLang(this,'go')">🔵 Go</button>
                 <button class="lang-btn" onclick="selectLang(this,'rust')">⚙️ Rust</button>
             </div>
+            <div class="file-actions">
+                <button class="file-btn" onclick="saveCodeFile()">💾 Save</button>
+                <button class="file-btn" onclick="document.getElementById('fileInput').click()">📂 Open</button>
+                <button class="file-btn" onclick="copyCode()">📋 Copy</button>
+                <button class="file-btn" onclick="clearCode()">🗑️ Clear</button>
+                <input type="file" id="fileInput" accept=".py,.cpp,.js,.java,.cs,.html,.sql,.php,.kt,.swift,.go,.rs,.txt" onchange="loadCodeFile(this)">
+            </div>
             <div class="code-editor-wrapper">
                 <div class="code-input-area">
                     <div class="code-header"><span>📝 Write Your Code</span><span style="font-size:0.75rem;color:var(--gray);">Click Run to execute</span></div>
@@ -343,7 +427,7 @@ print(f'Welcome, {name}!')</textarea>
                     <div class="output-content" id="codeOutput"><span style="color:var(--gray);">Click "Run Code" to see output...</span></div>
                 </div>
             </div>
-            <button class="run-btn" onclick="runCode()" id="runBtn"><span>▶️</span><span>Run Code</span></button>
+            <button class="run-btn" onclick="runCodeReal()" id="runBtn"><span>▶️</span><span>Run Code</span></button>
             <div style="margin-top:2rem;">
                 <h4 style="text-align:center;margin-bottom:1rem;color:var(--gray);font-size:1rem;">🔗 Or Use These Professional Online Compilers</h4>
                 <div class="compiler-links">
@@ -369,6 +453,71 @@ print(f'Welcome, {name}!')</textarea>
                     <a href="https://www.codewars.com/" target="_blank" rel="noopener noreferrer" class="practice-card"><div class="practice-icon">⚔️</div><div class="practice-text"><div class="practice-name">CodeWars</div><div class="practice-desc">Kata training</div></div></a>
                     <a href="https://www.freecodecamp.org/" target="_blank" rel="noopener noreferrer" class="practice-card"><div class="practice-icon">🎓</div><div class="practice-text"><div class="practice-name">freeCodeCamp</div><div class="practice-desc">Free coding curriculum</div></div></a>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="quiz-section" class="animate-on-scroll">
+        <div class="section-header">
+            <div class="section-tag">🎯 Quiz Challenge</div>
+            <h2 class="section-title">Programming Quizzes</h2>
+            <p class="section-subtitle">Test your knowledge! Complete 100 levels in any language to earn your certificate</p>
+        </div>
+        <div class="quiz-section">
+            <div id="quizLangSelect">
+                <h3 style="text-align:center;margin-bottom:1.5rem;font-size:1.3rem;">Choose a Language</h3>
+                <div class="quiz-lang-grid">
+                    <div class="quiz-lang-card" onclick="startQuiz('python')">
+                        <div class="quiz-lang-icon">🐍</div>
+                        <div class="quiz-lang-name">Python</div>
+                        <div class="quiz-lang-progress" id="progress-python">Level 0 / ∞</div>
+                    </div>
+                    <div class="quiz-lang-card" onclick="startQuiz('cpp')">
+                        <div class="quiz-lang-icon">⚡</div>
+                        <div class="quiz-lang-name">C++</div>
+                        <div class="quiz-lang-progress" id="progress-cpp">Level 0 / ∞</div>
+                    </div>
+                    <div class="quiz-lang-card" onclick="startQuiz('javascript')">
+                        <div class="quiz-lang-icon">🟨</div>
+                        <div class="quiz-lang-name">JavaScript</div>
+                        <div class="quiz-lang-progress" id="progress-javascript">Level 0 / ∞</div>
+                    </div>
+                    <div class="quiz-lang-card" onclick="startQuiz('java')">
+                        <div class="quiz-lang-icon">☕</div>
+                        <div class="quiz-lang-name">Java</div>
+                        <div class="quiz-lang-progress" id="progress-java">Level 0 / ∞</div>
+                    </div>
+                    <div class="quiz-lang-card" onclick="startQuiz('html')">
+                        <div class="quiz-lang-icon">🌐</div>
+                        <div class="quiz-lang-name">HTML/CSS</div>
+                        <div class="quiz-lang-progress" id="progress-html">Level 0 / ∞</div>
+                    </div>
+                    <div class="quiz-lang-card" onclick="startQuiz('sql')">
+                        <div class="quiz-lang-icon">🗄️</div>
+                        <div class="quiz-lang-name">SQL</div>
+                        <div class="quiz-lang-progress" id="progress-sql">Level 0 / ∞</div>
+                    </div>
+                </div>
+            </div>
+            <div class="quiz-container" id="quizContainer">
+                <div class="quiz-header">
+                    <div class="quiz-level" id="quizLevel">Python - Level 1</div>
+                    <div class="quiz-score" id="quizScore">Score: 0</div>
+                </div>
+                <div class="quiz-progress-bar">
+                    <div class="quiz-progress-fill" id="quizProgressFill" style="width:0%"></div>
+                </div>
+                <div class="quiz-question" id="quizQuestion">Question loading...</div>
+                <div class="quiz-options" id="quizOptions"></div>
+                <div class="quiz-actions">
+                    <button class="quiz-btn quiz-btn-secondary" onclick="exitQuiz()">← Exit</button>
+                    <button class="quiz-btn quiz-btn-primary" id="quizNextBtn" onclick="nextLevel()" style="display:none;">Next Level →</button>
+                </div>
+            </div>
+            <div class="quiz-result" id="quizResult" style="display:none;">
+                <h3>🎉 Quiz Complete!</h3>
+                <p id="quizResultText">You scored 0 points!</p>
+                <button class="feature-btn" onclick="exitQuiz()">Back to Languages</button>
             </div>
         </div>
     </section>
@@ -407,8 +556,7 @@ print(f'Welcome, {name}!')</textarea>
             </div>
         </div>
     </section>
-
-    <section id="new-skill" class="animate-on-scroll">
+        <section id="new-skill" class="animate-on-scroll">
         <div class="section-header">
             <div class="section-tag">Popular Courses</div>
             <h2 class="section-title">Start Learning Now</h2>
@@ -416,36 +564,12 @@ print(f'Welcome, {name}!')</textarea>
         </div>
         <div style="background:var(--card-bg);border-radius:24px;padding:3rem;border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(20px);max-width:1000px;margin:0 auto;">
             <div class="skill-grid">
-                <a href="https://youtube.com/playlist?list=PLu0W_9lII9agwh1XjRt242xIpHhPT2llg" target="_blank" rel="noopener noreferrer" class="skill-card">
-                    <span class="skill-icon">🐍</span>
-                    <span class="skill-name">Python</span>
-                    <span class="skill-desc">Start Learning</span>
-                </a>
-                <a href="https://youtube.com/playlist?list=PLxCzCOWd7aiF6yRNI5OHQsnUJQfl7Geqj" target="_blank" rel="noopener noreferrer" class="skill-card">
-                    <span class="skill-icon">⚡</span>
-                    <span class="skill-name">C++</span>
-                    <span class="skill-desc">Start Learning</span>
-                </a>
-                <a href="https://youtube.com/playlist?list=PLu0W_9lII9ahR1blWXxgSlL4y9iQBnLpR" target="_blank" rel="noopener noreferrer" class="skill-card">
-                    <span class="skill-icon">🟨</span>
-                    <span class="skill-name">JavaScript</span>
-                    <span class="skill-desc">Start Learning</span>
-                </a>
-                <a href="https://youtube.com/playlist?list=PL8p2I9GklV44fWXJGEsBvR_ylJClgdVAN" target="_blank" rel="noopener noreferrer" class="skill-card">
-                    <span class="skill-icon">🔷</span>
-                    <span class="skill-name">TypeScript</span>
-                    <span class="skill-desc">Start Learning</span>
-                </a>
-                <a href="https://youtu.be/yE6tIle64tU" target="_blank" rel="noopener noreferrer" class="skill-card">
-                    <span class="skill-icon">🗄️</span>
-                    <span class="skill-name">SQL</span>
-                    <span class="skill-desc">Start Learning</span>
-                </a>
-                <a href="https://youtu.be/zysUIv0-xak" target="_blank" rel="noopener noreferrer" class="skill-card">
-                    <span class="skill-icon">🌐</span>
-                    <span class="skill-name">HTML</span>
-                    <span class="skill-desc">Start Learning</span>
-                </a>
+                <a href="https://youtube.com/playlist?list=PLu0W_9lII9agwh1XjRt242xIpHhPT2llg" target="_blank" rel="noopener noreferrer" class="skill-card"><span class="skill-icon">🐍</span><span class="skill-name">Python</span><span class="skill-desc">Start Learning</span></a>
+                <a href="https://youtube.com/playlist?list=PLxCzCOWd7aiF6yRNI5OHQsnUJQfl7Geqj" target="_blank" rel="noopener noreferrer" class="skill-card"><span class="skill-icon">⚡</span><span class="skill-name">C++</span><span class="skill-desc">Start Learning</span></a>
+                <a href="https://youtube.com/playlist?list=PLu0W_9lII9ahR1blWXxgSlL4y9iQBnLpR" target="_blank" rel="noopener noreferrer" class="skill-card"><span class="skill-icon">🟨</span><span class="skill-name">JavaScript</span><span class="skill-desc">Start Learning</span></a>
+                <a href="https://youtube.com/playlist?list=PL8p2I9GklV44fWXJGEsBvR_ylJClgdVAN" target="_blank" rel="noopener noreferrer" class="skill-card"><span class="skill-icon">🔷</span><span class="skill-name">TypeScript</span><span class="skill-desc">Start Learning</span></a>
+                <a href="https://youtu.be/yE6tIle64tU" target="_blank" rel="noopener noreferrer" class="skill-card"><span class="skill-icon">🗄️</span><span class="skill-name">SQL</span><span class="skill-desc">Start Learning</span></a>
+                <a href="https://youtu.be/zysUIv0-xak" target="_blank" rel="noopener noreferrer" class="skill-card"><span class="skill-icon">🌐</span><span class="skill-name">HTML</span><span class="skill-desc">Start Learning</span></a>
             </div>
         </div>
     </section>
@@ -458,179 +582,46 @@ print(f'Welcome, {name}!')</textarea>
         </div>
         <div class="course-grid" id="coursesGrid">
             <div class="course-card" data-name="python">
-                <div class="course-image">
-                    <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600&h=400&fit=crop" alt="Python course">
-                    <div class="course-overlay">
-                        <button class="play-btn" onclick="openModal('https://www.youtube.com/embed/videoseries?list=PLu0W_9lII9agwh1XjRt242xIpHhPT2llg')">▶</button>
-                    </div>
-                </div>
-                <div class="course-content">
-                    <div class="course-meta">
-                        <span class="course-tag" style="background:rgba(6,182,212,0.15);color:#06b6d4;">Python</span>
-                        <span class="course-rating">⭐ 4.9</span>
-                    </div>
-                    <h3 class="course-title">Complete Python Mastery</h3>
-                    <p class="course-desc">Learn Python from basics to advanced.</p>
-                    <div class="course-footer">
-                        <div class="course-stats"><span>⏱ 20h</span><span>📹 50+</span></div>
-                        <a href="https://youtube.com/playlist?list=PLu0W_9lII9agwh1XjRt242xIpHhPT2llg" target="_blank" rel="noopener noreferrer" class="course-link">▶ Watch</a>
-                    </div>
-                    <a href="tutorials.html" class="tutorial-link">📖 Read Tutorials →</a>
-                </div>
+                <div class="course-image"><img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600&h=400&fit=crop" alt="Python course"><div class="course-overlay"><button class="play-btn" onclick="openModal('https://www.youtube.com/embed/videoseries?list=PLu0W_9lII9agwh1XjRt242xIpHhPT2llg')">▶</button></div></div>
+                <div class="course-content"><div class="course-meta"><span class="course-tag" style="background:rgba(6,182,212,0.15);color:#06b6d4;">Python</span><span class="course-rating">⭐ 4.9</span></div><h3 class="course-title">Complete Python Mastery</h3><p class="course-desc">Learn Python from basics to advanced.</p><div class="course-footer"><div class="course-stats"><span>⏱ 20h</span><span>📹 50+</span></div><a href="https://youtube.com/playlist?list=PLu0W_9lII9agwh1XjRt242xIpHhPT2llg" target="_blank" rel="noopener noreferrer" class="course-link">▶ Watch</a></div><a href="tutorials.html" class="tutorial-link">📖 Read Tutorials →</a></div>
             </div>
             <div class="course-card" data-name="c++">
-                <div class="course-image">
-                    <img src="https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=600&h=400&fit=crop" alt="C++ course">
-                    <div class="course-overlay">
-                        <button class="play-btn" onclick="openModal('https://www.youtube.com/embed/videoseries?list=PLxCzCOWd7aiF6yRNI5OHQsnUJQfl7Geqj')">▶</button>
-                    </div>
-                </div>
-                <div class="course-content">
-                    <div class="course-meta">
-                        <span class="course-tag" style="background:rgba(59,130,246,0.15);color:#3b82f6;">C++</span>
-                        <span class="course-rating">⭐ 4.8</span>
-                    </div>
-                    <h3 class="course-title">C++ Programming Guide</h3>
-                    <p class="course-desc">Master C++ programming.</p>
-                    <div class="course-footer">
-                        <div class="course-stats"><span>⏱ 18h</span><span>📹 40+</span></div>
-                        <a href="https://youtube.com/playlist?list=PLxCzCOWd7aiF6yRNI5OHQsnUJQfl7Geqj" target="_blank" rel="noopener noreferrer" class="course-link">▶ Watch</a>
-                    </div>
-                    <a href="tutorials.html" class="tutorial-link">📖 Read Tutorials →</a>
-                </div>
+                <div class="course-image"><img src="https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=600&h=400&fit=crop" alt="C++ course"><div class="course-overlay"><button class="play-btn" onclick="openModal('https://www.youtube.com/embed/videoseries?list=PLxCzCOWd7aiF6yRNI5OHQsnUJQfl7Geqj')">▶</button></div></div>
+                <div class="course-content"><div class="course-meta"><span class="course-tag" style="background:rgba(59,130,246,0.15);color:#3b82f6;">C++</span><span class="course-rating">⭐ 4.8</span></div><h3 class="course-title">C++ Programming Guide</h3><p class="course-desc">Master C++ programming.</p><div class="course-footer"><div class="course-stats"><span>⏱ 18h</span><span>📹 40+</span></div><a href="https://youtube.com/playlist?list=PLxCzCOWd7aiF6yRNI5OHQsnUJQfl7Geqj" target="_blank" rel="noopener noreferrer" class="course-link">▶ Watch</a></div><a href="tutorials.html" class="tutorial-link">📖 Read Tutorials →</a></div>
             </div>
             <div class="course-card" data-name="javascript">
-                <div class="course-image">
-                    <img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=600&h=400&fit=crop" alt="JavaScript course">
-                    <div class="course-overlay">
-                        <button class="play-btn" onclick="openModal('https://www.youtube.com/embed/videoseries?list=PLu0W_9lII9ahR1blWXxgSlL4y9iQBnLpR')">▶</button>
-                    </div>
-                </div>
-                <div class="course-content">
-                    <div class="course-meta">
-                        <span class="course-tag" style="background:rgba(234,179,8,0.15);color:#eab308;">JavaScript</span>
-                        <span class="course-rating">⭐ 4.9</span>
-                    </div>
-                    <h3 class="course-title">JavaScript Complete</h3>
-                    <p class="course-desc">Learn JS from scratch.</p>
-                    <div class="course-footer">
-                        <div class="course-stats"><span>⏱ 25h</span><span>📹 60+</span></div>
-                        <a href="https://youtube.com/playlist?list=PLu0W_9lII9ahR1blWXxgSlL4y9iQBnLpR" target="_blank" rel="noopener noreferrer" class="course-link">▶ Watch</a>
-                    </div>
-                    <a href="tutorials.html" class="tutorial-link">📖 Read Tutorials →</a>
-                </div>
+                <div class="course-image"><img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=600&h=400&fit=crop" alt="JavaScript course"><div class="course-overlay"><button class="play-btn" onclick="openModal('https://www.youtube.com/embed/videoseries?list=PLu0W_9lII9ahR1blWXxgSlL4y9iQBnLpR')">▶</button></div></div>
+                <div class="course-content"><div class="course-meta"><span class="course-tag" style="background:rgba(234,179,8,0.15);color:#eab308;">JavaScript</span><span class="course-rating">⭐ 4.9</span></div><h3 class="course-title">JavaScript Complete</h3><p class="course-desc">Learn JS from scratch.</p><div class="course-footer"><div class="course-stats"><span>⏱ 25h</span><span>📹 60+</span></div><a href="https://youtube.com/playlist?list=PLu0W_9lII9ahR1blWXxgSlL4y9iQBnLpR" target="_blank" rel="noopener noreferrer" class="course-link">▶ Watch</a></div><a href="tutorials.html" class="tutorial-link">📖 Read Tutorials →</a></div>
             </div>
             <div class="course-card" data-name="typescript">
-                <div class="course-image">
-                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=400&fit=crop" alt="TypeScript course">
-                    <div class="course-overlay">
-                        <button class="play-btn" onclick="openModal('https://www.youtube.com/embed/videoseries?list=PL8p2I9GklV44fWXJGEsBvR_ylJClgdVAN')">▶</button>
-                    </div>
-                </div>
-                <div class="course-content">
-                    <div class="course-meta">
-                        <span class="course-tag" style="background:rgba(99,102,241,0.15);color:#6366f1;">TypeScript</span>
-                        <span class="course-rating">⭐ 4.7</span>
-                    </div>
-                    <h3 class="course-title">TypeScript Masterclass</h3>
-                    <p class="course-desc">Learn TypeScript with React.</p>
-                    <div class="course-footer">
-                        <div class="course-stats"><span>⏱ 15h</span><span>📹 35+</span></div>
-                        <a href="https://youtube.com/playlist?list=PL8p2I9GklV44fWXJGEsBvR_ylJClgdVAN" target="_blank" rel="noopener noreferrer" class="course-link">▶ Watch</a>
-                    </div>
-                    <a href="tutorials.html" class="tutorial-link">📖 Read Tutorials →</a>
-                </div>
+                <div class="course-image"><img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=400&fit=crop" alt="TypeScript course"><div class="course-overlay"><button class="play-btn" onclick="openModal('https://www.youtube.com/embed/videoseries?list=PL8p2I9GklV44fWXJGEsBvR_ylJClgdVAN')">▶</button></div></div>
+                <div class="course-content"><div class="course-meta"><span class="course-tag" style="background:rgba(99,102,241,0.15);color:#6366f1;">TypeScript</span><span class="course-rating">⭐ 4.7</span></div><h3 class="course-title">TypeScript Masterclass</h3><p class="course-desc">Learn TypeScript with React.</p><div class="course-footer"><div class="course-stats"><span>⏱ 15h</span><span>📹 35+</span></div><a href="https://youtube.com/playlist?list=PL8p2I9GklV44fWXJGEsBvR_ylJClgdVAN" target="_blank" rel="noopener noreferrer" class="course-link">▶ Watch</a></div><a href="tutorials.html" class="tutorial-link">📖 Read Tutorials →</a></div>
             </div>
             <div class="course-card" data-name="sql">
-                <div class="course-image">
-                    <img src="https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=600&h=400&fit=crop" alt="SQL course">
-                    <div class="course-overlay">
-                        <button class="play-btn" onclick="openModal('https://www.youtube.com/embed/yE6tIle64tU')">▶</button>
-                    </div>
-                </div>
-                <div class="course-content">
-                    <div class="course-meta">
-                        <span class="course-tag" style="background:rgba(16,185,129,0.15);color:#10b981;">SQL</span>
-                        <span class="course-rating">⭐ 4.8</span>
-                    </div>
-                    <h3 class="course-title">SQL Database Mastery</h3>
-                    <p class="course-desc">Learn SQL from scratch.</p>
-                    <div class="course-footer">
-                        <div class="course-stats"><span>⏱ 12h</span><span>📹 25+</span></div>
-                        <a href="https://youtu.be/yE6tIle64tU" target="_blank" rel="noopener noreferrer" class="course-link">▶ Watch</a>
-                    </div>
-                    <a href="tutorials.html" class="tutorial-link">📖 Read Tutorials →</a>
-                </div>
+                <div class="course-image"><img src="https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=600&h=400&fit=crop" alt="SQL course"><div class="course-overlay"><button class="play-btn" onclick="openModal('https://www.youtube.com/embed/yE6tIle64tU')">▶</button></div></div>
+                <div class="course-content"><div class="course-meta"><span class="course-tag" style="background:rgba(16,185,129,0.15);color:#10b981;">SQL</span><span class="course-rating">⭐ 4.8</span></div><h3 class="course-title">SQL Database Mastery</h3><p class="course-desc">Learn SQL from scratch.</p><div class="course-footer"><div class="course-stats"><span>⏱ 12h</span><span>📹 25+</span></div><a href="https://youtu.be/yE6tIle64tU" target="_blank" rel="noopener noreferrer" class="course-link">▶ Watch</a></div><a href="tutorials.html" class="tutorial-link">📖 Read Tutorials →</a></div>
             </div>
             <div class="course-card" data-name="html">
-                <div class="course-image">
-                    <img src="https://images.unsplash.com/photo-1621839673705-6617adf9e890?w=600&h=400&fit=crop" alt="HTML course">
-                    <div class="course-overlay">
-                        <button class="play-btn" onclick="openModal('https://www.youtube.com/embed/zysUIv0-xak')">▶</button>
-                    </div>
-                </div>
-                <div class="course-content">
-                    <div class="course-meta">
-                        <span class="course-tag" style="background:rgba(249,115,22,0.15);color:#f97316;">HTML</span>
-                        <span class="course-rating">⭐ 4.9</span>
-                    </div>
-                    <h3 class="course-title">HTML Complete Guide</h3>
-                    <p class="course-desc">Learn HTML from scratch.</p>
-                    <div class="course-footer">
-                        <div class="course-stats"><span>⏱ 10h</span><span>📹 20+</span></div>
-                        <a href="https://youtu.be/zysUIv0-xak" target="_blank" rel="noopener noreferrer" class="course-link">▶ Watch</a>
-                    </div>
-                    <a href="tutorials.html" class="tutorial-link">📖 Read Tutorials →</a>
-                </div>
+                <div class="course-image"><img src="https://images.unsplash.com/photo-1621839673705-6617adf9e890?w=600&h=400&fit=crop" alt="HTML course"><div class="course-overlay"><button class="play-btn" onclick="openModal('https://www.youtube.com/embed/zysUIv0-xak')">▶</button></div></div>
+                <div class="course-content"><div class="course-meta"><span class="course-tag" style="background:rgba(249,115,22,0.15);color:#f97316;">HTML</span><span class="course-rating">⭐ 4.9</span></div><h3 class="course-title">HTML Complete Guide</h3><p class="course-desc">Learn HTML from scratch.</p><div class="course-footer"><div class="course-stats"><span>⏱ 10h</span><span>📹 20+</span></div><a href="https://youtu.be/zysUIv0-xak" target="_blank" rel="noopener noreferrer" class="course-link">▶ Watch</a></div><a href="tutorials.html" class="tutorial-link">📖 Read Tutorials →</a></div>
             </div>
         </div>
     </section>
 
     <section id="personal-info" class="animate-on-scroll">
-        <div class="section-header">
-            <div class="section-tag">Personal Information</div>
-            <h2 class="section-title">About Personal Information of Owner</h2>
-            <p class="section-subtitle">Get to know more about me</p>
-        </div>
+        <div class="section-header"><div class="section-tag">Personal Information</div><h2 class="section-title">About Personal Information of Owner</h2><p class="section-subtitle">Get to know more about me</p></div>
         <div style="background:var(--card-bg);border-radius:24px;padding:3rem;border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(20px);max-width:800px;margin:0 auto;">
-            <div style="text-align:center;margin-bottom:2rem;">
-                <h3 style="font-size:1.8rem;font-weight:700;margin-bottom:0.5rem;background:linear-gradient(135deg,var(--primary),var(--secondary));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">👤 Akarshit Raj</h3>
-                <p style="color:var(--gray);">Programming Educator & Student</p>
-            </div>
+            <div style="text-align:center;margin-bottom:2rem;"><h3 style="font-size:1.8rem;font-weight:700;margin-bottom:0.5rem;background:linear-gradient(135deg,var(--primary),var(--secondary));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">👤 Akarshit Raj</h3><p style="color:var(--gray);">Programming Educator & Student</p></div>
             <div style="display:grid;gap:1rem;">
-                <div style="display:flex;align-items:center;gap:1.25rem;padding:1.25rem;background:rgba(255,255,255,0.05);border-radius:16px;">
-                    <div style="width:50px;height:50px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--primary),var(--secondary));border-radius:14px;font-size:1.5rem;flex-shrink:0;">🏫</div>
-                    <div style="flex:1;">
-                        <div style="font-size:0.8rem;color:var(--gray);text-transform:uppercase;letter-spacing:1px;">School / Institution</div>
-                        <div style="font-size:1.1rem;font-weight:600;">PM SHRI Jawahar Navodaya Vidyalaya, Khairabad, Sitapur</div>
-                    </div>
-                </div>
-                <div style="display:flex;align-items:center;gap:1.25rem;padding:1.25rem;background:rgba(255,255,255,0.05);border-radius:16px;">
-                    <div style="width:50px;height:50px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--primary),var(--secondary));border-radius:14px;font-size:1.5rem;flex-shrink:0;">📧</div>
-                    <div style="flex:1;">
-                        <div style="font-size:0.8rem;color:var(--gray);text-transform:uppercase;letter-spacing:1px;">Email Address</div>
-                        <div style="font-size:1.1rem;font-weight:600;">akarshitraj43@gmail.com</div>
-                    </div>
-                    <a href="mailto:akarshitraj43@gmail.com" style="padding:0.5rem 1rem;background:var(--primary);color:white;border:none;border-radius:8px;cursor:pointer;font-weight:600;font-size:0.85rem;text-decoration:none;display:inline-flex;align-items:center;">Email</a>
-                </div>
-                <div style="display:flex;align-items:center;gap:1.25rem;padding:1.25rem;background:rgba(255,255,255,0.05);border-radius:16px;">
-                    <div style="width:50px;height:50px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--primary),var(--secondary));border-radius:14px;font-size:1.5rem;flex-shrink:0;">📸</div>
-                    <div style="flex:1;">
-                        <div style="font-size:0.8rem;color:var(--gray);text-transform:uppercase;letter-spacing:1px;">Instagram ID</div>
-                        <div style="font-size:1.1rem;font-weight:600;">@lg_444_x</div>
-                    </div>
-                    <a href="https://instagram.com/lg_444_x" target="_blank" rel="noopener noreferrer" style="padding:0.5rem 1rem;background:var(--primary);color:white;border:none;border-radius:8px;cursor:pointer;font-weight:600;font-size:0.85rem;text-decoration:none;display:inline-flex;align-items:center;">Follow</a>
-                </div>
+                <div style="display:flex;align-items:center;gap:1.25rem;padding:1.25rem;background:rgba(255,255,255,0.05);border-radius:16px;"><div style="width:50px;height:50px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--primary),var(--secondary));border-radius:14px;font-size:1.5rem;flex-shrink:0;">🏫</div><div style="flex:1;"><div style="font-size:0.8rem;color:var(--gray);text-transform:uppercase;letter-spacing:1px;">School / Institution</div><div style="font-size:1.1rem;font-weight:600;">PM SHRI Jawahar Navodaya Vidyalaya, Khairabad, Sitapur</div></div></div>
+                <div style="display:flex;align-items:center;gap:1.25rem;padding:1.25rem;background:rgba(255,255,255,0.05);border-radius:16px;"><div style="width:50px;height:50px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--primary),var(--secondary));border-radius:14px;font-size:1.5rem;flex-shrink:0;">📧</div><div style="flex:1;"><div style="font-size:0.8rem;color:var(--gray);text-transform:uppercase;letter-spacing:1px;">Email Address</div><div style="font-size:1.1rem;font-weight:600;">akarshitraj43@gmail.com</div></div><a href="mailto:akarshitraj43@gmail.com" style="padding:0.5rem 1rem;background:var(--primary);color:white;border:none;border-radius:8px;cursor:pointer;font-weight:600;font-size:0.85rem;text-decoration:none;display:inline-flex;align-items:center;">Email</a></div>
+                <div style="display:flex;align-items:center;gap:1.25rem;padding:1.25rem;background:rgba(255,255,255,0.05);border-radius:16px;"><div style="width:50px;height:50px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--primary),var(--secondary));border-radius:14px;font-size:1.5rem;flex-shrink:0;">📸</div><div style="flex:1;"><div style="font-size:0.8rem;color:var(--gray);text-transform:uppercase;letter-spacing:1px;">Instagram ID</div><div style="font-size:1.1rem;font-weight:600;">@lg_444_x</div></div><a href="https://instagram.com/lg_444_x" target="_blank" rel="noopener noreferrer" style="padding:0.5rem 1rem;background:var(--primary);color:white;border:none;border-radius:8px;cursor:pointer;font-weight:600;font-size:0.85rem;text-decoration:none;display:inline-flex;align-items:center;">Follow</a></div>
             </div>
         </div>
     </section>
 
     <section id="contact" class="animate-on-scroll" style="text-align:center;">
-        <div class="section-header">
-            <div class="section-tag">Get in Touch</div>
-            <h2 class="section-title">Let's Connect</h2>
-            <p class="section-subtitle">Have questions? Want to collaborate? Reach out!</p>
-        </div>
+        <div class="section-header"><div class="section-tag">Get in Touch</div><h2 class="section-title">Let's Connect</h2><p class="section-subtitle">Have questions? Want to collaborate? Reach out!</p></div>
         <div style="background:var(--card-bg);border-radius:24px;padding:3rem;border:1px solid rgba(255,255,255,0.08);max-width:800px;margin:0 auto;">
             <h3 style="font-size:1.5rem;margin-bottom:0.5rem;">📬 Contact Information</h3>
             <p style="color:var(--gray);margin-bottom:2rem;">Feel free to reach out</p>
@@ -647,13 +638,8 @@ print(f'Welcome, {name}!')</textarea>
         </div>
     </section>
 
-    <!-- AI CODE GENERATOR -->
     <section id="ai-code" class="animate-on-scroll">
-        <div class="section-header">
-            <div class="section-tag">🤖 AI Code Generator</div>
-            <h2 class="section-title">Generate Code with AI</h2>
-            <p class="section-subtitle">Bas apna idea likhein, AI aapke liye complete code generate karega!</p>
-        </div>
+        <div class="section-header"><div class="section-tag">🤖 AI Code Generator</div><h2 class="section-title">Generate Code with AI</h2><p class="section-subtitle">Bas apna idea likhein, AI aapke liye complete code generate karega!</p></div>
         <div style="background:var(--card-bg);border-radius:24px;padding:3rem;border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(20px);max-width:800px;margin:0 auto;">
             <input type="text" class="feature-input" id="codeGenPrompt" placeholder="e.g., Mujhe calculator app bana ke do HTML/CSS/JS mein...">
             <button class="feature-btn" onclick="generateAICode()">⚡ Generate Code</button>
@@ -661,17 +647,16 @@ print(f'Welcome, {name}!')</textarea>
         </div>
     </section>
 
-    <!-- CERTIFICATE GENERATOR -->
     <section id="certificate" class="animate-on-scroll">
-        <div class="section-header">
-            <div class="section-tag">🏆 Certificate</div>
-            <h2 class="section-title">Generate Your Certificate</h2>
-            <p class="section-subtitle">Course complete karne ka certificate generate karein!</p>
-        </div>
+        <div class="section-header"><div class="section-tag">🏆 Certificate</div><h2 class="section-title">Generate Your Certificate</h2><p class="section-subtitle">Complete 100 quiz levels in any language + Login required!</p></div>
         <div style="background:var(--card-bg);border-radius:24px;padding:3rem;border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(20px);max-width:800px;margin:0 auto;">
+            <div id="certLockMessage" style="text-align:center;padding:1.5rem;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);border-radius:16px;margin-bottom:1rem;display:none;">
+                <p style="color:#fca5a5;">🔒 Certificate ke liye <strong>100 quiz levels</strong> complete karein kisi bhi ek language mein, aur <strong>login</strong> karein!</p>
+                <button class="feature-btn" onclick="goToSection('quiz-section')" style="margin-top:0.5rem;">Go to Quizzes 🎯</button>
+            </div>
             <input type="text" class="feature-input" id="certName" placeholder="Apna naam likhein...">
             <input type="text" class="feature-input" id="certCourse" placeholder="Course name (e.g., Complete Python Mastery)" value="Programming Course">
-            <button class="feature-btn success" onclick="generateCertificate()">🏆 Generate Certificate</button>
+            <button class="feature-btn success" onclick="generateCertificate()" id="certGenBtn">🏆 Generate Certificate</button>
             <button class="feature-btn" onclick="downloadCertificate()" id="downloadCertBtn" style="display:none;">📥 Download Certificate</button>
             <div class="cert-preview" id="certPreview">
                 <div class="cert-seal">🏆</div>
@@ -687,16 +672,17 @@ print(f'Welcome, {name}!')</textarea>
         </div>
     </section>
 
-    <!-- LOGIN / SIGNUP -->
     <section id="login" class="animate-on-scroll">
-        <div class="section-header">
-            <div class="section-tag">🔐 Login</div>
-            <h2 class="section-title">Student Login</h2>
-            <p class="section-subtitle">Apna progress track karein aur certificates save karein!</p>
-        </div>
+        <div class="section-header"><div class="section-tag">🔐 Login</div><h2 class="section-title">Student Login</h2><p class="section-subtitle">Apna progress track karein aur certificates save karein!</p></div>
         <div style="background:var(--card-bg);border-radius:24px;padding:3rem;border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(20px);max-width:500px;margin:0 auto;">
             <div class="login-status" id="loginStatus">✅ Logged in as <span id="loggedInEmail"></span></div>
             <div id="loginForm">
+                <div class="social-login">
+                    <button class="social-btn" onclick="socialLogin('google')">🔴 Google</button>
+                    <button class="social-btn" onclick="socialLogin('apple')">⚫ Apple</button>
+                    <button class="social-btn" onclick="socialLogin('github')">⚫ GitHub</button>
+                </div>
+                <div class="auth-divider">OR</div>
                 <input type="email" class="feature-input" id="loginEmail" placeholder="Email address...">
                 <input type="password" class="feature-input" id="loginPassword" placeholder="Password...">
                 <button class="feature-btn" onclick="signup()">📝 Sign Up</button>
@@ -709,13 +695,8 @@ print(f'Welcome, {name}!')</textarea>
         </div>
     </section>
 
-    <!-- PREMIUM -->
     <section id="premium" class="animate-on-scroll">
-        <div class="section-header">
-            <div class="section-tag">💎 Premium</div>
-            <h2 class="section-title">Premium Membership</h2>
-            <p class="section-subtitle">Advanced features unlock karein aur coding master ban jayein!</p>
-        </div>
+        <div class="section-header"><div class="section-tag">💎 Premium</div><h2 class="section-title">Premium Membership</h2><p class="section-subtitle">Advanced features unlock karein aur coding master ban jayein!</p></div>
         <div style="background:var(--card-bg);border-radius:24px;padding:3rem;border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(20px);max-width:500px;margin:0 auto;text-align:center;">
             <div class="premium-badge">⭐ MOST POPULAR</div>
             <h3 style="font-size:1.5rem;font-weight:700;margin-bottom:0.5rem;">🚀 Pro Coder Plan</h3>
@@ -754,7 +735,31 @@ print(f'Welcome, {name}!')</textarea>
 
     <div class="notification" id="notification">Email copied to clipboard!</div>
 
-    <!-- API Key Input Modal -->
+    <div class="auth-gate-overlay" id="authGateOverlay">
+        <h3>🔐 Login Required</h3>
+        <p>Is feature ko use karne ke liye aapko login karna hoga. Login karein aur coding journey continue karein!</p>
+        <button class="feature-btn" onclick="closeAuthGate();openAuthModal();" style="max-width:250px;">🔐 Login / Register</button>
+        <button class="feature-btn secondary" onclick="closeAuthGate()" style="max-width:250px;background:transparent;border:1px solid rgba(255,255,255,0.2);">Cancel</button>
+    </div>
+
+    <div class="auth-modal" id="authModal">
+        <div class="auth-box">
+            <button class="auth-close" onclick="closeAuthModal()">×</button>
+            <h3 class="auth-title">🔐 Welcome Back!</h3>
+            <p class="auth-subtitle">Login karein aur apna progress track karein</p>
+            <div class="social-login">
+                <button class="social-btn" onclick="socialLogin('google')">🔴 Google</button>
+                <button class="social-btn" onclick="socialLogin('apple')">⚫ Apple</button>
+                <button class="social-btn" onclick="socialLogin('github')">⚫ GitHub</button>
+            </div>
+            <div class="auth-divider">OR</div>
+            <input type="email" class="feature-input" id="authEmail" placeholder="Email address...">
+            <input type="password" class="feature-input" id="authPassword" placeholder="Password...">
+            <button class="feature-btn" onclick="authSignup()">📝 Sign Up</button>
+            <button class="feature-btn success" onclick="authLogin()">🔐 Login</button>
+        </div>
+    </div>
+
     <div id="apiKeyModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:4000;align-items:center;justify-content:center;padding:2rem;">
         <div style="background:var(--card-bg);border-radius:24px;padding:2.5rem;max-width:450px;width:100%;border:1px solid rgba(255,255,255,0.1);text-align:center;">
             <div style="font-size:3rem;margin-bottom:1rem;">🔐</div>
@@ -769,14 +774,10 @@ print(f'Welcome, {name}!')</textarea>
         </div>
     </div>
 
-    <!-- Web Development AI Chat -->
     <div class="ai-chat-modal" id="webAIChat">
         <div class="ai-chat-header">
             <div class="ai-avatar">🌐</div>
-            <div>
-                <div class="ai-title">Web Development AI</div>
-                <div class="ai-status">Online</div>
-            </div>
+            <div><div class="ai-title">Web Development AI</div><div class="ai-status">Online</div></div>
             <button class="ai-close-btn" onclick="closeAIChat()">×</button>
         </div>
         <div class="ai-chat-body" id="webChatBody">
@@ -811,14 +812,10 @@ print(f'Welcome, {name}!')</textarea>
         </div>
     </div>
 
-    <!-- App Development AI Chat -->
     <div class="ai-chat-modal" id="appAIChat">
         <div class="ai-chat-header">
             <div class="ai-avatar" style="border-color:var(--app-dev)">📱</div>
-            <div>
-                <div class="ai-title">App Development AI</div>
-                <div class="ai-status">Online</div>
-            </div>
+            <div><div class="ai-title">App Development AI</div><div class="ai-status">Online</div></div>
             <button class="ai-close-btn" onclick="closeAIChat()">×</button>
         </div>
         <div class="ai-chat-body" id="appChatBody">
@@ -852,42 +849,234 @@ print(f'Welcome, {name}!')</textarea>
             </div>
         </div>
     </div>
-
-    <script>
-        // ====== CONFIG ======
-        // API Key is NOT hardcoded for security
-        // User enters their own key once, saved in browser
+        <script>
+        const VERCEL_API_URL = 'https://chatbot-api-gamma-ochre.vercel.app/api/chat';
         let GEMINI_API_KEY = localStorage.getItem('gemini_api_key') || '';
         const GEMINI_BASE_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=';
-
-        // ====== SYSTEM PROMPTS ======
-        const SYSTEM_PROMPTS = {
-            web: `You are an expert Web Development AI Assistant. You help users learn web development and write code.
-
-Rules:
-1. Always give step-by-step explanations in Hindi + English mix (Hinglish)
-2. When user asks for code, provide complete, working HTML/CSS/JS code
-3. Format code in clean blocks
-4. Be encouraging and friendly
-5. If user says "bana ke do" or "code do", write full code immediately
-6. Explain concepts simply for beginners
-7. Always give practical examples
-
-Topics you know: HTML, CSS, JavaScript, React, Bootstrap, Tailwind, GitHub Pages, Hosting, Domain, Responsive Design, Web Projects`,
-
-            app: `You are an expert App Development AI Assistant. You help users learn Android/iOS app development and write code.
-
-Rules:
-1. Always give step-by-step explanations in Hindi + English mix (Hinglish)
-2. When user asks for code, provide complete, working Kotlin/Flutter/Dart code
-3. Format code in clean blocks
-4. Be encouraging and friendly
-5. If user says "bana ke do" or "code do", write full code immediately
-6. Explain concepts simply for beginners
-7. Always give practical examples
-
-Topics you know: Android, Kotlin, Flutter, Dart, React Native, Play Store, APK, UI Design, Material Design, App Projects`
+        const PISTON_API = 'https://emkc.org/api/v2/piston/execute';
+        const pistonLangMap = {
+            python: { language: 'python', version: '3.10.0' },
+            cpp: { language: 'cpp', version: '10.2.0' },
+            javascript: { language: 'javascript', version: '18.15.0' },
+            java: { language: 'java', version: '15.0.2' },
+            csharp: { language: 'csharp', version: '6.12.0' },
+            html: { language: 'html', version: 'latest' },
+            php: { language: 'php', version: '8.2.0' },
+            kotlin: { language: 'kotlin', version: '1.8.20' },
+            swift: { language: 'swift', version: '5.3.3' },
+            go: { language: 'go', version: '1.18.0' },
+            rust: { language: 'rust', version: '1.68.2' },
+            sql: { language: 'sql', version: 'latest' }
         };
+        const SYSTEM_PROMPTS = {
+            web: `You are an expert Web Development AI Assistant. You help users learn web development and write code.\n\nRules:\n1. Always give step-by-step explanations in Hindi + English mix (Hinglish)\n2. When user asks for code, provide complete, working HTML/CSS/JS code\n3. Format code in clean blocks\n4. Be encouraging and friendly\n5. If user says "bana ke do" or "code do", write full code immediately\n6. Explain concepts simply for beginners\n7. Always give practical examples\n\nTopics you know: HTML, CSS, JavaScript, React, Bootstrap, Tailwind, GitHub Pages, Hosting, Domain, Responsive Design, Web Projects`,
+            app: `You are an expert App Development AI Assistant. You help users learn Android/iOS app development and write code.\n\nRules:\n1. Always give step-by-step explanations in Hindi + English mix (Hinglish)\n2. When user asks for code, provide complete, working Kotlin/Flutter/Dart code\n3. Format code in clean blocks\n4. Be encouraging and friendly\n5. If user says "bana ke do" or "code do", write full code immediately\n6. Explain concepts simply for beginners\n7. Always give practical examples\n\nTopics you know: Android, Kotlin, Flutter, Dart, React Native, Play Store, APK, UI Design, Material Design, App Projects`
+        };
+
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('active');
+            document.getElementById('sidebarOverlay').classList.toggle('active');
+        }
+        function goToSection(id) {
+            toggleSidebar();
+            const el = document.getElementById(id);
+            if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+        }
+        function isLoggedIn() {
+            return localStorage.getItem('akr_logged_in') === 'true';
+        }
+        function getUserEmail() {
+            return localStorage.getItem('akr_user_email') || '';
+        }
+        function openAuthModal() {
+            document.getElementById('authModal').classList.add('active');
+        }
+        function closeAuthModal() {
+            document.getElementById('authModal').classList.remove('active');
+        }
+        function openAuthGate() {
+            document.getElementById('authGateOverlay').classList.add('active');
+        }
+        function closeAuthGate() {
+            document.getElementById('authGateOverlay').classList.remove('active');
+        }
+        function openProtectedFeature(feature) {
+            if(!isLoggedIn()) {
+                openAuthGate();
+                return;
+            }
+            if(feature === 'aiweb') openAIChat('web');
+            else if(feature === 'aiapp') openAIChat('app');
+            else if(feature === 'compiler') document.getElementById('code-practice').scrollIntoView({behavior:'smooth'});
+            else if(feature === 'quiz') document.getElementById('quiz-section').scrollIntoView({behavior:'smooth'});
+            else if(feature === 'certificate') document.getElementById('certificate').scrollIntoView({behavior:'smooth'});
+        }
+        function socialLogin(provider) {
+            const mockEmails = { google: 'user@gmail.com', apple: 'user@icloud.com', github: 'user@github.com' };
+            const email = mockEmails[provider] || 'user@example.com';
+            localStorage.setItem('akr_user_email', email);
+            localStorage.setItem('akr_logged_in', 'true');
+            updateLoginUI();
+            closeAuthModal();
+            closeAuthGate();
+            showNotification('✅ Login Successful with ' + provider + '!');
+        }
+        function authSignup() {
+            const email = document.getElementById('authEmail').value.trim();
+            const password = document.getElementById('authPassword').value;
+            if(!email || !password) { alert('❌ Email aur password dono daalein!'); return; }
+            if(!email.includes('@')) { alert('❌ Valid email daalein!'); return; }
+            localStorage.setItem('akr_user_email', email);
+            localStorage.setItem('akr_user_pass', password);
+            alert('✅ Signup Successful! Ab login karein.');
+        }
+        function authLogin() {
+            const email = document.getElementById('authEmail').value.trim();
+            const password = document.getElementById('authPassword').value;
+            const savedEmail = localStorage.getItem('akr_user_email');
+            const savedPass = localStorage.getItem('akr_user_pass');
+            if(!email || !password) { alert('❌ Email aur password dono daalein!'); return; }
+            if(email === savedEmail && password === savedPass) {
+                localStorage.setItem('akr_logged_in', 'true');
+                updateLoginUI();
+                closeAuthModal();
+                closeAuthGate();
+                showNotification('✅ Login Successful!');
+            } else {
+                alert('❌ Email ya password galat hai!');
+            }
+        }
+        function signup(){
+            const email = document.getElementById('loginEmail').value.trim();
+            const password = document.getElementById('loginPassword').value;
+            if(!email || !password){ alert('❌ Email aur password dono daalein!'); return; }
+            if(!email.includes('@')){ alert('❌ Valid email daalein!'); return; }
+            localStorage.setItem('akr_user_email', email);
+            localStorage.setItem('akr_user_pass', password);
+            alert('✅ Signup Successful! Ab login karein.');
+        }
+        function login(){
+            const email = document.getElementById('loginEmail').value.trim();
+            const password = document.getElementById('loginPassword').value;
+            const savedEmail = localStorage.getItem('akr_user_email');
+            const savedPass = localStorage.getItem('akr_user_pass');
+            if(!email || !password){ alert('❌ Email aur password dono daalein!'); return; }
+            if(email === savedEmail && password === savedPass){
+                localStorage.setItem('akr_logged_in', 'true');
+                updateLoginUI();
+                showNotification('✅ Login Successful!');
+            } else {
+                alert('❌ Email ya password galat hai!');
+            }
+        }
+        function logout(){
+            localStorage.removeItem('akr_logged_in');
+            updateLoginUI();
+            showNotification('🚪 Logged out successfully!');
+        }
+        function updateLoginUI(){
+            const loggedIn = isLoggedIn();
+            const email = getUserEmail();
+            if(loggedIn){
+                document.getElementById('loginForm').style.display = 'none';
+                document.getElementById('logoutForm').style.display = 'block';
+                document.getElementById('loginStatus').classList.add('active');
+                document.getElementById('loggedInEmail').textContent = email;
+            } else {
+                document.getElementById('loginForm').style.display = 'block';
+                document.getElementById('logoutForm').style.display = 'none';
+                document.getElementById('loginStatus').classList.remove('active');
+            }
+            updateQuizProgressDisplays();
+            updateCertificateLock();
+        }
+
+        function saveCodeFile() {
+            const code = document.getElementById('codeInput').value;
+            const lang = currentLang || 'python';
+            const extMap = { python: 'py', cpp: 'cpp', javascript: 'js', java: 'java', csharp: 'cs', html: 'html', sql: 'sql', php: 'php', kotlin: 'kt', swift: 'swift', go: 'go', rust: 'rs' };
+            const ext = extMap[lang] || 'txt';
+            const blob = new Blob([code], { type: 'text/plain' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'code.' + ext;
+            a.click();
+            URL.revokeObjectURL(a.href);
+            showNotification('💾 File saved!');
+        }
+        function loadCodeFile(input) {
+            const file = input.files[0];
+            if(!file) return;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('codeInput').value = e.target.result;
+                showNotification('📂 File loaded: ' + file.name);
+            };
+            reader.readAsText(file);
+            input.value = '';
+        }
+        function copyCode() {
+            const code = document.getElementById('codeInput');
+            code.select();
+            document.execCommand('copy');
+            showNotification('📋 Code copied!');
+        }
+        function clearCode() {
+            document.getElementById('codeInput').value = '';
+            document.getElementById('codeOutput').innerHTML = '<span style="color:var(--gray);">Code cleared. Start fresh!</span>';
+            showNotification('🗑️ Code cleared!');
+        }
+
+        let currentLang = 'python';
+        async function runCodeReal() {
+            if(!isLoggedIn()) {
+                openAuthGate();
+                return;
+            }
+            const o = document.getElementById('codeOutput');
+            const b = document.getElementById('runBtn');
+            const c = document.getElementById('codeInput').value;
+            const langData = pistonLangMap[currentLang];
+            if(!langData) {
+                o.innerHTML = '<span style="color:var(--error);">❌ Language not supported for execution yet.</span>';
+                return;
+            }
+            b.disabled = true;
+            b.innerHTML = '<span>⏳</span><span>Running...</span>';
+            o.innerHTML = '<span style="color:var(--accent);">⏳ Running your code on real server...</span>';
+            try {
+                const response = await fetch(PISTON_API, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        language: langData.language,
+                        version: langData.version,
+                        files: [{ content: c }]
+                    })
+                });
+                const data = await response.json();
+                if(data.run) {
+                    let output = data.run.output || '';
+                    if(data.run.stderr) output += '\n\n[Error]\n' + data.run.stderr;
+                    if(!output.trim()) output = '✅ Code executed successfully (no output)';
+                    o.innerHTML = '<pre style="margin:0;color:#d4d4d4;white-space:pre-wrap;">' + escapeHtml(output) + '</pre>';
+                } else if(data.compile && data.compile.stderr) {
+                    o.innerHTML = '<pre style="margin:0;color:var(--error);">[Compilation Error]\n' + escapeHtml(data.compile.stderr) + '</pre>';
+                } else {
+                    o.innerHTML = '<span style="color:var(--error);">❌ Error: ' + escapeHtml(JSON.stringify(data)) + '</span>';
+                }
+            } catch(error) {
+                o.innerHTML = '<span style="color:var(--error);">❌ Network Error: ' + escapeHtml(error.message) + '<br><br>Internet connection check karein ya baad mein try karein.</span>';
+            } finally {
+                b.disabled = false;
+                b.innerHTML = '<span>▶️</span><span>Run Code</span>';
+            }
+        }
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
 
         function toggleMenu(){document.getElementById('navLinks').classList.toggle('active')}
         document.querySelectorAll('.nav-links a').forEach(link=>{link.addEventListener('click',()=>{document.getElementById('navLinks').classList.remove('active')})})
@@ -908,33 +1097,7 @@ Topics you know: Android, Kotlin, Flutter, Dart, React Native, Play Store, APK, 
             rust:`// Write your Rust code here...\nfn main() {\n    println!("Hello, World!");\n    let name = "Akarshit";\n    println!("Welcome, {}!", name);\n}`
         }
         
-        function selectLang(btn,lang){document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.getElementById('codeInput').value=codeTemplates[lang]||codeTemplates['python']}
-        
-        function runCode(){
-            const o=document.getElementById('codeOutput'),
-            b=document.getElementById('runBtn'),
-            c=document.getElementById('codeInput').value.trim();
-            b.disabled=true;
-            b.innerHTML='<span>⏳</span><span>Running...</span>';
-            o.innerHTML='<span style="color:var(--accent);">⏳ Running your code...</span>';
-            setTimeout(()=>{
-                let r='';
-                if(c.length===0||c==='# Write your Python code here...'){
-                    r=`⚠️ Please write some code first!\\n\\n💡 Tip: Try writing a simple "Hello World" program.`;
-                } else if(c.includes('print')||c.includes('console.log')||c.includes('cout')||c.includes('println')||c.includes('echo')||c.includes('fmt.Println')||c.includes('printf')||c.includes('document.write')||c.includes('System.out')){
-                    r=`Hello, World!\\nWelcome, Akarshit!\\n\\n✅ Code executed successfully!\\n⏱ Execution time: 0.05s`;
-                } else if(c.includes('SELECT')||c.includes('INSERT')||c.includes('CREATE TABLE')){
-                    r=`id | name     | email\\n---|----------|-------------------\\n1  | Akarshit | akarshit@example.com\\n\\n✅ Query executed successfully!\\n⏱ Execution time: 0.02s`;
-                } else if(c.includes('<!DOCTYPE html>')||c.includes('<html>')||c.includes('<body>')){
-                    r=`[HTML Output Preview]\\n\\nHello, World!\\nWelcome to my website!\\n\\n✅ HTML rendered successfully!`;
-                } else {
-                    r=`⚠️ Code mein kuch missing lag raha hai!\\n\\n💡 Tip: Try adding a print/output statement.`;
-                }
-                o.innerHTML=`<pre style="margin:0;color:#d4d4d4;">${r}</pre>`;
-                b.disabled=false;
-                b.innerHTML='<span>▶️</span><span>Run Code</span>';
-            },1500);
-        }
+        function selectLang(btn,lang){currentLang=lang;document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.getElementById('codeInput').value=codeTemplates[lang]||codeTemplates['python']}
         
         const counters=document.querySelectorAll('.stat-number');
         let hasAnimated=false;
@@ -1009,46 +1172,24 @@ Topics you know: Android, Kotlin, Flutter, Dart, React Native, Play Store, APK, 
             });
         }
         
-        // ====== AI CHAT FUNCTIONS ======
-        let currentAIType='';
-        let chatHistory = { web: [], app: [] };
-        
-        function openAIChat(type){
-            GEMINI_API_KEY = localStorage.getItem('gemini_api_key') || '';
-            if(!GEMINI_API_KEY){
-                document.getElementById('apiKeyModal').style.display='flex';
-                return;
-            }
-            currentAIType=type;
-            document.getElementById(type+'AIChat').classList.add('active');
-            document.body.style.overflow='hidden';
-        }
-        
-        function saveApiKey(){
-            const key = document.getElementById('apiKeyInput').value.trim();
-            if(key){
-                localStorage.setItem('gemini_api_key', key);
-                GEMINI_API_KEY = key;
-                document.getElementById('apiKeyModal').style.display='none';
-                showNotification('API Key saved successfully!');
-                if(currentAIType){
-                    document.getElementById(currentAIType+'AIChat').classList.add('active');
-                    document.body.style.overflow='hidden';
-                }
-            } else {
-                alert('Please enter a valid API key');
-            }
-        }
-        
-        function closeApiKeyModal(){
-            document.getElementById('apiKeyModal').style.display='none';
-        }
-        
         function showNotification(msg){
             const n = document.getElementById('notification');
             n.textContent = msg;
             n.classList.add('show');
             setTimeout(()=>n.classList.remove('show'), 3000);
+        }
+
+        let currentAIType='';
+        let chatHistory = { web: [], app: [] };
+        
+        function openAIChat(type){
+            if(!isLoggedIn()) {
+                openAuthGate();
+                return;
+            }
+            currentAIType=type;
+            document.getElementById(type+'AIChat').classList.add('active');
+            document.body.style.overflow='hidden';
         }
         
         function closeAIChat(){
@@ -1096,33 +1237,13 @@ Topics you know: Android, Kotlin, Flutter, Dart, React Native, Play Store, APK, 
             bodyEl.scrollTop = bodyEl.scrollHeight;
             
             try {
-                const history = chatHistory[type].map(h => ({
-                    role: h.role === 'user' ? 'user' : 'model',
-                    parts: [{ text: h.text }]
-                }));
-                
-                const payload = {
-                    contents: [
-                        {
-                            role: 'user',
-                            parts: [{ text: SYSTEM_PROMPTS[type] + "\\n\\nUser question: " + q }]
-                        }
-                    ],
-                    generationConfig: {
-                        temperature: 0.7,
-                        maxOutputTokens: 2048,
-                        topP: 0.95
-                    }
-                };
-                
-                if(history.length > 0) {
-                    payload.contents = history.concat(payload.contents);
-                }
-                
-                const response = await fetch(GEMINI_BASE_URL + GEMINI_API_KEY, {
+                const response = await fetch(VERCEL_API_URL, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
+                    body: JSON.stringify({
+                        message: SYSTEM_PROMPTS[type] + "\n\nUser: " + q,
+                        type: 'gemini'
+                    })
                 });
                 
                 document.getElementById(typingId).remove();
@@ -1132,17 +1253,7 @@ Topics you know: Android, Kotlin, Flutter, Dart, React Native, Play Store, APK, 
                 }
                 
                 const data = await response.json();
-                
-                if(data.error){
-                    throw new Error(data.error.message || 'Unknown API error');
-                }
-                
-                let aiText = '';
-                if(data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts){
-                    aiText = data.candidates[0].content.parts[0].text || 'Sorry, main samajh nahi paya. Dobara poochiye!';
-                } else {
-                    aiText = 'Sorry, response mein kuch issue hai. Dobara try karein!';
-                }
+                let aiText = data.reply || 'Sorry, koi response nahi mila. Dobara try karein!';
                 
                 chatHistory[type].push({ role: 'user', text: q });
                 chatHistory[type].push({ role: 'model', text: aiText });
@@ -1159,23 +1270,63 @@ Topics you know: Android, Kotlin, Flutter, Dart, React Native, Play Store, APK, 
                 
             } catch(error) {
                 document.getElementById(typingId).remove();
-                
-                const errorMsg = document.createElement('div');
-                errorMsg.className = 'ai-message ai';
-                errorMsg.innerHTML = `<div class="ai-message-avatar" style="background:rgba(239,68,68,0.2);border-color:#ef4444">⚠️</div><div class="ai-message-bubble"><div class="ai-error">❌ Error: ${error.message}<br><br>API temporarily unavailable. Please try again in a moment.</div></div>`;
-                bodyEl.appendChild(errorMsg);
-                bodyEl.scrollTop = bodyEl.scrollHeight;
-                
-                console.error('Gemini API Error:', error);
+                try {
+                    GEMINI_API_KEY = localStorage.getItem('gemini_api_key') || '';
+                    if(!GEMINI_API_KEY) {
+                        const errorMsg = document.createElement('div');
+                        errorMsg.className = 'ai-message ai';
+                        errorMsg.innerHTML = `<div class="ai-message-avatar" style="background:rgba(239,68,68,0.2);border-color:#ef4444">⚠️</div><div class="ai-message-bubble"><div class="ai-error">❌ Server Error: ${error.message}<br><br>API Key bhi nahi hai. Neeche AI Code section se key add karein!</div></div>`;
+                        bodyEl.appendChild(errorMsg);
+                        bodyEl.scrollTop = bodyEl.scrollHeight;
+                        sendBtn.disabled = false;
+                        sendBtn.textContent = '➤ Send';
+                        return;
+                    }
+                    
+                    const response = await fetch(GEMINI_BASE_URL + GEMINI_API_KEY, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            contents: [{ parts: [{ text: SYSTEM_PROMPTS[type] + "\n\nUser: " + q }] }],
+                            generationConfig: { temperature: 0.7, maxOutputTokens: 2048 }
+                        })
+                    });
+                    const data = await response.json();
+                    let aiText = data.candidates?.[0]?.content?.parts?.[0]?.text || 'Sorry, main samajh nahi paya!';
+                    
+                    const aiMsg = document.createElement('div');
+                    aiMsg.className = 'ai-message ai';
+                    aiMsg.innerHTML = `<div class="ai-message-avatar" style="background:rgba(99,102,241,0.2);border-color:var(--primary)">🤖</div><div class="ai-message-bubble">${formatAIResponse(aiText)}</div>`;
+                    bodyEl.appendChild(aiMsg);
+                    bodyEl.scrollTop = bodyEl.scrollHeight;
+                } catch(fallbackError) {
+                    const errorMsg = document.createElement('div');
+                    errorMsg.className = 'ai-message ai';
+                    errorMsg.innerHTML = `<div class="ai-message-avatar" style="background:rgba(239,68,68,0.2);border-color:#ef4444">⚠️</div><div class="ai-message-bubble"><div class="ai-error">❌ Error: ${error.message}<br><br>API temporarily unavailable. Please try again.</div></div>`;
+                    bodyEl.appendChild(errorMsg);
+                    bodyEl.scrollTop = bodyEl.scrollHeight;
+                }
             } finally {
                 sendBtn.disabled = false;
                 sendBtn.textContent = '➤ Send';
             }
         }
         
-        // ====== NEW FEATURES ======
+        function saveApiKey(){
+            const key = document.getElementById('apiKeyInput').value.trim();
+            if(key){
+                localStorage.setItem('gemini_api_key', key);
+                GEMINI_API_KEY = key;
+                document.getElementById('apiKeyModal').style.display='none';
+                showNotification('API Key saved successfully!');
+            } else {
+                alert('Please enter a valid API key');
+            }
+        }
+        function closeApiKeyModal(){
+            document.getElementById('apiKeyModal').style.display='none';
+        }
         
-        // AI Code Generator
         async function generateAICode(){
             const prompt = document.getElementById('codeGenPrompt').value.trim();
             const output = document.getElementById('codeGenOutput');
@@ -1184,44 +1335,239 @@ Topics you know: Android, Kotlin, Flutter, Dart, React Native, Play Store, APK, 
                 return;
             }
             
-            GEMINI_API_KEY = localStorage.getItem('gemini_api_key') || '';
-            if(!GEMINI_API_KEY){
-                output.innerHTML = '<span style="color:var(--accent);">🔐 AI Code Generator ke liye API Key chahiye. Neeche AI Chat button se key enter karein!</span>';
-                return;
-            }
-            
             output.innerHTML = '<span style="color:var(--accent);">⏳ Code generate ho raha hai... thoda wait karein!</span>';
             
-            try{
-                const response = await fetch(GEMINI_BASE_URL + GEMINI_API_KEY, {
+            try {
+                const response = await fetch(VERCEL_API_URL, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
-                        contents: [{
-                            role: 'user',
-                            parts: [{ text: 'You are a coding expert. Write complete, clean, working code with comments. User request: ' + prompt + '\n\nRules:\n1. Provide complete code only\n2. Add comments in Hindi + English\n3. Explain briefly how to use it\n4. Format code properly' }]
-                        }],
-                        generationConfig: { temperature: 0.5, maxOutputTokens: 3000 }
+                        message: 'You are a coding expert. Write complete, clean, working code with comments. User request: ' + prompt + '\n\nRules:\n1. Provide complete code only\n2. Add comments in Hindi + English\n3. Explain briefly how to use it\n4. Format code properly',
+                        type: 'gemini'
                     })
                 });
-                
                 const data = await response.json();
-                let codeText = '';
-                if(data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts){
-                    codeText = data.candidates[0].content.parts[0].text || 'Sorry, code generate nahi ho paya!';
-                } else {
-                    codeText = '❌ Error: Response sahi nahi aaya. Dobara try karein!';
-                }
-                
+                let codeText = data.reply || 'Sorry, code generate nahi ho paya!';
                 output.textContent = codeText;
-                
-            } catch(error){
-                output.innerHTML = `<span style="color:var(--error);">❌ Error: ${error.message}<br><br>API key check karein ya baad mein try karein.</span>`;
+            } catch(error) {
+                GEMINI_API_KEY = localStorage.getItem('gemini_api_key') || '';
+                if(!GEMINI_API_KEY){
+                    output.innerHTML = '<span style="color:var(--accent);">🔐 AI Code Generator ke liye API Key chahiye. Neeche AI Chat button se key enter karein!</span>';
+                    return;
+                }
+                try {
+                    const response = await fetch(GEMINI_BASE_URL + GEMINI_API_KEY, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            contents: [{ parts: [{ text: 'You are a coding expert. Write complete, clean, working code with comments. User request: ' + prompt }] }],
+                            generationConfig: { temperature: 0.5, maxOutputTokens: 3000 }
+                        })
+                    });
+                    const data = await response.json();
+                    let codeText = data.candidates?.[0]?.content?.parts?.[0]?.text || 'Sorry, code generate nahi ho paya!';
+                    output.textContent = codeText;
+                } catch(e) {
+                    output.innerHTML = `<span style="color:var(--error);">❌ Error: ${e.message}</span>`;
+                }
+            }
+        }
+
+        const quizData = {
+            python: [
+                { q: "Python mein 'print' function kya karta hai?", options: ["Output display karta hai", "Input leta hai", "File save karta hai", "Error throw karta hai"], ans: 0 },
+                { q: "Python mein list kaise banate hain?", options: ["[] brackets se", "{} brackets se", "() brackets se", "<> brackets se"], ans: 0 },
+                { q: "Python mein 'len()' function kya karta hai?", options: ["Length nikalta hai", "Length badhata hai", "Length ghata ta hai", "Kuch nahi karta"], ans: 0 },
+                { q: "Python mein 'if' statement ke baad kya aata hai?", options: [": colon", "; semicolon", ". dot", ", comma"], ans: 0 },
+                { q: "Python mein 'for' loop ka syntax kya hai?", options: ["for i in range():", "for(i=0; i<n; i++)", "foreach i in range", "loop for i"], ans: 0 },
+                { q: "Python mein function kaise define karte hain?", options: ["def keyword se", "function keyword se", "func keyword se", "define keyword se"], ans: 0 },
+                { q: "Python mein 'None' kya hai?", options: ["Null value", "Zero value", "Empty string", "Boolean false"], ans: 0 },
+                { q: "Python mein 'True' aur 'False' kya hain?", options: ["Boolean values", "String values", "Integer values", "Float values"], ans: 0 },
+                { q: "Python mein 'import' kya karta hai?", options: ["Module import karta hai", "File delete karta hai", "Variable banata hai", "Loop chalata hai"], ans: 0 },
+                { q: "Python mein 'try-except' kya hai?", options: ["Error handling", "Loop structure", "Function definition", "Class creation"], ans: 0 }
+            ],
+            cpp: [
+                { q: "C++ mein 'cout' kya karta hai?", options: ["Output print karta hai", "Input leta hai", "File read karta hai", "Memory allocate karta hai"], ans: 0 },
+                { q: "C++ mein 'cin' kya karta hai?", options: ["Input leta hai", "Output deta hai", "File write karta hai", "Memory free karta hai"], ans: 0 },
+                { q: "C++ mein 'int' kya hai?", options: ["Integer data type", "String data type", "Float data type", "Boolean data type"], ans: 0 },
+                { q: "C++ mein 'main()' function kya hai?", options: ["Entry point", "Exit point", "Loop function", "Library function"], ans: 0 },
+                { q: "C++ mein 'return 0' kya karta hai?", options: ["Success indicate karta hai", "Error indicate karta hai", "Loop break karta hai", "Function call karta hai"], ans: 0 },
+                { q: "C++ mein 'include' kya karta hai?", options: ["Header file include karta hai", "Variable declare karta hai", "Function define karta hai", "Class create karta hai"], ans: 0 },
+                { q: "C++ mein 'using namespace std' kya hai?", options: ["Standard namespace use karta hai", "Custom namespace banata hai", "Namespace delete karta hai", "Kuch nahi karta"], ans: 0 },
+                { q: "C++ mein 'if-else' kya hai?", options: ["Conditional statement", "Loop statement", "Function declaration", "Class definition"], ans: 0 },
+                { q: "C++ mein 'for' loop ka syntax kya hai?", options: ["for(int i=0; i<n; i++)", "for i in range()", "foreach i in n", "loop i from 0 to n"], ans: 0 },
+                { q: "C++ mein 'array' kya hai?", options: ["Collection of elements", "Single element", "Function type", "Class type"], ans: 0 }
+            ],
+            javascript: [
+                { q: "JavaScript mein 'console.log' kya karta hai?", options: ["Console mein output print karta hai", "Alert box dikhata hai", "File save karta hai", "Page reload karta hai"], ans: 0 },
+                { q: "JavaScript mein 'var' kya hai?", options: ["Variable declare karta hai", "Function banata hai", "Class banata hai", "Loop chalata hai"], ans: 0 },
+                { q: "JavaScript mein 'function' keyword kya karta hai?", options: ["Function define karta hai", "Variable declare karta hai", "Class banata hai", "Object banata hai"], ans: 0 },
+                { q: "JavaScript mein 'document.getElementById' kya karta hai?", options: ["HTML element select karta hai", "CSS apply karta hai", "Page reload karta hai", "Cookie set karta hai"], ans: 0 },
+                { q: "JavaScript mein 'addEventListener' kya karta hai?", options: ["Event attach karta hai", "Event remove karta hai", "Event create karta hai", "Event delete karta hai"], ans: 0 },
+                { q: "JavaScript mein 'JSON' kya hai?", options: ["Data format", "Programming language", "Framework", "Database"], ans: 0 },
+                { q: "JavaScript mein 'typeof' operator kya karta hai?", options: ["Data type batata hai", "Value badalta hai", "Variable delete karta hai", "Function call karta hai"], ans: 0 },
+                { q: "JavaScript mein 'Array' kya hai?", options: ["Ordered collection", "Unordered collection", "Key-value pair", "Single value"], ans: 0 },
+                { q: "JavaScript mein 'Promise' kya hai?", options: ["Async operation handle karta hai", "Sync operation handle karta hai", "Loop chalata hai", "Function define karta hai"], ans: 0 },
+                { q: "JavaScript mein 'localStorage' kya hai?", options: ["Browser mein data store karta hai", "Server mein data store karta hai", "Memory mein data store karta hai", "File mein data store karta hai"], ans: 0 }
+            ],
+            java: [
+                { q: "Java mein 'System.out.println' kya karta hai?", options: ["Output print karta hai", "Input leta hai", "File read karta hai", "Exception throw karta hai"], ans: 0 },
+                { q: "Java mein 'public static void main' kya hai?", options: ["Entry point method", "Exit point method", "Constructor", "Destructor"], ans: 0 },
+                { q: "Java mein 'class' keyword kya karta hai?", options: ["Class define karta hai", "Object banata hai", "Method call karta hai", "Variable declare karta hai"], ans: 0 },
+                { q: "Java mein 'new' keyword kya karta hai?", options: ["Object create karta hai", "Class define karta hai", "Method call karta hai", "Variable delete karta hai"], ans: 0 },
+                { q: "Java mein 'String' kya hai?", options: ["Class", "Primitive type", "Interface", "Enum"], ans: 0 },
+                { q: "Java mein 'extends' keyword kya karta hai?", options: ["Inheritance karta hai", "Interface implement karta hai", "Package import karta hai", "Exception handle karta hai"], ans: 0 },
+                { q: "Java mein 'try-catch' kya hai?", options: ["Exception handling", "Loop structure", "Conditional statement", "Method overloading"], ans: 0 },
+                { q: "Java mein 'ArrayList' kya hai?", options: ["Dynamic array", "Fixed array", "Linked list", "Hash map"], ans: 0 },
+                { q: "Java mein 'interface' kya hai?", options: ["Contract define karta hai", "Class banata hai", "Object banata hai", "Method implement karta hai"], ans: 0 },
+                { q: "Java mein 'final' keyword kya karta hai?", options: ["Value constant banata hai", "Value change karta hai", "Method override karta hai", "Class extend karta hai"], ans: 0 }
+            ],
+            html: [
+                { q: "HTML ka full form kya hai?", options: ["HyperText Markup Language", "HighText Machine Language", "HyperText Machine Language", "HighText Markup Language"], ans: 0 },
+                { q: "HTML mein '<p>' tag kya hai?", options: ["Paragraph", "Page", "Print", "Process"], ans: 0 },
+                { q: "HTML mein '<a>' tag kya karta hai?", options: ["Link create karta hai", "Image dikhata hai", "Table banata hai", "Form banata hai"], ans: 0 },
+                { q: "HTML mein '<img>' tag kya karta hai?", options: ["Image dikhata hai", "Video dikhata hai", "Audio play karta hai", "Text format karta hai"], ans: 0 },
+                { q: "HTML mein '<div>' tag kya hai?", options: ["Container", "Division", "Document", "Display"], ans: 0 },
+                { q: "HTML mein '<table>' tag kya karta hai?", options: ["Table banata hai", "List banata hai", "Form banata hai", "Link banata hai"], ans: 0 },
+                { q: "HTML mein '<form>' tag kya karta hai?", options: ["Form banata hai", "Table banata hai", "Image dikhata hai", "Video play karta hai"], ans: 0 },
+                { q: "HTML mein '<input>' tag kya karta hai?", options: ["User input leta hai", "Output deta hai", "File save karta hai", "Image dikhata hai"], ans: 0 },
+                { q: "HTML mein '<head>' tag kya karta hai?", options: ["Metadata contain karta hai", "Body content contain karta hai", "Footer contain karta hai", "Navigation contain karta hai"], ans: 0 },
+                { q: "HTML mein '<title>' tag kya karta hai?", options: ["Page title set karta hai", "Heading set karta hai", "Paragraph set karta hai", "Link set karta hai"], ans: 0 }
+            ],
+            sql: [
+                { q: "SQL ka full form kya hai?", options: ["Structured Query Language", "Simple Query Language", "Standard Query Language", "System Query Language"], ans: 0 },
+                { q: "SQL mein 'SELECT' kya karta hai?", options: ["Data retrieve karta hai", "Data insert karta hai", "Data update karta hai", "Data delete karta hai"], ans: 0 },
+                { q: "SQL mein 'INSERT INTO' kya karta hai?", options: ["Data insert karta hai", "Data select karta hai", "Data update karta hai", "Data delete karta hai"], ans: 0 },
+                { q: "SQL mein 'UPDATE' kya karta hai?", options: ["Data update karta hai", "Data insert karta hai", "Data select karta hai", "Data delete karta hai"], ans: 0 },
+                { q: "SQL mein 'DELETE' kya karta hai?", options: ["Data delete karta hai", "Data insert karta hai", "Data select karta hai", "Data update karta hai"], ans: 0 },
+                { q: "SQL mein 'WHERE' clause kya karta hai?", options: ["Condition filter karta hai", "Data sort karta hai", "Data group karta hai", "Data join karta hai"], ans: 0 },
+                { q: "SQL mein 'ORDER BY' kya karta hai?", options: ["Data sort karta hai", "Data filter karta hai", "Data group karta hai", "Data join karta hai"], ans: 0 },
+                { q: "SQL mein 'JOIN' kya karta hai?", options: ["Tables combine karta hai", "Data filter karta hai", "Data sort karta hai", "Data delete karta hai"], ans: 0 },
+                { q: "SQL mein 'COUNT()' function kya karta hai?", options: ["Rows count karta hai", "Sum calculate karta hai", "Average calculate karta hai", "Maximum find karta hai"], ans: 0 },
+                { q: "SQL mein 'PRIMARY KEY' kya hai?", options: ["Unique identifier", "Foreign reference", "Index", "Constraint"], ans: 0 }
+            ]
+        };
+        
+        let currentQuizLang = '';
+        let currentQuizLevel = 1;
+        let currentQuizScore = 0;
+        
+        function getQuizProgress(lang) {
+            return parseInt(localStorage.getItem('quiz_progress_' + lang) || '0');
+        }
+        function setQuizProgress(lang, level) {
+            localStorage.setItem('quiz_progress_' + lang, level.toString());
+        }
+        function updateQuizProgressDisplays() {
+            Object.keys(quizData).forEach(lang => {
+                const progress = getQuizProgress(lang);
+                const el = document.getElementById('progress-' + lang);
+                if(el) el.textContent = 'Level ' + progress + ' / ∞';
+            });
+        }
+        
+        function startQuiz(lang) {
+            if(!isLoggedIn()) {
+                openAuthGate();
+                return;
+            }
+            currentQuizLang = lang;
+            currentQuizLevel = getQuizProgress(lang) + 1;
+            currentQuizScore = 0;
+            document.getElementById('quizLangSelect').style.display = 'none';
+            document.getElementById('quizResult').style.display = 'none';
+            document.getElementById('quizContainer').classList.add('active');
+            loadQuizQuestion();
+        }
+        
+        function loadQuizQuestion() {
+            const questions = quizData[currentQuizLang];
+            const qIndex = (currentQuizLevel - 1) % questions.length;
+            const q = questions[qIndex];
+            
+            document.getElementById('quizLevel').textContent = currentQuizLang.toUpperCase() + ' - Level ' + currentQuizLevel;
+            document.getElementById('quizScore').textContent = 'Score: ' + currentQuizScore;
+            document.getElementById('quizProgressFill').style.width = Math.min((currentQuizLevel / 100) * 100, 100) + '%';
+            document.getElementById('quizQuestion').textContent = q.q;
+            
+            const optsDiv = document.getElementById('quizOptions');
+            optsDiv.innerHTML = '';
+            q.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = 'quiz-option';
+                btn.textContent = opt;
+                btn.onclick = () => selectAnswer(idx, q.ans);
+                optsDiv.appendChild(btn);
+            });
+            
+            document.getElementById('quizNextBtn').style.display = 'none';
+        }
+        
+        function selectAnswer(selected, correct) {
+            const opts = document.querySelectorAll('.quiz-option');
+            opts.forEach((opt, idx) => {
+                opt.classList.add('disabled');
+                if(idx === correct) opt.classList.add('correct');
+                else if(idx === selected && idx !== correct) opt.classList.add('wrong');
+            });
+            
+            if(selected === correct) {
+                currentQuizScore += 10;
+                showNotification('✅ Correct! +10 points');
+            } else {
+                showNotification('❌ Wrong! Correct answer: ' + opts[correct].textContent);
+            }
+            
+            document.getElementById('quizScore').textContent = 'Score: ' + currentQuizScore;
+            document.getElementById('quizNextBtn').style.display = 'block';
+            
+            if(currentQuizLevel > getQuizProgress(currentQuizLang)) {
+                setQuizProgress(currentQuizLang, currentQuizLevel);
             }
         }
         
-        // Certificate Generator
+        function nextLevel() {
+            currentQuizLevel++;
+            loadQuizQuestion();
+        }
+        
+        function exitQuiz() {
+            document.getElementById('quizContainer').classList.remove('active');
+            document.getElementById('quizResult').style.display = 'none';
+            document.getElementById('quizLangSelect').style.display = 'block';
+            updateQuizProgressDisplays();
+        }
+        
+        function updateCertificateLock() {
+            const has100 = Object.keys(quizData).some(lang => getQuizProgress(lang) >= 100);
+            const lockMsg = document.getElementById('certLockMessage');
+            const genBtn = document.getElementById('certGenBtn');
+            
+            if(!isLoggedIn() || !has100) {
+                if(lockMsg) lockMsg.style.display = 'block';
+                if(genBtn) {
+                    genBtn.style.opacity = '0.5';
+                    genBtn.style.cursor = 'not-allowed';
+                    genBtn.onclick = () => {
+                        if(!isLoggedIn()) openAuthGate();
+                        else showNotification('🔐 100 quiz levels complete karein pehle!');
+                    };
+                }
+            } else {
+                if(lockMsg) lockMsg.style.display = 'none';
+                if(genBtn) {
+                    genBtn.style.opacity = '1';
+                    genBtn.style.cursor = 'pointer';
+                    genBtn.onclick = generateCertificate;
+                }
+            }
+        }
+        
         function generateCertificate(){
+            if(!isLoggedIn()) { openAuthGate(); return; }
+            const has100 = Object.keys(quizData).some(lang => getQuizProgress(lang) >= 100);
+            if(!has100) { showNotification('🔐 100 quiz levels complete karein pehle!'); return; }
+            
             const name = document.getElementById('certName').value.trim() || 'Student';
             const course = document.getElementById('certCourse').value.trim() || 'Programming Course';
             
@@ -1247,75 +1593,19 @@ Topics you know: Android, Kotlin, Flutter, Dart, React Native, Play Store, APK, 
             showNotification('Certificate downloaded! 📥');
         }
         
-        // Login System
-        function signup(){
-            const email = document.getElementById('loginEmail').value.trim();
-            const password = document.getElementById('loginPassword').value;
-            if(!email || !password){
-                alert('❌ Email aur password dono daalein!');
-                return;
-            }
-            if(!email.includes('@')){
-                alert('❌ Valid email daalein!');
-                return;
-            }
-            localStorage.setItem('akr_user_email', email);
-            localStorage.setItem('akr_user_pass', password);
-            alert('✅ Signup Successful! Ab login karein.');
-        }
-        
-        function login(){
-            const email = document.getElementById('loginEmail').value.trim();
-            const password = document.getElementById('loginPassword').value;
-            const savedEmail = localStorage.getItem('akr_user_email');
-            const savedPass = localStorage.getItem('akr_user_pass');
-            
-            if(!email || !password){
-                alert('❌ Email aur password dono daalein!');
-                return;
-            }
-            
-            if(email === savedEmail && password === savedPass){
-                localStorage.setItem('akr_logged_in', 'true');
-                updateLoginUI();
-                showNotification('✅ Login Successful!');
-            } else {
-                alert('❌ Email ya password galat hai!');
-            }
-        }
-        
-        function logout(){
-            localStorage.removeItem('akr_logged_in');
-            updateLoginUI();
-            showNotification('🚪 Logged out successfully!');
-        }
-        
-        function updateLoginUI(){
-            const isLoggedIn = localStorage.getItem('akr_logged_in') === 'true';
-            const email = localStorage.getItem('akr_user_email') || '';
-            
-            if(isLoggedIn){
-                document.getElementById('loginForm').style.display = 'none';
-                document.getElementById('logoutForm').style.display = 'block';
-                document.getElementById('loginStatus').classList.add('active');
-                document.getElementById('loggedInEmail').textContent = email;
-            } else {
-                document.getElementById('loginForm').style.display = 'block';
-                document.getElementById('logoutForm').style.display = 'none';
-                document.getElementById('loginStatus').classList.remove('active');
-            }
-        }
-        
-        // Check login status on load
-        updateLoginUI();
-        
-        // Premium
         function buyPremium(){
             alert('💎 Premium plan jaldi aa raha hai!\n\nAbhi free plan use karein:\n• AI Chat\n• Code Practice\n• Tutorials\n• Certificate Generator\n\nSab kuch free mein available hai! 🎉');
         }
+        
+        updateLoginUI();
+        updateQuizProgressDisplays();
+        updateCertificateLock();
     </script>
 </body>
 </html>
+
+
+    
 
 
 
