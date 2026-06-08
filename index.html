@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
     <link rel="icon" type="image/png" href="file_000000004984720882e69f4dad44966a.png">
     <meta name="google-site-verification" content="uuGs6LF2wJNRxdUerOQ4bxWY3GAazSrGeq21JnEdtDE" />
@@ -21,7 +21,7 @@
     <meta name="twitter:description" content="20+ free programming courses. Learn & practice coding online!">
     <style>
         *{margin:0;padding:0;box-sizing:border-box}
-        :root{--primary:#6366f1;--primary-dark:#4f46e5;--secondary:#ec4899;--accent:#06b6d4;--dark:#0f172a;--darker:#020617;--light:#f8fafc;--gray:#94a3b8;--card-bg:rgba(30,41,59,0.6);--glass:rgba(255,255,255,0.05);--success:#10b981;--web-dev:#f59e0b;--app-dev:#8b5cf6;--error:#ef4444}
+        :root{--primary:#6366f1;--primary-dark:#4f46e5;--secondary:#ec4899;--accent:#06b6d4;--dark:#0f172a;--darker:#020617;--light:#f8fafc;--gray:#94a3b8;--card-bg:rgba(30,41,59,0.6);--glass:rgba(255,255,255,0.05);--success:#10b981;--error:#ef4444}
         body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--darker);color:var(--light);min-height:100vh;overflow-x:hidden;line-height:1.6}
         .bg-animation{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;overflow:hidden}
         .bg-animation .orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:0.4;animation:float 20s infinite ease-in-out}
@@ -44,18 +44,12 @@
         nav{position:fixed;top:0;width:100%;padding:1rem 5%;background:rgba(2,6,23,0.8);backdrop-filter:blur(20px);z-index:1000;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,0.08)}
         .nav-left{display:flex;align-items:center;gap:1rem}
         .logo{font-size:1.6rem;font-weight:800;background:linear-gradient(135deg,var(--primary),var(--secondary));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-        .welcome-text{font-size:0.85rem;color:var(--gray);background:var(--glass);padding:0.4rem 1rem;border-radius:50px;border:1px solid rgba(255,255,255,0.08);animation:pulse 2s infinite}
-        @keyframes pulse{0%,100%{opacity:0.7}50%{opacity:1}}
         .nav-links{display:flex;gap:2rem;list-style:none;align-items:center}
         .nav-links a{color:var(--gray);text-decoration:none;font-weight:500;font-size:0.9rem;transition:all 0.3s;position:relative}
         .nav-links a:hover{color:var(--light)}
         .nav-links a::after{content:'';position:absolute;bottom:-6px;left:0;width:0;height:2px;background:linear-gradient(90deg,var(--primary),var(--secondary));transition:width 0.3s;border-radius:2px}
         .nav-links a:hover::after{width:100%}
         .mobile-menu-btn{display:none;background:none;border:none;color:var(--light);font-size:1.5rem;cursor:pointer;z-index:1001}
-        .search-box{position:relative;display:flex;align-items:center;margin-left:1rem}
-        .search-box input{padding:0.5rem 1rem 0.5rem 2.5rem;border-radius:50px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);color:var(--light);font-size:0.85rem;outline:none;width:200px;transition:all 0.3s}
-        .search-box input:focus{border-color:var(--primary);width:250px;background:rgba(255,255,255,0.08)}
-        .search-box::before{content:"🔍";position:absolute;left:0.8rem;font-size:0.9rem;opacity:0.6}
         .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:6rem 5% 3rem}
         .hero-container{max-width:1200px;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
         .hero-content{animation:fadeInLeft 1s ease}
@@ -175,8 +169,8 @@
         .ai-typing-dot:nth-child(1){animation-delay:-0.32s}
         .ai-typing-dot:nth-child(2){animation-delay:-0.16s}
         @keyframes typing{0%,80%,100%{transform:scale(0)}40%{transform:scale(1)}}
-        .ai-error{background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);color:#fca5a5;padding:1rem;border-radius:12px;margin:1rem 0;font-size:0.9rem}
         .ai-code-block{background:#1e1e1e;border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:0.75rem 1rem;margin:0.5rem 0;font-family:'Consolas','Monaco',monospace;font-size:0.85rem;overflow-x:auto;color:#d4d4d4}
+        .ai-code-block pre{margin:0;white-space:pre-wrap}
         @keyframes fadeInLeft{from{opacity:0;transform:translateX(-40px)}to{opacity:1;transform:translateX(0)}}
         @keyframes fadeInRight{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:translateX(0)}}
         .animate-on-scroll{opacity:0;transform:translateY(40px);transition:all 0.8s ease}
@@ -191,46 +185,6 @@
         .footer-links{text-align:center;padding:1rem 0;border-top:1px solid rgba(255,255,255,0.05);margin-top:1rem}
         .footer-links a{color:var(--primary);text-decoration:none;margin:0 10px;font-size:0.85rem}
         .footer-links a:hover{text-decoration:underline}
-        @media(max-width:968px){.hero-container{grid-template-columns:1fr;text-align:center}.hero h1{font-size:2.5rem}.nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(2,6,23,0.95);flex-direction:column;padding:2rem;gap:1.5rem;z-index:999}.nav-links.active{display:flex}.mobile-menu-btn{display:block}.code-editor-wrapper{grid-template-columns:1fr}.stats-bar{gap:1.5rem}.search-box{display:none}.welcome-text{display:none}.ai-message-bubble{max-width:90%}.sidebar{width:260px}}
-        @media(max-width:480px){.hero h1{font-size:2rem}.section-title{font-size:1.8rem}.code-practice-section{padding:1.5rem}.ai-chat-body{padding:1rem}.ai-chat-header{padding:1rem}}
-        ::-webkit-scrollbar{width:8px}
-        ::-webkit-scrollbar-track{background:var(--darker)}
-        ::-webkit-scrollbar-thumb{background:var(--primary);border-radius:4px}
-        .feature-input{width:100%;padding:0.9rem 1rem;border-radius:12px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);color:var(--light);font-size:0.95rem;outline:none;margin-bottom:0.75rem;font-family:inherit;transition:all 0.3s}
-        .feature-input:focus{border-color:var(--primary);background:rgba(255,255,255,0.08)}
-        .feature-btn{width:100%;padding:0.9rem;border:none;border-radius:12px;background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:white;font-weight:700;cursor:pointer;transition:all 0.3s;font-size:0.95rem;margin-bottom:0.5rem}
-        .feature-btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(99,102,241,0.4)}
-        .feature-btn.success{background:linear-gradient(135deg,var(--success),#059669)}
-        .feature-btn.secondary{background:linear-gradient(135deg,var(--secondary),#db2777)}
-        .feature-output{background:#1e1e1e;border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:1rem;margin-top:1rem;font-family:'Consolas','Monaco',monospace;font-size:0.85rem;overflow-x:auto;color:#d4d4d4;max-height:300px;overflow-y:auto;line-height:1.5;white-space:pre-wrap}
-        .feature-output:empty{display:none}
-        .cert-preview{background:white;color:var(--dark);border-radius:16px;padding:2rem;text-align:center;margin-top:1rem;display:none}
-        .cert-preview.active{display:block}
-        .cert-preview h2{color:#1e40af;font-size:1.5rem;margin-bottom:0.5rem}
-        .cert-preview h1{color:#1e3a8a;font-size:2rem;margin:1rem 0}
-        .cert-preview p{color:#4b5563;font-size:1rem}
-        .cert-seal{width:80px;height:80px;background:linear-gradient(135deg,#fbbf24,#f59e0b);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:1rem auto;font-size:2rem}
-        .login-status{text-align:center;padding:0.75rem;background:rgba(16,185,129,0.15);border-radius:12px;color:var(--success);font-weight:600;margin-bottom:1rem;display:none}
-        .login-status.active{display:block}
-        .premium-badge{display:inline-flex;align-items:center;gap:0.5rem;padding:0.5rem 1rem;background:linear-gradient(135deg,#fbbf24,#f59e0b);color:var(--dark);border-radius:50px;font-weight:700;font-size:0.85rem;margin-bottom:1rem}
-        .price-tag{font-size:2.5rem;font-weight:800;background:linear-gradient(135deg,var(--primary),var(--secondary));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-        .feature-list{text-align:left;margin:1.5rem 0}
-        .feature-list li{display:flex;align-items:center;gap:0.75rem;padding:0.5rem 0;color:var(--gray)}
-        .auth-modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:5000;align-items:center;justify-content:center;padding:2rem;backdrop-filter:blur(10px)}
-        .auth-modal.active{display:flex}
-        .auth-box{background:var(--card-bg);border-radius:24px;padding:2.5rem;max-width:450px;width:100%;border:1px solid rgba(255,255,255,0.1);text-align:center;position:relative}
-        .auth-close{position:absolute;top:1rem;right:1rem;background:none;border:none;color:var(--gray);font-size:1.5rem;cursor:pointer}
-        .auth-title{font-size:1.5rem;font-weight:700;margin-bottom:0.5rem}
-        .auth-subtitle{color:var(--gray);font-size:0.9rem;margin-bottom:1.5rem}
-        .social-login{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.75rem;margin-bottom:1.5rem}
-        .social-btn{padding:0.75rem;border-radius:12px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);color:var(--light);cursor:pointer;transition:all 0.3s;font-size:0.85rem;display:flex;align-items:center;justify-content:center;gap:0.5rem}
-        .social-btn:hover{background:rgba(255,255,255,0.1);transform:translateY(-2px)}
-        .auth-divider{display:flex;align-items:center;gap:1rem;margin:1rem 0;color:var(--gray);font-size:0.85rem}
-        .auth-divider::before,.auth-divider::after{content:'';flex:1;height:1px;background:rgba(255,255,255,0.1)}
-        .auth-gate-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(2,6,23,0.95);z-index:4500;align-items:center;justify-content:center;flex-direction:column;gap:1rem;padding:2rem;text-align:center}
-        .auth-gate-overlay.active{display:flex}
-        .auth-gate-overlay h3{font-size:1.5rem}
-        .auth-gate-overlay p{color:var(--gray);max-width:400px}
         .quiz-section{background:var(--card-bg);border-radius:24px;padding:3rem;border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(20px);max-width:1000px;margin:0 auto}
         .quiz-lang-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;margin-bottom:2rem}
         .quiz-lang-card{padding:1.5rem;background:var(--glass);border-radius:16px;border:1px solid rgba(255,255,255,0.05);text-align:center;cursor:pointer;transition:all 0.3s}
@@ -263,6 +217,14 @@
         .file-btn{padding:0.4rem 0.8rem;background:var(--glass);border:1px solid rgba(255,255,255,0.1);border-radius:8px;color:var(--gray);cursor:pointer;transition:all 0.3s;font-size:0.8rem;display:flex;align-items:center;gap:0.4rem}
         .file-btn:hover{background:var(--primary);color:white;border-color:var(--primary)}
         #fileInput{display:none}
+        .scroll-top{position:fixed;bottom:2rem;right:2rem;width:45px;height:45px;background:linear-gradient(135deg,var(--primary),var(--primary-dark));border:none;border-radius:50%;color:white;font-size:1.2rem;cursor:pointer;box-shadow:0 4px 20px rgba(99,102,241,0.4);transition:all 0.3s;z-index:999;opacity:0;transform:translateY(20px);pointer-events:none}
+        .scroll-top.visible{opacity:1;transform:translateY(0);pointer-events:auto}
+        .scroll-top:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(99,102,241,0.6)}
+        @media(max-width:968px){.hero-container{grid-template-columns:1fr;text-align:center}.hero h1{font-size:2.5rem}.nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(2,6,23,0.95);flex-direction:column;padding:2rem;gap:1.5rem;z-index:999}.nav-links.active{display:flex}.mobile-menu-btn{display:block}.code-editor-wrapper{grid-template-columns:1fr}.stats-bar{gap:1.5rem}.ai-message-bubble{max-width:90%}.sidebar{width:260px}}
+        @media(max-width:480px){.hero h1{font-size:2rem}.section-title{font-size:1.8rem}.code-practice-section{padding:1.5rem}.ai-chat-body{padding:1rem}.ai-chat-header{padding:1rem}}
+        ::-webkit-scrollbar{width:8px}
+        ::-webkit-scrollbar-track{background:var(--darker)}
+        ::-webkit-scrollbar-thumb{background:var(--primary);border-radius:4px}
     </style>
 </head>
 <body>
@@ -270,7 +232,7 @@
     <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
     <aside class="sidebar" id="sidebar">
         <div class="sidebar-header">
-            <span class="sidebar-logo">AK.R</span>
+            <span class="sidebar-logo">AR.</span>
             <button class="sidebar-close" onclick="toggleSidebar()">×</button>
         </div>
         <ul class="sidebar-nav">
@@ -279,34 +241,20 @@
             <li onclick="goToSection('code-practice')"><span class="sidebar-icon">💻</span> Practice</li>
             <li onclick="goToSection('quiz-section')"><span class="sidebar-icon">🎯</span> Quizzes</li>
             <li onclick="window.location.href='tutorials.html'"><span class="sidebar-icon">📚</span> Tutorials</li>
-            <li onclick="goToSection('youtube-channel')"><span class="sidebar-icon">📺</span> YT Channel</li>
-            <li onclick="goToSection('courses')"><span class="sidebar-icon">🎓</span> Courses</li>
-            <li onclick="goToSection('ai-code')"><span class="sidebar-icon">🤖</span> AI Code</li>
-            <li onclick="goToSection('certificate')"><span class="sidebar-icon">🏆</span> Certificate</li>
-            <li onclick="goToSection('login')"><span class="sidebar-icon">🔐</span> Login</li>
-            <li onclick="goToSection('premium')"><span class="sidebar-icon">💎</span> Premium</li>
             <li onclick="goToSection('contact')"><span class="sidebar-icon">📧</span> Contact</li>
         </ul>
     </aside>
     <nav>
         <div class="nav-left">
             <button class="mobile-menu-btn" onclick="toggleSidebar()" style="display:block;margin-right:0.5rem">☰</button>
-            <div class="logo">AK.R</div>
-            <div class="welcome-text">👋 Welcome</div>
+            <div class="logo">AR.</div>
         </div>
         <ul class="nav-links" id="navLinks">
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
-            <li><a href="#code-practice">💻 Practice</a></li>
-            <li><a href="tutorials.html">📚 Tutorials</a></li>
-            <li><a href="#youtube-channel">YT Channel</a></li>
-            <li><a href="#courses">Courses</a></li>
-            <li><a href="#ai-code">🤖 AI Code</a></li>
-            <li><a href="#certificate">🏆 Certificate</a></li>
-            <li><a href="#login">🔐 Login</a></li>
-            <li><a href="#premium">💎 Premium</a></li>
+            <li><a href="#code-practice">Practice</a></li>
+            <li><a href="tutorials.html">Tutorials</a></li>
             <li><a href="#contact">Contact</a></li>
-            <li><div class="search-box"><input type="text" id="searchInput" placeholder="Search courses..." onkeyup="searchCourses()"></div></li>
         </ul>
         <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
     </nav>
@@ -315,16 +263,16 @@
             <div class="hero-content">
                 <div class="badge"><span>🎓</span> Student at PM SHRI JNV Khairabad Sitapur</div>
                 <h1>Hi, I'm <span>Akarshit Raj</span></h1>
-                <p class="hero-subtitle">Learn programming from YouTube videos and practice coding online - 100% Free!</p>
+                <p class="hero-subtitle">Learn programming from YouTube videos and practice coding online — completely free.</p>
                 <div class="hero-buttons">
-                    <a href="#code-practice" class="btn btn-success">💻 Start Coding</a>
+                    <a href="#code-practice" class="btn btn-success">Start Coding</a>
                     <a href="#courses" class="btn btn-primary">Explore Courses</a>
                 </div>
             </div>
             <div class="hero-visual">
                 <div class="hero-card">
                     <div class="profile-section">
-                        <img src="file_000000004984720882e69f4dad44966a.png" alt="Akarshit Raj - AKR Logo" class="profile-img">
+                        <img src="file_000000004984720882e69f4dad44966a.png" alt="Akarshit Raj" class="profile-img" onerror="this.style.display='none'">
                         <div class="profile-name">Akarshit Raj</div>
                         <div class="profile-role">Programming Educator</div>
                     </div>
@@ -333,11 +281,11 @@
                             <span class="profile-info-icon">📚</span>
                             <div><div class="profile-info-label">Tutorials</div><div class="profile-info-value">Read All Tutorials</div></div>
                         </a>
-                        <button class="profile-info-box" onclick="openProtectedFeature('aiweb')" style="cursor:pointer">
+                        <button class="profile-info-box" onclick="openAIChat('web')" style="cursor:pointer">
                             <span class="profile-info-icon">🌐</span>
                             <div><div class="profile-info-label">AI Assistant</div><div class="profile-info-value">Web Development</div></div>
                         </button>
-                        <button class="profile-info-box" onclick="openProtectedFeature('aiapp')" style="cursor:pointer">
+                        <button class="profile-info-box" onclick="openAIChat('app')" style="cursor:pointer">
                             <span class="profile-info-icon">📱</span>
                             <div><div class="profile-info-label">AI Assistant</div><div class="profile-info-value">App Development</div></div>
                         </button>
@@ -372,10 +320,10 @@
                     <p style="color:var(--gray);margin-bottom:1rem;">Hello! I'm <strong>Akarshit Raj</strong>, a student at <strong>PM SHRI JNV Khairabad Sitapur</strong>.</p>
                     <p style="color:var(--gray);margin-bottom:1rem;">I have created <strong>20+ programming courses</strong> on YouTube. My goal is to make quality programming education accessible to every student for free.</p>
                     <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem;">
-                        <div style="display:flex;align-items:center;gap:0.75rem;padding:0.75rem;background:rgba(255,255,255,0.05);border-radius:10px;"><span style="color:var(--accent);">✅</span><span>Free Courses</span></div>
-                        <div style="display:flex;align-items:center;gap:0.75rem;padding:0.75rem;background:rgba(255,255,255,0.05);border-radius:10px;"><span style="color:var(--accent);">✅</span><span>Hindi & English</span></div>
-                        <div style="display:flex;align-items:center;gap:0.75rem;padding:0.75rem;background:rgba(255,255,255,0.05);border-radius:10px;"><span style="color:var(--accent);">✅</span><span>Project Based</span></div>
-                        <div style="display:flex;align-items:center;gap:0.75rem;padding:0.75rem;background:rgba(255,255,255,0.05);border-radius:10px;"><span style="color:var(--accent);">✅</span><span>Beginner Friendly</span></div>
+                        <div style="display:flex;align-items:center;gap:0.75rem;padding:0.75rem;background:rgba(255,255,255,0.05);border-radius:10px;"><span style="color:var(--accent);">✓</span><span>Free Courses</span></div>
+                        <div style="display:flex;align-items:center;gap:0.75rem;padding:0.75rem;background:rgba(255,255,255,0.05);border-radius:10px;"><span style="color:var(--accent);">✓</span><span>Hindi & English</span></div>
+                        <div style="display:flex;align-items:center;gap:0.75rem;padding:0.75rem;background:rgba(255,255,255,0.05);border-radius:10px;"><span style="color:var(--accent);">✓</span><span>Project Based</span></div>
+                        <div style="display:flex;align-items:center;gap:0.75rem;padding:0.75rem;background:rgba(255,255,255,0.05);border-radius:10px;"><span style="color:var(--accent);">✓</span><span>Beginner Friendly</span></div>
                     </div>
                 </div>
             </div>
@@ -384,52 +332,52 @@
 
     <section id="code-practice" class="animate-on-scroll">
         <div class="section-header">
-            <div class="section-tag">💻 Code Practice</div>
+            <div class="section-tag">Code Practice</div>
             <h2 class="section-title">Practice Coding Online</h2>
-            <p class="section-subtitle">Learn from videos, then practice here! Use online compilers for all programming languages</p>
+            <p class="section-subtitle">Learn from videos, then practice here. Use online compilers for all programming languages.</p>
         </div>
         <div class="code-practice-section">
             <div class="code-practice-header">
-                <h3>🖥️ Online Code Compiler</h3>
-                <p>Practice what you learned! Select a language and start coding</p>
+                <h3>Online Code Compiler</h3>
+                <p>Practice what you learned. Select a language and start coding.</p>
             </div>
             <div class="language-selector">
-                <button class="lang-btn active" onclick="selectLang(this,'python')">🐍 Python</button>
-                <button class="lang-btn" onclick="selectLang(this,'cpp')">⚡ C++</button>
-                <button class="lang-btn" onclick="selectLang(this,'javascript')">🟨 JavaScript</button>
-                <button class="lang-btn" onclick="selectLang(this,'java')">☕ Java</button>
-                <button class="lang-btn" onclick="selectLang(this,'csharp')">🔷 C#</button>
-                <button class="lang-btn" onclick="selectLang(this,'html')">🌐 HTML/CSS</button>
-                <button class="lang-btn" onclick="selectLang(this,'sql')">🗄️ SQL</button>
-                <button class="lang-btn" onclick="selectLang(this,'php')">🐘 PHP</button>
-                <button class="lang-btn" onclick="selectLang(this,'kotlin')">🤖 Kotlin</button>
-                <button class="lang-btn" onclick="selectLang(this,'swift')">🍎 Swift</button>
-                <button class="lang-btn" onclick="selectLang(this,'go')">🔵 Go</button>
-                <button class="lang-btn" onclick="selectLang(this,'rust')">⚙️ Rust</button>
+                <button class="lang-btn active" onclick="selectLang(this,'python')">Python</button>
+                <button class="lang-btn" onclick="selectLang(this,'cpp')">C++</button>
+                <button class="lang-btn" onclick="selectLang(this,'javascript')">JavaScript</button>
+                <button class="lang-btn" onclick="selectLang(this,'java')">Java</button>
+                <button class="lang-btn" onclick="selectLang(this,'csharp')">C#</button>
+                <button class="lang-btn" onclick="selectLang(this,'html')">HTML/CSS</button>
+                <button class="lang-btn" onclick="selectLang(this,'sql')">SQL</button>
+                <button class="lang-btn" onclick="selectLang(this,'php')">PHP</button>
+                <button class="lang-btn" onclick="selectLang(this,'kotlin')">Kotlin</button>
+                <button class="lang-btn" onclick="selectLang(this,'swift')">Swift</button>
+                <button class="lang-btn" onclick="selectLang(this,'go')">Go</button>
+                <button class="lang-btn" onclick="selectLang(this,'rust')">Rust</button>
             </div>
             <div class="file-actions">
-                <button class="file-btn" onclick="saveCodeFile()">💾 Save</button>
-                <button class="file-btn" onclick="document.getElementById('fileInput').click()">📂 Open</button>
-                <button class="file-btn" onclick="copyCode()">📋 Copy</button>
-                <button class="file-btn" onclick="clearCode()">🗑️ Clear</button>
+                <button class="file-btn" onclick="saveCodeFile()">Save</button>
+                <button class="file-btn" onclick="document.getElementById('fileInput').click()">Open</button>
+                <button class="file-btn" onclick="copyCode()">Copy</button>
+                <button class="file-btn" onclick="clearCode()">Clear</button>
                 <input type="file" id="fileInput" accept=".py,.cpp,.js,.java,.cs,.html,.sql,.php,.kt,.swift,.go,.rs,.txt" onchange="loadCodeFile(this)">
             </div>
             <div class="code-editor-wrapper">
                 <div class="code-input-area">
-                    <div class="code-header"><span>📝 Write Your Code</span><span style="font-size:0.75rem;color:var(--gray);">Click Run to execute</span></div>
+                    <div class="code-header"><span>Write Your Code</span><span style="font-size:0.75rem;color:var(--gray);">Click Run to execute</span></div>
                     <textarea class="code-textarea" id="codeInput" placeholder="# Write your Python code here..."># Write your Python code here...
 print('Hello, World!')
 name = 'Akarshit'
 print(f'Welcome, {name}!')</textarea>
                 </div>
                 <div class="code-output-area">
-                    <div class="code-header"><span>📤 Output</span><span style="font-size:0.75rem;color:var(--gray);">Result will appear here</span></div>
+                    <div class="code-header"><span>Output</span><span style="font-size:0.75rem;color:var(--gray);">Result will appear here</span></div>
                     <div class="output-content" id="codeOutput"><span style="color:var(--gray);">Click "Run Code" to see output...</span></div>
                 </div>
             </div>
-            <button class="run-btn" onclick="runCodeReal()" id="runBtn"><span>▶️</span><span>Run Code</span></button>
+            <button class="run-btn" onclick="runCodeReal()" id="runBtn"><span>▶</span><span>Run Code</span></button>
             <div style="margin-top:2rem;">
-                <h4 style="text-align:center;margin-bottom:1rem;color:var(--gray);font-size:1rem;">🔗 Or Use These Professional Online Compilers</h4>
+                <h4 style="text-align:center;margin-bottom:1rem;color:var(--gray);font-size:1rem;">Or Use These Professional Online Compilers</h4>
                 <div class="compiler-links">
                     <a href="https://www.programiz.com/python-programming/online-compiler/" target="_blank" rel="noopener noreferrer" class="compiler-card"><div class="compiler-icon">🐍</div><span class="compiler-name">Python</span><span class="compiler-desc">Programiz Compiler</span></a>
                     <a href="https://www.programiz.com/cpp-programming/online-compiler/" target="_blank" rel="noopener noreferrer" class="compiler-card"><div class="compiler-icon">⚡</div><span class="compiler-name">C++</span><span class="compiler-desc">Programiz Compiler</span></a>
@@ -446,7 +394,7 @@ print(f'Welcome, {name}!')</textarea>
                 </div>
             </div>
             <div style="margin-top:2rem;">
-                <h4 style="text-align:center;margin-bottom:1rem;color:var(--gray);font-size:1rem;">🎯 Practice Problems</h4>
+                <h4 style="text-align:center;margin-bottom:1rem;color:var(--gray);font-size:1rem;">Practice Problems</h4>
                 <div class="practice-links">
                     <a href="https://www.hackerrank.com/" target="_blank" rel="noopener noreferrer" class="practice-card"><div class="practice-icon">💻</div><div class="practice-text"><div class="practice-name">HackerRank</div><div class="practice-desc">Coding challenges & competitions</div></div></a>
                     <a href="https://leetcode.com/" target="_blank" rel="noopener noreferrer" class="practice-card"><div class="practice-icon">🏆</div><div class="practice-text"><div class="practice-name">LeetCode</div><div class="practice-desc">Interview preparation</div></div></a>
@@ -459,9 +407,9 @@ print(f'Welcome, {name}!')</textarea>
 
     <section id="quiz-section" class="animate-on-scroll">
         <div class="section-header">
-            <div class="section-tag">🎯 Quiz Challenge</div>
+            <div class="section-tag">Quiz Challenge</div>
             <h2 class="section-title">Programming Quizzes</h2>
-            <p class="section-subtitle">Test your knowledge! Complete 100 levels in any language to earn your certificate</p>
+            <p class="section-subtitle">Test your knowledge. Complete all 10 levels in any language to master the basics.</p>
         </div>
         <div class="quiz-section">
             <div id="quizLangSelect">
@@ -470,32 +418,32 @@ print(f'Welcome, {name}!')</textarea>
                     <div class="quiz-lang-card" onclick="startQuiz('python')">
                         <div class="quiz-lang-icon">🐍</div>
                         <div class="quiz-lang-name">Python</div>
-                        <div class="quiz-lang-progress" id="progress-python">Level 0 / ∞</div>
+                        <div class="quiz-lang-progress" id="progress-python">Level 0 / 10</div>
                     </div>
                     <div class="quiz-lang-card" onclick="startQuiz('cpp')">
                         <div class="quiz-lang-icon">⚡</div>
                         <div class="quiz-lang-name">C++</div>
-                        <div class="quiz-lang-progress" id="progress-cpp">Level 0 / ∞</div>
+                        <div class="quiz-lang-progress" id="progress-cpp">Level 0 / 10</div>
                     </div>
                     <div class="quiz-lang-card" onclick="startQuiz('javascript')">
                         <div class="quiz-lang-icon">🟨</div>
                         <div class="quiz-lang-name">JavaScript</div>
-                        <div class="quiz-lang-progress" id="progress-javascript">Level 0 / ∞</div>
+                        <div class="quiz-lang-progress" id="progress-javascript">Level 0 / 10</div>
                     </div>
                     <div class="quiz-lang-card" onclick="startQuiz('java')">
                         <div class="quiz-lang-icon">☕</div>
                         <div class="quiz-lang-name">Java</div>
-                        <div class="quiz-lang-progress" id="progress-java">Level 0 / ∞</div>
+                        <div class="quiz-lang-progress" id="progress-java">Level 0 / 10</div>
                     </div>
                     <div class="quiz-lang-card" onclick="startQuiz('html')">
                         <div class="quiz-lang-icon">🌐</div>
                         <div class="quiz-lang-name">HTML/CSS</div>
-                        <div class="quiz-lang-progress" id="progress-html">Level 0 / ∞</div>
+                        <div class="quiz-lang-progress" id="progress-html">Level 0 / 10</div>
                     </div>
                     <div class="quiz-lang-card" onclick="startQuiz('sql')">
                         <div class="quiz-lang-icon">🗄️</div>
                         <div class="quiz-lang-name">SQL</div>
-                        <div class="quiz-lang-progress" id="progress-sql">Level 0 / ∞</div>
+                        <div class="quiz-lang-progress" id="progress-sql">Level 0 / 10</div>
                     </div>
                 </div>
             </div>
@@ -517,7 +465,7 @@ print(f'Welcome, {name}!')</textarea>
             <div class="quiz-result" id="quizResult" style="display:none;">
                 <h3>🎉 Quiz Complete!</h3>
                 <p id="quizResultText">You scored 0 points!</p>
-                <button class="feature-btn" onclick="exitQuiz()">Back to Languages</button>
+                <button class="quiz-btn quiz-btn-primary" onclick="exitQuiz()">Back to Languages</button>
             </div>
         </div>
     </section>
@@ -529,9 +477,9 @@ print(f'Welcome, {name}!')</textarea>
             <p class="section-subtitle">Click below to explore all programming languages I teach</p>
         </div>
         <div style="background:var(--card-bg);border-radius:24px;padding:3rem;border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(20px);max-width:800px;margin:0 auto;text-align:center;">
-            <h3 style="font-size:1.8rem;font-weight:700;margin-bottom:0.5rem;background:linear-gradient(135deg,#ff0000,#cc0000);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">📺 YouTube Channel</h3>
+            <h3 style="font-size:1.8rem;font-weight:700;margin-bottom:0.5rem;background:linear-gradient(135deg,#ff0000,#cc0000);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">YouTube Channel</h3>
             <p style="color:var(--gray);margin-bottom:2rem;">20+ Programming Languages - 100% Free</p>
-            <button style="display:inline-flex;align-items:center;gap:0.75rem;padding:1rem 2.5rem;background:linear-gradient(135deg,#ff0000,#cc0000);color:white;border:none;border-radius:14px;font-size:1.1rem;font-weight:700;cursor:pointer;transition:all 0.3s;box-shadow:0 8px 30px rgba(255,0,0,0.3);" onclick="toggleLanguages()" id="youtubeToggleBtn"><span>▶️</span><span>View All Languages</span><span style="transition:transform 0.3s;" id="toggleArrow">▼</span></button>
+            <button style="display:inline-flex;align-items:center;gap:0.75rem;padding:1rem 2.5rem;background:linear-gradient(135deg,#ff0000,#cc0000);color:white;border:none;border-radius:14px;font-size:1.1rem;font-weight:700;cursor:pointer;transition:all 0.3s;box-shadow:0 8px 30px rgba(255,0,0,0.3);" onclick="toggleLanguages()" id="youtubeToggleBtn"><span>▶</span><span>View All Languages</span><span style="transition:transform 0.3s;" id="toggleArrow">▼</span></button>
             <div style="max-height:0;overflow:hidden;transition:max-height 0.5s ease,opacity 0.3s ease,margin-top 0.3s ease;opacity:0;margin-top:0;" id="languagesDropdown">
                 <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;padding:1rem 0;">
                     <a href="https://youtube.com/playlist?list=PLu0W_9lII9agwh1XjRt242xIpHhPT2llg" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:0.75rem;padding:1rem;background:rgba(255,255,255,0.05);border-radius:12px;text-decoration:none;color:var(--light);"><span>🐍</span><span>Python</span></a>
@@ -556,7 +504,8 @@ print(f'Welcome, {name}!')</textarea>
             </div>
         </div>
     </section>
-        <section id="new-skill" class="animate-on-scroll">
+
+    <section id="popular" class="animate-on-scroll">
         <div class="section-header">
             <div class="section-tag">Popular Courses</div>
             <h2 class="section-title">Start Learning Now</h2>
@@ -609,9 +558,9 @@ print(f'Welcome, {name}!')</textarea>
     </section>
 
     <section id="personal-info" class="animate-on-scroll">
-        <div class="section-header"><div class="section-tag">Personal Information</div><h2 class="section-title">About Personal Information of Owner</h2><p class="section-subtitle">Get to know more about me</p></div>
+        <div class="section-header"><div class="section-tag">Personal Information</div><h2 class="section-title">About the Owner</h2><p class="section-subtitle">Get to know more about me</p></div>
         <div style="background:var(--card-bg);border-radius:24px;padding:3rem;border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(20px);max-width:800px;margin:0 auto;">
-            <div style="text-align:center;margin-bottom:2rem;"><h3 style="font-size:1.8rem;font-weight:700;margin-bottom:0.5rem;background:linear-gradient(135deg,var(--primary),var(--secondary));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">👤 Akarshit Raj</h3><p style="color:var(--gray);">Programming Educator & Student</p></div>
+            <div style="text-align:center;margin-bottom:2rem;"><h3 style="font-size:1.8rem;font-weight:700;margin-bottom:0.5rem;background:linear-gradient(135deg,var(--primary),var(--secondary));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Akarshit Raj</h3><p style="color:var(--gray);">Programming Educator & Student</p></div>
             <div style="display:grid;gap:1rem;">
                 <div style="display:flex;align-items:center;gap:1.25rem;padding:1.25rem;background:rgba(255,255,255,0.05);border-radius:16px;"><div style="width:50px;height:50px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--primary),var(--secondary));border-radius:14px;font-size:1.5rem;flex-shrink:0;">🏫</div><div style="flex:1;"><div style="font-size:0.8rem;color:var(--gray);text-transform:uppercase;letter-spacing:1px;">School / Institution</div><div style="font-size:1.1rem;font-weight:600;">PM SHRI Jawahar Navodaya Vidyalaya, Khairabad, Sitapur</div></div></div>
                 <div style="display:flex;align-items:center;gap:1.25rem;padding:1.25rem;background:rgba(255,255,255,0.05);border-radius:16px;"><div style="width:50px;height:50px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--primary),var(--secondary));border-radius:14px;font-size:1.5rem;flex-shrink:0;">📧</div><div style="flex:1;"><div style="font-size:0.8rem;color:var(--gray);text-transform:uppercase;letter-spacing:1px;">Email Address</div><div style="font-size:1.1rem;font-weight:600;">akarshitraj43@gmail.com</div></div><a href="mailto:akarshitraj43@gmail.com" style="padding:0.5rem 1rem;background:var(--primary);color:white;border:none;border-radius:8px;cursor:pointer;font-weight:600;font-size:0.85rem;text-decoration:none;display:inline-flex;align-items:center;">Email</a></div>
@@ -623,7 +572,7 @@ print(f'Welcome, {name}!')</textarea>
     <section id="contact" class="animate-on-scroll" style="text-align:center;">
         <div class="section-header"><div class="section-tag">Get in Touch</div><h2 class="section-title">Let's Connect</h2><p class="section-subtitle">Have questions? Want to collaborate? Reach out!</p></div>
         <div style="background:var(--card-bg);border-radius:24px;padding:3rem;border:1px solid rgba(255,255,255,0.08);max-width:800px;margin:0 auto;">
-            <h3 style="font-size:1.5rem;margin-bottom:0.5rem;">📬 Contact Information</h3>
+            <h3 style="font-size:1.5rem;margin-bottom:0.5rem;">Contact Information</h3>
             <p style="color:var(--gray);margin-bottom:2rem;">Feel free to reach out</p>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;margin-bottom:2rem;">
                 <a href="https://youtube.com/playlist?list=PLu0W_9lII9agwh1XjRt242xIpHhPT2llg" target="_blank" rel="noopener noreferrer" style="display:flex;flex-direction:column;align-items:center;gap:0.5rem;padding:1.5rem;background:rgba(255,255,255,0.05);border-radius:16px;text-decoration:none;color:var(--light);"><span style="font-size:2rem;">📺</span><span style="font-weight:600;">YouTube</span><span style="font-size:0.8rem;color:var(--gray);">My Courses</span></a>
@@ -638,87 +587,11 @@ print(f'Welcome, {name}!')</textarea>
         </div>
     </section>
 
-    <section id="ai-code" class="animate-on-scroll">
-        <div class="section-header"><div class="section-tag">🤖 AI Code Generator</div><h2 class="section-title">Generate Code with AI</h2><p class="section-subtitle">Bas apna idea likhein, AI aapke liye complete code generate karega!</p></div>
-        <div style="background:var(--card-bg);border-radius:24px;padding:3rem;border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(20px);max-width:800px;margin:0 auto;">
-            <input type="text" class="feature-input" id="codeGenPrompt" placeholder="e.g., Mujhe calculator app bana ke do HTML/CSS/JS mein...">
-            <button class="feature-btn" onclick="generateAICode()">⚡ Generate Code</button>
-            <div class="feature-output" id="codeGenOutput"></div>
-        </div>
-    </section>
-
-    <section id="certificate" class="animate-on-scroll">
-        <div class="section-header"><div class="section-tag">🏆 Certificate</div><h2 class="section-title">Generate Your Certificate</h2><p class="section-subtitle">Complete 100 quiz levels in any language + Login required!</p></div>
-        <div style="background:var(--card-bg);border-radius:24px;padding:3rem;border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(20px);max-width:800px;margin:0 auto;">
-            <div id="certLockMessage" style="text-align:center;padding:1.5rem;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);border-radius:16px;margin-bottom:1rem;display:none;">
-                <p style="color:#fca5a5;">🔒 Certificate ke liye <strong>100 quiz levels</strong> complete karein kisi bhi ek language mein, aur <strong>login</strong> karein!</p>
-                <button class="feature-btn" onclick="goToSection('quiz-section')" style="margin-top:0.5rem;">Go to Quizzes 🎯</button>
-            </div>
-            <input type="text" class="feature-input" id="certName" placeholder="Apna naam likhein...">
-            <input type="text" class="feature-input" id="certCourse" placeholder="Course name (e.g., Complete Python Mastery)" value="Programming Course">
-            <button class="feature-btn success" onclick="generateCertificate()" id="certGenBtn">🏆 Generate Certificate</button>
-            <button class="feature-btn" onclick="downloadCertificate()" id="downloadCertBtn" style="display:none;">📥 Download Certificate</button>
-            <div class="cert-preview" id="certPreview">
-                <div class="cert-seal">🏆</div>
-                <h2>Certificate of Completion</h2>
-                <p>This is to certify that</p>
-                <h1 id="certPreviewName">Student Name</h1>
-                <p>has successfully completed</p>
-                <h3 id="certPreviewCourse" style="color:var(--primary);margin:0.5rem 0;">Programming Course</h3>
-                <p style="margin-top:1rem;">Date: <span id="certDate"></span></p>
-                <p style="margin-top:0.5rem;font-size:0.85rem;">Instructor: <strong>Akarshit Raj</strong></p>
-                <p style="font-size:0.75rem;color:#9ca3af;margin-top:1rem;">PM SHRI Jawahar Navodaya Vidyalaya, Khairabad, Sitapur</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="login" class="animate-on-scroll">
-        <div class="section-header"><div class="section-tag">🔐 Login</div><h2 class="section-title">Student Login</h2><p class="section-subtitle">Apna progress track karein aur certificates save karein!</p></div>
-        <div style="background:var(--card-bg);border-radius:24px;padding:3rem;border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(20px);max-width:500px;margin:0 auto;">
-            <div class="login-status" id="loginStatus">✅ Logged in as <span id="loggedInEmail"></span></div>
-            <div id="loginForm">
-                <div class="social-login">
-                    <button class="social-btn" onclick="socialLogin('google')">🔴 Google</button>
-                    <button class="social-btn" onclick="socialLogin('apple')">⚫ Apple</button>
-                    <button class="social-btn" onclick="socialLogin('github')">⚫ GitHub</button>
-                </div>
-                <div class="auth-divider">OR</div>
-                <input type="email" class="feature-input" id="loginEmail" placeholder="Email address...">
-                <input type="password" class="feature-input" id="loginPassword" placeholder="Password...">
-                <button class="feature-btn" onclick="signup()">📝 Sign Up</button>
-                <button class="feature-btn success" onclick="login()">🔐 Login</button>
-            </div>
-            <div id="logoutForm" style="display:none;text-align:center;">
-                <p style="color:var(--gray);margin-bottom:1rem;">Welcome back! Aap logged in hain.</p>
-                <button class="feature-btn secondary" onclick="logout()">🚪 Logout</button>
-            </div>
-        </div>
-    </section>
-
-    <section id="premium" class="animate-on-scroll">
-        <div class="section-header"><div class="section-tag">💎 Premium</div><h2 class="section-title">Premium Membership</h2><p class="section-subtitle">Advanced features unlock karein aur coding master ban jayein!</p></div>
-        <div style="background:var(--card-bg);border-radius:24px;padding:3rem;border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(20px);max-width:500px;margin:0 auto;text-align:center;">
-            <div class="premium-badge">⭐ MOST POPULAR</div>
-            <h3 style="font-size:1.5rem;font-weight:700;margin-bottom:0.5rem;">🚀 Pro Coder Plan</h3>
-            <div class="price-tag">₹99<span style="font-size:1rem;color:var(--gray);">/month</span></div>
-            <ul class="feature-list" style="list-style:none;">
-                <li><span style="color:var(--success);">✅</span> Unlimited AI Code Generation</li>
-                <li><span style="color:var(--success);">✅</span> Priority AI Chat Support</li>
-                <li><span style="color:var(--success);">✅</span> Advanced Project Templates</li>
-                <li><span style="color:var(--success);">✅</span> Certificate with Digital Signature</li>
-                <li><span style="color:var(--success);">✅</span> Download All Course Notes</li>
-                <li><span style="color:var(--success);">✅</span> 1-on-1 Doubt Clearing</li>
-            </ul>
-            <button class="feature-btn" onclick="buyPremium()" style="font-size:1.1rem;padding:1rem;">💎 Get Premium</button>
-            <p style="color:var(--gray);font-size:0.8rem;margin-top:1rem;">💡 Abhi free plan use karein, upgrade anytime!</p>
-        </div>
-    </section>
-
     <footer style="text-align:center;padding:3rem 5%;border-top:1px solid rgba(255,255,255,0.05);margin-top:3rem;">
         <div style="font-size:1.5rem;font-weight:800;background:linear-gradient(135deg,var(--primary),var(--secondary));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:1rem;">AR.</div>
         <p style="color:var(--gray);font-size:0.9rem;margin-bottom:1rem;">Akarshit Raj - Programming Educator</p>
-        <p style="color:var(--accent);font-weight:600;font-size:0.9rem;margin-bottom:1.5rem;">🏫 PM SHRI Jawahar Navodaya Vidyalaya, Khairabad, Sitapur</p>
-        <p style="color:var(--gray);font-size:0.85rem;opacity:0.7;">Made with ❤️ for learners everywhere • © <span id="year">2026</span></p>
+        <p style="color:var(--accent);font-weight:600;font-size:0.9rem;margin-bottom:1.5rem;">PM SHRI Jawahar Navodaya Vidyalaya, Khairabad, Sitapur</p>
+        <p style="color:var(--gray);font-size:0.85rem;opacity:0.7;">Made with passion for learners everywhere • © <span id="year">2026</span></p>
         <div class="footer-links">
             <a href="privacy-policy.html">Privacy Policy</a> | 
             <a href="disclaimer.html">Disclaimer</a> | 
@@ -733,46 +606,9 @@ print(f'Welcome, {name}!')</textarea>
         </div>
     </div>
 
-    <div class="notification" id="notification">Email copied to clipboard!</div>
+    <div class="notification" id="notification">Notification</div>
 
-    <div class="auth-gate-overlay" id="authGateOverlay">
-        <h3>🔐 Login Required</h3>
-        <p>Is feature ko use karne ke liye aapko login karna hoga. Login karein aur coding journey continue karein!</p>
-        <button class="feature-btn" onclick="closeAuthGate();openAuthModal();" style="max-width:250px;">🔐 Login / Register</button>
-        <button class="feature-btn secondary" onclick="closeAuthGate()" style="max-width:250px;background:transparent;border:1px solid rgba(255,255,255,0.2);">Cancel</button>
-    </div>
-
-    <div class="auth-modal" id="authModal">
-        <div class="auth-box">
-            <button class="auth-close" onclick="closeAuthModal()">×</button>
-            <h3 class="auth-title">🔐 Welcome Back!</h3>
-            <p class="auth-subtitle">Login karein aur apna progress track karein</p>
-            <div class="social-login">
-                <button class="social-btn" onclick="socialLogin('google')">🔴 Google</button>
-                <button class="social-btn" onclick="socialLogin('apple')">⚫ Apple</button>
-                <button class="social-btn" onclick="socialLogin('github')">⚫ GitHub</button>
-            </div>
-            <div class="auth-divider">OR</div>
-            <input type="email" class="feature-input" id="authEmail" placeholder="Email address...">
-            <input type="password" class="feature-input" id="authPassword" placeholder="Password...">
-            <button class="feature-btn" onclick="authSignup()">📝 Sign Up</button>
-            <button class="feature-btn success" onclick="authLogin()">🔐 Login</button>
-        </div>
-    </div>
-
-    <div id="apiKeyModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:4000;align-items:center;justify-content:center;padding:2rem;">
-        <div style="background:var(--card-bg);border-radius:24px;padding:2.5rem;max-width:450px;width:100%;border:1px solid rgba(255,255,255,0.1);text-align:center;">
-            <div style="font-size:3rem;margin-bottom:1rem;">🔐</div>
-            <h3 style="font-size:1.4rem;font-weight:700;margin-bottom:0.5rem;">Gemini API Key Required</h3>
-            <p style="color:var(--gray);font-size:0.9rem;margin-bottom:1.5rem;">AI Chat use karne ke liye apni free Gemini API key enter karein. Ek baar enter karein, browser mein save ho jayegi.</p>
-            <input type="text" id="apiKeyInput" placeholder="Apni Gemini API Key yahan paste karein..." style="width:100%;padding:0.9rem 1rem;border-radius:12px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);color:var(--light);font-size:0.9rem;outline:none;margin-bottom:1rem;font-family:inherit;">
-            <div style="display:flex;gap:0.75rem;">
-                <button onclick="saveApiKey()" style="flex:1;padding:0.8rem;background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:white;border:none;border-radius:12px;font-weight:600;cursor:pointer;font-size:0.95rem;">✅ Save Key</button>
-                <button onclick="closeApiKeyModal()" style="flex:1;padding:0.8rem;background:var(--glass);color:var(--gray);border:1px solid rgba(255,255,255,0.1);border-radius:12px;font-weight:600;cursor:pointer;font-size:0.95rem;">❌ Cancel</button>
-            </div>
-            <p style="color:var(--gray);font-size:0.8rem;margin-top:1rem;">💡 Key free mein milegi: <a href="https://aistudio.google.com/app/apikey" target="_blank" style="color:var(--primary);">Google AI Studio</a></p>
-        </div>
-    </div>
+    <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
     <div class="ai-chat-modal" id="webAIChat">
         <div class="ai-chat-header">
@@ -784,30 +620,30 @@ print(f'Welcome, {name}!')</textarea>
             <div class="ai-message ai">
                 <div class="ai-message-avatar">🤖</div>
                 <div class="ai-message-bubble">
-                    <strong>Hello! I'm your Web Development AI Assistant. 🌐</strong><br><br>
+                    <strong>Hello! I am your Web Development AI Assistant.</strong><br><br>
                     I can help you with:<br>
                     • HTML, CSS, JavaScript basics<br>
                     • Responsive design & frameworks<br>
-                    • GitHub Pages hosting (free!)<<br>
-                    • Website publish karne ka tarika<br>
+                    • GitHub Pages hosting (free)<br>
+                    • Website deployment steps<br>
                     • Domain & hosting setup<br>
-                    • Code likh ke dunga step-by-step!<br><br>
-                    <em>Neeche quick questions bhi hain ya aap khud bhi pooch sakte hain!</em>
+                    • Complete code examples<br><br>
+                    <em>Click a quick question below or type your own!</em>
                 </div>
             </div>
         </div>
         <div class="ai-quick-actions" id="webQuickActions">
-            <button class="ai-quick-btn" onclick="sendAIQuestion('web','Website kaise banaye?')">🌐 Website kaise banaye?</button>
-            <button class="ai-quick-btn" onclick="sendAIQuestion('web','GitHub Pages pe kaise publish karein?')">📤 GitHub Pages publish?</button>
-            <button class="ai-quick-btn" onclick="sendAIQuestion('web','HTML CSS JS kya hai?')">📝 HTML/CSS/JS kya hai?</button>
-            <button class="ai-quick-btn" onclick="sendAIQuestion('web','Free hosting kaise karein?')">🆓 Free hosting?</button>
-            <button class="ai-quick-btn" onclick="sendAIQuestion('web','Responsive website kaise banaye?')">📱 Responsive design?</button>
-            <button class="ai-quick-btn" onclick="sendAIQuestion('web','Mujhe portfolio website bana ke do')">💼 Portfolio website code?</button>
+            <button class="ai-quick-btn" onclick="sendAIQuestion('web','How to create a website?')">How to create a website?</button>
+            <button class="ai-quick-btn" onclick="sendAIQuestion('web','How to publish on GitHub Pages?')">GitHub Pages publish?</button>
+            <button class="ai-quick-btn" onclick="sendAIQuestion('web','What is HTML CSS JS?')">What is HTML/CSS/JS?</button>
+            <button class="ai-quick-btn" onclick="sendAIQuestion('web','Free hosting options?')">Free hosting?</button>
+            <button class="ai-quick-btn" onclick="sendAIQuestion('web','How to make responsive design?')">Responsive design?</button>
+            <button class="ai-quick-btn" onclick="sendAIQuestion('web','Give me portfolio website code')">Portfolio website code?</button>
         </div>
         <div class="ai-chat-input-area">
             <div class="ai-chat-input-wrapper">
-                <input type="text" class="ai-chat-input" id="webChatInput" placeholder="Apna sawal likhein..." onkeypress="if(event.key==='Enter')sendAIQuestion('web')">
-                <button class="ai-chat-send" id="webSendBtn" onclick="sendAIQuestion('web')">➤ Send</button>
+                <input type="text" class="ai-chat-input" id="webChatInput" placeholder="Ask anything about web development..." onkeypress="if(event.key==='Enter')sendAIQuestion('web')">
+                <button class="ai-chat-send" id="webSendBtn" onclick="sendAIQuestion('web')">Send</button>
             </div>
         </div>
     </div>
@@ -822,37 +658,35 @@ print(f'Welcome, {name}!')</textarea>
             <div class="ai-message ai">
                 <div class="ai-message-avatar" style="background:rgba(139,92,246,0.2);border-color:var(--app-dev)">🤖</div>
                 <div class="ai-message-bubble">
-                    <strong>Hello! I'm your App Development AI Assistant. 📱</strong><br><br>
+                    <strong>Hello! I am your App Development AI Assistant.</strong><br><br>
                     I can help you with:<br>
                     • Android app development (Kotlin/Java)<br>
                     • Flutter & React Native<br>
-                    • Play Store pe publish kaise karein<br>
+                    • Play Store publishing guide<br>
                     • App design & UI/UX<br>
-                    • APK banane ka tarika<br>
-                    • Code likh ke dunga step-by-step!<br><br>
-                    <em>Neeche quick questions bhi hain ya aap khud bhi pooch sakte hain!</em>
+                    • APK build process<br>
+                    • Complete code examples<br><br>
+                    <em>Click a quick question below or type your own!</em>
                 </div>
             </div>
         </div>
         <div class="ai-quick-actions" id="appQuickActions">
-            <button class="ai-quick-btn" onclick="sendAIQuestion('app','Android app kaise banaye?')">📱 Android app kaise banaye?</button>
-            <button class="ai-quick-btn" onclick="sendAIQuestion('app','Play Store pe kaise publish karein?')">🎮 Play Store publish?</button>
-            <button class="ai-quick-btn" onclick="sendAIQuestion('app','Kotlin vs Flutter kya hai?')">⚡ Kotlin vs Flutter?</button>
-            <button class="ai-quick-btn" onclick="sendAIQuestion('app','Free mein app kaise banaye?')">🆓 Free app dev?</button>
-            <button class="ai-quick-btn" onclick="sendAIQuestion('app','APK file kaise banaye?')">📦 APK kaise banaye?</button>
-            <button class="ai-quick-btn" onclick="sendAIQuestion('app','Mujhe calculator app bana ke do')">🧮 Calculator app code?</button>
+            <button class="ai-quick-btn" onclick="sendAIQuestion('app','How to create an Android app?')">Android app guide?</button>
+            <button class="ai-quick-btn" onclick="sendAIQuestion('app','How to publish on Play Store?')">Play Store publish?</button>
+            <button class="ai-quick-btn" onclick="sendAIQuestion('app','Kotlin vs Flutter which is better?')">Kotlin vs Flutter?</button>
+            <button class="ai-quick-btn" onclick="sendAIQuestion('app','How to build APK file?')">Build APK?</button>
+            <button class="ai-quick-btn" onclick="sendAIQuestion('app','Give me calculator app code')">Calculator app code?</button>
+            <button class="ai-quick-btn" onclick="sendAIQuestion('app','What is Android Studio?')">Android Studio?</button>
         </div>
         <div class="ai-chat-input-area">
             <div class="ai-chat-input-wrapper">
-                <input type="text" class="ai-chat-input" id="appChatInput" placeholder="Apna sawal likhein..." onkeypress="if(event.key==='Enter')sendAIQuestion('app')">
-                <button class="ai-chat-send" id="appSendBtn" onclick="sendAIQuestion('app')">➤ Send</button>
+                <input type="text" class="ai-chat-input" id="appChatInput" placeholder="Ask anything about app development..." onkeypress="if(event.key==='Enter')sendAIQuestion('app')">
+                <button class="ai-chat-send" id="appSendBtn" onclick="sendAIQuestion('app')">Send</button>
             </div>
         </div>
     </div>
-        <script>
-        const VERCEL_API_URL = 'https://chatbot-api-gamma-ochre.vercel.app/api/chat';
-        let GEMINI_API_KEY = localStorage.getItem('gemini_api_key') || '';
-        const GEMINI_BASE_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=';
+
+    <script>
         const PISTON_API = 'https://emkc.org/api/v2/piston/execute';
         const pistonLangMap = {
             python: { language: 'python', version: '3.10.0' },
@@ -868,10 +702,48 @@ print(f'Welcome, {name}!')</textarea>
             rust: { language: 'rust', version: '1.68.2' },
             sql: { language: 'sql', version: 'latest' }
         };
-        const SYSTEM_PROMPTS = {
-            web: `You are an expert Web Development AI Assistant. You help users learn web development and write code.\n\nRules:\n1. Always give step-by-step explanations in Hindi + English mix (Hinglish)\n2. When user asks for code, provide complete, working HTML/CSS/JS code\n3. Format code in clean blocks\n4. Be encouraging and friendly\n5. If user says "bana ke do" or "code do", write full code immediately\n6. Explain concepts simply for beginners\n7. Always give practical examples\n\nTopics you know: HTML, CSS, JavaScript, React, Bootstrap, Tailwind, GitHub Pages, Hosting, Domain, Responsive Design, Web Projects`,
-            app: `You are an expert App Development AI Assistant. You help users learn Android/iOS app development and write code.\n\nRules:\n1. Always give step-by-step explanations in Hindi + English mix (Hinglish)\n2. When user asks for code, provide complete, working Kotlin/Flutter/Dart code\n3. Format code in clean blocks\n4. Be encouraging and friendly\n5. If user says "bana ke do" or "code do", write full code immediately\n6. Explain concepts simply for beginners\n7. Always give practical examples\n\nTopics you know: Android, Kotlin, Flutter, Dart, React Native, Play Store, APK, UI Design, Material Design, App Projects`
+
+        const webResponses = {
+            website: "Creating a Website - Step by Step:<br><br><strong>Step 1: HTML Structure</strong><br>Create a file named index.html:<br><div class='ai-code-block'><pre>&lt;!DOCTYPE html&gt;\n&lt;html lang='en'&gt;\n&lt;head&gt;\n  &lt;meta charset='UTF-8'&gt;\n  &lt;meta name='viewport' content='width=device-width, initial-scale=1.0'&gt;\n  &lt;title&gt;My Website&lt;/title&gt;\n  &lt;style&gt;\n    body { font-family: 'Segoe UI', sans-serif; background: #0f172a; color: white; text-align: center; padding: 50px; }\n    h1 { color: #6366f1; }\n    .btn { padding: 12px 24px; background: linear-gradient(135deg, #6366f1, #4f46e5); color: white; text-decoration: none; border-radius: 8px; }\n  &lt;/style&gt;\n&lt;/head&gt;\n&lt;body&gt;\n  &lt;h1&gt;Hello World!&lt;/h1&gt;\n  &lt;p&gt;Welcome to my website.&lt;/p&gt;\n  &lt;a href='#' class='btn'&gt;Get Started&lt;/a&gt;\n&lt;/body&gt;\n&lt;/html&gt;</pre></div><br><strong>Step 2:</strong> Save and open in browser.<br><strong>Step 3:</strong> Use <strong>GitHub Pages</strong> or <strong>Netlify</strong> for free hosting.",
+            github: "Publishing on GitHub Pages - Free Hosting:<br><br><strong>Step 1:</strong> Create a GitHub account.<br><strong>Step 2:</strong> Create a new repository named <code>yourusername.github.io</code>.<<br><strong>Step 3:</strong> Upload your HTML/CSS/JS files.<br><strong>Step 4:</strong> Go to Settings &gt; Pages.<br><strong>Step 5:</strong> Select main branch and save.<br><br>Your site will be live at <code>https://yourusername.github.io</code> within 2 minutes.<br><br><strong>Pro Tip:</strong> Use a custom domain by adding a CNAME file.",
+            htmlcssjs: "What is HTML, CSS, and JavaScript?<br><br><strong>HTML (HyperText Markup Language)</strong> - The skeleton/structure of a webpage. Uses tags like &lt;div&gt;, &lt;p&gt;, &lt;h1&gt;.<br><br><strong>CSS (Cascading Style Sheets)</strong> - The skin/styling. Controls colors, fonts, layout, animations.<br><br><strong>JavaScript</strong> - The brain/interactivity. Handles clicks, API calls, dynamic content, logic.<br><br><strong>Analogy:</strong> HTML is the body, CSS is the clothes, JS is the brain.",
+            hosting: "Free Hosting Options for Websites:<br><br>1. <strong>GitHub Pages</strong> - Best for static sites, custom domains, unlimited bandwidth.<br>2. <strong>Netlify</strong> - Drag and drop deployment, form handling, serverless functions.<br>3. <strong>Vercel</strong> - Excellent for React/Next.js, automatic deployments.<br>4. <strong>Surge.sh</strong> - Simple CLI deployment for static sites.<br>5. <strong>Firebase Hosting</strong> - Fast CDN, SSL included, good for SPAs.<br><br>All of these are completely free for beginners and small projects.",
+            responsive: "How to Make Responsive Design:<br><br><strong>1. Use Viewport Meta Tag:</strong><br><code>&lt;meta name='viewport' content='width=device-width, initial-scale=1.0'&gt;</code><br><br><strong>2. CSS Media Queries:</strong><br><div class='ai-code-block'><pre>@media (max-width: 768px) {\n  .container { grid-template-columns: 1fr; }\n  h1 { font-size: 2rem; }\n}</pre></div><br><strong>3. Use Flexbox & Grid:</strong> They automatically adapt to screen size.<br><strong>4. Relative Units:</strong> Use %, rem, em instead of px.<br><strong>5. Test:</strong> Use Chrome DevTools (F12) to test different screen sizes.",
+            portfolio: "Complete Portfolio Website Code:<br><div class='ai-code-block'><pre>&lt;!DOCTYPE html&gt;\n&lt;html&gt;\n&lt;head&gt;\n  &lt;style&gt;\n    * { margin: 0; padding: 0; box-sizing: border-box; }\n    body { font-family: 'Segoe UI', sans-serif; background: #0f172a; color: white; }\n    nav { display: flex; justify-content: space-between; padding: 2rem 5%; }\n    .hero { text-align: center; padding: 100px 5%; }\n    .hero h1 { font-size: 3.5rem; background: linear-gradient(135deg, #6366f1, #ec4899); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }\n    .btn { padding: 1rem 2rem; background: linear-gradient(135deg, #6366f1, #4f46e5); color: white; text-decoration: none; border-radius: 12px; font-weight: 600; }\n    .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; padding: 3rem 5%; }\n    .skill-card { background: rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 16px; text-align: center; border: 1px solid rgba(255,255,255,0.1); }\n  &lt;/style&gt;\n&lt;/head&gt;\n&lt;body&gt;\n  &lt;nav&gt;&lt;div style='font-weight:800;font-size:1.5rem;'&gt;Portfolio&lt;/div&gt;&lt;div&gt;&lt;a href='#skills' style='color:white;text-decoration:none;'&gt;Skills&lt;/a&gt;&lt;/div&gt;&lt;/nav&gt;\n  &lt;div class='hero'&gt;\n    &lt;h1&gt;John Doe&lt;/h1&gt;\n    &lt;p style='color:#94a3b8;margin:1rem 0;'&gt;Full Stack Developer&lt;/p&gt;\n    &lt;a href='mailto:email@example.com' class='btn'&gt;Hire Me&lt;/a&gt;\n  &lt;/div&gt;\n  &lt;div class='skills' id='skills'&gt;\n    &lt;div class='skill-card'&gt;&lt;h3&gt;HTML/CSS&lt;/h3&gt;&lt;/div&gt;\n    &lt;div class='skill-card'&gt;&lt;h3&gt;JavaScript&lt;/h3&gt;&lt;/div&gt;\n    &lt;div class='skill-card'&gt;&lt;h3&gt;React&lt;/h3&gt;&lt;/div&gt;\n  &lt;/div&gt;\n&lt;/body&gt;\n&lt;/html&gt;</pre></div><br>Just save as index.html and open in browser!",
+            default: "I can help you with Web Development:<br><br><strong>Topics I cover:</strong><br>• HTML5, CSS3, JavaScript (ES6+)<br>• Responsive Design with Bootstrap & Tailwind<br>• React.js & modern frameworks<br>• GitHub Pages & free hosting<br>• Domain setup & deployment<br>• Portfolio & business websites<br>• SEO optimization basics<br><br><strong>Ask me anything specific like:</strong><br>• 'How to create a website?'<br>• 'Portfolio website code'<br>• 'Responsive design tutorial'<br>• 'Free hosting options'"
         };
+
+        const appResponses = {
+            android: "How to Create an Android App:<br><br><strong>Step 1: Install Android Studio</strong><br>Download from developer.android.com/studio<br><br><strong>Step 2: Create New Project</strong><br>Select 'Empty Activity' and choose Kotlin.<br><br><strong>Step 3: Basic Kotlin Code:</strong><br><div class='ai-code-block'><pre>// MainActivity.kt\npackage com.example.myapp\n\nimport android.os.Bundle\nimport androidx.appcompat.app.AppCompatActivity\n\nclass MainActivity : AppCompatActivity() {\n    override fun onCreate(savedInstanceState: Bundle?) {\n        super.onCreate(savedInstanceState)\n        setContentView(R.layout.activity_main)\n    }\n}</pre></div><br><strong>Step 4: Design Layout</strong> in res/layout/activity_main.xml using drag-and-drop.<br><strong>Step 5:</strong> Click Run to test on emulator or real device.",
+            playstore: "How to Publish on Play Store:<br><br><strong>Step 1:</strong> Create a Google Play Developer account ($25 one-time fee).<<br><strong>Step 2:</strong> Build a signed APK/AAB in Android Studio (Build &gt; Generate Signed Bundle).<<br><strong>Step 3:</strong> Go to Play Console &gt; Create App.<br><strong>Step 4:</strong> Fill store listing (title, description, screenshots, icon).<<br><strong>Step 5:</strong> Upload your AAB file.<br><strong>Step 6:</strong> Set up pricing and distribution.<br><strong>Step 7:</strong> Submit for review (usually 1-3 days).<<br><br><strong>Tip:</strong> Make sure your app follows Play Store policies.",
+            kotlinvsflutter: "Kotlin vs Flutter - Which is Better?<br><br><strong>Kotlin (Native Android):</strong><br>• Official Android language<br>• Best performance<br>• Full access to Android APIs<br>• Steeper learning curve<br>• Only Android (need Swift for iOS)<br><br><strong>Flutter (Cross-Platform):</strong><br>• One codebase for Android + iOS<br>• Fast development with Hot Reload<br>• Beautiful UI with widgets<br>• Good performance (Dart compiles to native)<br>• Growing community<br><br><strong>My Recommendation:</strong> Start with Kotlin for native Android basics, then learn Flutter for cross-platform projects.",
+            apk: "How to Build an APK File:<br><br><strong>In Android Studio:</strong><br>1. Go to <strong>Build</strong> &gt; <strong>Generate Signed Bundle / APK</strong><br>2. Select <strong>APK</strong><br>3. Create a new keystore (or use existing)<br>4. Fill keystore password and key alias<br>5. Click <strong>Next</strong> then <strong>Finish</strong><br><br>Your APK will be in <code>app/release/app-release.apk</code><br><br><strong>Install on Phone:</strong><br>Transfer APK to phone and tap to install (enable 'Unknown Sources' in settings).",
+            calculator: "Calculator App Code in Kotlin:<br><div class='ai-code-block'><pre>// MainActivity.kt\npackage com.example.calculator\n\nimport android.os.Bundle\nimport android.widget.Button\nimport android.widget.TextView\nimport androidx.appcompat.app.AppCompatActivity\n\nclass MainActivity : AppCompatActivity() {\n    private lateinit var resultText: TextView\n    private var currentInput = \"\"\n    \n    override fun onCreate(savedInstanceState: Bundle?) {\n        super.onCreate(savedInstanceState)\n        setContentView(R.layout.activity_main)\n        \n        resultText = findViewById(R.id.resultText)\n        \n        val buttons = listOf(R.id.btn0, R.id.btn1, R.id.btn2, R.id.btn3, R.id.btn4,\n                            R.id.btn5, R.id.btn6, R.id.btn7, R.id.btn8, R.id.btn9)\n        \n        buttons.forEachIndexed { index, id -&gt;\n            findViewById&lt;Button&gt;(id).setOnClickListener {\n                currentInput += index.toString()\n                resultText.text = currentInput\n            }\n        }\n        \n        findViewById&lt;Button&gt;(R.id.btnPlus).setOnClickListener { currentInput += \"+\"; resultText.text = currentInput }\n        findViewById&lt;Button&gt;(R.id.btnEqual).setOnClickListener { calculate() }\n    }\n    \n    private fun calculate() {\n        val parts = currentInput.split(\"+\")\n        if(parts.size == 2) {\n            val result = parts[0].toInt() + parts[1].toInt()\n            resultText.text = result.toString()\n            currentInput = result.toString()\n        }\n    }\n}</pre></div><br>Create corresponding XML layout with buttons and a TextView for display.",
+            androidstudio: "What is Android Studio?<br><br><strong>Android Studio</strong> is the official Integrated Development Environment (IDE) for Android app development.<br><br><strong>Features:</strong><br>• Visual Layout Editor (drag-and-drop UI design)<br>• APK Analyzer (reduce app size)<br>• Fast Emulator (test without real device)<br>• Intelligent Code Editor (autocomplete, refactoring)<br>• Firebase Integration<br>• GitHub Integration<br><br><strong>System Requirements:</strong><br>• Windows 10/11, macOS, or Linux<br>• 8GB RAM minimum (16GB recommended)<br>• 8GB disk space<br><br>Download: <code>developer.android.com/studio</code>",
+            default: "I can help you with App Development:<br><br><strong>Topics I cover:</strong><br>• Android (Kotlin/Java) development<br>• Flutter & Dart cross-platform<br>• React Native<br>• Play Store publishing<br>• APK building & signing<br>• UI/UX with Material Design<br>• Firebase backend integration<br>• App architecture (MVVM)<br><br><strong>Ask me anything specific like:</strong><br>• 'How to create an Android app?'<br>• 'Kotlin vs Flutter'<br>• 'Play Store publishing steps'<br>• 'Calculator app code'"
+        };
+
+        function getWebResponse(q) {
+            const lower = q.toLowerCase();
+            if (lower.includes('website') || lower.includes('create') || lower.includes('make') || lower.includes('build')) return webResponses.website;
+            if (lower.includes('github') || lower.includes('publish') || lower.includes('host') || lower.includes('deploy')) return webResponses.github;
+            if (lower.includes('html') || lower.includes('css') || lower.includes('js') || lower.includes('javascript') || lower.includes('what is')) return webResponses.htmlcssjs;
+            if (lower.includes('hosting') || lower.includes('free') || lower.includes('netlify') || lower.includes('vercel')) return webResponses.hosting;
+            if (lower.includes('responsive') || lower.includes('mobile') || lower.includes('media query')) return webResponses.responsive;
+            if (lower.includes('portfolio') || lower.includes('template')) return webResponses.portfolio;
+            return webResponses.default;
+        }
+
+        function getAppResponse(q) {
+            const lower = q.toLowerCase();
+            if (lower.includes('android') || lower.includes('app') || lower.includes('create') || lower.includes('make') || lower.includes('start')) return appResponses.android;
+            if (lower.includes('play store') || lower.includes('publish') || lower.includes('google play')) return appResponses.playstore;
+            if (lower.includes('kotlin') || lower.includes('flutter') || lower.includes('vs') || lower.includes('compare') || lower.includes('which')) return appResponses.kotlinvsflutter;
+            if (lower.includes('apk') || lower.includes('build') || lower.includes('generate')) return appResponses.apk;
+            if (lower.includes('calculator') || lower.includes('example') || lower.includes('code')) return appResponses.calculator;
+            if (lower.includes('android studio') || lower.includes('ide') || lower.includes('install')) return appResponses.androidstudio;
+            return appResponses.default;
+        }
 
         function toggleSidebar() {
             document.getElementById('sidebar').classList.toggle('active');
@@ -881,114 +753,6 @@ print(f'Welcome, {name}!')</textarea>
             toggleSidebar();
             const el = document.getElementById(id);
             if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
-        }
-        function isLoggedIn() {
-            return localStorage.getItem('akr_logged_in') === 'true';
-        }
-        function getUserEmail() {
-            return localStorage.getItem('akr_user_email') || '';
-        }
-        function openAuthModal() {
-            document.getElementById('authModal').classList.add('active');
-        }
-        function closeAuthModal() {
-            document.getElementById('authModal').classList.remove('active');
-        }
-        function openAuthGate() {
-            document.getElementById('authGateOverlay').classList.add('active');
-        }
-        function closeAuthGate() {
-            document.getElementById('authGateOverlay').classList.remove('active');
-        }
-        function openProtectedFeature(feature) {
-            if(!isLoggedIn()) {
-                openAuthGate();
-                return;
-            }
-            if(feature === 'aiweb') openAIChat('web');
-            else if(feature === 'aiapp') openAIChat('app');
-            else if(feature === 'compiler') document.getElementById('code-practice').scrollIntoView({behavior:'smooth'});
-            else if(feature === 'quiz') document.getElementById('quiz-section').scrollIntoView({behavior:'smooth'});
-            else if(feature === 'certificate') document.getElementById('certificate').scrollIntoView({behavior:'smooth'});
-        }
-        function socialLogin(provider) {
-            const mockEmails = { google: 'user@gmail.com', apple: 'user@icloud.com', github: 'user@github.com' };
-            const email = mockEmails[provider] || 'user@example.com';
-            localStorage.setItem('akr_user_email', email);
-            localStorage.setItem('akr_logged_in', 'true');
-            updateLoginUI();
-            closeAuthModal();
-            closeAuthGate();
-            showNotification('✅ Login Successful with ' + provider + '!');
-        }
-        function authSignup() {
-            const email = document.getElementById('authEmail').value.trim();
-            const password = document.getElementById('authPassword').value;
-            if(!email || !password) { alert('❌ Email aur password dono daalein!'); return; }
-            if(!email.includes('@')) { alert('❌ Valid email daalein!'); return; }
-            localStorage.setItem('akr_user_email', email);
-            localStorage.setItem('akr_user_pass', password);
-            alert('✅ Signup Successful! Ab login karein.');
-        }
-        function authLogin() {
-            const email = document.getElementById('authEmail').value.trim();
-            const password = document.getElementById('authPassword').value;
-            const savedEmail = localStorage.getItem('akr_user_email');
-            const savedPass = localStorage.getItem('akr_user_pass');
-            if(!email || !password) { alert('❌ Email aur password dono daalein!'); return; }
-            if(email === savedEmail && password === savedPass) {
-                localStorage.setItem('akr_logged_in', 'true');
-                updateLoginUI();
-                closeAuthModal();
-                closeAuthGate();
-                showNotification('✅ Login Successful!');
-            } else {
-                alert('❌ Email ya password galat hai!');
-            }
-        }
-        function signup(){
-            const email = document.getElementById('loginEmail').value.trim();
-            const password = document.getElementById('loginPassword').value;
-            if(!email || !password){ alert('❌ Email aur password dono daalein!'); return; }
-            if(!email.includes('@')){ alert('❌ Valid email daalein!'); return; }
-            localStorage.setItem('akr_user_email', email);
-            localStorage.setItem('akr_user_pass', password);
-            alert('✅ Signup Successful! Ab login karein.');
-        }
-        function login(){
-            const email = document.getElementById('loginEmail').value.trim();
-            const password = document.getElementById('loginPassword').value;
-            const savedEmail = localStorage.getItem('akr_user_email');
-            const savedPass = localStorage.getItem('akr_user_pass');
-            if(!email || !password){ alert('❌ Email aur password dono daalein!'); return; }
-            if(email === savedEmail && password === savedPass){
-                localStorage.setItem('akr_logged_in', 'true');
-                updateLoginUI();
-                showNotification('✅ Login Successful!');
-            } else {
-                alert('❌ Email ya password galat hai!');
-            }
-        }
-        function logout(){
-            localStorage.removeItem('akr_logged_in');
-            updateLoginUI();
-            showNotification('🚪 Logged out successfully!');
-        }
-        function updateLoginUI(){
-            const loggedIn = isLoggedIn();
-            const email = getUserEmail();
-            if(loggedIn){
-                document.getElementById('loginForm').style.display = 'none';
-                document.getElementById('logoutForm').style.display = 'block';
-                document.getElementById('loginStatus').classList.add('active');
-                document.getElementById('loggedInEmail').textContent = email;
-            } else {
-                document.getElementById('loginForm').style.display = 'block';
-                document.getElementById('logoutForm').style.display = 'none';
-                document.getElementById('loginStatus').classList.remove('active');
-            }
-            updateQuizProgressDisplays();
-            updateCertificateLock();
         }
 
         function saveCodeFile() {
@@ -1002,7 +766,7 @@ print(f'Welcome, {name}!')</textarea>
             a.download = 'code.' + ext;
             a.click();
             URL.revokeObjectURL(a.href);
-            showNotification('💾 File saved!');
+            showNotification('File saved!');
         }
         function loadCodeFile(input) {
             const file = input.files[0];
@@ -1010,7 +774,7 @@ print(f'Welcome, {name}!')</textarea>
             const reader = new FileReader();
             reader.onload = function(e) {
                 document.getElementById('codeInput').value = e.target.result;
-                showNotification('📂 File loaded: ' + file.name);
+                showNotification('File loaded: ' + file.name);
             };
             reader.readAsText(file);
             input.value = '';
@@ -1019,63 +783,58 @@ print(f'Welcome, {name}!')</textarea>
             const code = document.getElementById('codeInput');
             code.select();
             document.execCommand('copy');
-            showNotification('📋 Code copied!');
+            showNotification('Code copied!');
         }
         function clearCode() {
             document.getElementById('codeInput').value = '';
             document.getElementById('codeOutput').innerHTML = '<span style="color:var(--gray);">Code cleared. Start fresh!</span>';
-            showNotification('🗑️ Code cleared!');
+            showNotification('Code cleared!');
         }
 
         let currentLang = 'python';
-        async function runCodeReal() {
-            if(!isLoggedIn()) {
-                openAuthGate();
-                return;
-            }
+        function runCodeReal() {
             const o = document.getElementById('codeOutput');
             const b = document.getElementById('runBtn');
             const c = document.getElementById('codeInput').value;
-            const langData = pistonLangMap[currentLang];
-            if(!langData) {
-                o.innerHTML = '<span style="color:var(--error);">❌ Language not supported for execution yet.</span>';
-                return;
-            }
+            
             b.disabled = true;
             b.innerHTML = '<span>⏳</span><span>Running...</span>';
-            o.innerHTML = '<span style="color:var(--accent);">⏳ Running your code on real server...</span>';
-            try {
-                const response = await fetch(PISTON_API, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        language: langData.language,
-                        version: langData.version,
-                        files: [{ content: c }]
-                    })
-                });
-                const data = await response.json();
-                if(data.run) {
-                    let output = data.run.output || '';
-                    if(data.run.stderr) output += '\n\n[Error]\n' + data.run.stderr;
-                    if(!output.trim()) output = '✅ Code executed successfully (no output)';
-                    o.innerHTML = '<pre style="margin:0;color:#d4d4d4;white-space:pre-wrap;">' + escapeHtml(output) + '</pre>';
-                } else if(data.compile && data.compile.stderr) {
-                    o.innerHTML = '<pre style="margin:0;color:var(--error);">[Compilation Error]\n' + escapeHtml(data.compile.stderr) + '</pre>';
-                } else {
-                    o.innerHTML = '<span style="color:var(--error);">❌ Error: ' + escapeHtml(JSON.stringify(data)) + '</span>';
+            
+            if (currentLang === 'javascript') {
+                try {
+                    let logs = [];
+                    const mockConsole = {
+                        log: (...args) => logs.push(args.join(' ')),
+                        error: (...args) => logs.push('Error: ' + args.join(' ')),
+                        warn: (...args) => logs.push('Warning: ' + args.join(' '))
+                    };
+                    const func = new Function('console', c);
+                    func(mockConsole);
+                    o.innerHTML = '<pre style="margin:0;color:#d4d4d4;white-space:pre-wrap;">' + (logs.join('\n') || 'Code executed successfully (no output)') + '</pre>';
+                } catch(e) {
+                    o.innerHTML = '<pre style="margin:0;color:var(--error);">Error: ' + e.message + '</pre>';
                 }
-            } catch(error) {
-                o.innerHTML = '<span style="color:var(--error);">❌ Network Error: ' + escapeHtml(error.message) + '<br><br>Internet connection check karein ya baad mein try karein.</span>';
-            } finally {
                 b.disabled = false;
-                b.innerHTML = '<span>▶️</span><span>Run Code</span>';
+                b.innerHTML = '<span>▶</span><span>Run Code</span>';
+            } else if (currentLang === 'html') {
+                const iframe = document.createElement('iframe');
+                iframe.style.width = '100%';
+                iframe.style.height = '100%';
+                iframe.style.border = 'none';
+                iframe.srcdoc = c;
+                o.innerHTML = '';
+                o.appendChild(iframe);
+                b.disabled = false;
+                b.innerHTML = '<span>▶</span><span>Run Code</span>';
+            } else {
+                const langNames = { python: 'Python', cpp: 'C++', java: 'Java', csharp: 'C#', php: 'PHP', kotlin: 'Kotlin', swift: 'Swift', go: 'Go', rust: 'Rust', sql: 'SQL' };
+                o.innerHTML = '<div style="color:#94a3b8;text-align:center;padding:2rem;">' +
+                    '<p style="margin-bottom:1rem;">' + (langNames[currentLang] || currentLang) + ' requires a server-side compiler.</p>' +
+                    '<a href="https://www.programiz.com/' + currentLang + '-programming/online-compiler/" target="_blank" style="color:#6366f1;text-decoration:none;font-weight:600;">Open in Programiz Online Compiler →</a>' +
+                    '</div>';
+                b.disabled = false;
+                b.innerHTML = '<span>▶</span><span>Run Code</span>';
             }
-        }
-        function escapeHtml(text) {
-            const div = document.createElement('div');
-            div.textContent = text;
-            return div.innerHTML;
         }
 
         function toggleMenu(){document.getElementById('navLinks').classList.toggle('active')}
@@ -1088,7 +847,7 @@ print(f'Welcome, {name}!')</textarea>
             javascript:`// Write your JavaScript code here...\nconsole.log('Hello, World!');\nlet name = 'Akarshit';\nconsole.log('Welcome, ' + name + '!');`,
             java:`// Write your Java code here...\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println("Hello, World!");\n        String name = "Akarshit";\n        System.out.println("Welcome, " + name + "!");\n    }\n}`,
             csharp:`// Write your C# code here...\nusing System;\n\nclass Program {\n    static void Main() {\n        Console.WriteLine("Hello, World!");\n        string name = "Akarshit";\n        Console.WriteLine("Welcome, " + name + "!");\n    }\n}`,
-            html:`<!-- Write your HTML code here... -->\n<!DOCTYPE html>\n<html>\n<head>\n    <title>My Page</title>\n</head>\n<body>\n    <h1>Hello, World!</h1>\n    <p>Welcome to my website!</p>\n</body>\n</html>`,
+            html:`<!-- Write your HTML code here... -->\n<!DOCTYPE html>\n<html>\n<head>\n    <title>My Page</title>\n    <style>\n        body { font-family: Arial; background: #1e293b; color: white; text-align: center; padding: 50px; }\n        h1 { color: #6366f1; }\n    </style>\n</head>\n<body>\n    <h1>Hello, World!</h1>\n    <p>Welcome to my website!</p>\n</body>\n</html>`,
             sql:`-- Write your SQL code here...\nCREATE TABLE users (\n    id INT PRIMARY KEY,\n    name VARCHAR(50),\n    email VARCHAR(100)\n);\n\nINSERT INTO users VALUES (1, 'Akarshit', 'akarshit@example.com');\nSELECT * FROM users;`,
             php:`<?php\n// Write your PHP code here...\necho "Hello, World!\\n";\n$name = "Akarshit";\necho "Welcome, " . $name . "!";\n?>`,
             kotlin:`// Write your Kotlin code here...\nfun main() {\n    println("Hello, World!")\n    val name = "Akarshit"\n    println("Welcome, $name!")\n}`,
@@ -1139,8 +898,6 @@ print(f'Welcome, {name}!')</textarea>
         function closeModal(){document.getElementById('videoModal').classList.remove('active');document.getElementById('videoFrame').src='';document.body.style.overflow='auto'}
         document.getElementById('videoModal').addEventListener('click',function(e){if(e.target===this)closeModal()})
         
-        function copyEmail(){navigator.clipboard.writeText('akarshitraj43@gmail.com').then(()=>{const n=document.getElementById('notification');n.classList.add('show');setTimeout(()=>n.classList.remove('show'),3000)})}
-        
         document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
             anchor.addEventListener('click',function(e){
                 e.preventDefault();
@@ -1160,17 +917,11 @@ print(f'Welcome, {name}!')</textarea>
             const nav=document.querySelector('nav');
             if(window.scrollY>50){nav.style.background='rgba(2,6,23,0.95)'}
             else{nav.style.background='rgba(2,6,23,0.8)'}
+            
+            const scrollTop = document.getElementById('scrollTop');
+            if(window.scrollY > 500) scrollTop.classList.add('visible');
+            else scrollTop.classList.remove('visible');
         });
-        
-        function searchCourses(){
-            const input=document.getElementById('searchInput').value.toLowerCase();
-            const cards=document.querySelectorAll('.course-card');
-            cards.forEach(card=>{
-                const name=card.getAttribute('data-name');
-                if(name.includes(input)){card.style.display='block'}
-                else{card.style.display='none'}
-            });
-        }
         
         function showNotification(msg){
             const n = document.getElementById('notification');
@@ -1180,13 +931,8 @@ print(f'Welcome, {name}!')</textarea>
         }
 
         let currentAIType='';
-        let chatHistory = { web: [], app: [] };
         
         function openAIChat(type){
-            if(!isLoggedIn()) {
-                openAuthGate();
-                return;
-            }
             currentAIType=type;
             document.getElementById(type+'AIChat').classList.add('active');
             document.body.style.overflow='hidden';
@@ -1198,15 +944,7 @@ print(f'Welcome, {name}!')</textarea>
             currentAIType='';
         }
         
-        function formatAIResponse(text) {
-            text = text.replace(/```(\w+)?\n([\s\S]*?)```/g, '<div class="ai-code-block"><pre>$2</pre></div>');
-            text = text.replace(/`([^`]+)`/g, '<code style="background:rgba(255,255,255,0.1);padding:0.2rem 0.4rem;border-radius:4px;font-family:monospace;">$1</code>');
-            text = text.replace(/\n/g, '<br>');
-            text = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-            return text;
-        }
-        
-        async function sendAIQuestion(type, question){
+        function sendAIQuestion(type, question){
             const inputId = type + 'ChatInput';
             const bodyId = type + 'ChatBody';
             const sendBtnId = type + 'SendBtn';
@@ -1226,7 +964,7 @@ print(f'Welcome, {name}!')</textarea>
             bodyEl.scrollTop = bodyEl.scrollHeight;
             
             sendBtn.disabled = true;
-            sendBtn.textContent = '⏳';
+            sendBtn.textContent = '...';
             
             const typingId = 'typing-' + Date.now();
             const typingMsg = document.createElement('div');
@@ -1236,215 +974,94 @@ print(f'Welcome, {name}!')</textarea>
             bodyEl.appendChild(typingMsg);
             bodyEl.scrollTop = bodyEl.scrollHeight;
             
-            try {
-                const response = await fetch(VERCEL_API_URL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        message: SYSTEM_PROMPTS[type] + "\n\nUser: " + q,
-                        type: 'gemini'
-                    })
-                });
-                
+            setTimeout(() => {
                 document.getElementById(typingId).remove();
                 
-                if(!response.ok){
-                    throw new Error('API Error: ' + response.status);
-                }
-                
-                const data = await response.json();
-                let aiText = data.reply || 'Sorry, koi response nahi mila. Dobara try karein!';
-                
-                chatHistory[type].push({ role: 'user', text: q });
-                chatHistory[type].push({ role: 'model', text: aiText });
-                
-                if(chatHistory[type].length > 10) {
-                    chatHistory[type] = chatHistory[type].slice(-10);
-                }
+                let responseText = type === 'web' ? getWebResponse(q) : getAppResponse(q);
                 
                 const aiMsg = document.createElement('div');
                 aiMsg.className = 'ai-message ai';
-                aiMsg.innerHTML = `<div class="ai-message-avatar" style="background:rgba(99,102,241,0.2);border-color:var(--primary)">🤖</div><div class="ai-message-bubble">${formatAIResponse(aiText)}</div>`;
+                aiMsg.innerHTML = `<div class="ai-message-avatar" style="background:rgba(99,102,241,0.2);border-color:var(--primary)">🤖</div><div class="ai-message-bubble">${responseText}</div>`;
                 bodyEl.appendChild(aiMsg);
                 bodyEl.scrollTop = bodyEl.scrollHeight;
                 
-            } catch(error) {
-                document.getElementById(typingId).remove();
-                try {
-                    GEMINI_API_KEY = localStorage.getItem('gemini_api_key') || '';
-                    if(!GEMINI_API_KEY) {
-                        const errorMsg = document.createElement('div');
-                        errorMsg.className = 'ai-message ai';
-                        errorMsg.innerHTML = `<div class="ai-message-avatar" style="background:rgba(239,68,68,0.2);border-color:#ef4444">⚠️</div><div class="ai-message-bubble"><div class="ai-error">❌ Server Error: ${error.message}<br><br>API Key bhi nahi hai. Neeche AI Code section se key add karein!</div></div>`;
-                        bodyEl.appendChild(errorMsg);
-                        bodyEl.scrollTop = bodyEl.scrollHeight;
-                        sendBtn.disabled = false;
-                        sendBtn.textContent = '➤ Send';
-                        return;
-                    }
-                    
-                    const response = await fetch(GEMINI_BASE_URL + GEMINI_API_KEY, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({
-                            contents: [{ parts: [{ text: SYSTEM_PROMPTS[type] + "\n\nUser: " + q }] }],
-                            generationConfig: { temperature: 0.7, maxOutputTokens: 2048 }
-                        })
-                    });
-                    const data = await response.json();
-                    let aiText = data.candidates?.[0]?.content?.parts?.[0]?.text || 'Sorry, main samajh nahi paya!';
-                    
-                    const aiMsg = document.createElement('div');
-                    aiMsg.className = 'ai-message ai';
-                    aiMsg.innerHTML = `<div class="ai-message-avatar" style="background:rgba(99,102,241,0.2);border-color:var(--primary)">🤖</div><div class="ai-message-bubble">${formatAIResponse(aiText)}</div>`;
-                    bodyEl.appendChild(aiMsg);
-                    bodyEl.scrollTop = bodyEl.scrollHeight;
-                } catch(fallbackError) {
-                    const errorMsg = document.createElement('div');
-                    errorMsg.className = 'ai-message ai';
-                    errorMsg.innerHTML = `<div class="ai-message-avatar" style="background:rgba(239,68,68,0.2);border-color:#ef4444">⚠️</div><div class="ai-message-bubble"><div class="ai-error">❌ Error: ${error.message}<br><br>API temporarily unavailable. Please try again.</div></div>`;
-                    bodyEl.appendChild(errorMsg);
-                    bodyEl.scrollTop = bodyEl.scrollHeight;
-                }
-            } finally {
                 sendBtn.disabled = false;
-                sendBtn.textContent = '➤ Send';
-            }
-        }
-        
-        function saveApiKey(){
-            const key = document.getElementById('apiKeyInput').value.trim();
-            if(key){
-                localStorage.setItem('gemini_api_key', key);
-                GEMINI_API_KEY = key;
-                document.getElementById('apiKeyModal').style.display='none';
-                showNotification('API Key saved successfully!');
-            } else {
-                alert('Please enter a valid API key');
-            }
-        }
-        function closeApiKeyModal(){
-            document.getElementById('apiKeyModal').style.display='none';
-        }
-        
-        async function generateAICode(){
-            const prompt = document.getElementById('codeGenPrompt').value.trim();
-            const output = document.getElementById('codeGenOutput');
-            if(!prompt){
-                output.textContent = '⚠️ Pehle apna idea likhein!';
-                return;
-            }
-            
-            output.innerHTML = '<span style="color:var(--accent);">⏳ Code generate ho raha hai... thoda wait karein!</span>';
-            
-            try {
-                const response = await fetch(VERCEL_API_URL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        message: 'You are a coding expert. Write complete, clean, working code with comments. User request: ' + prompt + '\n\nRules:\n1. Provide complete code only\n2. Add comments in Hindi + English\n3. Explain briefly how to use it\n4. Format code properly',
-                        type: 'gemini'
-                    })
-                });
-                const data = await response.json();
-                let codeText = data.reply || 'Sorry, code generate nahi ho paya!';
-                output.textContent = codeText;
-            } catch(error) {
-                GEMINI_API_KEY = localStorage.getItem('gemini_api_key') || '';
-                if(!GEMINI_API_KEY){
-                    output.innerHTML = '<span style="color:var(--accent);">🔐 AI Code Generator ke liye API Key chahiye. Neeche AI Chat button se key enter karein!</span>';
-                    return;
-                }
-                try {
-                    const response = await fetch(GEMINI_BASE_URL + GEMINI_API_KEY, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({
-                            contents: [{ parts: [{ text: 'You are a coding expert. Write complete, clean, working code with comments. User request: ' + prompt }] }],
-                            generationConfig: { temperature: 0.5, maxOutputTokens: 3000 }
-                        })
-                    });
-                    const data = await response.json();
-                    let codeText = data.candidates?.[0]?.content?.parts?.[0]?.text || 'Sorry, code generate nahi ho paya!';
-                    output.textContent = codeText;
-                } catch(e) {
-                    output.innerHTML = `<span style="color:var(--error);">❌ Error: ${e.message}</span>`;
-                }
-            }
+                sendBtn.textContent = 'Send';
+            }, 800);
         }
 
         const quizData = {
             python: [
-                { q: "Python mein 'print' function kya karta hai?", options: ["Output display karta hai", "Input leta hai", "File save karta hai", "Error throw karta hai"], ans: 0 },
-                { q: "Python mein list kaise banate hain?", options: ["[] brackets se", "{} brackets se", "() brackets se", "<> brackets se"], ans: 0 },
-                { q: "Python mein 'len()' function kya karta hai?", options: ["Length nikalta hai", "Length badhata hai", "Length ghata ta hai", "Kuch nahi karta"], ans: 0 },
-                { q: "Python mein 'if' statement ke baad kya aata hai?", options: [": colon", "; semicolon", ". dot", ", comma"], ans: 0 },
-                { q: "Python mein 'for' loop ka syntax kya hai?", options: ["for i in range():", "for(i=0; i<n; i++)", "foreach i in range", "loop for i"], ans: 0 },
-                { q: "Python mein function kaise define karte hain?", options: ["def keyword se", "function keyword se", "func keyword se", "define keyword se"], ans: 0 },
-                { q: "Python mein 'None' kya hai?", options: ["Null value", "Zero value", "Empty string", "Boolean false"], ans: 0 },
-                { q: "Python mein 'True' aur 'False' kya hain?", options: ["Boolean values", "String values", "Integer values", "Float values"], ans: 0 },
-                { q: "Python mein 'import' kya karta hai?", options: ["Module import karta hai", "File delete karta hai", "Variable banata hai", "Loop chalata hai"], ans: 0 },
-                { q: "Python mein 'try-except' kya hai?", options: ["Error handling", "Loop structure", "Function definition", "Class creation"], ans: 0 }
+                { q: "What does the 'print' function do in Python?", options: ["Displays output", "Takes input", "Saves file", "Throws error"], ans: 0 },
+                { q: "How do you create a list in Python?", options: ["[] brackets", "{} brackets", "() brackets", "<> brackets"], ans: 0 },
+                { q: "What does 'len()' function do?", options: ["Returns length", "Increases length", "Decreases length", "Does nothing"], ans: 0 },
+                { q: "What comes after an 'if' statement in Python?", options: [": colon", "; semicolon", ". dot", ", comma"], ans: 0 },
+                { q: "What is the correct 'for' loop syntax?", options: ["for i in range():", "for(i=0; i<n; i++)", "foreach i in range", "loop for i"], ans: 0 },
+                { q: "How do you define a function in Python?", options: ["def keyword", "function keyword", "func keyword", "define keyword"], ans: 0 },
+                { q: "What is 'None' in Python?", options: ["Null value", "Zero value", "Empty string", "Boolean false"], ans: 0 },
+                { q: "What are 'True' and 'False' in Python?", options: ["Boolean values", "String values", "Integer values", "Float values"], ans: 0 },
+                { q: "What does 'import' do?", options: ["Imports modules", "Deletes files", "Creates variables", "Runs loops"], ans: 0 },
+                { q: "What is 'try-except' used for?", options: ["Error handling", "Loop structure", "Function definition", "Class creation"], ans: 0 }
             ],
             cpp: [
-                { q: "C++ mein 'cout' kya karta hai?", options: ["Output print karta hai", "Input leta hai", "File read karta hai", "Memory allocate karta hai"], ans: 0 },
-                { q: "C++ mein 'cin' kya karta hai?", options: ["Input leta hai", "Output deta hai", "File write karta hai", "Memory free karta hai"], ans: 0 },
-                { q: "C++ mein 'int' kya hai?", options: ["Integer data type", "String data type", "Float data type", "Boolean data type"], ans: 0 },
-                { q: "C++ mein 'main()' function kya hai?", options: ["Entry point", "Exit point", "Loop function", "Library function"], ans: 0 },
-                { q: "C++ mein 'return 0' kya karta hai?", options: ["Success indicate karta hai", "Error indicate karta hai", "Loop break karta hai", "Function call karta hai"], ans: 0 },
-                { q: "C++ mein 'include' kya karta hai?", options: ["Header file include karta hai", "Variable declare karta hai", "Function define karta hai", "Class create karta hai"], ans: 0 },
-                { q: "C++ mein 'using namespace std' kya hai?", options: ["Standard namespace use karta hai", "Custom namespace banata hai", "Namespace delete karta hai", "Kuch nahi karta"], ans: 0 },
-                { q: "C++ mein 'if-else' kya hai?", options: ["Conditional statement", "Loop statement", "Function declaration", "Class definition"], ans: 0 },
-                { q: "C++ mein 'for' loop ka syntax kya hai?", options: ["for(int i=0; i<n; i++)", "for i in range()", "foreach i in n", "loop i from 0 to n"], ans: 0 },
-                { q: "C++ mein 'array' kya hai?", options: ["Collection of elements", "Single element", "Function type", "Class type"], ans: 0 }
+                { q: "What does 'cout' do in C++?", options: ["Prints output", "Takes input", "Reads file", "Allocates memory"], ans: 0 },
+                { q: "What does 'cin' do in C++?", options: ["Takes input", "Gives output", "Writes file", "Frees memory"], ans: 0 },
+                { q: "What is 'int' in C++?", options: ["Integer data type", "String type", "Float type", "Boolean type"], ans: 0 },
+                { q: "What is 'main()' function?", options: ["Entry point", "Exit point", "Loop function", "Library function"], ans: 0 },
+                { q: "What does 'return 0' indicate?", options: ["Success", "Error", "Loop break", "Function call"], ans: 0 },
+                { q: "What does 'include' do?", options: ["Includes header files", "Declares variables", "Defines functions", "Creates classes"], ans: 0 },
+                { q: "What is 'using namespace std'?", options: ["Uses standard namespace", "Creates custom namespace", "Deletes namespace", "Does nothing"], ans: 0 },
+                { q: "What is 'if-else'?", options: ["Conditional statement", "Loop statement", "Function declaration", "Class definition"], ans: 0 },
+                { q: "What is the correct 'for' loop syntax?", options: ["for(int i=0; i<n; i++)", "for i in range()", "foreach i in n", "loop i from 0 to n"], ans: 0 },
+                { q: "What is an 'array'?", options: ["Collection of elements", "Single element", "Function type", "Class type"], ans: 0 }
             ],
             javascript: [
-                { q: "JavaScript mein 'console.log' kya karta hai?", options: ["Console mein output print karta hai", "Alert box dikhata hai", "File save karta hai", "Page reload karta hai"], ans: 0 },
-                { q: "JavaScript mein 'var' kya hai?", options: ["Variable declare karta hai", "Function banata hai", "Class banata hai", "Loop chalata hai"], ans: 0 },
-                { q: "JavaScript mein 'function' keyword kya karta hai?", options: ["Function define karta hai", "Variable declare karta hai", "Class banata hai", "Object banata hai"], ans: 0 },
-                { q: "JavaScript mein 'document.getElementById' kya karta hai?", options: ["HTML element select karta hai", "CSS apply karta hai", "Page reload karta hai", "Cookie set karta hai"], ans: 0 },
-                { q: "JavaScript mein 'addEventListener' kya karta hai?", options: ["Event attach karta hai", "Event remove karta hai", "Event create karta hai", "Event delete karta hai"], ans: 0 },
-                { q: "JavaScript mein 'JSON' kya hai?", options: ["Data format", "Programming language", "Framework", "Database"], ans: 0 },
-                { q: "JavaScript mein 'typeof' operator kya karta hai?", options: ["Data type batata hai", "Value badalta hai", "Variable delete karta hai", "Function call karta hai"], ans: 0 },
-                { q: "JavaScript mein 'Array' kya hai?", options: ["Ordered collection", "Unordered collection", "Key-value pair", "Single value"], ans: 0 },
-                { q: "JavaScript mein 'Promise' kya hai?", options: ["Async operation handle karta hai", "Sync operation handle karta hai", "Loop chalata hai", "Function define karta hai"], ans: 0 },
-                { q: "JavaScript mein 'localStorage' kya hai?", options: ["Browser mein data store karta hai", "Server mein data store karta hai", "Memory mein data store karta hai", "File mein data store karta hai"], ans: 0 }
+                { q: "What does 'console.log' do?", options: ["Prints to console", "Shows alert", "Saves file", "Reloads page"], ans: 0 },
+                { q: "What is 'var' used for?", options: ["Declares variable", "Creates function", "Makes class", "Runs loop"], ans: 0 },
+                { q: "What does 'function' keyword do?", options: ["Defines function", "Declares variable", "Creates class", "Makes object"], ans: 0 },
+                { q: "What does 'document.getElementById' do?", options: ["Selects HTML element", "Applies CSS", "Reloads page", "Sets cookie"], ans: 0 },
+                { q: "What does 'addEventListener' do?", options: ["Attaches event", "Removes event", "Creates event", "Deletes event"], ans: 0 },
+                { q: "What is JSON?", options: ["Data format", "Programming language", "Framework", "Database"], ans: 0 },
+                { q: "What does 'typeof' operator do?", options: ["Returns data type", "Changes value", "Deletes variable", "Calls function"], ans: 0 },
+                { q: "What is an Array in JS?", options: ["Ordered collection", "Unordered collection", "Key-value pair", "Single value"], ans: 0 },
+                { q: "What is a 'Promise'?", options: ["Handles async operations", "Handles sync operations", "Runs loop", "Defines function"], ans: 0 },
+                { q: "What is 'localStorage'?", options: ["Stores data in browser", "Stores on server", "Stores in memory", "Stores in file"], ans: 0 }
             ],
             java: [
-                { q: "Java mein 'System.out.println' kya karta hai?", options: ["Output print karta hai", "Input leta hai", "File read karta hai", "Exception throw karta hai"], ans: 0 },
-                { q: "Java mein 'public static void main' kya hai?", options: ["Entry point method", "Exit point method", "Constructor", "Destructor"], ans: 0 },
-                { q: "Java mein 'class' keyword kya karta hai?", options: ["Class define karta hai", "Object banata hai", "Method call karta hai", "Variable declare karta hai"], ans: 0 },
-                { q: "Java mein 'new' keyword kya karta hai?", options: ["Object create karta hai", "Class define karta hai", "Method call karta hai", "Variable delete karta hai"], ans: 0 },
-                { q: "Java mein 'String' kya hai?", options: ["Class", "Primitive type", "Interface", "Enum"], ans: 0 },
-                { q: "Java mein 'extends' keyword kya karta hai?", options: ["Inheritance karta hai", "Interface implement karta hai", "Package import karta hai", "Exception handle karta hai"], ans: 0 },
-                { q: "Java mein 'try-catch' kya hai?", options: ["Exception handling", "Loop structure", "Conditional statement", "Method overloading"], ans: 0 },
-                { q: "Java mein 'ArrayList' kya hai?", options: ["Dynamic array", "Fixed array", "Linked list", "Hash map"], ans: 0 },
-                { q: "Java mein 'interface' kya hai?", options: ["Contract define karta hai", "Class banata hai", "Object banata hai", "Method implement karta hai"], ans: 0 },
-                { q: "Java mein 'final' keyword kya karta hai?", options: ["Value constant banata hai", "Value change karta hai", "Method override karta hai", "Class extend karta hai"], ans: 0 }
+                { q: "What does 'System.out.println' do?", options: ["Prints output", "Takes input", "Reads file", "Throws exception"], ans: 0 },
+                { q: "What is 'public static void main'?", options: ["Entry point method", "Exit point method", "Constructor", "Destructor"], ans: 0 },
+                { q: "What does 'class' keyword do?", options: ["Defines class", "Creates object", "Calls method", "Declares variable"], ans: 0 },
+                { q: "What does 'new' keyword do?", options: ["Creates object", "Defines class", "Calls method", "Deletes variable"], ans: 0 },
+                { q: "What is 'String' in Java?", options: ["Class", "Primitive type", "Interface", "Enum"], ans: 0 },
+                { q: "What does 'extends' do?", options: ["Inheritance", "Implements interface", "Imports package", "Handles exception"], ans: 0 },
+                { q: "What is 'try-catch'?", options: ["Exception handling", "Loop structure", "Conditional statement", "Method overloading"], ans: 0 },
+                { q: "What is 'ArrayList'?", options: ["Dynamic array", "Fixed array", "Linked list", "Hash map"], ans: 0 },
+                { q: "What is an 'interface'?", options: ["Defines contract", "Creates class", "Creates object", "Implements method"], ans: 0 },
+                { q: "What does 'final' keyword do?", options: ["Makes value constant", "Changes value", "Overrides method", "Extends class"], ans: 0 }
             ],
             html: [
-                { q: "HTML ka full form kya hai?", options: ["HyperText Markup Language", "HighText Machine Language", "HyperText Machine Language", "HighText Markup Language"], ans: 0 },
-                { q: "HTML mein '<p>' tag kya hai?", options: ["Paragraph", "Page", "Print", "Process"], ans: 0 },
-                { q: "HTML mein '<a>' tag kya karta hai?", options: ["Link create karta hai", "Image dikhata hai", "Table banata hai", "Form banata hai"], ans: 0 },
-                { q: "HTML mein '<img>' tag kya karta hai?", options: ["Image dikhata hai", "Video dikhata hai", "Audio play karta hai", "Text format karta hai"], ans: 0 },
-                { q: "HTML mein '<div>' tag kya hai?", options: ["Container", "Division", "Document", "Display"], ans: 0 },
-                { q: "HTML mein '<table>' tag kya karta hai?", options: ["Table banata hai", "List banata hai", "Form banata hai", "Link banata hai"], ans: 0 },
-                { q: "HTML mein '<form>' tag kya karta hai?", options: ["Form banata hai", "Table banata hai", "Image dikhata hai", "Video play karta hai"], ans: 0 },
-                { q: "HTML mein '<input>' tag kya karta hai?", options: ["User input leta hai", "Output deta hai", "File save karta hai", "Image dikhata hai"], ans: 0 },
-                { q: "HTML mein '<head>' tag kya karta hai?", options: ["Metadata contain karta hai", "Body content contain karta hai", "Footer contain karta hai", "Navigation contain karta hai"], ans: 0 },
-                { q: "HTML mein '<title>' tag kya karta hai?", options: ["Page title set karta hai", "Heading set karta hai", "Paragraph set karta hai", "Link set karta hai"], ans: 0 }
+                { q: "What is the full form of HTML?", options: ["HyperText Markup Language", "HighText Machine Language", "HyperText Machine Language", "HighText Markup Language"], ans: 0 },
+                { q: "What is the '<p>' tag?", options: ["Paragraph", "Page", "Print", "Process"], ans: 0 },
+                { q: "What does '<a>' tag do?", options: ["Creates link", "Shows image", "Makes table", "Creates form"], ans: 0 },
+                { q: "What does '<img>' tag do?", options: ["Displays image", "Shows video", "Plays audio", "Formats text"], ans: 0 },
+                { q: "What is '<div>' tag?", options: ["Container", "Division", "Document", "Display"], ans: 0 },
+                { q: "What does '<table>' tag do?", options: ["Creates table", "Makes list", "Creates form", "Makes link"], ans: 0 },
+                { q: "What does '<form>' tag do?", options: ["Creates form", "Makes table", "Shows image", "Plays video"], ans: 0 },
+                { q: "What does '<input>' tag do?", options: ["Takes user input", "Gives output", "Saves file", "Shows image"], ans: 0 },
+                { q: "What does '<head>' tag contain?", options: ["Metadata", "Body content", "Footer", "Navigation"], ans: 0 },
+                { q: "What does '<title>' tag do?", options: ["Sets page title", "Sets heading", "Sets paragraph", "Sets link"], ans: 0 }
             ],
             sql: [
-                { q: "SQL ka full form kya hai?", options: ["Structured Query Language", "Simple Query Language", "Standard Query Language", "System Query Language"], ans: 0 },
-                { q: "SQL mein 'SELECT' kya karta hai?", options: ["Data retrieve karta hai", "Data insert karta hai", "Data update karta hai", "Data delete karta hai"], ans: 0 },
-                { q: "SQL mein 'INSERT INTO' kya karta hai?", options: ["Data insert karta hai", "Data select karta hai", "Data update karta hai", "Data delete karta hai"], ans: 0 },
-                { q: "SQL mein 'UPDATE' kya karta hai?", options: ["Data update karta hai", "Data insert karta hai", "Data select karta hai", "Data delete karta hai"], ans: 0 },
-                { q: "SQL mein 'DELETE' kya karta hai?", options: ["Data delete karta hai", "Data insert karta hai", "Data select karta hai", "Data update karta hai"], ans: 0 },
-                { q: "SQL mein 'WHERE' clause kya karta hai?", options: ["Condition filter karta hai", "Data sort karta hai", "Data group karta hai", "Data join karta hai"], ans: 0 },
-                { q: "SQL mein 'ORDER BY' kya karta hai?", options: ["Data sort karta hai", "Data filter karta hai", "Data group karta hai", "Data join karta hai"], ans: 0 },
-                { q: "SQL mein 'JOIN' kya karta hai?", options: ["Tables combine karta hai", "Data filter karta hai", "Data sort karta hai", "Data delete karta hai"], ans: 0 },
-                { q: "SQL mein 'COUNT()' function kya karta hai?", options: ["Rows count karta hai", "Sum calculate karta hai", "Average calculate karta hai", "Maximum find karta hai"], ans: 0 },
-                { q: "SQL mein 'PRIMARY KEY' kya hai?", options: ["Unique identifier", "Foreign reference", "Index", "Constraint"], ans: 0 }
+                { q: "What is the full form of SQL?", options: ["Structured Query Language", "Simple Query Language", "Standard Query Language", "System Query Language"], ans: 0 },
+                { q: "What does 'SELECT' do?", options: ["Retrieves data", "Inserts data", "Updates data", "Deletes data"], ans: 0 },
+                { q: "What does 'INSERT INTO' do?", options: ["Inserts data", "Selects data", "Updates data", "Deletes data"], ans: 0 },
+                { q: "What does 'UPDATE' do?", options: ["Updates data", "Inserts data", "Selects data", "Deletes data"], ans: 0 },
+                { q: "What does 'DELETE' do?", options: ["Deletes data", "Inserts data", "Selects data", "Updates data"], ans: 0 },
+                { q: "What does 'WHERE' clause do?", options: ["Filters condition", "Sorts data", "Groups data", "Joins tables"], ans: 0 },
+                { q: "What does 'ORDER BY' do?", options: ["Sorts data", "Filters data", "Groups data", "Joins tables"], ans: 0 },
+                { q: "What does 'JOIN' do?", options: ["Combines tables", "Filters data", "Sorts data", "Deletes data"], ans: 0 },
+                { q: "What does 'COUNT()' do?", options: ["Counts rows", "Calculates sum", "Finds average", "Finds maximum"], ans: 0 },
+                { q: "What is 'PRIMARY KEY'?", options: ["Unique identifier", "Foreign reference", "Index", "Constraint"], ans: 0 }
             ]
         };
         
@@ -1462,17 +1079,14 @@ print(f'Welcome, {name}!')</textarea>
             Object.keys(quizData).forEach(lang => {
                 const progress = getQuizProgress(lang);
                 const el = document.getElementById('progress-' + lang);
-                if(el) el.textContent = 'Level ' + progress + ' / ∞';
+                if(el) el.textContent = 'Level ' + progress + ' / 10';
             });
         }
         
         function startQuiz(lang) {
-            if(!isLoggedIn()) {
-                openAuthGate();
-                return;
-            }
             currentQuizLang = lang;
-            currentQuizLevel = getQuizProgress(lang) + 1;
+            const saved = getQuizProgress(lang);
+            currentQuizLevel = saved >= 10 ? 1 : saved + 1;
             currentQuizScore = 0;
             document.getElementById('quizLangSelect').style.display = 'none';
             document.getElementById('quizResult').style.display = 'none';
@@ -1487,7 +1101,7 @@ print(f'Welcome, {name}!')</textarea>
             
             document.getElementById('quizLevel').textContent = currentQuizLang.toUpperCase() + ' - Level ' + currentQuizLevel;
             document.getElementById('quizScore').textContent = 'Score: ' + currentQuizScore;
-            document.getElementById('quizProgressFill').style.width = Math.min((currentQuizLevel / 100) * 100, 100) + '%';
+            document.getElementById('quizProgressFill').style.width = (currentQuizLevel * 10) + '%';
             document.getElementById('quizQuestion').textContent = q.q;
             
             const optsDiv = document.getElementById('quizOptions');
@@ -1513,9 +1127,9 @@ print(f'Welcome, {name}!')</textarea>
             
             if(selected === correct) {
                 currentQuizScore += 10;
-                showNotification('✅ Correct! +10 points');
+                showNotification('Correct! +10 points');
             } else {
-                showNotification('❌ Wrong! Correct answer: ' + opts[correct].textContent);
+                showNotification('Wrong! Correct answer: ' + opts[correct].textContent);
             }
             
             document.getElementById('quizScore').textContent = 'Score: ' + currentQuizScore;
@@ -1527,6 +1141,12 @@ print(f'Welcome, {name}!')</textarea>
         }
         
         function nextLevel() {
+            if(currentQuizLevel >= 10) {
+                document.getElementById('quizContainer').classList.remove('active');
+                document.getElementById('quizResult').style.display = 'block';
+                document.getElementById('quizResultText').textContent = 'You completed all 10 levels with ' + currentQuizScore + ' points! Great job!';
+                return;
+            }
             currentQuizLevel++;
             loadQuizQuestion();
         }
@@ -1538,71 +1158,11 @@ print(f'Welcome, {name}!')</textarea>
             updateQuizProgressDisplays();
         }
         
-        function updateCertificateLock() {
-            const has100 = Object.keys(quizData).some(lang => getQuizProgress(lang) >= 100);
-            const lockMsg = document.getElementById('certLockMessage');
-            const genBtn = document.getElementById('certGenBtn');
-            
-            if(!isLoggedIn() || !has100) {
-                if(lockMsg) lockMsg.style.display = 'block';
-                if(genBtn) {
-                    genBtn.style.opacity = '0.5';
-                    genBtn.style.cursor = 'not-allowed';
-                    genBtn.onclick = () => {
-                        if(!isLoggedIn()) openAuthGate();
-                        else showNotification('🔐 100 quiz levels complete karein pehle!');
-                    };
-                }
-            } else {
-                if(lockMsg) lockMsg.style.display = 'none';
-                if(genBtn) {
-                    genBtn.style.opacity = '1';
-                    genBtn.style.cursor = 'pointer';
-                    genBtn.onclick = generateCertificate;
-                }
-            }
-        }
-        
-        function generateCertificate(){
-            if(!isLoggedIn()) { openAuthGate(); return; }
-            const has100 = Object.keys(quizData).some(lang => getQuizProgress(lang) >= 100);
-            if(!has100) { showNotification('🔐 100 quiz levels complete karein pehle!'); return; }
-            
-            const name = document.getElementById('certName').value.trim() || 'Student';
-            const course = document.getElementById('certCourse').value.trim() || 'Programming Course';
-            
-            document.getElementById('certPreviewName').textContent = name;
-            document.getElementById('certPreviewCourse').textContent = course;
-            document.getElementById('certDate').textContent = new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' });
-            document.getElementById('certPreview').classList.add('active');
-            document.getElementById('downloadCertBtn').style.display = 'block';
-            
-            showNotification('Certificate generated successfully! 🏆');
-        }
-        
-        function downloadCertificate(){
-            const certHtml = document.getElementById('certPreview').outerHTML;
-            const fullHtml = `<!DOCTYPE html><html><head><style>body{font-family:Arial,sans-serif;display:flex;justify-content:center;align-items:center;min-height:100vh;background:#f3f4f6;margin:0;}</style></head><body>${certHtml}</body></html>`;
-            const blob = new Blob([fullHtml], { type: 'text/html' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'AkarshitRaj_Certificate.html';
-            a.click();
-            URL.revokeObjectURL(url);
-            showNotification('Certificate downloaded! 📥');
-        }
-        
-        function buyPremium(){
-            alert('💎 Premium plan jaldi aa raha hai!\n\nAbhi free plan use karein:\n• AI Chat\n• Code Practice\n• Tutorials\n• Certificate Generator\n\nSab kuch free mein available hai! 🎉');
-        }
-        
-        updateLoginUI();
         updateQuizProgressDisplays();
-        updateCertificateLock();
     </script>
 </body>
 </html>
+
 
 
     
