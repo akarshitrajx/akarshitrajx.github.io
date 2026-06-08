@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C++ OOP Basics - Akarshit Raj</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Segoe UI',sans-serif;background:linear-gradient(135deg,#0f172a,#1e1b4b);color:#e2e8f0;line-height:1.6;min-height:100vh}
+        .container{max-width:800px;margin:0 auto;padding:20px}
+        .back{display:inline-block;background:rgba(56,189,248,0.2);color:#38bdf8;padding:10px 20px;border-radius:8px;text-decoration:none;font-weight:600;margin-bottom:20px;border:1px solid rgba(56,189,248,0.3)}
+        h1{font-size:2rem;background:linear-gradient(135deg,#38bdf8,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:10px}
+        .section{background:rgba(30,41,59,0.6);border:1px solid rgba(148,163,184,0.1);border-radius:16px;padding:25px;margin-bottom:20px}
+        h2{color:#38bdf8;margin-bottom:15px;font-size:1.3rem}
+        p{color:#94a3b8;margin-bottom:15px}
+        pre{background:#1e1e1e;border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:15px;overflow-x:auto;color:#d4d4d4;font-family:'Consolas',monospace;font-size:0.9rem;margin:15px 0}
+        code{background:rgba(56,189,248,0.15);color:#38bdf8;padding:2px 6px;border-radius:4px;font-family:monospace}
+        .footer{text-align:center;padding:40px;color:#64748b;font-size:0.9rem}
+        ul{color:#94a3b8;margin-left:20px}
+        li{margin-bottom:8px}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="tutorials.html" class="back">← Back to Tutorials</a>
+        <h1>C++ OOP Basics Complete Guide</h1>
+        
+        <div class="section">
+            <h2>Class & Object</h2>
+            <pre>class Student {
+public:
+    string name;
+    int age;
+    
+    void display() {
+        cout << name << " - " << age;
+    }
+};
+
+int main() {
+    Student s1;
+    s1.name = "Akarshit";
+    s1.age = 18;
+    s1.display();
+}</pre>
+        </div>
+
+        <div class="section">
+            <h2>Constructor</h2>
+            <pre>class Student {
+public:
+    string name;
+    int age;
+    
+    Student(string n, int a) {
+        name = n;
+        age = a;
+    }
+};
+
+Student s1("Akarshit", 18);
+s1.display();</pre>
+        </div>
+
+        <div class="section">
+            <h2>Encapsulation (Private)</h2>
+            <pre>class BankAccount {
+private:
+    double balance;
+    
+public:
+    void deposit(double amount) {
+        balance += amount;
+    }
+    
+    double getBalance() {
+        return balance;
+    }
+};</pre>
+        </div>
+
+        <div class="section">
+            <h2>Inheritance</h2>
+            <pre>class Animal {
+public:
+    void eat() {
+        cout << "Eating...";
+    }
+};
+
+class Dog : public Animal {
+public:
+    void bark() {
+        cout << "Barking...";
+    }
+};
+
+Dog d;
+d.eat();   // Inherited
+d.bark();  // Own method</pre>
+        </div>
+
+        <div class="section">
+            <h2>Polymorphism</h2>
+            <pre>class Shape {
+public:
+    virtual void draw() {
+        cout << "Drawing shape";
+    }
+};
+
+class Circle : public Shape {
+public:
+    void draw() override {
+        cout << "Drawing circle";
+    }
+};
+
+Shape* s = new Circle();
+s->draw();  // Drawing circle</pre>
+        </div>
+
+        <div class="footer">
+            <p>© 2026 Akarshit Raj | <a href="tutorials.html" style="color:#38bdf8">More Tutorials</a></p>
+        </div>
+    </div>
+</body>
+        </html>
+          
