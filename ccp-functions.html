@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C++ Functions - Akarshit Raj</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Segoe UI',sans-serif;background:linear-gradient(135deg,#0f172a,#1e1b4b);color:#e2e8f0;line-height:1.6;min-height:100vh}
+        .container{max-width:800px;margin:0 auto;padding:20px}
+        .back{display:inline-block;background:rgba(56,189,248,0.2);color:#38bdf8;padding:10px 20px;border-radius:8px;text-decoration:none;font-weight:600;margin-bottom:20px;border:1px solid rgba(56,189,248,0.3)}
+        h1{font-size:2rem;background:linear-gradient(135deg,#38bdf8,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:10px}
+        .section{background:rgba(30,41,59,0.6);border:1px solid rgba(148,163,184,0.1);border-radius:16px;padding:25px;margin-bottom:20px}
+        h2{color:#38bdf8;margin-bottom:15px;font-size:1.3rem}
+        p{color:#94a3b8;margin-bottom:15px}
+        pre{background:#1e1e1e;border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:15px;overflow-x:auto;color:#d4d4d4;font-family:'Consolas',monospace;font-size:0.9rem;margin:15px 0}
+        code{background:rgba(56,189,248,0.15);color:#38bdf8;padding:2px 6px;border-radius:4px;font-family:monospace}
+        .footer{text-align:center;padding:40px;color:#64748b;font-size:0.9rem}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="tutorials.html" class="back">← Back to Tutorials</a>
+        <h1>C++ Functions Complete Guide</h1>
+        
+        <div class="section">
+            <h2>Creating a Function</h2>
+            <pre>void greet() {
+    cout << "Hello, World!";
+}
+
+int main() {
+    greet();  // call the function
+    return 0;
+}</pre>
+        </div>
+
+        <div class="section">
+            <h2>Parameters & Return</h2>
+            <pre>int add(int a, int b) {
+    return a + b;
+}
+
+int main() {
+    int sum = add(5, 3);
+    cout << sum;  // 8
+}</pre>
+        </div>
+
+        <div class="section">
+            <h2>Default Arguments</h2>
+            <pre>void greet(string name = "Guest") {
+    cout << "Hello, " << name;
+}
+
+greet();           // Hello, Guest
+greet("Akarshit"); // Hello, Akarshit</pre>
+        </div>
+
+        <div class="section">
+            <h2>Function Overloading</h2>
+            <pre>int add(int a, int b) { return a + b; }
+double add(double a, double b) { return a + b; }
+
+cout << add(5, 3);      // 8
+cout << add(5.5, 3.2);  // 8.7</pre>
+        </div>
+
+        <div class="section">
+            <h2>Pass by Reference</h2>
+            <pre>void swap(int &a, int &b) {
+    int temp = a;
+    a = b;
+    b = temp;
+}
+
+int x = 5, y = 10;
+swap(x, y);
+cout << x << " " << y;  // 10 5</pre>
+        </div>
+
+        <div class="footer">
+            <p>© 2026 Akarshit Raj | <a href="tutorials.html" style="color:#38bdf8">More Tutorials</a></p>
+        </div>
+    </div>
+</body>
+</html>
