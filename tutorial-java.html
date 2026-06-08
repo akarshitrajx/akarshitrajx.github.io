@@ -1,94 +1,905 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Java Basics - Akarshit Raj</title>
+    <title>JavaScript Complete Guide - Zero to Hero | Akarshit Raj</title>
     <style>
-        *{margin:0;padding:0;box-sizing:border-box}
-        body{font-family:'Segoe UI',sans-serif;background:linear-gradient(135deg,#0f172a,#1e1b4b);color:#e2e8f0;line-height:1.6;min-height:100vh}
-        .container{max-width:800px;margin:0 auto;padding:20px}
-        .back{display:inline-block;background:rgba(56,189,248,0.2);color:#38bdf8;padding:10px 20px;border-radius:8px;text-decoration:none;font-weight:600;margin-bottom:20px;border:1px solid rgba(56,189,248,0.3)}
-        h1{font-size:2rem;background:linear-gradient(135deg,#38bdf8,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:10px}
-        .section{background:rgba(30,41,59,0.6);border:1px solid rgba(148,163,184,0.1);border-radius:16px;padding:25px;margin-bottom:20px}
-        h2{color:#38bdf8;margin-bottom:15px;font-size:1.3rem}
-        p{color:#94a3b8;margin-bottom:15px}
-        pre{background:#1e1e1e;border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:15px;overflow-x:auto;color:#d4d4d4;font-family:'Consolas',monospace;font-size:0.9rem;margin:15px 0}
-        code{background:rgba(56,189,248,0.15);color:#38bdf8;padding:2px 6px;border-radius:4px;font-family:monospace}
-        .footer{text-align:center;padding:40px;color:#64748b;font-size:0.9rem}
+        :root {
+            --bg: #0f172a;
+            --card: #1e293b;
+            --text: #e2e8f0;
+            --muted: #94a3b8;
+            --accent: #f97316;
+            --accent2: #3b82f6;
+            --code-bg: #0b1120;
+            --border: #334155;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+        .back {
+            display: inline-flex; align-items: center; gap: 8px;
+            color: var(--accent); text-decoration: none; margin-bottom: 20px;
+            font-weight: 600; font-size: 0.95rem;
+        }
+        .back:hover { text-decoration: underline; }
+        header {
+            text-align: center; padding: 40px 20px;
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+        }
+        header h1 { font-size: 2.2rem; margin-bottom: 10px; }
+        header p { color: var(--muted); font-size: 1.1rem; }
+        .badge {
+            display: inline-block; background: var(--accent); color: #fff;
+            padding: 4px 14px; border-radius: 20px; font-size: 0.8rem;
+            font-weight: 700; margin-top: 10px;
+        }
+        .toc {
+            background: var(--card); border-radius: 12px; padding: 20px;
+            margin-bottom: 30px; border: 1px solid var(--border);
+        }
+        .toc h3 { color: var(--accent); margin-bottom: 12px; font-size: 1.1rem; }
+        .toc ul { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 8px; }
+        .toc a { color: var(--muted); text-decoration: none; font-size: 0.9rem; }
+        .toc a:hover { color: var(--accent); }
+        section {
+            background: var(--card); border-radius: 12px; padding: 25px;
+            margin-bottom: 25px; border: 1px solid var(--border);
+        }
+        section h2 {
+            color: var(--accent); font-size: 1.4rem; margin-bottom: 15px;
+            display: flex; align-items: center; gap: 10px;
+        }
+        section h3 { color: var(--accent2); font-size: 1.15rem; margin: 20px 0 10px; }
+        p { margin-bottom: 12px; color: var(--text); }
+        ul, ol { margin-left: 20px; margin-bottom: 15px; color: var(--text); }
+        li { margin-bottom: 6px; }
+        code {
+            background: var(--code-bg); color: #fbbf24; padding: 2px 6px;
+            border-radius: 4px; font-family: 'Fira Code', monospace; font-size: 0.9em;
+        }
+        pre {
+            background: var(--code-bg); border-radius: 10px; padding: 16px;
+            overflow-x: auto; margin: 15px 0; border: 1px solid var(--border);
+        }
+        pre code { background: none; padding: 0; color: #e2e8f0; font-size: 0.85rem; line-height: 1.6; }
+        .note {
+            background: rgba(59, 130, 246, 0.1); border-left: 4px solid var(--accent2);
+            padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 15px 0;
+        }
+        .warning {
+            background: rgba(249, 115, 22, 0.1); border-left: 4px solid var(--accent);
+            padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 15px 0;
+        }
+        table {
+            width: 100%; border-collapse: collapse; margin: 15px 0;
+            font-size: 0.9rem;
+        }
+        th, td { border: 1px solid var(--border); padding: 10px; text-align: left; }
+        th { background: var(--code-bg); color: var(--accent); }
+        footer {
+            text-align: center; padding: 30px; color: var(--muted);
+            border-top: 1px solid var(--border); margin-top: 30px;
+        }
+        @media (max-width: 600px) {
+            header h1 { font-size: 1.5rem; }
+            .toc ul { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
+    <header>
+        <h1>🟨 JavaScript Complete Guide</h1>
+        <p>Zero to Hero — Master Modern JavaScript from Scratch</p>
+        <span class="badge">Beginner to Advanced</span>
+    </header>
+
     <div class="container">
         <a href="tutorials.html" class="back">← Back to Tutorials</a>
-        <h1>Java Complete Tutorial</h1>
-        
-        <div class="section">
-            <h2>What is Java?</h2>
-            <p>Java is a platform-independent language — "Write Once, Run Anywhere". It runs on the JVM (Java Virtual Machine).</p>
+
+        <div class="toc">
+            <h3>📑 Table of Contents</h3>
+            <ul>
+                <li><a href="#intro">Introduction</a></li>
+                <li><a href="#variables">Variables & Data Types</a></li>
+                <li><a href="#operators">Operators</a></li>
+                <li><a href="#control">Control Flow</a></li>
+                <li><a href="#functions">Functions</a></li>
+                <li><a href="#arrays">Arrays</a></li>
+                <li><a href="#objects">Objects</a></li>
+                <li><a href="#dom">DOM Manipulation</a></li>
+                <li><a href="#events">Events</a></li>
+                <li><a href="#es6">ES6+ Features</a></li>
+                <li><a href="#async">Async JavaScript</a></li>
+                <li><a href="#fetch">Fetch API & AJAX</a></li>
+                <li><a href="#modules">Modules</a></li>
+                <li><a href="#projects">Mini Projects</a></li>
+            </ul>
         </div>
 
-        <div class="section">
-            <h2>Hello World</h2>
-            <pre>public class Main {
-    public static void main(String[] args) {
-        System.out.println("Hello, World!");
+        <section id="intro">
+            <h2>🚀 Introduction</h2>
+            <p>JavaScript web development ki jaan hai! Agar aapko websites interactive aur dynamic banani hain, toh JavaScript seekhna must hai. Ye sirf ek programming language nahi hai — ye poori web development ecosystem ka foundation hai.</p>
+            <p><strong>Kya seekhenge:</strong></p>
+            <ul>
+                <li>Variables, Data Types, Operators</li>
+                <li>Functions, Arrays, Objects</li>
+                <li>DOM Manipulation & Events</li>
+                <li>ES6+ Modern Features (Arrow functions, Destructuring, Spread)</li>
+                <li>Async Programming (Promises, Async/Await)</li>
+                <li>Fetch API & Real-world Projects</li>
+            </ul>
+            <div class="note">
+                <strong>Note:</strong> JavaScript ko browser console me test kar sakte ho. Chrome/Firefox me <code>F12</code> → Console tab.
+            </div>
+        </section>
+
+        <section id="variables">
+            <h2>📦 Variables & Data Types</h2>
+            <h3>Variables (let, const, var)</h3>
+            <p>Variable ek container hai jisme data store hota hai.</p>
+            <pre><code>// let — reassign possible, block scope
+let name = "Akarshit";
+name = "Raj"; // ✅ allowed
+
+// const — reassign NOT possible, block scope
+const pi = 3.14159;
+// pi = 3.14; // ❌ Error!
+
+// var — old way, function scope (avoid karo)
+var oldWay = "deprecated";</code></pre>
+
+            <h3>Data Types</h3>
+            <table>
+                <tr><th>Type</th><th>Example</th><th>Description</th></tr>
+                <tr><td>String</td><td><code>"Hello"</code></td><td>Text data</td></tr>
+                <tr><td>Number</td><td><code>42, 3.14</code></td><td>Integers & decimals</td></tr>
+                <tr><td>Boolean</td><td><code>true / false</code></td><td>Logical values</td></tr>
+                <tr><td>Undefined</td><td><code>let x;</code></td><td>Variable declared but no value</td></tr>
+                <tr><td>Null</td><td><code>let x = null;</code></td><td>Intentional empty value</td></tr>
+                <tr><td>Object</td><td><code>{name: "A"}</code></td><td>Complex data structure</td></tr>
+                <tr><td>Array</td><td><code>[1, 2, 3]</code></td><td>List of values</td></tr>
+                <tr><td>Symbol</td><td><code>Symbol('id')</code></td><td>Unique identifier</td></tr>
+                <tr><td>BigInt</td><td><code>123n</code></td><td>Very large numbers</td></tr>
+            </table>
+
+            <h3>Type Conversion</h3>
+            <pre><code>let num = 10;
+let str = String(num);     // "10"
+let num2 = Number("20");   // 20
+let bool = Boolean(1);     // true
+
+// Automatic conversion (coercion)
+console.log("5" + 5);  // "55" (string concatenation)
+console.log("5" - 5);  // 0 (number subtraction)
+console.log("5" * 2);  // 10 (number multiplication)</code></pre>
+        </section>
+
+        <section id="operators">
+            <h2>➕ Operators</h2>
+            <h3>Arithmetic Operators</h3>
+            <pre><code>let a = 10, b = 3;
+console.log(a + b);  // 13
+console.log(a - b);  // 7
+console.log(a * b);  // 30
+console.log(a / b);  // 3.333...
+console.log(a % b);  // 1 (remainder)
+console.log(a ** b); // 1000 (power: 10^3)
+
+// Increment / Decrement
+let x = 5;
+console.log(x++); // 5 (post-increment)
+console.log(++x); // 7 (pre-increment)</code></pre>
+
+            <h3>Comparison Operators</h3>
+            <pre><code>console.log(5 == "5");   // true (loose equality, type conversion)
+console.log(5 === "5");  // false (strict equality, type + value)
+console.log(5 != "5");   // false
+console.log(5 !== "5");  // true
+console.log(10 > 5);     // true
+console.log(10 <= 10);   // true</code></pre>
+            <div class="warning">
+                <strong>Always use === and !==</strong> instead of == and != to avoid unexpected type conversion bugs.
+            </div>
+
+            <h3>Logical Operators</h3>
+            <pre><code>let age = 20, hasID = true;
+console.log(age > 18 && hasID);  // true (AND)
+console.log(age < 18 || hasID);  // true (OR)
+console.log(!hasID);             // false (NOT)
+
+// Short-circuit evaluation
+let user = null;
+let name = user || "Guest";  // "Guest" (falsy value fallback)</code></pre>
+
+            <h3>Ternary Operator</h3>
+            <pre><code>let age = 20;
+let status = age >= 18 ? "Adult" : "Minor";
+console.log(status); // "Adult"</code></pre>
+        </section>
+
+        <section id="control">
+            <h2>🔄 Control Flow</h2>
+            <h3>If-Else</h3>
+            <pre><code>let marks = 85;
+
+if (marks >= 90) {
+    console.log("Grade A+");
+} else if (marks >= 80) {
+    console.log("Grade A");
+} else if (marks >= 70) {
+    console.log("Grade B");
+} else if (marks >= 60) {
+    console.log("Grade C");
+} else {
+    console.log("Fail");
+}</code></pre>
+
+            <h3>Switch Case</h3>
+            <pre><code>let day = 3;
+let dayName;
+
+switch (day) {
+    case 1: dayName = "Monday"; break;
+    case 2: dayName = "Tuesday"; break;
+    case 3: dayName = "Wednesday"; break;
+    case 4: dayName = "Thursday"; break;
+    case 5: dayName = "Friday"; break;
+    case 6: dayName = "Saturday"; break;
+    case 7: dayName = "Sunday"; break;
+    default: dayName = "Invalid day";
+}
+console.log(dayName); // "Wednesday"</code></pre>
+
+            <h3>Loops</h3>
+            <pre><code>// For loop
+for (let i = 0; i < 5; i++) {
+    console.log(i); // 0, 1, 2, 3, 4
+}
+
+// While loop
+let i = 0;
+while (i < 5) {
+    console.log(i);
+    i++;
+}
+
+// Do-While loop (at least once chalega)
+let j = 0;
+do {
+    console.log(j);
+    j++;
+} while (j < 5);
+
+// For...of (arrays ke liye)
+let fruits = ["Apple", "Banana", "Mango"];
+for (let fruit of fruits) {
+    console.log(fruit);
+}
+
+// For...in (objects ke liye)
+let person = { name: "Akarshit", age: 20 };
+for (let key in person) {
+    console.log(key + ": " + person[key]);
+}</code></pre>
+
+            <h3>Loop Control</h3>
+            <pre><code>for (let i = 0; i < 10; i++) {
+    if (i === 3) continue; // skip 3
+    if (i === 7) break;    // stop at 7
+    console.log(i); // 0,1,2,4,5,6
+}</code></pre>
+        </section>
+
+        <section id="functions">
+            <h2>🔧 Functions</h2>
+            <h3>Function Declaration</h3>
+            <pre><code>function greet(name) {
+    return "Hello, " + name + "!";
+}
+console.log(greet("Akarshit")); // "Hello, Akarshit!"</code></pre>
+
+            <h3>Function Expression</h3>
+            <pre><code>const add = function(a, b) {
+    return a + b;
+};
+console.log(add(5, 3)); // 8</code></pre>
+
+            <h3>Arrow Functions (ES6)</h3>
+            <pre><code>// Single parameter (parentheses optional)
+const square = x => x * x;
+console.log(square(5)); // 25
+
+// Multiple parameters
+const multiply = (a, b) => a * b;
+console.log(multiply(4, 5)); // 20
+
+// Multiple statements
+const greet = (name) => {
+    let msg = "Hello, " + name;
+    return msg;
+};</code></pre>
+
+            <h3>Default Parameters</h3>
+            <pre><code>function greet(name = "Guest") {
+    return "Hello, " + name;
+}
+console.log(greet());        // "Hello, Guest"
+console.log(greet("Raj"));   // "Hello, Raj"</code></pre>
+
+            <h3>Rest Parameters</h3>
+            <pre><code>function sum(...numbers) {
+    return numbers.reduce((total, num) => total + num, 0);
+}
+console.log(sum(1, 2, 3, 4, 5)); // 15</code></pre>
+
+            <h3>Higher-Order Functions</h3>
+            <pre><code>// Function returning function
+function createMultiplier(factor) {
+    return function(number) {
+        return number * factor;
+    };
+}
+const double = createMultiplier(2);
+console.log(double(5)); // 10
+
+// Callback function
+function processData(data, callback) {
+    let result = data.toUpperCase();
+    callback(result);
+}
+processData("hello", (res) => console.log(res)); // "HELLO"</code></pre>
+        </section>
+
+        <section id="arrays">
+            <h2>📋 Arrays</h2>
+            <h3>Creating Arrays</h3>
+            <pre><code>let fruits = ["Apple", "Banana", "Mango"];
+let numbers = new Array(1, 2, 3, 4, 5);
+let mixed = [1, "hello", true, {a: 1}, [1, 2]];</code></pre>
+
+            <h3>Array Methods</h3>
+            <pre><code>let arr = [1, 2, 3, 4, 5];
+
+// push/pop (end se)
+arr.push(6);        // [1,2,3,4,5,6]
+arr.pop();          // [1,2,3,4,5]
+
+// shift/unshift (start se)
+arr.shift();        // [2,3,4,5] (remove first)
+arr.unshift(0);     // [0,2,3,4,5] (add first)
+
+// splice (add/remove anywhere)
+arr.splice(2, 1);        // index 2 se 1 element remove
+arr.splice(2, 0, "a");   // index 2 par "a" insert
+
+// slice (copy portion)
+let sliced = arr.slice(1, 3); // elements 1 to 2
+
+// indexOf, includes
+console.log(arr.indexOf(3));   // index of 3
+console.log(arr.includes(5));  // true/false</code></pre>
+
+            <h3>Iteration Methods</h3>
+            <pre><code>let nums = [1, 2, 3, 4, 5];
+
+// forEach
+nums.forEach((num, index) => {
+    console.log(index + ": " + num);
+});
+
+// map (transform each element)
+let doubled = nums.map(num => num * 2);
+// [2, 4, 6, 8, 10]
+
+// filter (select elements)
+let evens = nums.filter(num => num % 2 === 0);
+// [2, 4]
+
+// reduce (accumulate)
+let sum = nums.reduce((total, num) => total + num, 0);
+// 15
+
+// find (first matching element)
+let firstEven = nums.find(num => num % 2 === 0);
+// 2
+
+// sort
+let unsorted = [3, 1, 4, 1, 5];
+unsorted.sort((a, b) => a - b); // [1, 1, 3, 4, 5]
+
+// reverse
+unsorted.reverse(); // [5, 4, 3, 1, 1]
+
+// every/some
+console.log(nums.every(n => n > 0)); // true
+console.log(nums.some(n => n > 4));  // true</code></pre>
+
+            <h3>2D Arrays</h3>
+            <pre><code>let matrix = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+];
+console.log(matrix[1][2]); // 6 (row 1, col 2)
+
+// Nested loop
+for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix[i].length; j++) {
+        console.log(matrix[i][j]);
     }
-}</pre>
-        </div>
+}</code></pre>
+        </section>
 
-        <div class="section">
-            <h2>Variables</h2>
-            <pre>int age = 18;
-double price = 99.99;
-char grade = 'A';
-String name = "Akarshit";
-boolean isActive = true;</pre>
-        </div>
-
-        <div class="section">
-            <h2>OOP - Classes & Objects</h2>
-            <pre>class Student {
-    String name;
-    int age;
-    
-    Student(String n, int a) {
-        name = n;
-        age = a;
+        <section id="objects">
+            <h2>📦 Objects</h2>
+            <h3>Creating Objects</h3>
+            <pre><code>let person = {
+    firstName: "Akarshit",
+    lastName: "Raj",
+    age: 20,
+    isStudent: true,
+    hobbies: ["Coding", "Teaching", "Gaming"],
+    address: {
+        city: "Sitapur",
+        state: "UP"
+    },
+    // Method
+    fullName: function() {
+        return this.firstName + " " + this.lastName;
     }
-    
-    void display() {
-        System.out.println(name + " - " + age);
+};
+
+console.log(person.firstName);      // "Akarshit"
+console.log(person["lastName"]);    // "Raj"
+console.log(person.fullName());     // "Akarshit Raj"
+console.log(person.address.city);   // "Sitapur"</code></pre>
+
+            <h3>Object Methods (ES6+)</h3>
+            <pre><code>// Object.keys, values, entries
+console.log(Object.keys(person));   // ["firstName", "lastName", ...]
+console.log(Object.values(person)); // ["Akarshit", "Raj", 20, ...]
+console.log(Object.entries(person)); // [["firstName", "Akarshit"], ...]
+
+// Object.assign (merge objects)
+let defaults = { theme: "dark", lang: "en" };
+let user = { lang: "hi" };
+let settings = Object.assign({}, defaults, user);
+// { theme: "dark", lang: "hi" }
+
+// Spread operator
+let clone = { ...person };
+let merged = { ...defaults, ...user };</code></pre>
+
+            <h3>Destructuring</h3>
+            <pre><code>// Object destructuring
+let { firstName, age } = person;
+console.log(firstName, age);
+
+// With alias
+let { firstName: fname } = person;
+
+// Nested destructuring
+let { address: { city } } = person;
+console.log(city); // "Sitapur"
+
+// Array destructuring
+let [a, b, c] = [1, 2, 3];
+let [first, ...rest] = [1, 2, 3, 4, 5]; // first=1, rest=[2,3,4,5]</code></pre>
+
+            <h3>JSON</h3>
+            <pre><code>// Object to JSON string
+let jsonStr = JSON.stringify(person);
+
+// JSON string to Object
+let parsed = JSON.parse(jsonStr);</code></pre>
+        </section>
+
+        <section id="dom">
+            <h2>🌐 DOM Manipulation</h2>
+            <p>DOM (Document Object Model) HTML page ka tree structure hai. JavaScript se isko modify kar sakte hain.</p>
+
+            <h3>Selecting Elements</h3>
+            <pre><code>// By ID
+let element = document.getElementById("myId");
+
+// By Class Name (returns HTMLCollection)
+let elements = document.getElementsByClassName("myClass");
+
+// By Tag Name
+let divs = document.getElementsByTagName("div");
+
+// CSS Selector (modern way)
+let first = document.querySelector(".myClass");
+let all = document.querySelectorAll(".myClass"); // NodeList</code></pre>
+
+            <h3>Modifying Elements</h3>
+            <pre><code>let el = document.getElementById("demo");
+
+// Content
+el.innerHTML = "&lt;b&gt;Bold Text&lt;/b&gt;";  // HTML parse hoga
+el.textContent = "Plain Text";      // Raw text
+
+// Attributes
+el.setAttribute("class", "highlight");
+el.getAttribute("class");
+el.removeAttribute("class");
+
+// Style
+el.style.color = "red";
+el.style.backgroundColor = "yellow";
+el.style.fontSize = "20px";
+
+// Classes
+el.classList.add("active");
+el.classList.remove("active");
+el.classList.toggle("active");
+el.classList.contains("active"); // true/false</code></pre>
+
+            <h3>Creating & Removing Elements</h3>
+            <pre><code>// Create new element
+let newDiv = document.createElement("div");
+newDiv.textContent = "I am new!";
+newDiv.className = "box";
+
+// Add to DOM
+document.body.appendChild(newDiv);
+
+// Insert before another element
+let parent = document.getElementById("container");
+let reference = document.getElementById("ref");
+parent.insertBefore(newDiv, reference);
+
+// Modern: insertAdjacentHTML
+parent.insertAdjacentHTML("beforeend", "&lt;p&gt;New paragraph&lt;/p&gt;");
+
+// Remove element
+let old = document.getElementById("remove-me");
+old.remove(); // Modern browsers
+// OR
+old.parentNode.removeChild(old);</code></pre>
+        </section>
+
+        <section id="events">
+            <h2>🎯 Events</h2>
+            <p>Events user interactions hain — click, hover, keypress, etc.</p>
+
+            <h3>Event Listeners</h3>
+            <pre><code>let btn = document.getElementById("myBtn");
+
+// Add event listener
+btn.addEventListener("click", function(event) {
+    console.log("Button clicked!");
+    console.log(event.target); // clicked element
+});
+
+// Arrow function
+btn.addEventListener("click", (e) => {
+    console.log("Clicked!");
+    e.preventDefault(); // default action roko
+});
+
+// Remove listener
+function handler() { console.log("Hi"); }
+btn.addEventListener("click", handler);
+btn.removeEventListener("click", handler);</code></pre>
+
+            <h3>Common Events</h3>
+            <table>
+                <tr><th>Event</th><th>Trigger</th></tr>
+                <tr><td><code>click</code></td><td>Mouse click</td></tr>
+                <tr><td><code>dblclick</code></td><td>Double click</td></tr>
+                <tr><td><code>mouseover</code></td><td>Mouse enters element</td></tr>
+                <tr><td><code>mouseout</code></td><td>Mouse leaves element</td></tr>
+                <tr><td><code>keydown</code></td><td>Key pressed down</td></tr>
+                <tr><td><code>keyup</code></td><td>Key released</td></tr>
+                <tr><td><code>submit</code></td><td>Form submitted</td></tr>
+                <tr><td><code>change</code></td><td>Input value changed</td></tr>
+                <tr><td><code>input</code></td><td>Real-time input</td></tr>
+                <tr><td><code>load</code></td><td>Page/resource loaded</td></tr>
+                <tr><td><code>resize</code></td><td>Window resized</td></tr>
+                <tr><td><code>scroll</code></td><td>Page scrolled</td></tr>
+            </table>
+
+            <h3>Event Delegation</h3>
+            <pre><code>// Parent par listener lagao, child se bubble hoga
+document.getElementById("list").addEventListener("click", (e) => {
+    if (e.target.tagName === "LI") {
+        console.log("Clicked:", e.target.textContent);
+    }
+});</code></pre>
+        </section>
+
+        <section id="es6">
+            <h2>⚡ ES6+ Modern Features</h2>
+            <h3>Template Literals</h3>
+            <pre><code>let name = "Akarshit";
+let age = 20;
+
+// Backticks ``
+let msg = `Hello ${name}, you are ${age} years old.`;
+// Multi-line strings
+let html = `
+    &lt;div&gt;
+        &lt;h1&gt;${name}&lt;/h1&gt;
+        &lt;p&gt;Age: ${age}&lt;/p&gt;
+    &lt;/div&gt;
+`;</code></pre>
+
+            <h3>Destructuring</h3>
+            <pre><code>// Array
+let [x, y, z] = [1, 2, 3];
+let [a, , c] = [1, 2, 3]; // skip middle
+let [first, ...rest] = [1, 2, 3, 4];
+
+// Object
+let {name, age} = {name: "A", age: 20};
+let {name: n, age: a} = {name: "A", age: 20}; // alias
+let {city = "Unknown"} = {}; // default value</code></pre>
+
+            <h3>Spread & Rest Operators</h3>
+            <pre><code>// Spread (expand)
+let arr1 = [1, 2, 3];
+let arr2 = [...arr1, 4, 5]; // [1,2,3,4,5]
+let obj1 = {a: 1};
+let obj2 = {...obj1, b: 2}; // {a:1, b:2}
+
+// Rest (collect)
+function sum(...nums) {
+    return nums.reduce((a, b) => a + b, 0);
+}
+let [head, ...tail] = [1, 2, 3, 4]; // head=1, tail=[2,3,4]</code></pre>
+
+            <h3>Default Parameters</h3>
+            <pre><code>function greet(name = "Guest", greeting = "Hello") {
+    return `${greeting}, ${name}!`;
+}
+greet(); // "Hello, Guest!"
+greet("Raj"); // "Hello, Raj!"</code></pre>
+
+            <h3>Enhanced Object Literals</h3>
+            <pre><code>let name = "Akarshit";
+let age = 20;
+
+let person = {
+    name,        // name: name
+    age,         // age: age
+    greet() {    // Method shorthand
+        return `Hi, I'm ${this.name}`;
+    },
+    ["id_" + 1]: 100  // Computed property
+};</code></pre>
+
+            <h3>Optional Chaining</h3>
+            <pre><code>let user = { profile: { name: "A" } };
+console.log(user?.profile?.name);     // "A"
+console.log(user?.settings?.theme);   // undefined (no error!)
+
+// Nullish Coalescing ??
+let count = 0;
+let result = count ?? 10; // 0 (only null/undefined pe 10)</code></pre>
+        </section>
+
+        <section id="async">
+            <h2>⏳ Async JavaScript</h2>
+            <h3>Callbacks</h3>
+            <pre><code>function fetchData(callback) {
+    setTimeout(() => {
+        callback("Data loaded!");
+    }, 1000);
+}
+fetchData((msg) => console.log(msg));</code></pre>
+
+            <h3>Promises</h3>
+            <pre><code>let promise = new Promise((resolve, reject) => {
+    let success = true;
+    if (success) {
+        resolve("Done!");
+    } else {
+        reject("Error!");
+    }
+});
+
+promise
+    .then(result => console.log(result))
+    .catch(error => console.error(error))
+    .finally(() => console.log("Finished"));</code></pre>
+
+            <h3>Promise Chaining</h3>
+            <pre><code>fetchUser(1)
+    .then(user => fetchOrders(user.id))
+    .then(orders => console.log(orders))
+    .catch(err => console.error(err));</code></pre>
+
+            <h3>Async/Await</h3>
+            <pre><code>async function getUserData(userId) {
+    try {
+        let user = await fetchUser(userId);
+        let orders = await fetchOrders(user.id);
+        console.log(orders);
+    } catch (error) {
+        console.error("Error:", error);
+    } finally {
+        console.log("Request completed");
     }
 }
 
-public class Main {
-    public static void main(String[] args) {
-        Student s1 = new Student("Akarshit", 18);
-        s1.display();
+// Parallel execution
+async function loadAll() {
+    let [users, posts] = await Promise.all([
+        fetchUsers(),
+        fetchPosts()
+    ]);
+}</code></pre>
+
+            <h3>Promise.all / Promise.race</h3>
+            <pre><code>// All promises complete hone ke baad
+let results = await Promise.all([p1, p2, p3]);
+
+// Sabse pehle complete hone wala
+let winner = await Promise.race([p1, p2, p3]);</code></pre>
+        </section>
+
+        <section id="fetch">
+            <h2>🌐 Fetch API & AJAX</h2>
+            <h3>GET Request</h3>
+            <pre><code>fetch("https://api.example.com/users")
+    .then(response => {
+        if (!response.ok) throw new Error("HTTP " + response.status);
+        return response.json();
+    })
+    .then(data => console.log(data))
+    .catch(error => console.error(error));</code></pre>
+
+            <h3>POST Request</h3>
+            <pre><code>fetch("https://api.example.com/users", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        name: "Akarshit",
+        email: "ak@example.com"
+    })
+})
+.then(res => res.json())
+.then(data => console.log(data));</code></pre>
+
+            <h3>Async/Await with Fetch</h3>
+            <pre><code>async function getUsers() {
+    try {
+        let res = await fetch("https://jsonplaceholder.typicode.com/users");
+        let users = await res.json();
+        console.log(users);
+    } catch (err) {
+        console.error("Fetch failed:", err);
     }
-}</pre>
-        </div>
+}</code></pre>
 
-        <div class="section">
-            <h2>Inheritance</h2>
-            <pre>class Animal {
-    void eat() { System.out.println("Eating..."); }
+            <h3>Local Storage</h3>
+            <pre><code>// Save data
+localStorage.setItem("username", "Akarshit");
+localStorage.setItem("user", JSON.stringify({age: 20}));
+
+// Read data
+let name = localStorage.getItem("username");
+let user = JSON.parse(localStorage.getItem("user"));
+
+// Remove
+localStorage.removeItem("username");
+localStorage.clear(); // sab clear
+
+// Session Storage (tab close pe delete)
+sessionStorage.setItem("temp", "data");</code></pre>
+        </section>
+
+        <section id="modules">
+            <h2>📦 Modules</h2>
+            <h3>Export</h3>
+            <pre><code>// math.js
+export const PI = 3.14159;
+
+export function add(a, b) {
+    return a + b;
 }
 
-class Dog extends Animal {
-    void bark() { System.out.println("Barking..."); }
+export default function greet(name) {
+    return `Hello ${name}`;
 }
 
-Dog d = new Dog();
-d.eat();   // Inherited
-d.bark();  // Own method</pre>
-        </div>
+// variables.js
+const secret = "hidden"; // not exported
+export const publicVar = "visible";</code></pre>
 
-        <div class="footer">
-            <p>© 2026 Akarshit Raj | <a href="tutorials.html" style="color:#38bdf8">More Tutorials</a></p>
-        </div>
+            <h3>Import</h3>
+            <pre><code>// main.js
+import greet, { add, PI } from "./math.js";
+import * as math from "./math.js";
+
+console.log(greet("Akarshit"));
+console.log(add(2, 3));
+console.log(math.PI);</code></pre>
+            <div class="note">
+                HTML me <code>&lt;script type="module" src="main.js"&gt;&lt;/script&gt;</code> use karo.
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>🛠️ Mini Projects</h2>
+            <h3>1. To-Do List</h3>
+            <pre><code>let tasks = [];
+
+function addTask(task) {
+    tasks.push({ text: task, done: false });
+    render();
+}
+
+function toggleTask(index) {
+    tasks[index].done = !tasks[index].done;
+    render();
+}
+
+function render() {
+    let list = document.getElementById("taskList");
+    list.innerHTML = tasks.map((t, i) => `
+        &lt;li class="${t.done ? 'done' : ''}" onclick="toggleTask(${i})"&gt;
+            ${t.text}
+        &lt;/li&gt;
+    `).join("");
+}</code></pre>
+
+            <h3>2. Counter App</h3>
+            <pre><code>let count = 0;
+
+function updateDisplay() {
+    document.getElementById("count").textContent = count;
+}
+
+function increment() { count++; updateDisplay(); }
+function decrement() { count--; updateDisplay(); }
+function reset() { count = 0; updateDisplay(); }</code></pre>
+
+            <h3>3. Weather App (Fetch API)</h3>
+            <pre><code>async function getWeather(city) {
+    let api = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=YOUR_KEY`;
+    let res = await fetch(api);
+    let data = await res.json();
+    document.getElementById("temp").textContent = data.main.temp;
+    document.getElementById("desc").textContent = data.weather[0].description;
+}</code></pre>
+
+            <h3>4. Form Validation</h3>
+            <pre><code>document.getElementById("form").addEventListener("submit", (e) => {
+    e.preventDefault();
+    let email = document.getElementById("email").value;
+    let pass = document.getElementById("password").value;
+
+    if (!email.includes("@")) {
+        alert("Invalid email!");
+        return;
+    }
+    if (pass.length < 6) {
+        alert("Password too short!");
+        return;
+    }
+
+    console.log("Form submitted!");
+});</code></pre>
+        </section>
+
+        <footer>
+            <p>© 2026 Akarshit Raj | PM SHRI JNV Khairabad, Sitapur</p>
+            <p>Learn programming for free 🚀</p>
+        </footer>
     </div>
 </body>
 </html>
-
