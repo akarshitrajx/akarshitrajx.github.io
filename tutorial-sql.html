@@ -3,71 +3,885 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SQL Complete Guide - Akarshit Raj</title>
+    <title>SQL Complete Guide - Zero to Hero | Akarshit Raj</title>
     <style>
-        *{margin:0;padding:0;box-sizing:border-box}
-        body{font-family:'Segoe UI',sans-serif;background:linear-gradient(135deg,#0f172a,#1e1b4b);color:#e2e8f0;line-height:1.6;min-height:100vh}
-        .container{max-width:800px;margin:0 auto;padding:20px}
-        .back{display:inline-block;background:rgba(56,189,248,0.2);color:#38bdf8;padding:10px 20px;border-radius:8px;text-decoration:none;font-weight:600;margin-bottom:20px;border:1px solid rgba(56,189,248,0.3)}
-        h1{font-size:2rem;background:linear-gradient(135deg,#38bdf8,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:10px}
-        .section{background:rgba(30,41,59,0.6);border:1px solid rgba(148,163,184,0.1);border-radius:16px;padding:25px;margin-bottom:20px}
-        h2{color:#38bdf8;margin-bottom:15px;font-size:1.3rem}
-        p{color:#94a3b8;margin-bottom:15px}
-        pre{background:#1e1e1e;border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:15px;overflow-x:auto;color:#d4d4d4;font-family:'Consolas',monospace;font-size:0.9rem;margin:15px 0}
-        code{background:rgba(56,189,248,0.15);color:#38bdf8;padding:2px 6px;border-radius:4px;font-family:monospace}
-        .footer{text-align:center;padding:40px;color:#64748b;font-size:0.9rem}
+        :root {
+            --bg: #0f172a;
+            --card: #1e293b;
+            --text: #e2e8f0;
+            --muted: #94a3b8;
+            --accent: #f97316;
+            --accent2: #3b82f6;
+            --code-bg: #0b1120;
+            --border: #334155;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+        .back {
+            display: inline-flex; align-items: center; gap: 8px;
+            color: var(--accent); text-decoration: none; margin-bottom: 20px;
+            font-weight: 600; font-size: 0.95rem;
+        }
+        .back:hover { text-decoration: underline; }
+        header {
+            text-align: center; padding: 40px 20px;
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 30px;
+        }
+        header h1 { font-size: 2.2rem; margin-bottom: 10px; }
+        header p { color: var(--muted); font-size: 1.1rem; }
+        .badge {
+            display: inline-block; background: var(--accent); color: #fff;
+            padding: 4px 14px; border-radius: 20px; font-size: 0.8rem;
+            font-weight: 700; margin-top: 10px;
+        }
+        .toc {
+            background: var(--card); border-radius: 12px; padding: 20px;
+            margin-bottom: 30px; border: 1px solid var(--border);
+        }
+        .toc h3 { color: var(--accent); margin-bottom: 12px; font-size: 1.1rem; }
+        .toc ul { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 8px; }
+        .toc a { color: var(--muted); text-decoration: none; font-size: 0.9rem; }
+        .toc a:hover { color: var(--accent); }
+        section {
+            background: var(--card); border-radius: 12px; padding: 25px;
+            margin-bottom: 25px; border: 1px solid var(--border);
+        }
+        section h2 {
+            color: var(--accent); font-size: 1.4rem; margin-bottom: 15px;
+            display: flex; align-items: center; gap: 10px;
+        }
+        section h3 { color: var(--accent2); font-size: 1.15rem; margin: 20px 0 10px; }
+        p { margin-bottom: 12px; color: var(--text); }
+        ul, ol { margin-left: 20px; margin-bottom: 15px; color: var(--text); }
+        li { margin-bottom: 6px; }
+        code {
+            background: var(--code-bg); color: #fbbf24; padding: 2px 6px;
+            border-radius: 4px; font-family: 'Fira Code', monospace; font-size: 0.9em;
+        }
+        pre {
+            background: var(--code-bg); border-radius: 10px; padding: 16px;
+            overflow-x: auto; margin: 15px 0; border: 1px solid var(--border);
+        }
+        pre code { background: none; padding: 0; color: #e2e8f0; font-size: 0.85rem; line-height: 1.6; }
+        .note {
+            background: rgba(59, 130, 246, 0.1); border-left: 4px solid var(--accent2);
+            padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 15px 0;
+        }
+        .warning {
+            background: rgba(249, 115, 22, 0.1); border-left: 4px solid var(--accent);
+            padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 15px 0;
+        }
+        table {
+            width: 100%; border-collapse: collapse; margin: 15px 0;
+            font-size: 0.9rem;
+        }
+        th, td { border: 1px solid var(--border); padding: 10px; text-align: left; }
+        th { background: var(--code-bg); color: var(--accent); }
+        footer {
+            text-align: center; padding: 30px; color: var(--muted);
+            border-top: 1px solid var(--border); margin-top: 30px;
+        }
+        @media (max-width: 600px) {
+            header h1 { font-size: 1.5rem; }
+            .toc ul { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
+    <header>
+        <h1>🗄️ SQL Complete Guide</h1>
+        <p>Zero to Hero — Master Database Querying &amp; Management</p>
+        <span class="badge">Beginner to Advanced</span>
+    </header>
+
     <div class="container">
-        <a href="tutorials.html" class="back">← Back to Tutorials</a>
-        <h1>SQL Complete Tutorial</h1>
-        
-        <div class="section">
-            <h2>What is SQL?</h2>
-            <p>SQL (Structured Query Language) is used to manage databases. It helps you store, retrieve, and manipulate data.</p>
+        <a href="tutorials.html" class="back">&larr; Back to Tutorials</a>
+
+        <div class="toc">
+            <h3>📑 Table of Contents</h3>
+            <ul>
+                <li><a href="#intro">Introduction</a></li>
+                <li><a href="#setup">Setup &amp; Tools</a></li>
+                <li><a href="#create">CREATE TABLE</a></li>
+                <li><a href="#insert">INSERT Data</a></li>
+                <li><a href="#select">SELECT Queries</a></li>
+                <li><a href="#where">WHERE &amp; Conditions</a></li>
+                <li><a href="#operators">Operators</a></li>
+                <li><a href="#update">UPDATE &amp; DELETE</a></li>
+                <li><a href="#order">ORDER BY &amp; LIMIT</a></li>
+                <li><a href="#aggregate">Aggregate Functions</a></li>
+                <li><a href="#groupby">GROUP BY &amp; HAVING</a></li>
+                <li><a href="#joins">JOINs</a></li>
+                <li><a href="#constraints">Constraints</a></li>
+                <li><a href="#alter">ALTER &amp; DROP</a></li>
+                <li><a href="#subqueries">Subqueries</a></li>
+                <li><a href="#indexes">Indexes</a></li>
+                <li><a href="#projects">Mini Projects</a></li>
+            </ul>
         </div>
 
-        <div class="section">
-            <h2>Create Table</h2>
-            <pre>CREATE TABLE students (
-    id INT PRIMARY KEY,
-    name VARCHAR(50),
+        <section id="intro">
+            <h2>🚀 Introduction</h2>
+            <p>SQL (Structured Query Language) databases se baat karne ki language hai. Har bada website, app, aur software database use karta hai — SQL us data ko manage, query, aur manipulate karne ka standard way hai.</p>
+            <p><strong>Kya seekhenge:</strong></p>
+            <ul>
+                <li>Tables create karna, data insert karna</li>
+                <li>SELECT, WHERE, ORDER BY queries</li>
+                <li>JOINs — data multiple tables se connect karna</li>
+                <li>Aggregate functions, GROUP BY, HAVING</li>
+                <li>Constraints, Indexes, Subqueries</li>
+                <li>Real-world database design</li>
+            </ul>
+            <div class="note">
+                <strong>Popular Databases:</strong> MySQL, PostgreSQL, SQLite, SQL Server, Oracle. Syntax almost same hota hai sabmein.
+            </div>
+        </section>
+
+        <section id="setup">
+            <h2>⚙️ Setup &amp; Tools</h2>
+            <h3>Options to Practice SQL</h3>
+            <ol>
+                <li><strong>SQLite Online:</strong> sqliteonline.com — Browser mein practice, no install!</li>
+                <li><strong>MySQL:</strong> XAMPP install karo (Apache + MySQL)</li>
+                <li><strong>DB Browser for SQLite:</strong> GUI tool for SQLite</li>
+                <li><strong>phpMyAdmin:</strong> Web-based MySQL admin</li>
+            </ol>
+            <div class="note">
+                <strong>Quick Start:</strong> sqliteonline.com par jao &rarr; New Database &rarr; Practice shuru karo!
+            </div>
+        </section>
+
+        <section id="create">
+            <h2>🏗️ CREATE TABLE</h2>
+            <p>Table database mein data store karne ka structure hai. Rows (records) aur Columns (fields) se bana hota hai.</p>
+
+            <h3>Basic Syntax</h3>
+            <pre><code>CREATE TABLE table_name (
+    column1 datatype constraints,
+    column2 datatype constraints,
+    ...
+);</code></pre>
+
+            <h3>Data Types</h3>
+            <table>
+                <tr><th>Type</th><th>Use</th><th>Example</th></tr>
+                <tr><td><code>INT</code></td><td>Whole numbers</td><td><code>INT</code></td></tr>
+                <tr><td><code>BIGINT</code></td><td>Large numbers</td><td><code>BIGINT</code></td></tr>
+                <tr><td><code>FLOAT / DECIMAL</code></td><td>Decimal numbers</td><td><code>DECIMAL(10,2)</code></td></tr>
+                <tr><td><code>VARCHAR(n)</code></td><td>Text (variable length)</td><td><code>VARCHAR(100)</code></td></tr>
+                <tr><td><code>CHAR(n)</code></td><td>Fixed length text</td><td><code>CHAR(10)</code></td></tr>
+                <tr><td><code>TEXT</code></td><td>Long text</td><td><code>TEXT</code></td></tr>
+                <tr><td><code>DATE</code></td><td>Date only</td><td><code>DATE</code></td></tr>
+                <tr><td><code>DATETIME</code></td><td>Date + Time</td><td><code>DATETIME</code></td></tr>
+                <tr><td><code>BOOLEAN</code></td><td>True/False</td><td><code>BOOLEAN</code></td></tr>
+                <tr><td><code>BLOB</code></td><td>Binary data (images, files)</td><td><code>BLOB</code></td></tr>
+            </table>
+
+            <h3>Example: Students Table</h3>
+            <pre><code>CREATE TABLE students (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE,
     age INT,
-    grade CHAR(1)
-);</pre>
-        </div>
+    grade CHAR(2),
+    marks DECIMAL(5,2),
+    enrollment_date DATE DEFAULT CURRENT_DATE,
+    is_active BOOLEAN DEFAULT TRUE
+);</code></pre>
 
-        <div class="section">
-            <h2>INSERT Data</h2>
-            <pre>INSERT INTO students VALUES (1, 'Akarshit', 18, 'A');
-INSERT INTO students (name, age) VALUES ('Rahul', 17);</pre>
-        </div>
+            <h3>Example: Multiple Tables</h3>
+            <pre><code>CREATE TABLE departments (
+    dept_id INT PRIMARY KEY AUTO_INCREMENT,
+    dept_name VARCHAR(50) NOT NULL,
+    location VARCHAR(50)
+);
 
-        <div class="section">
-            <h2>SELECT Queries</h2>
-            <pre>SELECT * FROM students;
-SELECT name, age FROM students WHERE grade = 'A';
-SELECT * FROM students ORDER BY age DESC;
-SELECT COUNT(*) FROM students;</pre>
-        </div>
+CREATE TABLE employees (
+    emp_id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    salary DECIMAL(10,2),
+    dept_id INT,
+    hire_date DATE,
+    FOREIGN KEY (dept_id) REFERENCES departments(dept_id)
+);</code></pre>
+        </section>
 
-        <div class="section">
-            <h2>UPDATE & DELETE</h2>
-            <pre>UPDATE students SET age = 19 WHERE id = 1;
-DELETE FROM students WHERE id = 2;</pre>
-        </div>
+        <section id="insert">
+            <h2>📝 INSERT Data</h2>
+            <h3>Single Row</h3>
+            <pre><code>INSERT INTO students (name, email, age, grade, marks)
+VALUES ('Akarshit Raj', 'akarshit@example.com', 20, 'A', 85.50);</code></pre>
 
-        <div class="section">
-            <h2>JOIN Tables</h2>
-            <pre>SELECT s.name, m.subject, m.marks
+            <h3>Multiple Rows</h3>
+            <pre><code>INSERT INTO students (name, email, age, grade, marks) VALUES
+('Raj Kumar', 'raj@example.com', 21, 'B', 72.00),
+('Amit Singh', 'amit@example.com', 19, 'A', 91.25),
+('Priya Sharma', 'priya@example.com', 20, 'A', 88.00),
+('Sneha Gupta', 'sneha@example.com', 22, 'C', 65.50);</code></pre>
+
+            <h3>INSERT with SELECT</h3>
+            <pre><code>INSERT INTO students_backup (name, email, age)
+SELECT name, email, age FROM students WHERE grade = 'A';</code></pre>
+        </section>
+
+        <section id="select">
+            <h2>🔍 SELECT Queries</h2>
+            <h3>Basic SELECT</h3>
+            <pre><code>-- Sab columns
+SELECT * FROM students;
+
+-- Specific columns
+SELECT name, email, marks FROM students;
+
+-- With aliases
+SELECT name AS student_name, marks AS score FROM students;
+
+-- DISTINCT (unique values)
+SELECT DISTINCT grade FROM students;
+
+-- COUNT total rows
+SELECT COUNT(*) FROM students;
+SELECT COUNT(DISTINCT grade) FROM students;</code></pre>
+
+            <h3>SELECT with Expressions</h3>
+            <pre><code>-- Calculated column
+SELECT name, marks, marks * 0.4 AS internal_marks FROM students;
+
+-- Concatenation (MySQL/PostgreSQL)
+SELECT CONCAT(name, ' - ', grade) AS info FROM students;
+
+-- String functions
+SELECT UPPER(name) FROM students;
+SELECT LOWER(email) FROM students;
+SELECT LENGTH(name) FROM students;</code></pre>
+        </section>
+
+        <section id="where">
+            <h2>🎯 WHERE &amp; Conditions</h2>
+            <h3>Comparison Operators</h3>
+            <pre><code>SELECT * FROM students WHERE age &gt; 20;
+SELECT * FROM students WHERE marks &gt;= 80;
+SELECT * FROM students WHERE grade = 'A';
+SELECT * FROM students WHERE grade != 'C';  -- ya &lt;&gt;
+SELECT * FROM students WHERE age BETWEEN 18 AND 22;
+SELECT * FROM students WHERE name LIKE 'A%';  -- 'A' se start
+SELECT * FROM students WHERE email LIKE '%@example.com';</code></pre>
+
+            <h3>Logical Operators</h3>
+            <pre><code>-- AND (dono conditions true)
+SELECT * FROM students 
+WHERE marks &gt;= 80 AND grade = 'A';
+
+-- OR (koi ek true)
+SELECT * FROM students 
+WHERE grade = 'A' OR grade = 'B';
+
+-- NOT (reverse)
+SELECT * FROM students WHERE NOT grade = 'C';
+
+-- Combined
+SELECT * FROM students 
+WHERE (marks &gt;= 80 AND grade = 'A') OR age &lt; 20;</code></pre>
+
+            <h3>IN &amp; NOT IN</h3>
+            <pre><code>SELECT * FROM students WHERE grade IN ('A', 'B');
+SELECT * FROM students WHERE grade NOT IN ('C', 'D');</code></pre>
+
+            <h3>IS NULL &amp; IS NOT NULL</h3>
+            <pre><code>SELECT * FROM students WHERE email IS NULL;
+SELECT * FROM students WHERE email IS NOT NULL;</code></pre>
+
+            <h3>LIKE Patterns</h3>
+            <table>
+                <tr><th>Pattern</th><th>Meaning</th><th>Example</th></tr>
+                <tr><td><code>%</code></td><td>Any characters (0 or more)</td><td><code>'A%'</code> — A se start</td></tr>
+                <tr><td><code>_</code></td><td>Single character</td><td><code>'_a%'</code> — 2nd letter a</td></tr>
+                <tr><td><code>[abc]</code></td><td>Any one in bracket</td><td><code>'[ABC]%'</code> — A/B/C se start</td></tr>
+            </table>
+            <pre><code>SELECT * FROM students WHERE name LIKE 'A%';
+SELECT * FROM students WHERE name LIKE '_a%';  -- 2nd letter 'a'
+SELECT * FROM students WHERE name LIKE '%Raj%'; -- Raj anywhere</code></pre>
+        </section>
+
+        <section id="operators">
+            <h2>➕ SQL Operators</h2>
+            <h3>Arithmetic Operators</h3>
+            <pre><code>SELECT name, marks, marks + 5 AS boosted FROM students;
+SELECT name, salary, salary * 1.1 AS new_salary FROM employees;
+SELECT 10 / 3;  -- 3 (integer division)
+SELECT 10.0 / 3; -- 3.33</code></pre>
+
+            <h3>Comparison Operators</h3>
+            <table>
+                <tr><th>Operator</th><th>Meaning</th></tr>
+                <tr><td><code>=</code></td><td>Equal to</td></tr>
+                <tr><td><code>!=</code> or <code>&lt;&gt;</code></td><td>Not equal to</td></tr>
+                <tr><td><code>&gt;</code></td><td>Greater than</td></tr>
+                <tr><td><code>&lt;</code></td><td>Less than</td></tr>
+                <tr><td><code>&gt;=</code></td><td>Greater than or equal</td></tr>
+                <tr><td><code>&lt;=</code></td><td>Less than or equal</td></tr>
+            </table>
+
+            <h3>Logical Operators</h3>
+            <table>
+                <tr><th>Operator</th><th>Meaning</th></tr>
+                <tr><td><code>AND</code></td><td>Both true</td></tr>
+                <tr><td><code>OR</code></td><td>At least one true</td></tr>
+                <tr><td><code>NOT</code></td><td>Reverse</td></tr>
+                <tr><td><code>BETWEEN</code></td><td>Range mein</td></tr>
+                <tr><td><code>IN</code></td><td>List mein match</td></tr>
+                <tr><td><code>LIKE</code></td><td>Pattern match</td></tr>
+                <tr><td><code>IS NULL</code></td><td>Null check</td></tr>
+            </table>
+        </section>
+
+        <section id="update">
+            <h2>✏️ UPDATE &amp; DELETE</h2>
+            <h3>UPDATE</h3>
+            <pre><code>-- Single column
+UPDATE students SET grade = 'A' WHERE id = 1;
+
+-- Multiple columns
+UPDATE students 
+SET grade = 'B', marks = 75.50 
+WHERE id = 2;
+
+-- All rows (BE CAREFUL!)
+UPDATE students SET is_active = TRUE;
+
+-- Increment value
+UPDATE students SET marks = marks + 5 WHERE grade = 'B';</code></pre>
+            <div class="warning">
+                <strong>⚠️ Hamesha WHERE clause use karo UPDATE/DELETE mein!</strong> Bina WHERE ke sab rows update/delete ho jayengi!
+            </div>
+
+            <h3>DELETE</h3>
+            <pre><code>-- Specific row
+DELETE FROM students WHERE id = 5;
+
+-- Multiple rows
+DELETE FROM students WHERE grade = 'F';
+
+-- All rows (table empty ho jayegi, structure rahegi)
+DELETE FROM students;
+
+-- Table hi delete karna hai
+DROP TABLE students;</code></pre>
+
+            <h3>TRUNCATE (Fast Delete All)</h3>
+            <pre><code>TRUNCATE TABLE students;  -- Sab rows delete, auto-increment reset</code></pre>
+        </section>
+
+        <section id="order">
+            <h2>📊 ORDER BY &amp; LIMIT</h2>
+            <h3>ORDER BY</h3>
+            <pre><code>-- Ascending (default)
+SELECT * FROM students ORDER BY marks;
+SELECT * FROM students ORDER BY marks ASC;
+
+-- Descending
+SELECT * FROM students ORDER BY marks DESC;
+
+-- Multiple columns
+SELECT * FROM students ORDER BY grade ASC, marks DESC;
+
+-- By position
+SELECT name, marks FROM students ORDER BY 2 DESC; -- 2nd column</code></pre>
+
+            <h3>LIMIT / OFFSET (Pagination)</h3>
+            <pre><code>-- Top 5 students (MySQL/PostgreSQL/SQLite)
+SELECT * FROM students ORDER BY marks DESC LIMIT 5;
+
+-- Skip 10, show next 5
+SELECT * FROM students ORDER BY marks DESC LIMIT 5 OFFSET 10;
+
+-- Alternative syntax (SQL Server)
+SELECT TOP 5 * FROM students ORDER BY marks DESC;
+
+-- Alternative (MySQL shorthand)
+SELECT * FROM students LIMIT 10, 5; -- OFFSET 10, LIMIT 5</code></pre>
+        </section>
+
+        <section id="aggregate">
+            <h2>📈 Aggregate Functions</h2>
+            <p>Aggregate functions multiple rows par calculation karte hain aur single result dete hain.</p>
+
+            <pre><code>-- COUNT
+SELECT COUNT(*) FROM students;
+SELECT COUNT(*) FROM students WHERE grade = 'A';
+SELECT COUNT(DISTINCT grade) FROM students;
+
+-- SUM
+SELECT SUM(marks) FROM students;
+SELECT SUM(salary) FROM employees WHERE dept_id = 1;
+
+-- AVG (Average)
+SELECT AVG(marks) FROM students;
+SELECT ROUND(AVG(marks), 2) FROM students; -- 2 decimal places
+
+-- MIN &amp; MAX
+SELECT MIN(marks) FROM students;
+SELECT MAX(marks) FROM students;
+SELECT name, MAX(marks) FROM students; -- Error! Group by chahiye
+
+-- Combined
+SELECT 
+    COUNT(*) AS total_students,
+    AVG(marks) AS average_marks,
+    MIN(marks) AS lowest,
+    MAX(marks) AS highest,
+    SUM(marks) AS total_marks
+FROM students;</code></pre>
+        </section>
+
+        <section id="groupby">
+            <h2>📦 GROUP BY &amp; HAVING</h2>
+            <h3>GROUP BY</h3>
+            <p>GROUP BY rows ko groups mein divide karta hai aur har group par aggregate function lagata hai.</p>
+            <pre><code>-- Grade wise count
+SELECT grade, COUNT(*) AS count FROM students GROUP BY grade;
+
+-- Grade wise average marks
+SELECT grade, AVG(marks) AS avg_marks 
+FROM students 
+GROUP BY grade;
+
+-- Department wise stats
+SELECT 
+    d.dept_name,
+    COUNT(e.emp_id) AS emp_count,
+    AVG(e.salary) AS avg_salary,
+    MAX(e.salary) AS max_salary
+FROM employees e
+JOIN departments d ON e.dept_id = d.dept_id
+GROUP BY d.dept_name;</code></pre>
+
+            <h3>HAVING</h3>
+            <p>HAVING GROUP BY ke baad filter karta hai (WHERE row-level filter karta hai).</p>
+            <pre><code>-- Groups having more than 5 students
+SELECT grade, COUNT(*) AS count 
+FROM students 
+GROUP BY grade 
+HAVING COUNT(*) &gt; 5;
+
+-- Average marks &gt; 80 wale grades
+SELECT grade, AVG(marks) AS avg_marks 
+FROM students 
+GROUP BY grade 
+HAVING AVG(marks) &gt; 80;
+
+-- WHERE + GROUP BY + HAVING
+SELECT grade, COUNT(*) AS count, AVG(marks) AS avg
+FROM students 
+WHERE age &gt;= 18
+GROUP BY grade 
+HAVING COUNT(*) &gt;= 3
+ORDER BY avg DESC;</code></pre>
+            <div class="note">
+                <strong>WHERE vs HAVING:</strong> WHERE row-level filter hai (GROUP BY se pehle), HAVING group-level filter hai (GROUP BY ke baad).
+            </div>
+        </section>
+
+        <section id="joins">
+            <h2>🔗 JOINs</h2>
+            <p>JOIN multiple tables se data ek saath fetch karne ka tareeka hai.</p>
+
+            <h3>Types of JOINs</h3>
+            <table>
+                <tr><th>JOIN</th><th>Result</th></tr>
+                <tr><td><code>INNER JOIN</code></td><td>Matching rows dono tables se</td></tr>
+                <tr><td><code>LEFT JOIN</code></td><td>Left table sab + Right se matching</td></tr>
+                <tr><td><code>RIGHT JOIN</code></td><td>Right table sab + Left se matching</td></tr>
+                <tr><td><code>FULL OUTER JOIN</code></td><td>Sab rows dono tables se</td></tr>
+                <tr><td><code>CROSS JOIN</code></td><td>Cartesian product (sab combinations)</td></tr>
+                <tr><td><code>SELF JOIN</code></td><td>Table khud se join</td></tr>
+            </table>
+
+            <h3>INNER JOIN</h3>
+            <pre><code>SELECT e.name, d.dept_name, e.salary
+FROM employees e
+INNER JOIN departments d ON e.dept_id = d.dept_id;
+
+-- Multiple JOINs
+SELECT 
+    e.name AS employee,
+    d.dept_name AS department,
+    p.project_name
+FROM employees e
+JOIN departments d ON e.dept_id = d.dept_id
+JOIN projects p ON e.emp_id = p.emp_id;</code></pre>
+
+            <h3>LEFT JOIN</h3>
+            <pre><code>-- Sab employees + unke departments (bina dept wale bhi)
+SELECT e.name, d.dept_name
+FROM employees e
+LEFT JOIN departments d ON e.dept_id = d.dept_id;
+
+-- Employees without department
+SELECT e.name
+FROM employees e
+LEFT JOIN departments d ON e.dept_id = d.dept_id
+WHERE d.dept_id IS NULL;</code></pre>
+
+            <h3>RIGHT JOIN</h3>
+            <pre><code>-- Sab departments + unke employees (empty dept bhi)
+SELECT d.dept_name, e.name
+FROM employees e
+RIGHT JOIN departments d ON e.dept_id = d.dept_id;</code></pre>
+
+            <h3>FULL OUTER JOIN</h3>
+            <pre><code>-- Sab employees aur sab departments
+SELECT e.name, d.dept_name
+FROM employees e
+FULL OUTER JOIN departments d ON e.dept_id = d.dept_id;</code></pre>
+
+            <h3>SELF JOIN</h3>
+            <pre><code>-- Employee aur unka manager (same table)
+SELECT 
+    e.name AS employee,
+    m.name AS manager
+FROM employees e
+JOIN employees m ON e.manager_id = m.emp_id;</code></pre>
+
+            <h3>CROSS JOIN</h3>
+            <pre><code>-- Sab combinations
+SELECT s.name, c.course_name
 FROM students s
-JOIN marks m ON s.id = m.student_id;</pre>
-        </div>
+CROSS JOIN courses c;</code></pre>
+        </section>
 
-        <div class="footer">
-            <p>© 2026 Akarshit Raj | <a href="tutorials.html" style="color:#38bdf8">More Tutorials</a></p>
-        </div>
+        <section id="constraints">
+            <h2>🔒 Constraints</h2>
+            <p>Constraints data integrity ensure karte hain — galat data insert nahi hoga.</p>
+
+            <table>
+                <tr><th>Constraint</th><th>Description</th><th>Example</th></tr>
+                <tr><td><code>PRIMARY KEY</code></td><td>Unique + Not NULL</td><td><code>id INT PRIMARY KEY</code></td></tr>
+                <tr><td><code>FOREIGN KEY</code></td><td>Another table se link</td><td><code>FOREIGN KEY (dept_id) REFERENCES dept(id)</code></td></tr>
+                <tr><td><code>UNIQUE</code></td><td>Duplicate values nahi</td><td><code>email VARCHAR(100) UNIQUE</code></td></tr>
+                <tr><td><code>NOT NULL</code></td><td>Empty nahi ho sakta</td><td><code>name VARCHAR(50) NOT NULL</code></td></tr>
+                <tr><td><code>CHECK</code></td><td>Condition check</td><td><code>CHECK (age &gt;= 18)</code></td></tr>
+                <tr><td><code>DEFAULT</code></td><td>Default value</td><td><code>status VARCHAR(20) DEFAULT 'active'</code></td></tr>
+                <tr><td><code>AUTO_INCREMENT</code></td><td>Auto number generate</td><td><code>id INT AUTO_INCREMENT</code></td></tr>
+            </table>
+
+            <h3>Examples</h3>
+            <pre><code>CREATE TABLE products (
+    product_id INT PRIMARY KEY AUTO_INCREMENT,
+    product_name VARCHAR(100) NOT NULL,
+    price DECIMAL(10,2) CHECK (price &gt; 0),
+    stock INT DEFAULT 0,
+    category_id INT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (category_id) REFERENCES categories(category_id)
+);
+
+CREATE TABLE orders (
+    order_id INT PRIMARY KEY AUTO_INCREMENT,
+    customer_id INT NOT NULL,
+    order_date DATE DEFAULT CURRENT_DATE,
+    total_amount DECIMAL(10,2) CHECK (total_amount &gt;= 0),
+    status VARCHAR(20) DEFAULT 'pending',
+    FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+);</code></pre>
+
+            <h3>ON DELETE / ON UPDATE</h3>
+            <table>
+                <tr><th>Action</th><th>Description</th></tr>
+                <tr><td><code>CASCADE</code></td><td>Parent delete &rarr; Child bhi delete</td></tr>
+                <tr><td><code>SET NULL</code></td><td>Parent delete &rarr; Child mein NULL</td></tr>
+                <tr><td><code>SET DEFAULT</code></td><td>Parent delete &rarr; Default value</td></tr>
+                <tr><td><code>RESTRICT</code></td><td>Delete allow nahi karega agar child hai</td></tr>
+                <tr><td><code>NO ACTION</code></td><td>Same as RESTRICT</td></tr>
+            </table>
+        </section>
+
+        <section id="alter">
+            <h2>🔧 ALTER &amp; DROP</h2>
+            <h3>ALTER TABLE</h3>
+            <pre><code>-- Column add karna
+ALTER TABLE students ADD phone VARCHAR(15);
+
+-- Column delete karna
+ALTER TABLE students DROP COLUMN phone;
+
+-- Column modify karna
+ALTER TABLE students MODIFY COLUMN age SMALLINT;
+ALTER TABLE students ALTER COLUMN marks TYPE DECIMAL(6,2);
+
+-- Column rename karna
+ALTER TABLE students RENAME COLUMN email TO email_address;
+
+-- Constraint add karna
+ALTER TABLE students ADD CONSTRAINT chk_age CHECK (age &gt;= 0);
+
+-- Constraint delete karna
+ALTER TABLE students DROP CONSTRAINT chk_age;
+
+-- Default value change
+ALTER TABLE students ALTER COLUMN is_active SET DEFAULT FALSE;
+
+-- Column ko NOT NULL banana
+ALTER TABLE students MODIFY name VARCHAR(100) NOT NULL;</code></pre>
+
+            <h3>DROP</h3>
+            <pre><code>-- Table delete
+DROP TABLE students;
+
+-- Table delete (agar exist karti hai)
+DROP TABLE IF EXISTS students;
+
+-- Database delete
+DROP DATABASE school_db;
+
+-- Database create
+CREATE DATABASE school_db;
+USE school_db;</code></pre>
+        </section>
+
+        <section id="subqueries">
+            <h2>🔍 Subqueries</h2>
+            <p>Subquery ek query ke andar dusri query hai.</p>
+
+            <h3>Subquery in WHERE</h3>
+            <pre><code>-- Average marks se zyada wale students
+SELECT * FROM students 
+WHERE marks &gt; (SELECT AVG(marks) FROM students);
+
+-- Same department mein sabse zyada salary wale employee
+SELECT * FROM employees e
+WHERE salary = (
+    SELECT MAX(salary) 
+    FROM employees 
+    WHERE dept_id = e.dept_id
+);</code></pre>
+
+            <h3>Subquery in FROM</h3>
+            <pre><code>-- Derived table
+SELECT * FROM (
+    SELECT grade, AVG(marks) AS avg_marks 
+    FROM students 
+    GROUP BY grade
+) AS grade_stats
+WHERE avg_marks &gt; 80;</code></pre>
+
+            <h3>Subquery in SELECT</h3>
+            <pre><code>SELECT 
+    name,
+    marks,
+    (SELECT AVG(marks) FROM students) AS class_avg,
+    marks - (SELECT AVG(marks) FROM students) AS difference
+FROM students;</code></pre>
+
+            <h3>EXISTS &amp; NOT EXISTS</h3>
+            <pre><code>-- Students jinke orders hain
+SELECT * FROM customers c
+WHERE EXISTS (
+    SELECT 1 FROM orders o WHERE o.customer_id = c.customer_id
+);
+
+-- Students jinke orders nahi hain
+SELECT * FROM customers c
+WHERE NOT EXISTS (
+    SELECT 1 FROM orders o WHERE o.customer_id = c.customer_id
+);</code></pre>
+
+            <h3>IN &amp; NOT IN with Subquery</h3>
+            <pre><code>-- Departments jinme employees hain
+SELECT * FROM departments 
+WHERE dept_id IN (SELECT DISTINCT dept_id FROM employees);
+
+-- Departments jinme employees nahi hain
+SELECT * FROM departments 
+WHERE dept_id NOT IN (SELECT DISTINCT dept_id FROM employees WHERE dept_id IS NOT NULL);</code></pre>
+        </section>
+
+        <section id="indexes">
+            <h2>⚡ Indexes</h2>
+            <p>Indexes search speed ko improve karte hain. Book ka index jaisa — direct page number mil jata hai.</p>
+
+            <h3>Creating Indexes</h3>
+            <pre><code>-- Single column index
+CREATE INDEX idx_name ON students(name);
+
+-- Unique index
+CREATE UNIQUE INDEX idx_email ON students(email);
+
+-- Composite index (multiple columns)
+CREATE INDEX idx_name_age ON students(name, age);
+
+-- Full-text index (MySQL)
+CREATE FULLTEXT INDEX idx_content ON articles(content);
+
+-- Index delete karna
+DROP INDEX idx_name ON students;</code></pre>
+
+            <h3>When to Use</h3>
+            <ul>
+                <li>Columns jinme frequently <code>WHERE</code>, <code>JOIN</code>, <code>ORDER BY</code> use hota hai</li>
+                <li>Columns jinme <code>UNIQUE</code> values hain</li>
+                <li>Large tables (small tables mein index slow kar sakta hai)</li>
+            </ul>
+
+            <h3>When NOT to Use</h3>
+            <ul>
+                <li>Small tables</li>
+                <li>Columns jinme frequently INSERT/UPDATE hota hai</li>
+                <li>Columns jinme mostly NULL values hain</li>
+            </ul>
+        </section>
+
+        <section id="projects">
+            <h2>🛠️ Mini Projects</h2>
+            <h3>1. School Database Schema</h3>
+            <pre><code>-- Students, Teachers, Subjects, Marks
+
+CREATE TABLE students (
+    student_id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    class VARCHAR(10),
+    roll_no INT,
+    dob DATE,
+    address TEXT
+);
+
+CREATE TABLE subjects (
+    subject_id INT PRIMARY KEY AUTO_INCREMENT,
+    subject_name VARCHAR(50) NOT NULL,
+    max_marks INT DEFAULT 100
+);
+
+CREATE TABLE marks (
+    mark_id INT PRIMARY KEY AUTO_INCREMENT,
+    student_id INT,
+    subject_id INT,
+    marks_obtained DECIMAL(5,2),
+    exam_date DATE,
+    FOREIGN KEY (student_id) REFERENCES students(student_id),
+    FOREIGN KEY (subject_id) REFERENCES subjects(subject_id)
+);
+
+-- Top 10 students
+SELECT s.name, SUM(m.marks_obtained) AS total_marks
+FROM students s
+JOIN marks m ON s.student_id = m.student_id
+GROUP BY s.student_id, s.name
+ORDER BY total_marks DESC
+LIMIT 10;
+
+-- Subject wise average
+SELECT sub.subject_name, AVG(m.marks_obtained) AS avg_marks
+FROM subjects sub
+JOIN marks m ON sub.subject_id = m.subject_id
+GROUP BY sub.subject_id, sub.subject_name;</code></pre>
+
+            <h3>2. E-Commerce Database</h3>
+            <pre><code>CREATE TABLE customers (
+    customer_id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100),
+    email VARCHAR(100) UNIQUE,
+    phone VARCHAR(15),
+    city VARCHAR(50)
+);
+
+CREATE TABLE products (
+    product_id INT PRIMARY KEY AUTO_INCREMENT,
+    product_name VARCHAR(100),
+    price DECIMAL(10,2),
+    stock INT DEFAULT 0,
+    category VARCHAR(50)
+);
+
+CREATE TABLE orders (
+    order_id INT PRIMARY KEY AUTO_INCREMENT,
+    customer_id INT,
+    order_date DATE DEFAULT CURRENT_DATE,
+    total DECIMAL(10,2),
+    status VARCHAR(20) DEFAULT 'pending',
+    FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+);
+
+CREATE TABLE order_items (
+    item_id INT PRIMARY KEY AUTO_INCREMENT,
+    order_id INT,
+    product_id INT,
+    quantity INT,
+    price DECIMAL(10,2),
+    FOREIGN KEY (order_id) REFERENCES orders(order_id),
+    FOREIGN KEY (product_id) REFERENCES products(product_id)
+);
+
+-- Total sales by month
+SELECT 
+    DATE_FORMAT(order_date, '%Y-%m') AS month,
+    COUNT(*) AS total_orders,
+    SUM(total) AS revenue
+FROM orders
+WHERE status = 'delivered'
+GROUP BY month
+ORDER BY month;</code></pre>
+
+            <h3>3. Library Management System</h3>
+            <pre><code>CREATE TABLE books (
+    book_id INT PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(200),
+    author VARCHAR(100),
+    isbn VARCHAR(20) UNIQUE,
+    category VARCHAR(50),
+    available BOOLEAN DEFAULT TRUE
+);
+
+CREATE TABLE members (
+    member_id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100),
+    email VARCHAR(100) UNIQUE,
+    join_date DATE DEFAULT CURRENT_DATE
+);
+
+CREATE TABLE borrowings (
+    borrow_id INT PRIMARY KEY AUTO_INCREMENT,
+    book_id INT,
+    member_id INT,
+    borrow_date DATE,
+    due_date DATE,
+    return_date DATE,
+    fine DECIMAL(6,2) DEFAULT 0,
+    FOREIGN KEY (book_id) REFERENCES books(book_id),
+    FOREIGN KEY (member_id) REFERENCES members(member_id)
+);
+
+-- Overdue books
+SELECT b.title, m.name, br.due_date,
+    DATEDIFF(CURRENT_DATE, br.due_date) AS days_overdue
+FROM borrowings br
+JOIN books b ON br.book_id = b.book_id
+JOIN members m ON br.member_id = m.member_id
+WHERE br.return_date IS NULL 
+AND br.due_date &lt; CURRENT_DATE;
+
+-- Most popular books
+SELECT b.title, COUNT(*) AS times_borrowed
+FROM books b
+JOIN borrowings br ON b.book_id = br.book_id
+GROUP BY b.book_id, b.title
+ORDER BY times_borrowed DESC
+LIMIT 10;</code></pre>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 Akarshit Raj | PM SHRI JNV Khairabad, Sitapur</p>
+            <p>Learn programming for free 🚀</p>
+        </footer>
     </div>
 </body>
 </html>
