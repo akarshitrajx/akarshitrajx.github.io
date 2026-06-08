@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TypeScript Basics - Akarshit Raj</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Segoe UI',sans-serif;background:linear-gradient(135deg,#0f172a,#1e1b4b);color:#e2e8f0;line-height:1.6;min-height:100vh}
+        .container{max-width:800px;margin:0 auto;padding:20px}
+        .back{display:inline-block;background:rgba(56,189,248,0.2);color:#38bdf8;padding:10px 20px;border-radius:8px;text-decoration:none;font-weight:600;margin-bottom:20px;border:1px solid rgba(56,189,248,0.3)}
+        h1{font-size:2rem;background:linear-gradient(135deg,#38bdf8,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:10px}
+        .section{background:rgba(30,41,59,0.6);border:1px solid rgba(148,163,184,0.1);border-radius:16px;padding:25px;margin-bottom:20px}
+        h2{color:#38bdf8;margin-bottom:15px;font-size:1.3rem}
+        p{color:#94a3b8;margin-bottom:15px}
+        pre{background:#1e1e1e;border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:15px;overflow-x:auto;color:#d4d4d4;font-family:'Consolas',monospace;font-size:0.9rem;margin:15px 0}
+        code{background:rgba(56,189,248,0.15);color:#38bdf8;padding:2px 6px;border-radius:4px;font-family:monospace}
+        .footer{text-align:center;padding:40px;color:#64748b;font-size:0.9rem}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="tutorials.html" class="back">← Back to Tutorials</a>
+        <h1>TypeScript Complete Tutorial</h1>
+        
+        <div class="section">
+            <h2>What is TypeScript?</h2>
+            <p>TypeScript is JavaScript with added types. It catches errors at compile time and makes code more maintainable.</p>
+        </div>
+
+        <div class="section">
+            <h2>Basic Types</h2>
+            <pre>let name: string = "Akarshit";
+let age: number = 18;
+let isActive: boolean = true;
+let hobbies: string[] = ["coding", "gaming"];
+let user: [string, number] = ["Akarshit", 18];  // tuple</pre>
+        </div>
+
+        <div class="section">
+            <h2>Interfaces</h2>
+            <pre>interface Student {
+    name: string;
+    age: number;
+    grade?: string;  // optional
+}
+
+const s1: Student = {
+    name: "Akarshit",
+    age: 18,
+    grade: "A"
+};</pre>
+        </div>
+
+        <div class="section">
+            <h2>Functions with Types</h2>
+            <pre>function add(a: number, b: number): number {
+    return a + b;
+}
+
+const greet = (name: string): string => {
+    return `Hello, ${name}`;
+};</pre>
+        </div>
+
+        <div class="section">
+            <h2>Classes</h2>
+            <pre>class Animal {
+    private name: string;
+    
+    constructor(n: string) {
+        this.name = n;
+    }
+    
+    move(distance: number): void {
+        console.log(`${this.name} moved ${distance}m`);
+    }
+}
+
+const dog = new Animal("Dog");
+dog.move(10);</pre>
+        </div>
+
+        <div class="footer">
+            <p>© 2026 Akarshit Raj | <a href="tutorials.html" style="color:#38bdf8">More Tutorials</a></p>
+        </div>
+    </div>
+</body>
+</html>
+
