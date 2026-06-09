@@ -34,7 +34,8 @@
         .sidebar{position:fixed;top:0;left:0;width:280px;height:100%;background:var(--darker);border-right:1px solid rgba(255,255,255,0.08);z-index:2001;transform:translateX(-100%);transition:transform 0.3s ease;padding:2rem 0;overflow-y:auto}
         .sidebar.active{transform:translateX(0)}
         .sidebar-header{padding:0 1.5rem 1.5rem;border-bottom:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:space-between}
-        .sidebar-logo{font-size:1.5rem;font-weight:800;background:linear-gradient(135deg,var(--primary),var(--secondary));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .sidebar-logo{display:flex;align-items:center;gap:0.75rem;font-size:1.25rem;font-weight:800;color:var(--light);text-decoration:none}
+        .sidebar-logo img{width:40px;height:40px;border-radius:50%;object-fit:cover;border:2px solid var(--primary)}
         .sidebar-close{background:none;border:none;color:var(--light);font-size:1.5rem;cursor:pointer}
         .sidebar-nav{list-style:none;padding:1rem 0}
         .sidebar-nav li{padding:0.75rem 1.5rem;cursor:pointer;transition:all 0.3s;display:flex;align-items:center;gap:0.75rem;color:var(--gray)}
@@ -122,7 +123,7 @@
         .practice-name{font-weight:600;font-size:1rem;margin-bottom:0.25rem}
         .practice-desc{font-size:0.8rem;color:var(--gray)}
         .compiler-links{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;margin-top:1.5rem}
-        .compiler-card{display:flex;flex-direction:column;align-items:center;gap:0.75rem;padding:1.5rem;background:var(--glass);border-radius:16px;border:1px solid rgba(255,255,255,0.05);text-decoration:none;color:var(--light);transition:all 0.3s;text-align:center}
+        .compiler-card{display:flex;flex-direction:column;align-items:center;gap:0.75rem;padding:1.5rem;background:var(--glass);border-radius:16px;border:1px solid rgba(255,255,255,0.05);text-decoration:none;color:var(--light);transition:all 0.3s;text-align:center;cursor:pointer}
         .compiler-card:hover{transform:translateY(-5px);background:rgba(255,255,255,0.08);box-shadow:0 10px 30px rgba(0,0,0,0.3),0 0 20px rgba(6,182,212,0.1);border-color:rgba(6,182,212,0.3)}
         .compiler-icon{font-size:1.2rem;font-weight:800;width:50px;height:50px;display:flex;align-items:center;justify-content:center;border-radius:12px;background:rgba(6,182,212,0.1);color:var(--primary);border:1px solid rgba(6,182,212,0.2)}
         .compiler-name{font-weight:600;font-size:1rem}
@@ -266,7 +267,10 @@
     <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
     <aside class="sidebar" id="sidebar">
         <div class="sidebar-header">
-            <span class="sidebar-logo">AR.</span>
+            <a href="#home" class="sidebar-logo" onclick="toggleSidebar()">
+                <img src="file_000000004984720882e69f4dad44966a.png" alt="AKR Logo">
+                <span>AKR</span>
+            </a>
             <button class="sidebar-close" onclick="toggleSidebar()">&times;</button>
         </div>
         <ul class="sidebar-nav">
@@ -278,7 +282,7 @@
         </ul>
     </aside>
     
-    <!-- NAVBAR WITH SEARCH BAR -->
+    <!-- NAVBAR WITH SEARCH BAR - Only one hamburger menu -->
     <nav>
         <div class="nav-left">
             <button class="mobile-menu-btn" onclick="toggleSidebar()" style="display:block;margin-right:0.5rem">&#9776;</button>
@@ -293,7 +297,6 @@
             <li><a href="#code-practice">Practice</a></li>
             <li><a href="tutorials.html">Tutorials</a></li>
         </ul>
-        <button class="mobile-menu-btn" onclick="toggleMenu()">&#9776;</button>
     </nav>
     
     <section class="hero" id="home">
@@ -334,9 +337,9 @@
     </section>
     <div class="stats-bar">
         <div class="stat-item"><span class="stat-number" data-target="20">0</span><div class="stat-label">Courses</div></div>
-        <div class="stat-item"><span class="stat-number" data-target="200">0</span><div class="stat-label">Videos</div></div>
-        <div class="stat-item"><span class="stat-number" data-target="1000">0</span><div class="stat-label">Hours</div></div>
-        <div class="stat-item"><span class="stat-number" data-target="1000000">0</span><div class="stat-label">Students</div></div>
+        <div class="stat-item"><span class="stat-number" data-target="50">0</span><div class="stat-label">Videos</div></div>
+        <div class="stat-item"><span class="stat-number" data-target="500">0</span><div class="stat-label">Hours</div></div>
+        <div class="stat-item"><span class="stat-number" data-target="10000">0</span><div class="stat-label">Students</div></div>
     </div>
     <section id="about" class="animate-on-scroll">
         <div class="section-header">
@@ -372,7 +375,7 @@
         <div class="section-header">
             <div class="section-tag">Code Practice</div>
             <h2 class="section-title">Practice Coding Online</h2>
-            <p class="section-subtitle">Learn from videos, then practice here. Use online compilers for all programming languages.</p>
+            <p class="section-subtitle">Learn from videos, then practice here. Use our online compiler for all programming languages.</p>
         </div>
         <div class="code-practice-section">
             <div class="code-practice-header">
@@ -415,20 +418,68 @@ print(f'Welcome, {name}!')</textarea>
             </div>
             <button class="run-btn" onclick="runCodeReal()" id="runBtn">Run Code</button>
             <div style="margin-top:2rem;">
-                <h4 style="text-align:center;margin-bottom:1rem;color:var(--gray);font-size:1rem;">Or Use These Professional Online Compilers</h4>
+                <h4 style="text-align:center;margin-bottom:1rem;color:var(--gray);font-size:1rem;">Quick Language Switcher - Click to Load Compiler</h4>
                 <div class="compiler-links">
-                    <a href="https://www.programiz.com/python-programming/online-compiler/" target="_blank" rel="noopener noreferrer" class="compiler-card"><div class="compiler-icon">Py</div><span class="compiler-name">Python</span><span class="compiler-desc">Programiz Compiler</span></a>
-                    <a href="https://www.programiz.com/cpp-programming/online-compiler/" target="_blank" rel="noopener noreferrer" class="compiler-card"><div class="compiler-icon">C++</div><span class="compiler-name">C++</span><span class="compiler-desc">Programiz Compiler</span></a>
-                    <a href="https://www.programiz.com/javascript/online-compiler/" target="_blank" rel="noopener noreferrer" class="compiler-card"><div class="compiler-icon">JS</div><span class="compiler-name">JavaScript</span><span class="compiler-desc">Programiz Compiler</span></a>
-                    <a href="https://www.programiz.com/java-programming/online-compiler/" target="_blank" rel="noopener noreferrer" class="compiler-card"><div class="compiler-icon">Java</div><span class="compiler-name">Java</span><span class="compiler-desc">Programiz Compiler</span></a>
-                    <a href="https://www.programiz.com/csharp-programming/online-compiler/" target="_blank" rel="noopener noreferrer" class="compiler-card"><div class="compiler-icon">C#</div><span class="compiler-name">C#</span><span class="compiler-desc">Programiz Compiler</span></a>
-                    <a href="https://www.programiz.com/html/online-compiler/" target="_blank" rel="noopener noreferrer" class="compiler-card"><div class="compiler-icon">Web</div><span class="compiler-name">HTML/CSS</span><span class="compiler-desc">Programiz Compiler</span></a>
-                    <a href="https://www.programiz.com/sql/online-compiler/" target="_blank" rel="noopener noreferrer" class="compiler-card"><div class="compiler-icon">SQL</div><span class="compiler-name">SQL</span><span class="compiler-desc">Programiz Compiler</span></a>
-                    <a href="https://www.programiz.com/php-programming/online-compiler/" target="_blank" rel="noopener noreferrer" class="compiler-card"><div class="compiler-icon">PHP</div><span class="compiler-name">PHP</span><span class="compiler-desc">Programiz Compiler</span></a>
-                    <a href="https://www.programiz.com/kotlin-programming/online-compiler/" target="_blank" rel="noopener noreferrer" class="compiler-card"><div class="compiler-icon">Kt</div><span class="compiler-name">Kotlin</span><span class="compiler-desc">Programiz Compiler</span></a>
-                    <a href="https://www.programiz.com/swift-programming/online-compiler/" target="_blank" rel="noopener noreferrer" class="compiler-card"><div class="compiler-icon">Sw</div><span class="compiler-name">Swift</span><span class="compiler-desc">Programiz Compiler</span></a>
-                    <a href="https://www.programiz.com/golang/online-compiler/" target="_blank" rel="noopener noreferrer" class="compiler-card"><div class="compiler-icon">Go</div><span class="compiler-name">Go</span><span class="compiler-desc">Programiz Compiler</span></a>
-                    <a href="https://www.programiz.com/rust-programming/online-compiler/" target="_blank" rel="noopener noreferrer" class="compiler-card"><div class="compiler-icon">Rs</div><span class="compiler-name">Rust</span><span class="compiler-desc">Programiz Compiler</span></a>
+                    <div class="compiler-card" onclick="switchCompiler('python')">
+                        <div class="compiler-icon">Py</div>
+                        <span class="compiler-name">Python</span>
+                        <span class="compiler-desc">Click to Open</span>
+                    </div>
+                    <div class="compiler-card" onclick="switchCompiler('cpp')">
+                        <div class="compiler-icon">C++</div>
+                        <span class="compiler-name">C++</span>
+                        <span class="compiler-desc">Click to Open</span>
+                    </div>
+                    <div class="compiler-card" onclick="switchCompiler('javascript')">
+                        <div class="compiler-icon">JS</div>
+                        <span class="compiler-name">JavaScript</span>
+                        <span class="compiler-desc">Click to Open</span>
+                    </div>
+                    <div class="compiler-card" onclick="switchCompiler('java')">
+                        <div class="compiler-icon">Java</div>
+                        <span class="compiler-name">Java</span>
+                        <span class="compiler-desc">Click to Open</span>
+                    </div>
+                    <div class="compiler-card" onclick="switchCompiler('csharp')">
+                        <div class="compiler-icon">C#</div>
+                        <span class="compiler-name">C#</span>
+                        <span class="compiler-desc">Click to Open</span>
+                    </div>
+                    <div class="compiler-card" onclick="switchCompiler('html')">
+                        <div class="compiler-icon">Web</div>
+                        <span class="compiler-name">HTML/CSS</span>
+                        <span class="compiler-desc">Click to Open</span>
+                    </div>
+                    <div class="compiler-card" onclick="switchCompiler('sql')">
+                        <div class="compiler-icon">SQL</div>
+                        <span class="compiler-name">SQL</span>
+                        <span class="compiler-desc">Click to Open</span>
+                    </div>
+                    <div class="compiler-card" onclick="switchCompiler('php')">
+                        <div class="compiler-icon">PHP</div>
+                        <span class="compiler-name">PHP</span>
+                        <span class="compiler-desc">Click to Open</span>
+                    </div>
+                    <div class="compiler-card" onclick="switchCompiler('kotlin')">
+                        <div class="compiler-icon">Kt</div>
+                        <span class="compiler-name">Kotlin</span>
+                        <span class="compiler-desc">Click to Open</span>
+                    </div>
+                    <div class="compiler-card" onclick="switchCompiler('swift')">
+                        <div class="compiler-icon">Sw</div>
+                        <span class="compiler-name">Swift</span>
+                        <span class="compiler-desc">Click to Open</span>
+                    </div>
+                    <div class="compiler-card" onclick="switchCompiler('go')">
+                        <div class="compiler-icon">Go</div>
+                        <span class="compiler-name">Go</span>
+                        <span class="compiler-desc">Click to Open</span>
+                    </div>
+                    <div class="compiler-card" onclick="switchCompiler('rust')">
+                        <div class="compiler-icon">Rs</div>
+                        <span class="compiler-name">Rust</span>
+                        <span class="compiler-desc">Click to Open</span>
+                    </div>
                 </div>
             </div>
             <div style="margin-top:2rem;">
@@ -599,7 +650,7 @@ print(f'Welcome, {name}!')</textarea>
         <div class="section-header"><div class="section-tag">Personal Information</div><h2 class="section-title">About the Owner</h2><p class="section-subtitle">Get to know more about me</p></div>
         <div class="glass-card" style="max-width:800px;margin:0 auto;">
             <div style="text-align:center;margin-bottom:2rem;">
-                <div style="width:100px;height:100px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--secondary));display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-size:2.5rem;font-weight:800;color:white;box-shadow:0 8px 30px rgba(6,182,212,0.4);">AR</div>
+                <img src="file_000000004984720882e69f4dad44966a.png" alt="Akarshit Raj" style="width:100px;height:100px;border-radius:50%;object-fit:cover;border:3px solid var(--primary);margin:0 auto 1rem;display:block;box-shadow:0 0 20px rgba(6,182,212,0.3);">
                 <h3 style="font-size:1.8rem;font-weight:700;margin-bottom:0.5rem;background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Akarshit Raj</h3>
                 <p style="color:var(--gray);">Programming Educator & Student</p>
             </div>
@@ -656,7 +707,10 @@ print(f'Welcome, {name}!')</textarea>
     </section>
 
     <footer style="text-align:center;padding:3rem 5%;border-top:1px solid rgba(255,255,255,0.05);margin-top:3rem;">
-        <div style="font-size:1.5rem;font-weight:800;background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:1rem;">AR.</div>
+        <div style="display:flex;align-items:center;justify-content:center;gap:0.75rem;margin-bottom:1rem;">
+            <img src="file_000000004984720882e69f4dad44966a.png" alt="AKR" style="width:40px;height:40px;border-radius:50%;object-fit:cover;border:2px solid var(--primary);">
+            <span style="font-size:1.5rem;font-weight:800;background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">AKR</span>
+        </div>
         <p style="color:var(--gray);font-size:0.9rem;margin-bottom:1rem;">Akarshit Raj - Programming Educator</p>
         <p style="color:var(--primary);font-weight:600;font-size:0.9rem;margin-bottom:1.5rem;">PM SHRI Jawahar Navodaya Vidyalaya, Khairabad, Sitapur</p>
         <p style="color:var(--gray);font-size:0.85rem;opacity:0.7;">Made with passion for learners everywhere &bull; &copy; <span id="year">2026</span></p>
@@ -947,6 +1001,21 @@ print(f'Welcome, {name}!')</textarea>
         document.querySelectorAll('.nav-links a').forEach(link=>{link.addEventListener('click',()=>{document.getElementById('navLinks').classList.remove('active')})})
         function toggleLanguages(){const d=document.getElementById('languagesDropdown'),b=document.getElementById('youtubeToggleBtn'),a=document.getElementById('toggleArrow');if(d.style.maxHeight==='2000px'){d.style.maxHeight='0';d.style.opacity='0';d.style.marginTop='0';a.style.transform='rotate(0deg)';b.querySelector('span:nth-child(2)').textContent='View All Languages'}else{d.style.maxHeight='2000px';d.style.opacity='1';d.style.marginTop='2rem';a.style.transform='rotate(180deg)';b.querySelector('span:nth-child(2)').textContent='Hide Languages'}}
         
+        // NEW: Switch compiler from cards
+        function switchCompiler(lang) {
+            const buttons = document.querySelectorAll('.lang-btn');
+            buttons.forEach(btn => {
+                if(btn.textContent.toLowerCase().includes(lang) || 
+                   (lang === 'csharp' && btn.textContent === 'C#') ||
+                   (lang === 'cpp' && btn.textContent === 'C++') ||
+                   (lang === 'html' && btn.textContent === 'HTML/CSS')) {
+                    selectLang(btn, lang);
+                }
+            });
+            document.getElementById('code-practice').scrollIntoView({behavior:'smooth',block:'start'});
+            showNotification(lang.toUpperCase() + ' compiler loaded!');
+        }
+        
         const codeTemplates={
             python:`# Write your Python code here...\nprint('Hello, World!')\nname = 'Akarshit'\nprint(f'Welcome, {name}!')`,
             cpp:`// Write your C++ code here...\n#include <iostream>\nusing namespace std;\n\nint main() {\n    cout << "Hello, World!" << endl;\n    string name = "Akarshit";\n    cout << "Welcome, " << name << "!" << endl;\n    return 0;\n}`,
@@ -979,7 +1048,8 @@ print(f'Welcome, {name}!')</textarea>
                         requestAnimationFrame(updateCounter);
                     } else {
                         if(target>=1000000) counter.textContent='1M+';
-                        else if(target>=1000) counter.textContent='1k+';
+                        else if(target>=10000) counter.textContent=(target/1000)+'K+';
+                        else if(target>=1000) counter.textContent=(target/1000)+'k+';
                         else counter.textContent=target+'+';
                     }
                 };
