@@ -21,7 +21,7 @@
     <meta name="twitter:description" content="20+ free programming courses. Learn & practice coding online!">
     <style>
         *{margin:0;padding:0;box-sizing:border-box}
-        :root{--primary:#06b6d4;--primary-dark:#0891b2;--secondary:#3b82f6;--accent:#22d3ee;--dark:#0f172a;--darker:#020617;--light:#f8fafc;--gray:#94a3b8;--card-bg:rgba(30,41,59,0.5);--glass:rgba(255,255,255,0.03);--success:#10b981;--error:#ef4444;--warning:#f59e0b;--hard:#dc2626;--veryhard:#7f1d1d;--app-dev:#8b5cf6}
+        :root{--primary:#06b6d4;--primary-dark:#0891b2;--secondary:#3b82f6;--accent:#22d3ee;--dark:#0f172a;--darker:#020617;--light:#f8fafc;--gray:#94a3b8;--card-bg:rgba(30,41,59,0.5);--glass:rgba(255,255,255,0.03);--success:#10b981;--error:#ef4444;--warning:#f59e0b}
         body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--darker);color:var(--light);min-height:100vh;overflow-x:hidden;line-height:1.6}
         .bg-animation{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;overflow:hidden}
         .bg-animation .orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:0.15;animation:float 20s infinite ease-in-out}
@@ -34,8 +34,7 @@
         .sidebar{position:fixed;top:0;left:0;width:280px;height:100%;background:var(--darker);border-right:1px solid rgba(255,255,255,0.08);z-index:2001;transform:translateX(-100%);transition:transform 0.3s ease;padding:2rem 0;overflow-y:auto}
         .sidebar.active{transform:translateX(0)}
         .sidebar-header{padding:0 1.5rem 1.5rem;border-bottom:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:space-between}
-        .sidebar-logo{display:flex;align-items:center;gap:0.75rem;font-size:1.25rem;font-weight:800;color:var(--light);text-decoration:none}
-        .sidebar-logo img{width:40px;height:40px;border-radius:50%;object-fit:cover;border:2px solid var(--primary)}
+        .sidebar-logo{font-size:1.5rem;font-weight:800;background:linear-gradient(135deg,var(--primary),var(--secondary));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
         .sidebar-close{background:none;border:none;color:var(--light);font-size:1.5rem;cursor:pointer}
         .sidebar-nav{list-style:none;padding:1rem 0}
         .sidebar-nav li{padding:0.75rem 1.5rem;cursor:pointer;transition:all 0.3s;display:flex;align-items:center;gap:0.75rem;color:var(--gray)}
@@ -43,6 +42,7 @@
         .sidebar-nav a{color:inherit;text-decoration:none;display:flex;align-items:center;gap:0.75rem;width:100%}
         .sidebar-icon{font-size:1.2rem;width:24px;text-align:center}
         
+        /* NAVBAR WITH SEARCH BAR */
         nav{position:fixed;top:0;width:100%;padding:0.8rem 5%;background:rgba(2,6,23,0.9);backdrop-filter:blur(20px);z-index:1000;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,0.08);gap:1.5rem}
         .nav-left{display:flex;align-items:center;gap:1rem;flex-shrink:0}
         .nav-search-wrapper{flex:1;max-width:500px;position:relative}
@@ -65,6 +65,7 @@
         .hero h1 span{background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
         .hero-subtitle{font-size:1.25rem;color:var(--gray);margin-bottom:2rem}
         
+        /* GRADIENT GLOW BUTTONS - STYLE 1 */
         .btn{display:inline-flex;align-items:center;gap:0.5rem;padding:1rem 2rem;border-radius:12px;font-weight:600;text-decoration:none;transition:all 0.3s;cursor:pointer;border:none;font-size:1rem;position:relative;overflow:hidden}
         .btn::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent);transition:left 0.5s}
         .btn:hover::before{left:100%}
@@ -76,8 +77,6 @@
         .btn-youtube:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(239,68,68,0.6),0 0 60px rgba(239,68,68,0.2)}
         .btn-glass{background:linear-gradient(135deg,rgba(59,130,246,0.2),rgba(139,92,246,0.2));color:var(--light);border:1px solid rgba(255,255,255,0.1);box-shadow:0 4px 20px rgba(0,0,0,0.2)}
         .btn-glass:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(59,130,246,0.3);border-color:rgba(59,130,246,0.3)}
-        .btn-hard{background:linear-gradient(135deg,var(--error),var(--hard));color:white;box-shadow:0 4px 20px rgba(239,68,68,0.4)}
-        .btn-veryhard{background:linear-gradient(135deg,var(--hard),var(--veryhard));color:white;box-shadow:0 4px 20px rgba(127,29,29,0.4)}
         
         .hero-visual{animation:fadeInRight 1s ease}
         .hero-card{background:var(--card-bg);border-radius:24px;padding:2rem;border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(20px);box-shadow:0 8px 32px rgba(0,0,0,0.3)}
@@ -95,6 +94,7 @@
         .section-title{font-size:2.5rem;font-weight:800;margin-bottom:1rem}
         .section-subtitle{color:var(--gray);max-width:600px;margin:0 auto}
         
+        /* GLASS CARDS */
         .glass-card{background:var(--card-bg);border-radius:24px;padding:3rem;border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(20px);box-shadow:0 8px 32px rgba(0,0,0,0.2)}
         
         .code-practice-section{background:var(--card-bg);border-radius:24px;padding:3rem;border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(20px);max-width:1000px;margin:0 auto;box-shadow:0 8px 32px rgba(0,0,0,0.2)}
@@ -115,18 +115,18 @@
         .run-btn:hover::before{left:100%}
         .run-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(6,182,212,0.6),0 0 60px rgba(6,182,212,0.2)}
         .run-btn:disabled{opacity:0.6;cursor:not-allowed;transform:none;box-shadow:none}
-        .file-actions{display:flex;gap:0.5rem;margin-bottom:0.5rem;flex-wrap:wrap}
-        .file-btn{padding:0.4rem 0.8rem;background:var(--glass);border:1px solid rgba(255,255,255,0.1);border-radius:8px;color:var(--gray);cursor:pointer;transition:all 0.3s;font-size:0.8rem;display:flex;align-items:center;gap:0.4rem}
-        .file-btn:hover{background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:white;border-color:transparent;box-shadow:0 4px 15px rgba(6,182,212,0.3)}
-        #fileInput{display:none}
-        
+        .practice-links{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1rem;margin-top:2rem}
+        .practice-card{display:flex;align-items:center;gap:1rem;padding:1.25rem;background:var(--glass);border-radius:16px;border:1px solid rgba(255,255,255,0.05);text-decoration:none;color:var(--light);transition:all 0.3s}
+        .practice-card:hover{background:rgba(255,255,255,0.08);transform:translateX(5px);border-color:var(--primary);box-shadow:0 4px 20px rgba(6,182,212,0.1)}
+        .practice-icon{width:45px;height:45px;display:flex;align-items:center;justify-content:center;background:rgba(6,182,212,0.1);border-radius:12px;font-size:0.9rem;font-weight:700;color:var(--primary);flex-shrink:0;border:1px solid rgba(6,182,212,0.2)}
+        .practice-name{font-weight:600;font-size:1rem;margin-bottom:0.25rem}
+        .practice-desc{font-size:0.8rem;color:var(--gray)}
         .compiler-links{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;margin-top:1.5rem}
-        .compiler-card{display:flex;flex-direction:column;align-items:center;gap:0.75rem;padding:1.5rem;background:var(--glass);border-radius:16px;border:1px solid rgba(255,255,255,0.05);text-decoration:none;color:var(--light);transition:all 0.3s;text-align:center;cursor:pointer}
+        .compiler-card{display:flex;flex-direction:column;align-items:center;gap:0.75rem;padding:1.5rem;background:var(--glass);border-radius:16px;border:1px solid rgba(255,255,255,0.05);text-decoration:none;color:var(--light);transition:all 0.3s;text-align:center}
         .compiler-card:hover{transform:translateY(-5px);background:rgba(255,255,255,0.08);box-shadow:0 10px 30px rgba(0,0,0,0.3),0 0 20px rgba(6,182,212,0.1);border-color:rgba(6,182,212,0.3)}
         .compiler-icon{font-size:1.2rem;font-weight:800;width:50px;height:50px;display:flex;align-items:center;justify-content:center;border-radius:12px;background:rgba(6,182,212,0.1);color:var(--primary);border:1px solid rgba(6,182,212,0.2)}
         .compiler-name{font-weight:600;font-size:1rem}
         .compiler-desc{font-size:0.8rem;color:var(--gray)}
-        
         .course-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:2rem}
         .course-card{background:var(--card-bg);border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);transition:all 0.3s;box-shadow:0 8px 32px rgba(0,0,0,0.2)}
         .course-card:hover{transform:translateY(-5px);box-shadow:0 20px 40px rgba(0,0,0,0.3),0 0 30px rgba(6,182,212,0.1);border-color:rgba(6,182,212,0.2)}
@@ -146,13 +146,17 @@
         .course-link:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(6,182,212,0.5)}
         .tutorial-link{display:block;margin-top:0.75rem;color:var(--primary);text-decoration:none;font-size:0.9rem;font-weight:500}
         .tutorial-link:hover{text-decoration:underline}
-        
+        .skill-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem}
+        .skill-card{display:flex;flex-direction:column;align-items:center;gap:0.75rem;padding:1.5rem;background:var(--glass);border-radius:16px;border:1px solid rgba(255,255,255,0.05);text-decoration:none;color:var(--light);transition:all 0.3s;text-align:center}
+        .skill-card:hover{transform:translateY(-5px);background:rgba(255,255,255,0.08);box-shadow:0 10px 30px rgba(0,0,0,0.3),0 0 20px rgba(6,182,212,0.1);border-color:rgba(6,182,212,0.2)}
+        .skill-icon{font-size:1.2rem;font-weight:800;width:50px;height:50px;display:flex;align-items:center;justify-content:center;border-radius:12px;background:rgba(6,182,212,0.1);color:var(--primary);border:1px solid rgba(6,182,212,0.2);margin-bottom:0.5rem}
+        .skill-name{font-weight:600;font-size:1rem}
+        .skill-desc{font-size:0.8rem;color:var(--gray)}
         .profile-info-box{display:flex;align-items:center;gap:0.75rem;padding:0.75rem;background:rgba(255,255,255,0.03);border-radius:10px;text-decoration:none;color:var(--light);transition:all 0.3s;cursor:pointer;border:1px solid rgba(255,255,255,0.05);width:100%;font-family:inherit;font-size:1rem}
         .profile-info-box:hover{background:rgba(255,255,255,0.08);border-color:rgba(6,182,212,0.2);box-shadow:0 4px 15px rgba(6,182,212,0.1)}
         .profile-info-icon{font-size:1rem;font-weight:700;width:28px;height:28px;display:flex;align-items:center;justify-content:center;border-radius:6px;background:rgba(6,182,212,0.1);color:var(--primary);flex-shrink:0;border:1px solid rgba(6,182,212,0.2)}
         .profile-info-label{font-size:0.75rem;color:var(--gray)}
         .profile-info-value{font-weight:600}
-        
         .ai-chat-modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:var(--darker);z-index:3000;flex-direction:column}
         .ai-chat-modal.active{display:flex}
         .ai-chat-header{display:flex;align-items:center;gap:1rem;padding:1rem 5%;background:rgba(2,6,23,0.95);border-bottom:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(20px)}
@@ -189,7 +193,6 @@
         @keyframes typing{0%,80%,100%{transform:scale(0)}40%{transform:scale(1)}}
         .ai-code-block{background:#0f172a;border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:0.75rem 1rem;margin:0.5rem 0;font-family:'Consolas','Monaco',monospace;font-size:0.85rem;overflow-x:auto;color:#d4d4d4}
         .ai-code-block pre{margin:0;white-space:pre-wrap}
-        
         @keyframes fadeInLeft{from{opacity:0;transform:translateX(-40px)}to{opacity:1;transform:translateX(0)}}
         @keyframes fadeInRight{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:translateX(0)}}
         .animate-on-scroll{opacity:0;transform:translateY(40px);transition:all 0.8s ease}
@@ -204,58 +207,18 @@
         .footer-links{text-align:center;padding:1rem 0;border-top:1px solid rgba(255,255,255,0.05);margin-top:1rem}
         .footer-links a{color:var(--primary);text-decoration:none;margin:0 10px;font-size:0.85rem}
         .footer-links a:hover{text-decoration:underline}
-        
-        .scroll-top{position:fixed;bottom:2rem;right:2rem;width:45px;height:45px;background:linear-gradient(135deg,var(--primary),var(--primary-dark));border:none;border-radius:50%;color:white;font-size:1.2rem;cursor:pointer;box-shadow:0 4px 20px rgba(6,182,212,0.4);transition:all 0.3s;z-index:999;opacity:0;transform:translateY(20px);pointer-events:none}
-        .scroll-top.visible{opacity:1;transform:translateY(0);pointer-events:auto}
-        .scroll-top:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(6,182,212,0.6)}
-        .info-card{display:flex;align-items:center;gap:1.25rem;padding:1.25rem;background:rgba(255,255,255,0.03);border-radius:16px;transition:all 0.3s;border:1px solid rgba(255,255,255,0.05)}
-        .info-card:hover{background:rgba(255,255,255,0.06);border-color:rgba(6,182,212,0.2);box-shadow:0 4px 20px rgba(6,182,212,0.1)}
-        .info-icon{width:45px;height:45px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--primary),var(--secondary));border-radius:12px;font-size:1rem;font-weight:700;flex-shrink:0;color:white;box-shadow:0 4px 15px rgba(6,182,212,0.3)}
-        .info-label{font-size:0.8rem;color:var(--gray);text-transform:uppercase;letter-spacing:1px}
-        .info-value{font-size:1.1rem;font-weight:600}
-        .social-btn{padding:0.5rem 1rem;background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:white;border:none;border-radius:8px;cursor:pointer;font-weight:600;font-size:0.85rem;text-decoration:none;display:inline-flex;align-items:center;transition:all 0.3s;box-shadow:0 4px 15px rgba(6,182,212,0.3)}
-        .social-btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(6,182,212,0.5)}
-        
-        .youtube-tag{display:inline-flex;align-items:center;justify-content:center;padding:0.4rem 1rem;border-radius:50px;font-size:0.85rem;font-weight:500;background:rgba(239,68,68,0.1);color:#ef4444;border:1px solid rgba(239,68,68,0.2);transition:all 0.3s}
-        .youtube-tag:hover{background:rgba(239,68,68,0.2);transform:translateY(-2px)}
-        
-        @media(max-width:968px){.hero-container{grid-template-columns:1fr;text-align:center}.hero h1{font-size:2.5rem}.nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(2,6,23,0.95);flex-direction:column;padding:2rem;gap:1.5rem;z-index:999}.nav-links.active{display:flex}.mobile-menu-btn{display:block}.code-editor-wrapper{grid-template-columns:1fr}.stats-bar{gap:1.5rem}.ai-message-bubble{max-width:90%}.nav-search-wrapper{max-width:200px}}
-        @media(max-width:480px){.hero h1{font-size:2rem}.section-title{font-size:1.8rem}.code-practice-section{padding:1.5rem}.ai-chat-body{padding:1rem}.ai-chat-header{padding:1rem}.nav-search-wrapper{display:none}}
-        ::-webkit-scrollbar{width:8px}
-        ::-webkit-scrollbar-track{background:var(--darker)}
-        ::-webkit-scrollbar-thumb{background:var(--primary);border-radius:4px}
-        
-        /* DAILY CHALLENGES */
-        .challenge-section{background:var(--card-bg);border-radius:24px;padding:3rem;border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(20px);max-width:1000px;margin:0 auto;box-shadow:0 8px 32px rgba(0,0,0,0.2)}
-        .challenge-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;margin-top:1.5rem}
-        .challenge-card{padding:1.25rem;background:var(--glass);border-radius:16px;border:1px solid rgba(255,255,255,0.05);transition:all 0.3s;cursor:pointer}
-        .challenge-card:hover{transform:translateY(-3px);background:rgba(255,255,255,0.08);border-color:var(--primary);box-shadow:0 4px 20px rgba(6,182,212,0.1)}
-        .challenge-difficulty{display:inline-block;padding:0.25rem 0.75rem;border-radius:50px;font-size:0.75rem;font-weight:600;margin-bottom:0.5rem}
-        .diff-easy{background:rgba(16,185,129,0.15);color:var(--success);border:1px solid rgba(16,185,129,0.3)}
-        .diff-medium{background:rgba(234,179,8,0.15);color:#eab308;border:1px solid rgba(234,179,8,0.3)}
-        .diff-hard{background:rgba(239,68,68,0.15);color:var(--error);border:1px solid rgba(239,68,68,0.3)}
-        .diff-veryhard{background:rgba(127,29,29,0.3);color:#fca5a5;border:1px solid rgba(127,29,29,0.5)}
-        .challenge-title{font-weight:600;margin-bottom:0.5rem;font-size:0.95rem}
-        .challenge-desc{font-size:0.85rem;color:var(--gray);margin-bottom:0.75rem}
-        .challenge-actions{display:flex;gap:0.5rem}
-        .challenge-btn{padding:0.4rem 1rem;border-radius:8px;border:none;font-size:0.8rem;font-weight:600;cursor:pointer;transition:all 0.3s}
-        .challenge-btn-solve{background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:white}
-        .challenge-btn-solve:hover{transform:translateY(-2px);box-shadow:0 4px 15px rgba(6,182,212,0.3)}
-        .challenge-btn-sol{background:var(--glass);color:var(--gray);border:1px solid rgba(255,255,255,0.1)}
-        .challenge-btn-sol:hover{border-color:var(--primary);color:var(--light)}
-        .daily-date{text-align:center;color:var(--primary);font-weight:600;margin-bottom:1rem;font-size:1.1rem}
-        
-        /* DAILY QUIZ */
-        .daily-quiz-section{background:var(--card-bg);border-radius:24px;padding:3rem;border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(20px);max-width:1000px;margin:0 auto;box-shadow:0 8px 32px rgba(0,0,0,0.2)}
+        .quiz-section{background:var(--card-bg);border-radius:24px;padding:3rem;border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(20px);max-width:1000px;margin:0 auto;box-shadow:0 8px 32px rgba(0,0,0,0.2)}
         .quiz-lang-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;margin-bottom:2rem}
         .quiz-lang-card{padding:1.5rem;background:var(--glass);border-radius:16px;border:1px solid rgba(255,255,255,0.05);text-align:center;cursor:pointer;transition:all 0.3s}
         .quiz-lang-card:hover{transform:translateY(-5px);background:rgba(255,255,255,0.08);border-color:rgba(6,182,212,0.3);box-shadow:0 10px 30px rgba(0,0,0,0.3),0 0 20px rgba(6,182,212,0.1)}
         .quiz-lang-icon{font-size:1.2rem;font-weight:800;width:50px;height:50px;display:flex;align-items:center;justify-content:center;border-radius:12px;background:rgba(6,182,212,0.1);color:var(--primary);margin:0 auto 0.5rem;border:1px solid rgba(6,182,212,0.2)}
         .quiz-lang-name{font-weight:600}
+        .quiz-lang-progress{font-size:0.8rem;color:var(--gray);margin-top:0.25rem}
         .quiz-container{display:none;max-width:700px;margin:0 auto}
         .quiz-container.active{display:block}
         .quiz-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid rgba(255,255,255,0.1)}
-        .quiz-progress-text{color:var(--accent);font-weight:600}
+        .quiz-level{font-size:1.2rem;font-weight:700}
+        .quiz-score{color:var(--accent);font-weight:600}
         .quiz-progress-bar{width:100%;height:8px;background:rgba(255,255,255,0.1);border-radius:4px;margin-bottom:2rem;overflow:hidden}
         .quiz-progress-fill{height:100%;background:linear-gradient(90deg,var(--primary),var(--accent));transition:width 0.3s;border-radius:4px}
         .quiz-question{font-size:1.2rem;font-weight:600;margin-bottom:1.5rem;padding:1.5rem;background:rgba(255,255,255,0.03);border-radius:16px;border-left:4px solid var(--primary)}
@@ -274,7 +237,28 @@
         .quiz-result{text-align:center;padding:2rem}
         .quiz-result h3{font-size:1.8rem;margin-bottom:1rem}
         .quiz-result p{color:var(--gray);margin-bottom:1.5rem}
-        .quiz-counter{color:var(--gray);font-size:0.9rem;margin-bottom:1rem;text-align:center}
+        .file-actions{display:flex;gap:0.5rem;margin-bottom:0.5rem;flex-wrap:wrap}
+        .file-btn{padding:0.4rem 0.8rem;background:var(--glass);border:1px solid rgba(255,255,255,0.1);border-radius:8px;color:var(--gray);cursor:pointer;transition:all 0.3s;font-size:0.8rem;display:flex;align-items:center;gap:0.4rem}
+        .file-btn:hover{background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:white;border-color:transparent;box-shadow:0 4px 15px rgba(6,182,212,0.3)}
+        #fileInput{display:none}
+        .scroll-top{position:fixed;bottom:2rem;right:2rem;width:45px;height:45px;background:linear-gradient(135deg,var(--primary),var(--primary-dark));border:none;border-radius:50%;color:white;font-size:1.2rem;cursor:pointer;box-shadow:0 4px 20px rgba(6,182,212,0.4);transition:all 0.3s;z-index:999;opacity:0;transform:translateY(20px);pointer-events:none}
+        .scroll-top.visible{opacity:1;transform:translateY(0);pointer-events:auto}
+        .scroll-top:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(6,182,212,0.6)}
+        .info-card{display:flex;align-items:center;gap:1.25rem;padding:1.25rem;background:rgba(255,255,255,0.03);border-radius:16px;transition:all 0.3s;border:1px solid rgba(255,255,255,0.05)}
+        .info-card:hover{background:rgba(255,255,255,0.06);border-color:rgba(6,182,212,0.2);box-shadow:0 4px 20px rgba(6,182,212,0.1)}
+        .info-icon{width:45px;height:45px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--primary),var(--secondary));border-radius:12px;font-size:1rem;font-weight:700;flex-shrink:0;color:white;box-shadow:0 4px 15px rgba(6,182,212,0.3)}
+        .info-label{font-size:0.8rem;color:var(--gray);text-transform:uppercase;letter-spacing:1px}
+        .info-value{font-size:1.1rem;font-weight:600}
+        .social-btn{padding:0.5rem 1rem;background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:white;border:none;border-radius:8px;cursor:pointer;font-weight:600;font-size:0.85rem;text-decoration:none;display:inline-flex;align-items:center;transition:all 0.3s;box-shadow:0 4px 15px rgba(6,182,212,0.3)}
+        .social-btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(6,182,212,0.5)}
+        .lang-tag{display:inline-flex;align-items:center;justify-content:center;width:45px;height:45px;border-radius:10px;font-size:0.85rem;font-weight:700;background:rgba(6,182,212,0.1);color:var(--primary);border:1px solid rgba(6,182,212,0.2)}
+        .youtube-tag{display:inline-flex;align-items:center;justify-content:center;padding:0.4rem 1rem;border-radius:50px;font-size:0.85rem;font-weight:500;background:rgba(239,68,68,0.1);color:#ef4444;border:1px solid rgba(239,68,68,0.2);transition:all 0.3s}
+        .youtube-tag:hover{background:rgba(239,68,68,0.2);transform:translateY(-2px)}
+        @media(max-width:968px){.hero-container{grid-template-columns:1fr;text-align:center}.hero h1{font-size:2.5rem}.nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(2,6,23,0.95);flex-direction:column;padding:2rem;gap:1.5rem;z-index:999}.nav-links.active{display:flex}.mobile-menu-btn{display:block}.code-editor-wrapper{grid-template-columns:1fr}.stats-bar{gap:1.5rem}.ai-message-bubble{max-width:90%}.nav-search-wrapper{max-width:200px}}
+        @media(max-width:480px){.hero h1{font-size:2rem}.section-title{font-size:1.8rem}.code-practice-section{padding:1.5rem}.ai-chat-body{padding:1rem}.ai-chat-header{padding:1rem}.nav-search-wrapper{display:none}}
+        ::-webkit-scrollbar{width:8px}
+        ::-webkit-scrollbar-track{background:var(--darker)}
+        ::-webkit-scrollbar-thumb{background:var(--primary);border-radius:4px}
     </style>
 </head>
 <body>
@@ -282,25 +266,22 @@
     <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
     <aside class="sidebar" id="sidebar">
         <div class="sidebar-header">
-            <a href="#home" class="sidebar-logo" onclick="toggleSidebar()">
-                <img src="file_000000004984720882e69f4dad44966a.png" alt="AKR Logo">
-                <span>AKR</span>
-            </a>
+            <span class="sidebar-logo">AR.</span>
             <button class="sidebar-close" onclick="toggleSidebar()">&times;</button>
         </div>
         <ul class="sidebar-nav">
             <li onclick="goToSection('home')"><span class="sidebar-icon">H</span> Home</li>
             <li onclick="goToSection('about')"><span class="sidebar-icon">A</span> About</li>
             <li onclick="goToSection('code-practice')"><span class="sidebar-icon">P</span> Practice</li>
-            <li onclick="goToSection('daily-challenges')"><span class="sidebar-icon">C</span> Daily Challenges</li>
-            <li onclick="goToSection('daily-quiz')"><span class="sidebar-icon">Q</span> Daily Quiz</li>
+            <li onclick="goToSection('quiz-section')"><span class="sidebar-icon">Q</span> Quizzes</li>
             <li onclick="window.location.href='tutorials.html'"><span class="sidebar-icon">T</span> Tutorials</li>
         </ul>
     </aside>
     
+    <!-- NAVBAR WITH SEARCH BAR -->
     <nav>
         <div class="nav-left">
-            <button class="mobile-menu-btn" onclick="toggleSidebar()" style="margin-right:0.5rem">&#9776;</button>
+            <button class="mobile-menu-btn" onclick="toggleSidebar()" style="display:block;margin-right:0.5rem">&#9776;</button>
         </div>
         <div class="nav-search-wrapper">
             <span class="nav-search-icon">Q</span>
@@ -310,10 +291,9 @@
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#code-practice">Practice</a></li>
-            <li><a href="#daily-challenges">Challenges</a></li>
-            <li><a href="#daily-quiz">Quiz</a></li>
             <li><a href="tutorials.html">Tutorials</a></li>
         </ul>
+        <button class="mobile-menu-btn" onclick="toggleMenu()">&#9776;</button>
     </nav>
     
     <section class="hero" id="home">
@@ -352,14 +332,12 @@
             </div>
         </div>
     </section>
-    
     <div class="stats-bar">
-        <div class="stat-item"><span class="stat-number">20+</span><div class="stat-label">Courses</div></div>
-        <div class="stat-item"><span class="stat-number">50+</span><div class="stat-label">Videos</div></div>
-        <div class="stat-item"><span class="stat-number">500+</span><div class="stat-label">Hours</div></div>
-        <div class="stat-item"><span class="stat-number">10K+</span><div class="stat-label">Students</div></div>
+        <div class="stat-item"><span class="stat-number" data-target="20">0</span><div class="stat-label">Courses</div></div>
+        <div class="stat-item"><span class="stat-number" data-target="200">0</span><div class="stat-label">Videos</div></div>
+        <div class="stat-item"><span class="stat-number" data-target="1000">0</span><div class="stat-label">Hours</div></div>
+        <div class="stat-item"><span class="stat-number" data-target="1000000">0</span><div class="stat-label">Students</div></div>
     </div>
-    
     <section id="about" class="animate-on-scroll">
         <div class="section-header">
             <div class="section-tag">About Me</div>
@@ -394,7 +372,7 @@
         <div class="section-header">
             <div class="section-tag">Code Practice</div>
             <h2 class="section-title">Practice Coding Online</h2>
-            <p class="section-subtitle">Learn from videos, then practice here. Use our online compiler for all programming languages.</p>
+            <p class="section-subtitle">Learn from videos, then practice here. Use online compilers for all programming languages.</p>
         </div>
         <div class="code-practice-section">
             <div class="code-practice-header">
@@ -437,167 +415,95 @@ print(f'Welcome, {name}!')</textarea>
             </div>
             <button class="run-btn" onclick="runCodeReal()" id="runBtn">Run Code</button>
             <div style="margin-top:2rem;">
-                <h4 style="text-align:center;margin-bottom:1rem;color:var(--gray);font-size:1rem;">Quick Language Switcher - Click to Load Compiler</h4>
+                <h4 style="text-align:center;margin-bottom:1rem;color:var(--gray);font-size:1rem;">Or Use These Professional Online Compilers</h4>
                 <div class="compiler-links">
-                    <div class="compiler-card" onclick="switchCompiler('python')">
-                        <div class="compiler-icon">Py</div>
-                        <span class="compiler-name">Python</span>
-                        <span class="compiler-desc">Click to Open</span>
-                    </div>
-                    <div class="compiler-card" onclick="switchCompiler('cpp')">
-                        <div class="compiler-icon">C++</div>
-                        <span class="compiler-name">C++</span>
-                        <span class="compiler-desc">Click to Open</span>
-                    </div>
-                    <div class="compiler-card" onclick="switchCompiler('javascript')">
-                        <div class="compiler-icon">JS</div>
-                        <span class="compiler-name">JavaScript</span>
-                        <span class="compiler-desc">Click to Open</span>
-                    </div>
-                    <div class="compiler-card" onclick="switchCompiler('java')">
-                        <div class="compiler-icon">Java</div>
-                        <span class="compiler-name">Java</span>
-                        <span class="compiler-desc">Click to Open</span>
-                    </div>
-                    <div class="compiler-card" onclick="switchCompiler('csharp')">
-                        <div class="compiler-icon">C#</div>
-                        <span class="compiler-name">C#</span>
-                        <span class="compiler-desc">Click to Open</span>
-                    </div>
-                    <div class="compiler-card" onclick="switchCompiler('html')">
-                        <div class="compiler-icon">Web</div>
-                        <span class="compiler-name">HTML/CSS</span>
-                        <span class="compiler-desc">Click to Open</span>
-                    </div>
-                    <div class="compiler-card" onclick="switchCompiler('sql')">
-                        <div class="compiler-icon">SQL</div>
-                        <span class="compiler-name">SQL</span>
-                        <span class="compiler-desc">Click to Open</span>
-                    </div>
-                    <div class="compiler-card" onclick="switchCompiler('php')">
-                        <div class="compiler-icon">PHP</div>
-                        <span class="compiler-name">PHP</span>
-                        <span class="compiler-desc">Click to Open</span>
-                    </div>
-                    <div class="compiler-card" onclick="switchCompiler('kotlin')">
-                        <div class="compiler-icon">Kt</div>
-                        <span class="compiler-name">Kotlin</span>
-                        <span class="compiler-desc">Click to Open</span>
-                    </div>
-                    <div class="compiler-card" onclick="switchCompiler('swift')">
-                        <div class="compiler-icon">Sw</div>
-                        <span class="compiler-name">Swift</span>
-                        <span class="compiler-desc">Click to Open</span>
-                    </div>
-                    <div class="compiler-card" onclick="switchCompiler('go')">
-                        <div class="compiler-icon">Go</div>
-                        <span class="compiler-name">Go</span>
-                        <span class="compiler-desc">Click to Open</span>
-                    </div>
-                    <div class="compiler-card" onclick="switchCompiler('rust')">
-                        <div class="compiler-icon">Rs</div>
-                        <span class="compiler-name">Rust</span>
-                        <span class="compiler-desc">Click to Open</span>
-                    </div>
+                    <a href="https://www.programiz.com/python-programming/online-compiler/" target="_blank" rel="noopener noreferrer" class="compiler-card"><div class="compiler-icon">Py</div><span class="compiler-name">Python</span><span class="compiler-desc">Programiz Compiler</span></a>
+                    <a href="https://www.programiz.com/cpp-programming/online-compiler/" target="_blank" rel="noopener noreferrer" class="compiler-card"><div class="compiler-icon">C++</div><span class="compiler-name">C++</span><span class="compiler-desc">Programiz Compiler</span></a>
+                    <a href="https://www.programiz.com/javascript/online-compiler/" target="_blank" rel="noopener noreferrer" class="compiler-card"><div class="compiler-icon">JS</div><span class="compiler-name">JavaScript</span><span class="compiler-desc">Programiz Compiler</span></a>
+                    <a href="https://www.programiz.com/java-programming/online-compiler/" target="_blank" rel="noopener noreferrer" class="compiler-card"><div class="compiler-icon">Java</div><span class="compiler-name">Java</span><span class="compiler-desc">Programiz Compiler</span></a>
+                    <a href="https://www.programiz.com/csharp-programming/online-compiler/" target="_blank" rel="noopener noreferrer" class="compiler-card"><div class="compiler-icon">C#</div><span class="compiler-name">C#</span><span class="compiler-desc">Programiz Compiler</span></a>
+                    <a href="https://www.programiz.com/html/online-compiler/" target="_blank" rel="noopener noreferrer" class="compiler-card"><div class="compiler-icon">Web</div><span class="compiler-name">HTML/CSS</span><span class="compiler-desc">Programiz Compiler</span></a>
+                    <a href="https://www.programiz.com/sql/online-compiler/" target="_blank" rel="noopener noreferrer" class="compiler-card"><div class="compiler-icon">SQL</div><span class="compiler-name">SQL</span><span class="compiler-desc">Programiz Compiler</span></a>
+                    <a href="https://www.programiz.com/php-programming/online-compiler/" target="_blank" rel="noopener noreferrer" class="compiler-card"><div class="compiler-icon">PHP</div><span class="compiler-name">PHP</span><span class="compiler-desc">Programiz Compiler</span></a>
+                    <a href="https://www.programiz.com/kotlin-programming/online-compiler/" target="_blank" rel="noopener noreferrer" class="compiler-card"><div class="compiler-icon">Kt</div><span class="compiler-name">Kotlin</span><span class="compiler-desc">Programiz Compiler</span></a>
+                    <a href="https://www.programiz.com/swift-programming/online-compiler/" target="_blank" rel="noopener noreferrer" class="compiler-card"><div class="compiler-icon">Sw</div><span class="compiler-name">Swift</span><span class="compiler-desc">Programiz Compiler</span></a>
+                    <a href="https://www.programiz.com/golang/online-compiler/" target="_blank" rel="noopener noreferrer" class="compiler-card"><div class="compiler-icon">Go</div><span class="compiler-name">Go</span><span class="compiler-desc">Programiz Compiler</span></a>
+                    <a href="https://www.programiz.com/rust-programming/online-compiler/" target="_blank" rel="noopener noreferrer" class="compiler-card"><div class="compiler-icon">Rs</div><span class="compiler-name">Rust</span><span class="compiler-desc">Programiz Compiler</span></a>
+                </div>
+            </div>
+            <div style="margin-top:2rem;">
+                <h4 style="text-align:center;margin-bottom:1rem;color:var(--gray);font-size:1rem;">Practice Problems</h4>
+                <div class="practice-links">
+                    <a href="https://www.hackerrank.com/" target="_blank" rel="noopener noreferrer" class="practice-card"><div class="practice-icon">HR</div><div class="practice-text"><div class="practice-name">HackerRank</div><div class="practice-desc">Coding challenges & competitions</div></div></a>
+                    <a href="https://leetcode.com/" target="_blank" rel="noopener noreferrer" class="practice-card"><div class="practice-icon">LC</div><div class="practice-text"><div class="practice-name">LeetCode</div><div class="practice-desc">Interview preparation</div></div></a>
+                    <a href="https://www.codewars.com/" target="_blank" rel="noopener noreferrer" class="practice-card"><div class="practice-icon">CW</div><div class="practice-text"><div class="practice-name">CodeWars</div><div class="practice-desc">Kata training</div></div></a>
+                    <a href="https://www.freecodecamp.org/" target="_blank" rel="noopener noreferrer" class="practice-card"><div class="practice-icon">FC</div><div class="practice-text"><div class="practice-name">freeCodeCamp</div><div class="practice-desc">Free coding curriculum</div></div></a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="daily-challenges" class="animate-on-scroll">
+    <section id="quiz-section" class="animate-on-scroll">
         <div class="section-header">
-            <div class="section-tag">Daily Challenges</div>
-            <h2 class="section-title">Coding Challenges</h2>
-            <p class="section-subtitle">10 new challenges every day. Easy to Very Hard. Solve, learn, improve!</p>
+            <div class="section-tag">Quiz Challenge</div>
+            <h2 class="section-title">Programming Quizzes</h2>
+            <p class="section-subtitle">Test your knowledge. Complete all 10 levels in any language to master the basics.</p>
         </div>
-        <div class="challenge-section">
-            <div class="daily-date" id="challengeDate"></div>
-            <div class="language-selector" style="margin-bottom:2rem;">
-                <button class="lang-btn active" onclick="loadChallenges('python', this)">Python</button>
-                <button class="lang-btn" onclick="loadChallenges('cpp', this)">C++</button>
-                <button class="lang-btn" onclick="loadChallenges('javascript', this)">JavaScript</button>
-                <button class="lang-btn" onclick="loadChallenges('java', this)">Java</button>
-                <button class="lang-btn" onclick="loadChallenges('csharp', this)">C#</button>
-                <button class="lang-btn" onclick="loadChallenges('php', this)">PHP</button>
-                <button class="lang-btn" onclick="loadChallenges('kotlin', this)">Kotlin</button>
-                <button class="lang-btn" onclick="loadChallenges('go', this)">Go</button>
-                <button class="lang-btn" onclick="loadChallenges('rust', this)">Rust</button>
-            </div>
-            <div id="challengesContainer">
-                <div class="challenge-grid" id="challengesGrid"></div>
-            </div>
-            <div id="challengeSolution" style="display:none;margin-top:2rem;padding:1.5rem;background:#0f172a;border-radius:12px;border:1px solid rgba(255,255,255,0.08);">
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
-                    <h4 style="color:var(--primary);">Solution</h4>
-                    <button onclick="closeSolution()" style="background:none;border:none;color:var(--gray);font-size:1.5rem;cursor:pointer;">&times;</button>
-                </div>
-                <pre id="solutionCode" style="color:#d4d4d4;font-family:monospace;font-size:0.9rem;overflow-x:auto;white-space:pre-wrap;"></pre>
-            </div>
-        </div>
-    </section>
-
-    <section id="daily-quiz" class="animate-on-scroll">
-        <div class="section-header">
-            <div class="section-tag">Daily Quiz</div>
-            <h2 class="section-title">Daily 50 Questions</h2>
-            <p class="section-subtitle">50 new questions every day. Test your knowledge across all languages!</p>
-        </div>
-        <div class="daily-quiz-section">
-            <div class="daily-date" id="quizDate"></div>
+        <div class="quiz-section">
             <div id="quizLangSelect">
                 <h3 style="text-align:center;margin-bottom:1.5rem;font-size:1.3rem;">Choose a Language</h3>
                 <div class="quiz-lang-grid">
-                    <div class="quiz-lang-card" onclick="startDailyQuiz('python')">
+                    <div class="quiz-lang-card" onclick="startQuiz('python')">
                         <div class="quiz-lang-icon">Py</div>
                         <div class="quiz-lang-name">Python</div>
-                        <div style="font-size:0.8rem;color:var(--gray);margin-top:0.25rem">50 Questions</div>
+                        <div class="quiz-lang-progress" id="progress-python">Level 0 / 10</div>
                     </div>
-                    <div class="quiz-lang-card" onclick="startDailyQuiz('cpp')">
+                    <div class="quiz-lang-card" onclick="startQuiz('cpp')">
                         <div class="quiz-lang-icon">C++</div>
                         <div class="quiz-lang-name">C++</div>
-                        <div style="font-size:0.8rem;color:var(--gray);margin-top:0.25rem">50 Questions</div>
+                        <div class="quiz-lang-progress" id="progress-cpp">Level 0 / 10</div>
                     </div>
-                    <div class="quiz-lang-card" onclick="startDailyQuiz('javascript')">
+                    <div class="quiz-lang-card" onclick="startQuiz('javascript')">
                         <div class="quiz-lang-icon">JS</div>
                         <div class="quiz-lang-name">JavaScript</div>
-                        <div style="font-size:0.8rem;color:var(--gray);margin-top:0.25rem">50 Questions</div>
+                        <div class="quiz-lang-progress" id="progress-javascript">Level 0 / 10</div>
                     </div>
-                    <div class="quiz-lang-card" onclick="startDailyQuiz('java')">
+                    <div class="quiz-lang-card" onclick="startQuiz('java')">
                         <div class="quiz-lang-icon">Java</div>
                         <div class="quiz-lang-name">Java</div>
-                        <div style="font-size:0.8rem;color:var(--gray);margin-top:0.25rem">50 Questions</div>
+                        <div class="quiz-lang-progress" id="progress-java">Level 0 / 10</div>
                     </div>
-                    <div class="quiz-lang-card" onclick="startDailyQuiz('html')">
+                    <div class="quiz-lang-card" onclick="startQuiz('html')">
                         <div class="quiz-lang-icon">Web</div>
                         <div class="quiz-lang-name">HTML/CSS</div>
-                        <div style="font-size:0.8rem;color:var(--gray);margin-top:0.25rem">50 Questions</div>
+                        <div class="quiz-lang-progress" id="progress-html">Level 0 / 10</div>
                     </div>
-                    <div class="quiz-lang-card" onclick="startDailyQuiz('sql')">
+                    <div class="quiz-lang-card" onclick="startQuiz('sql')">
                         <div class="quiz-lang-icon">SQL</div>
                         <div class="quiz-lang-name">SQL</div>
-                        <div style="font-size:0.8rem;color:var(--gray);margin-top:0.25rem">50 Questions</div>
+                        <div class="quiz-lang-progress" id="progress-sql">Level 0 / 10</div>
                     </div>
                 </div>
             </div>
-            <div class="quiz-container" id="dailyQuizContainer">
+            <div class="quiz-container" id="quizContainer">
                 <div class="quiz-header">
-                    <div class="quiz-level" id="dailyQuizLang">Python</div>
-                    <div class="quiz-progress-text" id="dailyQuizProgress">1 / 50</div>
+                    <div class="quiz-level" id="quizLevel">Python - Level 1</div>
+                    <div class="quiz-score" id="quizScore">Score: 0</div>
                 </div>
                 <div class="quiz-progress-bar">
-                    <div class="quiz-progress-fill" id="dailyQuizProgressFill" style="width:2%"></div>
+                    <div class="quiz-progress-fill" id="quizProgressFill" style="width:0%"></div>
                 </div>
-                <div class="quiz-question" id="dailyQuizQuestion">Question loading...</div>
-                <div class="quiz-options" id="dailyQuizOptions"></div>
+                <div class="quiz-question" id="quizQuestion">Question loading...</div>
+                <div class="quiz-options" id="quizOptions"></div>
                 <div class="quiz-actions">
-                    <button class="quiz-btn quiz-btn-secondary" onclick="exitDailyQuiz()">&larr; Exit</button>
-                    <button class="quiz-btn quiz-btn-primary" id="dailyQuizNextBtn" onclick="nextDailyQuestion()" style="display:none;">Next &rarr;</button>
+                    <button class="quiz-btn quiz-btn-secondary" onclick="exitQuiz()">&larr; Exit</button>
+                    <button class="quiz-btn quiz-btn-primary" id="quizNextBtn" onclick="nextLevel()" style="display:none;">Next Level &rarr;</button>
                 </div>
             </div>
-            <div class="quiz-result" id="dailyQuizResult" style="display:none;">
-                <h3>Daily Quiz Complete!</h3>
-                <p id="dailyQuizResultText">You got 0 out of 50 correct!</p>
-                <button class="quiz-btn quiz-btn-primary" onclick="exitDailyQuiz()">Back to Languages</button>
+            <div class="quiz-result" id="quizResult" style="display:none;">
+                <h3>Quiz Complete!</h3>
+                <p id="quizResultText">You scored 0 points!</p>
+                <button class="quiz-btn quiz-btn-primary" onclick="exitQuiz()">Back to Languages</button>
             </div>
         </div>
     </section>
@@ -633,6 +539,24 @@ print(f'Welcome, {name}!')</textarea>
                     <a href="https://youtube.com/playlist?list=PLB5RANN-c-wdbTwQKmbzh3AgEIOZcSAbE" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:0.75rem;padding:1rem;background:rgba(255,255,255,0.03);border-radius:12px;text-decoration:none;color:var(--light);border:1px solid rgba(255,255,255,0.05);transition:all 0.3s;"><span style="color:var(--primary);font-weight:700;">Kotlin</span><span>Kotlin</span></a>
                     <a href="https://youtube.com/playlist?list=PLzjZaW71kMwSEVpdbHPr0nPo5zdzbDulm" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:0.75rem;padding:1rem;background:rgba(255,255,255,0.03);border-radius:12px;text-decoration:none;color:var(--light);border:1px solid rgba(255,255,255,0.05);transition:all 0.3s;"><span style="color:var(--primary);font-weight:700;">Go</span><span>Go</span></a>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="popular" class="animate-on-scroll">
+        <div class="section-header">
+            <div class="section-tag">Popular Courses</div>
+            <h2 class="section-title">Start Learning Now</h2>
+            <p class="section-subtitle">Choose your favorite language and start your coding journey today</p>
+        </div>
+        <div class="glass-card" style="max-width:1000px;margin:0 auto;">
+            <div class="skill-grid">
+                <a href="https://youtube.com/playlist?list=PLu0W_9lII9agwh1XjRt242xIpHhPT2llg" target="_blank" rel="noopener noreferrer" class="skill-card"><span class="skill-icon">Py</span><span class="skill-name">Python</span><span class="skill-desc">Start Learning</span></a>
+                <a href="https://youtube.com/playlist?list=PLxCzCOWd7aiF6yRNI5OHQsnUJQfl7Geqj" target="_blank" rel="noopener noreferrer" class="skill-card"><span class="skill-icon">C++</span><span class="skill-name">C++</span><span class="skill-desc">Start Learning</span></a>
+                <a href="https://youtube.com/playlist?list=PLu0W_9lII9ahR1blWXxgSlL4y9iQBnLpR" target="_blank" rel="noopener noreferrer" class="skill-card"><span class="skill-icon">JS</span><span class="skill-name">JavaScript</span><span class="skill-desc">Start Learning</span></a>
+                <a href="https://youtube.com/playlist?list=PL8p2I9GklV44fWXJGEsBvR_ylJClgdVAN" target="_blank" rel="noopener noreferrer" class="skill-card"><span class="skill-icon">TS</span><span class="skill-name">TypeScript</span><span class="skill-desc">Start Learning</span></a>
+                <a href="https://youtu.be/yE6tIle64tU" target="_blank" rel="noopener noreferrer" class="skill-card"><span class="skill-icon">SQL</span><span class="skill-name">SQL</span><span class="skill-desc">Start Learning</span></a>
+                <a href="https://youtu.be/zysUIv0-xak" target="_blank" rel="noopener noreferrer" class="skill-card"><span class="skill-icon">Web</span><span class="skill-name">HTML</span><span class="skill-desc">Start Learning</span></a>
             </div>
         </div>
     </section>
@@ -675,7 +599,7 @@ print(f'Welcome, {name}!')</textarea>
         <div class="section-header"><div class="section-tag">Personal Information</div><h2 class="section-title">About the Owner</h2><p class="section-subtitle">Get to know more about me</p></div>
         <div class="glass-card" style="max-width:800px;margin:0 auto;">
             <div style="text-align:center;margin-bottom:2rem;">
-                <img src="file_000000004984720882e69f4dad44966a.png" alt="Akarshit Raj" style="width:100px;height:100px;border-radius:50%;object-fit:cover;border:3px solid var(--primary);margin:0 auto 1rem;display:block;box-shadow:0 0 20px rgba(6,182,212,0.3);">
+                <div style="width:100px;height:100px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--secondary));display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-size:2.5rem;font-weight:800;color:white;box-shadow:0 8px 30px rgba(6,182,212,0.4);">AR</div>
                 <h3 style="font-size:1.8rem;font-weight:700;margin-bottom:0.5rem;background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Akarshit Raj</h3>
                 <p style="color:var(--gray);">Programming Educator & Student</p>
             </div>
@@ -703,6 +627,14 @@ print(f'Welcome, {name}!')</textarea>
                     </div>
                     <a href="https://instagram.com/lg_444_x" target="_blank" rel="noopener noreferrer" class="social-btn">Follow</a>
                 </div>
+                <div class="info-card">
+                    <div class="info-icon">YT</div>
+                    <div style="flex:1;">
+                        <div class="info-label">YouTube Channel</div>
+                        <div class="info-value">Akarshit Raj - Programming Courses</div>
+                    </div>
+                    <a href="https://youtube.com/playlist?list=PLu0W_9lII9agwh1XjRt242xIpHhPT2llg" target="_blank" rel="noopener noreferrer" class="social-btn">Visit</a>
+                </div>
             </div>
             <div style="background:rgba(255,255,255,0.02);border-radius:16px;padding:1.5rem;border:1px solid rgba(255,255,255,0.05);">
                 <h4 style="font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;color:var(--light);">About Me</h4>
@@ -724,10 +656,7 @@ print(f'Welcome, {name}!')</textarea>
     </section>
 
     <footer style="text-align:center;padding:3rem 5%;border-top:1px solid rgba(255,255,255,0.05);margin-top:3rem;">
-        <div style="display:flex;align-items:center;justify-content:center;gap:0.75rem;margin-bottom:1rem;">
-            <img src="file_000000004984720882e69f4dad44966a.png" alt="AKR" style="width:40px;height:40px;border-radius:50%;object-fit:cover;border:2px solid var(--primary);">
-            <span style="font-size:1.5rem;font-weight:800;background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">AKR</span>
-        </div>
+        <div style="font-size:1.5rem;font-weight:800;background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:1rem;">AR.</div>
         <p style="color:var(--gray);font-size:0.9rem;margin-bottom:1rem;">Akarshit Raj - Programming Educator</p>
         <p style="color:var(--primary);font-weight:600;font-size:0.9rem;margin-bottom:1.5rem;">PM SHRI Jawahar Navodaya Vidyalaya, Khairabad, Sitapur</p>
         <p style="color:var(--gray);font-size:0.85rem;opacity:0.7;">Made with passion for learners everywhere &bull; &copy; <span id="year">2026</span></p>
@@ -843,21 +772,21 @@ print(f'Welcome, {name}!')</textarea>
         };
 
         const webResponses = {
-            website: "Creating a Website - Step by Step:<br><br><strong>Step 1: HTML Structure</strong><br>Create a file named index.html:<br><div class='ai-code-block'><pre>&lt;!DOCTYPE html&gt;\\n&lt;html lang='en'&gt;\\n&lt;head&gt;\\n  &lt;meta charset='UTF-8'&gt;\\n  &lt;meta name='viewport' content='width=device-width, initial-scale=1.0'&gt;\\n  &lt;title&gt;My Website&lt;/title&gt;\\n  &lt;style&gt;\\n    body { font-family: 'Segoe UI', sans-serif; background: #0f172a; color: white; text-align: center; padding: 50px; }\\n    h1 { color: #06b6d4; }\\n    .btn { padding: 12px 24px; background: linear-gradient(135deg, #06b6d4, #0891b2); color: white; text-decoration: none; border-radius: 8px; }\\n  &lt;/style&gt;\\n&lt;/head&gt;\\n&lt;body&gt;\\n  &lt;h1&gt;Hello World!&lt;/h1&gt;\\n  &lt;p&gt;Welcome to my website.&lt;/p&gt;\\n  &lt;a href='#' class='btn'&gt;Get Started&lt;/a&gt;\\n&lt;/body&gt;\\n&lt;/html&gt;</pre></div><br><strong>Step 2:</strong> Save and open in browser.<br><strong>Step 3:</strong> Use <strong>GitHub Pages</strong> or <strong>Netlify</strong> for free hosting.",
+            website: "Creating a Website - Step by Step:<br><br><strong>Step 1: HTML Structure</strong><br>Create a file named index.html:<br><div class='ai-code-block'><pre>&lt;!DOCTYPE html&gt;\n&lt;html lang='en'&gt;\n&lt;head&gt;\n  &lt;meta charset='UTF-8'&gt;\n  &lt;meta name='viewport' content='width=device-width, initial-scale=1.0'&gt;\n  &lt;title&gt;My Website&lt;/title&gt;\n  &lt;style&gt;\n    body { font-family: 'Segoe UI', sans-serif; background: #0f172a; color: white; text-align: center; padding: 50px; }\n    h1 { color: #06b6d4; }\n    .btn { padding: 12px 24px; background: linear-gradient(135deg, #06b6d4, #0891b2); color: white; text-decoration: none; border-radius: 8px; }\n  &lt;/style&gt;\n&lt;/head&gt;\n&lt;body&gt;\n  &lt;h1&gt;Hello World!&lt;/h1&gt;\n  &lt;p&gt;Welcome to my website.&lt;/p&gt;\n  &lt;a href='#' class='btn'&gt;Get Started&lt;/a&gt;\n&lt;/body&gt;\n&lt;/html&gt;</pre></div><br><strong>Step 2:</strong> Save and open in browser.<br><strong>Step 3:</strong> Use <strong>GitHub Pages</strong> or <strong>Netlify</strong> for free hosting.",
             github: "Publishing on GitHub Pages - Free Hosting:<br><br><strong>Step 1:</strong> Create a GitHub account.<br><strong>Step 2:</strong> Create a new repository named <code>yourusername.github.io</code>.<br><strong>Step 3:</strong> Upload your HTML/CSS/JS files.<br><strong>Step 4:</strong> Go to Settings &gt; Pages.<br><strong>Step 5:</strong> Select main branch and save.<br><br>Your site will be live at <code>https://yourusername.github.io</code> within 2 minutes.<br><br><strong>Pro Tip:</strong> Use a custom domain by adding a CNAME file.",
             htmlcssjs: "What is HTML, CSS, and JavaScript?<br><br><strong>HTML (HyperText Markup Language)</strong> - The skeleton/structure of a webpage. Uses tags like &lt;div&gt;, &lt;p&gt;, &lt;h1&gt;.<br><br><strong>CSS (Cascading Style Sheets)</strong> - The skin/styling. Controls colors, fonts, layout, animations.<br><br><strong>JavaScript</strong> - The brain/interactivity. Handles clicks, API calls, dynamic content, logic.<br><br><strong>Analogy:</strong> HTML is the body, CSS is the clothes, JS is the brain.",
             hosting: "Free Hosting Options for Websites:<br><br>1. <strong>GitHub Pages</strong> - Best for static sites, custom domains, unlimited bandwidth.<br>2. <strong>Netlify</strong> - Drag and drop deployment, form handling, serverless functions.<br>3. <strong>Vercel</strong> - Excellent for React/Next.js, automatic deployments.<br>4. <strong>Surge.sh</strong> - Simple CLI deployment for static sites.<br>5. <strong>Firebase Hosting</strong> - Fast CDN, SSL included, good for SPAs.<br><br>All of these are completely free for beginners and small projects.",
-            responsive: "How to Make Responsive Design:<br><br><strong>1. Use Viewport Meta Tag:</strong><br><code>&lt;meta name='viewport' content='width=device-width, initial-scale=1.0'&gt;</code><br><br><strong>2. CSS Media Queries:</strong><br><div class='ai-code-block'><pre>@media (max-width: 768px) {\\n  .container { grid-template-columns: 1fr; }\\n  h1 { font-size: 2rem; }\\n}</pre></div><br><strong>3. Use Flexbox & Grid:</strong> They automatically adapt to screen size.<br><strong>4. Relative Units:</strong> Use %, rem, em instead of px.<br><strong>5. Test:</strong> Use Chrome DevTools (F12) to test different screen sizes.",
-            portfolio: "Complete Portfolio Website Code:<br><div class='ai-code-block'><pre>&lt;!DOCTYPE html&gt;\\n&lt;html&gt;\\n&lt;head&gt;\\n  &lt;style&gt;\\n    * { margin: 0; padding: 0; box-sizing: border-box; }\\n    body { font-family: 'Segoe UI', sans-serif; background: #0f172a; color: white; }\\n    nav { display: flex; justify-content: space-between; padding: 2rem 5%; }\\n    .hero { text-align: center; padding: 100px 5%; }\\n    .hero h1 { font-size: 3.5rem; background: linear-gradient(135deg, #06b6d4, #22d3ee); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }\\n    .btn { padding: 1rem 2rem; background: linear-gradient(135deg, #06b6d4, #0891b2); color: white; text-decoration: none; border-radius: 12px; font-weight: 600; }\\n    .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; padding: 3rem 5%; }\\n    .skill-card { background: rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 16px; text-align: center; border: 1px solid rgba(255,255,255,0.1); }\\n  &lt;/style&gt;\\n&lt;/head&gt;\\n&lt;body&gt;\\n  &lt;nav&gt;&lt;div style='font-weight:800;font-size:1.5rem;'&gt;Portfolio&lt;/div&gt;&lt;div&gt;&lt;a href='#skills' style='color:white;text-decoration:none;'&gt;Skills&lt;/a&gt;&lt;/div&gt;&lt;/nav&gt;\\n  &lt;div class='hero'&gt;\\n    &lt;h1&gt;John Doe&lt;/h1&gt;\\n    &lt;p style='color:#94a3b8;margin:1rem 0;'&gt;Full Stack Developer&lt;/p&gt;\\n    &lt;a href='mailto:email@example.com' class='btn'&gt;Hire Me&lt;/a&gt;\\n  &lt;/div&gt;\\n  &lt;div class='skills' id='skills'&gt;\\n    &lt;div class='skill-card'&gt;&lt;h3&gt;HTML/CSS&lt;/h3&gt;&lt;/div&gt;\\n    &lt;div class='skill-card'&gt;&lt;h3&gt;JavaScript&lt;/h3&gt;&lt;/div&gt;\\n    &lt;div class='skill-card'&gt;&lt;h3&gt;React&lt;/h3&gt;&lt;/div&gt;\\n  &lt;/div&gt;\\n&lt;/body&gt;\\n&lt;/html&gt;</pre></div><br>Just save as index.html and open in browser!",
+            responsive: "How to Make Responsive Design:<br><br><strong>1. Use Viewport Meta Tag:</strong><br><code>&lt;meta name='viewport' content='width=device-width, initial-scale=1.0'&gt;</code><br><br><strong>2. CSS Media Queries:</strong><br><div class='ai-code-block'><pre>@media (max-width: 768px) {\n  .container { grid-template-columns: 1fr; }\n  h1 { font-size: 2rem; }\n}</pre></div><br><strong>3. Use Flexbox & Grid:</strong> They automatically adapt to screen size.<br><strong>4. Relative Units:</strong> Use %, rem, em instead of px.<br><strong>5. Test:</strong> Use Chrome DevTools (F12) to test different screen sizes.",
+            portfolio: "Complete Portfolio Website Code:<br><div class='ai-code-block'><pre>&lt;!DOCTYPE html&gt;\n&lt;html&gt;\n&lt;head&gt;\n  &lt;style&gt;\n    * { margin: 0; padding: 0; box-sizing: border-box; }\n    body { font-family: 'Segoe UI', sans-serif; background: #0f172a; color: white; }\n    nav { display: flex; justify-content: space-between; padding: 2rem 5%; }\n    .hero { text-align: center; padding: 100px 5%; }\n    .hero h1 { font-size: 3.5rem; background: linear-gradient(135deg, #06b6d4, #22d3ee); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }\n    .btn { padding: 1rem 2rem; background: linear-gradient(135deg, #06b6d4, #0891b2); color: white; text-decoration: none; border-radius: 12px; font-weight: 600; }\n    .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; padding: 3rem 5%; }\n    .skill-card { background: rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 16px; text-align: center; border: 1px solid rgba(255,255,255,0.1); }\n  &lt;/style&gt;\n&lt;/head&gt;\n&lt;body&gt;\n  &lt;nav&gt;&lt;div style='font-weight:800;font-size:1.5rem;'&gt;Portfolio&lt;/div&gt;&lt;div&gt;&lt;a href='#skills' style='color:white;text-decoration:none;'&gt;Skills&lt;/a&gt;&lt;/div&gt;&lt;/nav&gt;\n  &lt;div class='hero'&gt;\n    &lt;h1&gt;John Doe&lt;/h1&gt;\n    &lt;p style='color:#94a3b8;margin:1rem 0;'&gt;Full Stack Developer&lt;/p&gt;\n    &lt;a href='mailto:email@example.com' class='btn'&gt;Hire Me&lt;/a&gt;\n  &lt;/div&gt;\n  &lt;div class='skills' id='skills'&gt;\n    &lt;div class='skill-card'&gt;&lt;h3&gt;HTML/CSS&lt;/h3&gt;&lt;/div&gt;\n    &lt;div class='skill-card'&gt;&lt;h3&gt;JavaScript&lt;/h3&gt;&lt;/div&gt;\n    &lt;div class='skill-card'&gt;&lt;h3&gt;React&lt;/h3&gt;&lt;/div&gt;\n  &lt;/div&gt;\n&lt;/body&gt;\n&lt;/html&gt;</pre></div><br>Just save as index.html and open in browser!",
             default: "I can help you with Web Development:<br><br><strong>Topics I cover:</strong><br>&bull; HTML5, CSS3, JavaScript (ES6+)<br>&bull; Responsive Design with Bootstrap & Tailwind<br>&bull; React.js & modern frameworks<br>&bull; GitHub Pages & free hosting<br>&bull; Domain setup & deployment<br>&bull; Portfolio & business websites<br>&bull; SEO optimization basics<br><br><strong>Ask me anything specific like:</strong><br>&bull; 'How to create a website?'<br>&bull; 'Portfolio website code'<br>&bull; 'Responsive design tutorial'<br>&bull; 'Free hosting options'"
         };
 
         const appResponses = {
-            android: "How to Create an Android App:<br><br><strong>Step 1: Install Android Studio</strong><br>Download from developer.android.com/studio<br><br><strong>Step 2: Create New Project</strong><br>Select 'Empty Activity' and choose Kotlin.<br><br><strong>Step 3: Basic Kotlin Code:</strong><br><div class='ai-code-block'><pre>// MainActivity.kt\\npackage com.example.myapp\\n\\nimport android.os.Bundle\\nimport androidx.appcompat.app.AppCompatActivity\\n\\nclass MainActivity : AppCompatActivity() {\\n    override fun onCreate(savedInstanceState: Bundle?) {\\n        super.onCreate(savedInstanceState)\\n        setContentView(R.layout.activity_main)\\n    }\\n}</pre></div><br><strong>Step 4: Design Layout</strong> in res/layout/activity_main.xml using drag-and-drop.<br><strong>Step 5:</strong> Click Run to test on emulator or real device.",
+            android: "How to Create an Android App:<br><br><strong>Step 1: Install Android Studio</strong><br>Download from developer.android.com/studio<br><br><strong>Step 2: Create New Project</strong><br>Select 'Empty Activity' and choose Kotlin.<br><br><strong>Step 3: Basic Kotlin Code:</strong><br><div class='ai-code-block'><pre>// MainActivity.kt\npackage com.example.myapp\n\nimport android.os.Bundle\nimport androidx.appcompat.app.AppCompatActivity\n\nclass MainActivity : AppCompatActivity() {\n    override fun onCreate(savedInstanceState: Bundle?) {\n        super.onCreate(savedInstanceState)\n        setContentView(R.layout.activity_main)\n    }\n}</pre></div><br><strong>Step 4: Design Layout</strong> in res/layout/activity_main.xml using drag-and-drop.<br><strong>Step 5:</strong> Click Run to test on emulator or real device.",
             playstore: "How to Publish on Play Store:<br><br><strong>Step 1:</strong> Create a Google Play Developer account ($25 one-time fee).<br><strong>Step 2:</strong> Build a signed APK/AAB in Android Studio (Build &gt; Generate Signed Bundle).<br><strong>Step 3:</strong> Go to Play Console &gt; Create App.<br><strong>Step 4:</strong> Fill store listing (title, description, screenshots, icon).<br><strong>Step 5:</strong> Upload your AAB file.<br><strong>Step 6:</strong> Set up pricing and distribution.<br><strong>Step 7:</strong> Submit for review (usually 1-3 days).<br><br><strong>Tip:</strong> Make sure your app follows Play Store policies.",
             kotlinvsflutter: "Kotlin vs Flutter - Which is Better?<br><br><strong>Kotlin (Native Android):</strong><br>&bull; Official Android language<br>&bull; Best performance<br>&bull; Full access to Android APIs<br>&bull; Steeper learning curve<br>&bull; Only Android (need Swift for iOS)<br><br><strong>Flutter (Cross-Platform):</strong><br>&bull; One codebase for Android + iOS<br>&bull; Fast development with Hot Reload<br>&bull; Beautiful UI with widgets<br>&bull; Good performance (Dart compiles to native)<br>&bull; Growing community<br><br><strong>My Recommendation:</strong> Start with Kotlin for native Android basics, then learn Flutter for cross-platform projects.",
             apk: "How to Build an APK File:<br><br><strong>In Android Studio:</strong><br>1. Go to <strong>Build</strong> &gt; <strong>Generate Signed Bundle / APK</strong><br>2. Select <strong>APK</strong><br>3. Create a new keystore (or use existing)<br>4. Fill keystore password and key alias<br>5. Click <strong>Next</strong> then <strong>Finish</strong><br><br>Your APK will be in <code>app/release/app-release.apk</code><br><br><strong>Install on Phone:</strong><br>Transfer APK to phone and tap to install (enable 'Unknown Sources' in settings).",
-            calculator: "Calculator App Code in Kotlin:<br><div class='ai-code-block'><pre>// MainActivity.kt\\npackage com.example.calculator\\n\\nimport android.os.Bundle\\nimport android.widget.Button\\nimport android.widget.TextView\\nimport androidx.appcompat.app.AppCompatActivity\\n\\nclass MainActivity : AppCompatActivity() {\\n    private lateinit var resultText: TextView\\n    private var currentInput = \\"\\"\\n    \\n    override fun onCreate(savedInstanceState: Bundle?) {\\n        super.onCreate(savedInstanceState)\\n        setContentView(R.layout.activity_main)\\n        \\n        resultText = findViewById(R.id.resultText)\\n        \\n        val buttons = listOf(R.id.btn0, R.id.btn1, R.id.btn2, R.id.btn3, R.id.btn4,\\n                            R.id.btn5, R.id.btn6, R.id.btn7, R.id.btn8, R.id.btn9)\\n        \\n        buttons.forEachIndexed { index, id ->\\n            findViewById&lt;Button&gt;(id).setOnClickListener {\\n                currentInput += index.toString()\\n                resultText.text = currentInput\\n            }\\n        }\\n        \\n        findViewById&lt;Button&gt;(R.id.btnPlus).setOnClickListener { currentInput += \\"+\\"; resultText.text = currentInput }\\n        findViewById&lt;Button&gt;(R.id.btnEqual).setOnClickListener { calculate() }\\n    }\\n    \\n    private fun calculate() {\\n        val parts = currentInput.split(\\"+\\")\\n        if(parts.size == 2) {\\n            val result = parts[0].toInt() + parts[1].toInt()\\n            resultText.text = result.toString()\\n            currentInput = result.toString()\\n        }\\n    }\\n}</pre></div><br>Create corresponding XML layout with buttons and a TextView for display.",
+            calculator: "Calculator App Code in Kotlin:<br><div class='ai-code-block'><pre>// MainActivity.kt\npackage com.example.calculator\n\nimport android.os.Bundle\nimport android.widget.Button\nimport android.widget.TextView\nimport androidx.appcompat.app.AppCompatActivity\n\nclass MainActivity : AppCompatActivity() {\n    private lateinit var resultText: TextView\n    private var currentInput = \"\"\n    \n    override fun onCreate(savedInstanceState: Bundle?) {\n        super.onCreate(savedInstanceState)\n        setContentView(R.layout.activity_main)\n        \n        resultText = findViewById(R.id.resultText)\n        \n        val buttons = listOf(R.id.btn0, R.id.btn1, R.id.btn2, R.id.btn3, R.id.btn4,\n                            R.id.btn5, R.id.btn6, R.id.btn7, R.id.btn8, R.id.btn9)\n        \n        buttons.forEachIndexed { index, id -&gt;\n            findViewById&lt;Button&gt;(id).setOnClickListener {\n                currentInput += index.toString()\n                resultText.text = currentInput\n            }\n        }\n        \n        findViewById&lt;Button&gt;(R.id.btnPlus).setOnClickListener { currentInput += \"+\"; resultText.text = currentInput }\n        findViewById&lt;Button&gt;(R.id.btnEqual).setOnClickListener { calculate() }\n    }\n    \n    private fun calculate() {\n        val parts = currentInput.split(\"+\")\n        if(parts.size == 2) {\n            val result = parts[0].toInt() + parts[1].toInt()\n            resultText.text = result.toString()\n            currentInput = result.toString()\n        }\n    }\n}</pre></div><br>Create corresponding XML layout with buttons and a TextView for display.",
             androidstudio: "What is Android Studio?<br><br><strong>Android Studio</strong> is the official Integrated Development Environment (IDE) for Android app development.<br><br><strong>Features:</strong><br>&bull; Visual Layout Editor (drag-and-drop UI design)<br>&bull; APK Analyzer (reduce app size)<br>&bull; Fast Emulator (test without real device)<br>&bull; Intelligent Code Editor (autocomplete, refactoring)<br>&bull; Firebase Integration<br>&bull; GitHub Integration<br><br><strong>System Requirements:</strong><br>&bull; Windows 10/11, macOS, or Linux<br>&bull; 8GB RAM minimum (16GB recommended)<br>&bull; 8GB disk space<br><br>Download: <code>developer.android.com/studio</code>",
             default: "I can help you with App Development:<br><br><strong>Topics I cover:</strong><br>&bull; Android (Kotlin/Java) development<br>&bull; Flutter & Dart cross-platform<br>&bull; React Native<br>&bull; Play Store publishing<br>&bull; APK building & signing<br>&bull; UI/UX with Material Design<br>&bull; Firebase backend integration<br>&bull; App architecture (MVVM)<br><br><strong>Ask me anything specific like:</strong><br>&bull; 'How to create an Android app?'<br>&bull; 'Kotlin vs Flutter'<br>&bull; 'Play Store publishing steps'<br>&bull; 'Calculator app code'"
         };
@@ -1018,36 +947,62 @@ print(f'Welcome, {name}!')</textarea>
         document.querySelectorAll('.nav-links a').forEach(link=>{link.addEventListener('click',()=>{document.getElementById('navLinks').classList.remove('active')})})
         function toggleLanguages(){const d=document.getElementById('languagesDropdown'),b=document.getElementById('youtubeToggleBtn'),a=document.getElementById('toggleArrow');if(d.style.maxHeight==='2000px'){d.style.maxHeight='0';d.style.opacity='0';d.style.marginTop='0';a.style.transform='rotate(0deg)';b.querySelector('span:nth-child(2)').textContent='View All Languages'}else{d.style.maxHeight='2000px';d.style.opacity='1';d.style.marginTop='2rem';a.style.transform='rotate(180deg)';b.querySelector('span:nth-child(2)').textContent='Hide Languages'}}
         
-        function switchCompiler(lang) {
-            const buttons = document.querySelectorAll('#code-practice .lang-btn');
-            buttons.forEach(btn => {
-                if(btn.textContent.toLowerCase().includes(lang) || 
-                   (lang === 'csharp' && btn.textContent === 'C#') ||
-                   (lang === 'cpp' && btn.textContent === 'C++') ||
-                   (lang === 'html' && btn.textContent === 'HTML/CSS')) {
-                    selectLang(btn, lang);
+        const codeTemplates={
+            python:`# Write your Python code here...\nprint('Hello, World!')\nname = 'Akarshit'\nprint(f'Welcome, {name}!')`,
+            cpp:`// Write your C++ code here...\n#include <iostream>\nusing namespace std;\n\nint main() {\n    cout << "Hello, World!" << endl;\n    string name = "Akarshit";\n    cout << "Welcome, " << name << "!" << endl;\n    return 0;\n}`,
+            javascript:`// Write your JavaScript code here...\nconsole.log('Hello, World!');\nlet name = 'Akarshit';\nconsole.log('Welcome, ' + name + '!');`,
+            java:`// Write your Java code here...\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println("Hello, World!");\n        String name = "Akarshit";\n        System.out.println("Welcome, " + name + "!");\n    }\n}`,
+            csharp:`// Write your C# code here...\nusing System;\n\nclass Program {\n    static void Main() {\n        Console.WriteLine("Hello, World!");\n        string name = "Akarshit";\n        Console.WriteLine("Welcome, " + name + "!");\n    }\n}`,
+            html:`<!-- Write your HTML code here... -->\n<!DOCTYPE html>\n<html>\n<head>\n    <title>My Page</title>\n    <style>\n        body { font-family: Arial; background: #0f172a; color: white; text-align: center; padding: 50px; }\n        h1 { color: #06b6d4; }\n    </style>\n</head>\n<body>\n    <h1>Hello, World!</h1>\n    <p>Welcome to my website!</p>\n</body>\n</html>`,
+            sql:`-- Write your SQL code here...\nCREATE TABLE users (\n    id INT PRIMARY KEY,\n    name VARCHAR(50),\n    email VARCHAR(100)\n);\n\nINSERT INTO users VALUES (1, 'Akarshit', 'akarshit@example.com');\nSELECT * FROM users;`,
+            php:`<?php\n// Write your PHP code here...\necho "Hello, World!\\n";\n$name = "Akarshit";\necho "Welcome, " . $name . "!";\n?>`,
+            kotlin:`// Write your Kotlin code here...\nfun main() {\n    println("Hello, World!")\n    val name = "Akarshit"\n    println("Welcome, $name!")\n}`,
+            swift:`// Write your Swift code here...\nprint("Hello, World!")\nlet name = "Akarshit"\nprint("Welcome, \\(name)!")`,
+            go:`// Write your Go code here...\npackage main\nimport "fmt"\n\nfunc main() {\n    fmt.Println("Hello, World!")\n    name := "Akarshit"\n    fmt.Printf("Welcome, %s!\\n", name)\n}`,
+            rust:`// Write your Rust code here...\nfn main() {\n    println!("Hello, World!");\n    let name = "Akarshit";\n    println!("Welcome, {}!", name);\n}`
+        }
+        
+        function selectLang(btn,lang){currentLang=lang;document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.getElementById('codeInput').value=codeTemplates[lang]||codeTemplates['python']}
+        
+        const counters=document.querySelectorAll('.stat-number');
+        let hasAnimated=false;
+        function animateCounters(){
+            counters.forEach(counter=>{
+                const target=parseInt(counter.getAttribute('data-target')),
+                duration=2000,
+                increment=target/(duration/16);
+                let current=0;
+                const updateCounter=()=>{
+                    current+=increment;
+                    if(current<target){
+                        counter.textContent=Math.floor(current).toLocaleString();
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        if(target>=1000000) counter.textContent='1M+';
+                        else if(target>=1000) counter.textContent='1k+';
+                        else counter.textContent=target+'+';
+                    }
+                };
+                updateCounter();
+            });
+        }
+        
+        const observer=new IntersectionObserver((entries)=>{
+            entries.forEach(entry=>{
+                if(entry.isIntersecting){
+                    entry.target.classList.add('visible');
+                    if(entry.target.querySelector('.stat-number')&&!hasAnimated){
+                        hasAnimated=true;
+                        animateCounters();
+                    }
                 }
             });
-            document.getElementById('code-practice').scrollIntoView({behavior:'smooth',block:'start'});
-            showNotification(lang.toUpperCase() + ' compiler loaded!');
-        }
+        },{threshold:0.1});
+        document.querySelectorAll('.animate-on-scroll').forEach(el=>observer.observe(el));
         
-        const codeTemplates={
-            python:`# Write your Python code here...\\nprint('Hello, World!')\\nname = 'Akarshit'\\nprint(f'Welcome, {name}!')`,
-            cpp:`// Write your C++ code here...\\n#include <iostream>\\nusing namespace std;\\n\\nint main() {\\n    cout << "Hello, World!" << endl;\\n    string name = "Akarshit";\\n    cout << "Welcome, " << name << "!" << endl;\\n    return 0;\\n}`,
-            javascript:`// Write your JavaScript code here...\\nconsole.log('Hello, World!');\\nlet name = 'Akarshit';\\nconsole.log('Welcome, ' + name + '!');`,
-            java:`// Write your Java code here...\\npublic class Main {\\n    public static void main(String[] args) {\\n        System.out.println("Hello, World!");\\n        String name = "Akarshit";\\n        System.out.println("Welcome, " + name + "!");\\n    }\\n}`,
-            csharp:`// Write your C# code here...\\nusing System;\\n\\nclass Program {\\n    static void Main() {\\n        Console.WriteLine("Hello, World!");\\n        string name = "Akarshit";\\n        Console.WriteLine("Welcome, " + name + "!");\\n    }\\n}`,
-            html:`<!-- Write your HTML code here... -->\\n<!DOCTYPE html>\\n<html>\\n<head>\\n    <title>My Page</title>\\n    <style>\\n        body { font-family: Arial; background: #0f172a; color: white; text-align: center; padding: 50px; }\\n        h1 { color: #06b6d4; }\\n    </style>\\n</head>\\n<body>\\n    <h1>Hello, World!</h1>\\n    <p>Welcome to my website!</p>\\n</body>\\n</html>`,
-            sql:`-- Write your SQL code here...\\nCREATE TABLE users (\\n    id INT PRIMARY KEY,\\n    name VARCHAR(50),\\n    email VARCHAR(100)\\n);\\n\\nINSERT INTO users VALUES (1, 'Akarshit', 'akarshit@example.com');\\nSELECT * FROM users;`,
-            php:`<?php\\n// Write your PHP code here...\\necho "Hello, World!\\\\n";\\n$name = "Akarshit";\\necho "Welcome, " . $name . "!";\\n?>`,
-            kotlin:`// Write your Kotlin code here...\\nfun main() {\\n    println("Hello, World!")\\n    val name = "Akarshit"\\n    println("Welcome, $name!")\\n}`,
-            swift:`// Write your Swift code here...\\nprint("Hello, World!")\\nlet name = "Akarshit"\\nprint("Welcome, \\(name)!")`,
-            go:`// Write your Go code here...\\npackage main\\nimport "fmt"\\n\\nfunc main() {\\n    fmt.Println("Hello, World!")\\n    name := "Akarshit"\\n    fmt.Printf("Welcome, %s!\\\\n", name)\\n}`,
-            rust:`// Write your Rust code here...\\nfn main() {\\n    println!("Hello, World!");\\n    let name = "Akarshit";\\n    println!("Welcome, {}!", name);\\n}`
-        }
-        
-        function selectLang(btn,lang){currentLang=lang;document.querySelectorAll('#code-practice .lang-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.getElementById('codeInput').value=codeTemplates[lang]||codeTemplates['python']}
+        function openModal(videoUrl){document.getElementById('videoFrame').src=videoUrl;document.getElementById('videoModal').classList.add('active');document.body.style.overflow='hidden'}
+        function closeModal(){document.getElementById('videoModal').classList.remove('active');document.getElementById('videoFrame').src='';document.body.style.overflow='auto'}
+        document.getElementById('videoModal').addEventListener('click',function(e){if(e.target===this)closeModal()})
         
         document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
             anchor.addEventListener('click',function(e){
@@ -1141,10 +1096,12 @@ print(f'Welcome, {name}!')</textarea>
             }, 800);
         }
 
+        // Search functionality
         function handleSearch() {
             const query = document.getElementById('navSearch').value.toLowerCase();
             if(!query) return;
             
+            const sections = ['home', 'about', 'code-practice', 'quiz-section', 'courses', 'popular', 'youtube-channel', 'personal-info'];
             const keywords = {
                 'python': 'code-practice',
                 'cpp': 'code-practice',
@@ -1154,10 +1111,8 @@ print(f'Welcome, {name}!')</textarea>
                 'compiler': 'code-practice',
                 'code': 'code-practice',
                 'practice': 'code-practice',
-                'challenge': 'daily-challenges',
-                'daily': 'daily-challenges',
-                'quiz': 'daily-quiz',
-                'test': 'daily-quiz',
+                'quiz': 'quiz-section',
+                'test': 'quiz-section',
                 'youtube': 'youtube-channel',
                 'video': 'youtube-channel',
                 'course': 'courses',
@@ -1180,384 +1135,42 @@ print(f'Welcome, {name}!')</textarea>
             }
         }
 
-        function openModal(videoUrl){document.getElementById('videoFrame').src=videoUrl;document.getElementById('videoModal').classList.add('active');document.body.style.overflow='hidden'}
-        function closeModal(){document.getElementById('videoModal').classList.remove('active');document.getElementById('videoFrame').src='';document.body.style.overflow='auto'}
-        document.getElementById('videoModal').addEventListener('click',function(e){if(e.target===this)closeModal()})
-        
-        const observer=new IntersectionObserver((entries)=>{
-            entries.forEach(entry=>{
-                if(entry.isIntersecting){
-                    entry.target.classList.add('visible');
-                }
-            });
-        },{threshold:0.1});
-        document.querySelectorAll('.animate-on-scroll').forEach(el=>observer.observe(el));
-
-        const dailyChallenges = {
+        const quizData = {
             python: [
-                { title: "Hello World", desc: "Print 'Hello, World!' to the console", diff: "easy", code: "print('Hello, World!')" },
-                { title: "Sum Two Numbers", desc: "Take two numbers and print their sum", diff: "easy", code: "a = int(input())\\nb = int(input())\\nprint(a + b)" },
-                { title: "Even or Odd", desc: "Check if a number is even or odd", diff: "easy", code: "n = int(input())\\nprint('Even' if n % 2 == 0 else 'Odd')" },
-                { title: "Factorial", desc: "Calculate factorial of a number", diff: "easy", code: "n = int(input())\\nfact = 1\\nfor i in range(1, n+1):\\n    fact *= i\\nprint(fact)" },
-                { title: "Prime Check", desc: "Check if a number is prime", diff: "medium", code: "n = int(input())\\nif n < 2: print('Not Prime')\\nelse:\\n    for i in range(2, int(n**0.5)+1):\\n        if n % i == 0: print('Not Prime'); break\\n    else: print('Prime')" },
-                { title: "Fibonacci Series", desc: "Print first N Fibonacci numbers", diff: "medium", code: "n = int(input())\\na, b = 0, 1\\nfor _ in range(n):\\n    print(a, end=' ')\\n    a, b = b, a+b" },
-                { title: "Palindrome String", desc: "Check if a string is palindrome", diff: "medium", code: "s = input().lower()\\nprint('Palindrome' if s == s[::-1] else 'Not Palindrome')" },
-                { title: "Reverse List", desc: "Reverse a list without using reverse()", diff: "medium", code: "arr = list(map(int, input().split()))\\nprint(arr[::-1])" },
-                { title: "Binary Search", desc: "Implement binary search algorithm", diff: "hard", code: "def binary_search(arr, x):\\n    l, r = 0, len(arr)-1\\n    while l <= r:\\n        m = (l+r)//2\\n        if arr[m] == x: return m\\n        elif arr[m] < x: l = m+1\\n        else: r = m-1\\n    return -1\\narr = list(map(int, input().split()))\\nx = int(input())\\nprint(binary_search(arr, x))" },
-                { title: "Merge Sort", desc: "Implement merge sort algorithm", diff: "hard", code: "def merge_sort(arr):\\n    if len(arr) <= 1: return arr\\n    mid = len(arr)//2\\n    left = merge_sort(arr[:mid])\\n    right = merge_sort(arr[mid:])\\n    return merge(left, right)\\ndef merge(l, r):\\n    res = []\\n    i = j = 0\\n    while i < len(l) and j < len(r):\\n        if l[i] < r[j]: res.append(l[i]); i += 1\\n        else: res.append(r[j]); j += 1\\n    res.extend(l[i:]); res.extend(r[j:])\\n    return res\\narr = list(map(int, input().split()))\\nprint(merge_sort(arr))" },
-                { title: "Knapsack Problem", desc: "Solve 0/1 knapsack problem", diff: "veryhard", code: "def knapsack(W, wt, val, n):\\n    dp = [[0]*(W+1) for _ in range(n+1)]\\n    for i in range(1, n+1):\\n        for w in range(1, W+1):\\n            if wt[i-1] <= w:\\n                dp[i][w] = max(val[i-1] + dp[i-1][w-wt[i-1]], dp[i-1][w])\\n            else: dp[i][w] = dp[i-1][w]\\n    return dp[n][W]\\nval = list(map(int, input().split()))\\nwt = list(map(int, input().split()))\\nW = int(input())\\nprint(knapsack(W, wt, val, len(val)))" },
-                { title: "Dijkstra Algorithm", desc: "Find shortest path using Dijkstra", diff: "veryhard", code: "import heapq\\ndef dijkstra(graph, start):\\n    dist = {v: float('inf') for v in graph}\\n    dist[start] = 0\\n    pq = [(0, start)]\\n    while pq:\\n        d, u = heapq.heappop(pq)\\n        if d > dist[u]: continue\\n        for v, w in graph[u]:\\n            if dist[u] + w < dist[v]:\\n                dist[v] = dist[u] + w\\n                heapq.heappush(pq, (dist[v], v))\\n    return dist\\ngraph = {0: [(1,4),(2,1)], 1: [(3,1)], 2: [(1,2),(3,5)], 3: []}\\nprint(dijkstra(graph, 0))" }
-            ],
-            cpp: [
-                { title: "Hello World", desc: "Print 'Hello, World!'", diff: "easy", code: "#include <iostream>\\nusing namespace std;\\nint main() { cout << \\"Hello, World!\\"; return 0; }" },
-                { title: "Sum Two Numbers", desc: "Read two numbers and print sum", diff: "easy", code: "#include <iostream>\\nusing namespace std;\\nint main() { int a, b; cin >> a >> b; cout << a+b; return 0; }" },
-                { title: "Even or Odd", desc: "Check if number is even or odd", diff: "easy", code: "#include <iostream>\\nusing namespace std;\\nint main() { int n; cin >> n; cout << (n%2==0 ? \\"Even\\" : \\"Odd\\"); return 0; }" },
-                { title: "Factorial", desc: "Calculate factorial using loop", diff: "easy", code: "#include <iostream>\\nusing namespace std;\\nint main() { int n; cin >> n; long long f=1; for(int i=1;i<=n;i++) f*=i; cout << f; return 0; }" },
-                { title: "Prime Check", desc: "Check if number is prime", diff: "medium", code: "#include <iostream>\\n#include <cmath>\\nusing namespace std;\\nint main() { int n; cin >> n; bool p=true; for(int i=2;i<=sqrt(n);i++) if(n%i==0) p=false; cout << (p ? \\"Prime\\" : \\"Not Prime\\"); return 0; }" },
-                { title: "Fibonacci Series", desc: "Print first N Fibonacci numbers", diff: "medium", code: "#include <iostream>\\nusing namespace std;\\nint main() { int n; cin >> n; int a=0,b=1; for(int i=0;i<n;i++){ cout << a << \\" \\"; int t=a+b; a=b; b=t; } return 0; }" },
-                { title: "Palindrome String", desc: "Check if string is palindrome", diff: "medium", code: "#include <iostream>\\n#include <algorithm>\\nusing namespace std;\\nint main() { string s; cin >> s; string r=s; reverse(r.begin(),r.end()); cout << (s==r ? \\"Palindrome\\" : \\"Not\\"); return 0; }" },
-                { title: "Reverse Array", desc: "Reverse an array", diff: "medium", code: "#include <iostream>\\nusing namespace std;\\nint main() { int n; cin >> n; int a[n]; for(int i=0;i<n;i++) cin >> a[i]; for(int i=n-1;i>=0;i--) cout << a[i] << \\" \\"; return 0; }" },
-                { title: "Binary Search", desc: "Implement binary search", diff: "hard", code: "#include <iostream>\\nusing namespace std;\\nint bs(int a[], int l, int r, int x) { while(l<=r){ int m=(l+r)/2; if(a[m]==x) return m; else if(a[m]<x) l=m+1; else r=m-1; } return -1; }\\nint main() { int n; cin >> n; int a[n]; for(int i=0;i<n;i++) cin >> a[i]; int x; cin >> x; cout << bs(a,0,n-1,x); return 0; }" },
-                { title: "Merge Sort", desc: "Implement merge sort", diff: "hard", code: "#include <iostream>\\nusing namespace std;\\nvoid merge(int a[], int l, int m, int r) { int n1=m-l+1, n2=r-m; int L[n1], R[n2]; for(int i=0;i<n1;i++) L[i]=a[l+i]; for(int j=0;j<n2;j++) R[j]=a[m+1+j]; int i=0,j=0,k=l; while(i<n1 && j<n2) a[k++]=(L[i]<=R[j])?L[i++]:R[j++]; while(i<n1) a[k++]=L[i++]; while(j<n2) a[k++]=R[j++]; }\\nvoid ms(int a[], int l, int r) { if(l<r){ int m=(l+r)/2; ms(a,l,m); ms(a,m+1,r); merge(a,l,m,r); } }\\nint main() { int n; cin >> n; int a[n]; for(int i=0;i<n;i++) cin >> a[i]; ms(a,0,n-1); for(int i=0;i<n;i++) cout << a[i] << \\" \\"; return 0; }" },
-                { title: "Longest Common Subsequence", desc: "Find LCS of two strings", diff: "veryhard", code: "#include <iostream>\\n#include <string>\\nusing namespace std;\\nint lcs(string X, string Y, int m, int n) { int L[m+1][n+1]; for(int i=0;i<=m;i++) for(int j=0;j<=n;j++) { if(i==0 || j==0) L[i][j]=0; else if(X[i-1]==Y[j-1]) L[i][j]=L[i-1][j-1]+1; else L[i][j]=max(L[i-1][j],L[i][j-1]); } return L[m][n]; }\\nint main() { string X,Y; cin >> X >> Y; cout << lcs(X,Y,X.length(),Y.length()); return 0; }" },
-                { title: "N-Queens", desc: "Solve N-Queens problem", diff: "veryhard", code: "#include <iostream>\\n#include <vector>\\nusing namespace std;\\nbool isSafe(vector<vector<int>>& b, int r, int c, int n) { for(int i=0;i<c;i++) if(b[r][i]) return false; for(int i=r,j=c;i>=0 && j>=0;i--,j--) if(b[i][j]) return false; for(int i=r,j=c;i<n && j>=0;i++,j--) if(b[i][j]) return false; return true; }\\nbool solve(vector<vector<int>>& b, int c, int n) { if(c>=n) return true; for(int i=0;i<n;i++) { if(isSafe(b,i,c,n)) { b[i][c]=1; if(solve(b,c+1,n)) return true; b[i][c]=0; } } return false; }\\nint main() { int n; cin >> n; vector<vector<int>> b(n,vector<int>(n,0)); if(solve(b,0,n)) for(auto& r:b){ for(int x:r) cout << x << \\" \\"; cout << \\"\\n\\"; } return 0; }" }
-            ],
-            javascript: [
-                { title: "Hello World", desc: "Print Hello World", diff: "easy", code: "console.log('Hello, World!');" },
-                { title: "Sum Two Numbers", desc: "Sum of two numbers", diff: "easy", code: "const a = parseInt(prompt());\\nconst b = parseInt(prompt());\\nconsole.log(a + b);" },
-                { title: "Even or Odd", desc: "Check even or odd", diff: "easy", code: "const n = parseInt(prompt());\\nconsole.log(n % 2 === 0 ? 'Even' : 'Odd');" },
-                { title: "Factorial", desc: "Calculate factorial", diff: "easy", code: "const n = parseInt(prompt());\\nlet f = 1;\\nfor(let i=1; i<=n; i++) f *= i;\\nconsole.log(f);" },
-                { title: "Prime Check", desc: "Check if prime", diff: "medium", code: "const n = parseInt(prompt());\\nlet p = n > 1;\\nfor(let i=2; i<=Math.sqrt(n); i++) if(n%i===0) p = false;\\nconsole.log(p ? 'Prime' : 'Not Prime');" },
-                { title: "Fibonacci", desc: "Print N Fibonacci numbers", diff: "medium", code: "const n = parseInt(prompt());\\nlet a=0, b=1;\\nfor(let i=0; i<n; i++){ console.log(a); [a,b]=[b,a+b]; }" },
-                { title: "Palindrome", desc: "Check palindrome", diff: "medium", code: "const s = prompt().toLowerCase();\\nconsole.log(s === s.split('').reverse().join('') ? 'Palindrome' : 'Not');" },
-                { title: "Reverse Array", desc: "Reverse array", diff: "medium", code: "const arr = prompt().split(' ').map(Number);\\nconsole.log(arr.reverse().join(' '));" },
-                { title: "Binary Search", desc: "Binary search implementation", diff: "hard", code: "function bs(arr, x) { let l=0, r=arr.length-1; while(l<=r){ let m=Math.floor((l+r)/2); if(arr[m]===x) return m; else if(arr[m]<x) l=m+1; else r=m-1; } return -1; }\\nconst arr = prompt().split(' ').map(Number);\\nconst x = parseInt(prompt());\\nconsole.log(bs(arr, x));" },
-                { title: "Merge Sort", desc: "Merge sort implementation", diff: "hard", code: "function merge(l, r) { const res=[]; let i=0,j=0; while(i<l.length && j<r.length) res.push(l[i]<r[j]?l[i++]:r[j++]); return res.concat(l.slice(i), r.slice(j)); }\\nfunction ms(arr) { if(arr.length<=1) return arr; const m=Math.floor(arr.length/2); return merge(ms(arr.slice(0,m)), ms(arr.slice(m))); }\\nconst arr = prompt().split(' ').map(Number);\\nconsole.log(ms(arr).join(' '));" },
-                { title: "Quick Sort", desc: "Quick sort implementation", diff: "veryhard", code: "function qs(arr) { if(arr.length<=1) return arr; const p=arr[0]; const l=arr.slice(1).filter(x=>x<=p); const r=arr.slice(1).filter(x=>x>p); return [...qs(l), p, ...qs(r)]; }\\nconst arr = prompt().split(' ').map(Number);\\nconsole.log(qs(arr).join(' '));" },
-                { title: "Debounce Function", desc: "Implement debounce", diff: "veryhard", code: "function debounce(fn, delay) { let timer; return function(...args) { clearTimeout(timer); timer = setTimeout(() => fn.apply(this, args), delay); }; }\\nconst log = debounce(() => console.log('Debounced!'), 1000);\\nlog(); log(); log(); // Only logs once after 1s" }
-            ],
-            java: [
-                { title: "Hello World", desc: "Print Hello World", diff: "easy", code: "public class Main { public static void main(String[] args) { System.out.println(\\"Hello, World!\\"); } }" },
-                { title: "Sum Two Numbers", desc: "Sum of two numbers", diff: "easy", code: "import java.util.Scanner;\\npublic class Main { public static void main(String[] args) { Scanner sc = new Scanner(System.in); int a = sc.nextInt(), b = sc.nextInt(); System.out.println(a+b); } }" },
-                { title: "Even or Odd", desc: "Check even or odd", diff: "easy", code: "import java.util.Scanner;\\npublic class Main { public static void main(String[] args) { Scanner sc = new Scanner(System.in); int n = sc.nextInt(); System.out.println(n%2==0 ? \\"Even\\" : \\"Odd\\"); } }" },
-                { title: "Factorial", desc: "Calculate factorial", diff: "easy", code: "import java.util.Scanner;\\npublic class Main { public static void main(String[] args) { Scanner sc = new Scanner(System.in); int n = sc.nextInt(); long f=1; for(int i=1;i<=n;i++) f*=i; System.out.println(f); } }" },
-                { title: "Prime Check", desc: "Check if prime", diff: "medium", code: "import java.util.Scanner;\\npublic class Main { public static void main(String[] args) { Scanner sc = new Scanner(System.in); int n = sc.nextInt(); boolean p = n>1; for(int i=2;i<=Math.sqrt(n);i++) if(n%i==0) p=false; System.out.println(p ? \\"Prime\\" : \\"Not Prime\\"); } }" },
-                { title: "Fibonacci", desc: "Print N Fibonacci", diff: "medium", code: "import java.util.Scanner;\\npublic class Main { public static void main(String[] args) { Scanner sc = new Scanner(System.in); int n = sc.nextInt(); int a=0,b=1; for(int i=0;i<n;i++){ System.out.print(a+\\" \\"); int t=a+b; a=b; b=t; } } }" },
-                { title: "Palindrome", desc: "Check palindrome", diff: "medium", code: "import java.util.Scanner;\\npublic class Main { public static void main(String[] args) { Scanner sc = new Scanner(System.in); String s = sc.next(); String r = new StringBuilder(s).reverse().toString(); System.out.println(s.equals(r) ? \\"Palindrome\\" : \\"Not\\"); } }" },
-                { title: "Reverse Array", desc: "Reverse array", diff: "medium", code: "import java.util.Scanner;\\npublic class Main { public static void main(String[] args) { Scanner sc = new Scanner(System.in); int n = sc.nextInt(); int[] a = new int[n]; for(int i=0;i<n;i++) a[i]=sc.nextInt(); for(int i=n-1;i>=0;i--) System.out.print(a[i]+\\" \\"); } }" },
-                { title: "Binary Search", desc: "Binary search", diff: "hard", code: "import java.util.Scanner;\\npublic class Main { static int bs(int[] a, int l, int r, int x) { while(l<=r){ int m=(l+r)/2; if(a[m]==x) return m; else if(a[m]<x) l=m+1; else r=m-1; } return -1; } public static void main(String[] args) { Scanner sc = new Scanner(System.in); int n = sc.nextInt(); int[] a = new int[n]; for(int i=0;i<n;i++) a[i]=sc.nextInt(); int x = sc.nextInt(); System.out.println(bs(a,0,n-1,x)); } }" },
-                { title: "Merge Sort", desc: "Merge sort", diff: "hard", code: "import java.util.Scanner;\\npublic class Main { static void merge(int[] a, int l, int m, int r) { int n1=m-l+1, n2=r-m; int[] L=new int[n1], R=new int[n2]; for(int i=0;i<n1;i++) L[i]=a[l+i]; for(int j=0;j<n2;j++) R[j]=a[m+1+j]; int i=0,j=0,k=l; while(i<n1 && j<n2) a[k++]=(L[i]<=R[j])?L[i++]:R[j++]; while(i<n1) a[k++]=L[i++]; while(j<n2) a[k++]=R[j++]; } static void ms(int[] a, int l, int r) { if(l<r){ int m=(l+r)/2; ms(a,l,m); ms(a,m+1,r); merge(a,l,m,r); } } public static void main(String[] args) { Scanner sc = new Scanner(System.in); int n = sc.nextInt(); int[] a = new int[n]; for(int i=0;i<n;i++) a[i]=sc.nextInt(); ms(a,0,n-1); for(int x:a) System.out.print(x+\\" \\"); } }" },
-                { title: "LCS", desc: "Longest Common Subsequence", diff: "veryhard", code: "import java.util.Scanner;\\npublic class Main { static int lcs(String X, String Y, int m, int n) { int[][] L = new int[m+1][n+1]; for(int i=0;i<=m;i++) for(int j=0;j<=n;j++) { if(i==0 || j==0) L[i][j]=0; else if(X.charAt(i-1)==Y.charAt(j-1)) L[i][j]=L[i-1][j-1]+1; else L[i][j]=Math.max(L[i-1][j],L[i][j-1]); } return L[m][n]; } public static void main(String[] args) { Scanner sc = new Scanner(System.in); String X = sc.next(), Y = sc.next(); System.out.println(lcs(X,Y,X.length(),Y.length())); } }" },
-                { title: "N-Queens", desc: "N-Queens problem", diff: "veryhard", code: "import java.util.Scanner;\\npublic class Main { static boolean isSafe(int[][] b, int r, int c, int n) { for(int i=0;i<c;i++) if(b[r][i]==1) return false; for(int i=r,j=c;i>=0&&j>=0;i--,j--) if(b[i][j]==1) return false; for(int i=r,j=c;i<n&&j>=0;i++,j--) if(b[i][j]==1) return false; return true; } static boolean solve(int[][] b, int c, int n) { if(c>=n) return true; for(int i=0;i<n;i++) { if(isSafe(b,i,c,n)) { b[i][c]=1; if(solve(b,c+1,n)) return true; b[i][c]=0; } } return false; } public static void main(String[] args) { Scanner sc = new Scanner(System.in); int n = sc.nextInt(); int[][] b = new int[n][n]; if(solve(b,0,n)) for(int[] r:b){ for(int x:r) System.out.print(x+\\" \\"); System.out.println(); } } }" }
-            ],
-            csharp: [
-                { title: "Hello World", desc: "Print Hello World", diff: "easy", code: "using System;\\nclass Program { static void Main() { Console.WriteLine(\\"Hello, World!\\"); } }" },
-                { title: "Sum Two Numbers", desc: "Sum of two numbers", diff: "easy", code: "using System;\\nclass Program { static void Main() { int a = int.Parse(Console.ReadLine()), b = int.Parse(Console.ReadLine()); Console.WriteLine(a+b); } }" },
-                { title: "Even or Odd", desc: "Check even or odd", diff: "easy", code: "using System;\\nclass Program { static void Main() { int n = int.Parse(Console.ReadLine()); Console.WriteLine(n%2==0 ? \\"Even\\" : \\"Odd\\"); } }" },
-                { title: "Factorial", desc: "Calculate factorial", diff: "easy", code: "using System;\\nclass Program { static void Main() { int n = int.Parse(Console.ReadLine()); long f=1; for(int i=1;i<=n;i++) f*=i; Console.WriteLine(f); } }" },
-                { title: "Prime Check", desc: "Check if prime", diff: "medium", code: "using System;\\nclass Program { static void Main() { int n = int.Parse(Console.ReadLine()); bool p = n>1; for(int i=2;i<=Math.Sqrt(n);i++) if(n%i==0) p=false; Console.WriteLine(p ? \\"Prime\\" : \\"Not Prime\\"); } }" },
-                { title: "Fibonacci", desc: "Print N Fibonacci", diff: "medium", code: "using System;\\nclass Program { static void Main() { int n = int.Parse(Console.ReadLine()); int a=0,b=1; for(int i=0;i<n;i++){ Console.Write(a+\\" \\"); int t=a+b; a=b; b=t; } } }" },
-                { title: "Palindrome", desc: "Check palindrome", diff: "medium", code: "using System;\\nclass Program { static void Main() { string s = Console.ReadLine(); char[] arr = s.ToCharArray(); Array.Reverse(arr); Console.WriteLine(s == new string(arr) ? \\"Palindrome\\" : \\"Not\\"); } }" },
-                { title: "Reverse Array", desc: "Reverse array", diff: "medium", code: "using System;\\nclass Program { static void Main() { int n = int.Parse(Console.ReadLine()); int[] a = new int[n]; for(int i=0;i<n;i++) a[i]=int.Parse(Console.ReadLine()); Array.Reverse(a); foreach(int x in a) Console.Write(x+\\" \\"); } }" },
-                { title: "Binary Search", desc: "Binary search", diff: "hard", code: "using System;\\nclass Program { static int Bs(int[] a, int l, int r, int x) { while(l<=r){ int m=(l+r)/2; if(a[m]==x) return m; else if(a[m]<x) l=m+1; else r=m-1; } return -1; } static void Main() { int n = int.Parse(Console.ReadLine()); int[] a = new int[n]; for(int i=0;i<n;i++) a[i]=int.Parse(Console.ReadLine()); int x = int.Parse(Console.ReadLine()); Console.WriteLine(Bs(a,0,n-1,x)); } }" },
-                { title: "Merge Sort", desc: "Merge sort", diff: "hard", code: "using System;\\nclass Program { static void Merge(int[] a, int l, int m, int r) { int n1=m-l+1, n2=r-m; int[] L=new int[n1], R=new int[n2]; for(int i=0;i<n1;i++) L[i]=a[l+i]; for(int j=0;j<n2;j++) R[j]=a[m+1+j]; int i=0,j=0,k=l; while(i<n1 && j<n2) a[k++]=(L[i]<=R[j])?L[i++]:R[j++]; while(i<n1) a[k++]=L[i++]; while(j<n2) a[k++]=R[j++]; } static void Ms(int[] a, int l, int r) { if(l<r){ int m=(l+r)/2; Ms(a,l,m); Ms(a,m+1,r); Merge(a,l,m,r); } } static void Main() { int n = int.Parse(Console.ReadLine()); int[] a = new int[n]; for(int i=0;i<n;i++) a[i]=int.Parse(Console.ReadLine()); Ms(a,0,n-1); foreach(int x in a) Console.Write(x+\\" \\"); } }" },
-                { title: "LIS", desc: "Longest Increasing Subsequence", diff: "veryhard", code: "using System;\\nclass Program { static int LIS(int[] a, int n) { int[] dp = new int[n]; int len = 0; foreach(int x in a) { int i = Array.BinarySearch(dp, 0, len, x); if(i<0) i = -(i+1); dp[i] = x; if(i==len) len++; } return len; } static void Main() { int n = int.Parse(Console.ReadLine()); int[] a = new int[n]; for(int i=0;i<n;i++) a[i]=int.Parse(Console.ReadLine()); Console.WriteLine(LIS(a,n)); } }" },
-                { title: "Trie", desc: "Implement Trie data structure", diff: "veryhard", code: "using System;\\nusing System.Collections.Generic;\\nclass TrieNode { public Dictionary<char, TrieNode> children = new Dictionary<char, TrieNode>(); public bool isEnd = false; }\\nclass Trie { TrieNode root = new TrieNode(); public void Insert(string word) { TrieNode curr = root; foreach(char c in word) { if(!curr.children.ContainsKey(c)) curr.children[c]=new TrieNode(); curr = curr.children[c]; } curr.isEnd = true; } public bool Search(string word) { TrieNode curr = root; foreach(char c in word) { if(!curr.children.ContainsKey(c)) return false; curr = curr.children[c]; } return curr.isEnd; } }\\nclass Program { static void Main() { Trie t = new Trie(); t.Insert(\\"hello\\"); Console.WriteLine(t.Search(\\"hello\\")); Console.WriteLine(t.Search(\\"hell\\")); } }" }
-            ],
-            php: [
-                { title: "Hello World", desc: "Print Hello World", diff: "easy", code: "<?php\\necho \\"Hello, World!\\";\\n?>" },
-                { title: "Sum Two Numbers", desc: "Sum via form or input", diff: "easy", code: "<?php\\n$a = 5; $b = 10;\\necho $a + $b;\\n?>" },
-                { title: "Even or Odd", desc: "Check even or odd", diff: "easy", code: "<?php\\n$n = 7;\\necho ($n % 2 == 0) ? \\"Even\\" : \\"Odd\\";\\n?>" },
-                { title: "Factorial", desc: "Calculate factorial", diff: "easy", code: "<?php\\n$n = 5; $f = 1;\\nfor($i=1; $i<=$n; $i++) $f *= $i;\\necho $f;\\n?>" },
-                { title: "Prime Check", desc: "Check if prime", diff: "medium", code: "<?php\\n$n = 17; $p = $n > 1;\\nfor($i=2; $i<=sqrt($n); $i++) if($n%$i==0) $p = false;\\necho $p ? \\"Prime\\" : \\"Not Prime\\";\\n?>" },
-                { title: "Fibonacci", desc: "Print N Fibonacci", diff: "medium", code: "<?php\\n$n = 10; $a=0; $b=1;\\nfor($i=0; $i<$n; $i++){ echo $a . \\" \\"; $t=$a+$b; $a=$b; $b=$t; }\\n?>" },
-                { title: "Palindrome", desc: "Check palindrome", diff: "medium", code: "<?php\\n$s = \\"madam\\";\\necho ($s == strrev($s)) ? \\"Palindrome\\" : \\"Not\\";\\n?>" },
-                { title: "Reverse Array", desc: "Reverse array", diff: "medium", code: "<?php\\n$arr = [1,2,3,4,5];\\nprint_r(array_reverse($arr));\\n?>" },
-                { title: "Binary Search", desc: "Binary search", diff: "hard", code: "<?php\\nfunction bs($a, $l, $r, $x) { while($l<=$r){ $m=floor(($l+$r)/2); if($a[$m]==$x) return $m; else if($a[$m]<$x) $l=$m+1; else $r=$m-1; } return -1; }\\n$arr = [1,3,5,7,9];\\necho bs($arr, 0, count($arr)-1, 5);\\n?>" },
-                { title: "Merge Sort", desc: "Merge sort", diff: "hard", code: "<?php\\nfunction merge($l, $r) { $res=[]; $i=$j=0; while($i<count($l) && $j<count($r)) $res[]=$l[$i]<$r[$j]?$l[$i++]:$r[$j++]; return array_merge($res, array_slice($l,$i), array_slice($r,$j)); }\\nfunction ms($arr) { if(count($arr)<=1) return $arr; $m=floor(count($arr)/2); return merge(ms(array_slice($arr,0,$m)), ms(array_slice($arr,$m))); }\\nprint_r(ms([3,1,4,1,5,9,2,6]));\\n?>" },
-                { title: "LCS", desc: "Longest Common Subsequence", diff: "veryhard", code: "<?php\\nfunction lcs($X, $Y, $m, $n) { $L = array_fill(0, $m+1, array_fill(0, $n+1, 0)); for($i=1; $i<=$m; $i++) for($j=1; $j<=$n; $j++) { if($X[$i-1]==$Y[$j-1]) $L[$i][$j]=$L[$i-1][$j-1]+1; else $L[$i][$j]=max($L[$i-1][$j],$L[$i][$j-1]); } return $L[$m][$n]; }\\necho lcs(\\"AGGTAB\\", \\"GXTXAYB\\", 6, 7);\\n?>" },
-                { title: "API Fetch", desc: "Fetch data from API", diff: "veryhard", code: "<?php\\n$url = \\"https://api.github.com/users/github\\";\\n$ch = curl_init($url);\\ncurl_setopt($ch, CURLOPT_RETURNTRANSFER, true);\\ncurl_setopt($ch, CURLOPT_USERAGENT, 'PHP');\\n$response = curl_exec($ch);\\ncurl_close($ch);\\n$data = json_decode($response, true);\\necho \\"Login: \\" . $data['login'] . \\"\\n\\";\\necho \\"ID: \\" . $data['id'];\\n?>" }
-            ],
-            kotlin: [
-                { title: "Hello World", desc: "Print Hello World", diff: "easy", code: "fun main() {\\n    println(\\"Hello, World!\\")\\n}" },
-                { title: "Sum Two Numbers", desc: "Sum of two numbers", diff: "easy", code: "fun main() {\\n    val a = readLine()!!.toInt()\\n    val b = readLine()!!.toInt()\\n    println(a + b)\\n}" },
-                { title: "Even or Odd", desc: "Check even or odd", diff: "easy", code: "fun main() {\\n    val n = readLine()!!.toInt()\\n    println(if (n % 2 == 0) \\"Even\\" else \\"Odd\\")\\n}" },
-                { title: "Factorial", desc: "Calculate factorial", diff: "easy", code: "fun main() {\\n    val n = readLine()!!.toInt()\\n    var f = 1L\\n    for (i in 1..n) f *= i\\n    println(f)\\n}" },
-                { title: "Prime Check", desc: "Check if prime", diff: "medium", code: "fun main() {\\n    val n = readLine()!!.toInt()\\n    var p = n > 1\\n    for (i in 2..Math.sqrt(n.toDouble()).toInt()) if (n % i == 0) p = false\\n    println(if (p) \\"Prime\\" else \\"Not Prime\\")\\n}" },
-                { title: "Fibonacci", desc: "Print N Fibonacci", diff: "medium", code: "fun main() {\\n    val n = readLine()!!.toInt()\\n    var a = 0; var b = 1\\n    repeat(n) { print(\\"$a \\"); val t = a + b; a = b; b = t }\\n}" },
-                { title: "Palindrome", desc: "Check palindrome", diff: "medium", code: "fun main() {\\n    val s = readLine()!!.lowercase()\\n    println(if (s == s.reversed()) \\"Palindrome\\" else \\"Not\\")\\n}" },
-                { title: "Reverse List", desc: "Reverse list", diff: "medium", code: "fun main() {\\n    val arr = readLine()!!.split(\\" \\").map { it.toInt() }\\n    println(arr.reversed().joinToString(\\" \\"))\\n}" },
-                { title: "Binary Search", desc: "Binary search", diff: "hard", code: "fun bs(arr: IntArray, l: Int, r: Int, x: Int): Int {\\n    var left = l; var right = r\\n    while (left <= right) {\\n        val m = (left + right) / 2\\n        if (arr[m] == x) return m\\n        else if (arr[m] < x) left = m + 1\\n        else right = m - 1\\n    }\\n    return -1\\n}\\nfun main() {\\n    val arr = readLine()!!.split(\\" \\").map { it.toInt() }.toIntArray()\\n    val x = readLine()!!.toInt()\\n    println(bs(arr, 0, arr.size - 1, x))\\n}" },
-                { title: "Merge Sort", desc: "Merge sort", diff: "hard", code: "fun merge(arr: MutableList<Int>, l: Int, m: Int, r: Int) {\\n    val L = arr.subList(l, m + 1).toMutableList()\\n    val R = arr.subList(m + 1, r + 1).toMutableList()\\n    var i = 0; var j = 0; var k = l\\n    while (i < L.size && j < R.size) arr[k++] = if (L[i] <= R[j]) L[i++] else R[j++]\\n    while (i < L.size) arr[k++] = L[i++]\\n    while (j < R.size) arr[k++] = R[j++]\\n}\\nfun ms(arr: MutableList<Int>, l: Int, r: Int) {\\n    if (l < r) {\\n        val m = (l + r) / 2\\n        ms(arr, l, m); ms(arr, m + 1, r); merge(arr, l, m, r)\\n    }\\n}\\nfun main() {\\n    val arr = readLine()!!.split(\\" \\").map { it.toInt() }.toMutableList()\\n    ms(arr, 0, arr.size - 1)\\n    println(arr.joinToString(\\" \\"))\\n}" },
-                { title: "Quick Sort", desc: "Quick sort", diff: "veryhard", code: "fun qs(arr: MutableList<Int>): List<Int> {\\n    if (arr.size <= 1) return arr\\n    val p = arr[0]\\n    val l = arr.drop(1).filter { it <= p }.toMutableList()\\n    val r = arr.drop(1).filter { it > p }.toMutableList()\\n    return qs(l) + p + qs(r)\\n}\\nfun main() {\\n    val arr = readLine()!!.split(\\" \\").map { it.toInt() }.toMutableList()\\n    println(qs(arr).joinToString(\\" \\"))\\n}" },
-                { title: "Coroutines", desc: "Basic coroutine example", diff: "veryhard", code: "import kotlinx.coroutines.*\\nfun main() = runBlocking {\\n    launch {\\n        delay(1000L)\\n        println(\\"World!\\")\\n    }\\n    println(\\"Hello,\\")\\n    delay(2000L)\\n}" }
-            ],
-            go: [
-                { title: "Hello World", desc: "Print Hello World", diff: "easy", code: "package main\\nimport \\"fmt\\"\\nfunc main() { fmt.Println(\\"Hello, World!\\") }" },
-                { title: "Sum Two Numbers", desc: "Sum of two numbers", diff: "easy", code: "package main\\nimport \\"fmt\\"\\nfunc main() { var a, b int; fmt.Scan(&a, &b); fmt.Println(a+b) }" },
-                { title: "Even or Odd", desc: "Check even or odd", diff: "easy", code: "package main\\nimport \\"fmt\\"\\nfunc main() { var n int; fmt.Scan(&n); if n%2==0 { fmt.Println(\\"Even\\") } else { fmt.Println(\\"Odd\\") } }" },
-                { title: "Factorial", desc: "Calculate factorial", diff: "easy", code: "package main\\nimport \\"fmt\\"\\nfunc main() { var n int; fmt.Scan(&n); f:=1; for i:=1; i<=n; i++ { f*=i }; fmt.Println(f) }" },
-                { title: "Prime Check", desc: "Check if prime", diff: "medium", code: "package main\\nimport (\\"fmt\\"; \\"math\\")\\nfunc main() { var n int; fmt.Scan(&n); p:=n>1; for i:=2; i<=int(math.Sqrt(float64(n))); i++ { if n%i==0 { p=false } }; fmt.Println(p) }" },
-                { title: "Fibonacci", desc: "Print N Fibonacci", diff: "medium", code: "package main\\nimport \\"fmt\\"\\nfunc main() { var n int; fmt.Scan(&n); a,b:=0,1; for i:=0; i<n; i++ { fmt.Printf(\\"%d \\", a); a,b=b,a+b } }" },
-                { title: "Palindrome", desc: "Check palindrome", diff: "medium", code: "package main\\nimport (\\"fmt\\"; \\"strings\\")\\nfunc main() { var s string; fmt.Scan(&s); s=strings.ToLower(s); r:=\\"\\"; for i:=len(s)-1; i>=0; i-- { r+=string(s[i]) }; fmt.Println(s==r) }" },
-                { title: "Reverse Slice", desc: "Reverse slice", diff: "medium", code: "package main\\nimport \\"fmt\\"\\nfunc main() { arr:=[]int{1,2,3,4,5}; for i:=len(arr)-1; i>=0; i-- { fmt.Printf(\\"%d \\", arr[i]) } }" },
-                { title: "Binary Search", desc: "Binary search", diff: "hard", code: "package main\\nimport \\"fmt\\"\\nfunc bs(a []int, l, r, x int) int { for l<=r { m:=(l+r)/2; if a[m]==x { return m } else if a[m]<x { l=m+1 } else { r=m-1 } }; return -1 }\\nfunc main() { a:=[]int{1,3,5,7,9}; fmt.Println(bs(a,0,len(a)-1,5)) }" },
-                { title: "Merge Sort", desc: "Merge sort", diff: "hard", code: "package main\\nimport \\"fmt\\"\\nfunc merge(l, r []int) []int { res:=[]int{}; i,j:=0,0; for i<len(l) && j<len(r) { if l[i]<r[j] { res=append(res,l[i]); i++ } else { res=append(res,r[j]); j++ } }; res=append(res,l[i:]...); res=append(res,r[j:]...); return res }\\nfunc ms(a []int) []int { if len(a)<=1 { return a }; m:=len(a)/2; return merge(ms(a[:m]), ms(a[m:])) }\\nfunc main() { fmt.Println(ms([]int{3,1,4,1,5,9,2,6})) }" },
-                { title: "Goroutines", desc: "Basic goroutine example", diff: "veryhard", code: "package main\\nimport (\\"fmt\\"; \\"time\\")\\nfunc say(s string) { for i:=0; i<5; i++ { time.Sleep(100*time.Millisecond); fmt.Println(s) } }\\nfunc main() { go say(\\"world\\"); say(\\"hello\\") }" },
-                { title: "Channels", desc: "Channel example", diff: "veryhard", code: "package main\\nimport \\"fmt\\"\\nfunc sum(a []int, c chan int) { s:=0; for _,v:=range a { s+=v }; c <- s }\\nfunc main() { a:=[]int{7,2,8,-9,4,0}; c:=make(chan int); go sum(a[:len(a)/2], c); go sum(a[len(a)/2:], c); x,y:=<-c,<-c; fmt.Println(x,y,x+y) }" }
-            ],
-            rust: [
-                { title: "Hello World", desc: "Print Hello World", diff: "easy", code: "fn main() {\\n    println!(\\"Hello, World!\\");\\n}" },
-                { title: "Sum Two Numbers", desc: "Sum of two numbers", diff: "easy", code: "use std::io;\\nfn main() {\\n    let mut a = String::new(); io::stdin().read_line(&mut a).unwrap();\\n    let mut b = String::new(); io::stdin().read_line(&mut b).unwrap();\\n    let a: i32 = a.trim().parse().unwrap();\\n    let b: i32 = b.trim().parse().unwrap();\\n    println!(\\"{}\\", a + b);\\n}" },
-                { title: "Even or Odd", desc: "Check even or odd", diff: "easy", code: "fn main() {\\n    let n = 7;\\n    println!(\\"{}\\", if n % 2 == 0 { \\"Even\\" } else { \\"Odd\\" });\\n}" },
-                { title: "Factorial", desc: "Calculate factorial", diff: "easy", code: "fn fact(n: u64) -> u64 {\\n    if n <= 1 { 1 } else { n * fact(n - 1) }\\n}\\nfn main() {\\n    println!(\\"{}\\", fact(5));\\n}" },
-                { title: "Prime Check", desc: "Check if prime", diff: "medium", code: "fn is_prime(n: u64) -> bool {\\n    if n <= 1 { return false; }\\n    for i in 2..=((n as f64).sqrt() as u64) {\\n        if n % i == 0 { return false; }\\n    }\\n    true\\n}\\nfn main() {\\n    println!(\\"{}\\", is_prime(17));\\n}" },
-                { title: "Fibonacci", desc: "Print N Fibonacci", diff: "medium", code: "fn main() {\\n    let n = 10;\\n    let mut a = 0; let mut b = 1;\\n    for _ in 0..n {\\n        print!(\\"{} \\", a);\\n        let t = a + b;\\n        a = b;\\n        b = t;\\n    }\\n}" },
-                { title: "Palindrome", desc: "Check palindrome", diff: "medium", code: "fn main() {\\n    let s = \\"madam\\";\\n    let r: String = s.chars().rev().collect();\\n    println!(\\"{}\\", s == r);\\n}" },
-                { title: "Reverse Vector", desc: "Reverse vector", diff: "medium", code: "fn main() {\\n    let mut v = vec![1, 2, 3, 4, 5];\\n    v.reverse();\\n    println!(\\"{:?}\\", v);\\n}" },
-                { title: "Binary Search", desc: "Binary search", diff: "hard", code: "fn bs(arr: &[i32], mut l: usize, mut r: usize, x: i32) -> i32 {\\n    while l <= r {\\n        let m = (l + r) / 2;\\n        if arr[m] == x { return m as i32; }\\n        else if arr[m] < x { l = m + 1; }\\n        else if m == 0 { break; } else { r = m - 1; }\\n    }\\n    -1\\n}\\nfn main() {\\n    let arr = [1, 3, 5, 7, 9];\\n    println!(\\"{}\\", bs(&arr, 0, arr.len()-1, 5));\\n}" },
-                { title: "Merge Sort", desc: "Merge sort", diff: "hard", code: "fn merge(left: Vec<i32>, right: Vec<i32>) -> Vec<i32> {\\n    let mut res = Vec::new();\\n    let (mut i, mut j) = (0, 0);\\n    while i < left.len() && j < right.len() {\\n        if left[i] < right[j] { res.push(left[i]); i += 1; }\\n        else { res.push(right[j]); j += 1; }\\n    }\\n    res.extend_from_slice(&left[i..]);\\n    res.extend_from_slice(&right[j..]);\\n    res\\n}\\nfn ms(arr: Vec<i32>) -> Vec<i32> {\\n    if arr.len() <= 1 { return arr; }\\n    let m = arr.len() / 2;\\n    merge(ms(arr[..m].to_vec()), ms(arr[m..].to_vec()))\\n}\\nfn main() {\\n    println!(\\"{:?}\\", ms(vec![3,1,4,1,5,9,2,6]));\\n}" },
-                { title: "Ownership", desc: "Ownership example", diff: "veryhard", code: "fn main() {\\n    let s1 = String::from(\\"hello\\");\\n    let len = calculate_length(&s1);\\n    println!(\\"The length of '{}' is {}.\\", s1, len);\\n}\\nfn calculate_length(s: &String) -> usize {\\n    s.len()\\n}" },
-                { title: "Threads", desc: "Multi-threading example", diff: "veryhard", code: "use std::thread;\\nfn main() {\\n    let mut handles = vec![];\\n    for i in 0..5 {\\n        handles.push(thread::spawn(move || {\\n            println!(\\"Thread {}\\", i);\\n        }));\\n    }\\n    for h in handles { h.join().unwrap(); }\\n}" }
-            ]
-        };
-
-        function getDailySeed() {
-            const now = new Date();
-            return now.getFullYear() * 10000 + (now.getMonth() + 1) * 100 + now.getDate();
-        }
-
-        function seededRandom(seed) {
-            let x = Math.sin(seed++) * 10000;
-            return x - Math.floor(x);
-        }
-
-        function shuffleArray(array, seed) {
-            const arr = [...array];
-            for (let i = arr.length - 1; i > 0; i--) {
-                const j = Math.floor(seededRandom(seed + i) * (i + 1));
-                [arr[i], arr[j]] = [arr[j], arr[i]];
-            }
-            return arr;
-        }
-
-        function getTodaysChallenges(lang) {
-            const all = dailyChallenges[lang] || dailyChallenges['python'];
-            const seed = getDailySeed();
-            const shuffled = shuffleArray(all, seed);
-            return shuffled.slice(0, 10);
-        }
-
-        let currentChallengeLang = 'python';
-        
-        function loadChallenges(lang, clickedBtn) {
-            currentChallengeLang = lang;
-            document.querySelectorAll('#daily-challenges .lang-btn').forEach(b => b.classList.remove('active'));
-            if(clickedBtn) clickedBtn.classList.add('active');
-            
-            const challenges = getTodaysChallenges(lang);
-            const grid = document.getElementById('challengesGrid');
-            grid.innerHTML = '';
-            
-            challenges.forEach((ch, idx) => {
-                const diffClass = 'diff-' + ch.diff;
-                const diffText = ch.diff === 'veryhard' ? 'Very Hard' : ch.diff.charAt(0).toUpperCase() + ch.diff.slice(1);
-                
-                const card = document.createElement('div');
-                card.className = 'challenge-card';
-                card.innerHTML = `
-                    <span class="challenge-difficulty ${diffClass}">${diffText}</span>
-                    <div class="challenge-title">${idx + 1}. ${ch.title}</div>
-                    <div class="challenge-desc">${ch.desc}</div>
-                    <div class="challenge-actions">
-                        <button class="challenge-btn challenge-btn-solve" onclick="solveChallenge('${lang}', ${idx})">Solve</button>
-                        <button class="challenge-btn challenge-btn-sol" onclick="showSolution('${lang}', ${idx})">Solution</button>
-                    </div>
-                `;
-                grid.appendChild(card);
-            });
-        }
-
-        function solveChallenge(lang, idx) {
-            const challenges = getTodaysChallenges(lang);
-            const ch = challenges[idx];
-            switchCompiler(lang);
-            document.getElementById('codeInput').value = ch.code;
-            document.getElementById('code-practice').scrollIntoView({behavior:'smooth',block:'start'});
-            showNotification('Challenge loaded in compiler!');
-        }
-
-        function showSolution(lang, idx) {
-            const challenges = getTodaysChallenges(lang);
-            const ch = challenges[idx];
-            document.getElementById('solutionCode').textContent = ch.code;
-            document.getElementById('challengeSolution').style.display = 'block';
-            document.getElementById('challengeSolution').scrollIntoView({behavior:'smooth',block:'nearest'});
-        }
-
-        function closeSolution() {
-            document.getElementById('challengeSolution').style.display = 'none';
-        }
-
-        document.getElementById('challengeDate').textContent = 'Today: ' + new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-        
-        const quizBanks = {
-            python: [
-                { q: "What does the 'print' function do?", options: ["Displays output", "Takes input", "Saves file", "Throws error"], ans: 0 },
-                { q: "How do you create a list?", options: ["[] brackets", "{} brackets", "() brackets", "<> brackets"], ans: 0 },
-                { q: "What does 'len()' do?", options: ["Returns length", "Increases length", "Decreases length", "Does nothing"], ans: 0 },
-                { q: "What comes after 'if' statement?", options: [": colon", "; semicolon", ". dot", ", comma"], ans: 0 },
-                { q: "Correct 'for' loop syntax?", options: ["for i in range():", "for(i=0; i<n; i++)", "foreach i in range", "loop for i"], ans: 0 },
-                { q: "How to define a function?", options: ["def keyword", "function keyword", "func keyword", "define keyword"], ans: 0 },
-                { q: "What is 'None'?", options: ["Null value", "Zero value", "Empty string", "Boolean false"], ans: 0 },
-                { q: "What are 'True' and 'False'?", options: ["Boolean values", "String values", "Integer values", "Float values"], ans: 0 },
+                { q: "What does the 'print' function do in Python?", options: ["Displays output", "Takes input", "Saves file", "Throws error"], ans: 0 },
+                { q: "How do you create a list in Python?", options: ["[] brackets", "{} brackets", "() brackets", "<> brackets"], ans: 0 },
+                { q: "What does 'len()' function do?", options: ["Returns length", "Increases length", "Decreases length", "Does nothing"], ans: 0 },
+                { q: "What comes after an 'if' statement in Python?", options: [": colon", "; semicolon", ". dot", ", comma"], ans: 0 },
+                { q: "What is the correct 'for' loop syntax?", options: ["for i in range():", "for(i=0; i<n; i++)", "foreach i in range", "loop for i"], ans: 0 },
+                { q: "How do you define a function in Python?", options: ["def keyword", "function keyword", "func keyword", "define keyword"], ans: 0 },
+                { q: "What is 'None' in Python?", options: ["Null value", "Zero value", "Empty string", "Boolean false"], ans: 0 },
+                { q: "What are 'True' and 'False' in Python?", options: ["Boolean values", "String values", "Integer values", "Float values"], ans: 0 },
                 { q: "What does 'import' do?", options: ["Imports modules", "Deletes files", "Creates variables", "Runs loops"], ans: 0 },
-                { q: "What is 'try-except' for?", options: ["Error handling", "Loop structure", "Function definition", "Class creation"], ans: 0 },
-                { q: "What is a tuple?", options: ["Immutable list", "Mutable list", "Dictionary", "Set"], ans: 0 },
-                { q: "What does 'append()' do?", options: ["Adds element to list", "Removes element", "Sorts list", "Reverses list"], ans: 0 },
-                { q: "What is 'self' in class?", options: ["Instance reference", "Class name", "Method name", "Variable"], ans: 0 },
-                { q: "What does 'range(5)' produce?", options: ["0,1,2,3,4", "1,2,3,4,5", "0,1,2,3,4,5", "5,4,3,2,1"], ans: 0 },
-                { q: "What is list comprehension?", options: ["Concise list creation", "List deletion", "List sorting", "List copying"], ans: 0 },
-                { q: "What does 'pop()' do?", options: ["Removes last element", "Adds element", "Sorts list", "Clears list"], ans: 0 },
-                { q: "What is a dictionary?", options: ["Key-value pairs", "Ordered list", "Immutable set", "Function container"], ans: 0 },
-                { q: "What does 'keys()' return?", options: ["Dictionary keys", "Dictionary values", "Dictionary items", "Dictionary length"], ans: 0 },
-                { q: "What is 'lambda'?", options: ["Anonymous function", "Loop statement", "Class definition", "Import statement"], ans: 0 },
-                { q: "What does 'map()' do?", options: ["Applies function to iterable", "Filters iterable", "Reduces iterable", "Sorts iterable"], ans: 0 },
-                { q: "What is 'pip'?", options: ["Package installer", "Python IDE", "Python compiler", "Python debugger"], ans: 0 },
-                { q: "What does 'strip()' do?", options: ["Removes whitespace", "Splits string", "Joins strings", "Replaces text"], ans: 0 },
-                { q: "What is 'JSON' module for?", options: ["JSON parsing", "XML parsing", "CSV parsing", "HTML parsing"], ans: 0 },
-                { q: "What does 'open()' do?", options: ["Opens file", "Closes file", "Deletes file", "Creates directory"], ans: 0 },
-                { q: "What is 'with' statement?", options: ["Context manager", "Loop statement", "Conditional", "Exception handler"], ans: 0 },
-                { q: "What does 'split()' do?", options: ["Splits string into list", "Joins list into string", "Reverses string", "Sorts string"], ans: 0 },
-                { q: "What is 'numpy'?", options: ["Numerical computing library", "Web framework", "GUI library", "Database library"], ans: 0 },
-                { q: "What does 'reshape()' do?", options: ["Changes array shape", "Sorts array", "Flattens array", "Copies array"], ans: 0 },
-                { q: "What is 'pandas'?", options: ["Data analysis library", "Game library", "Networking library", "Testing library"], ans: 0 },
-                { q: "What is a DataFrame?", options: ["2D labeled data structure", "1D array", "3D tensor", "Graph structure"], ans: 0 },
-                { q: "What does 'head()' show?", options: ["First 5 rows", "Last 5 rows", "All rows", "Random rows"], ans: 0 },
-                { q: "What is 'matplotlib'?", options: ["Plotting library", "ML library", "Web framework", "Database"], ans: 0 },
-                { q: "What does 'plt.show()' do?", options: ["Displays plot", "Saves plot", "Clears plot", "Creates plot"], ans: 0 },
-                { q: "What is 'flask'?", options: ["Web framework", "ML library", "GUI toolkit", "Testing tool"], ans: 0 },
-                { q: "What is 'django'?", options: ["Web framework", "Game engine", "Database", "OS"], ans: 0 },
-                { q: "What does '@' decorator do?", options: ["Modifies function behavior", "Imports module", "Defines class", "Creates loop"], ans: 0 },
-                { q: "What is 'gitignore'?", options: ["Excludes files from git", "Includes files in git", "Deletes git history", "Creates branch"], ans: 0 },
-                { q: "What is 'virtualenv'?", options: ["Isolated Python environment", "Python compiler", "Python debugger", "Python IDE"], ans: 0 },
-                { q: "What does 'isinstance()' check?", options: ["Object type", "Object value", "Object length", "Object memory"], ans: 0 },
-                { q: "What is 'pickle' module?", options: ["Object serialization", "File compression", "Image processing", "Network request"], ans: 0 },
-                { q: "What does 'zip()' do?", options: ["Combines iterables", "Compresses files", "Sorts lists", "Filters data"], ans: 0 },
-                { q: "What is 'enumerate()' for?", options: ["Index and value pairs", "Counting elements", "Sorting list", "Reversing list"], ans: 0 },
-                { q: "What does 'any()' return?", options: ["True if any element is true", "True if all true", "Count of true", "First true element"], ans: 0 },
-                { q: "What does 'all()' return?", options: ["True if all elements true", "True if any true", "Count of elements", "First element"], ans: 0 },
-                { q: "What is 'set' in Python?", options: ["Unordered unique elements", "Ordered list", "Key-value pairs", "Immutable sequence"], ans: 0 },
-                { q: "What does 'intersection()' do?", options: ["Common elements", "All elements", "Different elements", "Unique elements"], ans: 0 },
-                { q: "What is 'threading' module?", options: ["Multi-threading", "File I/O", "Network", "Database"], ans: 0 },
-                { q: "What is 'asyncio'?", options: ["Async programming", "Sync programming", "File handling", "GUI"], ans: 0 },
-                { q: "What does 'await' do?", options: ["Waits for coroutine", "Stops program", "Starts thread", "Creates loop"], ans: 0 },
-                { q: "What is 'PEP 8'?", options: ["Style guide", "Python version", "Package name", "Function name"], ans: 0 },
-                { q: "What does 'dir()' show?", options: ["Object attributes", "File directory", "Module path", "System info"], ans: 0 }
+                { q: "What is 'try-except' used for?", options: ["Error handling", "Loop structure", "Function definition", "Class creation"], ans: 0 }
             ],
             cpp: [
-                { q: "What does 'cout' do?", options: ["Prints output", "Takes input", "Reads file", "Allocates memory"], ans: 0 },
-                { q: "What does 'cin' do?", options: ["Takes input", "Gives output", "Writes file", "Frees memory"], ans: 0 },
-                { q: "What is 'int'?", options: ["Integer data type", "String type", "Float type", "Boolean type"], ans: 0 },
+                { q: "What does 'cout' do in C++?", options: ["Prints output", "Takes input", "Reads file", "Allocates memory"], ans: 0 },
+                { q: "What does 'cin' do in C++?", options: ["Takes input", "Gives output", "Writes file", "Frees memory"], ans: 0 },
+                { q: "What is 'int' in C++?", options: ["Integer data type", "String type", "Float type", "Boolean type"], ans: 0 },
                 { q: "What is 'main()' function?", options: ["Entry point", "Exit point", "Loop function", "Library function"], ans: 0 },
-                { q: "What does 'return 0' mean?", options: ["Success", "Error", "Loop break", "Function call"], ans: 0 },
+                { q: "What does 'return 0' indicate?", options: ["Success", "Error", "Loop break", "Function call"], ans: 0 },
                 { q: "What does 'include' do?", options: ["Includes header files", "Declares variables", "Defines functions", "Creates classes"], ans: 0 },
                 { q: "What is 'using namespace std'?", options: ["Uses standard namespace", "Creates custom namespace", "Deletes namespace", "Does nothing"], ans: 0 },
                 { q: "What is 'if-else'?", options: ["Conditional statement", "Loop statement", "Function declaration", "Class definition"], ans: 0 },
-                { q: "Correct 'for' loop syntax?", options: ["for(int i=0; i<n; i++)", "for i in range()", "foreach i in n", "loop i from 0 to n"], ans: 0 },
-                { q: "What is an 'array'?", options: ["Collection of elements", "Single element", "Function type", "Class type"], ans: 0 },
-                { q: "What is 'pointer'?", options: ["Memory address", "Variable value", "Function name", "Class object"], ans: 0 },
-                { q: "What does '&' operator do?", options: ["Address of variable", "Logical AND", "Bitwise OR", "Reference"], ans: 0 },
-                { q: "What does '*' operator do?", options: ["Dereference pointer", "Multiply", "Power", "Modulo"], ans: 0 },
-                { q: "What is 'new' keyword?", options: ["Dynamic memory allocation", "Delete memory", "Create function", "Define variable"], ans: 0 },
-                { q: "What is 'delete' keyword?", options: ["Free memory", "Allocate memory", "Create object", "Copy object"], ans: 0 },
-                { q: "What is 'class'?", options: ["Blueprint for objects", "Function container", "Variable type", "Loop structure"], ans: 0 },
-                { q: "What is 'constructor'?", options: ["Initializes object", "Destroys object", "Copies object", "Moves object"], ans: 0 },
-                { q: "What is 'destructor'?", options: ["Cleans up object", "Creates object", "Copies object", "Initializes object"], ans: 0 },
-                { q: "What is 'inheritance'?", options: ["Deriving new class", "Creating function", "Declaring variable", "Looping"], ans: 0 },
-                { q: "What does 'public' mean?", options: ["Accessible everywhere", "Accessible in class only", "Accessible in package", "Not accessible"], ans: 0 },
-                { q: "What does 'private' mean?", options: ["Accessible in class only", "Accessible everywhere", "Accessible in package", "Not accessible"], ans: 0 },
-                { q: "What is 'virtual' function?", options: ["Overridable function", "Static function", "Inline function", "Friend function"], ans: 0 },
-                { q: "What is 'polymorphism'?", options: ["Many forms", "Single form", "No form", "Static form"], ans: 0 },
-                { q: "What is 'STL'?", options: ["Standard Template Library", "Simple Type Library", "Static Template Library", "System Type Library"], ans: 0 },
-                { q: "What is 'vector'?", options: ["Dynamic array", "Fixed array", "Linked list", "Hash map"], ans: 0 },
-                { q: "What does 'push_back()' do?", options: ["Adds element to end", "Removes element", "Sorts vector", "Reverses vector"], ans: 0 },
-                { q: "What is 'map' in STL?", options: ["Key-value pairs", "List of elements", "Set of elements", "Queue"], ans: 0 },
-                { q: "What is 'set' in STL?", options: ["Unique sorted elements", "Duplicate elements", "Unordered elements", "Key-value pairs"], ans: 0 },
-                { q: "What is 'stack'?", options: ["LIFO structure", "FIFO structure", "Random access", "Sorted structure"], ans: 0 },
-                { q: "What is 'queue'?", options: ["FIFO structure", "LIFO structure", "Random access", "Sorted structure"], ans: 0 },
-                { q: "What does 'top()' return?", options: ["Top element of stack", "Bottom element", "All elements", "First element"], ans: 0 },
-                { q: "What is 'template'?", options: ["Generic programming", "Specific type", "Static type", "Dynamic type"], ans: 0 },
-                { q: "What is 'operator overloading'?", options: ["Redefining operators", "Creating operators", "Deleting operators", "Copying operators"], ans: 0 },
-                { q: "What is 'friend' function?", options: ["Accesses private members", "Public function", "Static function", "Virtual function"], ans: 0 },
-                { q: "What is 'static' member?", options: ["Shared across objects", "Unique per object", "Local variable", "Global variable"], ans: 0 },
-                { q: "What is 'const' keyword?", options: ["Constant value", "Variable value", "Dynamic value", "Null value"], ans: 0 },
-                { q: "What does 'sizeof()' return?", options: ["Size in bytes", "Length of string", "Number of elements", "Memory address"], ans: 0 },
-                { q: "What is 'reference' variable?", options: ["Alias for variable", "Copy of variable", "Pointer to variable", "New variable"], ans: 0 },
-                { q: "What is 'namespace'?", options: ["Scope for identifiers", "Function name", "Variable name", "Class name"], ans: 0 },
-                { q: "What is 'exception handling'?", options: ["try-catch blocks", "if-else blocks", "for loops", "switch cases"], ans: 0 },
-                { q: "What does 'throw' do?", options: ["Throws exception", "Catches exception", "Ignores exception", "Handles exception"], ans: 0 },
-                { q: "What is 'RAII'?", options: ["Resource Acquisition Is Initialization", "Random Access Input Iterator", "Recursive Algorithm", "Runtime Array Index"], ans: 0 },
-                { q: "What is 'smart pointer'?", options: ["Auto memory management", "Manual pointer", "Null pointer", "Void pointer"], ans: 0 },
-                { q: "What is 'unique_ptr'?", options: ["Exclusive ownership", "Shared ownership", "Weak ownership", "No ownership"], ans: 0 },
-                { q: "What is 'shared_ptr'?", options: ["Shared ownership", "Exclusive ownership", "Weak ownership", "No ownership"], ans: 0 },
-                { q: "What is 'move semantics'?", options: ["Transferring resources", "Copying resources", "Sharing resources", "Deleting resources"], ans: 0 },
-                { q: "What is 'rvalue reference'?", options: ["&& operator", "& operator", "* operator", "-> operator"], ans: 0 },
-                { q: "What is 'lambda' in C++?", options: ["Anonymous function", "Named function", "Static function", "Virtual function"], ans: 0 },
-                { q: "What is 'auto' keyword?", options: ["Type inference", "Automatic loop", "Auto memory", "Auto pointer"], ans: 0 },
-                { q: "What is 'nullptr'?", options: ["Null pointer constant", "Zero value", "False value", "Empty string"], ans: 0 }
+                { q: "What is the correct 'for' loop syntax?", options: ["for(int i=0; i<n; i++)", "for i in range()", "foreach i in n", "loop i from 0 to n"], ans: 0 },
+                { q: "What is an 'array'?", options: ["Collection of elements", "Single element", "Function type", "Class type"], ans: 0 }
             ],
             javascript: [
                 { q: "What does 'console.log' do?", options: ["Prints to console", "Shows alert", "Saves file", "Reloads page"], ans: 0 },
                 { q: "What is 'var' used for?", options: ["Declares variable", "Creates function", "Makes class", "Runs loop"], ans: 0 },
                 { q: "What does 'function' keyword do?", options: ["Defines function", "Declares variable", "Creates class", "Makes object"], ans: 0 },
-                { q: "What does 'getElementById' do?", options: ["Selects HTML element", "Applies CSS", "Reloads page", "Sets cookie"], ans: 0 },
+                { q: "What does 'document.getElementById' do?", options: ["Selects HTML element", "Applies CSS", "Reloads page", "Sets cookie"], ans: 0 },
                 { q: "What does 'addEventListener' do?", options: ["Attaches event", "Removes event", "Creates event", "Deletes event"], ans: 0 },
                 { q: "What is JSON?", options: ["Data format", "Programming language", "Framework", "Database"], ans: 0 },
-                { q: "What does 'typeof' do?", options: ["Returns data type", "Changes value", "Deletes variable", "Calls function"], ans: 0 },
-                { q: "What is an Array?", options: ["Ordered collection", "Unordered collection", "Key-value pair", "Single value"], ans: 0 },
+                { q: "What does 'typeof' operator do?", options: ["Returns data type", "Changes value", "Deletes variable", "Calls function"], ans: 0 },
+                { q: "What is an Array in JS?", options: ["Ordered collection", "Unordered collection", "Key-value pair", "Single value"], ans: 0 },
                 { q: "What is a 'Promise'?", options: ["Handles async operations", "Handles sync operations", "Runs loop", "Defines function"], ans: 0 },
-                { q: "What is 'localStorage'?", options: ["Stores data in browser", "Stores on server", "Stores in memory", "Stores in file"], ans: 0 },
-                { q: "What does 'let' do?", options: ["Block-scoped variable", "Function-scoped", "Global variable", "Constant"], ans: 0 },
-                { q: "What does 'const' do?", options: ["Constant variable", "Changeable variable", "Block variable", "Global variable"], ans: 0 },
-                { q: "What is 'arrow function'?", options: ["=> syntax", "function keyword", "new Function", "eval"], ans: 0 },
-                { q: "What is 'spread operator'?", options: ["... syntax", ".. syntax", ":: syntax", "-> syntax"], ans: 0 },
-                { q: "What does 'map()' do?", options: ["Transforms array", "Filters array", "Reduces array", "Sorts array"], ans: 0 },
-                { q: "What does 'filter()' do?", options: ["Filters array", "Maps array", "Reduces array", "Sorts array"], ans: 0 },
-                { q: "What does 'reduce()' do?", options: ["Reduces to single value", "Maps array", "Filters array", "Sorts array"], ans: 0 },
-                { q: "What is 'fetch()'?", options: ["HTTP request", "File read", "DOM query", "Event listener"], ans: 0 },
-                { q: "What is 'async/await'?", options: ["Async syntax", "Sync syntax", "Loop syntax", "Conditional syntax"], ans: 0 },
-                { q: "What is 'DOM'?", options: ["Document Object Model", "Data Object Model", "Digital Object Model", "Dynamic Object Model"], ans: 0 },
-                { q: "What does 'createElement' do?", options: ["Creates HTML element", "Deletes element", "Modifies element", "Finds element"], ans: 0 },
-                { q: "What is 'event bubbling'?", options: ["Event propagates up", "Event propagates down", "Event stops", "Event repeats"], ans: 0 },
-                { q: "What is 'event delegation'?", options: ["Parent handles child events", "Child handles parent", "Event stops", "Event repeats"], ans: 0 },
-                { q: "What is 'closure'?", options: ["Function with preserved scope", "Global function", "Anonymous function", "Arrow function"], ans: 0 },
-                { q: "What is 'hoisting'?", options: ["Variables moved to top", "Functions moved down", "Code compressed", "Code optimized"], ans: 0 },
-                { q: "What is 'prototype'?", options: ["Object inheritance", "Object copy", "Object delete", "Object freeze"], ans: 0 },
-                { q: "What does 'this' refer to?", options: ["Current object", "Global object", "Parent object", "Child object"], ans: 0 },
-                { q: "What is 'strict mode'?", options: ["Safer code execution", "Faster execution", "Slower execution", "Debug mode"], ans: 0 },
-                { q: "What is 'NaN'?", options: ["Not a Number", "Null value", "Zero value", "Infinity"], ans: 0 },
-                { q: "What does 'isNaN()' check?", options: ["If value is NaN", "If value is null", "If value is zero", "If value is string"], ans: 0 },
-                { q: "What is 'undefined'?", options: ["Variable not assigned", "Variable is null", "Variable is zero", "Variable is false"], ans: 0 },
-                { q: "What is 'null'?", options: ["Intentional no value", "Unintentional no value", "Zero value", "False value"], ans: 0 },
-                { q: "What does 'parseInt()' do?", options: ["Converts to integer", "Converts to float", "Converts to string", "Converts to boolean"], ans: 0 },
-                { q: "What is 'setTimeout'?", options: ["Delays execution", "Repeats execution", "Stops execution", "Starts execution"], ans: 0 },
-                { q: "What is 'setInterval'?", options: ["Repeats execution", "Delays execution", "Stops execution", "Starts execution"], ans: 0 },
-                { q: "What is 'clearInterval'?", options: ["Stops interval", "Starts interval", "Pauses interval", "Resumes interval"], ans: 0 },
-                { q: "What is 'JSON.parse'?", options: ["String to object", "Object to string", "Array to object", "Object to array"], ans: 0 },
-                { q: "What is 'JSON.stringify'?", options: ["Object to string", "String to object", "Array to string", "String to array"], ans: 0 },
-                { q: "What is 'localStorage' vs 'sessionStorage'?", options: ["Persistent vs temporary", "Temporary vs persistent", "Same thing", "Server vs client"], ans: 0 },
-                { q: "What is 'cookie'?", options: ["Small stored data", "Large stored data", "Session data", "Cache data"], ans: 0 },
-                { q: "What is 'CORS'?", options: ["Cross-Origin Resource Sharing", "Cross-Origin Request Security", "Client Origin Resource Sharing", "Cross Object Resource Sharing"], ans: 0 },
-                { q: "What is 'AJAX'?", options: ["Async JS and XML", "Sync JS and XML", "Async JSON", "Sync JSON"], ans: 0 },
-                { q: "What is 'React'?", options: ["UI library", "Database", "Server", "OS"], ans: 0 },
-                { q: "What is 'JSX'?", options: ["JS XML syntax", "JSON syntax", "Java syntax", "HTML syntax"], ans: 0 },
-                { q: "What is 'Node.js'?", options: ["JS runtime", "Browser", "Database", "Framework"], ans: 0 },
-                { q: "What is 'npm'?", options: ["Package manager", "JS compiler", "JS debugger", "JS framework"], ans: 0 },
-                { q: "What is 'webpack'?", options: ["Module bundler", "Web server", "Database", "Framework"], ans: 0 },
-                { q: "What is 'Babel'?", options: ["JS transpiler", "JS compiler", "JS debugger", "JS framework"], ans: 0 },
-                { q: "What is 'TypeScript'?", options: ["Typed JS", "JS framework", "JS library", "JS compiler"], ans: 0 },
-                { q: "What is 'ES6'?", options: ["ECMAScript 2015", "ECMAScript 5", "JavaScript 6", "Java 6"], ans: 0 }
+                { q: "What is 'localStorage'?", options: ["Stores data in browser", "Stores on server", "Stores in memory", "Stores in file"], ans: 0 }
             ],
             java: [
                 { q: "What does 'System.out.println' do?", options: ["Prints output", "Takes input", "Reads file", "Throws exception"], ans: 0 },
@@ -1569,54 +1182,11 @@ print(f'Welcome, {name}!')</textarea>
                 { q: "What is 'try-catch'?", options: ["Exception handling", "Loop structure", "Conditional statement", "Method overloading"], ans: 0 },
                 { q: "What is 'ArrayList'?", options: ["Dynamic array", "Fixed array", "Linked list", "Hash map"], ans: 0 },
                 { q: "What is an 'interface'?", options: ["Defines contract", "Creates class", "Creates object", "Implements method"], ans: 0 },
-                { q: "What does 'final' keyword do?", options: ["Makes value constant", "Changes value", "Overrides method", "Extends class"], ans: 0 },
-                { q: "What is 'JVM'?", options: ["Java Virtual Machine", "Java Variable Machine", "Java Virtual Method", "Java Variable Method"], ans: 0 },
-                { q: "What is 'JDK'?", options: ["Java Development Kit", "Java Debug Kit", "Java Design Kit", "Java Data Kit"], ans: 0 },
-                { q: "What is 'JRE'?", options: ["Java Runtime Environment", "Java Run Engine", "Java Resource Environment", "Java Runtime Engine"], ans: 0 },
-                { q: "What is 'bytecode'?", options: ["Intermediate code", "Source code", "Machine code", "Assembly code"], ans: 0 },
-                { q: "What is 'garbage collection'?", options: ["Auto memory management", "Manual memory management", "Memory leak", "Memory overflow"], ans: 0 },
-                { q: "What is 'static' method?", options: ["Belongs to class", "Belongs to object", "Belongs to package", "Belongs to interface"], ans: 0 },
-                { q: "What is 'abstract class'?", options: ["Cannot be instantiated", "Can be instantiated", "Final class", "Static class"], ans: 0 },
-                { q: "What is 'method overloading'?", options: ["Same name different params", "Same name same params", "Different name", "No params"], ans: 0 },
-                { q: "What is 'method overriding'?", options: ["Redefining parent method", "Creating new method", "Deleting method", "Hiding method"], ans: 0 },
-                { q: "What is 'super' keyword?", options: ["Parent class reference", "Child class reference", "Current class", "Static reference"], ans: 0 },
-                { q: "What is 'this' keyword?", options: ["Current object reference", "Parent object", "Static reference", "Class reference"], ans: 0 },
-                { q: "What is 'encapsulation'?", options: ["Data hiding", "Data showing", "Data sharing", "Data copying"], ans: 0 },
-                { q: "What is 'polymorphism'?", options: ["Many forms", "Single form", "No form", "Static form"], ans: 0 },
-                { q: "What is 'abstraction'?", options: ["Hiding implementation", "Showing implementation", "Copying implementation", "Deleting implementation"], ans: 0 },
-                { q: "What is 'package'?", options: ["Namespace for classes", "Class container", "Method container", "Variable container"], ans: 0 },
-                { q: "What does 'import' do?", options: ["Imports classes", "Exports classes", "Creates classes", "Deletes classes"], ans: 0 },
-                { q: "What is 'Scanner' class?", options: ["Reads input", "Writes output", "Handles files", "Handles network"], ans: 0 },
-                { q: "What is 'BufferedReader'?", options: ["Reads text efficiently", "Writes text", "Reads bytes", "Writes bytes"], ans: 0 },
-                { q: "What is 'FileInputStream'?", options: ["Reads bytes from file", "Writes bytes to file", "Reads characters", "Writes characters"], ans: 0 },
-                { q: "What is 'Thread'?", options: ["Lightweight process", "Heavy process", "Function", "Method"], ans: 0 },
-                { q: "What does 'start()' do?", options: ["Starts thread execution", "Stops thread", "Pauses thread", "Resumes thread"], ans: 0 },
-                { q: "What does 'run()' do?", options: ["Thread's execution code", "Starts thread", "Stops thread", "Pauses thread"], ans: 0 },
-                { q: "What is 'synchronized'?", options: ["Thread-safe method", "Fast method", "Static method", "Final method"], ans: 0 },
-                { q: "What is 'Runnable'?", options: ["Interface for threads", "Class for threads", "Method for threads", "Variable for threads"], ans: 0 },
-                { q: "What is 'HashMap'?", options: ["Key-value pairs", "Ordered list", "Sorted set", "Queue"], ans: 0 },
-                { q: "What is 'HashSet'?", options: ["Unique elements", "Duplicate elements", "Ordered elements", "Sorted elements"], ans: 0 },
-                { q: "What is 'LinkedList'?", options: ["Doubly linked list", "Singly linked list", "Array list", "Hash map"], ans: 0 },
-                { q: "What is 'PriorityQueue'?", options: ["Ordered by priority", "FIFO queue", "LIFO stack", "Random access"], ans: 0 },
-                { q: "What is 'Comparable'?", options: ["Interface for sorting", "Class for sorting", "Method for sorting", "Variable for sorting"], ans: 0 },
-                { q: "What is 'Comparator'?", options: ["Custom sorting logic", "Default sorting", "No sorting", "Random sorting"], ans: 0 },
-                { q: "What is 'Generics'?", options: ["Type-safe code", "Type-unsafe code", "Dynamic typing", "No typing"], ans: 0 },
-                { q: "What is 'wildcard' ?", options: ["Unknown type", "Known type", "Specific type", "Static type"], ans: 0 },
-                { q: "What is 'serialization'?", options: ["Object to bytes", "Bytes to object", "Object to string", "String to object"], ans: 0 },
-                { q: "What is 'deserialization'?", options: ["Bytes to object", "Object to bytes", "String to object", "Object to string"], ans: 0 },
-                { q: "What is 'transient'?", options: ["Not serialized", "Serialized", "Static", "Final"], ans: 0 },
-                { q: "What is 'volatile'?", options: ["Visible to all threads", "Visible to one thread", "Static", "Final"], ans: 0 },
-                { q: "What is 'JDBC'?", options: ["Database connectivity", "Network connectivity", "File connectivity", "Web connectivity"], ans: 0 },
-                { q: "What is 'Servlet'?", options: ["Server-side Java", "Client-side Java", "Database Java", "Network Java"], ans: 0 },
-                { q: "What is 'JSP'?", options: ["Java Server Pages", "Java Script Pages", "Java Static Pages", "Java Simple Pages"], ans: 0 },
-                { q: "What is 'Spring'?", options: ["Java framework", "Java compiler", "Java debugger", "Java IDE"], ans: 0 },
-                { q: "What is 'Maven'?", options: ["Build tool", "Compiler", "Debugger", "IDE"], ans: 0 },
-                { q: "What is 'Gradle'?", options: ["Build automation", "Compiler", "Debugger", "IDE"], ans: 0 },
-                { q: "What is 'JUnit'?", options: ["Testing framework", "Web framework", "Database", "Compiler"], ans: 0 }
+                { q: "What does 'final' keyword do?", options: ["Makes value constant", "Changes value", "Overrides method", "Extends class"], ans: 0 }
             ],
             html: [
-                { q: "Full form of HTML?", options: ["HyperText Markup Language", "HighText Machine Language", "HyperText Machine Language", "HighText Markup Language"], ans: 0 },
-                { q: "What is '<p>' tag?", options: ["Paragraph", "Page", "Print", "Process"], ans: 0 },
+                { q: "What is the full form of HTML?", options: ["HyperText Markup Language", "HighText Machine Language", "HyperText Machine Language", "HighText Markup Language"], ans: 0 },
+                { q: "What is the '<p>' tag?", options: ["Paragraph", "Page", "Print", "Process"], ans: 0 },
                 { q: "What does '<a>' tag do?", options: ["Creates link", "Shows image", "Makes table", "Creates form"], ans: 0 },
                 { q: "What does '<img>' tag do?", options: ["Displays image", "Shows video", "Plays audio", "Formats text"], ans: 0 },
                 { q: "What is '<div>' tag?", options: ["Container", "Division", "Document", "Display"], ans: 0 },
@@ -1624,63 +1194,10 @@ print(f'Welcome, {name}!')</textarea>
                 { q: "What does '<form>' tag do?", options: ["Creates form", "Makes table", "Shows image", "Plays video"], ans: 0 },
                 { q: "What does '<input>' tag do?", options: ["Takes user input", "Gives output", "Saves file", "Shows image"], ans: 0 },
                 { q: "What does '<head>' tag contain?", options: ["Metadata", "Body content", "Footer", "Navigation"], ans: 0 },
-                { q: "What does '<title>' tag do?", options: ["Sets page title", "Sets heading", "Sets paragraph", "Sets link"], ans: 0 },
-                { q: "What is '<ul>' tag?", options: ["Unordered list", "Ordered list", "Underline", "Universal link"], ans: 0 },
-                { q: "What is '<ol>' tag?", options: ["Ordered list", "Unordered list", "Object list", "Option list"], ans: 0 },
-                { q: "What does '<li>' tag do?", options: ["List item", "Line item", "Link item", "List image"], ans: 0 },
-                { q: "What is '<br>' tag?", options: ["Line break", "Bold text", "Big text", "Break row"], ans: 0 },
-                { q: "What is '<hr>' tag?", options: ["Horizontal rule", "Header row", "High row", "Hyperlink reference"], ans: 0 },
-                { q: "What does '<span>' do?", options: ["Inline container", "Block container", "Line break", "Paragraph"], ans: 0 },
-                { q: "What is '<h1>' to '<h6>'?", options: ["Headings", "Hyperlinks", "Headers", "Highlights"], ans: 0 },
-                { q: "What does '<strong>' do?", options: ["Bold text", "Italic text", "Underlined text", "Strikethrough"], ans: 0 },
-                { q: "What does '<em>' do?", options: ["Italic text", "Bold text", "Underlined", "Strikethrough"], ans: 0 },
-                { q: "What is '<!DOCTYPE html>'?", options: ["Document type declaration", "HTML tag", "Head tag", "Body tag"], ans: 0 },
-                { q: "What is 'alt' attribute?", options: ["Alternative text", "Alignment", "Altitude", "Alternative link"], ans: 0 },
-                { q: "What is 'href' attribute?", options: ["Hyperlink reference", "Height reference", "Header reference", "Horizontal reference"], ans: 0 },
-                { q: "What is 'src' attribute?", options: ["Source path", "Style path", "Script path", "Structure path"], ans: 0 },
-                { q: "What is 'class' attribute?", options: ["CSS class name", "Java class", "HTML class", "Object class"], ans: 0 },
-                { q: "What is 'id' attribute?", options: ["Unique identifier", "Class name", "Style name", "Tag name"], ans: 0 },
-                { q: "What does '<script>' tag do?", options: ["Embeds JS", "Embeds CSS", "Embeds image", "Embeds video"], ans: 0 },
-                { q: "What does '<style>' tag do?", options: ["Embeds CSS", "Embeds JS", "Embeds image", "Embeds video"], ans: 0 },
-                { q: "What is '<link>' tag for?", options: ["Links external CSS", "Links external JS", "Links image", "Links video"], ans: 0 },
-                { q: "What is 'meta charset'?", options: ["Character encoding", "Color scheme", "Page title", "Page description"], ans: 0 },
-                { q: "What is 'viewport' meta tag?", options: ["Responsive design", "Fixed width", "Print layout", "Mobile app"], ans: 0 },
-                { q: "What is '<textarea>'?", options: ["Multi-line input", "Single-line input", "Button", "Dropdown"], ans: 0 },
-                { q: "What is '<select>'?", options: ["Dropdown list", "Text input", "Checkbox", "Radio button"], ans: 0 },
-                { q: "What is '<option>'?", options: ["Dropdown item", "Table row", "List item", "Menu item"], ans: 0 },
-                { q: "What is '<button>'?", options: ["Clickable button", "Link", "Image", "Input field"], ans: 0 },
-                { q: "What is '<iframe>'?", options: ["Embeds another page", "Embeds image", "Embeds video", "Embeds audio"], ans: 0 },
-                { q: "What is '<nav>'?", options: ["Navigation links", "News section", "Network section", "Novel section"], ans: 0 },
-                { q: "What is '<header>'?", options: ["Page header", "HTTP header", "File header", "Table header"], ans: 0 },
-                
-
-
-
-
-
-
-
-        
-                { q: "What is '<footer>'?", options: ["Page footer", "File footer", "Table footer", "Document footer"], ans: 0 },
-                { q: "What is '<section>'?", options: ["Thematic grouping", "Page section", "CSS section", "Script section"], ans: 0 },
-                { q: "What is '<article>'?", options: ["Self-contained content", "News article", "Blog post", "Comment"], ans: 0 },
-                { q: "What is '<aside>'?", options: ["Sidebar content", "Main content", "Footer content", "Header content"], ans: 0 },
-                { q: "What is '<main>'?", options: ["Main content area", "Main menu", "Main header", "Main footer"], ans: 0 },
-                { q: "What is '<figure>'?", options: ["Image with caption", "Table figure", "Chart figure", "Diagram figure"], ans: 0 },
-                { q: "What is '<figcaption>'?", options: ["Figure caption", "Figure image", "Figure table", "Figure chart"], ans: 0 },
-                { q: "What is '<details>'?", options: ["Collapsible content", "Detailed list", "Description", "Definition"], ans: 0 },
-                { q: "What is '<summary>'?", options: ["Details summary", "Page summary", "Article summary", "Table summary"], ans: 0 },
-                { q: "What is '<canvas>'?", options: ["Drawing area", "Image area", "Video area", "Audio area"], ans: 0 },
-                { q: "What is '<svg>'?", options: ["Vector graphics", "Raster graphics", "Bitmap", "Photo"], ans: 0 },
-                { q: "What is 'data-' attribute?", options: ["Custom data", "Database data", "Date attribute", "Data type"], ans: 0 },
-                { q: "What is 'contenteditable'?", options: ["Editable content", "Read-only content", "Hidden content", "Disabled content"], ans: 0 },
-                { q: "What is 'draggable' attribute?", options: ["Draggable element", "Drop zone", "Drag source", "Drag target"], ans: 0 },
-                { q: "What is '<datalist>'?", options: ["Input suggestions", "Data table", "Data list", "Database list"], ans: 0 },
-                { q: "What is '<progress>'?", options: ["Progress bar", "Progress text", "Progress image", "Progress link"], ans: 0 },
-                { q: "What is '<meter>'?", options: ["Gauge/measurement", "Meter stick", "Meter reading", "Meter unit"], ans: 0 }
+                { q: "What does '<title>' tag do?", options: ["Sets page title", "Sets heading", "Sets paragraph", "Sets link"], ans: 0 }
             ],
             sql: [
-                { q: "Full form of SQL?", options: ["Structured Query Language", "Simple Query Language", "Standard Query Language", "System Query Language"], ans: 0 },
+                { q: "What is the full form of SQL?", options: ["Structured Query Language", "Simple Query Language", "Standard Query Language", "System Query Language"], ans: 0 },
                 { q: "What does 'SELECT' do?", options: ["Retrieves data", "Inserts data", "Updates data", "Deletes data"], ans: 0 },
                 { q: "What does 'INSERT INTO' do?", options: ["Inserts data", "Selects data", "Updates data", "Deletes data"], ans: 0 },
                 { q: "What does 'UPDATE' do?", options: ["Updates data", "Inserts data", "Selects data", "Deletes data"], ans: 0 },
@@ -1689,98 +1206,64 @@ print(f'Welcome, {name}!')</textarea>
                 { q: "What does 'ORDER BY' do?", options: ["Sorts data", "Filters data", "Groups data", "Joins tables"], ans: 0 },
                 { q: "What does 'JOIN' do?", options: ["Combines tables", "Filters data", "Sorts data", "Deletes data"], ans: 0 },
                 { q: "What does 'COUNT()' do?", options: ["Counts rows", "Calculates sum", "Finds average", "Finds maximum"], ans: 0 },
-                { q: "What is 'PRIMARY KEY'?", options: ["Unique identifier", "Foreign reference", "Index", "Constraint"], ans: 0 },
-                { q: "What is 'FOREIGN KEY'?", options: ["Links tables", "Unique value", "Auto increment", "Not null"], ans: 0 },
-                { q: "What is 'UNIQUE' constraint?", options: ["No duplicates", "Can be null", "Auto increment", "Default value"], ans: 0 },
-                { q: "What is 'NOT NULL'?", options: ["Required value", "Optional value", "Default value", "Auto value"], ans: 0 },
-                { q: "What is 'AUTO_INCREMENT'?", options: ["Auto increases ID", "Manual ID", "Random ID", "Fixed ID"], ans: 0 },
-                { q: "What does 'SUM()' do?", options: ["Adds values", "Counts values", "Averages values", "Finds max"], ans: 0 },
-                { q: "What does 'AVG()' do?", options: ["Average of values", "Sum of values", "Count of values", "Max value"], ans: 0 },
-                { q: "What does 'MAX()' do?", options: ["Maximum value", "Minimum value", "Average value", "Sum value"], ans: 0 },
-                { q: "What does 'MIN()' do?", options: ["Minimum value", "Maximum value", "Average value", "Sum value"], ans: 0 },
-                { q: "What does 'GROUP BY' do?", options: ["Groups rows", "Sorts rows", "Filters rows", "Joins rows"], ans: 0 },
-                { q: "What does 'HAVING' do?", options: ["Filters groups", "Filters rows", "Sorts groups", "Joins groups"], ans: 0 },
-                { q: "What is 'INNER JOIN'?", options: ["Matching rows only", "All left rows", "All right rows", "All rows"], ans: 0 },
-                { q: "What is 'LEFT JOIN'?", options: ["All left rows", "Matching rows only", "All right rows", "All rows"], ans: 0 },
-                { q: "What is 'RIGHT JOIN'?", options: ["All right rows", "Matching rows only", "All left rows", "All rows"], ans: 0 },
-                { q: "What is 'FULL OUTER JOIN'?", options: ["All rows from both", "Matching rows only", "All left rows", "All right rows"], ans: 0 },
-                { q: "What does 'DISTINCT' do?", options: ["Removes duplicates", "Sorts data", "Filters data", "Groups data"], ans: 0 },
-                { q: "What does 'LIKE' do?", options: ["Pattern matching", "Exact match", "Range match", "Null check"], ans: 0 },
-                { q: "What is '%' wildcard?", options: ["Any characters", "Single character", "No characters", "Exact match"], ans: 0 },
-                { q: "What is '_' wildcard?", options: ["Single character", "Any characters", "No characters", "Exact match"], ans: 0 },
-                { q: "What does 'BETWEEN' do?", options: ["Range selection", "Exact match", "Pattern match", "Null check"], ans: 0 },
-                { q: "What does 'IN' operator do?", options: ["Matches any in list", "Exact match", "Range match", "Pattern match"], ans: 0 },
-                { q: "What does 'IS NULL' check?", options: ["Null values", "Empty string", "Zero value", "False value"], ans: 0 },
-                { q: "What is 'INDEX'?", options: ["Speeds up queries", "Slows down queries", "Deletes data", "Updates data"], ans: 0 },
-                { q: "What is 'VIEW'?", options: ["Virtual table", "Real table", "Temporary table", "Permanent table"], ans: 0 },
-                { q: "What is 'TRIGGER'?", options: ["Auto-executes on event", "Manual execution", "Scheduled task", "User command"], ans: 0 },
-                { q: "What is 'STORED PROCEDURE'?", options: ["Reusable SQL block", "Single query", "Table definition", "Index definition"], ans: 0 },
-                { q: "What is 'TRANSACTION'?", options: ["Unit of work", "Single query", "Table lock", "Row lock"], ans: 0 },
-                { q: "What does 'COMMIT' do?", options: ["Saves changes", "Reverts changes", "Deletes changes", "Locks table"], ans: 0 },
-                { q: "What does 'ROLLBACK' do?", options: ["Reverts changes", "Saves changes", "Deletes table", "Creates table"], ans: 0 },
-                { q: "What is 'ACID'?", options: ["Atomicity, Consistency, Isolation, Durability", "Auto, Commit, Insert, Delete", "Add, Create, Insert, Drop", "All, Columns, In, Database"], ans: 0 },
-                { q: "What is 'Normalization'?", options: ["Reduces redundancy", "Increases redundancy", "Speeds up queries", "Slows down queries"], ans: 0 },
-                { q: "What is '1NF'?", options: ["Atomic values", "No partial dependency", "No transitive dependency", "No multi-valued dependency"], ans: 0 },
-                { q: "What is '2NF'?", options: ["No partial dependency", "Atomic values", "No transitive dependency", "No multi-valued dependency"], ans: 0 },
-                { q: "What is '3NF'?", options: ["No transitive dependency", "Atomic values", "No partial dependency", "No multi-valued dependency"], ans: 0 },
-                { q: "What is 'DDL'?", options: ["Data Definition Language", "Data Description Language", "Data Display Language", "Data Debug Language"], ans: 0 },
-                { q: "What is 'DML'?", options: ["Data Manipulation Language", "Data Management Language", "Data Model Language", "Data Markup Language"], ans: 0 },
-                { q: "What is 'DCL'?", options: ["Data Control Language", "Data Command Language", "Data Configuration Language", "Data Connection Language"], ans: 0 },
-                { q: "What is 'TCL'?", options: ["Transaction Control Language", "Table Control Language", "Type Control Language", "Text Control Language"], ans: 0 },
-                { q: "What does 'GRANT' do?", options: ["Gives permissions", "Removes permissions", "Creates user", "Deletes user"], ans: 0 },
-                { q: "What does 'REVOKE' do?", options: ["Removes permissions", "Gives permissions", "Creates user", "Deletes user"], ans: 0 },
-                { q: "What is 'NoSQL'?", options: ["Non-relational DB", "No SQL support", "New SQL", "Not SQL"], ans: 0 }
+                { q: "What is 'PRIMARY KEY'?", options: ["Unique identifier", "Foreign reference", "Index", "Constraint"], ans: 0 }
             ]
         };
-
-        function getTodaysQuizQuestions(lang) {
-            const all = quizBanks[lang] || quizBanks['python'];
-            const seed = getDailySeed();
-            const shuffled = shuffleArray(all, seed);
-            return shuffled.slice(0, 50);
+        
+        let currentQuizLang = '';
+        let currentQuizLevel = 1;
+        let currentQuizScore = 0;
+        
+        function getQuizProgress(lang) {
+            return parseInt(localStorage.getItem('quiz_progress_' + lang) || '0');
         }
-
-        let currentDailyQuizLang = '';
-        let currentDailyQuizQuestions = [];
-        let currentDailyQuizIndex = 0;
-        let currentDailyQuizScore = 0;
-
-        function startDailyQuiz(lang) {
-            currentDailyQuizLang = lang;
-            currentDailyQuizQuestions = getTodaysQuizQuestions(lang);
-            currentDailyQuizIndex = 0;
-            currentDailyQuizScore = 0;
-            
+        function setQuizProgress(lang, level) {
+            localStorage.setItem('quiz_progress_' + lang, level.toString());
+        }
+        function updateQuizProgressDisplays() {
+            Object.keys(quizData).forEach(lang => {
+                const progress = getQuizProgress(lang);
+                const el = document.getElementById('progress-' + lang);
+                if(el) el.textContent = 'Level ' + progress + ' / 10';
+            });
+        }
+        
+        function startQuiz(lang) {
+            currentQuizLang = lang;
+            const saved = getQuizProgress(lang);
+            currentQuizLevel = saved >= 10 ? 1 : saved + 1;
+            currentQuizScore = 0;
             document.getElementById('quizLangSelect').style.display = 'none';
-            document.getElementById('dailyQuizResult').style.display = 'none';
-            document.getElementById('dailyQuizContainer').classList.add('active');
-            loadDailyQuizQuestion();
+            document.getElementById('quizResult').style.display = 'none';
+            document.getElementById('quizContainer').classList.add('active');
+            loadQuizQuestion();
         }
-
-        function loadDailyQuizQuestion() {
-            const q = currentDailyQuizQuestions[currentDailyQuizIndex];
-            const total = currentDailyQuizQuestions.length;
+        
+        function loadQuizQuestion() {
+            const questions = quizData[currentQuizLang];
+            const qIndex = (currentQuizLevel - 1) % questions.length;
+            const q = questions[qIndex];
             
-            document.getElementById('dailyQuizLang').textContent = currentDailyQuizLang.toUpperCase();
-            document.getElementById('dailyQuizProgress').textContent = (currentDailyQuizIndex + 1) + ' / ' + total;
-            document.getElementById('dailyQuizProgressFill').style.width = ((currentDailyQuizIndex + 1) / total * 100) + '%';
-            document.getElementById('dailyQuizQuestion').textContent = q.q;
+            document.getElementById('quizLevel').textContent = currentQuizLang.toUpperCase() + ' - Level ' + currentQuizLevel;
+            document.getElementById('quizScore').textContent = 'Score: ' + currentQuizScore;
+            document.getElementById('quizProgressFill').style.width = (currentQuizLevel * 10) + '%';
+            document.getElementById('quizQuestion').textContent = q.q;
             
-            const optsDiv = document.getElementById('dailyQuizOptions');
+            const optsDiv = document.getElementById('quizOptions');
             optsDiv.innerHTML = '';
             q.options.forEach((opt, idx) => {
                 const btn = document.createElement('button');
                 btn.className = 'quiz-option';
                 btn.textContent = opt;
-                btn.onclick = () => selectDailyAnswer(idx, q.ans);
+                btn.onclick = () => selectAnswer(idx, q.ans);
                 optsDiv.appendChild(btn);
             });
             
-            document.getElementById('dailyQuizNextBtn').style.display = 'none';
+            document.getElementById('quizNextBtn').style.display = 'none';
         }
-
-        function selectDailyAnswer(selected, correct) {
-            const opts = document.querySelectorAll('#dailyQuizOptions .quiz-option');
+        
+        function selectAnswer(selected, correct) {
+            const opts = document.querySelectorAll('.quiz-option');
             opts.forEach((opt, idx) => {
                 opt.classList.add('disabled');
                 if(idx === correct) opt.classList.add('correct');
@@ -1788,46 +1271,43 @@ print(f'Welcome, {name}!')</textarea>
             });
             
             if(selected === correct) {
-                currentDailyQuizScore++;
+                currentQuizScore += 10;
+                showNotification('Correct! +10 points');
+            } else {
+                showNotification('Wrong! Correct answer: ' + opts[correct].textContent);
             }
             
-            document.getElementById('dailyQuizNextBtn').style.display = 'block';
+            document.getElementById('quizScore').textContent = 'Score: ' + currentQuizScore;
+            document.getElementById('quizNextBtn').style.display = 'block';
             
-            if(currentDailyQuizIndex >= currentDailyQuizQuestions.length - 1) {
-                document.getElementById('dailyQuizNextBtn').textContent = 'Finish';
+            if(currentQuizLevel > getQuizProgress(currentQuizLang)) {
+                setQuizProgress(currentQuizLang, currentQuizLevel);
             }
         }
-
-        function nextDailyQuestion() {
-            currentDailyQuizIndex++;
-            if(currentDailyQuizIndex >= currentDailyQuizQuestions.length) {
-                document.getElementById('dailyQuizContainer').classList.remove('active');
-                document.getElementById('dailyQuizResult').style.display = 'block';
-                document.getElementById('dailyQuizResultText').textContent = 'You got ' + currentDailyQuizScore + ' out of ' + currentDailyQuizQuestions.length + ' correct!';
+        
+        function nextLevel() {
+            if(currentQuizLevel >= 10) {
+                document.getElementById('quizContainer').classList.remove('active');
+                document.getElementById('quizResult').style.display = 'block';
+                document.getElementById('quizResultText').textContent = 'You completed all 10 levels with ' + currentQuizScore + ' points! Great job!';
                 return;
             }
-            loadDailyQuizQuestion();
+            currentQuizLevel++;
+            loadQuizQuestion();
         }
-
-        function exitDailyQuiz() {
-            document.getElementById('dailyQuizContainer').classList.remove('active');
-            document.getElementById('dailyQuizResult').style.display = 'none';
+        
+        function exitQuiz() {
+            document.getElementById('quizContainer').classList.remove('active');
+            document.getElementById('quizResult').style.display = 'none';
             document.getElementById('quizLangSelect').style.display = 'block';
+            updateQuizProgressDisplays();
         }
-
-        document.getElementById('quizDate').textContent = 'Today: ' + new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-
-        // Initialize daily challenges on load
-        window.addEventListener('load', () => {
-            const firstBtn = document.querySelector('#daily-challenges .lang-btn');
-            if(firstBtn) {
-                firstBtn.classList.add('active');
-                loadChallenges('python', firstBtn);
-            }
-        });
+        
+        updateQuizProgressDisplays();
     </script>
 </body>
 </html>
+
 
 
 
