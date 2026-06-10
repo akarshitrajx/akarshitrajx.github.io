@@ -207,36 +207,6 @@
         .footer-links{text-align:center;padding:1rem 0;border-top:1px solid rgba(255,255,255,0.05);margin-top:1rem}
         .footer-links a{color:var(--primary);text-decoration:none;margin:0 10px;font-size:0.85rem}
         .footer-links a:hover{text-decoration:underline}
-        .quiz-section{background:var(--card-bg);border-radius:24px;padding:3rem;border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(20px);max-width:1000px;margin:0 auto;box-shadow:0 8px 32px rgba(0,0,0,0.2)}
-        .quiz-lang-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;margin-bottom:2rem}
-        .quiz-lang-card{padding:1.5rem;background:var(--glass);border-radius:16px;border:1px solid rgba(255,255,255,0.05);text-align:center;cursor:pointer;transition:all 0.3s}
-        .quiz-lang-card:hover{transform:translateY(-5px);background:rgba(255,255,255,0.08);border-color:rgba(6,182,212,0.3);box-shadow:0 10px 30px rgba(0,0,0,0.3),0 0 20px rgba(6,182,212,0.1)}
-        .quiz-lang-icon{font-size:1.2rem;font-weight:800;width:50px;height:50px;display:flex;align-items:center;justify-content:center;border-radius:12px;background:rgba(6,182,212,0.1);color:var(--primary);margin:0 auto 0.5rem;border:1px solid rgba(6,182,212,0.2)}
-        .quiz-lang-name{font-weight:600}
-        .quiz-lang-progress{font-size:0.8rem;color:var(--gray);margin-top:0.25rem}
-        .quiz-container{display:none;max-width:700px;margin:0 auto}
-        .quiz-container.active{display:block}
-        .quiz-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid rgba(255,255,255,0.1)}
-        .quiz-level{font-size:1.2rem;font-weight:700}
-        .quiz-score{color:var(--accent);font-weight:600}
-        .quiz-progress-bar{width:100%;height:8px;background:rgba(255,255,255,0.1);border-radius:4px;margin-bottom:2rem;overflow:hidden}
-        .quiz-progress-fill{height:100%;background:linear-gradient(90deg,var(--primary),var(--accent));transition:width 0.3s;border-radius:4px}
-        .quiz-question{font-size:1.2rem;font-weight:600;margin-bottom:1.5rem;padding:1.5rem;background:rgba(255,255,255,0.03);border-radius:16px;border-left:4px solid var(--primary)}
-        .quiz-options{display:grid;gap:0.75rem}
-        .quiz-option{padding:1rem;background:var(--glass);border:1px solid rgba(255,255,255,0.1);border-radius:12px;cursor:pointer;transition:all 0.3s;text-align:left;color:var(--light);font-size:1rem}
-        .quiz-option:hover{background:rgba(255,255,255,0.08);border-color:var(--primary);box-shadow:0 4px 15px rgba(6,182,212,0.1)}
-        .quiz-option.correct{background:rgba(16,185,129,0.15);border-color:var(--success)}
-        .quiz-option.wrong{background:rgba(239,68,68,0.15);border-color:var(--error)}
-        .quiz-option.disabled{pointer-events:none;opacity:0.7}
-        .quiz-actions{display:flex;gap:1rem;margin-top:1.5rem;justify-content:center}
-        .quiz-btn{padding:0.75rem 1.5rem;border-radius:12px;border:none;font-weight:600;cursor:pointer;transition:all 0.3s}
-        .quiz-btn-primary{background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:white;box-shadow:0 4px 15px rgba(6,182,212,0.3)}
-        .quiz-btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(6,182,212,0.5)}
-        .quiz-btn-secondary{background:var(--glass);color:var(--light);border:1px solid rgba(255,255,255,0.1)}
-        .quiz-btn-secondary:hover{border-color:var(--primary);box-shadow:0 4px 15px rgba(6,182,212,0.1)}
-        .quiz-result{text-align:center;padding:2rem}
-        .quiz-result h3{font-size:1.8rem;margin-bottom:1rem}
-        .quiz-result p{color:var(--gray);margin-bottom:1.5rem}
         .file-actions{display:flex;gap:0.5rem;margin-bottom:0.5rem;flex-wrap:wrap}
         .file-btn{padding:0.4rem 0.8rem;background:var(--glass);border:1px solid rgba(255,255,255,0.1);border-radius:8px;color:var(--gray);cursor:pointer;transition:all 0.3s;font-size:0.8rem;display:flex;align-items:center;gap:0.4rem}
         .file-btn:hover{background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:white;border-color:transparent;box-shadow:0 4px 15px rgba(6,182,212,0.3)}
@@ -256,22 +226,6 @@
         .youtube-tag:hover{background:rgba(239,68,68,0.2);transform:translateY(-2px)}
         @media(max-width:968px){.hero-container{grid-template-columns:1fr;text-align:center}.hero h1{font-size:2.5rem}.nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(2,6,23,0.95);flex-direction:column;padding:2rem;gap:1.5rem;z-index:999}.nav-links.active{display:flex}.mobile-menu-btn{display:block}.code-editor-wrapper{grid-template-columns:1fr}.stats-bar{gap:1.5rem}.ai-message-bubble{max-width:90%}.nav-search-wrapper{max-width:200px}}
         @media(max-width:480px){.hero h1{font-size:2rem}.section-title{font-size:1.8rem}.code-practice-section{padding:1.5rem}.ai-chat-body{padding:1rem}.ai-chat-header{padding:1rem}.nav-search-wrapper{display:none}}
-        .daily-btn{
-    display:inline-block;
-    padding:15px 30px;
-    background:#00bfff;
-    color:white;
-    text-decoration:none;
-    border-radius:12px;
-    font-size:20px;
-    font-weight:bold;
-    box-shadow:0 0 15px #00bfff;
-    transition:0.3s;
-}
-
-.daily-btn:hover{
-    transform:scale(1.05);
-}
         ::-webkit-scrollbar{width:8px}
         ::-webkit-scrollbar-track{background:var(--darker)}
         ::-webkit-scrollbar-thumb{background:var(--primary);border-radius:4px}
@@ -289,10 +243,6 @@
             <li onclick="goToSection('home')"><span class="sidebar-icon">H</span> Home</li>
             <li onclick="goToSection('about')"><span class="sidebar-icon">A</span> About</li>
             <li onclick="goToSection('code-practice')"><span class="sidebar-icon">P</span> Practice</li>
-            <li onclick="location.href='daily-challenges.html'">
-    <span class="sidebar-icon">🔥</span> Daily Challenges
-            </li>
-            
             <li onclick="window.location.href='tutorials.html'"><span class="sidebar-icon">T</span> Tutorials</li>
         </ul>
     </aside>
@@ -305,8 +255,6 @@
         <div class="nav-search-wrapper">
             <span class="nav-search-icon">Q</span>
             <input type="text" class="nav-search-input" placeholder="Search courses, tutorials, topics..." id="navSearch" onkeyup="handleSearch()">
-            <li><a href="daily-challenges.html">Challenges</a></li>
-
         </div>
         <ul class="nav-links" id="navLinks">
             <li><a href="#home">Home</a></li>
@@ -354,10 +302,10 @@
         </div>
     </section>
     <div class="stats-bar">
-        <div class="stat-item"><span class="stat-number" data-target="20">0</span><div class="stat-label">Courses</div></div>
-        <div class="stat-item"><span class="stat-number" data-target="200">0</span><div class="stat-label">Videos</div></div>
-        <div class="stat-item"><span class="stat-number" data-target="1000">0</span><div class="stat-label">Hours</div></div>
-        <div class="stat-item"><span class="stat-number" data-target="1000000">0</span><div class="stat-label">Students</div></div>
+        <div class="stat-item"><span class="stat-number">20+</span><div class="stat-label">Courses</div></div>
+        <div class="stat-item"><span class="stat-number">50+</span><div class="stat-label">Videos</div></div>
+        <div class="stat-item"><span class="stat-number">1500+</span><div class="stat-label">Hours</div></div>
+        <div class="stat-item"><span class="stat-number">1M+</span><div class="stat-label">Students</div></div>
     </div>
     <section id="about" class="animate-on-scroll">
         <div class="section-header">
@@ -388,7 +336,6 @@
             </div>
         </div>
     </section>
-
     <section id="code-practice" class="animate-on-scroll">
         <div class="section-header">
             <div class="section-tag">Code Practice</div>
@@ -448,7 +395,7 @@ print(f'Welcome, {name}!')</textarea>
                     <a href="https://www.programiz.com/php-programming/online-compiler/" target="_blank" rel="noopener noreferrer" class="compiler-card"><div class="compiler-icon">PHP</div><span class="compiler-name">PHP</span><span class="compiler-desc">Programiz Compiler</span></a>
                     <a href="https://www.programiz.com/kotlin-programming/online-compiler/" target="_blank" rel="noopener noreferrer" class="compiler-card"><div class="compiler-icon">Kt</div><span class="compiler-name">Kotlin</span><span class="compiler-desc">Programiz Compiler</span></a>
                     <a href="https://www.programiz.com/swift-programming/online-compiler/" target="_blank" rel="noopener noreferrer" class="compiler-card"><div class="compiler-icon">Sw</div><span class="compiler-name">Swift</span><span class="compiler-desc">Programiz Compiler</span></a>
-                    <a href="https://www.programiz.com/golang/online-compiler/" target="_blank" rel="noopeer noreferrer" class="compiler-card"><div class="compiler-icon">Go</div><span class="compiler-name">Go</span><span class="compiler-desc">Programiz Compiler</span></a>
+                    <a href="https://www.programiz.com/golang/online-compiler/" target="_blank" rel="noopener noreferrer" class="compiler-card"><div class="compiler-icon">Go</div><span class="compiler-name">Go</span><span class="compiler-desc">Programiz Compiler</span></a>
                     <a href="https://www.programiz.com/rust-programming/online-compiler/" target="_blank" rel="noopener noreferrer" class="compiler-card"><div class="compiler-icon">Rs</div><span class="compiler-name">Rust</span><span class="compiler-desc">Programiz Compiler</span></a>
                 </div>
             </div>
@@ -463,32 +410,6 @@ print(f'Welcome, {name}!')</textarea>
             </div>
         </div>
     </section>
-
-    <section id="daily-challenges" class="animate-on-scroll">
-
-    <div class="section-header">
-        <div class="section-tag">Daily Practice</div>
-        <h2 class="section-title">Daily Coding Challenges</h2>
-        <p class="section-subtitle">Choose a programming language and solve 20 fresh challenges every day.</p>
-    </div>
-
-    <div class="quiz-lang-grid">
-
-        <div class="quiz-lang-card" onclick="location.href='daily-challenges.html'">
-            <div class="quiz-lang-icon">🔥</div>
-            <div class="quiz-lang-name">Start Challenges</div>
-            <div class="quiz-lang-progress">Click to Open</div>
-        </div>
-
-    </div>
-
-    <div style="text-align:center;margin-top:30px;">
-        <a href="daily-challenges.html" class="daily-btn">
-            🚀 Go to Daily Challenges
-        </a>
-    </div>
-
-</section>
 
     <section id="youtube-channel" class="animate-on-scroll">
         <div class="section-header">
@@ -576,12 +497,13 @@ print(f'Welcome, {name}!')</textarea>
             </div>
         </div>
     </section>
-
     <section id="personal-info" class="animate-on-scroll">
         <div class="section-header"><div class="section-tag">Personal Information</div><h2 class="section-title">About the Owner</h2><p class="section-subtitle">Get to know more about me</p></div>
         <div class="glass-card" style="max-width:800px;margin:0 auto;">
             <div style="text-align:center;margin-bottom:2rem;">
-                <div style="width:100px;height:100px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--secondary));display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-size:2.5rem;font-weight:800;color:white;box-shadow:0 8px 30px rgba(6,182,212,0.4);">AR</div>
+                <div style="width:100px;height:100px;border-radius:50%;margin:0 auto 1rem;overflow:hidden;border:3px solid var(--primary);box-shadow:0 8px 30px rgba(6,182,212,0.4);">
+                    <img src="file_000000004984720882e69f4dad44966a.png" alt="Akarshit Raj" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none';this.parentElement.innerHTML='<span style=\\'font-size:2.5rem;font-weight:800;color:white;display:flex;align-items:center;justify-content:center;height:100%;background:linear-gradient(135deg,var(--primary),var(--secondary));\\'>AR</span>'">
+                </div>
                 <h3 style="font-size:1.8rem;font-weight:700;margin-bottom:0.5rem;background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Akarshit Raj</h3>
                 <p style="color:var(--gray);">Programming Educator & Student</p>
             </div>
@@ -768,7 +690,7 @@ print(f'Welcome, {name}!')</textarea>
             playstore: "How to Publish on Play Store:<br><br><strong>Step 1:</strong> Create a Google Play Developer account ($25 one-time fee).<br><strong>Step 2:</strong> Build a signed APK/AAB in Android Studio (Build &gt; Generate Signed Bundle).<br><strong>Step 3:</strong> Go to Play Console &gt; Create App.<br><strong>Step 4:</strong> Fill store listing (title, description, screenshots, icon).<br><strong>Step 5:</strong> Upload your AAB file.<br><strong>Step 6:</strong> Set up pricing and distribution.<br><strong>Step 7:</strong> Submit for review (usually 1-3 days).<br><br><strong>Tip:</strong> Make sure your app follows Play Store policies.",
             kotlinvsflutter: "Kotlin vs Flutter - Which is Better?<br><br><strong>Kotlin (Native Android):</strong><br>&bull; Official Android language<br>&bull; Best performance<br>&bull; Full access to Android APIs<br>&bull; Steeper learning curve<br>&bull; Only Android (need Swift for iOS)<br><br><strong>Flutter (Cross-Platform):</strong><br>&bull; One codebase for Android + iOS<br>&bull; Fast development with Hot Reload<br>&bull; Beautiful UI with widgets<br>&bull; Good performance (Dart compiles to native)<br>&bull; Growing community<br><br><strong>My Recommendation:</strong> Start with Kotlin for native Android basics, then learn Flutter for cross-platform projects.",
             apk: "How to Build an APK File:<br><br><strong>In Android Studio:</strong><br>1. Go to <strong>Build</strong> &gt; <strong>Generate Signed Bundle / APK</strong><br>2. Select <strong>APK</strong><br>3. Create a new keystore (or use existing)<br>4. Fill keystore password and key alias<br>5. Click <strong>Next</strong> then <strong>Finish</strong><br><br>Your APK will be in <code>app/release/app-release.apk</code><br><br><strong>Install on Phone:</strong><br>Transfer APK to phone and tap to install (enable 'Unknown Sources' in settings).",
-            calculator: "Calculator App Code in Kotlin:<br><div class='ai-code-block'><pre>// MainActivity.kt\npackage com.example.calculator\n\nimport android.os.Bundle\nimport android.widget.Button\nimport android.widget.TextView\nimport androidx.appcompat.app.AppCompatActivity\n\nclass MainActivity : AppCompatActivity() {\n    private lateinit var resultText: TextView\n    private var currentInput = \"\"\n    \n    override fun onCreate(savedInstanceState: Bundle?) {\n        super.onCreate(savedInstanceState)\n        setContentView(R.layout.activity_main)\n        \n        resultText = findViewById(R.id.resultText)\n        \n        val buttons = listOf(R.id.btn0, R.id.btn1, R.id.btn2, R.id.btn3, R.id.btn4,\n                            R.id.btn5, R.id.btn6, R.id.btn7, R.id.btn8, R.id.btn9)\n        \n        buttons.forEachIndexed { index, id -&gt;\n            findViewById&lt;Button&gt;(id).setOnClickListener {\n                currentInput += index.toString()\n                resultText.text = currentInput\n            }\n        }\n        \n        findViewById&lt;Button&gt;(R.id.btnPlus).setOnClickListener { currentInput += \"+\"; resultText.text = currentInput }\n        findViewById&lt;Button&gt;(R.id.btnEqual).setOnClickListener { calculate() }\n    }\n    \n    private fun calculate() {\n        val parts = currentInput.split(\"+\")\n        if(parts.size == 2) {\n            val result = parts[0].toInt() + parts[1].toInt()\n            resultText.text = result.toString()\n            currentInput = result.toString()\n        }\n    }\n}</pre></div><br>Create corresponding XML layout with buttons and a TextView for display.",
+            calculator: "Calculator App Code in Kotlin:<br><div class='ai-code-block'><pre>// MainActivity.kt\npackage com.example.calculator\n\nimport android.os.Bundle\nimport android.widget.Button\nimport android.widget.TextView\nimport androidx.appcompat.app.AppCompatActivity\n\nclass MainActivity : AppCompatActivity() {\n    private lateinit var resultText: TextView\n    private var currentInput = \"\"\n    \n    override fun onCreate(savedInstanceState: Bundle?) {\n        super.onCreate(savedInstanceState)\n        setContentView(R.layout.activity_main)\n        \n        resultText = findViewById(R.id.resultText)\n        \n        val buttons = listOf(R.id.btn0, R.id.btn1, R.id.btn2, R.id.btn3, R.id.btn4,\n                            R.id.btn5, R.id.btn6, R.id.btn7, R.id.btn8, R.id.btn9)\n        \n        buttons.forEachIndexed { index, id ->\n            findViewById<Button>(id).setOnClickListener {\n                currentInput += index.toString()\n                resultText.text = currentInput\n            }\n        }\n        \n        findViewById<Button>(R.id.btnPlus).setOnClickListener { currentInput += \"+\"; resultText.text = currentInput }\n        findViewById<Button>(R.id.btnEqual).setOnClickListener { calculate() }\n    }\n    \n    private fun calculate() {\n        val parts = currentInput.split(\"+\")\n        if(parts.size == 2) {\n            val result = parts[0].toInt() + parts[1].toInt()\n            resultText.text = result.toString()\n            currentInput = result.toString()\n        }\n    }\n}</pre></div><br>Create corresponding XML layout with buttons and a TextView for display.",
             androidstudio: "What is Android Studio?<br><br><strong>Android Studio</strong> is the official Integrated Development Environment (IDE) for Android app development.<br><br><strong>Features:</strong><br>&bull; Visual Layout Editor (drag-and-drop UI design)<br>&bull; APK Analyzer (reduce app size)<br>&bull; Fast Emulator (test without real device)<br>&bull; Intelligent Code Editor (autocomplete, refactoring)<br>&bull; Firebase Integration<br>&bull; GitHub Integration<br><br><strong>System Requirements:</strong><br>&bull; Windows 10/11, macOS, or Linux<br>&bull; 8GB RAM minimum (16GB recommended)<br>&bull; 8GB disk space<br><br>Download: <code>developer.android.com/studio</code>",
             default: "I can help you with App Development:<br><br><strong>Topics I cover:</strong><br>&bull; Android (Kotlin/Java) development<br>&bull; Flutter & Dart cross-platform<br>&bull; React Native<br>&bull; Play Store publishing<br>&bull; APK building & signing<br>&bull; UI/UX with Material Design<br>&bull; Firebase backend integration<br>&bull; App architecture (MVVM)<br><br><strong>Ask me anything specific like:</strong><br>&bull; 'How to create an Android app?'<br>&bull; 'Kotlin vs Flutter'<br>&bull; 'Play Store publishing steps'<br>&bull; 'Calculator app code'"
         };
@@ -946,37 +868,10 @@ print(f'Welcome, {name}!')</textarea>
         
         function selectLang(btn,lang){currentLang=lang;document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.getElementById('codeInput').value=codeTemplates[lang]||codeTemplates['python']}
         
-        const counters=document.querySelectorAll('.stat-number');
-        let hasAnimated=false;
-        function animateCounters(){
-            counters.forEach(counter=>{
-                const target=parseInt(counter.getAttribute('data-target')),
-                duration=2000,
-                increment=target/(duration/16);
-                let current=0;
-                const updateCounter=()=>{
-                    current+=increment;
-                    if(current<target){
-                        counter.textContent=Math.floor(current).toLocaleString();
-                        requestAnimationFrame(updateCounter);
-                    } else {
-                        if(target>=1000000) counter.textContent='1M+';
-                        else if(target>=1000) counter.textContent='1k+';
-                        else counter.textContent=target+'+';
-                    }
-                };
-                updateCounter();
-            });
-        }
-        
         const observer=new IntersectionObserver((entries)=>{
             entries.forEach(entry=>{
                 if(entry.isIntersecting){
                     entry.target.classList.add('visible');
-                    if(entry.target.querySelector('.stat-number')&&!hasAnimated){
-                        hasAnimated=true;
-                        animateCounters();
-                    }
                 }
             });
         },{threshold:0.1});
@@ -1077,34 +972,29 @@ print(f'Welcome, {name}!')</textarea>
                 sendBtn.textContent = 'Send';
             }, 800);
         }
-         
+
         // Search functionality
         function handleSearch() {
             const query = document.getElementById('navSearch').value.toLowerCase();
             if(!query) return;
             
-            const sections = ['home', 'about', 'code-practice', 'dialy-challenges', 'courses', 'popular', 'youtube-channel', 'personal-info'];
             const keywords = {
-    'python': 'code-practice',
-    'cpp': 'code-practice',
-    'c++': 'code-practice',
-    'javascript': 'code-practice',
-    'java': 'code-practice',
-    'compiler': 'code-practice',
-    'code': 'code-practice',
-    'practice': 'code-practice',      // ← YEH REHNE DO
-    'challenge': 'daily-challenges',  // ← ⭐ YEH ADD KARO
-    'daily': 'daily-challenges',      // ← ⭐ YEH ADD KARO
-    'challenges': 'daily-challenges', // ← ⭐ YEH ADD KARO
-    'yotube': 'youtube-channel',
-    'video': 'youtube-channel',
-    'course': 'courses',
-    'tutorial': 'tutorials.html',
-    'about': 'about',
-    'contact': 'personal-info',
-    'email': 'personal-info',
-    'instagram': 'personal-info'
-};
+                'python': 'code-practice',
+                'cpp': 'code-practice',
+                'c++': 'code-practice',
+                'javascript': 'code-practice',
+                'java': 'code-practice',
+                'compiler': 'code-practice',
+                'code': 'code-practice',
+                'practice': 'code-practice',
+                'youtube': 'youtube-channel',
+                'video': 'youtube-channel',
+                'course': 'courses',
+                'tutorial': 'tutorials.html',
+                'about': 'about',
+                'contact': 'personal-info',
+                'email': 'personal-info',
+                'instagram': 'personal-info'
             };
             
             for(let key in keywords) {
@@ -1118,13 +1008,9 @@ print(f'Welcome, {name}!')</textarea>
                 }
             }
         }
-
-        
-
     </script>
 </body>
 </html>
-
 
 
 
