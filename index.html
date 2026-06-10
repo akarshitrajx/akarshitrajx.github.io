@@ -289,7 +289,10 @@
             <li onclick="goToSection('home')"><span class="sidebar-icon">H</span> Home</li>
             <li onclick="goToSection('about')"><span class="sidebar-icon">A</span> About</li>
             <li onclick="goToSection('code-practice')"><span class="sidebar-icon">P</span> Practice</li>
-            <li onclick="goToSection('quiz-section')"><span class="sidebar-icon">Q</span> Quizzes</li>
+            <li onclick="location.href='daily-challenges.html'">
+    <span class="sidebar-icon">🔥</span> Daily Challenges
+            </li>
+            
             <li onclick="window.location.href='tutorials.html'"><span class="sidebar-icon">T</span> Tutorials</li>
         </ul>
     </aside>
@@ -302,6 +305,8 @@
         <div class="nav-search-wrapper">
             <span class="nav-search-icon">Q</span>
             <input type="text" class="nav-search-input" placeholder="Search courses, tutorials, topics..." id="navSearch" onkeyup="handleSearch()">
+            <li><a href="daily-challenges.html">Challenges</a></li>
+
         </div>
         <ul class="nav-links" id="navLinks">
             <li><a href="#home">Home</a></li>
@@ -1072,32 +1077,34 @@ print(f'Welcome, {name}!')</textarea>
                 sendBtn.textContent = 'Send';
             }, 800);
         }
-
+         
         // Search functionality
         function handleSearch() {
             const query = document.getElementById('navSearch').value.toLowerCase();
             if(!query) return;
             
-            const sections = ['home', 'about', 'code-practice', 'quiz-section', 'courses', 'popular', 'youtube-channel', 'personal-info'];
+            const sections = ['home', 'about', 'code-practice', 'dialy-challenges', 'courses', 'popular', 'youtube-channel', 'personal-info'];
             const keywords = {
-                'python': 'code-practice',
-                'cpp': 'code-practice',
-                'c++': 'code-practice',
-                'javascript': 'code-practice',
-                'java': 'code-practice',
-                'compiler': 'code-practice',
-                'code': 'code-practice',
-                'practice': 'code-practice',
-                'quiz': 'quiz-section',
-                'test': 'quiz-section',
-                'youtube': 'youtube-channel',
-                'video': 'youtube-channel',
-                'course': 'courses',
-                'tutorial': 'tutorials.html',
-                'about': 'about',
-                'contact': 'personal-info',
-                'email': 'personal-info',
-                'instagram': 'personal-info'
+    'python': 'code-practice',
+    'cpp': 'code-practice',
+    'c++': 'code-practice',
+    'javascript': 'code-practice',
+    'java': 'code-practice',
+    'compiler': 'code-practice',
+    'code': 'code-practice',
+    'practice': 'code-practice',      // ← YEH REHNE DO
+    'challenge': 'daily-challenges',  // ← ⭐ YEH ADD KARO
+    'daily': 'daily-challenges',      // ← ⭐ YEH ADD KARO
+    'challenges': 'daily-challenges', // ← ⭐ YEH ADD KARO
+    'yotube': 'youtube-channel',
+    'video': 'youtube-channel',
+    'course': 'courses',
+    'tutorial': 'tutorials.html',
+    'about': 'about',
+    'contact': 'personal-info',
+    'email': 'personal-info',
+    'instagram': 'personal-info'
+};
             };
             
             for(let key in keywords) {
@@ -1112,175 +1119,8 @@ print(f'Welcome, {name}!')</textarea>
             }
         }
 
-        const quizData = {
-            python: [
-                { q: "What does the 'print' function do in Python?", options: ["Displays output", "Takes input", "Saves file", "Throws error"], ans: 0 },
-                { q: "How do you create a list in Python?", options: ["[] brackets", "{} brackets", "() brackets", "<> brackets"], ans: 0 },
-                { q: "What does 'len()' function do?", options: ["Returns length", "Increases length", "Decreases length", "Does nothing"], ans: 0 },
-                { q: "What comes after an 'if' statement in Python?", options: [": colon", "; semicolon", ". dot", ", comma"], ans: 0 },
-                { q: "What is the correct 'for' loop syntax?", options: ["for i in range():", "for(i=0; i<n; i++)", "foreach i in range", "loop for i"], ans: 0 },
-                { q: "How do you define a function in Python?", options: ["def keyword", "function keyword", "func keyword", "define keyword"], ans: 0 },
-                { q: "What is 'None' in Python?", options: ["Null value", "Zero value", "Empty string", "Boolean false"], ans: 0 },
-                { q: "What are 'True' and 'False' in Python?", options: ["Boolean values", "String values", "Integer values", "Float values"], ans: 0 },
-                { q: "What does 'import' do?", options: ["Imports modules", "Deletes files", "Creates variables", "Runs loops"], ans: 0 },
-                { q: "What is 'try-except' used for?", options: ["Error handling", "Loop structure", "Function definition", "Class creation"], ans: 0 }
-            ],
-            cpp: [
-                { q: "What does 'cout' do in C++?", options: ["Prints output", "Takes input", "Reads file", "Allocates memory"], ans: 0 },
-                { q: "What does 'cin' do in C++?", options: ["Takes input", "Gives output", "Writes file", "Frees memory"], ans: 0 },
-                { q: "What is 'int' in C++?", options: ["Integer data type", "String type", "Float type", "Boolean type"], ans: 0 },
-                { q: "What is 'main()' function?", options: ["Entry point", "Exit point", "Loop function", "Library function"], ans: 0 },
-                { q: "What does 'return 0' indicate?", options: ["Success", "Error", "Loop break", "Function call"], ans: 0 },
-                { q: "What does 'include' do?", options: ["Includes header files", "Declares variables", "Defines functions", "Creates classes"], ans: 0 },
-                { q: "What is 'using namespace std'?", options: ["Uses standard namespace", "Creates custom namespace", "Deletes namespace", "Does nothing"], ans: 0 },
-                { q: "What is 'if-else'?", options: ["Conditional statement", "Loop statement", "Function declaration", "Class definition"], ans: 0 },
-                { q: "What is the correct 'for' loop syntax?", options: ["for(int i=0; i<n; i++)", "for i in range()", "foreach i in n", "loop i from 0 to n"], ans: 0 },
-                { q: "What is an 'array'?", options: ["Collection of elements", "Single element", "Function type", "Class type"], ans: 0 }
-            ],
-            javascript: [
-                { q: "What does 'console.log' do?", options: ["Prints to console", "Shows alert", "Saves file", "Reloads page"], ans: 0 },
-                { q: "What is 'var' used for?", options: ["Declares variable", "Creates function", "Makes class", "Runs loop"], ans: 0 },
-                { q: "What does 'function' keyword do?", options: ["Defines function", "Declares variable", "Creates class", "Makes object"], ans: 0 },
-                { q: "What does 'document.getElementById' do?", options: ["Selects HTML element", "Applies CSS", "Reloads page", "Sets cookie"], ans: 0 },
-                { q: "What does 'addEventListener' do?", options: ["Attaches event", "Removes event", "Creates event", "Deletes event"], ans: 0 },
-                { q: "What is JSON?", options: ["Data format", "Programming language", "Framework", "Database"], ans: 0 },
-                { q: "What does 'typeof' operator do?", options: ["Returns data type", "Changes value", "Deletes variable", "Calls function"], ans: 0 },
-                { q: "What is an Array in JS?", options: ["Ordered collection", "Unordered collection", "Key-value pair", "Single value"], ans: 0 },
-                { q: "What is a 'Promise'?", options: ["Handles async operations", "Handles sync operations", "Runs loop", "Defines function"], ans: 0 },
-                { q: "What is 'localStorage'?", options: ["Stores data in browser", "Stores on server", "Stores in memory", "Stores in file"], ans: 0 }
-            ],
-            java: [
-                { q: "What does 'System.out.println' do?", options: ["Prints output", "Takes input", "Reads file", "Throws exception"], ans: 0 },
-                { q: "What is 'public static void main'?", options: ["Entry point method", "Exit point method", "Constructor", "Destructor"], ans: 0 },
-                { q: "What does 'class' keyword do?", options: ["Defines class", "Creates object", "Calls method", "Declares variable"], ans: 0 },
-                { q: "What does 'new' keyword do?", options: ["Creates object", "Defines class", "Calls method", "Deletes variable"], ans: 0 },
-                { q: "What is 'String' in Java?", options: ["Class", "Primitive type", "Interface", "Enum"], ans: 0 },
-                { q: "What does 'extends' do?", options: ["Inheritance", "Implements interface", "Imports package", "Handles exception"], ans: 0 },
-                { q: "What is 'try-catch'?", options: ["Exception handling", "Loop structure", "Conditional statement", "Method overloading"], ans: 0 },
-                { q: "What is 'ArrayList'?", options: ["Dynamic array", "Fixed array", "Linked list", "Hash map"], ans: 0 },
-                { q: "What is an 'interface'?", options: ["Defines contract", "Creates class", "Creates object", "Implements method"], ans: 0 },
-                { q: "What does 'final' keyword do?", options: ["Makes value constant", "Changes value", "Overrides method", "Extends class"], ans: 0 }
-            ],
-            html: [
-                { q: "What is the full form of HTML?", options: ["HyperText Markup Language", "HighText Machine Language", "HyperText Machine Language", "HighText Markup Language"], ans: 0 },
-                { q: "What is the '<p>' tag?", options: ["Paragraph", "Page", "Print", "Process"], ans: 0 },
-                { q: "What does '<a>' tag do?", options: ["Creates link", "Shows image", "Makes table", "Creates form"], ans: 0 },
-                { q: "What does '<img>' tag do?", options: ["Displays image", "Shows video", "Plays audio", "Formats text"], ans: 0 },
-                { q: "What is '<div>' tag?", options: ["Container", "Division", "Document", "Display"], ans: 0 },
-                { q: "What does '<table>' tag do?", options: ["Creates table", "Makes list", "Creates form", "Makes link"], ans: 0 },
-                { q: "What does '<form>' tag do?", options: ["Creates form", "Makes table", "Shows image", "Plays video"], ans: 0 },
-                { q: "What does '<input>' tag do?", options: ["Takes user input", "Gives output", "Saves file", "Shows image"], ans: 0 },
-                { q: "What does '<head>' tag contain?", options: ["Metadata", "Body content", "Footer", "Navigation"], ans: 0 },
-                { q: "What does '<title>' tag do?", options: ["Sets page title", "Sets heading", "Sets paragraph", "Sets link"], ans: 0 }
-            ],
-            sql: [
-                { q: "What is the full form of SQL?", options: ["Structured Query Language", "Simple Query Language", "Standard Query Language", "System Query Language"], ans: 0 },
-                { q: "What does 'SELECT' do?", options: ["Retrieves data", "Inserts data", "Updates data", "Deletes data"], ans: 0 },
-                { q: "What does 'INSERT INTO' do?", options: ["Inserts data", "Selects data", "Updates data", "Deletes data"], ans: 0 },
-                { q: "What does 'UPDATE' do?", options: ["Updates data", "Inserts data", "Selects data", "Deletes data"], ans: 0 },
-                { q: "What does 'DELETE' do?", options: ["Deletes data", "Inserts data", "Selects data", "Updates data"], ans: 0 },
-                { q: "What does 'WHERE' clause do?", options: ["Filters condition", "Sorts data", "Groups data", "Joins tables"], ans: 0 },
-                { q: "What does 'ORDER BY' do?", options: ["Sorts data", "Filters data", "Groups data", "Joins tables"], ans: 0 },
-                { q: "What does 'JOIN' do?", options: ["Combines tables", "Filters data", "Sorts data", "Deletes data"], ans: 0 },
-                { q: "What does 'COUNT()' do?", options: ["Counts rows", "Calculates sum", "Finds average", "Finds maximum"], ans: 0 },
-                { q: "What is 'PRIMARY KEY'?", options: ["Unique identifier", "Foreign reference", "Index", "Constraint"], ans: 0 }
-            ]
-        };
         
-        let currentQuizLang = '';
-        let currentQuizLevel = 1;
-        let currentQuizScore = 0;
-        
-        function getQuizProgress(lang) {
-            return parseInt(localStorage.getItem('quiz_progress_' + lang) || '0');
-        }
-        function setQuizProgress(lang, level) {
-            localStorage.setItem('quiz_progress_' + lang, level.toString());
-        }
-        function updateQuizProgressDisplays() {
-            Object.keys(quizData).forEach(lang => {
-                const progress = getQuizProgress(lang);
-                const el = document.getElementById('progress-' + lang);
-                if(el) el.textContent = 'Level ' + progress + ' / 10';
-            });
-        }
-        
-        function startQuiz(lang) {
-            currentQuizLang = lang;
-            const saved = getQuizProgress(lang);
-            currentQuizLevel = saved >= 10 ? 1 : saved + 1;
-            currentQuizScore = 0;
-            document.getElementById('quizLangSelect').style.display = 'none';
-            document.getElementById('quizResult').style.display = 'none';
-            document.getElementById('quizContainer').classList.add('active');
-            loadQuizQuestion();
-        }
-        
-        function loadQuizQuestion() {
-            const questions = quizData[currentQuizLang];
-            const qIndex = (currentQuizLevel - 1) % questions.length;
-            const q = questions[qIndex];
-            
-            document.getElementById('quizLevel').textContent = currentQuizLang.toUpperCase() + ' - Level ' + currentQuizLevel;
-            document.getElementById('quizScore').textContent = 'Score: ' + currentQuizScore;
-            document.getElementById('quizProgressFill').style.width = (currentQuizLevel * 10) + '%';
-            document.getElementById('quizQuestion').textContent = q.q;
-            
-            const optsDiv = document.getElementById('quizOptions');
-            optsDiv.innerHTML = '';
-            q.options.forEach((opt, idx) => {
-                const btn = document.createElement('button');
-                btn.className = 'quiz-option';
-                btn.textContent = opt;
-                btn.onclick = () => selectAnswer(idx, q.ans);
-                optsDiv.appendChild(btn);
-            });
-            
-            document.getElementById('quizNextBtn').style.display = 'none';
-        }
-        
-        function selectAnswer(selected, correct) {
-            const opts = document.querySelectorAll('.quiz-option');
-            opts.forEach((opt, idx) => {
-                opt.classList.add('disabled');
-                if(idx === correct) opt.classList.add('correct');
-                else if(idx === selected && idx !== correct) opt.classList.add('wrong');
-            });
-            
-            if(selected === correct) {
-                currentQuizScore += 10;
-                showNotification('Correct! +10 points');
-            } else {
-                showNotification('Wrong! Correct answer: ' + opts[correct].textContent);
-            }
-            
-            document.getElementById('quizScore').textContent = 'Score: ' + currentQuizScore;
-            document.getElementById('quizNextBtn').style.display = 'block';
-            
-            if(currentQuizLevel > getQuizProgress(currentQuizLang)) {
-                setQuizProgress(currentQuizLang, currentQuizLevel);
-            }
-        }
-        
-        function nextLevel() {
-            if(currentQuizLevel >= 10) {
-                document.getElementById('quizContainer').classList.remove('active');
-                document.getElementById('quizResult').style.display = 'block';
-                document.getElementById('quizResultText').textContent = 'You completed all 10 levels with ' + currentQuizScore + ' points! Great job!';
-                return;
-            }
-            currentQuizLevel++;
-            loadQuizQuestion();
-        }
-        
-        function exitQuiz() {
-            document.getElementById('quizContainer').classList.remove('active');
-            document.getElementById('quizResult').style.display = 'none';
-            document.getElementById('quizLangSelect').style.display = 'block';
-            updateQuizProgressDisplays();
-        }
-        
-        updateQuizProgressDisplays();
+
     </script>
 </body>
 </html>
