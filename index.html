@@ -443,7 +443,7 @@ print(f'Welcome, {name}!')</textarea>
                     <a href="https://www.programiz.com/php-programming/online-compiler/" target="_blank" rel="noopener noreferrer" class="compiler-card"><div class="compiler-icon">PHP</div><span class="compiler-name">PHP</span><span class="compiler-desc">Programiz Compiler</span></a>
                     <a href="https://www.programiz.com/kotlin-programming/online-compiler/" target="_blank" rel="noopener noreferrer" class="compiler-card"><div class="compiler-icon">Kt</div><span class="compiler-name">Kotlin</span><span class="compiler-desc">Programiz Compiler</span></a>
                     <a href="https://www.programiz.com/swift-programming/online-compiler/" target="_blank" rel="noopener noreferrer" class="compiler-card"><div class="compiler-icon">Sw</div><span class="compiler-name">Swift</span><span class="compiler-desc">Programiz Compiler</span></a>
-                    <a href="https://www.programiz.com/golang/online-compiler/" target="_blank" rel="noopener noreferrer" class="compiler-card"><div class="compiler-icon">Go</div><span class="compiler-name">Go</span><span class="compiler-desc">Programiz Compiler</span></a>
+                    <a href="https://www.programiz.com/golang/online-compiler/" target="_blank" rel="noopeer noreferrer" class="compiler-card"><div class="compiler-icon">Go</div><span class="compiler-name">Go</span><span class="compiler-desc">Programiz Compiler</span></a>
                     <a href="https://www.programiz.com/rust-programming/online-compiler/" target="_blank" rel="noopener noreferrer" class="compiler-card"><div class="compiler-icon">Rs</div><span class="compiler-name">Rust</span><span class="compiler-desc">Programiz Compiler</span></a>
                 </div>
             </div>
@@ -459,75 +459,31 @@ print(f'Welcome, {name}!')</textarea>
         </div>
     </section>
 
-    <section id="quiz-section" class="animate-on-scroll">
-        <div class="section-header">
-            <div class="section-tag">Quiz Challenge</div>
-            <h2 class="section-title">Programming Quizzes</h2>
-            <p class="section-subtitle">Test your knowledge. Complete all 10 levels in any language to master the basics.</p>
+    <section id="daily-challenges" class="animate-on-scroll">
+
+    <div class="section-header">
+        <div class="section-tag">Daily Practice</div>
+        <h2 class="section-title">Daily Coding Challenges</h2>
+        <p class="section-subtitle">Choose a programming language and solve 20 fresh challenges every day.</p>
+    </div>
+
+    <div class="quiz-lang-grid">
+
+        <div class="quiz-lang-card" onclick="location.href='daily-challenges.html'">
+            <div class="quiz-lang-icon">🔥</div>
+            <div class="quiz-lang-name">Start Challenges</div>
+            <div class="quiz-lang-progress">Click to Open</div>
         </div>
-        <div class="quiz-section">
-            <div id="quizLangSelect">
-                <h3 style="text-align:center;margin-bottom:1.5rem;font-size:1.3rem;">Choose a Language</h3>
-                <div class="quiz-lang-grid">
-                    <div class="quiz-lang-card" onclick="startQuiz('python')">
-                        <div class="quiz-lang-icon">Py</div>
-                        <div class="quiz-lang-name">Python</div>
-                        <div class="quiz-lang-progress" id="progress-python">Level 0 / 10</div>
-                    </div>
-                    <div class="quiz-lang-card" onclick="startQuiz('cpp')">
-                        <div class="quiz-lang-icon">C++</div>
-                        <div class="quiz-lang-name">C++</div>
-                        <div class="quiz-lang-progress" id="progress-cpp">Level 0 / 10</div>
-                    </div>
-                    <div class="quiz-lang-card" onclick="startQuiz('javascript')">
-                        <div class="quiz-lang-icon">JS</div>
-                        <div class="quiz-lang-name">JavaScript</div>
-                        <div class="quiz-lang-progress" id="progress-javascript">Level 0 / 10</div>
-                    </div>
-                    <div class="quiz-lang-card" onclick="startQuiz('java')">
-                        <div class="quiz-lang-icon">Java</div>
-                        <div class="quiz-lang-name">Java</div>
-                        <div class="quiz-lang-progress" id="progress-java">Level 0 / 10</div>
-                    </div>
-                    <div class="quiz-lang-card" onclick="startQuiz('html')">
-                        <div class="quiz-lang-icon">Web</div>
-                        <div class="quiz-lang-name">HTML/CSS</div>
-                        <div class="quiz-lang-progress" id="progress-html">Level 0 / 10</div>
-                    </div>
-                    <div class="quiz-lang-card" onclick="startQuiz('sql')">
-                        <div class="quiz-lang-icon">SQL</div>
-                        <div class="quiz-lang-name">SQL</div>
-                        <div class="quiz-lang-progress" id="progress-sql">Level 0 / 10</div>
-                    </div>
-                </div>
-            </div>
-            <div class="quiz-container" id="quizContainer">
-                <div class="quiz-header">
-                    <div class="quiz-level" id="quizLevel">Python - Level 1</div>
-                    <div class="quiz-score" id="quizScore">Score: 0</div>
-                </div>
-                <div class="quiz-progress-bar">
-                    <div class="quiz-progress-fill" id="quizProgressFill" style="width:0%"></div>
-                </div>
-                <div class="quiz-question" id="quizQuestion">Question loading...</div>
-                <div class="quiz-options" id="quizOptions"></div>
-                <div class="quiz-actions">
-                    <button class="quiz-btn quiz-btn-secondary" onclick="exitQuiz()">&larr; Exit</button>
-                    <button class="quiz-btn quiz-btn-primary" id="quizNextBtn" onclick="nextLevel()" style="display:none;">Next Level &rarr;</button>
-                </div>
-                <div style="text-align:center;margin-top:30px;">
-    <a href="daily-challenges.html" class="daily-btn">
-        🚀 Daily Challenges
-    </a>
-</div>
-            </div>
-            <div class="quiz-result" id="quizResult" style="display:none;">
-                <h3>Quiz Complete!</h3>
-                <p id="quizResultText">You scored 0 points!</p>
-                <button class="quiz-btn quiz-btn-primary" onclick="exitQuiz()">Back to Languages</button>
-            </div>
-        </div>
-    </section>
+
+    </div>
+
+    <div style="text-align:center;margin-top:30px;">
+        <a href="daily-challenges.html" class="daily-btn">
+            🚀 Go to Daily Challenges
+        </a>
+    </div>
+
+</section>
 
     <section id="youtube-channel" class="animate-on-scroll">
         <div class="section-header">
