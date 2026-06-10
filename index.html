@@ -968,17 +968,24 @@ print(f'Welcome, {name}!')</textarea>
             });
         }
         
-        const observer=new IntersectionObserver((entries)=>{
-            entries.forEach(entry=>{
-                if(entry.isIntersecting){
-                    entry.target.classList.add('visible');
-                    if(entry.target.querySelector('.stat-number')&&!hasAnimated){
-                        hasAnimated=true;
-                        animateCounters();
-                    }
-                }
-            });
-        },{threshold:0.1});
+        // Auto-animate counters on page load
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        if(!hasAnimated) {
+            hasAnimated=true;
+            animateCounters();
+        }
+    }, 500);
+});
+
+const observer=new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add('visible');
+        }
+    });
+},{threshold:0.1});
+
         document.querySelectorAll('.animate-on-scroll').forEach(el=>observer.observe(el));
         
         function openModal(videoUrl){document.getElementById('videoFrame').src=videoUrl;document.getElementById('videoModal').classList.add('active');document.body.style.overflow='hidden'}
