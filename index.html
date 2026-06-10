@@ -288,14 +288,8 @@
                             <span class="profile-info-icon">T</span>
                             <div><div class="profile-info-label">Tutorials</div><div class="profile-info-value">Read All Tutorials</div></div>
                         </a>
-                        <button class="profile-info-box" onclick="openAIChat('web')" style="cursor:pointer">
-                            <span class="profile-info-icon">W</span>
-                            <div><div class="profile-info-label">AI Assistant</div><div class="profile-info-value">Web Development</div></div>
-                        </button>
-                        <button class="profile-info-box" onclick="openAIChat('app')" style="cursor:pointer">
-                            <span class="profile-info-icon">A</span>
-                            <div><div class="profile-info-label">AI Assistant</div><div class="profile-info-value">App Development</div></div>
-                        </button>
+                        
+                        
                     </div>
                 </div>
             </div>
@@ -410,6 +404,7 @@ print(f'Welcome, {name}!')</textarea>
             </div>
         </div>
     </section>
+    
 
     <section id="youtube-channel" class="animate-on-scroll">
         <div class="section-header">
@@ -497,12 +492,13 @@ print(f'Welcome, {name}!')</textarea>
             </div>
         </div>
     </section>
+    
     <section id="personal-info" class="animate-on-scroll">
         <div class="section-header"><div class="section-tag">Personal Information</div><h2 class="section-title">About the Owner</h2><p class="section-subtitle">Get to know more about me</p></div>
         <div class="glass-card" style="max-width:800px;margin:0 auto;">
             <div style="text-align:center;margin-bottom:2rem;">
                 <div style="width:100px;height:100px;border-radius:50%;margin:0 auto 1rem;overflow:hidden;border:3px solid var(--primary);box-shadow:0 8px 30px rgba(6,182,212,0.4);">
-                    <img src="file_000000004984720882e69f4dad44966a.png" alt="Akarshit Raj" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none';this.parentElement.innerHTML='<span style=\\'font-size:2.5rem;font-weight:800;color:white;display:flex;align-items:center;justify-content:center;height:100%;background:linear-gradient(135deg,var(--primary),var(--secondary));\\'>AR</span>'">
+                    <img src="file_000000004984720882e69f4dad44966a.png" alt="Akarshit Raj" style="width:100%;height:100%;object-fit:cover;">
                 </div>
                 <h3 style="font-size:1.8rem;font-weight:700;margin-bottom:0.5rem;background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Akarshit Raj</h3>
                 <p style="color:var(--gray);">Programming Educator & Student</p>
@@ -531,11 +527,7 @@ print(f'Welcome, {name}!')</textarea>
                     </div>
                     <a href="https://instagram.com/lg_444_x" target="_blank" rel="noopener noreferrer" class="social-btn">Follow</a>
                 </div>
-                <div class="info-card">
-                    <div class="info-icon">YT</div>
-                    <div style="flex:1;">
-                        <div class="info-label">YouTube Channel</div>
-                        <div class="info-value">Akarshit Raj - Programming Courses</div>
+                
                     </div>
                     <a href="https://youtube.com/playlist?list=PLu0W_9lII9agwh1XjRt242xIpHhPT2llg" target="_blank" rel="noopener noreferrer" class="social-btn">Visit</a>
                 </div>
@@ -570,6 +562,7 @@ print(f'Welcome, {name}!')</textarea>
             <a href="tutorials.html">Tutorials</a>
         </div>
     </footer>
+    
 
     <div class="modal" id="videoModal">
         <div class="modal-content">
@@ -582,81 +575,9 @@ print(f'Welcome, {name}!')</textarea>
 
     <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&uarr;</button>
 
-    <div class="ai-chat-modal" id="webAIChat">
-        <div class="ai-chat-header">
-            <div class="ai-avatar">W</div>
-            <div><div class="ai-title">Web Development AI</div><div class="ai-status">Online</div></div>
-            <button class="ai-close-btn" onclick="closeAIChat()">&times;</button>
-        </div>
-        <div class="ai-chat-body" id="webChatBody">
-            <div class="ai-message ai">
-                <div class="ai-message-avatar">AI</div>
-                <div class="ai-message-bubble">
-                    <strong>Hello! I am your Web Development AI Assistant.</strong><br><br>
-                    I can help you with:<br>
-                    &bull; HTML, CSS, JavaScript basics<br>
-                    &bull; Responsive design & frameworks<br>
-                    &bull; GitHub Pages hosting (free)<br>
-                    &bull; Website deployment steps<br>
-                    &bull; Domain & hosting setup<br>
-                    &bull; Complete code examples<br><br>
-                    <em>Click a quick question below or type your own!</em>
-                </div>
-            </div>
-        </div>
-        <div class="ai-quick-actions" id="webQuickActions">
-            <button class="ai-quick-btn" onclick="sendAIQuestion('web','How to create a website?')">How to create a website?</button>
-            <button class="ai-quick-btn" onclick="sendAIQuestion('web','How to publish on GitHub Pages?')">GitHub Pages publish?</button>
-            <button class="ai-quick-btn" onclick="sendAIQuestion('web','What is HTML CSS JS?')">What is HTML/CSS/JS?</button>
-            <button class="ai-quick-btn" onclick="sendAIQuestion('web','Free hosting options?')">Free hosting?</button>
-            <button class="ai-quick-btn" onclick="sendAIQuestion('web','How to make responsive design?')">Responsive design?</button>
-            <button class="ai-quick-btn" onclick="sendAIQuestion('web','Give me portfolio website code')">Portfolio website code?</button>
-        </div>
-        <div class="ai-chat-input-area">
-            <div class="ai-chat-input-wrapper">
-                <input type="text" class="ai-chat-input" id="webChatInput" placeholder="Ask anything about web development..." onkeypress="if(event.key==='Enter')sendAIQuestion('web')">
-                <button class="ai-chat-send" id="webSendBtn" onclick="sendAIQuestion('web')">Send</button>
-            </div>
-        </div>
-    </div>
+    
 
-    <div class="ai-chat-modal" id="appAIChat">
-        <div class="ai-chat-header">
-            <div class="ai-avatar" style="border-color:var(--app-dev)">A</div>
-            <div><div class="ai-title">App Development AI</div><div class="ai-status">Online</div></div>
-            <button class="ai-close-btn" onclick="closeAIChat()">&times;</button>
-        </div>
-        <div class="ai-chat-body" id="appChatBody">
-            <div class="ai-message ai">
-                <div class="ai-message-avatar" style="background:rgba(139,92,246,0.2);border-color:var(--app-dev)">AI</div>
-                <div class="ai-message-bubble">
-                    <strong>Hello! I am your App Development AI Assistant.</strong><br><br>
-                    I can help you with:<br>
-                    &bull; Android app development (Kotlin/Java)<br>
-                    &bull; Flutter & React Native<br>
-                    &bull; Play Store publishing guide<br>
-                    &bull; App design & UI/UX<br>
-                    &bull; APK build process<br>
-                    &bull; Complete code examples<br><br>
-                    <em>Click a quick question below or type your own!</em>
-                </div>
-            </div>
-        </div>
-        <div class="ai-quick-actions" id="appQuickActions">
-            <button class="ai-quick-btn" onclick="sendAIQuestion('app','How to create an Android app?')">Android app guide?</button>
-            <button class="ai-quick-btn" onclick="sendAIQuestion('app','How to publish on Play Store?')">Play Store publish?</button>
-            <button class="ai-quick-btn" onclick="sendAIQuestion('app','Kotlin vs Flutter which is better?')">Kotlin vs Flutter?</button>
-            <button class="ai-quick-btn" onclick="sendAIQuestion('app','How to build APK file?')">Build APK?</button>
-            <button class="ai-quick-btn" onclick="sendAIQuestion('app','Give me calculator app code')">Calculator app code?</button>
-            <button class="ai-quick-btn" onclick="sendAIQuestion('app','What is Android Studio?')">Android Studio?</button>
-        </div>
-        <div class="ai-chat-input-area">
-            <div class="ai-chat-input-wrapper">
-                <input type="text" class="ai-chat-input" id="appChatInput" placeholder="Ask anything about app development..." onkeypress="if(event.key==='Enter')sendAIQuestion('app')">
-                <button class="ai-chat-send" id="appSendBtn" onclick="sendAIQuestion('app')">Send</button>
-            </div>
-        </div>
-    </div>
+    
 
     <script>
         const PISTON_API = 'https://emkc.org/api/v2/piston/execute';
