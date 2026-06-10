@@ -967,25 +967,19 @@ print(f'Welcome, {name}!')</textarea>
                 updateCounter();
             });
         }
-        
-        // Auto-animate counters on page load
-window.addEventListener('load', () => {
-    setTimeout(() => {
-        if(!hasAnimated) {
-            hasAnimated=true;
-            animateCounters();
+        // Auto-animate counters immediately
+setTimeout(() => {
+    animateCounters();
+}, 1000);
+
+const observer=new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add('visible');
         }
-    }, 500);
-});
-// Backup: Animate immediately if already visible
-if(document.querySelector('.stats-bar').getBoundingClientRect().top < window.innerHeight){
-    setTimeout(() => {
-        if(!hasAnimated) {
-            hasAnimated=true;
-            animateCounters();
-        }
-    }, 500);
-}
+    });
+},{threshold:0.1});
+
 
 const observer=new IntersectionObserver((entries)=>{
     entries.forEach(entry=>{
