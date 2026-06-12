@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -129,7 +129,7 @@
             <div class="action-btns" id="actionButtons">
                 <button class="neon-btn" onclick="markCompleted()">Mark as Completed</button>
                 <button class="gold-btn" onclick="shareChallenge()">Share</button>
-                <a href="" target="_blank" rel="noopener noreferrer" class="neon-btn" id="compilerLink" style="display:none">Open Compiler</a>
+                <button class="neon-btn" id="compilerLink" style="display:none" onclick="openCompiler()">Open Compiler</button>
             </div>
         </div>
         <div id="noSelection" style="text-align:center;padding:3rem;color:var(--gray)">
@@ -207,7 +207,7 @@ const data=getStreakData();const today=getTodayDate();
 if(data.completedDates.includes(today)){document.getElementById('completedState').style.display='block';document.getElementById('actionButtons').style.display='none'}
 else{document.getElementById('completedState').style.display='none';document.getElementById('actionButtons').style.display='flex'}
 const compilerLinks={python:'https://www.programiz.com/python-programming/online-compiler/',cpp:'https://www.programiz.com/cpp-programming/online-compiler/',javascript:'https://www.programiz.com/javascript/online-compiler/',java:'https://www.programiz.com/java-programming/online-compiler/',csharp:'https://www.programiz.com/csharp-programming/online-compiler/',html:'https://www.programiz.com/html/online-compiler/',sql:'https://www.programiz.com/sql/online-compiler/',php:'https://www.programiz.com/php-programming/online-compiler/',kotlin:'https://www.programiz.com/kotlin-programming/online-compiler/',swift:'https://www.programiz.com/swift-programming/online-compiler/',go:'https://www.programiz.com/golang/online-compiler/',rust:'https://www.programiz.com/rust-programming/online-compiler/'};
-const link=document.getElementById('compilerLink');link.href=compilerLinks[lang]||'#';link.style.display='inline-flex';
+const link=document.getElementById('compilerLink');link.style.display='inline-flex';
 document.getElementById('challengeCard').classList.add('active');
 document.getElementById('noSelection').style.display='none';
 }
@@ -219,6 +219,12 @@ const text='I just completed Day '+day+' of the '+lang+' Daily Challenge on Akar
 const url=window.location.href;
 if(navigator.share){navigator.share({title:'Daily Challenge',text:text,url:url})}
 else{const whatsappUrl='https://wa.me/?text='+encodeURIComponent(text+' '+url);window.open(whatsappUrl,'_blank')}
+}
+
+function openCompiler(){
+const compilerLinks={python:'https://www.programiz.com/python-programming/online-compiler/',cpp:'https://www.programiz.com/cpp-programming/online-compiler/',javascript:'https://www.programiz.com/javascript/online-compiler/',java:'https://www.programiz.com/java-programming/online-compiler/',csharp:'https://www.programiz.com/csharp-programming/online-compiler/',html:'https://www.programiz.com/html/online-compiler/',sql:'https://www.programiz.com/sql/online-compiler/',php:'https://www.programiz.com/php-programming/online-compiler/',kotlin:'https://www.programiz.com/kotlin-programming/online-compiler/',swift:'https://www.programiz.com/swift-programming/online-compiler/',go:'https://www.programiz.com/golang/online-compiler/',rust:'https://www.programiz.com/rust-programming/online-compiler/'};
+const url=compilerLinks[currentChallengeLang];
+if(url){window.open(url,'_blank');}else{showNotification('Compiler link not available!');}
 }
 
 function updateCountdown(){
