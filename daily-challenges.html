@@ -85,8 +85,9 @@
         .no-copy-overlay p{color:var(--gray);text-align:center;max-width:400px;padding:0 1rem}
         @media(max-width:600px){.square-btn{width:75px;height:75px;font-size:1.4rem}.gold-heading{padding:14px 16px;border-radius:16px;font-size:clamp(1rem,6vw,1.8rem);letter-spacing:1px}.gold-heading .space{width:10px}.streak-item{padding:0.75rem 1.5rem}.streak-number{font-size:2rem}.challenge-card{padding:1.5rem}.countdown-box{padding:0.75rem 1rem;min-width:55px}.countdown-number{font-size:1.4rem}}
     
-        .lang-item,.square-btn,.neon-btn,.gold-btn{-webkit-tap-highlight-color:transparent;touch-action:manipulation;pointer-events:auto!important;user-select:none;-webkit-user-select:none}
-        .square-btn{position:relative;z-index:10}
+        .square-btn,.neon-btn,.gold-btn{cursor:pointer!important;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+        .square-btn *{pointer-events:none!important}
+        @media(max-width:600px){.square-btn{width:75px;height:75px;font-size:1.4rem}}
     </style>
 </head>
 <body>
@@ -108,18 +109,18 @@
     <section class="lang-section">
         <h3 class="lang-title">Select Your Language</h3>
         <div class="lang-grid" id="langGrid">
-            <div class="lang-item"><button class="square-btn" data-lang="python" onclick="selectChallengeLang(this,'python')"><span>Py</span></button><div class="lang-name">Python</div></div>
-            <div class="lang-item"><button class="square-btn" data-lang="cpp" onclick="selectChallengeLang(this,'cpp')"><span>C++</span></button><div class="lang-name">C++</div></div>
-            <div class="lang-item"><button class="square-btn" data-lang="javascript" onclick="selectChallengeLang(this,'javascript')"><span>JS</span></button><div class="lang-name">JavaScript</div></div>
-            <div class="lang-item"><button class="square-btn" data-lang="java" onclick="selectChallengeLang(this,'java')"><span>Java</span></button><div class="lang-name">Java</div></div>
-            <div class="lang-item"><button class="square-btn" data-lang="csharp" onclick="selectChallengeLang(this,'csharp')"><span>C#</span></button><div class="lang-name">C#</div></div>
-            <div class="lang-item"><button class="square-btn" data-lang="html" onclick="selectChallengeLang(this,'html')"><span>Web</span></button><div class="lang-name">HTML/CSS</div></div>
-            <div class="lang-item"><button class="square-btn" data-lang="sql" onclick="selectChallengeLang(this,'sql')"><span>SQL</span></button><div class="lang-name">SQL</div></div>
-            <div class="lang-item"><button class="square-btn" data-lang="php" onclick="selectChallengeLang(this,'php')"><span>PHP</span></button><div class="lang-name">PHP</div></div>
-            <div class="lang-item"><button class="square-btn" data-lang="kotlin" onclick="selectChallengeLang(this,'kotlin')"><span>Kt</span></button><div class="lang-name">Kotlin</div></div>
-            <div class="lang-item"><button class="square-btn" data-lang="swift" onclick="selectChallengeLang(this,'swift')"><span>Sw</span></button><div class="lang-name">Swift</div></div>
-            <div class="lang-item"><button class="square-btn" data-lang="go" onclick="selectChallengeLang(this,'go')"><span>Go</span></button><div class="lang-name">Go</div></div>
-            <div class="lang-item"><button class="square-btn" data-lang="rust" onclick="selectChallengeLang(this,'rust')"><span>Rs</span></button><div class="lang-name">Rust</div></div>
+            <div class="lang-item"><button class="square-btn" data-lang="python" onclick="selectChallengeLang(this,'python')">Py</button><div class="lang-name">Python</div></div>
+            <div class="lang-item"><button class="square-btn" data-lang="cpp" onclick="selectChallengeLang(this,'cpp')">C++</button><div class="lang-name">C++</div></div>
+            <div class="lang-item"><button class="square-btn" data-lang="javascript" onclick="selectChallengeLang(this,'javascript')">JS</button><div class="lang-name">JavaScript</div></div>
+            <div class="lang-item"><button class="square-btn" data-lang="java" onclick="selectChallengeLang(this,'java')">Java</button><div class="lang-name">Java</div></div>
+            <div class="lang-item"><button class="square-btn" data-lang="csharp" onclick="selectChallengeLang(this,'csharp')">C#</button><div class="lang-name">C#</div></div>
+            <div class="lang-item"><button class="square-btn" data-lang="html" onclick="selectChallengeLang(this,'html')">Web</button><div class="lang-name">HTML/CSS</div></div>
+            <div class="lang-item"><button class="square-btn" data-lang="sql" onclick="selectChallengeLang(this,'sql')">SQL</button><div class="lang-name">SQL</div></div>
+            <div class="lang-item"><button class="square-btn" data-lang="php" onclick="selectChallengeLang(this,'php')">PHP</button><div class="lang-name">PHP</div></div>
+            <div class="lang-item"><button class="square-btn" data-lang="kotlin" onclick="selectChallengeLang(this,'kotlin')">Kt</button><div class="lang-name">Kotlin</div></div>
+            <div class="lang-item"><button class="square-btn" data-lang="swift" onclick="selectChallengeLang(this,'swift')">Sw</button><div class="lang-name">Swift</div></div>
+            <div class="lang-item"><button class="square-btn" data-lang="go" onclick="selectChallengeLang(this,'go')">Go</button><div class="lang-name">Go</div></div>
+            <div class="lang-item"><button class="square-btn" data-lang="rust" onclick="selectChallengeLang(this,'rust')">Rs</button><div class="lang-name">Rust</div></div>
         </div>
     </section>
     <section class="challenge-section">
@@ -190,7 +191,10 @@ const lastDate=data.lastCompleted?new Date(data.lastCompleted):null;
 const todayDate=new Date(today);
 if(lastDate){const diffDays=(todayDate-lastDate)/(1000*60*60*24);if(diffDays===1){data.currentStreak++}else if(diffDays>1){data.currentStreak=1}}else{data.currentStreak=1}
 data.lastCompleted=today;if(data.currentStreak>data.maxStreak)data.maxStreak=data.currentStreak;
-saveStreakData(data);updateStreakDisplay();
+saveStreakData(data);
+// Mobile touch support
+document.addEventListener('touchstart',function(){},false);
+updateStreakDisplay();
 document.getElementById('completedState').style.display='block';
 document.getElementById('actionButtons').style.display='none';
 showNotification('Challenge completed! Streak updated!');
@@ -215,6 +219,12 @@ document.getElementById('challengeCard').classList.add('active');
 document.getElementById('noSelection').style.display='none';
 }
 
+function openCompiler(){
+const compilerLinks={python:'https://www.programiz.com/python-programming/online-compiler/',cpp:'https://www.programiz.com/cpp-programming/online-compiler/',javascript:'https://www.programiz.com/javascript/online-compiler/',java:'https://www.programiz.com/java-programming/online-compiler/',csharp:'https://www.programiz.com/csharp-programming/online-compiler/',html:'https://www.programiz.com/html/online-compiler/',sql:'https://www.programiz.com/sql/online-compiler/',php:'https://www.programiz.com/php-programming/online-compiler/',kotlin:'https://www.programiz.com/kotlin-programming/online-compiler/',swift:'https://www.programiz.com/swift-programming/online-compiler/',go:'https://www.programiz.com/golang/online-compiler/',rust:'https://www.programiz.com/rust-programming/online-compiler/'};
+const url=compilerLinks[currentChallengeLang];
+if(url){window.open(url,'_blank');}else{showNotification('Compiler link not available!');}
+}
+
 function shareChallenge(){
 const day=getChallengeIndex()+1;
 const lang=currentChallengeLang?currentChallengeLang.toUpperCase():'CODE';
@@ -222,12 +232,6 @@ const text='I just completed Day '+day+' of the '+lang+' Daily Challenge on Akar
 const url=window.location.href;
 if(navigator.share){navigator.share({title:'Daily Challenge',text:text,url:url})}
 else{const whatsappUrl='https://wa.me/?text='+encodeURIComponent(text+' '+url);window.open(whatsappUrl,'_blank')}
-}
-
-function openCompiler(){
-const compilerLinks={python:'https://www.programiz.com/python-programming/online-compiler/',cpp:'https://www.programiz.com/cpp-programming/online-compiler/',javascript:'https://www.programiz.com/javascript/online-compiler/',java:'https://www.programiz.com/java-programming/online-compiler/',csharp:'https://www.programiz.com/csharp-programming/online-compiler/',html:'https://www.programiz.com/html/online-compiler/',sql:'https://www.programiz.com/sql/online-compiler/',php:'https://www.programiz.com/php-programming/online-compiler/',kotlin:'https://www.programiz.com/kotlin-programming/online-compiler/',swift:'https://www.programiz.com/swift-programming/online-compiler/',go:'https://www.programiz.com/golang/online-compiler/',rust:'https://www.programiz.com/rust-programming/online-compiler/'};
-const url=compilerLinks[currentChallengeLang];
-if(url){window.open(url,'_blank');}else{showNotification('Compiler link not available!');}
 }
 
 function updateCountdown(){
@@ -250,17 +254,13 @@ n.textContent=msg;document.body.appendChild(n);setTimeout(()=>n.remove(),3000);
 }
 
 // COPY PROTECTION
-document.addEventListener('contextmenu',function(e){
-if(!e.target.closest('button,.square-btn,.neon-btn,.gold-btn')){e.preventDefault();}
-});
+document.addEventListener('contextmenu',function(e){if(!e.target.closest('button,.square-btn,.neon-btn,.gold-btn'))e.preventDefault();});
 document.addEventListener('keydown',e=>{
 if(e.key==='F12'||(e.ctrlKey&&e.shiftKey&&e.key==='I')||(e.ctrlKey&&e.key==='u')){
 e.preventDefault();document.getElementById('noCopyOverlay').classList.add('active');
 }
 });
-document.addEventListener('selectstart',function(e){
-if(!e.target.closest('button,.square-btn,.neon-btn,.gold-btn')){e.preventDefault();}
-});
+document.addEventListener('selectstart',function(e){if(!e.target.closest('button,.square-btn,.neon-btn,.gold-btn'))e.preventDefault();});
 document.addEventListener('copy',e=>e.preventDefault());
 document.addEventListener('cut',e=>e.preventDefault());
 setInterval(()=>{
@@ -270,6 +270,9 @@ document.body.innerHTML='<div style="display:flex;justify-content:center;align-i
 }
 },1000);
 
+
+// Mobile touch support
+document.addEventListener('touchstart',function(){},false);
 updateStreakDisplay();
 </script>
 </body>
