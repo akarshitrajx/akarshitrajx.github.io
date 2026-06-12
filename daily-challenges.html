@@ -1,279 +1,512 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daily Challenges - Akarshit Raj</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <title>Daily Challenges</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         *{margin:0;padding:0;box-sizing:border-box}
-        :root{--primary:#06b6d4;--primary-dark:#0891b2;--secondary:#3b82f6;--accent:#22d3ee;--dark:#0f172a;--darker:#020617;--light:#f8fafc;--gray:#94a3b8;--card-bg:rgba(30,41,59,0.5);--glass:rgba(255,255,255,0.03);--success:#10b981;--error:#ef4444;--warning:#f59e0b;--gold:#d4af37;--gold-light:#ffd700;--gold-dark:#8b6914}
-        body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--darker);color:var(--light);min-height:100vh;overflow-x:hidden;line-height:1.6}
-        .bg-animation{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;overflow:hidden}
-        .bg-animation .orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:0.15;animation:float 20s infinite ease-in-out}
-        .bg-animation .orb:nth-child(1){width:400px;height:400px;background:var(--primary);top:-200px;left:-100px}
-        .bg-animation .orb:nth-child(2){width:300px;height:300px;background:var(--secondary);top:40%;right:-100px;animation-delay:5s}
-        .bg-animation .orb:nth-child(3){width:250px;height:250px;background:var(--accent);bottom:-100px;left:40%;animation-delay:10s}
-        @keyframes float{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(30px,-50px) scale(1.1)}66%{transform:translate(-30px,30px) scale(0.9)}}
-        nav{position:fixed;top:0;width:100%;padding:0.8rem 5%;background:rgba(2,6,23,0.95);backdrop-filter:blur(20px);z-index:1000;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,0.08)}
-        .nav-logo{font-size:1.5rem;font-weight:800;background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-        .nav-back{padding:0.5rem 1.2rem;background:var(--glass);border:1px solid rgba(255,255,255,0.1);border-radius:50px;color:var(--gray);text-decoration:none;font-weight:500;transition:all 0.3s}
-        .nav-back:hover{background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:white;border-color:transparent}
-        .hero{min-height:40vh;display:flex;align-items:center;justify-content:center;padding:8rem 5% 3rem;text-align:center}
-        .hero-content{max-width:800px}
-        .gold-heading{position:relative;display:inline-flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:2px;padding:18px 28px;border-radius:22px;background:radial-gradient(circle at top, #1c2b3a, #0a0f17 80%);overflow:hidden;font-size:clamp(1.4rem,4.8vw,3rem);font-weight:900;text-transform:uppercase;letter-spacing:2px;font-family:'Poppins',sans-serif;box-shadow:0 0 20px rgba(0,0,0,0.5), 0 0 35px rgba(212,175,55,0.12);margin-bottom:1.5rem}
-        .gold-heading::before{content:"";position:absolute;inset:0;background-image:radial-gradient(2px 2px at 20px 30px,#fff,transparent),radial-gradient(2px 2px at 80px 60px,#d4af37,transparent),radial-gradient(1.5px 1.5px at 160px 90px,#fff,transparent),radial-gradient(2px 2px at 240px 40px,#fff6cc,transparent);background-size:250px 250px;opacity:.7;animation:starsMove 80s linear infinite}
-        @keyframes starsMove{from{transform:translateY(0)}to{transform:translateY(-250px)}}
-        .gold-heading span{position:relative;z-index:2;display:inline-block;background:linear-gradient(135deg, #fff6cc, #d4af37, #8b6914);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 0 10px rgba(212,175,55,0.6), 0 0 20px rgba(212,175,55,0.3);animation:wave 2s ease-in-out infinite}
-        .gold-heading .space{width:18px}
-        .gold-heading span:nth-child(1){animation-delay:0s}
-        .gold-heading span:nth-child(2){animation-delay:.05s}
-        .gold-heading span:nth-child(3){animation-delay:.1s}
-        .gold-heading span:nth-child(4){animation-delay:.15s}
-        .gold-heading span:nth-child(5){animation-delay:.2s}
-        .gold-heading span:nth-child(6){animation-delay:.25s}
-        @keyframes wave{0%,100%{transform:translateY(0)}25%{transform:translateY(-12px) scale(1.08)}50%{transform:translateY(0)}}
-        .hero-subtitle{font-size:1.1rem;color:var(--gray);max-width:600px;margin:0 auto 2rem}
-        .streak-bar{display:flex;justify-content:center;gap:2rem;margin-bottom:2rem;flex-wrap:wrap}
-        .streak-item{text-align:center;padding:1rem 2rem;background:var(--card-bg);border-radius:16px;border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(20px)}
-        .streak-number{font-size:2.5rem;font-weight:800;background:linear-gradient(135deg,var(--gold-light),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:block}
-        .streak-label{color:var(--gray);font-size:0.85rem;text-transform:uppercase;letter-spacing:1px}
-        .lang-section{padding:2rem 5%;max-width:1200px;margin:0 auto}
-        .lang-title{text-align:center;font-size:1.3rem;font-weight:700;margin-bottom:1.5rem;color:var(--light)}
-        .lang-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:1rem;justify-items:center}
-        .square-btn{position:relative;width:90px;height:90px;border:none;outline:none;cursor:pointer;border-radius:18px;background:radial-gradient(circle at top, #1c2b3a, #0a0f17 80%);color:#d4af37;font-size:1.8rem;font-weight:900;font-family:'Poppins',sans-serif;display:flex;justify-content:center;align-items:center;overflow:hidden;box-shadow:0 0 18px rgba(0,0,0,0.5), 0 0 30px rgba(212,175,55,0.12);transition:.35s ease;text-decoration:none}
-        .square-btn::before{content:"";position:absolute;inset:-2px;border-radius:20px;background:linear-gradient(45deg, transparent, #d4af37, transparent);animation:rotateGlow 3s linear infinite;z-index:0}
-        .square-btn::after{content:"";position:absolute;inset:3px;border-radius:16px;background:radial-gradient(circle at top, #16202c, #0a0f17 85%);z-index:1}
-        .square-btn span{position:relative;z-index:2;font-size:1.4rem}
-        .square-btn:hover{transform:translateY(-6px) scale(1.05);box-shadow:0 0 25px rgba(212,175,55,0.3), 0 0 40px rgba(212,175,55,0.15)}
-        .square-btn.active{box-shadow:0 0 30px rgba(6,182,212,0.4), 0 0 50px rgba(6,182,212,0.2)}
-        .square-btn.active::before{background:linear-gradient(45deg, transparent, var(--primary), transparent)}
-        .square-btn.active span{color:var(--primary)}
-        @keyframes rotateGlow{100%{transform:rotate(360deg)}}
-        .lang-name{text-align:center;margin-top:0.5rem;font-size:0.8rem;color:var(--gray);font-weight:500}
-        .challenge-section{padding:2rem 5%;max-width:900px;margin:0 auto}
-        .challenge-card{background:var(--card-bg);border-radius:24px;padding:2.5rem;border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(20px);box-shadow:0 8px 32px rgba(0,0,0,0.2);text-align:center;display:none}
-        .challenge-card.active{display:block;animation:fadeIn 0.5s ease}
-        @keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-        .day-badge{display:inline-flex;align-items:center;gap:0.5rem;padding:0.5rem 1.2rem;background:linear-gradient(135deg,var(--primary),var(--primary-dark));border-radius:50px;font-size:0.9rem;font-weight:600;color:white;margin-bottom:1.5rem;box-shadow:0 4px 15px rgba(6,182,212,0.3)}
-        .challenge-title{font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--light)}
-        .challenge-desc{font-size:1rem;color:var(--gray);line-height:1.8;margin-bottom:1.5rem}
-        .challenge-difficulty{display:inline-flex;align-items:center;gap:0.5rem;padding:0.4rem 1rem;border-radius:50px;font-size:0.8rem;font-weight:600;margin-bottom:1.5rem}
-        .difficulty-easy{background:rgba(16,185,129,0.15);color:var(--success);border:1px solid rgba(16,185,129,0.3)}
-        .difficulty-medium{background:rgba(245,158,11,0.15);color:var(--warning);border:1px solid rgba(245,158,11,0.3)}
-        .difficulty-hard{background:rgba(239,68,68,0.15);color:var(--error);border:1px solid rgba(239,68,68,0.3)}
-        .action-btns{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;margin-top:1.5rem}
-        .neon-btn{position:relative;padding:12px 28px;border:none;border-radius:12px;background:#111827;color:#00ffff;font-size:0.95rem;font-weight:700;font-family:'Poppins',sans-serif;cursor:pointer;overflow:hidden;box-shadow:0 0 10px #00ffff, 0 0 25px rgba(0,255,255,0.4);transition:.3s;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:0.5rem}
-        .neon-btn::before{content:"";position:absolute;bottom:0;left:-40%;width:40%;height:3px;border-radius:20px;background:#00ffff;box-shadow:0 0 10px #00ffff, 0 0 20px #00ffff;animation:runLine 2s linear infinite}
-        @keyframes runLine{100%{left:100%}}
-        .neon-btn:hover{transform:scale(1.05);box-shadow:0 0 15px #00ffff, 0 0 35px rgba(0,255,255,0.5)}
-        .gold-btn{position:relative;padding:12px 28px;border:none;border-radius:12px;background:#111827;color:var(--gold-light);font-size:0.95rem;font-weight:700;font-family:'Poppins',sans-serif;cursor:pointer;overflow:hidden;box-shadow:0 0 10px var(--gold-dark), 0 0 25px rgba(212,175,55,0.4);transition:.3s;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:0.5rem}
-        .gold-btn::before{content:"";position:absolute;bottom:0;left:-40%;width:40%;height:3px;border-radius:20px;background:var(--gold-light);box-shadow:0 0 10px var(--gold-light), 0 0 20px var(--gold-light);animation:runLine 2s linear infinite}
-        .gold-btn:hover{transform:scale(1.05);box-shadow:0 0 15px var(--gold-dark), 0 0 35px rgba(212,175,55,0.5)}
-        .countdown-section{text-align:center;padding:2rem 5%;max-width:600px;margin:0 auto}
-        .countdown-title{font-size:1rem;color:var(--gray);margin-bottom:1rem;text-transform:uppercase;letter-spacing:2px}
-        .countdown-timer{display:flex;justify-content:center;gap:1rem}
-        .countdown-box{background:var(--card-bg);border-radius:12px;padding:1rem 1.5rem;border:1px solid rgba(255,255,255,0.08);min-width:70px}
-        .countdown-number{font-size:1.8rem;font-weight:800;color:var(--primary);display:block}
-        .countdown-label{font-size:0.7rem;color:var(--gray);text-transform:uppercase}
-        .completed-badge{display:inline-flex;align-items:center;gap:0.5rem;padding:0.5rem 1.2rem;background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.3);border-radius:50px;color:var(--success);font-size:0.9rem;font-weight:600;margin-bottom:1rem}
-        footer{text-align:center;padding:3rem 5%;border-top:1px solid rgba(255,255,255,0.05);margin-top:3rem}
-        footer p{color:var(--gray);font-size:0.85rem;opacity:0.7}
-        .no-copy-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.95);z-index:9999;display:none;justify-content:center;align-items:center;flex-direction:column;gap:1rem}
-        .no-copy-overlay.active{display:flex}
-        .no-copy-overlay h2{color:var(--error);font-size:2rem}
-        .no-copy-overlay p{color:var(--gray);text-align:center;max-width:400px;padding:0 1rem}
-        @media(max-width:600px){.square-btn{width:75px;height:75px;font-size:1.4rem}.gold-heading{padding:14px 16px;border-radius:16px;font-size:clamp(1rem,6vw,1.8rem);letter-spacing:1px}.gold-heading .space{width:10px}.streak-item{padding:0.75rem 1.5rem}.streak-number{font-size:2rem}.challenge-card{padding:1.5rem}.countdown-box{padding:0.75rem 1rem;min-width:55px}.countdown-number{font-size:1.4rem}}
-    
-        .square-btn,.neon-btn,.gold-btn{cursor:pointer!important;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
-        .square-btn *{pointer-events:none!important}
-        @media(max-width:600px){.square-btn{width:75px;height:75px;font-size:1.4rem}}
+        body{font-family:'Poppins',sans-serif;background:#020617;color:#f8fafc;min-height:100vh;padding:20px}
+
+        /* TOP */
+        .top-bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:30px}
+        .logo{font-size:2rem;font-weight:700;color:#06b6d4}
+        .home-btn{padding:14px 24px;border-radius:50px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05);color:white;text-decoration:none}
+
+        /* GOLD HEADING */
+        .gold-heading{text-align:center;font-size:clamp(1.5rem,5vw,3rem);font-weight:900;color:#d4af37;text-shadow:0 0 20px rgba(212,175,55,.5);margin:20px 0;animation:wave 2s ease-in-out infinite}
+        @keyframes wave{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+        .subtitle{text-align:center;color:#94a3b8;max-width:600px;margin:0 auto 30px}
+
+        /* STATS */
+        .stats{display:flex;justify-content:center;gap:15px;flex-wrap:wrap;margin-bottom:30px}
+        .stat{background:rgba(30,41,59,.5);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:15px 20px;text-align:center;min-width:120px}
+        .stat-num{font-size:2rem;font-weight:800;color:#d4af37}
+        .stat-label{color:#94a3b8;font-size:.75rem;text-transform:uppercase}
+
+        /* LANGUAGES */
+        .lang-title{text-align:center;font-size:1.2rem;font-weight:700;margin-bottom:20px}
+        .lang-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;max-width:600px;margin:0 auto 30px}
+        .lang-btn{height:100px;border-radius:20px;border:2px solid #d4af37;background:radial-gradient(circle at top,#1c2b3a,#0a0f17);color:#d4af37;font-size:1.5rem;font-weight:800;cursor:pointer;transition:.3s;display:flex;align-items:center;justify-content:center}
+        .lang-btn:hover{transform:translateY(-5px);box-shadow:0 0 25px rgba(212,175,55,.3)}
+        .lang-btn:active{transform:scale(.95)}
+        .lang-name{text-align:center;color:#94a3b8;font-size:.8rem;margin-top:5px}
+
+        /* CHALLENGE CARD - Initially Hidden */
+        .challenge-card{background:rgba(30,41,59,.5);border:1px solid rgba(255,255,255,.08);border-radius:24px;padding:25px;margin:20px auto;max-width:800px;display:none;opacity:0;transform:translateY(30px);transition:all 0.5s ease}
+        .challenge-card.show{display:block;opacity:1;transform:translateY(0)}
+
+        .badges{display:flex;gap:10px;margin-bottom:15px;flex-wrap:wrap}
+        .badge{padding:8px 16px;border-radius:40px;font-weight:600;font-size:.85rem}
+        .day-badge{background:linear-gradient(90deg,#06b6d4,#0891b2);color:white}
+        .diff-easy{background:rgba(16,185,129,.15);color:#10b981;border:1px solid rgba(16,185,129,.3)}
+        .diff-medium{background:rgba(245,158,11,.15);color:#f59e0b;border:1px solid rgba(245,158,11,.3)}
+        .diff-hard{background:rgba(239,68,68,.15);color:#ef4444;border:1px solid rgba(239,68,68,.3)}
+
+        .challenge-title{font-size:1.8rem;font-weight:700;margin-bottom:10px}
+        .challenge-desc{color:#94a3b8;line-height:1.7;margin-bottom:20px}
+
+        /* MISSION */
+        .mission-box{background:rgba(0,217,255,.05);border:1px solid rgba(0,217,255,.2);border-radius:16px;padding:20px;margin-bottom:20px}
+        .mission-title{color:#06b6d4;font-weight:700;margin-bottom:10px}
+        .mission-text{color:#f8fafc;margin-bottom:10px}
+        .mission-example{background:#000;border-radius:10px;padding:15px;font-family:monospace;color:#00ff9d;font-size:.85rem}
+
+        /* EDITOR */
+        .editor-box{margin:20px 0;background:rgba(0,0,0,.3);border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.1)}
+        .editor-top{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:1px solid rgba(255,255,255,.1);background:rgba(0,0,0,.2)}
+        .editor-label{color:#06b6d4;font-weight:600}
+        .run-btn{background:#06b6d4;color:#000;border:none;padding:8px 16px;border-radius:8px;font-weight:700;cursor:pointer}
+        .code-editor{width:100%;min-height:200px;background:#0a0f1a;color:#00ff9d;border:none;padding:16px;font-family:monospace;font-size:.9rem;resize:vertical}
+
+        /* OUTPUT */
+        .output-box{margin-top:15px;background:rgba(0,0,0,.3);border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.1)}
+        .output-title{padding:12px 16px;color:#f59e0b;font-weight:600;border-bottom:1px solid rgba(255,255,255,.1)}
+        .output-frame{width:100%;height:200px;border:none;background:#0a0f1a}
+
+        /* BUTTONS */
+        .buttons{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:20px}
+        .btn{padding:15px;border:none;border-radius:12px;font-weight:700;cursor:pointer;font-size:.9rem;transition:.3s}
+        .btn-cyan{background:#111827;color:#00ffff;box-shadow:0 0 15px rgba(0,255,255,.3)}
+        .btn-gold{background:#111827;color:#ffd700;box-shadow:0 0 15px rgba(255,215,0,.3)}
+        .btn:hover{transform:scale(1.05)}
+
+        /* NOTES */
+        .notes{width:100%;min-height:100px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:15px;color:#f8fafc;margin-top:20px;resize:vertical}
+
+        /* COUNTDOWN */
+        .countdown{text-align:center;margin:40px 0}
+        .countdown-title{color:#94a3b8;text-transform:uppercase;letter-spacing:2px;font-size:.9rem;margin-bottom:15px}
+        .timer{display:flex;justify-content:center;gap:15px}
+        .time-box{background:rgba(30,41,59,.5);border-radius:12px;padding:15px 20px;min-width:70px}
+        .time-num{font-size:2rem;font-weight:800;color:#06b6d4}
+        .time-label{color:#94a3b8;font-size:.7rem}
+
+        /* ERROR DISPLAY */
+        .error-box{background:rgba(239,68,68,.2);border:1px solid rgba(239,68,68,.5);border-radius:12px;padding:15px;margin:20px 0;color:#ff6b6b;font-family:monospace;font-size:.85rem;white-space:pre-wrap;word-break:break-all}
+
+        footer{text-align:center;color:#94a3b8;font-size:.8rem;margin-top:40px;padding-top:20px;border-top:1px solid rgba(255,255,255,.05)}
+
+        @media(max-width:600px){
+            .lang-grid{grid-template-columns:repeat(3,1fr)}
+            .buttons{grid-template-columns:1fr}
+            .stat{min-width:100px;padding:10px 15px}
+            .stat-num{font-size:1.5rem}
+        }
     </style>
 </head>
 <body>
-    <div class="bg-animation"><div class="orb"></div><div class="orb"></div><div class="orb"></div></div>
-    <nav><div class="nav-logo">AR.</div><a href="index.html" class="nav-back">&larr; Back to Home</a></nav>
-    <section class="hero">
-        <div class="hero-content">
-            <div style="display:flex;justify-content:center;margin-bottom:1rem">
-                <h1 class="gold-heading"><span>D</span><span>a</span><span>i</span><span>l</span><span>y</span><span class="space"></span><span>C</span><span>h</span><span>a</span><span>l</span><span>l</span><span>e</span><span>n</span><span>g</span><span>e</span><span>s</span></h1>
+    <div class="top-bar">
+        <div class="logo">DC.</div>
+        <a href="index.html" class="home-btn">← Back to Home</a>
+    </div>
+
+    <h1 class="gold-heading">DAILY CHALLENGES</h1>
+    <p class="subtitle">Practice one coding challenge every day. 60 unique challenges per language. New challenge every 24 hours!</p>
+
+    <div class="stats">
+        <div class="stat">
+            <div class="stat-num" id="streak">0</div>
+            <div class="stat-label">Current Streak</div>
+        </div>
+        <div class="stat">
+            <div class="stat-num" id="maxStreak">0</div>
+            <div class="stat-label">Max Streak</div>
+        </div>
+        <div class="stat">
+            <div class="stat-num" id="days">0</div>
+            <div class="stat-label">Days Done</div>
+        </div>
+        <div class="stat">
+            <div class="stat-num" style="color:#8b5cf6">0</div>
+            <div class="stat-label">XP</div>
+        </div>
+    </div>
+
+    <h2 class="lang-title">Select Your Language</h2>
+    <div class="lang-grid">
+        <div><button class="lang-btn" onclick="selectLang('python')">Py</button><div class="lang-name">Python</div></div>
+        <div><button class="lang-btn" onclick="selectLang('cpp')">C++</button><div class="lang-name">C++</div></div>
+        <div><button class="lang-btn" onclick="selectLang('javascript')">JS</button><div class="lang-name">JavaScript</div></div>
+        <div><button class="lang-btn" onclick="selectLang('java')">Java</button><div class="lang-name">Java</div></div>
+        <div><button class="lang-btn" onclick="selectLang('html')">Web</button><div class="lang-name">HTML/CSS</div></div>
+        <div><button class="lang-btn" onclick="selectLang('csharp')">C#</button><div class="lang-name">C#</div></div>
+        <div><button class="lang-btn" onclick="selectLang('sql')">SQL</button><div class="lang-name">SQL</div></div>
+        <div><button class="lang-btn" onclick="selectLang('php')">PHP</button><div class="lang-name">PHP</div></div>
+        <div><button class="lang-btn" onclick="selectLang('kotlin')">Kt</button><div class="lang-name">Kotlin</div></div>
+        <div><button class="lang-btn" onclick="selectLang('swift')">Sw</button><div class="lang-name">Swift</div></div>
+        <div><button class="lang-btn" onclick="selectLang('go')">Go</button><div class="lang-name">Go</div></div>
+        <div><button class="lang-btn" onclick="selectLang('rust')">Rs</button><div class="lang-name">Rust</div></div>
+    </div>
+
+    <div id="noSelect" style="text-align:center;padding:40px;color:#94a3b8">
+        <p style="font-size:1.2rem;margin-bottom:10px">💡 Select a language above to see today's challenge!</p>
+        <p>Each day brings a new coding challenge. Complete it to build your streak!</p>
+    </div>
+
+    <!-- Challenge Card -->
+    <div class="challenge-card" id="challengeCard">
+        <div class="badges">
+            <span class="badge day-badge">Day <span id="dayNum">1</span> of 60</span>
+            <span class="badge" id="diffBadge">Easy</span>
+        </div>
+
+        <h2 class="challenge-title" id="cTitle">Loading...</h2>
+        <p class="challenge-desc" id="cDesc">Loading challenge...</p>
+
+        <div class="mission-box">
+            <div class="mission-title">🚀 Today's Mission</div>
+            <div class="mission-text" id="mText">Mission loading...</div>
+            <div class="mission-example" id="mExample">Example loading...</div>
+        </div>
+
+        <div class="editor-box">
+            <div class="editor-top">
+                <span class="editor-label">💻 Code Editor</span>
+                <button class="run-btn" onclick="runCode()">▶ Run</button>
             </div>
-            <p class="hero-subtitle">Practice one coding challenge every day. 60 unique challenges per language. New challenge every 24 hours. Complete all 60 to master the basics!</p>
-            <div class="streak-bar">
-                <div class="streak-item"><span class="streak-number" id="currentStreak">0</span><div class="streak-label">Current Streak</div></div>
-                <div class="streak-item"><span class="streak-number" id="maxStreak">0</span><div class="streak-label">Max Streak</div></div>
-                <div class="streak-item"><span class="streak-number" id="completedDays">0</span><div class="streak-label">Days Completed</div></div>
-            </div>
+            <textarea class="code-editor" id="codeEditor" spellcheck="false" placeholder="// Your code will appear here..."></textarea>
         </div>
-    </section>
-    <section class="lang-section">
-        <h3 class="lang-title">Select Your Language</h3>
-        <div class="lang-grid" id="langGrid">
-            <div class="lang-item"><button class="square-btn" data-lang="python" onclick="selectChallengeLang(this,'python')">Py</button><div class="lang-name">Python</div></div>
-            <div class="lang-item"><button class="square-btn" data-lang="cpp" onclick="selectChallengeLang(this,'cpp')">C++</button><div class="lang-name">C++</div></div>
-            <div class="lang-item"><button class="square-btn" data-lang="javascript" onclick="selectChallengeLang(this,'javascript')">JS</button><div class="lang-name">JavaScript</div></div>
-            <div class="lang-item"><button class="square-btn" data-lang="java" onclick="selectChallengeLang(this,'java')">Java</button><div class="lang-name">Java</div></div>
-            <div class="lang-item"><button class="square-btn" data-lang="csharp" onclick="selectChallengeLang(this,'csharp')">C#</button><div class="lang-name">C#</div></div>
-            <div class="lang-item"><button class="square-btn" data-lang="html" onclick="selectChallengeLang(this,'html')">Web</button><div class="lang-name">HTML/CSS</div></div>
-            <div class="lang-item"><button class="square-btn" data-lang="sql" onclick="selectChallengeLang(this,'sql')">SQL</button><div class="lang-name">SQL</div></div>
-            <div class="lang-item"><button class="square-btn" data-lang="php" onclick="selectChallengeLang(this,'php')">PHP</button><div class="lang-name">PHP</div></div>
-            <div class="lang-item"><button class="square-btn" data-lang="kotlin" onclick="selectChallengeLang(this,'kotlin')">Kt</button><div class="lang-name">Kotlin</div></div>
-            <div class="lang-item"><button class="square-btn" data-lang="swift" onclick="selectChallengeLang(this,'swift')">Sw</button><div class="lang-name">Swift</div></div>
-            <div class="lang-item"><button class="square-btn" data-lang="go" onclick="selectChallengeLang(this,'go')">Go</button><div class="lang-name">Go</div></div>
-            <div class="lang-item"><button class="square-btn" data-lang="rust" onclick="selectChallengeLang(this,'rust')">Rs</button><div class="lang-name">Rust</div></div>
+
+        <div class="output-box">
+            <div class="output-title">⚡ Output</div>
+            <iframe class="output-frame" id="output"></iframe>
         </div>
-    </section>
-    <section class="challenge-section">
-        <div class="challenge-card" id="challengeCard">
-            <div class="day-badge">Day <span id="dayNumber">1</span> of 60</div>
-            <div class="challenge-difficulty" id="difficultyBadge">Easy</div>
-            <h3 class="challenge-title" id="challengeTitle">Challenge Title</h3>
-            <p class="challenge-desc" id="challengeDesc">Challenge description goes here...</p>
-            <div id="completedState" style="display:none"><div class="completed-badge">&#10003; Completed Today!</div></div>
-            <div class="action-btns" id="actionButtons">
-                <button class="neon-btn" onclick="markCompleted()">Mark as Completed</button>
-                <button class="gold-btn" onclick="shareChallenge()">Share</button>
-                <button class="neon-btn" id="compilerLink" style="display:none" onclick="openCompiler()">Open Compiler</button>
-            </div>
+
+        <textarea class="notes" id="notes" placeholder="📝 Write your solution notes here..."></textarea>
+
+        <div class="buttons">
+            <button class="btn btn-cyan" onclick="openCompiler()">🚀 Open Compiler</button>
+            <button class="btn btn-gold" onclick="showHint()">💡 Hint</button>
+            <button class="btn btn-cyan" onclick="runCode()">▶ Run Code</button>
+            <button class="btn btn-gold" onclick="complete()">✅ Complete</button>
         </div>
-        <div id="noSelection" style="text-align:center;padding:3rem;color:var(--gray)">
-            <p style="font-size:1.2rem;margin-bottom:1rem">&#128161; Select a language above to see today's challenge!</p>
-            <p>Each day brings a new coding challenge. Complete it to build your streak!</p>
-        </div>
-    </section>
-    <section class="countdown-section">
+    </div>
+
+    <!-- Error Display -->
+    <div class="error-box" id="errorBox" style="display:none"></div>
+
+    <div class="countdown">
         <div class="countdown-title">Next Challenge In</div>
-        <div class="countdown-timer" id="countdownTimer">
-            <div class="countdown-box"><span class="countdown-number" id="hours">00</span><span class="countdown-label">Hours</span></div>
-            <div class="countdown-box"><span class="countdown-number" id="minutes">00</span><span class="countdown-label">Minutes</span></div>
-            <div class="countdown-box"><span class="countdown-number" id="seconds">00</span><span class="countdown-label">Seconds</span></div>
+        <div class="timer">
+            <div class="time-box"><div class="time-num" id="h">00</div><div class="time-label">HOURS</div></div>
+            <div class="time-box"><div class="time-num" id="m">00</div><div class="time-label">MINUTES</div></div>
+            <div class="time-box"><div class="time-num" id="s">00</div><div class="time-label">SECONDS</div></div>
         </div>
-    </section>
-    <footer><p>Made with passion for learners everywhere &bull; &copy; 2026 Akarshit Raj</p><p style="margin-top:0.5rem;font-size:0.75rem">Daily Challenges System &bull; 60-Day Cycle</p></footer>
-    <div class="no-copy-overlay" id="noCopyOverlay"><h2>&#128683; Content Protected</h2><p>This content is protected. Copying, right-clicking, and developer tools are disabled on this website.</p><button class="neon-btn" onclick="document.getElementById('noCopyOverlay').classList.remove('active')">I Understand</button></div>
+    </div>
+
+    <footer>Daily Challenges System • 60-Day Cycle • Learn to Code</footer>
+
 <script>
-const challengesData={
-python:[{title:"Hello World",desc:"Write a Python program that prints 'Hello, World!' to the console.",difficulty:"easy"},{title:"Variables & Types",desc:"Create variables of different types (string, int, float, bool) and print their values.",difficulty:"easy"},{title:"User Input",desc:"Write a program that takes user's name as input and prints a greeting message.",difficulty:"easy"},{title:"Arithmetic Operations",desc:"Create a calculator that performs +, -, *, /, //, %, ** on two numbers.",difficulty:"easy"},{title:"String Manipulation",desc:"Reverse a string, check if it's a palindrome, and count vowels.",difficulty:"easy"},{title:"If-Else Statements",desc:"Write a program that checks if a number is positive, negative, or zero.",difficulty:"easy"},{title:"Even or Odd",desc:"Check if a given number is even or odd using modulo operator.",difficulty:"easy"},{title:"Largest of Three",desc:"Find the largest number among three given numbers.",difficulty:"easy"},{title:"Leap Year",desc:"Check if a given year is a leap year or not.",difficulty:"easy"},{title:"Grade Calculator",desc:"Convert percentage to grade (A, B, C, D, F) using if-elif-else.",difficulty:"easy"},{title:"For Loop Basics",desc:"Print numbers from 1 to 100 using a for loop.",difficulty:"easy"},{title:"Sum of N Numbers",desc:"Calculate the sum of first N natural numbers.",difficulty:"easy"},{title:"Multiplication Table",desc:"Print the multiplication table of a given number.",difficulty:"easy"},{title:"Factorial",desc:"Calculate the factorial of a number using a loop.",difficulty:"easy"},{title:"Fibonacci Series",desc:"Print the first N terms of the Fibonacci sequence.",difficulty:"medium"},{title:"Prime Number Check",desc:"Check if a given number is prime or not.",difficulty:"medium"},{title:"Prime Numbers in Range",desc:"Print all prime numbers between 1 and 100.",difficulty:"medium"},{title:"Armstrong Number",desc:"Check if a number is an Armstrong number (e.g., 153 = 1^3 + 5^3 + 3^3).",difficulty:"medium"},{title:"Palindrome Number",desc:"Check if a given number is a palindrome.",difficulty:"easy"},{title:"Reverse a Number",desc:"Reverse the digits of a given number.",difficulty:"easy"},{title:"Sum of Digits",desc:"Calculate the sum of all digits in a number.",difficulty:"easy"},{title:"Count Digits",desc:"Count the number of digits in a given number.",difficulty:"easy"},{title:"Power of a Number",desc:"Calculate base^exponent without using the ** operator.",difficulty:"easy"},{title:"GCD & LCM",desc:"Find the GCD and LCM of two numbers.",difficulty:"medium"},{title:"List Basics",desc:"Create a list, append items, remove items, and print the list.",difficulty:"easy"},{title:"List Operations",desc:"Find max, min, sum, and average of a list of numbers.",difficulty:"easy"},{title:"Linear Search",desc:"Implement linear search to find an element in a list.",difficulty:"easy"},{title:"Bubble Sort",desc:"Sort a list of numbers using bubble sort algorithm.",difficulty:"medium"},{title:"List Comprehension",desc:"Create a list of squares of even numbers from 1 to 20 using list comprehension.",difficulty:"easy"},{title:"Dictionary Basics",desc:"Create a dictionary to store student names and marks, then print them.",difficulty:"easy"},{title:"Word Frequency",desc:"Count the frequency of each word in a given sentence.",difficulty:"medium"},{title:"Tuple Operations",desc:"Create a tuple, unpack it, and convert it to a list.",difficulty:"easy"},{title:"Set Operations",desc:"Find union, intersection, and difference of two sets.",difficulty:"easy"},{title:"File Handling - Read",desc:"Read a text file and print its contents line by line.",difficulty:"easy"},{title:"File Handling - Write",desc:"Write user input to a file and then read it back.",difficulty:"easy"},{title:"CSV Reader",desc:"Read a CSV file and print each row as a dictionary.",difficulty:"medium"},{title:"Exception Handling",desc:"Write a program that handles division by zero using try-except.",difficulty:"easy"},{title:"Custom Exception",desc:"Create a custom exception for invalid age input.",difficulty:"medium"},{title:"Function Basics",desc:"Write a function to calculate the area of a circle given its radius.",difficulty:"easy"},{title:"Recursive Factorial",desc:"Calculate factorial using recursion instead of a loop.",difficulty:"medium"},{title:"Lambda Functions",desc:"Use lambda functions to sort a list of tuples by the second element.",difficulty:"medium"},{title:"Map & Filter",desc:"Use map() to square all numbers and filter() to get only even numbers.",difficulty:"medium"},{title:"Decorators",desc:"Create a decorator that measures the execution time of a function.",difficulty:"hard"},{title:"Class & Object",desc:"Create a Student class with name, age, and marks attributes.",difficulty:"easy"},{title:"Inheritance",desc:"Create a base class Shape and derived classes Circle, Rectangle.",difficulty:"medium"},{title:"Polymorphism",desc:"Demonstrate polymorphism with a method that works differently for different classes.",difficulty:"medium"},{title:"Encapsulation",desc:"Create a BankAccount class with private balance and public methods.",difficulty:"medium"},{title:"Abstract Class",desc:"Create an abstract class Animal with abstract methods.",difficulty:"hard"},{title:"Iterator",desc:"Create a custom iterator that generates Fibonacci numbers.",difficulty:"hard"},{title:"Generator",desc:"Create a generator function that yields prime numbers.",difficulty:"hard"},{title:"JSON Handling",desc:"Parse a JSON string, modify it, and convert back to JSON.",difficulty:"easy"},{title:"API Request",desc:"Use requests library to fetch data from a public API and print it.",difficulty:"medium"},{title:"Web Scraper",desc:"Use BeautifulSoup to scrape titles from a webpage.",difficulty:"hard"},{title:"Password Generator",desc:"Create a random password generator with letters, digits, and symbols.",difficulty:"medium"},{title:"Number Guessing Game",desc:"Create a number guessing game with hints (higher/lower).",difficulty:"medium"},{title:"Rock Paper Scissors",desc:"Create a Rock Paper Scissors game against the computer.",difficulty:"medium"},{title:"To-Do List CLI",desc:"Create a command-line to-do list application with add, remove, list features.",difficulty:"medium"},{title:"Contact Book",desc:"Create a contact book with add, search, delete, and list features using dictionary.",difficulty:"medium"},{title:"Simple Calculator",desc:"Create a calculator with functions for each operation and a menu.",difficulty:"easy"},{title:"Pattern Printing",desc:"Print a pyramid pattern using nested loops.",difficulty:"easy"},{title:"Diamond Pattern",desc:"Print a diamond pattern using nested loops.",difficulty:"medium"},{title:"Pascal's Triangle",desc:"Generate and print Pascal's Triangle up to N rows.",difficulty:"hard"}],
-cpp:[{title:"Hello World",desc:"Write a C++ program that prints 'Hello, World!'.",difficulty:"easy"},{title:"Variables & Types",desc:"Declare and print variables of all basic types (int, float, double, char, bool).",difficulty:"easy"},{title:"User Input",desc:"Take two numbers as input and print their sum.",difficulty:"easy"},{title:"Arithmetic Operations",desc:"Perform all arithmetic operations on two numbers.",difficulty:"easy"},{title:"Swap Two Numbers",desc:"Swap two numbers without using a third variable.",difficulty:"easy"},{title:"If-Else",desc:"Check if a number is positive, negative, or zero.",difficulty:"easy"},{title:"Even or Odd",desc:"Check if a number is even or odd.",difficulty:"easy"},{title:"Largest of Three",desc:"Find the largest of three numbers.",difficulty:"easy"},{title:"Leap Year",desc:"Check if a year is a leap year.",difficulty:"easy"},{title:"Grade Calculator",desc:"Convert marks to grades using switch-case.",difficulty:"easy"},{title:"For Loop",desc:"Print numbers from 1 to N using a for loop.",difficulty:"easy"},{title:"While Loop",desc:"Calculate factorial using while loop.",difficulty:"easy"},{title:"Do-While Loop",desc:"Print multiplication table using do-while loop.",difficulty:"easy"},{title:"Sum of N Numbers",desc:"Calculate sum of first N natural numbers.",difficulty:"easy"},{title:"Factorial",desc:"Calculate factorial using a loop.",difficulty:"easy"},{title:"Fibonacci Series",desc:"Print first N Fibonacci numbers.",difficulty:"medium"},{title:"Prime Check",desc:"Check if a number is prime.",difficulty:"medium"},{title:"Prime Range",desc:"Print all primes between 1 and 100.",difficulty:"medium"},{title:"Armstrong Number",desc:"Check if a number is Armstrong number.",difficulty:"medium"},{title:"Palindrome Number",desc:"Check if a number is palindrome.",difficulty:"easy"},{title:"Reverse Number",desc:"Reverse the digits of a number.",difficulty:"easy"},{title:"Sum of Digits",desc:"Calculate sum of digits.",difficulty:"easy"},{title:"GCD LCM",desc:"Find GCD and LCM using Euclidean algorithm.",difficulty:"medium"},{title:"Power Calculation",desc:"Calculate power without using pow() function.",difficulty:"easy"},{title:"Array Basics",desc:"Declare, initialize, and print an array.",difficulty:"easy"},{title:"Array Sum Average",desc:"Find sum and average of array elements.",difficulty:"easy"},{title:"Linear Search",desc:"Implement linear search in an array.",difficulty:"easy"},{title:"Binary Search",desc:"Implement binary search in a sorted array.",difficulty:"medium"},{title:"Bubble Sort",desc:"Sort an array using bubble sort.",difficulty:"medium"},{title:"Selection Sort",desc:"Sort an array using selection sort.",difficulty:"medium"},{title:"Insertion Sort",desc:"Sort an array using insertion sort.",difficulty:"medium"},{title:"2D Array",desc:"Declare and print a 2D array (matrix).",difficulty:"easy"},{title:"Matrix Addition",desc:"Add two matrices.",difficulty:"easy"},{title:"Matrix Multiplication",desc:"Multiply two matrices.",difficulty:"medium"},{title:"Transpose Matrix",desc:"Find transpose of a matrix.",difficulty:"easy"},{title:"String Length",desc:"Find length of a string without strlen().",difficulty:"easy"},{title:"String Copy",desc:"Copy one string to another without strcpy().",difficulty:"easy"},{title:"String Reverse",desc:"Reverse a string without strrev().",difficulty:"easy"},{title:"String Palindrome",desc:"Check if a string is palindrome.",difficulty:"easy"},{title:"String Concatenation",desc:"Concatenate two strings without strcat().",difficulty:"easy"},{title:"Pointer Basics",desc:"Demonstrate pointer declaration, initialization, and dereferencing.",difficulty:"easy"},{title:"Pointer Arithmetic",desc:"Show pointer arithmetic with an array.",difficulty:"medium"},{title:"Swap with Pointers",desc:"Swap two numbers using pointers.",difficulty:"easy"},{title:"Dynamic Memory",desc:"Allocate and deallocate memory using new and delete.",difficulty:"medium"},{title:"Function Overloading",desc:"Create overloaded functions for area (circle, rectangle, triangle).",difficulty:"medium"},{title:"Default Arguments",desc:"Create a function with default arguments.",difficulty:"easy"},{title:"Inline Function",desc:"Create and use an inline function.",difficulty:"easy"},{title:"Recursion - Factorial",desc:"Calculate factorial using recursion.",difficulty:"medium"},{title:"Recursion - Fibonacci",desc:"Calculate Fibonacci using recursion.",difficulty:"medium"},{title:"Class Basics",desc:"Create a class Student with attributes and methods.",difficulty:"easy"},{title:"Constructor & Destructor",desc:"Demonstrate constructor and destructor.",difficulty:"easy"},{title:"Copy Constructor",desc:"Implement a copy constructor.",difficulty:"medium"},{title:"Inheritance",desc:"Create base class and derived class.",difficulty:"medium"},{title:"Multiple Inheritance",desc:"Demonstrate multiple inheritance.",difficulty:"medium"},{title:"Polymorphism",desc:"Demonstrate runtime polymorphism with virtual functions.",difficulty:"medium"},{title:"Operator Overloading",desc:"Overload + operator for a Complex class.",difficulty:"hard"},{title:"Friend Function",desc:"Create a friend function to access private members.",difficulty:"medium"},{title:"Template Function",desc:"Create a template function for swapping any type.",difficulty:"medium"},{title:"Template Class",desc:"Create a template class for a generic stack.",difficulty:"hard"},{title:"Exception Handling",desc:"Demonstrate try-catch-throw.",difficulty:"easy"},{title:"File Read",desc:"Read from a text file.",difficulty:"easy"},{title:"File Write",desc:"Write to a text file.",difficulty:"easy"},{title:"File Append",desc:"Append data to an existing file.",difficulty:"easy"},{title:"STL Vector",desc:"Use vector to store and manipulate data.",difficulty:"easy"},{title:"STL Map",desc:"Use map to store key-value pairs.",difficulty:"medium"},{title:"STL Stack",desc:"Use stack from STL.",difficulty:"easy"},{title:"STL Queue",desc:"Use queue from STL.",difficulty:"easy"},{title:"STL Sort",desc:"Use sort() from algorithm library.",difficulty:"easy"}],
-javascript:[{title:"Hello World",desc:"Print 'Hello, World!' using console.log().",difficulty:"easy"},{title:"Variables",desc:"Declare variables using let, const, and var. Show the difference.",difficulty:"easy"},{title:"Data Types",desc:"Check and display types of different values using typeof.",difficulty:"easy"},{title:"String Methods",desc:"Demonstrate 5 common string methods.",difficulty:"easy"},{title:"Number Methods",desc:"Demonstrate parseInt, parseFloat, toFixed, Math.random.",difficulty:"easy"},{title:"If-Else",desc:"Check if a number is positive, negative, or zero.",difficulty:"easy"},{title:"Ternary Operator",desc:"Use ternary operator to find the largest of two numbers.",difficulty:"easy"},{title:"Switch Case",desc:"Create a day of week calculator using switch.",difficulty:"easy"},{title:"For Loop",desc:"Print numbers 1 to 100 using for loop.",difficulty:"easy"},{title:"While Loop",desc:"Calculate factorial using while loop.",difficulty:"easy"},{title:"Do-While Loop",desc:"Print multiplication table using do-while.",difficulty:"easy"},{title:"Array Creation",desc:"Create an array and print all elements.",difficulty:"easy"},{title:"Array Methods",desc:"Use push, pop, shift, unshift, splice on an array.",difficulty:"easy"},{title:"Array Iteration",desc:"Use forEach, map, filter, reduce on an array.",difficulty:"medium"},{title:"Find Max/Min",desc:"Find max and min in an array without using Math.max.",difficulty:"easy"},{title:"Array Sorting",desc:"Sort an array of numbers in ascending and descending order.",difficulty:"easy"},{title:"Remove Duplicates",desc:"Remove duplicate elements from an array.",difficulty:"medium"},{title:"Linear Search",desc:"Implement linear search in an array.",difficulty:"easy"},{title:"Binary Search",desc:"Implement binary search in a sorted array.",difficulty:"medium"},{title:"Object Basics",desc:"Create an object representing a student with properties.",difficulty:"easy"},{title:"Object Methods",desc:"Add methods to an object and call them.",difficulty:"easy"},{title:"Object Destructuring",desc:"Use destructuring to extract values from an object.",difficulty:"easy"},{title:"Array Destructuring",desc:"Use destructuring to swap two variables.",difficulty:"easy"},{title:"Spread Operator",desc:"Use spread operator to combine arrays and objects.",difficulty:"easy"},{title:"Rest Parameters",desc:"Create a function that accepts any number of arguments.",difficulty:"easy"},{title:"Arrow Functions",desc:"Convert regular functions to arrow functions.",difficulty:"easy"},{title:"Callback Functions",desc:"Create a function that accepts a callback.",difficulty:"easy"},{title:"setTimeout",desc:"Use setTimeout to delay execution.",difficulty:"easy"},{title:"setInterval",desc:"Create a countdown timer using setInterval.",difficulty:"medium"},{title:"Promise Basics",desc:"Create a simple Promise that resolves after 2 seconds.",difficulty:"medium"},{title:"Promise Chaining",desc:"Chain multiple .then() calls.",difficulty:"medium"},{title:"Async/Await",desc:"Use async/await to handle asynchronous operations.",difficulty:"medium"},{title:"Fetch API",desc:"Fetch data from a public API and display it.",difficulty:"medium"},{title:"DOM Manipulation",desc:"Create elements dynamically and add to the page.",difficulty:"easy"},{title:"Event Listeners",desc:"Add click, mouseover, and keydown event listeners.",difficulty:"easy"},{title:"Form Validation",desc:"Validate a form with name, email, and password fields.",difficulty:"medium"},{title:"Local Storage",desc:"Store and retrieve data from localStorage.",difficulty:"easy"},{title:"Session Storage",desc:"Store and retrieve data from sessionStorage.",difficulty:"easy"},{title:"JSON Parse/Stringify",desc:"Convert object to JSON and back.",difficulty:"easy"},{title:"Date Object",desc:"Display current date and time in different formats.",difficulty:"easy"},{title:"Math Object",desc:"Use Math.random, Math.floor, Math.ceil, Math.round.",difficulty:"easy"},{title:"String Reverse",desc:"Reverse a string without using built-in reverse.",difficulty:"easy"},{title:"Palindrome Check",desc:"Check if a string is palindrome.",difficulty:"easy"},{title:"Vowel Count",desc:"Count vowels in a string.",difficulty:"easy"},{title:"FizzBuzz",desc:"Print FizzBuzz from 1 to 100.",difficulty:"easy"},{title:"Fibonacci",desc:"Generate Fibonacci sequence.",difficulty:"medium"},{title:"Factorial",desc:"Calculate factorial using recursion.",difficulty:"medium"},{title:"Prime Check",desc:"Check if a number is prime.",difficulty:"medium"},{title:"Prime Range",desc:"Print all primes up to N.",difficulty:"medium"},{title:"GCD",desc:"Find GCD of two numbers using Euclidean algorithm.",difficulty:"medium"},{title:"LCM",desc:"Find LCM of two numbers.",difficulty:"medium"},{title:"Power Calculation",desc:"Calculate power without using Math.pow.",difficulty:"easy"},{title:"Number Guessing Game",desc:"Create a number guessing game.",difficulty:"medium"},{title:"To-Do List",desc:"Create a to-do list with add, delete, and complete features.",difficulty:"medium"},{title:"Calculator",desc:"Create a simple calculator with HTML, CSS, JS.",difficulty:"medium"},{title:"Clock",desc:"Create a digital clock that updates every second.",difficulty:"easy"},{title:"Stopwatch",desc:"Create a stopwatch with start, stop, and reset.",difficulty:"medium"},{title:"Countdown Timer",desc:"Create a countdown timer to a specific date.",difficulty:"medium"},{title:"Random Quote Generator",desc:"Display random quotes from an array.",difficulty:"easy"},{title:"Password Generator",desc:"Generate a random password.",difficulty:"medium"},{title:"Quiz App",desc:"Create a multiple choice quiz with score tracking.",difficulty:"medium"},{title:"Rock Paper Scissors",desc:"Create Rock Paper Scissors game.",difficulty:"medium"}],
-java:[{title:"Hello World",desc:"Write a Java program that prints 'Hello, World!'.",difficulty:"easy"},{title:"Variables",desc:"Declare and print variables of different types.",difficulty:"easy"},{title:"User Input",desc:"Use Scanner to take user input and display it.",difficulty:"easy"},{title:"Arithmetic",desc:"Perform all arithmetic operations on two numbers.",difficulty:"easy"},{title:"If-Else",desc:"Check if a number is positive, negative, or zero.",difficulty:"easy"},{title:"Even Odd",desc:"Check if a number is even or odd.",difficulty:"easy"},{title:"Largest of Three",desc:"Find the largest of three numbers.",difficulty:"easy"},{title:"Leap Year",desc:"Check if a year is a leap year.",difficulty:"easy"},{title:"Switch Case",desc:"Create a calculator using switch-case.",difficulty:"easy"},{title:"For Loop",desc:"Print numbers 1 to N.",difficulty:"easy"},{title:"While Loop",desc:"Calculate factorial using while loop.",difficulty:"easy"},{title:"Do-While",desc:"Print multiplication table using do-while.",difficulty:"easy"},{title:"Sum of N",desc:"Calculate sum of first N natural numbers.",difficulty:"easy"},{title:"Factorial",desc:"Calculate factorial using loop.",difficulty:"easy"},{title:"Fibonacci",desc:"Print first N Fibonacci numbers.",difficulty:"medium"},{title:"Prime Check",desc:"Check if a number is prime.",difficulty:"medium"},{title:"Prime Range",desc:"Print all primes between 1 and 100.",difficulty:"medium"},{title:"Armstrong",desc:"Check if a number is Armstrong.",difficulty:"medium"},{title:"Palindrome",desc:"Check if a number is palindrome.",difficulty:"easy"},{title:"Reverse Number",desc:"Reverse the digits of a number.",difficulty:"easy"},{title:"Sum of Digits",desc:"Calculate sum of digits.",difficulty:"easy"},{title:"GCD LCM",desc:"Find GCD and LCM.",difficulty:"medium"},{title:"Array Basics",desc:"Declare, initialize, and print an array.",difficulty:"easy"},{title:"Array Sum Average",desc:"Find sum and average of array elements.",difficulty:"easy"},{title:"Linear Search",desc:"Implement linear search.",difficulty:"easy"},{title:"Binary Search",desc:"Implement binary search.",difficulty:"medium"},{title:"Bubble Sort",desc:"Sort array using bubble sort.",difficulty:"medium"},{title:"Selection Sort",desc:"Sort array using selection sort.",difficulty:"medium"},{title:"Insertion Sort",desc:"Sort array using insertion sort.",difficulty:"medium"},{title:"2D Array",desc:"Declare and print a 2D array.",difficulty:"easy"},{title:"Matrix Add",desc:"Add two matrices.",difficulty:"easy"},{title:"Matrix Multiply",desc:"Multiply two matrices.",difficulty:"medium"},{title:"String Length",desc:"Find string length without length().",difficulty:"easy"},{title:"String Reverse",desc:"Reverse a string.",difficulty:"easy"},{title:"String Palindrome",desc:"Check if string is palindrome.",difficulty:"easy"},{title:"Vowel Count",desc:"Count vowels in a string.",difficulty:"easy"},{title:"Method Basics",desc:"Create a method to calculate area of circle.",difficulty:"easy"},{title:"Method Overloading",desc:"Overload methods for different parameters.",difficulty:"medium"},{title:"Recursion Factorial",desc:"Calculate factorial using recursion.",difficulty:"medium"},{title:"Recursion Fibonacci",desc:"Calculate Fibonacci using recursion.",difficulty:"medium"},{title:"Class Basics",desc:"Create a Student class.",difficulty:"easy"},{title:"Constructor",desc:"Demonstrate default and parameterized constructor.",difficulty:"easy"},{title:"This Keyword",desc:"Use this keyword to resolve naming conflicts.",difficulty:"easy"},{title:"Static Members",desc:"Demonstrate static variables and methods.",difficulty:"easy"},{title:"Inheritance",desc:"Create base and derived class.",difficulty:"medium"},{title:"Method Overriding",desc:"Override a method in derived class.",difficulty:"medium"},{title:"Super Keyword",desc:"Use super to call parent class constructor.",difficulty:"easy"},{title:"Abstract Class",desc:"Create an abstract class with abstract methods.",difficulty:"medium"},{title:"Interface",desc:"Create and implement an interface.",difficulty:"medium"},{title:"Multiple Interfaces",desc:"Implement multiple interfaces.",difficulty:"medium"},{title:"Polymorphism",desc:"Demonstrate runtime polymorphism.",difficulty:"medium"},{title:"Encapsulation",desc:"Use private fields with getters and setters.",difficulty:"easy"},{title:"Package",desc:"Create and use a custom package.",difficulty:"easy"},{title:"Exception Handling",desc:"Use try-catch-finally.",difficulty:"easy"},{title:"Custom Exception",desc:"Create a custom exception class.",difficulty:"medium"},{title:"File Read",desc:"Read from a text file using FileReader.",difficulty:"easy"},{title:"File Write",desc:"Write to a text file using FileWriter.",difficulty:"easy"},{title:"ArrayList",desc:"Use ArrayList to store and manipulate data.",difficulty:"easy"},{title:"HashMap",desc:"Use HashMap for key-value pairs.",difficulty:"easy"},{title:"LinkedList",desc:"Use LinkedList from Collections.",difficulty:"easy"},{title:"Iterator",desc:"Use Iterator to traverse a collection.",difficulty:"easy"},{title:"Generics",desc:"Create a generic class.",difficulty:"medium"},{title:"Lambda Expression",desc:"Use lambda with functional interfaces.",difficulty:"medium"},{title:"Stream API",desc:"Use Stream API to filter and map collections.",difficulty:"medium"},{title:"Thread Creation",desc:"Create a thread by extending Thread class.",difficulty:"medium"},{title:"Runnable Interface",desc:"Create a thread using Runnable interface.",difficulty:"medium"},{title:"Synchronization",desc:"Demonstrate thread synchronization.",difficulty:"hard"}]
+// Show errors on page
+window.onerror = function(msg, url, line) {
+    document.getElementById('errorBox').style.display = 'block';
+    document.getElementById('errorBox').textContent = 'ERROR: ' + msg + ' (Line ' + line + ')';
+    return false;
+};
+
+// Challenge Data - Simple and Direct
+const challenges = {
+    python: [
+        {t: "Hello World", d: "Write a Python program that prints 'Hello, World!' to the console.", m: "Use the print() function with quotes around your text.", e: "Input: (none)\nOutput: Hello, World!", starter: 'print("Hello, World!")'},
+        {t: "Variables & Types", d: "Create variables of different types and print their values.", m: "Create string, int, float, bool variables. Use type() to check.", e: "name='John' (str)\nage=25 (int)", starter: 'name = "Alice"
+age = 25
+print(name, type(name))'},
+        {t: "User Input", d: "Take user's name as input and print a greeting.", m: "Use input() to get name, then print with f-string.", e: "Input: Alice\nOutput: Hello, Alice!", starter: 'name = input("Enter name: ")
+print(f"Hello, {name}!")'},
+        {t: "Calculator", d: "Create a calculator with +, -, *, /, //, %, **.", m: "Get two numbers, convert to float, apply all operators.", e: "Input: 10 3\nOutput: 13, 7, 30, 3.33, 3, 1, 1000", starter: 'a = float(input("First: "))
+b = float(input("Second: "))
+print("Sum:", a + b)'},
+        {t: "String Reverse", d: "Reverse a string and check if it's a palindrome.", m: "Use slicing [::-1] to reverse. Compare with original.", e: "Input: madam\nOutput: madam (Palindrome!)", starter: 'text = input("Enter text: ")
+rev = text[::-1]
+print("Reversed:", rev)'}
+    ],
+    cpp: [
+        {t: "Hello World", d: "Write a C++ program that prints 'Hello, World!'.", m: "Include iostream, use cout, end with return 0.", e: "Output: Hello, World!", starter: '#include <iostream>
+using namespace std;
+int main() {
+    cout << "Hello, World!";
+    return 0;
+}'},
+        {t: "Variables", d: "Declare and print all basic types.", m: "Use int, float, double, char, bool keywords.", e: "Output: 25, 3.14, A, 1", starter: '#include <iostream>
+using namespace std;
+int main() {
+    int age = 25;
+    cout << age;
+    return 0;
+}'},
+        {t: "User Input", d: "Take two numbers and print their sum.", m: "Use cin to read input, cout to print.", e: "Input: 5 3\nOutput: 8", starter: '#include <iostream>
+using namespace std;
+int main() {
+    int a, b;
+    cin >> a >> b;
+    cout << a + b;
+    return 0;
+}'}
+    ],
+    javascript: [
+        {t: "Hello World", d: "Print 'Hello, World!' using console.log().", m: "Use console.log() with a string.", e: "Output: Hello, World!", starter: 'console.log("Hello, World!");'},
+        {t: "Variables", d: "Declare variables using let, const, var.", m: "let is block-scoped, const is constant.", e: "Output: 25, John, true", starter: 'let age = 25;
+const name = "John";
+var active = true;
+console.log(age, name, active);'},
+        {t: "Data Types", d: "Check types using typeof operator.", m: "typeof returns: string, number, boolean.", e: "Output: string, number, boolean", starter: 'console.log(typeof "Hello");
+console.log(typeof 42);
+console.log(typeof true);'}
+    ],
+    java: [
+        {t: "Hello World", d: "Write a Java program that prints 'Hello, World!'.", m: "Create class, main method, use System.out.println.", e: "Output: Hello, World!", starter: 'public class Main {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+    }
+}'},
+        {t: "Variables", d: "Declare and print different types.", m: "Use int, float, double, char, boolean.", e: "Output: 25, 3.14, A, true", starter: 'public class Main {
+    public static void main(String[] args) {
+        int age = 25;
+        System.out.println(age);
+    }
+}'},
+        {t: "User Input", d: "Use Scanner to take input and display it.", m: "Import Scanner, create object, use nextLine().", e: "Input: John\nOutput: Hello, John!", starter: 'import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String name = sc.nextLine();
+        System.out.println(name);
+    }
+}'}
+    ],
+    html: [
+        {t: "Hello World Page", d: "Create a simple HTML page with heading and paragraph.", m: "Use h1 for heading, p for paragraph.", e: "Output: Page with Hello heading and text", starter: '<!DOCTYPE html>
+<html>
+<head>
+    <title>My Page</title>
+</head>
+<body>
+    <h1>Hello World</h1>
+    <p>Welcome to HTML</p>
+</body>
+</html>'},
+        {t: "Responsive Navbar", d: "Create a navbar with Home, About, Contact links.", m: "Use nav, ul, li, a tags with CSS.", e: "Output: Horizontal navbar", starter: '<nav>
+    <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+    </ul>
+</nav>'},
+        {t: "Login Form", d: "Build a form with username, password, and submit button.", m: "Use form, input, label, button tags.", e: "Output: Form with 2 fields", starter: '<form>
+    <label>Username:</label>
+    <input type="text">
+    <label>Password:</label>
+    <input type="password">
+    <button>Login</button>
+</form>'}
+    ]
 };
 
 // Fill remaining languages
-const langNames={csharp:'C#',html:'HTML/CSS',sql:'SQL',php:'PHP',kotlin:'Kotlin',swift:'Swift',go:'Go',rust:'Rust'};
-Object.keys(langNames).forEach(lang=>{
-if(!challengesData[lang]||challengesData[lang].length<60){
-challengesData[lang]=Array.from({length:60},(_,i)=>({
-title:langNames[lang]+' Day '+(i+1),
-desc:'Complete the '+langNames[lang]+' challenge for Day '+(i+1)+'. Practice '+langNames[lang]+' concepts and improve your skills.',
-difficulty:i<20?'easy':i<40?'medium':'hard'
-}));
+const langNames = {csharp: 'C#', sql: 'SQL', php: 'PHP', kotlin: 'Kotlin', swift: 'Swift', go: 'Go', rust: 'Rust'};
+for (let lang in langNames) {
+    if (!challenges[lang]) {
+        challenges[lang] = [];
+        for (let i = 1; i <= 60; i++) {
+            challenges[lang].push({
+                t: langNames[lang] + ' Day ' + i,
+                d: 'Complete the ' + langNames[lang] + ' challenge for Day ' + i + '.',
+                m: 'Practice ' + langNames[lang] + ' core concepts.',
+                e: 'Input: Example\nOutput: Result',
+                starter: '// Start coding in ' + langNames[lang] + '
+// Write your solution here'
+            });
+        }
+    }
 }
+
+// Date logic
+const START_DATE = new Date('2026-01-01').getTime();
+function getDay() { return Math.floor((new Date().getTime() - START_DATE) / 86400000); }
+function getIndex() { return getDay() % 60; }
+function getToday() { return new Date().toDateString(); }
+
+// Data storage
+function getData() {
+    const d = localStorage.getItem('dc');
+    return d ? JSON.parse(d) : {streak: 0, maxStreak: 0, days: 0, xp: 0, completed: [], notes: {}};
+}
+function saveData(d) { localStorage.setItem('dc', JSON.stringify(d)); }
+
+function updateStats() {
+    const d = getData();
+    document.getElementById('streak').textContent = d.streak;
+    document.getElementById('maxStreak').textContent = d.maxStreak;
+    document.getElementById('days').textContent = d.days;
+}
+
+// SELECT LANGUAGE - MAIN FUNCTION
+function selectLang(lang) {
+    try {
+        // Hide error box
+        document.getElementById('errorBox').style.display = 'none';
+
+        // Get challenge data
+        const idx = getIndex();
+        const c = challenges[lang][idx];
+
+        if (!c) {
+            throw new Error('No challenge found for ' + lang + ' day ' + idx);
+        }
+
+        // Update card content
+        document.getElementById('dayNum').textContent = idx + 1;
+        document.getElementById('cTitle').textContent = c.t;
+        document.getElementById('cDesc').textContent = c.d;
+        document.getElementById('mText').textContent = c.m;
+        document.getElementById('mExample').textContent = c.e;
+        document.getElementById('codeEditor').value = c.starter;
+
+        // Set difficulty
+        const diffs = ['Easy', 'Medium', 'Hard'];
+        const diff = diffs[idx % 3];
+        document.getElementById('diffBadge').textContent = diff;
+        document.getElementById('diffBadge').className = 'badge diff-' + diff.toLowerCase();
+
+        // Load notes
+        const d = getData();
+        document.getElementById('notes').value = d.notes[lang + '_' + idx] || '';
+
+        // Show card, hide no select
+        const card = document.getElementById('challengeCard');
+        card.classList.add('show');
+        document.getElementById('noSelect').style.display = 'none';
+
+        // Scroll to card
+        setTimeout(() => card.scrollIntoView({behavior: 'smooth', block: 'start'}), 100);
+
+    } catch (e) {
+        document.getElementById('errorBox').style.display = 'block';
+        document.getElementById('errorBox').textContent = 'ERROR: ' + e.message;
+        console.error(e);
+    }
+}
+
+// Run code
+function runCode() {
+    try {
+        const code = document.getElementById('codeEditor').value;
+        const output = document.getElementById('output');
+        output.srcdoc = '<body style="background:#0a0f1a;color:#00ff9d;font-family:monospace;padding:20px;"><pre>' + code + '</pre></body>';
+        alert('✅ Code displayed! (Live execution only for HTML/CSS/JS)');
+    } catch (e) {
+        alert('Error: ' + e.message);
+    }
+}
+
+// Open compiler
+function openCompiler() {
+    const links = {
+        python: 'https://www.programiz.com/python-programming/online-compiler/',
+        cpp: 'https://www.programiz.com/cpp-programming/online-compiler/',
+        javascript: 'https://www.programiz.com/javascript/online-compiler/',
+        java: 'https://www.programiz.com/java-programming/online-compiler/',
+        html: 'https://www.programiz.com/html/online-compiler/',
+        csharp: 'https://www.programiz.com/csharp-programming/online-compiler/',
+        sql: 'https://www.programiz.com/sql/online-compiler/',
+        php: 'https://www.programiz.com/php-programming/online-compiler/',
+        kotlin: 'https://www.programiz.com/kotlin-programming/online-compiler/',
+        swift: 'https://www.programiz.com/swift-programming/online-compiler/',
+        go: 'https://www.programiz.com/golang/online-compiler/',
+        rust: 'https://www.programiz.com/rust-programming/online-compiler/'
+    };
+
+    // Get current language from active button or default
+    let lang = 'python';
+    const activeBtn = document.querySelector('.lang-btn:active');
+    if (activeBtn) {
+        // Extract language from onclick attribute
+        const onclick = activeBtn.getAttribute('onclick');
+        if (onclick) {
+            const match = onclick.match(/selectLang\('([^']+)'\)/);
+            if (match) lang = match[1];
+        }
+    }
+
+    const url = links[lang];
+    if (url) {
+        window.open(url, '_blank');
+    } else {
+        alert('Compiler not available for ' + lang);
+    }
+}
+
+// Show hint
+function showHint() {
+    alert('💡 HINT: Read the mission carefully. Break the problem into small steps. Use the example to understand the expected output.');
+}
+
+// Complete challenge
+function complete() {
+    const d = getData();
+    const t = getToday();
+
+    if (d.completed.includes(t)) {
+        alert('Already completed today!');
+        return;
+    }
+
+    const idx = getIndex();
+    const diffs = ['Easy', 'Medium', 'Hard'];
+    const diff = diffs[idx % 3];
+    const xp = diff === 'Easy' ? 10 : diff === 'Medium' ? 25 : 50;
+
+    d.completed.push(t);
+    d.days++;
+    d.xp += xp;
+
+    const last = d.last ? new Date(d.last) : null;
+    const now = new Date(t);
+    if (last) {
+        const diffDays = (now - last) / 86400000;
+        if (diffDays === 1) d.streak++;
+        else if (diffDays > 1) d.streak = 1;
+    } else {
+        d.streak = 1;
+    }
+    d.last = t;
+    if (d.streak > d.maxStreak) d.maxStreak = d.streak;
+
+    saveData(d);
+    updateStats();
+    alert('🎉 +' + xp + ' XP! Challenge completed!\nStreak: ' + d.streak + ' days');
+}
+
+// Auto-save notes
+document.getElementById('notes').addEventListener('input', function() {
+    const d = getData();
+    // Get current language from challenge card
+    const title = document.getElementById('cTitle').textContent;
+    let lang = 'python';
+    if (title.includes('C++')) lang = 'cpp';
+    else if (title.includes('JavaScript')) lang = 'javascript';
+    else if (title.includes('Java')) lang = 'java';
+    else if (title.includes('HTML')) lang = 'html';
+    d.notes[lang + '_' + getIndex()] = this.value;
+    saveData(d);
 });
 
-const START_DATE=new Date('2026-01-01').getTime();
-let currentChallengeLang='';
-
-function getDayNumber(){const now=new Date().getTime();const diff=now-START_DATE;return Math.floor(diff/(1000*60*60*24))}
-function getChallengeIndex(){return getDayNumber()%60}
-function getTodayDate(){return new Date().toDateString()}
-
-function getStreakData(){const data=localStorage.getItem('dailyChallenges');return data?JSON.parse(data):{currentStreak:0,maxStreak:0,completedDays:0,lastCompleted:'',completedDates:[]}}
-function saveStreakData(data){localStorage.setItem('dailyChallenges',JSON.stringify(data))}
-
-function updateStreakDisplay(){const data=getStreakData();document.getElementById('currentStreak').textContent=data.currentStreak;document.getElementById('maxStreak').textContent=data.maxStreak;document.getElementById('completedDays').textContent=data.completedDays}
-
-function markCompleted(){
-const data=getStreakData();const today=getTodayDate();
-if(data.completedDates.includes(today)){showNotification('Already completed today!');return}
-data.completedDates.push(today);data.completedDays++;
-const lastDate=data.lastCompleted?new Date(data.lastCompleted):null;
-const todayDate=new Date(today);
-if(lastDate){const diffDays=(todayDate-lastDate)/(1000*60*60*24);if(diffDays===1){data.currentStreak++}else if(diffDays>1){data.currentStreak=1}}else{data.currentStreak=1}
-data.lastCompleted=today;if(data.currentStreak>data.maxStreak)data.maxStreak=data.currentStreak;
-saveStreakData(data);
-// Mobile touch support
-document.addEventListener('touchstart',function(){},false);
-updateStreakDisplay();
-document.getElementById('completedState').style.display='block';
-document.getElementById('actionButtons').style.display='none';
-showNotification('Challenge completed! Streak updated!');
+// Countdown
+function updateTimer() {
+    const now = new Date();
+    const tmr = new Date(now);
+    tmr.setDate(tmr.getDate() + 1);
+    tmr.setHours(0, 0, 0, 0);
+    const diff = tmr - now;
+    document.getElementById('h').textContent = String(Math.floor(diff / 3600000)).padStart(2, '0');
+    document.getElementById('m').textContent = String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0');
+    document.getElementById('s').textContent = String(Math.floor((diff % 60000) / 1000)).padStart(2, '0');
 }
-
-function selectChallengeLang(btn,lang){
-document.querySelectorAll('.square-btn').forEach(b=>b.classList.remove('active'));
-btn.classList.add('active');currentChallengeLang=lang;
-const index=getChallengeIndex();const challenge=challengesData[lang][index];
-document.getElementById('dayNumber').textContent=index+1;
-document.getElementById('challengeTitle').textContent=challenge.title;
-document.getElementById('challengeDesc').textContent=challenge.desc;
-const diffBadge=document.getElementById('difficultyBadge');
-diffBadge.className='challenge-difficulty difficulty-'+challenge.difficulty;
-diffBadge.textContent=challenge.difficulty.charAt(0).toUpperCase()+challenge.difficulty.slice(1);
-const data=getStreakData();const today=getTodayDate();
-if(data.completedDates.includes(today)){document.getElementById('completedState').style.display='block';document.getElementById('actionButtons').style.display='none'}
-else{document.getElementById('completedState').style.display='none';document.getElementById('actionButtons').style.display='flex'}
-const compilerLinks={python:'https://www.programiz.com/python-programming/online-compiler/',cpp:'https://www.programiz.com/cpp-programming/online-compiler/',javascript:'https://www.programiz.com/javascript/online-compiler/',java:'https://www.programiz.com/java-programming/online-compiler/',csharp:'https://www.programiz.com/csharp-programming/online-compiler/',html:'https://www.programiz.com/html/online-compiler/',sql:'https://www.programiz.com/sql/online-compiler/',php:'https://www.programiz.com/php-programming/online-compiler/',kotlin:'https://www.programiz.com/kotlin-programming/online-compiler/',swift:'https://www.programiz.com/swift-programming/online-compiler/',go:'https://www.programiz.com/golang/online-compiler/',rust:'https://www.programiz.com/rust-programming/online-compiler/'};
-const link=document.getElementById('compilerLink');link.style.display='inline-flex';
-document.getElementById('challengeCard').classList.add('active');
-document.getElementById('noSelection').style.display='none';
-}
-
-function openCompiler(){
-const compilerLinks={python:'https://www.programiz.com/python-programming/online-compiler/',cpp:'https://www.programiz.com/cpp-programming/online-compiler/',javascript:'https://www.programiz.com/javascript/online-compiler/',java:'https://www.programiz.com/java-programming/online-compiler/',csharp:'https://www.programiz.com/csharp-programming/online-compiler/',html:'https://www.programiz.com/html/online-compiler/',sql:'https://www.programiz.com/sql/online-compiler/',php:'https://www.programiz.com/php-programming/online-compiler/',kotlin:'https://www.programiz.com/kotlin-programming/online-compiler/',swift:'https://www.programiz.com/swift-programming/online-compiler/',go:'https://www.programiz.com/golang/online-compiler/',rust:'https://www.programiz.com/rust-programming/online-compiler/'};
-const url=compilerLinks[currentChallengeLang];
-if(url){window.open(url,'_blank');}else{showNotification('Compiler link not available!');}
-}
-
-function shareChallenge(){
-const day=getChallengeIndex()+1;
-const lang=currentChallengeLang?currentChallengeLang.toUpperCase():'CODE';
-const text='I just completed Day '+day+' of the '+lang+' Daily Challenge on Akarshit Raj's website! 60-day coding challenge cycle. Join me and build your streak!';
-const url=window.location.href;
-if(navigator.share){navigator.share({title:'Daily Challenge',text:text,url:url})}
-else{const whatsappUrl='https://wa.me/?text='+encodeURIComponent(text+' '+url);window.open(whatsappUrl,'_blank')}
-}
-
-function updateCountdown(){
-const now=new Date();const tomorrow=new Date(now);
-tomorrow.setDate(tomorrow.getDate()+1);tomorrow.setHours(0,0,0,0);
-const diff=tomorrow-now;
-const hours=Math.floor(diff/(1000*60*60));
-const minutes=Math.floor((diff%(1000*60*60))/(1000*60));
-const seconds=Math.floor((diff%(1000*60))/1000);
-document.getElementById('hours').textContent=String(hours).padStart(2,'0');
-document.getElementById('minutes').textContent=String(minutes).padStart(2,'0');
-document.getElementById('seconds').textContent=String(seconds).padStart(2,'0');
-}
-setInterval(updateCountdown,1000);updateCountdown();
-
-function showNotification(msg){
-const n=document.createElement('div');
-n.style.cssText='position:fixed;bottom:2rem;right:2rem;background:linear-gradient(135deg,#10b981,#059669);color:white;padding:1rem 2rem;border-radius:12px;font-weight:600;z-index:3000;box-shadow:0 4px 20px rgba(16,185,129,0.4);animation:slideIn 0.3s ease;';
-n.textContent=msg;document.body.appendChild(n);setTimeout(()=>n.remove(),3000);
-}
-
-// COPY PROTECTION
-document.addEventListener('contextmenu',function(e){if(!e.target.closest('button,.square-btn,.neon-btn,.gold-btn'))e.preventDefault();});
-document.addEventListener('keydown',e=>{
-if(e.key==='F12'||(e.ctrlKey&&e.shiftKey&&e.key==='I')||(e.ctrlKey&&e.key==='u')){
-e.preventDefault();document.getElementById('noCopyOverlay').classList.add('active');
-}
-});
-document.addEventListener('selectstart',function(e){if(!e.target.closest('button,.square-btn,.neon-btn,.gold-btn'))e.preventDefault();});
-document.addEventListener('copy',e=>e.preventDefault());
-document.addEventListener('cut',e=>e.preventDefault());
-setInterval(()=>{
-const threshold=160;
-if(window.outerHeight-window.innerHeight>threshold||window.outerWidth-window.innerWidth>threshold){
-document.body.innerHTML='<div style="display:flex;justify-content:center;align-items:center;height:100vh;background:#020617;color:#ef4444;font-size:2rem;font-weight:700;text-align:center;padding:2rem">Developer tools detected.<br>Access denied.</div>';
-}
-},1000);
-
-
-// Mobile touch support
-document.addEventListener('touchstart',function(){},false);
-updateStreakDisplay();
+setInterval(updateTimer, 1000);
+updateTimer();
+updateStats();
 </script>
 </body>
 </html>
