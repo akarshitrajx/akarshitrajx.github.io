@@ -1,0 +1,2062 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DevPulse — Unlimited Coding Practice</title>
+<style>
+  :root {
+    --bg: #060b14;
+    --bg2: #0a1020;
+    --bg3: #0f1830;
+    --neon: #00f5ff;
+    --neon2: #7c3aed;
+    --neon3: #f0abfc;
+    --green: #10b981;
+    --yellow: #fbbf24;
+    --red: #ef4444;
+    --orange: #f97316;
+    --text: #e2e8f0;
+    --muted: #64748b;
+    --card: rgba(15,24,48,0.85);
+    --border: rgba(0,245,255,0.15);
+    --glass: rgba(255,255,255,0.04);
+    --radius: 16px;
+    --font: 'Segoe UI', system-ui, sans-serif;
+    --mono: 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
+  }
+  [data-theme="light"] {
+    --bg: #f0f4ff;
+    --bg2: #e2e8f8;
+    --bg3: #d4dcf5;
+    --neon: #4f46e5;
+    --neon2: #7c3aed;
+    --neon3: #a855f7;
+    --text: #1e1b4b;
+    --muted: #6b7280;
+    --card: rgba(255,255,255,0.85);
+    --border: rgba(79,70,229,0.2);
+    --glass: rgba(79,70,229,0.06);
+  }
+  [data-theme="light"] body{background:var(--bg)}
+  [data-theme="light"] #hero{background:linear-gradient(135deg,#e0e7ff 0%,#f0f4ff 50%,#ede9fe 100%)}
+  [data-theme="light"] .hero-glow{background:radial-gradient(circle,rgba(124,58,237,.2) 0%,transparent 70%)}
+  [data-theme="light"] .hero-glow2{background:radial-gradient(circle,rgba(79,70,229,.15) 0%,transparent 70%)}
+  [data-theme="light"] h1.hero-title{background:linear-gradient(135deg,#1e1b4b 0%,#4f46e5 40%,#7c3aed 80%,#a855f7 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+  [data-theme="light"] #topnav{background:rgba(240,244,255,.92);border-color:rgba(79,70,229,.15)}
+  [data-theme="light"] .code-area{color:#1e40af}
+  [data-theme="light"] .output-area{background:var(--bg2)}
+  [data-theme="light"] .bug-code{color:#b91c1c;background:rgba(239,68,68,.06)}
+  [data-theme="light"] .editor-wrap .editor-body{background:#fff}
+  [data-theme="light"] .xp-pill{background:rgba(124,58,237,.1);border-color:rgba(124,58,237,.25);color:var(--neon2)}
+  [data-theme="light"] .level-badge{background:linear-gradient(135deg,var(--neon2),var(--neon))}
+  [data-theme="light"] ::-webkit-scrollbar-track{background:var(--bg2)}
+  [data-theme="light"] .streak-display{background:linear-gradient(135deg,rgba(249,115,22,.08),rgba(239,68,68,.05))}
+  [data-theme="light"] .cal-cell{background:var(--bg2)}
+  [data-theme="light"] .hero-badge{background:rgba(79,70,229,.1);border-color:rgba(79,70,229,.3);color:var(--neon)}
+
+  /* ===== THEME TOGGLE BUTTON ===== */
+  .theme-toggle{
+    display:flex;align-items:center;gap:0;
+    background:var(--glass);border:1px solid var(--border);
+    border-radius:50px;padding:3px;cursor:pointer;transition:all .3s;flex-shrink:0;
+  }
+  .theme-toggle-track{
+    position:relative;width:44px;height:24px;
+    background:var(--bg2);border-radius:50px;
+    transition:background .3s;overflow:hidden;
+  }
+  [data-theme="light"] .theme-toggle-track{background:rgba(79,70,229,.15)}
+  .theme-toggle-thumb{
+    position:absolute;top:3px;left:3px;
+    width:18px;height:18px;border-radius:50%;
+    background:linear-gradient(135deg,var(--neon2),var(--neon));
+    transition:transform .3s cubic-bezier(.34,1.56,.64,1);
+    display:flex;align-items:center;justify-content:center;font-size:10px;
+  }
+  [data-theme="light"] .theme-toggle-thumb{transform:translateX(20px)}
+  .theme-toggle-icons{display:flex;gap:6px;padding:0 6px;font-size:12px}
+  .theme-icon-moon{opacity:1;transition:opacity .3s}
+  .theme-icon-sun{opacity:.4;transition:opacity .3s}
+  [data-theme="light"] .theme-icon-moon{opacity:.4}
+  [data-theme="light"] .theme-icon-sun{opacity:1}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--font);background:var(--bg);color:var(--text);
+    min-height:100vh;overflow-x:hidden;
+  }
+  ::-webkit-scrollbar{width:6px;height:6px}
+  ::-webkit-scrollbar-track{background:var(--bg2)}
+  ::-webkit-scrollbar-thumb{background:var(--neon2);border-radius:3px}
+  /* ===== ANIMATIONS ===== */
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-18px)}}
+  @keyframes pulse-glow{0%,100%{opacity:.6;transform:scale(1)}50%{opacity:1;transform:scale(1.05)}}
+  @keyframes slide-in{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes glow-border{0%,100%{border-color:rgba(0,245,255,.3)}50%{border-color:rgba(0,245,255,.9)}}
+  @keyframes spin-slow{to{transform:rotate(360deg)}}
+  @keyframes count-up{from{opacity:0;transform:scale(.8)}to{opacity:1;transform:scale(1)}}
+  @keyframes shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
+  @keyframes celebrate{0%{transform:scale(1)}50%{transform:scale(1.12)}100%{transform:scale(1)}}
+  @keyframes particle-drift{0%{opacity:1;transform:translate(0,0) rotate(0deg)}100%{opacity:0;transform:translate(var(--dx),var(--dy)) rotate(360deg)}}
+  @keyframes progress-fill{from{width:0}to{width:var(--w)}}
+  @keyframes badge-pop{0%{transform:scale(0) rotate(-15deg);opacity:0}70%{transform:scale(1.15) rotate(5deg);opacity:1}100%{transform:scale(1) rotate(0deg);opacity:1}}
+
+  /* ===== HERO ===== */
+  #hero{
+    position:relative;min-height:100vh;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;text-align:center;padding:60px 20px;
+    overflow:hidden;
+  }
+  #hero-canvas{position:absolute;inset:0;z-index:0}
+  .hero-glow{
+    position:absolute;width:600px;height:600px;border-radius:50%;
+    background:radial-gradient(circle,rgba(124,58,237,.35) 0%,transparent 70%);
+    top:50%;left:50%;transform:translate(-50%,-50%);animation:pulse-glow 4s ease-in-out infinite;
+    pointer-events:none;z-index:1;
+  }
+  .hero-glow2{
+    position:absolute;width:400px;height:400px;border-radius:50%;
+    background:radial-gradient(circle,rgba(0,245,255,.2) 0%,transparent 70%);
+    top:30%;left:60%;transform:translate(-50%,-50%);animation:pulse-glow 6s ease-in-out infinite reverse;
+    pointer-events:none;z-index:1;
+  }
+  .hero-content{position:relative;z-index:2;max-width:900px}
+  .hero-badge{
+    display:inline-flex;align-items:center;gap:8px;
+    background:rgba(0,245,255,.1);border:1px solid rgba(0,245,255,.3);
+    border-radius:50px;padding:6px 18px;font-size:13px;color:var(--neon);
+    margin-bottom:28px;letter-spacing:.5px;
+  }
+  .hero-badge::before{content:'';width:8px;height:8px;background:var(--neon);border-radius:50%;animation:pulse-glow 1.5s infinite}
+  h1.hero-title{
+    font-size:clamp(2.5rem,7vw,5rem);font-weight:800;line-height:1.1;
+    background:linear-gradient(135deg,#fff 0%,var(--neon) 40%,var(--neon2) 80%,var(--neon3) 100%);
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+    margin-bottom:20px;letter-spacing:-1px;
+  }
+  .hero-sub{font-size:clamp(1rem,2.5vw,1.25rem);color:var(--muted);max-width:600px;margin:0 auto 40px;line-height:1.7}
+  .hero-stats{display:flex;gap:40px;justify-content:center;margin-bottom:44px;flex-wrap:wrap}
+  .hero-stat{text-align:center}
+  .hero-stat-num{font-size:2rem;font-weight:800;color:var(--neon);line-height:1}
+  .hero-stat-label{font-size:12px;color:var(--muted);margin-top:4px;letter-spacing:.5px;text-transform:uppercase}
+  .btn-hero{
+    display:inline-flex;align-items:center;gap:10px;
+    background:linear-gradient(135deg,var(--neon2),var(--neon));
+    color:#fff;font-size:1.1rem;font-weight:700;padding:16px 44px;border-radius:50px;
+    border:none;cursor:pointer;letter-spacing:.3px;transition:all .3s;
+    box-shadow:0 0 30px rgba(124,58,237,.5);text-decoration:none;
+  }
+  .btn-hero:hover{transform:translateY(-3px);box-shadow:0 0 50px rgba(0,245,255,.5)}
+  .btn-hero svg{width:20px;height:20px;transition:transform .3s}
+  .btn-hero:hover svg{transform:translateX(4px)}
+  .hero-scroll{
+    position:absolute;bottom:30px;left:50%;transform:translateX(-50%);
+    display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--muted);font-size:12px;
+    animation:float 2.5s ease-in-out infinite;z-index:2;
+  }
+  .hero-scroll-dot{width:4px;height:24px;background:linear-gradient(var(--neon),transparent);border-radius:2px}
+
+  /* ===== NAV ===== */
+  #topnav{
+    position:fixed;top:0;left:0;right:0;z-index:1000;
+    background:rgba(6,11,20,.85);backdrop-filter:blur(20px);
+    border-bottom:1px solid var(--border);
+    display:none;align-items:center;padding:0 24px;height:60px;gap:12px;
+  }
+  #topnav.visible{display:flex}
+  .nav-logo{font-weight:800;font-size:1.2rem;color:var(--neon);letter-spacing:-0.5px;flex-shrink:0}
+  .nav-logo span{color:var(--neon2)}
+  .nav-tabs{display:flex;gap:4px;flex:1;overflow-x:auto;padding:4px 0}
+  .nav-tab{
+    display:flex;align-items:center;gap:6px;padding:6px 14px;border-radius:8px;
+    border:none;background:transparent;color:var(--muted);font-size:14px;cursor:pointer;
+    transition:all .2s;white-space:nowrap;font-family:var(--font);
+  }
+  .nav-tab:hover{color:var(--text);background:var(--glass)}
+  .nav-tab.active{color:var(--neon);background:rgba(0,245,255,.1)}
+  .nav-tab svg{width:16px;height:16px}
+  .nav-right{display:flex;align-items:center;gap:12px;flex-shrink:0}
+  .xp-pill{
+    display:flex;align-items:center;gap:6px;
+    background:rgba(124,58,237,.2);border:1px solid rgba(124,58,237,.4);
+    border-radius:50px;padding:4px 12px;font-size:13px;color:var(--neon3);font-weight:600;
+  }
+  .level-badge{
+    background:linear-gradient(135deg,var(--neon2),var(--neon));
+    color:#fff;font-size:11px;font-weight:700;padding:3px 8px;border-radius:6px;letter-spacing:.5px;
+  }
+
+  /* ===== MAIN APP ===== */
+  #app{display:none;min-height:100vh;padding-top:60px}
+  #app.visible{display:block}
+
+  /* ===== SECTIONS ===== */
+  .section{display:none;animation:slide-in .4s ease}
+  .section.active{display:block}
+  .section-inner{max-width:1400px;margin:0 auto;padding:32px 20px}
+
+  /* ===== CARDS ===== */
+  .card{
+    background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+    padding:24px;backdrop-filter:blur(16px);
+  }
+  .glass-card{
+    background:var(--glass);border:1px solid var(--border);border-radius:var(--radius);
+    padding:20px;backdrop-filter:blur(16px);
+  }
+
+  /* ===== LANGUAGE GRID ===== */
+  .section-header{margin-bottom:28px}
+  .section-title{font-size:1.6rem;font-weight:700;margin-bottom:6px}
+  .section-sub{color:var(--muted);font-size:14px}
+  .lang-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:16px}
+  .lang-card{
+    background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+    padding:28px 20px;text-align:center;cursor:pointer;transition:all .3s;position:relative;overflow:hidden;
+  }
+  .lang-card::before{
+    content:'';position:absolute;inset:0;background:linear-gradient(135deg,transparent,rgba(0,245,255,.06));
+    opacity:0;transition:opacity .3s;
+  }
+  .lang-card:hover::before{opacity:1}
+  .lang-card:hover{transform:translateY(-6px);border-color:rgba(0,245,255,.5);box-shadow:0 8px 30px rgba(0,245,255,.15)}
+  .lang-card.selected{border-color:var(--neon);background:rgba(0,245,255,.08);box-shadow:0 0 20px rgba(0,245,255,.2)}
+  .lang-icon{font-size:2.6rem;margin-bottom:12px;display:block}
+  .lang-name{font-weight:700;font-size:15px;margin-bottom:4px}
+  .lang-count{font-size:12px;color:var(--muted)}
+  .lang-badge{
+    position:absolute;top:10px;right:10px;background:rgba(0,245,255,.15);
+    border:1px solid rgba(0,245,255,.3);border-radius:6px;font-size:10px;
+    color:var(--neon);padding:2px 6px;font-weight:600;
+  }
+
+  /* ===== PRACTICE AREA ===== */
+  #practice-area{display:none}
+  #practice-area.visible{display:block}
+  .practice-layout{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  @media(max-width:900px){.practice-layout{grid-template-columns:1fr}}
+
+  /* Mode tabs */
+  .mode-tabs{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap}
+  .mode-tab{
+    display:flex;align-items:center;gap:6px;padding:8px 18px;border-radius:10px;
+    border:1px solid var(--border);background:transparent;color:var(--muted);
+    font-size:14px;cursor:pointer;transition:all .25s;font-family:var(--font);
+  }
+  .mode-tab:hover{color:var(--text);border-color:rgba(0,245,255,.4)}
+  .mode-tab.active{background:rgba(0,245,255,.1);border-color:var(--neon);color:var(--neon);font-weight:600}
+  .mode-tab svg{width:15px;height:15px}
+
+  /* Filters */
+  .filter-bar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;align-items:center}
+  .filter-label{font-size:12px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-right:4px}
+  .filter-btn{
+    padding:5px 14px;border-radius:20px;border:1px solid var(--border);background:transparent;
+    color:var(--muted);font-size:13px;cursor:pointer;transition:all .2s;font-family:var(--font);
+  }
+  .filter-btn:hover{border-color:rgba(0,245,255,.4);color:var(--text)}
+  .filter-btn.active{background:rgba(0,245,255,.12);border-color:var(--neon);color:var(--neon)}
+  .diff-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;align-items:center}
+  .diff-btn{
+    padding:6px 20px;border-radius:8px;border:1px solid;font-size:13px;cursor:pointer;
+    font-weight:600;transition:all .2s;font-family:var(--font);
+  }
+  .diff-btn.easy{border-color:var(--green);color:var(--green);background:transparent}
+  .diff-btn.medium{border-color:var(--yellow);color:var(--yellow);background:transparent}
+  .diff-btn.hard{border-color:var(--red);color:var(--red);background:transparent}
+  .diff-btn.easy.active{background:rgba(16,185,129,.15)}
+  .diff-btn.medium.active{background:rgba(251,191,36,.15)}
+  .diff-btn.hard.active{background:rgba(239,68,68,.15)}
+
+  /* Question card */
+  .q-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;margin-bottom:16px;animation:slide-in .3s ease}
+  .q-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;gap:12px;flex-wrap:wrap}
+  .q-meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  .q-tag{padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600;letter-spacing:.3px;text-transform:uppercase}
+  .q-tag.easy{background:rgba(16,185,129,.15);color:var(--green);border:1px solid rgba(16,185,129,.3)}
+  .q-tag.medium{background:rgba(251,191,36,.15);color:var(--yellow);border:1px solid rgba(251,191,36,.3)}
+  .q-tag.hard{background:rgba(239,68,68,.15);color:var(--red);border:1px solid rgba(239,68,68,.3)}
+  .q-tag.topic{background:rgba(124,58,237,.15);color:var(--neon3);border:1px solid rgba(124,58,237,.3)}
+  .q-tag.lang{background:rgba(0,245,255,.1);color:var(--neon);border:1px solid rgba(0,245,255,.25)}
+  .q-num{font-size:12px;color:var(--muted)}
+  .q-title{font-size:1.1rem;font-weight:700;margin-bottom:10px;line-height:1.4}
+  .q-desc{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:14px}
+  .q-example{background:var(--bg2);border-radius:10px;padding:14px;font-family:var(--mono);font-size:13px;border:1px solid var(--border);margin-bottom:14px;line-height:1.7}
+  .q-example strong{color:var(--neon);font-size:11px;display:block;margin-bottom:4px;font-family:var(--font);letter-spacing:.5px;text-transform:uppercase}
+  .hint-btn{
+    display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:8px;
+    border:1px solid rgba(251,191,36,.3);background:rgba(251,191,36,.08);color:var(--yellow);
+    font-size:13px;cursor:pointer;transition:all .2s;font-family:var(--font);
+  }
+  .hint-btn:hover{background:rgba(251,191,36,.15)}
+  .hint-box{background:rgba(251,191,36,.08);border:1px solid rgba(251,191,36,.25);border-radius:10px;padding:14px;font-size:13px;color:var(--yellow);margin-top:12px;display:none;line-height:1.7}
+  .hint-box.show{display:block;animation:slide-in .2s ease}
+
+  /* Timer */
+  .timer-display{
+    display:flex;align-items:center;gap:10px;padding:12px 20px;
+    background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);
+    border-radius:12px;margin-bottom:16px;
+  }
+  .timer-num{font-size:2rem;font-weight:800;color:var(--red);font-family:var(--mono);letter-spacing:2px;min-width:70px;text-align:center}
+  .timer-label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
+  .timer-bar{flex:1;height:6px;background:var(--bg2);border-radius:3px;overflow:hidden}
+  .timer-progress{height:100%;background:linear-gradient(90deg,var(--green),var(--yellow),var(--red));transition:width .5s linear;border-radius:3px}
+
+  /* Code Editor */
+  .editor-wrap{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:16px}
+  .editor-toolbar{
+    display:flex;align-items:center;justify-content:space-between;padding:12px 16px;
+    background:var(--bg2);border-bottom:1px solid var(--border);flex-wrap:wrap;gap:8px;
+  }
+  .editor-title{font-size:13px;font-weight:600;color:var(--muted);display:flex;align-items:center;gap:8px}
+  .editor-dots{display:flex;gap:6px}
+  .editor-dot{width:12px;height:12px;border-radius:50%}
+  .editor-dot:nth-child(1){background:#ef4444}
+  .editor-dot:nth-child(2){background:#fbbf24}
+  .editor-dot:nth-child(3){background:#10b981}
+  .editor-actions{display:flex;gap:8px;flex-wrap:wrap}
+  .ed-btn{
+    display:flex;align-items:center;gap:5px;padding:5px 12px;border-radius:7px;
+    border:1px solid var(--border);background:var(--glass);color:var(--text);
+    font-size:12px;cursor:pointer;transition:all .2s;font-family:var(--font);
+  }
+  .ed-btn:hover{border-color:rgba(0,245,255,.4);color:var(--neon)}
+  .ed-btn.run{background:rgba(16,185,129,.15);border-color:rgba(16,185,129,.4);color:var(--green);font-weight:600}
+  .ed-btn.run:hover{background:rgba(16,185,129,.25)}
+  .editor-body{display:flex;position:relative}
+  .line-numbers{
+    padding:16px 12px;background:var(--bg2);color:var(--muted);font-family:var(--mono);
+    font-size:13px;line-height:1.7;text-align:right;min-width:48px;
+    user-select:none;border-right:1px solid var(--border);
+  }
+  .code-area{
+    flex:1;padding:16px;background:transparent;border:none;outline:none;
+    color:#a5d6ff;font-family:var(--mono);font-size:13px;line-height:1.7;
+    resize:none;min-height:220px;width:100%;tab-size:2;
+  }
+  .code-area::selection{background:rgba(0,245,255,.2)}
+  .code-area::placeholder{color:var(--muted);font-family:var(--mono)}
+
+  /* Output */
+  .output-area{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:16px;min-height:80px;font-family:var(--mono);font-size:13px;line-height:1.7;margin-bottom:16px;max-height:200px;overflow-y:auto}
+  .output-line{padding:2px 0}
+  .output-line.success{color:var(--green)}
+  .output-line.error{color:var(--red)}
+  .output-line.info{color:var(--neon)}
+  .output-line.warn{color:var(--yellow)}
+
+  /* Verdict */
+  .verdict{border-radius:12px;padding:16px;margin-bottom:16px;display:none;animation:slide-in .3s ease}
+  .verdict.correct{background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.4);color:var(--green)}
+  .verdict.wrong{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.35);color:var(--red)}
+  .verdict.show{display:block}
+  .verdict-title{font-weight:700;font-size:1rem;margin-bottom:6px;display:flex;align-items:center;gap:8px}
+  .verdict-msg{font-size:13px;line-height:1.6;opacity:.85}
+  .xp-gain{
+    display:inline-flex;align-items:center;gap:6px;padding:4px 12px;
+    background:rgba(124,58,237,.2);border-radius:20px;font-size:13px;color:var(--neon3);font-weight:700;margin-top:10px;
+  }
+
+  /* Actions */
+  .action-bar{display:flex;gap:10px;flex-wrap:wrap}
+  .btn{
+    display:inline-flex;align-items:center;gap:7px;padding:10px 22px;border-radius:10px;
+    border:1px solid;font-size:14px;font-weight:600;cursor:pointer;transition:all .25s;font-family:var(--font);
+  }
+  .btn-primary{background:linear-gradient(135deg,var(--neon2),var(--neon));border-color:transparent;color:#fff;box-shadow:0 0 20px rgba(124,58,237,.3)}
+  .btn-primary:hover{box-shadow:0 0 30px rgba(0,245,255,.4);transform:translateY(-2px)}
+  .btn-secondary{background:var(--glass);border-color:var(--border);color:var(--text)}
+  .btn-secondary:hover{border-color:rgba(0,245,255,.4);color:var(--neon)}
+  .btn-green{background:rgba(16,185,129,.15);border-color:rgba(16,185,129,.5);color:var(--green)}
+  .btn-green:hover{background:rgba(16,185,129,.25)}
+  .btn svg{width:16px;height:16px}
+
+  /* Output Prediction */
+  .pred-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+  .pred-opt{
+    padding:12px 16px;border-radius:10px;border:1px solid var(--border);background:var(--glass);
+    cursor:pointer;font-family:var(--mono);font-size:13px;transition:all .2s;text-align:center;color:var(--text);
+  }
+  .pred-opt:hover{border-color:var(--neon);color:var(--neon)}
+  .pred-opt.correct-ans{background:rgba(16,185,129,.15);border-color:var(--green);color:var(--green)}
+  .pred-opt.wrong-ans{background:rgba(239,68,68,.1);border-color:var(--red);color:var(--red)}
+
+  /* ===== DASHBOARD ===== */
+  .dash-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;margin-bottom:24px}
+  .dash-stat{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;position:relative;overflow:hidden}
+  .dash-stat::after{content:'';position:absolute;top:-20px;right:-20px;width:80px;height:80px;border-radius:50%;background:radial-gradient(circle,var(--accent-clr,.2),transparent 70%);pointer-events:none}
+  .dash-stat-icon{font-size:1.6rem;margin-bottom:8px}
+  .dash-stat-val{font-size:2rem;font-weight:800;line-height:1;margin-bottom:4px}
+  .dash-stat-label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
+  .dash-stat-delta{font-size:12px;margin-top:6px;display:flex;align-items:center;gap:4px}
+  .delta-up{color:var(--green)}
+  .delta-down{color:var(--red)}
+
+  /* XP Bar */
+  .xp-section{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;margin-bottom:20px}
+  .xp-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:8px}
+  .xp-title{font-weight:700;font-size:1.1rem}
+  .xp-rank{
+    background:linear-gradient(135deg,var(--neon2),var(--neon));
+    color:#fff;padding:4px 14px;border-radius:20px;font-size:13px;font-weight:700;
+  }
+  .xp-bar-wrap{height:12px;background:var(--bg2);border-radius:6px;overflow:hidden;margin-bottom:8px;position:relative}
+  .xp-bar-fill{height:100%;background:linear-gradient(90deg,var(--neon2),var(--neon));border-radius:6px;transition:width .6s ease;position:relative}
+  .xp-bar-fill::after{content:'';position:absolute;right:0;top:0;bottom:0;width:4px;background:#fff;border-radius:2px;opacity:.6}
+  .xp-label{font-size:12px;color:var(--muted);display:flex;justify-content:space-between}
+
+  /* Skills chart */
+  .skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-bottom:20px}
+  .skill-item{background:var(--glass);border:1px solid var(--border);border-radius:12px;padding:14px}
+  .skill-name{font-size:13px;font-weight:600;margin-bottom:8px;display:flex;justify-content:space-between}
+  .skill-pct{font-size:12px;color:var(--neon)}
+  .skill-bar{height:6px;background:var(--bg2);border-radius:3px;overflow:hidden}
+  .skill-bar-fill{height:100%;border-radius:3px;transition:width 1s ease}
+
+  /* Calendar */
+  .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-top:16px}
+  .cal-day-label{text-align:center;font-size:11px;color:var(--muted);padding:4px;font-weight:600;text-transform:uppercase}
+  .cal-cell{
+    aspect-ratio:1;border-radius:4px;background:var(--bg2);cursor:default;
+    transition:all .2s;border:1px solid transparent;position:relative;
+  }
+  .cal-cell.done{background:rgba(16,185,129,.4);border-color:rgba(16,185,129,.5)}
+  .cal-cell.done:hover{background:rgba(16,185,129,.6)}
+  .cal-cell.today{border-color:var(--neon)!important;box-shadow:0 0 8px rgba(0,245,255,.3)}
+  .cal-cell.future{opacity:.3}
+  .cal-cell.empty{background:transparent;border-color:transparent}
+
+  /* Achievements */
+  .ach-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px}
+  .ach-card{
+    background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+    padding:20px;text-align:center;transition:all .3s;position:relative;overflow:hidden;
+  }
+  .ach-card.unlocked{border-color:rgba(251,191,36,.4);background:rgba(251,191,36,.05);animation:badge-pop .5s ease forwards}
+  .ach-card.locked{opacity:.45}
+  .ach-icon{font-size:2.4rem;margin-bottom:10px;display:block}
+  .ach-name{font-size:14px;font-weight:700;margin-bottom:4px}
+  .ach-desc{font-size:12px;color:var(--muted);line-height:1.5}
+  .ach-lock{font-size:1.5rem;opacity:.3;margin-bottom:8px;display:block}
+
+  /* Recommendations */
+  .rec-list{display:flex;flex-direction:column;gap:12px}
+  .rec-card{
+    display:flex;align-items:center;gap:14px;padding:16px;
+    background:var(--glass);border:1px solid var(--border);border-radius:12px;cursor:pointer;transition:all .2s;
+  }
+  .rec-card:hover{border-color:rgba(0,245,255,.4);transform:translateX(4px)}
+  .rec-icon{font-size:1.8rem;flex-shrink:0}
+  .rec-info{flex:1}
+  .rec-title{font-size:14px;font-weight:600;margin-bottom:3px}
+  .rec-sub{font-size:12px;color:var(--muted)}
+  .rec-arrow{color:var(--muted);font-size:1.2rem}
+
+  /* Streak */
+  .streak-display{
+    display:flex;align-items:center;gap:16px;padding:20px;
+    background:linear-gradient(135deg,rgba(249,115,22,.1),rgba(239,68,68,.08));
+    border:1px solid rgba(249,115,22,.3);border-radius:var(--radius);margin-bottom:20px;flex-wrap:wrap;
+  }
+  .streak-fire{font-size:3rem;animation:pulse-glow 1.5s ease-in-out infinite}
+  .streak-num{font-size:3rem;font-weight:800;color:var(--orange);line-height:1}
+  .streak-label{font-size:13px;color:var(--muted);font-weight:600}
+  .streak-info{flex:1}
+  .streak-sub{font-size:12px;color:var(--muted);margin-top:4px}
+
+  /* Toast */
+  #toast-wrap{position:fixed;bottom:24px;right:24px;z-index:9999;display:flex;flex-direction:column;gap:10px}
+  .toast{
+    padding:12px 20px;border-radius:12px;font-size:14px;font-weight:600;
+    backdrop-filter:blur(16px);animation:slide-in .3s ease;max-width:300px;
+    display:flex;align-items:center;gap:10px;box-shadow:0 8px 30px rgba(0,0,0,.4);
+    border:1px solid;
+  }
+  .toast.success{background:rgba(16,185,129,.15);border-color:rgba(16,185,129,.5);color:var(--green)}
+  .toast.error{background:rgba(239,68,68,.12);border-color:rgba(239,68,68,.4);color:var(--red)}
+  .toast.info{background:rgba(0,245,255,.1);border-color:rgba(0,245,255,.3);color:var(--neon)}
+  .toast.xp{background:rgba(124,58,237,.15);border-color:rgba(124,58,237,.4);color:var(--neon3)}
+
+  /* Confetti */
+  .confetti-piece{
+    position:fixed;width:8px;height:8px;top:-8px;border-radius:2px;
+    animation:particle-drift 1.5s ease-out forwards;pointer-events:none;z-index:9998;
+  }
+
+  /* Leaderboard style list */
+  .lb-list{display:flex;flex-direction:column;gap:8px}
+  .lb-item{
+    display:flex;align-items:center;gap:12px;padding:12px 16px;
+    background:var(--glass);border:1px solid var(--border);border-radius:10px;
+  }
+  .lb-rank{font-size:13px;font-weight:700;color:var(--muted);min-width:24px}
+  .lb-rank.gold{color:#fbbf24}
+  .lb-rank.silver{color:#94a3b8}
+  .lb-rank.bronze{color:#b45309}
+  .lb-name{flex:1;font-size:14px;font-weight:600}
+  .lb-score{font-size:13px;color:var(--neon);font-weight:700}
+
+  /* Loading */
+  .loading{display:flex;align-items:center;justify-content:center;height:200px;flex-direction:column;gap:16px}
+  .loading-ring{width:48px;height:48px;border:3px solid var(--border);border-top-color:var(--neon);border-radius:50%;animation:spin-slow .8s linear infinite}
+
+  /* Debug mode */
+  .bug-code{background:var(--bg2);border:1px solid rgba(239,68,68,.3);border-radius:10px;padding:14px;font-family:var(--mono);font-size:13px;margin-bottom:12px;color:#f87171;line-height:1.7;white-space:pre-wrap}
+
+  /* Mobile */
+  @media(max-width:640px){
+    .lang-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+    .dash-grid{grid-template-columns:1fr 1fr}
+    .cal-grid{gap:2px}
+    .cal-day-label{font-size:9px;padding:2px}
+    .pred-options{grid-template-columns:1fr}
+    .hero-stats{gap:24px}
+    .nav-tabs{gap:2px}
+    .nav-tab{padding:6px 10px;font-size:12px}
+    .ach-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr))}
+    h1.hero-title{letter-spacing:-0.5px}
+    .section-inner{padding:20px 14px}
+  }
+  @media(max-width:400px){
+    .lang-grid{grid-template-columns:1fr 1fr}
+    .dash-grid{grid-template-columns:1fr}
+    .mode-tabs{gap:4px}
+    .mode-tab{padding:7px 10px;font-size:12px}
+  }
+
+  /* Glow utility */
+  .glow-neon{box-shadow:0 0 20px rgba(0,245,255,.3)}
+  .glow-purple{box-shadow:0 0 20px rgba(124,58,237,.3)}
+  .text-neon{color:var(--neon)}
+  .text-purple{color:var(--neon2)}
+  .text-green{color:var(--green)}
+  .text-yellow{color:var(--yellow)}
+  .text-red{color:var(--red)}
+  .text-muted{color:var(--muted)}
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:640px){.grid-2{grid-template-columns:1fr}}
+  .mt-0{margin-top:0}.mt-4{margin-top:4px}.mt-8{margin-top:8px}.mt-12{margin-top:12px}.mt-16{margin-top:16px}.mt-20{margin-top:20px}.mt-24{margin-top:24px}
+  .mb-8{margin-bottom:8px}.mb-12{margin-bottom:12px}.mb-16{margin-bottom:16px}.mb-20{margin-bottom:20px}.mb-24{margin-bottom:24px}
+  .flex{display:flex}.items-center{align-items:center}.justify-between{justify-content:space-between}.gap-8{gap:8px}.gap-12{gap:12px}.gap-16{gap:16px}
+  .fw-700{font-weight:700}.fw-800{font-weight:800}
+  .fs-12{font-size:12px}.fs-13{font-size:13px}.fs-14{font-size:14px}
+  .divider{height:1px;background:var(--border);margin:20px 0}
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<section id="hero">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-content">
+    <div class="hero-badge">⚡ Live — 100% Client Side, No Backend Needed</div>
+    <h1 class="hero-title">Unlimited Coding<br>Practice</h1>
+    <p class="hero-sub">Master programming through infinite challenges. Real-time validation, XP rewards, and daily streaks — designed to make you unstoppable.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="hero-stat-num">∞</div><div class="hero-stat-label">Questions</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">8</div><div class="hero-stat-label">Languages</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">4</div><div class="hero-stat-label">Modes</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">24</div><div class="hero-stat-label">Achievements</div></div>
+    </div>
+    <button class="btn-hero" onclick="startApp()">
+      Start Practicing
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+    </button>
+  </div>
+  <div class="hero-scroll"><div class="hero-scroll-dot"></div><span>scroll</span></div>
+</section>
+
+<!-- ===== TOP NAV ===== -->
+<nav id="topnav">
+  <div class="nav-logo">Dev<span>Pulse</span></div>
+  <div class="nav-tabs">
+    <button class="nav-tab active" onclick="showSection('practice-select')" data-sec="practice-select">
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+      Practice
+    </button>
+    <button class="nav-tab" onclick="showSection('dashboard')" data-sec="dashboard">
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+      Dashboard
+    </button>
+    <button class="nav-tab" onclick="showSection('achievements')" data-sec="achievements">
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+      Achievements
+    </button>
+    <button class="nav-tab" onclick="showSection('recommend')" data-sec="recommend">
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+      For You
+    </button>
+  </div>
+  <div class="nav-right">
+    <div class="xp-pill">⚡ <span id="nav-xp">0</span> XP</div>
+    <div class="level-badge" id="nav-level">LVL 1</div>
+    <div class="theme-toggle" onclick="toggleTheme()" title="Toggle Dark / Light Mode" aria-label="Toggle theme">
+      <div class="theme-toggle-icons">
+        <span class="theme-icon-moon">🌙</span>
+        <span class="theme-icon-sun">☀️</span>
+      </div>
+      <div class="theme-toggle-track">
+        <div class="theme-toggle-thumb"></div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== APP ===== -->
+<div id="app">
+
+  <!-- PRACTICE SELECT -->
+  <div class="section active" id="sec-practice-select">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-title">Choose a Language <span style="font-size:1rem;font-weight:400;color:var(--muted)">— then pick your topic & difficulty</span></div>
+        <div class="section-sub">Each language generates unlimited dynamic challenges tailored to your skill level.</div>
+      </div>
+      <div class="lang-grid" id="lang-grid"></div>
+
+      <div class="divider mt-24"></div>
+
+      <!-- filters -->
+      <div id="filter-section" style="display:none">
+        <div class="mb-16">
+          <div class="filter-bar">
+            <span class="filter-label">Topic</span>
+            <div id="topic-filters"></div>
+          </div>
+          <div class="diff-bar">
+            <span class="filter-label">Difficulty</span>
+            <button class="diff-btn easy active" onclick="setDiff('easy')">Easy</button>
+            <button class="diff-btn medium" onclick="setDiff('medium')">Medium</button>
+            <button class="diff-btn hard" onclick="setDiff('hard')">Hard</button>
+          </div>
+        </div>
+        <div class="mode-tabs">
+          <button class="mode-tab active" onclick="setMode('practice')" data-mode="practice">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            Practice
+          </button>
+          <button class="mode-tab" onclick="setMode('speed')" data-mode="speed">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            Speed Mode
+          </button>
+          <button class="mode-tab" onclick="setMode('debug')" data-mode="debug">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+            Debug
+          </button>
+          <button class="mode-tab" onclick="setMode('output')" data-mode="output">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+            Output Prediction
+          </button>
+        </div>
+
+        <div class="mt-16">
+          <button class="btn btn-primary" onclick="loadQuestion()" id="start-btn">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/></svg>
+            Start Practice
+          </button>
+        </div>
+      </div>
+
+      <!-- Practice area -->
+      <div id="practice-area" class="mt-24">
+        <div class="practice-layout">
+          <!-- Left: Question -->
+          <div>
+            <div class="q-card" id="q-card">
+              <div class="loading" id="q-loading"><div class="loading-ring"></div><span style="color:var(--muted);font-size:14px">Generating challenge...</span></div>
+            </div>
+          </div>
+          <!-- Right: Editor -->
+          <div>
+            <div class="editor-wrap" id="editor-wrap">
+              <div class="editor-toolbar">
+                <div class="editor-title">
+                  <div class="editor-dots"><div class="editor-dot"></div><div class="editor-dot"></div><div class="editor-dot"></div></div>
+                  <span id="editor-lang-label">solution.js</span>
+                </div>
+                <div class="editor-actions">
+                  <button class="ed-btn" onclick="copyCode()" title="Copy">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                    Copy
+                  </button>
+                  <button class="ed-btn" onclick="clearCode()" title="Clear">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                    Clear
+                  </button>
+                  <button class="ed-btn run" onclick="runCode()" title="Run & Validate">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/></svg>
+                    Run & Check
+                  </button>
+                </div>
+              </div>
+              <div class="editor-body">
+                <div class="line-numbers" id="line-numbers">1</div>
+                <textarea class="code-area" id="code-area" spellcheck="false" placeholder="// Write your solution here..." oninput="updateLineNumbers()" onkeydown="handleEditorKeydown(event)"></textarea>
+              </div>
+            </div>
+
+            <!-- Speed timer -->
+            <div class="timer-display" id="timer-display" style="display:none">
+              <div>
+                <div class="timer-label">Time Left</div>
+                <div class="timer-num" id="timer-num">60</div>
+              </div>
+              <div class="timer-bar">
+                <div class="timer-progress" id="timer-progress" style="width:100%"></div>
+              </div>
+            </div>
+
+            <!-- Output -->
+            <div class="mb-12">
+              <div class="flex items-center justify-between mb-8">
+                <span class="fs-13 fw-700" style="color:var(--muted);text-transform:uppercase;letter-spacing:.5px">Output</span>
+                <button class="ed-btn" onclick="clearOutput()" style="padding:3px 8px;font-size:11px">Clear</button>
+              </div>
+              <div class="output-area" id="output-area"><span style="color:var(--muted)">Run your code to see output...</span></div>
+            </div>
+
+            <!-- Output prediction options (hidden by default) -->
+            <div id="pred-section" style="display:none">
+              <div class="fs-13 fw-700 mb-8" style="color:var(--muted);text-transform:uppercase;letter-spacing:.5px">Select Predicted Output</div>
+              <div class="pred-options" id="pred-options"></div>
+            </div>
+
+            <!-- Verdict -->
+            <div class="verdict" id="verdict">
+              <div class="verdict-title" id="verdict-icon"></div>
+              <div class="verdict-msg" id="verdict-msg"></div>
+            </div>
+
+            <!-- Action bar -->
+            <div class="action-bar" id="action-bar">
+              <button class="btn btn-primary" onclick="runCode()" id="run-btn">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/></svg>
+                Run & Validate
+              </button>
+              <button class="btn btn-secondary" onclick="loadQuestion()" id="next-btn">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                Next Challenge
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div class="section" id="sec-dashboard">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-title">Your Dashboard</div>
+        <div class="section-sub">Track your progress, streaks, and improvement over time.</div>
+      </div>
+
+      <!-- Streak -->
+      <div class="streak-display" id="streak-display">
+        <div class="streak-fire">🔥</div>
+        <div class="streak-info">
+          <div class="flex items-center gap-8 mb-4">
+            <div class="streak-num" id="streak-num">0</div>
+            <div class="streak-label">Day Streak</div>
+          </div>
+          <div class="streak-sub" id="streak-sub">Practice today to start your streak!</div>
+        </div>
+        <div style="text-align:right">
+          <div class="fs-14 fw-700" id="total-solved-big">0</div>
+          <div class="fs-12 text-muted">Total Solved</div>
+          <div class="fs-14 fw-700 mt-8 text-green" id="accuracy-big">—</div>
+          <div class="fs-12 text-muted">Accuracy</div>
+        </div>
+      </div>
+
+      <!-- XP -->
+      <div class="xp-section">
+        <div class="xp-header">
+          <div>
+            <div class="xp-title">Experience Points</div>
+            <div class="fs-13 text-muted mt-4" id="xp-next-label">0 XP to next level</div>
+          </div>
+          <div class="xp-rank" id="rank-badge">Beginner Coder</div>
+        </div>
+        <div class="xp-bar-wrap">
+          <div class="xp-bar-fill" id="xp-bar" style="width:0%"></div>
+        </div>
+        <div class="xp-label">
+          <span><span id="xp-current">0</span> XP</span>
+          <span><span id="xp-next">100</span> XP</span>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="dash-grid" id="dash-stats"></div>
+
+      <div class="grid-2">
+        <!-- Skills -->
+        <div>
+          <div class="fs-14 fw-700 mb-12">Topic Performance</div>
+          <div class="skills-grid" id="skills-grid"></div>
+        </div>
+        <!-- Language breakdown -->
+        <div>
+          <div class="fs-14 fw-700 mb-12">Language Breakdown</div>
+          <div id="lang-breakdown"></div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- Calendar -->
+      <div class="fs-14 fw-700 mb-4">Practice Calendar</div>
+      <div class="fs-12 text-muted mb-16">Your coding activity over the past weeks</div>
+      <div class="cal-grid" id="cal-grid"></div>
+    </div>
+  </div>
+
+  <!-- ACHIEVEMENTS -->
+  <div class="section" id="sec-achievements">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-title">Achievements 🏆</div>
+        <div class="section-sub" id="ach-progress-label">Unlock achievements by practicing consistently.</div>
+      </div>
+      <div class="ach-grid" id="ach-grid"></div>
+    </div>
+  </div>
+
+  <!-- RECOMMENDATIONS -->
+  <div class="section" id="sec-recommend">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-title">Recommended For You</div>
+        <div class="section-sub">Personalized practice based on your performance and weak spots.</div>
+      </div>
+      <div id="recommend-content"></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- TOAST -->
+<div id="toast-wrap"></div>
+
+<script>
+// ====================================================
+// STATE & CONFIG
+// ====================================================
+const RANKS = [
+  {name:'Beginner Coder',min:0},
+  {name:'Code Apprentice',min:200},
+  {name:'Logic Builder',min:500},
+  {name:'Array Warrior',min:1000},
+  {name:'Loop Master',min:2000},
+  {name:'Function Expert',min:3500},
+  {name:'DOM Specialist',min:5500},
+  {name:'Algorithm Pro',min:8000},
+  {name:'Debug Hunter',min:11000},
+  {name:'Recursion Sage',min:15000},
+  {name:'Code Architect',min:20000},
+  {name:'Algorithm King',min:28000},
+];
+
+const LANGS = [
+  {id:'js',name:'JavaScript',icon:'🟨',ext:'js',topics:['Variables','Loops','Functions','Arrays','DOM','Conditions','Objects','Strings','Recursion','Events']},
+  {id:'html',name:'HTML',icon:'🟧',ext:'html',topics:['Variables','Conditions','Strings','Objects','DOM','Events']},
+  {id:'css',name:'CSS',icon:'🔵',ext:'css',topics:['Variables','Strings','Conditions','Objects']},
+  {id:'python',name:'Python',icon:'🐍',ext:'py',topics:['Variables','Loops','Functions','Arrays','Conditions','Objects','Strings','Recursion']},
+  {id:'c',name:'C',icon:'⚡',ext:'c',topics:['Variables','Loops','Functions','Arrays','Conditions','Strings']},
+  {id:'cpp',name:'C++',icon:'🔷',ext:'cpp',topics:['Variables','Loops','Functions','Arrays','Conditions','Objects','Strings','Recursion']},
+  {id:'java',name:'Java',icon:'☕',ext:'java',topics:['Variables','Loops','Functions','Arrays','Conditions','Objects','Strings','Recursion']},
+  {id:'react',name:'React',icon:'⚛️',ext:'jsx',topics:['Variables','Functions','Arrays','DOM','Objects','Events','Strings']},
+];
+
+const XP_MAP = {easy:25,medium:55,hard:100};
+const SPEED_TIME = {easy:90,medium:60,hard:40};
+
+let state = {
+  lang: null, topic: 'all', diff: 'easy', mode: 'practice',
+  currentQ: null, qIndex: 0, answered: false,
+  timerInterval: null, timerLeft: 60, timerMax: 60,
+  speedStart: 0,
+};
+
+// ====================================================
+// LOCAL STORAGE
+// ====================================================
+function getSaved(key, def){try{const v=localStorage.getItem('dp_'+key);return v!==null?JSON.parse(v):def}catch{return def}}
+function save(key,val){try{localStorage.setItem('dp_'+key,JSON.stringify(val))}catch{}}
+
+let userData = {
+  xp: getSaved('xp',0),
+  level: getSaved('level',1),
+  solved: getSaved('solved',0),
+  correct: getSaved('correct',0),
+  attempts: getSaved('attempts',0),
+  streak: getSaved('streak',0),
+  lastDate: getSaved('lastDate',''),
+  solvedDates: getSaved('solvedDates',[]),
+  topicStats: getSaved('topicStats',{}),
+  langStats: getSaved('langStats',{}),
+  achievements: getSaved('achievements',[]),
+  questionIds: getSaved('questionIds',[]),
+};
+
+function saveUser(){
+  save('xp',userData.xp); save('level',userData.level);
+  save('solved',userData.solved); save('correct',userData.correct);
+  save('attempts',userData.attempts); save('streak',userData.streak);
+  save('lastDate',userData.lastDate); save('solvedDates',userData.solvedDates);
+  save('topicStats',userData.topicStats); save('langStats',userData.langStats);
+  save('achievements',userData.achievements);
+}
+
+// ====================================================
+// XP & LEVELS
+// ====================================================
+function getRank(xp){let r=RANKS[0];for(let rk of RANKS){if(xp>=rk.min)r=rk;}return r}
+function getLevelXP(lvl){return Math.floor(100*Math.pow(1.4,lvl-1))}
+function addXP(amount){
+  userData.xp+=amount; const lvlXP=getLevelXP(userData.level);
+  if(userData.xp>=userData.xp-amount+lvlXP){
+    const newXP=userData.xp; let needed=0;let l=userData.level;
+    while(true){needed=getLevelXP(l);if(newXP<needed*(l)+needed)break;l++;}
+    userData.level=l;
+  }
+  // simpler level calc
+  let cumXP=0,lvl=1;
+  while(true){const need=getLevelXP(lvl);if(userData.xp<cumXP+need)break;cumXP+=need;lvl++;}
+  userData.level=lvl;
+  saveUser(); updateNav(); return amount;
+}
+function getXPProgress(){
+  let cumXP=0,lvl=1;
+  while(true){const need=getLevelXP(lvl);if(userData.xp<cumXP+need)break;cumXP+=need;lvl++;}
+  const need=getLevelXP(lvl);const prog=userData.xp-cumXP;
+  return{current:prog,need,pct:Math.min(100,(prog/need)*100),lvl,cumXP};
+}
+
+// ====================================================
+// STREAK
+// ====================================================
+function updateStreak(){
+  const today=new Date().toDateString();
+  if(userData.lastDate===today)return;
+  const yesterday=new Date(Date.now()-86400000).toDateString();
+  if(userData.lastDate===yesterday)userData.streak++;
+  else userData.streak=1;
+  userData.lastDate=today;
+  if(!userData.solvedDates.includes(today))userData.solvedDates.push(today);
+  saveUser();
+}
+
+// ====================================================
+// QUESTION ENGINE
+// ====================================================
+const rnd=(a,b)=>Math.floor(Math.random()*(b-a+1))+a;
+const pick=(arr)=>arr[rnd(0,arr.length-1)];
+const rndVar=()=>pick(['x','y','z','n','val','num','count','result','total','sum','data','temp','flag','item','score']);
+const rndColor=()=>pick(['red','blue','green','cyan','purple','orange','pink','lime','violet','teal']);
+const rndStr=()=>pick(['"hello"','"world"','"coding"','"practice"','"devpulse"','"python"','"javascript"']);
+const rndNum=()=>rnd(1,99);
+const rndArr=()=>`[${[...Array(rnd(3,5))].map(()=>rnd(1,20)).join(', ')}]`;
+const rndName=()=>pick(['Alice','Bob','Charlie','Diana','Eve','Frank','Grace','Henry']);
+
+let qIdCounter=Date.now();
+function makeQId(){return qIdCounter++}
+
+// Question templates per language
+const Q_TEMPLATES = {
+
+js:{
+  easy:{
+    Variables:[
+      ()=>{const v=rndVar(),n=rndNum();return{title:`Declare and Print a Variable`,desc:`Declare a variable named <code>${v}</code> with value <code>${n}</code> and print it to the console.`,hint:`Use let ${v} = ${n}; then console.log(${v});`,keywords:['console.log',v.toString()],expected:[n.toString()],validate:'js-log'}},
+      ()=>{const a=rndNum(),b=rndNum();return{title:`Add Two Numbers`,desc:`Declare variables <code>a = ${a}</code> and <code>b = ${b}</code>. Print their sum.`,hint:`console.log(a + b)`,keywords:['console.log'],expected:[(a+b).toString()],validate:'js-log'}},
+      ()=>{const n=rndNum();return{title:`Square a Number`,desc:`Declare variable <code>n = ${n}</code> and print its square.`,hint:`console.log(n * n)`,keywords:['console.log'],expected:[(n*n).toString()],validate:'js-log'}},
+      ()=>{const s=pick(['hello','world','code']);return{title:`String Variable`,desc:`Declare <code>msg = "${s}"</code> and print it.`,hint:`let msg = "${s}"; console.log(msg);`,keywords:['console.log'],expected:[s],validate:'js-log'}},
+    ],
+    Loops:[
+      ()=>{const n=rnd(3,8);return{title:`Print 1 to ${n}`,desc:`Use a loop to print numbers 1 to ${n}, each on a new line.`,hint:`Use a for loop: for(let i=1;i<=${n};i++)`,keywords:['for','console.log'],expected:[...Array(n)].map((_,i)=>(i+1).toString()),validate:'js-log'}},
+      ()=>{const n=rnd(3,6);return{title:`Print Even Numbers to ${n*2}`,desc:`Print all even numbers from 2 to ${n*2}.`,hint:`Check if i % 2 === 0 inside a loop`,keywords:['for','console.log'],expected:[...Array(n)].map((_,i)=>((i+1)*2).toString()),validate:'js-log'}},
+      ()=>{const n=rnd(2,5);return{title:`Count Down from ${n}`,desc:`Print numbers from ${n} down to 1.`,hint:`Start at ${n} and decrement`,keywords:['console.log'],expected:[...Array(n)].map((_,i)=>(n-i).toString()),validate:'js-log'}},
+      ()=>{const n=rnd(3,6),s=rndNum();return{title:`Sum of First ${n} Numbers`,desc:`Calculate the sum of 1 + 2 + ... + ${n} using a loop and print it.`,hint:`Use sum += i inside your loop`,keywords:['console.log'],expected:[(n*(n+1)/2).toString()],validate:'js-log'}},
+    ],
+    Functions:[
+      ()=>{const a=rnd(2,9),b=rnd(2,9);return{title:`Multiply Function`,desc:`Write a function <code>multiply(a, b)</code> that returns a*b. Call it with ${a} and ${b} and print the result.`,hint:`function multiply(a,b){ return a*b; }`,keywords:['function','return','console.log'],expected:[(a*b).toString()],validate:'js-log'}},
+      ()=>{const n=rnd(2,9);return{title:`Double Function`,desc:`Write a function <code>double(n)</code> that returns n*2. Print double(${n}).`,hint:`function double(n){ return n*2; }`,keywords:['function','return','console.log'],expected:[(n*2).toString()],validate:'js-log'}},
+      ()=>{return{title:`Greet Function`,desc:`Write a function <code>greet(name)</code> that returns "Hello, " + name + "!". Print greet("World").`,hint:`function greet(name){ return "Hello, " + name + "!"; }`,keywords:['function','return','console.log'],expected:['Hello, World!'],validate:'js-log'}},
+    ],
+    Arrays:[
+      ()=>{const arr=[...Array(rnd(3,5))].map(()=>rnd(1,15));return{title:`Print Array Length`,desc:`Given array <code>${JSON.stringify(arr)}</code>, print its length.`,hint:`console.log(arr.length)`,keywords:['console.log','length'],expected:[arr.length.toString()],validate:'js-log'}},
+      ()=>{const arr=[...Array(rnd(3,5))].map(()=>rnd(1,15));return{title:`Print First Element`,desc:`Given array <code>${JSON.stringify(arr)}</code>, print the first element.`,hint:`console.log(arr[0])`,keywords:['console.log'],expected:[arr[0].toString()],validate:'js-log'}},
+      ()=>{const arr=[...Array(rnd(3,5))].map(()=>rnd(1,15));return{title:`Array Sum`,desc:`Given array <code>${JSON.stringify(arr)}</code>, print the sum of all elements.`,hint:`Use reduce or a loop`,keywords:['console.log'],expected:[arr.reduce((a,b)=>a+b,0).toString()],validate:'js-log'}},
+    ],
+    Conditions:[
+      ()=>{const n=rnd(1,50);return{title:`Even or Odd`,desc:`Check if ${n} is even or odd. Print "Even" or "Odd".`,hint:`Use the % (modulo) operator`,keywords:['console.log'],expected:[n%2===0?'Even':'Odd'],validate:'js-log'}},
+      ()=>{const a=rnd(1,50),b=rnd(1,50);return{title:`Max of Two`,desc:`Print the larger of ${a} and ${b}.`,hint:`Use an if/else statement or Math.max`,keywords:['console.log'],expected:[Math.max(a,b).toString()],validate:'js-log'}},
+    ],
+    Strings:[
+      ()=>{const s=pick(['coding','javascript','practice','devpulse']);return{title:`String Length`,desc:`Print the length of the string "${s}".`,hint:`"${s}".length`,keywords:['console.log','length'],expected:[s.length.toString()],validate:'js-log'}},
+      ()=>{const s=pick(['hello','world','code']);return{title:`Uppercase String`,desc:`Convert "${s}" to uppercase and print it.`,hint:`"${s}".toUpperCase()`,keywords:['console.log','toUpperCase'],expected:[s.toUpperCase()],validate:'js-log'}},
+    ],
+    Objects:[
+      ()=>{const name=rndName(),age=rnd(18,40);return{title:`Object Property`,desc:`Create an object with <code>name: "${name}"</code> and <code>age: ${age}</code>. Print the name.`,hint:`const obj = {name:"${name}",age:${age}}; console.log(obj.name)`,keywords:['console.log'],expected:[name],validate:'js-log'}},
+    ],
+    Recursion:[
+      ()=>{const n=rnd(3,7);return{title:`Factorial`,desc:`Write a recursive function to compute factorial of ${n}. Print the result.`,hint:`function fact(n){ return n<=1?1:n*fact(n-1); }`,keywords:['function','return','console.log'],expected:[factorial(n).toString()],validate:'js-log'}},
+    ],
+    DOM:[
+      ()=>({title:`getElementById`,desc:`Write JS to get an element with id "myDiv" and log its id.`,hint:`document.getElementById('myDiv').id`,keywords:['getElementById'],expected:['myDiv'],validate:'js-log-dom'}),
+    ],
+    Events:[
+      ()=>({title:`Event Listener`,desc:`Write code that adds a click event listener to document and inside the callback, console.log("clicked"). Show the code structure (no need to trigger).`,hint:`document.addEventListener('click', function(){...})`,keywords:['addEventListener','click'],validate:'keyword-only'}),
+    ],
+  },
+  medium:{
+    Loops:[
+      ()=>{const n=rnd(5,10);const primes=[];for(let i=2;i<=n*3;i++){let ok=true;for(let j=2;j<i;j++)if(i%j===0){ok=false;break;}if(ok)primes.push(i);if(primes.length>=n)break;}const take=primes.slice(0,rnd(3,5));return{title:`Print First ${take.length} Prime Numbers`,desc:`Print the first ${take.length} prime numbers, each on a new line.`,hint:`Check divisibility from 2 to sqrt(i)`,keywords:['console.log'],expected:take.map(String),validate:'js-log'}},
+      ()=>{const n=rnd(4,8);const fibs=[1,1];while(fibs.length<n)fibs.push(fibs[fibs.length-1]+fibs[fibs.length-2]);return{title:`Fibonacci Sequence`,desc:`Print the first ${n} Fibonacci numbers, each on a new line.`,hint:`Start with [1,1] then add previous two`,keywords:['console.log'],expected:fibs.map(String),validate:'js-log'}},
+    ],
+    Arrays:[
+      ()=>{const arr=[...Array(rnd(4,7))].map(()=>rnd(1,20));const rev=[...arr].reverse();return{title:`Reverse an Array`,desc:`Given <code>${JSON.stringify(arr)}</code>, print each element in reverse order (one per line).`,hint:`Use .reverse() or a backward loop`,keywords:['console.log'],expected:rev.map(String),validate:'js-log'}},
+      ()=>{const arr=[...Array(rnd(4,8))].map(()=>rnd(1,30));const mx=Math.max(...arr);return{title:`Find Maximum`,desc:`Given array <code>${JSON.stringify(arr)}</code>, print the maximum value.`,hint:`Use Math.max(...arr) or a loop`,keywords:['console.log'],expected:[mx.toString()],validate:'js-log'}},
+      ()=>{const arr=[...Array(rnd(4,7))].map(()=>rnd(1,30));const filtered=arr.filter(x=>x%2===0);return{title:`Filter Even Numbers`,desc:`From <code>${JSON.stringify(arr)}</code>, print only the even numbers, each on a new line.`,hint:`Use .filter() with n%2===0`,keywords:['console.log'],expected:filtered.map(String),validate:'js-log'}},
+    ],
+    Functions:[
+      ()=>{const n=rnd(2,9);return{title:`Recursive Sum`,desc:`Write a recursive function <code>sumTo(n)</code> that returns sum of 1 to n. Print sumTo(${n}).`,hint:`sumTo(n) = n + sumTo(n-1); base: sumTo(0)=0`,keywords:['function','return','console.log'],expected:[(n*(n+1)/2).toString()],validate:'js-log'}},
+      ()=>{const arr=[...Array(rnd(3,6))].map(()=>rnd(1,25));const doubled=arr.map(x=>x*2);return{title:`Map Double`,desc:`Use <code>.map()</code> on <code>${JSON.stringify(arr)}</code> to double each element. Print each result.`,hint:`arr.map(x => x*2).forEach(x => console.log(x))`,keywords:['map','console.log'],expected:doubled.map(String),validate:'js-log'}},
+    ],
+    Strings:[
+      ()=>{const s=pick(['hello world','the quick brown fox','javascript is fun']);const words=s.split(' ').length;return{title:`Count Words`,desc:`Count the number of words in "${s}" and print the count.`,hint:`Use .split(' ').length`,keywords:['console.log'],expected:[words.toString()],validate:'js-log'}},
+      ()=>{const s=pick(['racecar','level','kayak','noon','hello','world']);const isPalin=s===s.split('').reverse().join('');return{title:`Check Palindrome`,desc:`Check if "${s}" is a palindrome. Print "Yes" or "No".`,hint:`Compare string with its reverse`,keywords:['console.log'],expected:[isPalin?'Yes':'No'],validate:'js-log'}},
+    ],
+    Conditions:[
+      ()=>{const n=rnd(1,100);const fz=n%15===0?'FizzBuzz':n%3===0?'Fizz':n%5===0?'Buzz':n.toString();return{title:`FizzBuzz for ${n}`,desc:`Print FizzBuzz result for ${n}: "Fizz" if divisible by 3, "Buzz" by 5, "FizzBuzz" by both, else the number itself.`,hint:`Check 15 first, then 3, then 5`,keywords:['console.log'],expected:[fz],validate:'js-log'}},
+    ],
+    Objects:[
+      ()=>{const name=rndName(),score=rnd(60,100);return{title:`Object Method`,desc:`Create a <code>student</code> object with name "${name}" and score ${score}. Print whether the student passed (score >= 60).`,hint:`if(student.score >= 60) console.log("Pass")`,keywords:['console.log'],expected:['Pass'],validate:'js-log'}},
+    ],
+    Recursion:[
+      ()=>{const n=rnd(4,8);return{title:`Power Function`,desc:`Write a recursive function <code>power(base, exp)</code> to compute 2^${n}. Print the result.`,hint:`power(b,e) = b * power(b, e-1); base: e===0 → 1`,keywords:['function','return','console.log'],expected:[Math.pow(2,n).toString()],validate:'js-log'}},
+    ],
+    DOM:[
+      ()=>({title:`Create and Append Element`,desc:`Write JS to create a <code>div</code> element, set its textContent to "Hello DOM", and append it to document.body. Then console.log("done").`,hint:`document.createElement, .textContent, .appendChild`,keywords:['createElement','appendChild','console.log'],expected:['done'],validate:'js-log-dom'}),
+    ],
+  },
+  hard:{
+    Algorithms:[
+      ()=>{const arr=[...Array(rnd(5,9))].map(()=>rnd(1,40));const sorted=[...arr].sort((a,b)=>a-b);return{title:`Bubble Sort`,desc:`Implement bubble sort on <code>${JSON.stringify(arr)}</code> and print each element of the sorted array on a new line.`,hint:`Compare adjacent pairs and swap`,keywords:['console.log'],expected:sorted.map(String),validate:'js-log'}},
+      ()=>{const arr=[...new Set([...Array(rnd(6,10))].map(()=>rnd(1,20)))].slice(0,rnd(5,8));const target=pick(arr);return{title:`Binary Search`,desc:`Implement binary search on sorted array <code>${JSON.stringify([...arr].sort((a,b)=>a-b))}</code> to find ${target}. Print its index.`,hint:`Split in half repeatedly`,keywords:['console.log'],expected:[[...arr].sort((a,b)=>a-b).indexOf(target).toString()],validate:'js-log'}},
+    ],
+    Recursion:[
+      ()=>{const n=rnd(4,7);return{title:`Tower of Hanoi Steps`,desc:`Print the number of moves required to solve Tower of Hanoi with ${n} disks. Formula: 2^n - 1.`,hint:`Math.pow(2,n) - 1`,keywords:['console.log'],expected:[(Math.pow(2,n)-1).toString()],validate:'js-log'}},
+    ],
+    Strings:[
+      ()=>{const s=pick(['abcde','hello world','javascript','12345abc']);const cnt=s.replace(/[^a-z]/gi,'').length;return{title:`Count Letters`,desc:`Count only alphabetic characters in "${s}" (no spaces/numbers). Print the count.`,hint:`Use a regex or loop with character check`,keywords:['console.log'],expected:[cnt.toString()],validate:'js-log'}},
+    ],
+    Arrays:[
+      ()=>{const arr=[...Array(rnd(5,8))].map(()=>rnd(1,30));const unique=[...new Set(arr)];const dups=[...new Set(arr.filter((v,i,a)=>a.indexOf(v)!==i))];const hasDups=dups.length>0;const arr2=hasDups?arr:[...arr.slice(0,-1),arr[rnd(0,arr.length-2)]];arr2.push(arr2[0]);const dup=[...new Set(arr2.filter((v,i,a)=>a.indexOf(v)!==i))][0];return{title:`Find Duplicate`,desc:`Find the duplicate number in <code>${JSON.stringify(arr2)}</code>. Print it.`,hint:`Use a Set or sort then compare neighbors`,keywords:['console.log'],expected:[dup.toString()],validate:'js-log'}},
+    ],
+  }
+},
+
+python:{
+  easy:{
+    Variables:[
+      ()=>{const n=rndNum();return{title:`Print a Variable`,desc:`Set x = ${n} and print it.`,hint:`x = ${n}\nprint(x)`,keywords:['print'],expected:[n.toString()],validate:'py-sim'}},
+      ()=>{const a=rndNum(),b=rndNum();return{title:`Sum of Two Numbers`,desc:`Set a = ${a}, b = ${b}. Print their sum.`,hint:`print(a + b)`,keywords:['print'],expected:[(a+b).toString()],validate:'py-sim'}},
+    ],
+    Loops:[
+      ()=>{const n=rnd(3,8);return{title:`Print 1 to ${n}`,desc:`Use a loop to print numbers 1 to ${n}.`,hint:`for i in range(1, ${n+1}): print(i)`,keywords:['for','print','range'],expected:[...Array(n)].map((_,i)=>(i+1).toString()),validate:'py-sim'}},
+      ()=>{const n=rnd(2,5);return{title:`Multiplication Table for ${n}`,desc:`Print the multiplication table for ${n} (1 to 5).`,hint:`for i in range(1, 6): print(${n} * i)`,keywords:['for','print'],expected:[...Array(5)].map((_,i)=>(n*(i+1)).toString()),validate:'py-sim'}},
+    ],
+    Functions:[
+      ()=>{const a=rnd(2,9),b=rnd(2,9);return{title:`Add Function`,desc:`Define a function <code>add(a, b)</code> that returns a+b. Print add(${a}, ${b}).`,hint:`def add(a, b): return a + b`,keywords:['def','return','print'],expected:[(a+b).toString()],validate:'py-sim'}},
+    ],
+    Strings:[
+      ()=>{const s=pick(['hello','world','python','coding']);return{title:`String Upper`,desc:`Print "${s}" in uppercase.`,hint:`print("${s}".upper())`,keywords:['print','upper'],expected:[s.toUpperCase()],validate:'py-sim'}},
+    ],
+    Conditions:[
+      ()=>{const n=rnd(1,50);return{title:`Positive Negative or Zero`,desc:`Check if ${n} is positive, negative, or zero. Print the result.`,hint:`if n > 0: print("Positive")`,keywords:['print','if'],expected:[n>0?'Positive':n<0?'Negative':'Zero'],validate:'py-sim'}},
+    ],
+  },
+  medium:{
+    Arrays:[
+      ()=>{const arr=[...Array(rnd(4,7))].map(()=>rnd(1,20));return{title:`List Sum`,desc:`Calculate the sum of <code>${JSON.stringify(arr)}</code> and print it.`,hint:`print(sum(nums))`,keywords:['print','sum'],expected:[arr.reduce((a,b)=>a+b,0).toString()],validate:'py-sim'}},
+      ()=>{const arr=[...Array(rnd(4,7))].map(()=>rnd(1,20));const mx=Math.max(...arr);return{title:`Max in List`,desc:`Find the max in <code>${JSON.stringify(arr)}</code>.`,hint:`print(max(nums))`,keywords:['print','max'],expected:[mx.toString()],validate:'py-sim'}},
+    ],
+    Loops:[
+      ()=>{const n=rnd(4,8);const fibs=[1,1];while(fibs.length<n)fibs.push(fibs[fibs.length-1]+fibs[fibs.length-2]);return{title:`Fibonacci`,desc:`Print first ${n} Fibonacci numbers.`,hint:`Use two variables and a loop`,keywords:['print','for'],expected:fibs.map(String),validate:'py-sim'}},
+    ],
+    Recursion:[
+      ()=>{const n=rnd(3,7);return{title:`Factorial`,desc:`Write a recursive function for factorial. Print factorial(${n}).`,hint:`def factorial(n): return 1 if n<=1 else n*factorial(n-1)`,keywords:['def','return','print'],expected:[factorial(n).toString()],validate:'py-sim'}},
+    ],
+  },
+  hard:{
+    Algorithms:[
+      ()=>{const arr=[...Array(rnd(5,8))].map(()=>rnd(1,30));const sorted=[...arr].sort((a,b)=>a-b);return{title:`Selection Sort`,desc:`Sort the list <code>${JSON.stringify(arr)}</code> using selection sort. Print each element.`,hint:`Find minimum in unsorted, swap to front`,keywords:['print'],expected:sorted.map(String),validate:'py-sim'}},
+    ],
+    Recursion:[
+      ()=>{const n=rnd(3,7);return{title:`Power`,desc:`Write a recursive function power(base, exp). Print power(2, ${n}).`,hint:`def power(b,e): return 1 if e==0 else b*power(b,e-1)`,keywords:['def','return','print'],expected:[Math.pow(2,n).toString()],validate:'py-sim'}},
+    ],
+  }
+},
+
+html:{
+  easy:{
+    Strings:[
+      ()=>({title:`Heading Tag`,desc:`Write HTML code to display "Hello World" as an h1 heading.`,hint:`<h1>Hello World</h1>`,keywords:['h1','Hello World'],validate:'keyword-only'}),
+      ()=>({title:`Paragraph`,desc:`Write a paragraph element containing the text "I love coding".`,hint:`<p>I love coding</p>`,keywords:['p','I love coding'],validate:'keyword-only'}),
+      ()=>({title:`Link Tag`,desc:`Create a hyperlink that says "Visit Google" and links to https://google.com.`,hint:`<a href="https://google.com">Visit Google</a>`,keywords:['a','href','Visit Google'],validate:'keyword-only'}),
+    ],
+    DOM:[
+      ()=>({title:`Div with ID`,desc:`Create a div with id="container" containing text "My Container".`,hint:`<div id="container">My Container</div>`,keywords:['div','id','container'],validate:'keyword-only'}),
+    ],
+    Objects:[
+      ()=>({title:`Ordered List`,desc:`Create an ordered list with items: Apple, Banana, Cherry.`,hint:`<ol><li>Apple</li>...`,keywords:['ol','li','Apple','Banana','Cherry'],validate:'keyword-only'}),
+    ],
+    Events:[
+      ()=>({title:`Button with onClick`,desc:`Create a button that shows an alert "Hello!" when clicked.`,hint:`<button onclick="alert('Hello!')">Click Me</button>`,keywords:['button','onclick','alert'],validate:'keyword-only'}),
+    ],
+  },
+  medium:{
+    DOM:[
+      ()=>({title:`Form with Inputs`,desc:`Create a form with a text input (name="username") and a submit button.`,hint:`<form><input name="username" type="text"><button type="submit">Submit</button></form>`,keywords:['form','input','name','username','submit'],validate:'keyword-only'}),
+    ],
+    Objects:[
+      ()=>({title:`Table`,desc:`Create an HTML table with 2 rows and 2 columns. Headers: Name, Age. Data: Alice 25, Bob 30.`,hint:`<table><tr><th>Name</th>...`,keywords:['table','tr','th','td','Alice','Bob'],validate:'keyword-only'}),
+    ],
+  },
+  hard:{
+    DOM:[
+      ()=>({title:`Semantic HTML Page`,desc:`Write a semantic HTML structure with header, nav, main, article, and footer tags.`,hint:`Use HTML5 semantic tags`,keywords:['header','nav','main','article','footer'],validate:'keyword-only'}),
+    ],
+  }
+},
+
+css:{
+  easy:{
+    Variables:[
+      ()=>({title:`Background Color`,desc:`Write CSS to set the background color of body to "darkblue".`,hint:`body { background-color: darkblue; }`,keywords:['background-color','darkblue','body'],validate:'keyword-only'}),
+      ()=>({title:`Text Color & Size`,desc:`Write CSS for a class .title that sets color to red and font-size to 24px.`,hint:`.title { color: red; font-size: 24px; }`,keywords:['color','font-size','.title'],validate:'keyword-only'}),
+    ],
+    Objects:[
+      ()=>({title:`Box Model`,desc:`Style a div with width: 200px, height: 100px, border: 2px solid black, and padding: 10px.`,hint:`div { width:200px; height:100px; border:2px solid black; padding:10px; }`,keywords:['width','height','border','padding'],validate:'keyword-only'}),
+    ],
+  },
+  medium:{
+    Objects:[
+      ()=>({title:`Flexbox Row`,desc:`Write CSS to make a .container use flexbox with row direction, space-between justify, and center align-items.`,hint:`display:flex; flex-direction:row; justify-content:space-between; align-items:center;`,keywords:['flex','space-between','align-items'],validate:'keyword-only'}),
+    ],
+  },
+  hard:{
+    Strings:[
+      ()=>({title:`CSS Animation`,desc:`Write a CSS animation that moves an element from left 0 to left 100px in 1s, looping infinitely.`,hint:`@keyframes + animation property`,keywords:['@keyframes','animation','infinite'],validate:'keyword-only'}),
+    ],
+  }
+},
+
+java:{
+  easy:{
+    Variables:[
+      ()=>{const n=rndNum();return{title:`Print a Number`,desc:`In Java, print ${n} using System.out.println.`,hint:`System.out.println(${n});`,keywords:['System.out.println'],expected:[n.toString()],validate:'java-sim'}},
+      ()=>{const a=rndNum(),b=rndNum();return{title:`Sum`,desc:`Declare int a=${a}, b=${b} and print their sum.`,hint:`int a=${a}; int b=${b}; System.out.println(a+b);`,keywords:['System.out.println','int'],expected:[(a+b).toString()],validate:'java-sim'}},
+    ],
+    Loops:[
+      ()=>{const n=rnd(3,7);return{title:`Print 1 to ${n}`,desc:`Use a for loop to print numbers 1 to ${n}.`,hint:`for(int i=1;i<=${n};i++) System.out.println(i);`,keywords:['for','System.out.println'],expected:[...Array(n)].map((_,i)=>(i+1).toString()),validate:'java-sim'}},
+    ],
+    Strings:[
+      ()=>{const s=pick(['Hello','World','Java','Code']);return{title:`String Length`,desc:`Print the length of "${s}".`,hint:`System.out.println("${s}".length());`,keywords:['System.out.println','length'],expected:[s.length.toString()],validate:'java-sim'}},
+    ],
+  },
+  medium:{
+    Loops:[
+      ()=>{const n=rnd(4,7);const sum=n*(n+1)/2;return{title:`Sum 1 to ${n}`,desc:`Calculate and print sum of 1 to ${n} using a loop.`,hint:`int sum=0; for(int i=1;i<=${n};i++) sum+=i; System.out.println(sum);`,keywords:['System.out.println','for'],expected:[sum.toString()],validate:'java-sim'}},
+    ],
+    Functions:[
+      ()=>{const n=rnd(3,7);return{title:`Factorial Method`,desc:`Write a method factorial(int n) and print factorial(${n}).`,hint:`static int factorial(int n){ return n<=1?1:n*factorial(n-1); }`,keywords:['return','System.out.println'],expected:[factorial(n).toString()],validate:'java-sim'}},
+    ],
+  },
+  hard:{
+    Algorithms:[
+      ()=>{const arr=[...Array(rnd(4,7))].map(()=>rnd(1,20));const sorted=[...arr].sort((a,b)=>a-b);return{title:`Sort Array`,desc:`Sort the array {${arr.join(', ')}} and print each element.`,hint:`Use Arrays.sort() or implement manually`,keywords:['System.out.println'],expected:sorted.map(String),validate:'java-sim'}},
+    ],
+  }
+},
+
+c:{
+  easy:{
+    Variables:[
+      ()=>{const n=rndNum();return{title:`Print Integer`,desc:`Use printf to print ${n}.`,hint:`printf("%d\\n", ${n});`,keywords:['printf'],expected:[n.toString()],validate:'c-sim'}},
+    ],
+    Loops:[
+      ()=>{const n=rnd(3,7);return{title:`Count to ${n}`,desc:`Use a for loop with printf to print 1 to ${n}.`,hint:`for(int i=1;i<=${n};i++) printf("%d\\n",i);`,keywords:['for','printf'],expected:[...Array(n)].map((_,i)=>(i+1).toString()),validate:'c-sim'}},
+    ],
+    Strings:[
+      ()=>({title:`Print String`,desc:`Use printf to print "Hello, World!" (exact format).`,hint:`printf("Hello, World!\\n");`,keywords:['printf','Hello, World!'],expected:['Hello, World!'],validate:'c-sim'}),
+    ],
+  },
+  medium:{
+    Functions:[
+      ()=>{const a=rnd(2,9),b=rnd(2,9);return{title:`Add Function`,desc:`Write a function int add(int a, int b) that returns a+b. Print add(${a},${b}).`,hint:`int add(int a,int b){return a+b;} printf("%d\\n",add(${a},${b}));`,keywords:['return','printf'],expected:[(a+b).toString()],validate:'c-sim'}},
+    ],
+    Arrays:[
+      ()=>{const arr=[...Array(rnd(3,5))].map(()=>rnd(1,15));const sum=arr.reduce((a,b)=>a+b,0);return{title:`Array Sum`,desc:`Sum the array {${arr.join(', ')}} and printf the result.`,hint:`Loop and accumulate sum`,keywords:['printf','for'],expected:[sum.toString()],validate:'c-sim'}},
+    ],
+  },
+  hard:{
+    Recursion:[
+      ()=>{const n=rnd(3,6);return{title:`Recursive Factorial`,desc:`Write a recursive factorial function. Print factorial(${n}) using printf.`,hint:`int fact(int n){return n<=1?1:n*fact(n-1);}`,keywords:['return','printf'],expected:[factorial(n).toString()],validate:'c-sim'}},
+    ],
+  }
+},
+
+cpp:{
+  easy:{
+    Variables:[
+      ()=>{const n=rndNum();return{title:`cout Integer`,desc:`Use cout to print ${n}.`,hint:`cout << ${n} << endl;`,keywords:['cout'],expected:[n.toString()],validate:'cpp-sim'}},
+    ],
+    Loops:[
+      ()=>{const n=rnd(3,7);return{title:`Loop 1 to ${n}`,desc:`Use a for loop with cout to print 1 to ${n}.`,hint:`for(int i=1;i<=${n};i++) cout<<i<<endl;`,keywords:['for','cout'],expected:[...Array(n)].map((_,i)=>(i+1).toString()),validate:'cpp-sim'}},
+    ],
+    Strings:[
+      ()=>({title:`Hello C++`,desc:`Print "Hello, C++!" using cout.`,hint:`cout << "Hello, C++!" << endl;`,keywords:['cout','Hello, C++!'],expected:['Hello, C++!'],validate:'cpp-sim'}),
+    ],
+  },
+  medium:{
+    Functions:[
+      ()=>{const a=rnd(2,9),b=rnd(2,9);return{title:`Add Function`,desc:`Write int add(int a, int b). Print add(${a},${b}).`,hint:`int add(int a,int b){return a+b;} cout<<add(${a},${b})<<endl;`,keywords:['return','cout'],expected:[(a+b).toString()],validate:'cpp-sim'}},
+    ],
+    Recursion:[
+      ()=>{const n=rnd(3,7);return{title:`Factorial`,desc:`Recursive factorial function. Print factorial(${n}).`,hint:`int fact(int n){return n<=1?1:n*fact(n-1);}`,keywords:['return','cout'],expected:[factorial(n).toString()],validate:'cpp-sim'}},
+    ],
+  },
+  hard:{
+    Arrays:[
+      ()=>{const arr=[...Array(rnd(4,7))].map(()=>rnd(1,20));const sorted=[...arr].sort((a,b)=>a-b);return{title:`Sort Vector`,desc:`Sort vector {${arr.join(', ')}} and print each element.`,hint:`sort(v.begin(), v.end());`,keywords:['cout','sort'],expected:sorted.map(String),validate:'cpp-sim'}},
+    ],
+  }
+},
+
+react:{
+  easy:{
+    Variables:[
+      ()=>({title:`Functional Component`,desc:`Write a React functional component named "Hello" that returns a div with text "Hello React!". Show the component code.`,hint:`function Hello(){return <div>Hello React!</div>}`,keywords:['function','return','Hello React'],validate:'keyword-only'}),
+    ],
+    Functions:[
+      ()=>({title:`Props Component`,desc:`Write a component "Greet" that accepts a name prop and displays "Hello, {name}!".`,hint:`function Greet({name}){return <div>Hello, {name}!</div>}`,keywords:['props','name','return','function'],validate:'keyword-only'}),
+    ],
+    Arrays:[
+      ()=>({title:`Map List`,desc:`Write a React component that renders an unordered list from array ["Apple","Banana","Cherry"] using .map().`,hint:`{fruits.map((item,i) => <li key={i}>{item}</li>)}`,keywords:['map','li','ul','key'],validate:'keyword-only'}),
+    ],
+    Events:[
+      ()=>({title:`Button State`,desc:`Write a React component with useState that has a count state (starts at 0) and a button that increments it. Display the count.`,hint:`const [count, setCount] = useState(0);`,keywords:['useState','onClick','count','setCount'],validate:'keyword-only'}),
+    ],
+  },
+  medium:{
+    Functions:[
+      ()=>({title:`useEffect Hook`,desc:`Write a React component that uses useEffect to log "Component mounted" when it mounts.`,hint:`useEffect(() => { console.log("Component mounted"); }, []);`,keywords:['useEffect','useEffect'],validate:'keyword-only'}),
+    ],
+    DOM:[
+      ()=>({title:`Controlled Input`,desc:`Write a React component with a controlled text input that shows the typed value below it.`,hint:`useState + onChange handler`,keywords:['useState','onChange','value'],validate:'keyword-only'}),
+    ],
+  },
+  hard:{
+    Objects:[
+      ()=>({title:`Custom Hook`,desc:`Write a custom hook useCounter(initial) that returns value, increment, and decrement functions.`,hint:`function useCounter(initial){ const [val,setVal]=useState(initial); ...}`,keywords:['useState','function','return'],validate:'keyword-only'}),
+    ],
+  }
+},
+
+};
+
+// Debug mode broken code templates
+const DEBUG_TEMPLATES = {
+js:[
+  ()=>{const n=rnd(1,5);const target=n*(n+1)/2;return{title:`Fix the Loop`,bugCode:`// Bug: should print sum of 1 to ${n}\nlet sum = 0;\nfor(let i = 1; i <= ${n}; i++) {\n  sum = sum - i; // BUG HERE\n}\nconsole.log(sum);`,fix:'sum = sum + i',expected:[target.toString()],hint:`The operator in sum = sum - i is wrong. It should be addition.`,validate:'js-log'}},
+  ()=>{const s=pick(['hello','world','code']);return{title:`Fix the Function`,bugCode:`// Bug: should print length of "${s}"\nfunction strLen(str) {\n  return str; // BUG HERE\n}\nconsole.log(strLen("${s}"));`,fix:'return str.length',expected:[s.length.toString()],hint:`The function returns the string itself instead of its length.`,validate:'js-log'}},
+  ()=>{const a=rnd(2,9),b=rnd(2,9);return{title:`Fix the Math`,bugCode:`// Bug: should print ${a*b}\nlet result = ${a} + ${b}; // BUG HERE\nconsole.log(result);`,fix:'let result = '+a+' * '+b,expected:[(a*b).toString()],hint:`The operator is wrong — should be * not +.`,validate:'js-log'}},
+  ()=>{return{title:`Fix the Array Access`,bugCode:`// Bug: should print first element\nlet arr = [10, 20, 30];\nconsole.log(arr[1]); // BUG HERE`,fix:'console.log(arr[0])',expected:['10'],hint:`Array indices start at 0, not 1.`,validate:'js-log'}},
+],
+python:[
+  ()=>{const n=rnd(3,7);return{title:`Fix the Print Range`,bugCode:`# Bug: should print 1 to ${n}\nfor i in range(0, ${n}):  # BUG HERE\n    print(i)`,fix:`range(1, ${n+1})`,expected:[...Array(n)].map((_,i)=>(i+1).toString()),hint:`range(0,${n}) starts from 0 and excludes ${n}. Use range(1,${n+1}).`,validate:'py-sim'}},
+  ()=>{const s=pick(['hello','python','code']);return{title:`Fix the Uppercase`,bugCode:`# Bug: should print "${s.toUpperCase()}"\nword = "${s}"\nprint(word.lower())  # BUG HERE`,fix:'print(word.upper())',expected:[s.toUpperCase()],hint:`Should call .upper() not .lower().`,validate:'py-sim'}},
+],
+html:[
+  ()=>({title:`Fix the Heading`,bugCode:`<!-- Bug: should be h1, not h2 -->\n<h2>Welcome to My Site</h2>`,fix:'h1',hint:`The tag should be <h1> for a main heading.`,keywords:['h1'],validate:'keyword-only'}),
+],
+java:[
+  ()=>{const n=rnd(3,6);return{title:`Fix the Loop`,bugCode:`// Bug: loop doesn't reach ${n}\nfor(int i=1; i<${n}; i++) { // BUG HERE\n    System.out.println(i);\n}`,fix:`i<=${n}`,expected:[...Array(n)].map((_,i)=>(i+1).toString()),hint:`The condition i<${n} excludes ${n}. Use i<=${n}.`,validate:'java-sim'}},
+],
+c:[
+  ()=>{const n=rndNum();return{title:`Fix Printf`,bugCode:`// Bug: wrong format specifier\nint n = ${n};\nprintf("%s\\n", n); // BUG HERE`,fix:'%d',expected:[n.toString()],hint:`%s is for strings. Use %d for integers.`,validate:'c-sim'}},
+],
+};
+
+// Output prediction templates
+const OUTPUT_TEMPLATES = [
+  ()=>{const a=rnd(1,20),b=rnd(1,20);const code=`let a=${a}, b=${b};\nconsole.log(a + b);`;const ans=(a+b).toString();return{code,answer:ans,distractors:[String(a-b),String(a*b),String(a)]}},
+  ()=>{const s=pick(['hello','world','code','js']);const code=`let s="${s}";\nconsole.log(s.length);`;const ans=s.length.toString();return{code,answer:ans,distractors:[String(s.length+1),String(s.length-1),'undefined']}},
+  ()=>{const n=rnd(1,10);const code=`let n=${n};\nconsole.log(n%2===0 ? "Even" : "Odd");`;const ans=n%2===0?'Even':'Odd';return{code,answer:ans,distractors:['True','False','0']}},
+  ()=>{const arr=[rnd(1,10),rnd(1,10),rnd(1,10)];const code=`let arr=${JSON.stringify(arr)};\nconsole.log(arr[1]);`;const ans=arr[1].toString();return{code,answer:ans,distractors:[arr[0].toString(),arr[2].toString(),'undefined']}},
+  ()=>{const n=rnd(2,6);const code=`let sum=0;\nfor(let i=1;i<=${n};i++) sum+=i;\nconsole.log(sum);`;const ans=(n*(n+1)/2).toString();return{code,answer:ans,distractors:[String(n),String(n*(n+1)/2-1),String(n*(n+1)/2+1)]}},
+  ()=>{const s=pick(['hello','world','Practice']);const code=`console.log("${s}".toUpperCase());`;const ans=s.toUpperCase();return{code,answer:ans,distractors:[s.toLowerCase(),s,s.split('').reverse().join('')]}},
+  ()=>{const a=rnd(2,9),b=rnd(2,9);const code=`function mul(a,b){return a*b;}\nconsole.log(mul(${a},${b}));`;const ans=(a*b).toString();return{code,answer:ans,distractors:[String(a+b),String(a-b),String(a*b+1)]}},
+  ()=>{const arr=[rnd(1,10),rnd(1,10),rnd(1,10),rnd(1,10)];const code=`let arr=${JSON.stringify(arr)};\nconsole.log(arr.length);`;const ans=arr.length.toString();return{code,answer:ans,distractors:['3','5','undefined']}},
+];
+
+// Helpers
+function factorial(n){let r=1;for(let i=2;i<=n;i++)r*=i;return r;}
+function shuffle(arr){const a=[...arr];for(let i=a.length-1;i>0;i--){const j=rnd(0,i);[a[i],a[j]]=[a[j],a[i]];}return a;}
+
+// Get templates for current settings
+function getTemplates(){
+  const lang=state.lang;
+  if(state.mode==='debug'){
+    const dbg=DEBUG_TEMPLATES[lang]||DEBUG_TEMPLATES.js;
+    return dbg;
+  }
+  if(state.mode==='output')return OUTPUT_TEMPLATES;
+  const bank=Q_TEMPLATES[lang];
+  if(!bank)return[];
+  const diffs={easy:bank.easy||{},medium:{...(bank.easy||{}),... (bank.medium||{})},hard:{...(bank.easy||{}),... (bank.medium||{}),... (bank.hard||{})}};
+  const pool=diffs[state.diff]||diffs.easy;
+  if(state.topic==='all')return Object.values(pool).flat();
+  return pool[state.topic]||Object.values(pool).flat();
+}
+
+// ====================================================
+// QUESTION LOADING
+// ====================================================
+let currentOutputQ=null;
+
+function loadQuestion(){
+  clearVerdict();
+  state.answered=false;
+  clearTimer();
+  const area=document.getElementById('practice-area');
+  area.style.display='block';area.classList.add('visible');
+  const qCard=document.getElementById('q-card');
+  const outputArea=document.getElementById('output-area');
+  outputArea.innerHTML='<span style="color:var(--muted)">Run your code to see output...</span>';
+  document.getElementById('pred-section').style.display='none';
+  document.getElementById('action-bar').style.display='flex';
+  document.getElementById('run-btn').style.display='';
+
+  const templates=getTemplates();
+  if(!templates||templates.length===0){
+    qCard.innerHTML=`<div class="loading"><div style="color:var(--muted);font-size:14px">No questions available for this selection. Try another topic or language.</div></div>`;
+    return;
+  }
+
+  const fn=pick(templates);
+  const q=fn();
+  state.currentQ=q;
+  state.qIndex++;
+
+  if(state.mode==='output'){
+    renderOutputQuestion(q);
+  } else if(state.mode==='debug'){
+    renderDebugQuestion(q);
+  } else {
+    renderPracticeQuestion(q);
+  }
+
+  if(state.mode==='speed')startTimer();
+}
+
+function renderPracticeQuestion(q){
+  const lang=LANGS.find(l=>l.id===state.lang)||LANGS[0];
+  const diffColor={'easy':'easy','medium':'medium','hard':'hard'}[state.diff];
+  const topicLabel=state.topic==='all'?'Mixed':state.topic;
+  document.getElementById('q-card').innerHTML=`
+    <div class="q-header">
+      <div class="q-meta">
+        <span class="q-tag ${diffColor}">${state.diff.charAt(0).toUpperCase()+state.diff.slice(1)}</span>
+        <span class="q-tag lang">${lang.icon} ${lang.name}</span>
+        <span class="q-tag topic">${topicLabel}</span>
+      </div>
+      <span class="q-num">#${state.qIndex} · Challenge</span>
+    </div>
+    <div class="q-title">${q.title}</div>
+    <div class="q-desc">${q.desc}</div>
+    ${q.expected&&q.expected.length?`<div class="q-example"><strong>Expected Output</strong>${q.expected.join('\n')}</div>`:''}
+    ${state.mode==='practice'?`<button class="hint-btn" onclick="toggleHint()">💡 Show Hint</button><div class="hint-box" id="hint-box">${q.hint||'Think step by step.'}</div>`:''}
+  `;
+  const extMap={js:'solution.js',html:'index.html',css:'styles.css',python:'solution.py',c:'solution.c',cpp:'solution.cpp',java:'Solution.java',react:'Component.jsx'};
+  document.getElementById('editor-lang-label').textContent=extMap[state.lang]||'solution.txt';
+  document.getElementById('code-area').value='';
+  updateLineNumbers();
+  document.getElementById('timer-display').style.display=state.mode==='speed'?'flex':'none';
+}
+
+function renderDebugQuestion(q){
+  const lang=LANGS.find(l=>l.id===state.lang)||LANGS[0];
+  document.getElementById('q-card').innerHTML=`
+    <div class="q-header">
+      <div class="q-meta">
+        <span class="q-tag hard">🐛 Debug</span>
+        <span class="q-tag lang">${lang.icon} ${lang.name}</span>
+      </div>
+      <span class="q-num">#${state.qIndex} · Debug Challenge</span>
+    </div>
+    <div class="q-title">${q.title}</div>
+    <div class="q-desc">The following code has a bug. Find and fix it so it produces the correct output.</div>
+    <div class="bug-code">${escHtml(q.bugCode)}</div>
+    ${q.expected?`<div class="q-example"><strong>Expected Output</strong>${q.expected.join('\n')}</div>`:''}
+    <div class="hint-box show" style="margin-top:0">💡 ${q.hint}</div>
+  `;
+  document.getElementById('code-area').value=q.bugCode||'';
+  updateLineNumbers();
+  document.getElementById('timer-display').style.display='none';
+}
+
+function renderOutputQuestion(q){
+  currentOutputQ=q;
+  document.getElementById('q-card').innerHTML=`
+    <div class="q-header">
+      <div class="q-meta">
+        <span class="q-tag medium">🔮 Predict</span>
+        <span class="q-tag lang">⚡ JS</span>
+      </div>
+      <span class="q-num">#${state.qIndex} · Output Prediction</span>
+    </div>
+    <div class="q-title">What is the output of this code?</div>
+    <div class="q-example"><strong>Code</strong>${escHtml(q.code)}</div>
+    <div id="pred-options-wrapper"></div>
+  `;
+  // Render options
+  const opts=shuffle([q.answer,...q.distractors.slice(0,3)]);
+  const optHtml=opts.map(o=>`<div class="pred-opt" onclick="checkPrediction('${escAttr(o)}','${escAttr(q.answer)}')">${escHtml(o)}</div>`).join('');
+  const predSection=document.getElementById('pred-section');
+  predSection.style.display='block';
+  document.getElementById('pred-options').innerHTML=optHtml;
+  document.getElementById('editor-wrap').style.display='none';
+  document.getElementById('run-btn').style.display='none';
+  document.getElementById('output-area').style.display='none';
+  document.getElementById('timer-display').style.display=state.mode==='speed'?'flex':'none';
+}
+
+function checkPrediction(selected,correct){
+  if(state.answered)return;
+  state.answered=true;
+  const opts=document.querySelectorAll('.pred-opt');
+  opts.forEach(o=>{
+    if(o.textContent===correct)o.classList.add('correct-ans');
+    else if(o.textContent===selected&&selected!==correct)o.classList.add('wrong-ans');
+    o.onclick=null;
+  });
+  if(selected===correct){
+    showVerdict(true,`Correct! The output is "${correct}".`,XP_MAP[state.diff]);
+    markSolved(true);
+  } else {
+    showVerdict(false,`Incorrect. The correct output was "${correct}". You chose "${selected}".`,0);
+    markSolved(false);
+  }
+}
+
+// ====================================================
+// CODE RUNNER & VALIDATOR
+// ====================================================
+function runCode(){
+  const code=document.getElementById('code-area').value.trim();
+  if(!code){showToast('Write some code first!','error');return;}
+  const q=state.currentQ;
+  if(!q)return;
+
+  document.getElementById('editor-wrap').style.display='';
+  document.getElementById('output-area').style.display='';
+
+  if(state.lang==='js'&&(q.validate==='js-log'||q.validate==='js-log-dom')){
+    runJS(code,q);
+  } else {
+    // Keyword-based validation for other languages
+    runKeywordValidation(code,q);
+  }
+}
+
+function runJS(code,q){
+  const outputEl=document.getElementById('output-area');
+  const lines=[];
+  const origLog=console.log;
+  const origError=console.error;
+  // Capture console.log
+  const cap=(...args)=>{lines.push(args.map(a=>{if(a===null)return'null';if(a===undefined)return'undefined';if(typeof a==='object')return JSON.stringify(a);return String(a);}).join(' '));};
+  console.log=cap;console.error=cap;
+  let err=null;
+  try{
+    const fn=new Function(code);
+    fn();
+  } catch(e){err=e;}
+  console.log=origLog;console.error=origError;
+
+  if(err){
+    outputEl.innerHTML=`<div class="output-line error">❌ ${escHtml(err.message)}</div>`;
+    showVerdict(false,`Runtime error: ${err.message}`,0);
+    return;
+  }
+
+  outputEl.innerHTML=lines.map(l=>`<div class="output-line">${escHtml(l)}</div>`).join('')||'<span style="color:var(--muted)">(no output)</span>';
+
+  if(state.answered)return;
+  validateOutput(lines,q);
+}
+
+function runKeywordValidation(code,q){
+  const outputEl=document.getElementById('output-area');
+  if(state.answered)return;
+
+  // For py-sim, java-sim, c-sim, cpp-sim: simulate expected output matching via keyword check
+  const validate=q.validate||'keyword-only';
+  const isSimulated=['py-sim','java-sim','c-sim','cpp-sim'].includes(validate);
+
+  if(isSimulated&&q.expected){
+    // Check keywords + show simulated output
+    const hasKeywords=!q.keywords||q.keywords.every(kw=>code.toLowerCase().includes(kw.toLowerCase()));
+    if(!hasKeywords){
+      const missing=q.keywords.filter(kw=>!code.toLowerCase().includes(kw.toLowerCase()));
+      outputEl.innerHTML=`<div class="output-line warn">⚠ Missing required elements: ${missing.join(', ')}</div>`;
+      showVerdict(false,`Your code is missing: ${missing.join(', ')}`,0);
+      return;
+    }
+    outputEl.innerHTML=q.expected.map(l=>`<div class="output-line info">📤 ${escHtml(l)}</div>`).join('');
+    const xp=XP_MAP[state.diff];
+    showVerdict(true,`Great solution! The code structure and logic look correct for ${LANGS.find(l=>l.id===state.lang)?.name}.`,xp);
+    markSolved(true);
+    return;
+  }
+
+  // Pure keyword-only
+  const missing=(q.keywords||[]).filter(kw=>!code.toLowerCase().includes(kw.toLowerCase()));
+  if(missing.length>0){
+    outputEl.innerHTML=`<div class="output-line warn">⚠ Missing: ${missing.map(m=>`<code>${m}</code>`).join(', ')}</div>`;
+    showVerdict(false,`Missing required elements: ${missing.join(', ')}`,0);
+  } else {
+    outputEl.innerHTML=`<div class="output-line success">✅ Code structure validated!</div>`;
+    const xp=XP_MAP[state.diff];
+    showVerdict(true,`Correct! All required elements are present.`,xp);
+    markSolved(true);
+  }
+}
+
+function validateOutput(lines,q){
+  if(!q)return;
+  if(q.validate==='keyword-only'){
+    runKeywordValidation(document.getElementById('code-area').value,q);return;
+  }
+  const expected=q.expected;
+  const keywords=q.keywords||[];
+  const code=document.getElementById('code-area').value;
+
+  // Check keywords
+  const missingKw=keywords.filter(kw=>!code.includes(kw));
+  if(missingKw.length>0){
+    showVerdict(false,`Missing required elements: ${missingKw.join(', ')}. Check your code.`,0);
+    return;
+  }
+
+  if(!expected||expected.length===0){
+    // Just keyword check
+    showVerdict(true,'Code validated!',XP_MAP[state.diff]);
+    markSolved(true);return;
+  }
+
+  // Compare output
+  const outLines=lines.map(l=>l.toString().trim());
+  const expLines=expected.map(l=>l.toString().trim());
+  const match=expLines.every((exp,i)=>outLines[i]===exp);
+
+  if(match){
+    const xp=XP_MAP[state.diff];
+    showVerdict(true,`All ${expLines.length} output line${expLines.length>1?'s':''} match! Excellent work.`,xp);
+    markSolved(true);
+    if(state.mode==='speed')clearTimer();
+  } else {
+    const got=outLines.join(', ')||'(empty)';
+    const exp=expLines.join(', ');
+    showVerdict(false,`Output mismatch.\nExpected: ${exp}\nGot: ${got}`,0);
+    markSolved(false);
+  }
+}
+
+// ====================================================
+// VERDICT
+// ====================================================
+function showVerdict(correct,msg,xp){
+  state.answered=true;
+  const el=document.getElementById('verdict');
+  const iconEl=document.getElementById('verdict-icon');
+  const msgEl=document.getElementById('verdict-msg');
+  el.className='verdict '+(correct?'correct':'wrong')+' show';
+  iconEl.innerHTML=correct?`✅ Correct! <span class="xp-gain">+${xp} XP</span>`:'❌ Try Again';
+  msgEl.textContent=msg;
+  if(correct&&xp>0){
+    addXP(xp);
+    showToast(`+${xp} XP earned!`,'xp');
+    confetti();
+    checkAchievements();
+  }
+}
+
+function clearVerdict(){
+  const el=document.getElementById('verdict');
+  if(el)el.className='verdict';
+  if(document.getElementById('editor-wrap'))document.getElementById('editor-wrap').style.display='';
+  if(document.getElementById('output-area'))document.getElementById('output-area').style.display='';
+}
+
+function markSolved(correct){
+  userData.attempts++;
+  userData.topicStats[state.topic]=(userData.topicStats[state.topic]||{attempts:0,correct:0});
+  userData.topicStats[state.topic].attempts++;
+  userData.langStats[state.lang]=(userData.langStats[state.lang]||{attempts:0,correct:0});
+  userData.langStats[state.lang].attempts++;
+  if(correct){
+    userData.solved++;
+    userData.correct++;
+    userData.topicStats[state.topic].correct++;
+    userData.langStats[state.lang].correct++;
+    updateStreak();
+  }
+  saveUser();
+}
+
+// ====================================================
+// TIMER (Speed Mode)
+// ====================================================
+function startTimer(){
+  const max=SPEED_TIME[state.diff]||60;
+  state.timerLeft=max; state.timerMax=max;
+  const numEl=document.getElementById('timer-num');
+  const barEl=document.getElementById('timer-progress');
+  document.getElementById('timer-display').style.display='flex';
+  clearInterval(state.timerInterval);
+  state.timerInterval=setInterval(()=>{
+    state.timerLeft--;
+    numEl.textContent=state.timerLeft;
+    barEl.style.width=((state.timerLeft/max)*100)+'%';
+    if(state.timerLeft<=0){
+      clearTimer();
+      if(!state.answered){
+        showVerdict(false,`Time's up! Skipping to next...`,0);
+        markSolved(false);
+        setTimeout(()=>loadQuestion(),2000);
+      }
+    }
+  },1000);
+}
+
+function clearTimer(){
+  clearInterval(state.timerInterval);
+  state.timerInterval=null;
+}
+
+// ====================================================
+// ACHIEVEMENTS
+// ====================================================
+const ACH_DEF=[
+  {id:'first_solve',icon:'🎯',name:'First Strike',desc:'Solve your first challenge',check:()=>userData.solved>=1},
+  {id:'five_solve',icon:'⚡',name:'High Voltage',desc:'Solve 5 challenges',check:()=>userData.solved>=5},
+  {id:'twenty_solve',icon:'🔥',name:'On Fire',desc:'Solve 20 challenges',check:()=>userData.solved>=20},
+  {id:'fifty_solve',icon:'💯',name:'Century Half',desc:'Solve 50 challenges',check:()=>userData.solved>=50},
+  {id:'hundred_solve',icon:'🏆',name:'Practice Master',desc:'Solve 100 challenges',check:()=>userData.solved>=100},
+  {id:'streak_3',icon:'📅',name:'3 Day Warrior',desc:'Maintain a 3-day streak',check:()=>userData.streak>=3},
+  {id:'streak_7',icon:'🔥',name:'7 Day Warrior',desc:'Maintain a 7-day streak',check:()=>userData.streak>=7},
+  {id:'streak_30',icon:'👑',name:'Streak Legend',desc:'30-day streak!',check:()=>userData.streak>=30},
+  {id:'xp_500',icon:'⚡',name:'XP Climber',desc:'Earn 500 total XP',check:()=>userData.xp>=500},
+  {id:'xp_2000',icon:'🚀',name:'XP Rocket',desc:'Earn 2000 total XP',check:()=>userData.xp>=2000},
+  {id:'xp_10000',icon:'💎',name:'Diamond Coder',desc:'Earn 10000 total XP',check:()=>userData.xp>=10000},
+  {id:'level_5',icon:'📈',name:'Level Up',desc:'Reach Level 5',check:()=>userData.level>=5},
+  {id:'level_10',icon:'🎖',name:'Senior Dev',desc:'Reach Level 10',check:()=>userData.level>=10},
+  {id:'accuracy_90',icon:'🎯',name:'Sharpshooter',desc:'Achieve 90%+ accuracy (min 10 attempts)',check:()=>userData.attempts>=10&&(userData.correct/userData.attempts)>=0.9},
+  {id:'hard_solve',icon:'💪',name:'Tough Cookie',desc:'Solve a Hard challenge',check:()=>Object.values(userData.langStats).some(s=>s.attempts>0)&&state.diff==='hard'&&userData.correct>0},
+  {id:'speed_mode',icon:'⚡',name:'Speed Demon',desc:'Complete a Speed Mode challenge',check:()=>state.mode==='speed'&&userData.solved>0},
+  {id:'debug_mode',icon:'🐛',name:'Bug Hunter',desc:'Fix a bug in Debug Mode',check:()=>state.mode==='debug'&&userData.solved>0},
+  {id:'all_lang',icon:'🌐',name:'Polyglot',desc:'Practice in 4+ languages',check:()=>Object.keys(userData.langStats).length>=4},
+  {id:'perfect_5',icon:'⭐',name:'Perfectionist',desc:'Solve 5 in a row correctly',check:()=>userData.correct>=5},
+  {id:'night_owl',icon:'🦉',name:'Night Owl',desc:'Practice after 10 PM',check:()=>new Date().getHours()>=22},
+  {id:'early_bird',icon:'🌅',name:'Early Bird',desc:'Practice before 7 AM',check:()=>new Date().getHours()<7},
+  {id:'output_pred',icon:'🔮',name:'Fortune Teller',desc:'Correctly predict 3 outputs',check:()=>state.mode==='output'&&userData.correct>=3},
+  {id:'js_master',icon:'🟨',name:'JS Master',desc:'Solve 10 JS challenges',check:()=>(userData.langStats.js||{correct:0}).correct>=10},
+  {id:'python_master',icon:'🐍',name:'Python Pro',desc:'Solve 10 Python challenges',check:()=>(userData.langStats.python||{correct:0}).correct>=10},
+];
+
+function checkAchievements(){
+  let newUnlocks=[];
+  ACH_DEF.forEach(a=>{
+    if(!userData.achievements.includes(a.id)&&a.check()){
+      userData.achievements.push(a.id);
+      newUnlocks.push(a);
+    }
+  });
+  if(newUnlocks.length){saveUser();newUnlocks.forEach(a=>showToast(`🏆 Achievement: ${a.name}!`,'xp'));}
+}
+
+// ====================================================
+// UI UPDATES
+// ====================================================
+function updateNav(){
+  document.getElementById('nav-xp').textContent=userData.xp.toLocaleString();
+  document.getElementById('nav-level').textContent=`LVL ${userData.level}`;
+}
+
+function toggleHint(){
+  const hb=document.getElementById('hint-box');
+  if(hb)hb.classList.toggle('show');
+}
+
+function updateLineNumbers(){
+  const ta=document.getElementById('code-area');
+  const ln=document.getElementById('line-numbers');
+  const lines=ta.value.split('\n').length;
+  ln.innerHTML=[...Array(lines)].map((_,i)=>i+1).join('<br>');
+}
+
+function handleEditorKeydown(e){
+  if(e.key==='Tab'){
+    e.preventDefault();
+    const ta=e.target;
+    const s=ta.selectionStart,end=ta.selectionEnd;
+    ta.value=ta.value.substring(0,s)+'  '+ta.value.substring(end);
+    ta.selectionStart=ta.selectionEnd=s+2;
+    updateLineNumbers();
+  }
+}
+
+function copyCode(){
+  const code=document.getElementById('code-area').value;
+  navigator.clipboard.writeText(code).then(()=>showToast('Code copied!','info')).catch(()=>{
+    const ta=document.createElement('textarea');ta.value=code;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();showToast('Code copied!','info');
+  });
+}
+
+function clearCode(){document.getElementById('code-area').value='';updateLineNumbers();}
+function clearOutput(){document.getElementById('output-area').innerHTML='<span style="color:var(--muted)">Run your code to see output...</span>';}
+
+// ====================================================
+// TOASTS
+// ====================================================
+function showToast(msg,type='info'){
+  const wrap=document.getElementById('toast-wrap');
+  const t=document.createElement('div');
+  t.className=`toast ${type}`;
+  t.innerHTML=`<span>${type==='success'?'✅':type==='error'?'❌':type==='xp'?'⚡':'ℹ️'}</span><span>${msg}</span>`;
+  wrap.appendChild(t);
+  setTimeout(()=>{t.style.opacity='0';t.style.transform='translateX(50px)';t.style.transition='all .3s';setTimeout(()=>t.remove(),300)},3000);
+}
+
+// ====================================================
+// CONFETTI
+// ====================================================
+function confetti(){
+  const colors=['#00f5ff','#7c3aed','#f0abfc','#10b981','#fbbf24','#f97316'];
+  for(let i=0;i<24;i++){
+    const el=document.createElement('div');
+    el.className='confetti-piece';
+    el.style.cssText=`left:${Math.random()*100}vw;background:${pick(colors)};--dx:${(Math.random()-0.5)*200}px;--dy:${rnd(100,300)}px;animation-delay:${Math.random()*.5}s;animation-duration:${rnd(1,2)}s;transform:rotate(${rnd(0,360)}deg);`;
+    document.body.appendChild(el);
+    setTimeout(()=>el.remove(),2500);
+  }
+}
+
+// ====================================================
+// SECTION SWITCHING
+// ====================================================
+function showSection(sec){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.getElementById('sec-'+sec).classList.add('active');
+  document.querySelectorAll('.nav-tab').forEach(t=>{
+    t.classList.toggle('active',t.dataset.sec===sec);
+  });
+  if(sec==='dashboard')renderDashboard();
+  if(sec==='achievements')renderAchievements();
+  if(sec==='recommend')renderRecommend();
+}
+
+// ====================================================
+// LANGUAGE / TOPIC / DIFF / MODE
+// ====================================================
+function selectLang(id){
+  state.lang=id;
+  document.querySelectorAll('.lang-card').forEach(c=>c.classList.toggle('selected',c.dataset.lang===id));
+  const fs=document.getElementById('filter-section');
+  fs.style.display='block';
+  fs.style.animation='slide-in .3s ease';
+
+  // Render topic filters
+  const lang=LANGS.find(l=>l.id===id);
+  const topics=['all',...(lang?lang.topics:[])];
+  document.getElementById('topic-filters').innerHTML=topics.map(t=>
+    `<button class="filter-btn ${t===state.topic?'active':''}" onclick="setTopic('${t}')">${t==='all'?'All Topics':t}</button>`
+  ).join('');
+  state.topic='all';
+  document.getElementById('practice-area').style.display='none';
+  clearVerdict();
+}
+
+function setTopic(t){
+  state.topic=t;
+  document.querySelectorAll('#topic-filters .filter-btn').forEach(b=>b.classList.toggle('active',b.textContent===(t==='all'?'All Topics':t)));
+}
+
+function setDiff(d){
+  state.diff=d;
+  document.querySelectorAll('.diff-btn').forEach(b=>b.classList.toggle('active',b.classList.contains(d)));
+}
+
+function setMode(m){
+  state.mode=m;
+  document.querySelectorAll('.mode-tab').forEach(b=>b.classList.toggle('active',b.dataset.mode===m));
+}
+
+// ====================================================
+// DASHBOARD
+// ====================================================
+function renderDashboard(){
+  // Streak
+  document.getElementById('streak-num').textContent=userData.streak;
+  document.getElementById('total-solved-big').textContent=userData.solved;
+  const acc=userData.attempts>0?Math.round((userData.correct/userData.attempts)*100):null;
+  document.getElementById('accuracy-big').textContent=acc!==null?acc+'%':'—';
+  document.getElementById('streak-sub').textContent=userData.streak>0?`Keep it up! You're on a ${userData.streak}-day streak.`:'Practice today to start your streak!';
+
+  // XP
+  const prog=getXPProgress();
+  document.getElementById('xp-bar').style.width=prog.pct+'%';
+  document.getElementById('xp-current').textContent=userData.xp.toLocaleString();
+  document.getElementById('xp-next').textContent=(prog.cumXP+prog.need).toLocaleString();
+  document.getElementById('xp-next-label').textContent=`${prog.need-prog.current} XP to next level`;
+  document.getElementById('rank-badge').textContent=getRank(userData.xp).name;
+
+  // Stats
+  const dashData=[
+    {icon:'⚡',val:userData.xp.toLocaleString(),label:'Total XP',color:'rgba(0,245,255,.2)'},
+    {icon:'✅',val:userData.solved,label:'Solved',color:'rgba(16,185,129,.2)'},
+    {icon:'🎯',val:acc!==null?acc+'%':'—',label:'Accuracy',color:'rgba(251,191,36,.2)'},
+    {icon:'🔥',val:userData.streak,label:'Day Streak',color:'rgba(249,115,22,.2)'},
+    {icon:'🏆',val:userData.achievements.length,label:'Achievements',color:'rgba(124,58,237,.2)'},
+    {icon:'📊',val:userData.level,label:'Level',color:'rgba(240,171,252,.2)'},
+  ];
+  document.getElementById('dash-stats').innerHTML=dashData.map(d=>`
+    <div class="dash-stat" style="--accent-clr:${d.color}">
+      <div class="dash-stat-icon">${d.icon}</div>
+      <div class="dash-stat-val" style="color:var(--neon)">${d.val}</div>
+      <div class="dash-stat-label">${d.label}</div>
+    </div>
+  `).join('');
+
+  // Skills
+  const allTopics=['Variables','Loops','Functions','Arrays','DOM','Conditions','Objects','Strings','Recursion','Events'];
+  const colors=['#00f5ff','#7c3aed','#10b981','#fbbf24','#f97316','#ef4444','#f0abfc','#06b6d4','#84cc16','#ec4899'];
+  document.getElementById('skills-grid').innerHTML=allTopics.map((t,i)=>{
+    const ts=userData.topicStats[t]||{attempts:0,correct:0};
+    const pct=ts.attempts>0?Math.round((ts.correct/ts.attempts)*100):0;
+    return`<div class="skill-item">
+      <div class="skill-name">${t}<span class="skill-pct">${pct}%</span></div>
+      <div class="skill-bar"><div class="skill-bar-fill" style="width:${pct}%;background:${colors[i%colors.length]}"></div></div>
+    </div>`;
+  }).join('');
+
+  // Lang breakdown
+  document.getElementById('lang-breakdown').innerHTML=LANGS.map(l=>{
+    const ls=userData.langStats[l.id]||{attempts:0,correct:0};
+    const pct=ls.attempts>0?Math.round((ls.correct/ls.attempts)*100):0;
+    return`<div class="lb-item mb-8">
+      <div style="font-size:1.4rem">${l.icon}</div>
+      <div class="lb-name">${l.name}</div>
+      <div style="min-width:80px">
+        <div class="skill-bar" style="margin-bottom:3px"><div class="skill-bar-fill" style="width:${pct}%;background:var(--neon)"></div></div>
+        <div class="fs-12 text-muted">${ls.correct}/${ls.attempts} solved</div>
+      </div>
+    </div>`;
+  }).join('');
+
+  // Calendar
+  renderCalendar();
+}
+
+function renderCalendar(){
+  const cal=document.getElementById('cal-grid');
+  const days=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  let html=days.map(d=>`<div class="cal-day-label">${d}</div>`).join('');
+
+  const today=new Date();
+  const start=new Date(today);
+  start.setDate(today.getDate()-48);
+  const startDay=start.getDay();
+  for(let i=0;i<startDay;i++)html+=`<div class="cal-cell empty"></div>`;
+
+  for(let i=0;i<=48;i++){
+    const d=new Date(start);d.setDate(start.getDate()+i);
+    const dateStr=d.toDateString();
+    const done=userData.solvedDates.includes(dateStr);
+    const isToday=dateStr===today.toDateString();
+    const isFuture=d>today;
+    html+=`<div class="cal-cell ${done?'done':''} ${isToday?'today':''} ${isFuture?'future':''}" title="${dateStr}"></div>`;
+  }
+  cal.innerHTML=html;
+}
+
+// ====================================================
+// ACHIEVEMENTS
+// ====================================================
+function renderAchievements(){
+  const unlocked=userData.achievements.length;
+  document.getElementById('ach-progress-label').textContent=`${unlocked} / ${ACH_DEF.length} unlocked`;
+  document.getElementById('ach-grid').innerHTML=ACH_DEF.map(a=>{
+    const isUnlocked=userData.achievements.includes(a.id);
+    return`<div class="ach-card ${isUnlocked?'unlocked':'locked'}">
+      <span class="ach-icon">${isUnlocked?a.icon:'🔒'}</span>
+      <div class="ach-name">${a.name}</div>
+      <div class="ach-desc">${a.desc}</div>
+    </div>`;
+  }).join('');
+}
+
+// ====================================================
+// RECOMMENDATIONS
+// ====================================================
+function renderRecommend(){
+  const weakTopics=Object.entries(userData.topicStats)
+    .filter(([,v])=>v.attempts>0&&(v.correct/v.attempts)<0.6)
+    .sort((a,b)=>(a[1].correct/a[1].attempts)-(b[1].correct/b[1].attempts))
+    .slice(0,3).map(([k])=>k);
+
+  const bestLang=Object.entries(userData.langStats)
+    .sort((a,b)=>(b[1].correct||0)-(a[1].correct||0))[0]?.[0]||'js';
+
+  const recs=[
+    {icon:'🎯',title:'Daily Practice',sub:'Maintain your streak with a quick session',lang:'js',topic:'all',diff:'easy'},
+    ...weakTopics.map(t=>({icon:'📈',title:`Improve: ${t}`,sub:`You struggle here — practice more ${t} questions`,lang:state.lang||'js',topic:t,diff:'easy'})),
+    {icon:'⚡',title:'Speed Challenge',sub:'Test your reaction with Speed Mode',lang:bestLang,topic:'all',diff:'medium',mode:'speed'},
+    {icon:'🐛',title:'Debug Session',sub:'Sharpen your debugging skills',lang:state.lang||'js',topic:'all',diff:'medium',mode:'debug'},
+    {icon:'🔮',title:'Output Prediction',sub:'Train your mental model of code execution',lang:'js',topic:'all',diff:'easy',mode:'output'},
+    {icon:'🏆',title:'Hard Challenge',sub:'Push your limits with a hard question',lang:bestLang,topic:'all',diff:'hard'},
+  ];
+
+  document.getElementById('recommend-content').innerHTML=`
+    <div class="rec-list">${recs.map((r,i)=>`
+      <div class="rec-card" onclick="startRec(${i})">
+        <div class="rec-icon">${r.icon}</div>
+        <div class="rec-info">
+          <div class="rec-title">${r.title}</div>
+          <div class="rec-sub">${r.sub}</div>
+        </div>
+        <div class="rec-arrow">›</div>
+      </div>
+    `).join('')}</div>
+  `;
+  window._recList=recs;
+}
+
+function startRec(i){
+  const r=window._recList[i];
+  state.lang=r.lang||'js';
+  state.topic=r.topic||'all';
+  state.diff=r.diff||'easy';
+  state.mode=r.mode||'practice';
+  showSection('practice-select');
+  setTimeout(()=>{
+    selectLang(state.lang);
+    setDiff(state.diff);
+    setMode(state.mode);
+    loadQuestion();
+    document.getElementById('practice-area').scrollIntoView({behavior:'smooth'});
+  },100);
+}
+
+// ====================================================
+// HERO CANVAS
+// ====================================================
+(function(){
+  const canvas=document.getElementById('hero-canvas');
+  const ctx=canvas.getContext('2d');
+  let W,H,particles=[];
+  const SYMBOLS=['{}','[]','()','</>','#','//','01','&&','||','=>',';','fn','if','for'];
+
+  function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;}
+  resize();window.addEventListener('resize',resize);
+
+  for(let i=0;i<60;i++){
+    particles.push({
+      x:Math.random()*2000,y:Math.random()*1200,
+      vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4,
+      sym:pick(SYMBOLS),opacity:Math.random()*.5+.1,
+      size:Math.random()*8+8,
+      color:`hsl(${pick([180,270,290,200])},100%,${rnd(60,80)}%)`,
+    });
+  }
+
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    particles.forEach(p=>{
+      p.x+=p.vx;p.y+=p.vy;
+      if(p.x<-50)p.x=W+50;if(p.x>W+50)p.x=-50;
+      if(p.y<-50)p.y=H+50;if(p.y>H+50)p.y=-50;
+      ctx.save();ctx.globalAlpha=p.opacity;
+      ctx.font=`${p.size}px "Cascadia Code", monospace`;
+      ctx.fillStyle=p.color;ctx.fillText(p.sym,p.x,p.y);
+      ctx.restore();
+    });
+    requestAnimationFrame(draw);
+  }draw();
+})();
+
+// ====================================================
+// APP START
+// ====================================================
+function startApp(){
+  document.getElementById('hero').style.display='none';
+  document.getElementById('app').style.display='block';
+  document.getElementById('app').classList.add('visible');
+  document.getElementById('topnav').classList.add('visible');
+  updateNav();
+  // Render language grid
+  document.getElementById('lang-grid').innerHTML=LANGS.map(l=>`
+    <div class="lang-card" data-lang="${l.id}" onclick="selectLang('${l.id}')">
+      <span class="lang-icon">${l.icon}</span>
+      <div class="lang-name">${l.name}</div>
+      <div class="lang-count">${l.topics.length} topics</div>
+      <div class="lang-badge">${(userData.langStats[l.id]||{correct:0}).correct} solved</div>
+    </div>
+  `).join('');
+}
+
+// ====================================================
+// UTILS
+// ====================================================
+function escHtml(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;')}
+function escAttr(s){return String(s).replace(/"/g,'&quot;')}
+
+// ====================================================
+// INIT
+// ====================================================
+(function init(){
+  updateStreak();
+  checkAchievements();
+  // Touch-friendly code area sync
+  document.getElementById('code-area')?.addEventListener('scroll',function(){
+    document.getElementById('line-numbers').scrollTop=this.scrollTop;
+  });
+  // Apply saved theme
+  const savedTheme=localStorage.getItem('dp_theme')||'dark';
+  document.documentElement.setAttribute('data-theme',savedTheme==='light'?'light':'');
+})();
+
+// ====================================================
+// THEME TOGGLE
+// ====================================================
+function toggleTheme(){
+  const current=document.documentElement.getAttribute('data-theme');
+  const next=current==='light'?'dark':'light';
+  document.documentElement.setAttribute('data-theme',next==='light'?'light':'');
+  localStorage.setItem('dp_theme',next);
+  showToast(next==='light'?'☀️ Light Mode On':'🌙 Dark Mode On','info');
+}
+</script>
+</body>
+</html>
