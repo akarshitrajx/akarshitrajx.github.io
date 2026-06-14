@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Coding Quiz Master · Daily Quiz</title>
+<meta name="description" content="Daily programming quiz — 10 fresh questions every 24h across JS, Python, TypeScript, Java, C++, Go, Rust, SQL, HTML/CSS">
+<style>
+/* ── THEME VARIABLES ───────────────────── */
+:root{
+  --bg:#080810;--s1:#0d0d1a;--s2:#12122a;
+  --br:rgba(255,255,255,.08);--br2:rgba(255,255,255,.12);
+  --vi:#6366f1;--in:#4f46e5;
+  --tx:#f1f5f9;--mu:rgba(255,255,255,.42);--mu2:rgba(255,255,255,.22);
+  --gn:#22c55e;--rd:#ef4444;--am:#f59e0b;--cy:#06b6d4;
+  --glow:rgba(99,102,241,.08);
+  --topbg:rgba(8,8,16,.92);
+}
+[data-theme="light"]{
+  --bg:#f0f0f8;--s1:#ffffff;--s2:#f5f5fc;
+  --br:rgba(0,0,0,.1);--br2:rgba(0,0,0,.16);
+  --tx:#111827;--mu:rgba(0,0,0,.45);--mu2:rgba(0,0,0,.25);
+  --glow:rgba(99,102,241,.06);
+  --topbg:rgba(240,240,248,.94);
+}
+/* ── RESET ─────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--tx);overflow-x:hidden;transition:background .25s,color .25s}
+/* ── GLOW BG ───────────────────────────── */
+body::before{content:'';position:fixed;top:-20%;right:-20%;width:60vmax;height:60vmax;background:radial-gradient(circle,var(--glow),transparent 70%);pointer-events:none;z-index:0}
+body::after{content:'';position:fixed;bottom:-10%;left:-10%;width:40vmax;height:40vmax;background:radial-gradient(circle,rgba(6,182,212,.05),transparent 70%);pointer-events:none;z-index:0}
+/* ── SCREENS ───────────────────────────── */
+.screen{min-height:100vh;display:none;flex-direction:column;align-items:center;padding:82px 16px 48px;position:relative;z-index:1}
+.screen.active{display:flex}
+/* ── CARD ──────────────────────────────── */
+.card{background:var(--s1);border:1px solid var(--br);border-radius:20px;padding:26px;width:100%;max-width:720px;transition:background .25s,border-color .25s}
+.card-sm{max-width:500px}
+/* ── BADGE ─────────────────────────────── */
+.badge{display:inline-flex;align-items:center;gap:4px;padding:4px 11px;border-radius:99px;font-size:11px;font-weight:700;letter-spacing:.01em}
+.bv{background:rgba(99,102,241,.15);border:1px solid rgba(99,102,241,.35);color:#818cf8}
+.bg{background:rgba(34,197,94,.14);border:1px solid rgba(34,197,94,.3);color:#4ade80}
+.ba{background:rgba(245,158,11,.14);border:1px solid rgba(245,158,11,.3);color:#fbbf24}
+.br2c{background:rgba(239,68,68,.14);border:1px solid rgba(239,68,68,.3);color:#f87171}
+.bb{background:rgba(59,130,246,.14);border:1px solid rgba(59,130,246,.3);color:#60a5fa}
+/* ── BUTTONS ───────────────────────────── */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:12px 24px;border-radius:12px;font-weight:700;font-size:14px;border:none;cursor:pointer;transition:all .15s ease;font-family:inherit}
+.btn-p{background:linear-gradient(135deg,var(--vi),var(--in));color:#fff;box-shadow:0 4px 18px rgba(99,102,241,.35)}
+.btn-p:hover{transform:translateY(-1px);box-shadow:0 6px 26px rgba(99,102,241,.48)}
+.btn-p:disabled{opacity:.4;cursor:not-allowed;transform:none;box-shadow:none}
+.btn-o{background:var(--s2);border:1px solid var(--br);color:var(--mu)}
+.btn-o:hover{border-color:var(--br2);color:var(--tx)}
+.btn-g{background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.28);color:#4ade80}
+.btn-g:hover{background:rgba(34,197,94,.2)}
+/* ── TOPBAR ────────────────────────────── */
+.topbar{position:fixed;top:0;left:0;right:0;z-index:50;height:56px;padding:0 16px;border-bottom:1px solid var(--br);background:var(--topbg);backdrop-filter:blur(14px);display:flex;align-items:center;justify-content:space-between;gap:10px;transition:background .25s,border-color .25s}
+.logo{display:flex;align-items:center;gap:8px;font-weight:800;font-size:14px;color:var(--tx);text-decoration:none}
+.logo-i{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--vi),var(--in));display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
+.topbar-right{display:flex;align-items:center;gap:6px}
+/* ── ICON BUTTON ───────────────────────── */
+.ico-btn{width:34px;height:34px;border-radius:9px;background:transparent;border:1px solid var(--br);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--mu);transition:all .15s;flex-shrink:0}
+.ico-btn:hover{background:var(--s2);color:var(--tx);border-color:var(--br2)}
+.ico-btn.active{background:rgba(99,102,241,.12);border-color:rgba(99,102,241,.35);color:#818cf8}
+/* ── PROGRESS BAR ──────────────────────── */
+.prg-t{height:4px;background:var(--s2);border-radius:99px;overflow:hidden;flex:1}
+.prg-f{height:100%;background:linear-gradient(90deg,var(--vi),#818cf8);border-radius:99px;transition:width .4s ease}
+/* ── CODE BLOCK ────────────────────────── */
+.code{background:#090914;border:1px solid rgba(99,102,241,.12);border-radius:12px;padding:14px 16px;overflow-x:auto;font-size:13px;line-height:1.8;color:#e2e8f0;margin:12px 0;white-space:pre;font-family:'Fira Code','Cascadia Code','JetBrains Mono',Consolas,monospace}
+[data-theme="light"] .code{background:#1e1e2e;color:#cdd6f4}
+/* ── OPTIONS ───────────────────────────── */
+.opts{display:grid;gap:8px;margin-top:14px}
+.opt{display:flex;align-items:center;gap:11px;padding:13px 15px;border-radius:11px;border:1.5px solid var(--br);background:var(--s2);cursor:pointer;transition:all .12s ease;text-align:left;font-size:14px;color:var(--tx);font-weight:500;width:100%;font-family:inherit}
+.opt:hover:not(.dis){border-color:rgba(99,102,241,.45);background:rgba(99,102,241,.07)}
+.opt.sel{border-color:var(--vi);background:rgba(99,102,241,.1)}
+.opt.cor{border-color:var(--gn);background:rgba(34,197,94,.08);color:#4ade80}
+.opt.wrg{border-color:var(--rd);background:rgba(239,68,68,.08);color:#f87171}
+.opt.dis{cursor:default}
+.opt-l{width:26px;height:26px;border-radius:7px;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:var(--br);color:var(--mu);transition:all .12s}
+.opt.cor .opt-l{background:rgba(34,197,94,.2);color:#4ade80}
+.opt.wrg .opt-l{background:rgba(239,68,68,.2);color:#f87171}
+.opt.sel .opt-l{background:rgba(99,102,241,.2);color:#818cf8}
+/* ── EXPLANATION ───────────────────────── */
+.expl{margin-top:12px;padding:13px 15px;border-radius:11px;border:1px solid rgba(99,102,241,.2);background:rgba(99,102,241,.06);font-size:13px;color:var(--mu);line-height:1.68}
+[data-theme="light"] .expl{background:rgba(99,102,241,.07);border-color:rgba(99,102,241,.18)}
+/* ── TIMER RING ────────────────────────── */
+.tmr-w{position:relative;width:50px;height:50px;flex-shrink:0}
+.tmr-s{transform:rotate(-90deg)}
+.tmr-r{fill:none;stroke:var(--s2);stroke-width:4}
+.tmr-a{fill:none;stroke:var(--vi);stroke-width:4;stroke-linecap:round;transition:stroke-dashoffset 1s linear,stroke .3s}
+.tmr-t{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--tx)}
+/* ── STATS GRID ────────────────────────── */
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin:16px 0}
+@media(min-width:480px){.stats{grid-template-columns:repeat(4,1fr)}}
+.stat{background:var(--s2);border:1px solid var(--br);border-radius:13px;padding:13px;text-align:center}
+.stat-v{font-size:21px;font-weight:800;color:var(--tx)}
+.stat-l{font-size:11px;color:var(--mu);margin-top:2px}
+/* ── COUNTDOWN ─────────────────────────── */
+.cd-box{background:var(--s2);border:1px solid rgba(99,102,241,.2);border-radius:14px;padding:14px 18px;text-align:center;margin:14px 0}
+.cd-val{font-size:28px;font-weight:800;font-variant-numeric:tabular-nums;background:linear-gradient(135deg,var(--vi),#818cf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-family:'Fira Code',Consolas,monospace;letter-spacing:.04em}
+.cd-lbl{font-size:11px;color:var(--mu);margin-top:4px}
+/* ── DOTS ──────────────────────────────── */
+.dots{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin:8px 0}
+.dot{width:12px;height:12px;border-radius:50%}
+.d0{background:var(--s2);border:1px solid var(--br)}
+.d1{background:var(--gn);box-shadow:0 0 5px rgba(34,197,94,.45)}
+.d2{background:var(--rd)}
+/* ── LANG GRID ─────────────────────────── */
+.lang-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin:10px 0}
+@media(min-width:440px){.lang-grid{grid-template-columns:repeat(5,1fr)}}
+.lang-btn{padding:9px 5px;border-radius:10px;border:1.5px solid var(--br);background:var(--s2);cursor:pointer;font-size:11px;font-weight:700;color:var(--mu);transition:all .12s;text-align:center;font-family:inherit}
+.lang-btn:hover{border-color:rgba(99,102,241,.4);color:var(--tx)}
+.lang-btn.on{border-color:var(--vi);background:rgba(99,102,241,.12);color:#818cf8}
+/* ── TAGS ──────────────────────────────── */
+.tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:10px}
+.tag{font-size:10px;padding:2px 7px;border-radius:5px;background:var(--s2);color:var(--mu);border:1px solid var(--br)}
+/* ── GRADE ─────────────────────────────── */
+.grade{width:80px;height:80px;border-radius:18px;font-size:28px;font-weight:900;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;background:linear-gradient(135deg,rgba(99,102,241,.15),rgba(79,70,229,.15));border:2px solid rgba(99,102,241,.3);color:var(--tx)}
+/* ── LANG BREAKDOWN ────────────────────── */
+.lb-row{background:var(--s2);border:1px solid var(--br);border-radius:10px;padding:10px 12px;display:flex;align-items:center;gap:10px;transition:background .25s}
+.lb-bar-bg{flex:1;height:5px;background:var(--br);border-radius:99px;overflow:hidden;min-width:60px}
+.lb-bar-fill{height:100%;border-radius:99px;transition:width .5s ease}
+/* ── DOWNLOAD BANNER ───────────────────── */
+.dl-banner{background:linear-gradient(135deg,rgba(99,102,241,.08),rgba(6,182,212,.06));border:1px solid rgba(99,102,241,.2);border-radius:16px;padding:18px 20px;display:flex;flex-direction:column;gap:10px;margin-top:6px}
+@media(min-width:560px){.dl-banner{flex-direction:row;align-items:center;justify-content:space-between}}
+/* ── CONFETTI ──────────────────────────── */
+#cc{position:fixed;inset:0;pointer-events:none;z-index:999}
+/* ── MISC ──────────────────────────────── */
+h1{font-size:clamp(22px,5vw,34px);font-weight:800;letter-spacing:-.03em;line-height:1.15}
+h2{font-size:19px;font-weight:700}
+p{line-height:1.6}
+kbd{font-size:10px;padding:2px 6px;border-radius:4px;background:var(--s2);border:1px solid var(--br);color:var(--mu)}
+.divider{height:1px;background:var(--br);margin:16px 0}
+.fade{animation:fi .28s ease}
+@keyframes fi{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+.pill{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:6px;font-size:11px;background:var(--s2);color:var(--mu);border:1px solid var(--br)}
+</style>
+</head>
+<body>
+<canvas id="cc"></canvas>
+
+<!-- ══════════════════════════════════════════
+     SCREEN: INTRO
+════════════════════════════════════════════ -->
+<div id="s-intro" class="screen active">
+  <div class="topbar">
+    <div class="logo"><div class="logo-i">⚡</div>Coding Quiz Master</div>
+    <div class="topbar-right">
+      <button class="ico-btn active" id="snd-btn" onclick="toggleSound()" title="Toggle sound">🔊</button>
+      <button class="ico-btn" id="thm-btn" onclick="toggleTheme()" title="Toggle theme">🌙</button>
+      <button class="btn btn-p" onclick="downloadMe()" style="padding:7px 14px;font-size:12px" title="Download this file">⬇ Download</button>
+    </div>
+  </div>
+
+  <div class="card card-sm fade" style="text-align:center">
+    <div style="margin-bottom:16px">
+      <span class="badge bv" style="margin-bottom:10px;display:inline-flex">⭐ Daily Challenge</span>
+      <h1 style="margin-bottom:6px">Daily Quiz</h1>
+      <p id="i-date" style="color:var(--mu);font-size:13px;margin-bottom:3px">Sunday, June 14, 2026</p>
+      <p style="color:var(--mu);font-size:13px">10 questions · 9 languages · 90 sec/question</p>
+    </div>
+
+    <!-- Language toggle filter -->
+    <div style="text-align:left;margin-bottom:16px">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+        <p style="font-size:11px;color:var(--mu);font-weight:700;letter-spacing:.05em">LANGUAGE FILTER</p>
+        <button onclick="clearLang()" style="font-size:11px;color:var(--mu);background:none;border:none;cursor:pointer;font-family:inherit;text-decoration:underline">Reset all</button>
+      </div>
+      <div class="lang-grid" id="lang-grid"><button class="lang-btn">C++</button><button class="lang-btn">Go</button><button class="lang-btn">HTML/CSS</button><button class="lang-btn">Java</button><button class="lang-btn">JavaScript</button><button class="lang-btn">Python</button><button class="lang-btn">Rust</button><button class="lang-btn">SQL</button><button class="lang-btn">TypeScript</button></div>
+      <p style="font-size:11px;color:var(--mu2);margin-top:6px">No selection = all 9 languages mixed</p>
+    </div>
+
+    <!-- Previous result -->
+    <div id="prev-wrap" style="display:none;background:rgba(99,102,241,.06);border:1px solid rgba(99,102,241,.15);border-radius:12px;padding:12px 14px;margin-bottom:14px">
+      <p style="font-size:11px;color:var(--mu);font-weight:700;margin-bottom:7px">TODAY'S PREVIOUS RESULT</p>
+      <div class="dots" id="prev-dots"></div>
+      <p id="prev-score" style="font-size:12px;color:var(--mu);margin-top:6px"></p>
+    </div>
+
+    <!-- Countdown -->
+    <div class="cd-box">
+      <div class="cd-val" id="cd-intro">22:31:13</div>
+      <div class="cd-lbl">⏰ New questions refresh in (resets at midnight UTC)</div>
+    </div>
+
+    <button class="btn btn-p" onclick="startQuiz()" style="width:100%;padding:15px;font-size:15px;margin-top:4px">
+      Start Today's Quiz →
+    </button>
+    <p style="margin-top:10px;font-size:11px;color:var(--mu2)">Press <kbd>Enter</kbd> to start</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SCREEN: QUIZ
+════════════════════════════════════════════ -->
+<div id="s-quiz" class="screen">
+  <div class="topbar">
+    <div class="logo"><div class="logo-i">⚡</div><span id="q-header">Q 1 / 10</span></div>
+    <div style="flex:1;margin:0 10px;display:flex;flex-direction:column;gap:3px">
+      <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--mu)">
+        <span id="q-ctr">1 / 10</span><span id="score-live">Score: 0</span>
+      </div>
+      <div class="prg-t"><div class="prg-f" id="prg" style="width:0"></div></div>
+    </div>
+    <div style="display:flex;align-items:center;gap:6px">
+      <div class="tmr-w">
+        <svg class="tmr-s" width="50" height="50" viewBox="0 0 50 50">
+          <circle class="tmr-r" cx="25" cy="25" r="21"></circle>
+          <circle class="tmr-a" id="t-arc" cx="25" cy="25" r="21" stroke-dasharray="131.9" stroke-dashoffset="0"></circle>
+        </svg>
+        <div class="tmr-t" id="t-txt">90</div>
+      </div>
+      <button class="ico-btn active" id="snd-btn2" onclick="toggleSound()" title="Sound">🔊</button>
+      <button class="ico-btn" onclick="toggleTheme()" title="Theme">🌙</button>
+    </div>
+  </div>
+
+  <div class="card fade" id="q-card">
+    <!-- Question meta -->
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:14px;flex-wrap:wrap">
+      <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
+        <span class="badge bb" id="q-type-b"></span>
+        <span class="badge" id="q-diff-b"></span>
+        <span class="pill" id="q-lang-b"></span>
+      </div>
+      <span class="badge ba" id="combo-b" style="display:none">🔥 Combo!</span>
+    </div>
+    <!-- Question text -->
+    <p style="font-size:15px;font-weight:600;line-height:1.55;margin-bottom:4px" id="q-txt"></p>
+    <pre class="code" id="q-code" style="display:none"></pre>
+    <!-- Options -->
+    <div class="opts" id="opts"></div>
+    <!-- Explanation -->
+    <div class="expl" id="expl" style="display:none"></div>
+    <!-- Tags -->
+    <div class="tags" id="q-tags"></div>
+    <!-- Action row -->
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:18px;flex-wrap:wrap;gap:10px">
+      <p style="font-size:11px;color:var(--mu2)"><kbd>1</kbd>–<kbd>4</kbd> pick &nbsp;·&nbsp; <kbd>Enter</kbd> confirm/next</p>
+      <button id="btn-act" class="btn btn-p" onclick="handleAction()" disabled="" style="min-width:118px">Confirm</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SCREEN: RESULTS
+════════════════════════════════════════════ -->
+<div id="s-res" class="screen">
+  <div class="topbar">
+    <div class="logo"><div class="logo-i">⚡</div>Results</div>
+    <div class="topbar-right">
+      <button class="ico-btn" onclick="toggleSound()">🔊</button>
+      <button class="ico-btn" onclick="toggleTheme()">🌙</button>
+    </div>
+  </div>
+
+  <div class="card fade" style="text-align:center">
+    <p style="font-size:12px;color:var(--mu);margin-bottom:10px">📅 <span id="r-date"></span></p>
+    <div class="grade" id="r-grade"></div>
+    <h2 id="r-msg" style="margin-bottom:4px"></h2>
+    <p id="r-sub" style="color:var(--mu);font-size:13px;margin-bottom:14px"></p>
+    <div class="dots" id="r-dots" style="margin-bottom:16px"></div>
+
+    <div class="stats">
+      <div class="stat"><div class="stat-v" id="rs-score"></div><div class="stat-l">Score</div></div>
+      <div class="stat"><div class="stat-v" id="rs-pct"></div><div class="stat-l">Accuracy</div></div>
+      <div class="stat"><div class="stat-v" id="rs-xp"></div><div class="stat-l">XP Earned</div></div>
+      <div class="stat"><div class="stat-v" id="rs-combo"></div><div class="stat-l">Best Combo</div></div>
+    </div>
+
+    <!-- Language breakdown -->
+    <div style="text-align:left;margin:4px 0 14px">
+      <p style="font-size:11px;color:var(--mu);font-weight:700;letter-spacing:.05em;margin-bottom:8px">LANGUAGE BREAKDOWN</p>
+      <div id="lb-grid" style="display:grid;gap:6px"></div>
+    </div>
+
+    <!-- Countdown -->
+    <div class="cd-box" style="margin-bottom:14px">
+      <div class="cd-val" id="cd-res">22:31:13</div>
+      <div class="cd-lbl">⏰ New questions refresh in (resets at midnight UTC)</div>
+    </div>
+
+    <!-- Action buttons -->
+    <div style="display:flex;gap:9px;flex-wrap:wrap;justify-content:center">
+      <button class="btn btn-p" onclick="shareResult()">📤 Share</button>
+      <button class="btn btn-o" onclick="show('s-intro')">🏠 Home</button>
+      <button class="btn btn-g" onclick="showReview()">📖 Review Answers</button>
+    </div>
+
+    <!-- Download banner -->
+    <div class="divider"></div>
+    <div class="dl-banner">
+      <div style="text-align:left">
+        <p style="font-size:13px;font-weight:700;margin-bottom:4px">📥 Download Standalone File</p>
+        <p style="font-size:12px;color:var(--mu)">This whole quiz is a single .html file — upload to GitHub Pages and share with anyone!</p>
+      </div>
+      <button class="btn btn-p" onclick="downloadMe()" style="white-space:nowrap;flex-shrink:0">⬇ Download</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SCREEN: REVIEW
+════════════════════════════════════════════ -->
+<div id="s-review" class="screen">
+  <div class="topbar">
+    <div class="logo"><div class="logo-i">⚡</div>Answer Review</div>
+    <div class="topbar-right">
+      <button class="ico-btn" onclick="toggleSound()">🔊</button>
+      <button class="ico-btn" onclick="toggleTheme()">🌙</button>
+      <button class="btn btn-o" onclick="show('s-res')" style="padding:7px 14px;font-size:12px">← Results</button>
+    </div>
+  </div>
+  <div style="width:100%;max-width:720px">
+    <div id="review-list" style="display:grid;gap:12px"></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     JAVASCRIPT
+════════════════════════════════════════════ -->
+<script>
+// ─────────────────────────────────────────────
+//  QUESTION BANK — 71 questions, 9 languages
+// ─────────────────────────────────────────────
+const Q=[
+// ── JAVASCRIPT (12 questions) ────────────────
+{id:"js01",l:"JavaScript",t:"MCQ",d:"Easy",tags:["typeof"],
+ q:"What does `typeof null` return in JavaScript?",
+ o:['"null"','"undefined"','"object"','"string"'],c:2,xp:10,
+ e:"`typeof null === 'object'` is a historic JS bug (1995). Never fixed to preserve backward compatibility."},
+{id:"js02",l:"JavaScript",t:"MCQ",d:"Medium",tags:["closures","var"],
+ q:"What does this log after the timeouts fire?",
+ code:`for (var i = 0; i < 3; i++) {
+  setTimeout(() => console.log(i), 0);
+}`,
+ o:["0 1 2","3 3 3","0 0 0","ReferenceError"],c:1,xp:20,
+ e:"`var` is function-scoped so all 3 closures share the same `i`. When timeouts fire, the loop is done and `i === 3`."},
+{id:"js03",l:"JavaScript",t:"MCQ",d:"Hard",tags:["event loop","microtasks"],
+ q:"What is the exact output order?",
+ code:`console.log('1');
+setTimeout(() => console.log('2'), 0);
+Promise.resolve().then(() => console.log('3'));
+console.log('4');`,
+ o:["1 2 3 4","1 4 3 2","1 4 2 3","4 1 3 2"],c:1,xp:30,
+ e:"Sync code runs first (1, 4). Then microtasks — Promise → 3. Then macrotasks — setTimeout → 2. Result: 1, 4, 3, 2."},
+{id:"js04",l:"JavaScript",t:"MCQ",d:"Easy",tags:["equality","coercion"],
+ q:"Which operator performs type coercion before comparing?",
+ o:["===","!==","==","Object.is()"],c:2,xp:10,
+ e:"`==` coerces types: `'5' == 5` is `true`. Always prefer `===` (strict equality) to avoid surprises."},
+{id:"js05",l:"JavaScript",t:"MCQ",d:"Medium",tags:["async","promises"],
+ q:"What does `console.log(fn())` print when fn is `async function fn(){ return 42; }`?",
+ o:["42","undefined","Promise { 42 }","Promise { <pending> }"],c:2,xp:20,
+ e:"async functions always return a Promise. `return 42` becomes `Promise.resolve(42)`. You need `await` to get 42."},
+{id:"js06",l:"JavaScript",t:"MCQ",d:"Medium",tags:["destructuring","defaults"],
+ q:"What is the value of `b` after: `const [a, b = 10] = [1];`?",
+ o:["undefined","1","10","null"],c:2,xp:15,
+ e:"Destructuring default values activate when the element is `undefined` or missing. `[1]` has no index-1, so `b = 10`."},
+{id:"js07",l:"JavaScript",t:"MCQ",d:"Hard",tags:["WeakMap","GC"],
+ q:"Main advantage of WeakMap over Map?",
+ o:["Faster lookup","Keys garbage-collected when no other reference exists","Is iterable","Better type safety"],c:1,xp:30,
+ e:"WeakMap holds keys weakly. When no other reference to the key object exists, the GC can reclaim it — preventing memory leaks."},
+{id:"js08",l:"JavaScript",t:"MCQ",d:"Medium",tags:["optional chaining"],
+ q:"What does `user?.profile?.avatar` return if `user` is `undefined`?",
+ o:["TypeError","null","undefined",'"undefined"'],c:2,xp:15,
+ e:"`?.` short-circuits and returns `undefined` instead of throwing a TypeError. Safe navigation for nested objects."},
+{id:"js09",l:"JavaScript",t:"MCQ",d:"Hard",tags:["prototype"],
+ q:"What does `Object.create(null)` produce?",
+ o:["null","An object with no prototype chain","An empty Array","A Proxy"],c:1,xp:25,
+ e:"`Object.create(null)` makes an object with no prototype at all — no `toString`, no `hasOwnProperty`. A clean dictionary."},
+{id:"js10",l:"JavaScript",t:"MCQ",d:"Medium",tags:["generators"],
+ q:"What syntax creates a generator function?",
+ o:["async function","function yield","function*","gen function"],c:2,xp:20,
+ e:"`function*` creates a generator. `yield` pauses it and returns a value; `next()` resumes from where it paused."},
+{id:"js11",l:"JavaScript",t:"MCQ",d:"Easy",tags:["arrays","mutation"],
+ q:"Which array method does NOT mutate the original array?",
+ o:["push()","splice()","map()","sort()"],c:2,xp:10,
+ e:"`map()` returns a new array and never touches the original. `push`, `splice`, and `sort` all mutate in-place."},
+{id:"js12",l:"JavaScript",t:"MCQ",d:"Hard",tags:["Symbol.iterator","protocols"],
+ q:"What does defining `Symbol.iterator` on an object enable?",
+ o:["Overloading comparison","Custom for...of iteration","Property hiding","Constructor logic"],c:1,xp:30,
+ e:"`Symbol.iterator` makes any object work in for...of, spread syntax, destructuring, and Array.from()."},
+
+// ── PYTHON (8 questions) ─────────────────────
+{id:"py01",l:"Python",t:"MCQ",d:"Medium",tags:["mutable defaults","gotcha"],
+ q:"What does calling `add(1)` then `add(2)` print?",
+ code:`def add(x, lst=[]):
+    lst.append(x)
+    return lst`,
+ o:["[1] then [2]","[1] then [1, 2]","Error","[1, 2] both times"],c:1,xp:20,
+ e:"Mutable default arguments are evaluated ONCE at definition. The same list object is reused every call!"},
+{id:"py02",l:"Python",t:"MCQ",d:"Easy",tags:["generators","yield"],
+ q:"What keyword turns a Python function into a generator?",
+ o:["return","yield","async","iter"],c:1,xp:10,
+ e:"`yield` pauses execution and emits a value. The next `next()` call resumes from right after the `yield`."},
+{id:"py03",l:"Python",t:"MCQ",d:"Hard",tags:["GIL","threading","performance"],
+ q:"The GIL most severely limits which workload type?",
+ o:["I/O-bound async code","CPU-bound multi-threaded code","Single-threaded scripts","asyncio coroutines"],c:1,xp:30,
+ e:"GIL prevents simultaneous bytecode execution. I/O-bound code releases the GIL during waits (less affected). CPU threads can't truly run in parallel."},
+{id:"py04",l:"Python",t:"MCQ",d:"Easy",tags:["comprehensions"],
+ q:"Result of: `[x**2 for x in range(5) if x % 2 == 0]`?",
+ o:["[0,1,4,9,16]","[0,4,16]","[1,9,25]","[0,2,4]"],c:1,xp:10,
+ e:"Even numbers in range(5) are 0, 2, 4. Squared: [0, 4, 16]."},
+{id:"py05",l:"Python",t:"MCQ",d:"Medium",tags:["decorators"],
+ q:"What does placing `@my_decorator` above a function do?",
+ o:["Comments it out","Executes `fn = my_decorator(fn)`","Makes it async","Marks it for export"],c:1,xp:15,
+ e:"`@decorator` is sugar for `fn = decorator(fn)`. The decorator wraps or transforms the function."},
+{id:"py06",l:"Python",t:"MCQ",d:"Medium",tags:["walrus",":= operator"],
+ q:"What does the walrus operator `:=` do in Python 3.8+?",
+ o:["Strict equality check","Assigns AND returns a value in one expression","Merges dicts","Creates a generator"],c:1,xp:15,
+ e:"`:=` assigns a variable and evaluates to its value — useful in while loops and comprehension filters."},
+{id:"py07",l:"Python",t:"MCQ",d:"Hard",tags:["metaclass","class system"],
+ q:"What is a metaclass in Python?",
+ o:["A class that can't be instantiated","The class of a class","A built-in base class","An abstract class"],c:1,xp:30,
+ e:"Metaclasses control class creation. `class Foo:` calls the metaclass (default: `type`) to build the Foo object."},
+{id:"py08",l:"Python",t:"MCQ",d:"Medium",tags:["dataclasses"],
+ q:"What does `@dataclass` auto-generate for a class?",
+ o:["DB schema","__init__, __repr__, __eq__ from annotations","REST endpoints","Async methods"],c:1,xp:20,
+ e:"`@dataclass` generates `__init__`, `__repr__`, and `__eq__` automatically from annotated class fields."},
+
+// ── TYPESCRIPT (6 questions) ─────────────────
+{id:"ts01",l:"TypeScript",t:"MCQ",d:"Medium",tags:["generics","constraints"],
+ q:"What does `extends` do inside a generic type parameter?",
+ code:`function len<T extends { length: number }>(a: T): number {
+  return a.length;
+}`,
+ o:["Class inheritance","Constrains T to types that have a length property","Makes T optional","Creates a union"],c:1,xp:20,
+ e:"In generics, `extends` is a constraint: T must have that shape. Not the same as class inheritance."},
+{id:"ts02",l:"TypeScript",t:"MCQ",d:"Hard",tags:["utility types","Partial","Required"],
+ q:"Difference between `Partial<T>` and `Required<T>`?",
+ o:["Partial makes all props optional; Required makes all mandatory","Identical","Partial is array-only","Required removes props"],c:0,xp:25,
+ e:"`Partial<T>` adds `?` to every prop. `Required<T>` removes `?` from every prop. Both are built-in mapped utilities."},
+{id:"ts03",l:"TypeScript",t:"MCQ",d:"Medium",tags:["interface","type","declaration merging"],
+ q:"Key difference between `interface` and `type` alias?",
+ o:["No practical difference","Interfaces support declaration merging; type aliases cannot be reopened","Types only for primitives","Interfaces can't have methods"],c:1,xp:20,
+ e:"You can declare the same `interface` twice and TS merges them. `type` aliases are sealed — cannot be reopened."},
+{id:"ts04",l:"TypeScript",t:"MCQ",d:"Hard",tags:["conditional types"],
+ q:"What does `type IsStr<T> = T extends string ? 'yes' : 'no'` resolve to for T = string?",
+ o:['"no"','"yes"','boolean','never'],c:1,xp:30,
+ e:"Conditional types: `string extends string` → true → `'yes'`. Like a ternary operator but for types."},
+{id:"ts05",l:"TypeScript",t:"MCQ",d:"Medium",tags:["const enum"],
+ q:"Advantage of `const enum` over regular `enum`?",
+ o:["No difference","Values are inlined at compile time — no runtime object emitted","Better runtime type safety","String keys only"],c:1,xp:20,
+ e:"`const enum` replaces usages with literal values at compile time. Regular enums emit a JS object → larger bundle."},
+{id:"ts06",l:"TypeScript",t:"MCQ",d:"Medium",tags:["discriminated unions","narrowing"],
+ q:"Which pattern uses a shared literal field to narrow a union?",
+ o:["Template literal types","Discriminated unions","Mapped types","Index signatures"],c:1,xp:20,
+ e:"Discriminated unions share a literal field like `kind` or `type`. TypeScript narrows automatically in switch/if."},
+
+// ── JAVA (8 questions) ───────────────────────
+{id:"ja01",l:"Java",t:"MCQ",d:"Easy",tags:["autoboxing","wrappers"],
+ q:"What is autoboxing in Java?",
+ o:["A design pattern","Automatic conversion between primitives and wrapper types","Garbage collection","A build tool"],c:1,xp:10,
+ e:"Autoboxing: `int` ↔ `Integer`, `double` ↔ `Double`, etc. Happens automatically — enables primitives in collections."},
+{id:"ja02",l:"Java",t:"MCQ",d:"Medium",tags:["equals","hashCode"],
+ q:"If you override `equals()`, what MUST you also override?",
+ o:["toString()","compareTo()","hashCode()","clone()"],c:2,xp:20,
+ e:"Contract: equal objects must have equal hashCodes. Breaking this breaks HashMap, HashSet, and LinkedHashMap lookups."},
+{id:"ja03",l:"Java",t:"MCQ",d:"Hard",tags:["volatile","concurrency","visibility"],
+ q:"What does the `volatile` keyword guarantee in Java?",
+ o:["Mutual exclusion","Visibility — writes immediately visible to all threads","The value is constant","Atomic compound operations"],c:1,xp:30,
+ e:"`volatile` guarantees visibility (no caching in registers). Does NOT make compound ops like `i++` atomic."},
+{id:"ja04",l:"Java",t:"MCQ",d:"Easy",tags:["interfaces","default methods"],
+ q:"What did Java 8 add to interfaces that earlier versions lacked?",
+ o:["Instance fields","Constructors","Default method bodies","Static initializers"],c:2,xp:10,
+ e:"`default` methods allow interface method bodies. Enabled backwards-compatible evolution of Java's standard APIs."},
+{id:"ja05",l:"Java",t:"MCQ",d:"Medium",tags:["streams","lazy"],
+ q:"What does `Stream.filter()` return?",
+ o:["void","A new Stream with matching elements","A List","boolean"],c:1,xp:15,
+ e:"`filter()` is a lazy intermediate op returning a new Stream. Nothing executes until a terminal op (collect, count…) is called."},
+{id:"ja06",l:"Java",t:"MCQ",d:"Hard",tags:["generics","wildcards"],
+ q:"What does `List<? extends Number>` mean?",
+ o:["Only List<Number>","List of Number or any subtype; you cannot add to it","List of any type","Supertypes of Number"],c:1,xp:25,
+ e:"Upper-bounded wildcard: accepts List<Integer>, List<Double>, etc. You can READ as Number but cannot ADD (except null)."},
+{id:"ja07",l:"Java",t:"MCQ",d:"Medium",tags:["final"],
+ q:"What does `final` guarantee when applied to a variable?",
+ o:["Makes it private","Prevents reassignment of the reference","Makes it static","Thread-safety"],c:1,xp:15,
+ e:"`final` prevents reassignment. For objects, the reference is fixed — but the object's state can still change."},
+{id:"ja08",l:"Java",t:"MCQ",d:"Hard",tags:["Optional","null"],
+ q:"What problem is `Optional<T>` designed to address?",
+ o:["Slow generics","NullPointerExceptions from null returns","Checked exceptions","Abstract classes"],c:1,xp:25,
+ e:"`Optional<T>` explicitly models 'value may be absent' — a better alternative to returning null from methods."},
+
+// ── C++ (7 questions) ────────────────────────
+{id:"cp01",l:"C++",t:"MCQ",d:"Easy",tags:["pointers","references"],
+ q:"Key difference between a pointer and a reference in C++?",
+ o:["No difference","References can't be null and can't be reseated after init","Pointers are type-safe","References use * syntax"],c:1,xp:15,
+ e:"References are aliases: must be initialized, can't be null, can't rebind. Pointers can be null, reassigned, and support arithmetic."},
+{id:"cp02",l:"C++",t:"MCQ",d:"Medium",tags:["unique_ptr","RAII"],
+ q:"What does `std::unique_ptr` guarantee?",
+ o:["Shared ownership","Exclusive ownership — auto-deleted when out of scope","Thread safety","No heap allocation"],c:1,xp:20,
+ e:"RAII with exclusive ownership. Resource is freed when the pointer leaves scope. Cannot copy, only move."},
+{id:"cp03",l:"C++",t:"MCQ",d:"Hard",tags:["undefined behavior","safety"],
+ q:"Reading from an uninitialized variable in C++ is:",
+ o:["Always 0","A random value","Undefined behavior","A compile error"],c:2,xp:30,
+ e:"UB: the compiler assumes it can't happen and optimizes accordingly — leading to completely unpredictable bugs."},
+{id:"cp04",l:"C++",t:"MCQ",d:"Medium",tags:["move semantics","std::move"],
+ q:"What does `std::move()` actually do?",
+ o:["Moves data in memory","Casts to rvalue reference — enables move semantics","Destroys the original","Allocates memory"],c:1,xp:25,
+ e:"`std::move` is just a cast to `T&&`. It signals the value's resources are safe to steal — move happens in the constructor."},
+{id:"cp05",l:"C++",t:"MCQ",d:"Easy",tags:["virtual","polymorphism"],
+ q:"What keyword enables runtime polymorphism for a method?",
+ o:["static","inline","virtual","override"],c:2,xp:10,
+ e:"`virtual` triggers dynamic dispatch via vtable. The actual method is resolved at runtime based on the object's real type."},
+{id:"cp06",l:"C++",t:"MCQ",d:"Hard",tags:["templates","specialization"],
+ q:"What is template specialization?",
+ o:["Renaming a template","Providing a custom implementation for a specific type","Making a template abstract","Template inheritance"],c:1,xp:30,
+ e:"Template specialization overrides the generic template for a specific type. Partial specialization covers a category of types."},
+{id:"cp07",l:"C++",t:"MCQ",d:"Medium",tags:["const","member functions"],
+ q:"What does `int get() const` (const after function name) mean?",
+ o:["Returns a constant","The function doesn't modify any member variables","The function is inline","The function is static"],c:1,xp:20,
+ e:"const member functions guarantee they won't change the object's state. Only const methods can be called on const objects."},
+
+// ── GO (8 questions) ─────────────────────────
+{id:"go01",l:"Go",t:"MCQ",d:"Easy",tags:["goroutines"],
+ q:"What is a goroutine?",
+ o:["A regular function","A lightweight concurrent function managed by the Go runtime","A global variable","A type alias"],c:1,xp:10,
+ e:"Goroutines start at ~2 KB (vs ~1 MB for OS threads) and are multiplexed onto OS threads by Go's runtime scheduler."},
+{id:"go02",l:"Go",t:"MCQ",d:"Medium",tags:["channels","CSP"],
+ q:"Primary purpose of channels in Go?",
+ o:["File I/O","Communication and synchronization between goroutines","Memory allocation","Error wrapping"],c:1,xp:20,
+ e:"'Do not communicate by sharing memory; share memory by communicating.' Channels are typed, synchronized goroutine pipes."},
+{id:"go03",l:"Go",t:"MCQ",d:"Hard",tags:["interfaces","duck typing"],
+ q:"How does Go satisfy interfaces?",
+ o:["Explicit `implements` keyword","Implicitly — any type with matching methods satisfies it","Class inheritance","Build tags"],c:1,xp:25,
+ e:"Structural (duck) typing: if your type has the methods, it satisfies the interface — no declaration needed."},
+{id:"go04",l:"Go",t:"MCQ",d:"Medium",tags:["defer","cleanup"],
+ q:"When does a `defer`'d function execute?",
+ o:["Immediately","At the next iteration","When the surrounding function returns","At program exit"],c:2,xp:15,
+ e:"`defer` pushes onto a LIFO stack. All deferred calls run when the enclosing function returns — perfect for cleanup."},
+{id:"go05",l:"Go",t:"MCQ",d:"Easy",tags:["errors","idiomatic"],
+ q:"Idiomatic Go error handling?",
+ o:["try/catch blocks","Return error as last value, check if err != nil","panic() for all errors","Exception types"],c:1,xp:10,
+ e:"Go errors are values. Convention: `result, err := fn(); if err != nil { ... }`. Explicit, no hidden control flow."},
+{id:"go06",l:"Go",t:"MCQ",d:"Hard",tags:["select","fairness"],
+ q:"When multiple `select` cases are ready simultaneously, Go:",
+ o:["Always picks the first","Panics","Picks one uniformly at random","Blocks"],c:2,xp:30,
+ e:"Go's `select` picks a ready case **at random** when multiple are available. This prevents goroutine starvation."},
+{id:"go07",l:"Go",t:"MCQ",d:"Medium",tags:["slice","append","capacity"],
+ q:"When does `append` allocate a new backing array?",
+ o:["Every time","When length exceeds capacity","Only on first append","Never"],c:1,xp:20,
+ e:"Slices have len and cap. `append` reuses spare cap. When `len == cap`, Go allocates a new larger array and copies — O(1) amortized."},
+{id:"go08",l:"Go",t:"MCQ",d:"Hard",tags:["context","cancellation"],
+ q:"Idiomatic way to cancel a long-running goroutine externally?",
+ o:["Kill the OS process","context.Context cancellation + check ctx.Done()","Modify a global variable","time.Sleep"],c:1,xp:30,
+ e:"`context.Context` propagates cancellation. Pass ctx to goroutines; check `ctx.Done()` in loops/blocking calls."},
+
+// ── RUST (7 questions) ───────────────────────
+{id:"rs01",l:"Rust",t:"MCQ",d:"Medium",tags:["ownership","move semantics"],
+ q:"After `let s2 = s1;` where s1 is a String — what happens to s1?",
+ code:`let s1 = String::from("hello");
+let s2 = s1;
+// println!("{}", s1); // ??`,
+ o:["s1 is copied","s1 is moved — using it is a compile-time error","Both remain valid","s1 is auto-cloned"],c:1,xp:20,
+ e:"Rust moves ownership. After the move, `s1` is invalid. This prevents double-free bugs at compile time — zero runtime cost."},
+{id:"rs02",l:"Rust",t:"MCQ",d:"Hard",tags:["lifetimes","borrow checker"],
+ q:"What do lifetime annotations (`'a`) do in Rust?",
+ o:["Measure execution time","Tell the borrow checker how long references live relative to each other","Allocate heap memory","Mark async code"],c:1,xp:30,
+ e:"Lifetimes are compile-time-only annotations. They prove references don't outlive the data they point to — zero runtime overhead."},
+{id:"rs03",l:"Rust",t:"MCQ",d:"Easy",tags:["Option","null safety"],
+ q:"What does `Option<T>` represent?",
+ o:["A collection","A value that may or may not be present (Some or None)","An error type","A thread handle"],c:1,xp:10,
+ e:"`Option<T>` replaces null. `Some(T)` holds a value; `None` means absent. Compiler forces you to handle both cases."},
+{id:"rs04",l:"Rust",t:"MCQ",d:"Medium",tags:["borrowing","exclusivity"],
+ q:"How many mutable references to a value can exist simultaneously in Rust?",
+ o:["Unlimited","Two","Exactly one","Zero"],c:2,xp:20,
+ e:"Borrow rule: ONE mutable OR any number of immutable references — never both at once. Eliminates data races at compile time."},
+{id:"rs05",l:"Rust",t:"MCQ",d:"Hard",tags:["dyn Trait","vtable"],
+ q:"What is a `dyn Trait` (trait object) used for?",
+ o:["Compile-time monomorphization","Dynamic dispatch — type resolved at runtime via vtable","Memory management","Importing traits"],c:1,xp:25,
+ e:"`dyn Trait` enables runtime polymorphism via vtable. Unlike generics (monomorphized), trait objects handle heterogeneous types with a small perf cost."},
+{id:"rs06",l:"Rust",t:"MCQ",d:"Medium",tags:["match","exhaustive"],
+ q:"Rust's `match` expression requires:",
+ o:["At least one arm","Exactly three arms","All possible patterns to be handled (exhaustive)","A default arm always"],c:2,xp:20,
+ e:"Rust's `match` is exhaustive — every value must be handled. Use `_` as a catch-all. Prevents missed edge cases at compile time."},
+{id:"rs07",l:"Rust",t:"MCQ",d:"Hard",tags:["Send","Sync","thread safety"],
+ q:"Which trait marks a type as safe to transfer to another thread?",
+ o:["Copy","Clone","Send","Sync"],c:2,xp:30,
+ e:"`Send`: ownership can move between threads. `Sync`: shared references are safe across threads. Both are auto-derived and compile-time checked."},
+
+// ── SQL (8 questions) ────────────────────────
+{id:"sq01",l:"SQL",t:"MCQ",d:"Easy",tags:["joins","LEFT JOIN"],
+ q:"Which JOIN returns all rows from the left table, NULLs for unmatched right rows?",
+ o:["INNER JOIN","RIGHT JOIN","LEFT JOIN","FULL OUTER JOIN"],c:2,xp:10,
+ e:"LEFT JOIN: ALL rows from left + matching from right. Non-matching right rows become NULL."},
+{id:"sq02",l:"SQL",t:"MCQ",d:"Medium",tags:["window functions","ROW_NUMBER"],
+ q:"What does `ROW_NUMBER() OVER (ORDER BY salary DESC)` return?",
+ o:["Total row count","A unique sequential integer per row (1,2,3...)","Duplicate ranks for ties","The salary itself"],c:1,xp:20,
+ e:"`ROW_NUMBER()` assigns 1,2,3... with no ties or gaps. `RANK()` skips numbers for ties; `DENSE_RANK()` doesn't skip."},
+{id:"sq03",l:"SQL",t:"MCQ",d:"Hard",tags:["indexes","write performance"],
+ q:"When can an index SLOW DOWN performance?",
+ o:["SELECT on large tables","High-cardinality filter columns","Heavy INSERT/UPDATE/DELETE","Columns in WHERE clause"],c:2,xp:30,
+ e:"Every write must update all indexes on the table. Heavy-write / rare-read tables can perform worse with indexes."},
+{id:"sq04",l:"SQL",t:"MCQ",d:"Medium",tags:["WHERE","HAVING","GROUP BY"],
+ q:"What is the difference between WHERE and HAVING?",
+ o:["No difference","WHERE filters before grouping; HAVING filters after aggregation","WHERE only for numbers","HAVING works on raw rows"],c:1,xp:20,
+ e:"WHERE filters raw rows BEFORE grouping. HAVING filters groups AFTER aggregation. Aggregate functions only work in HAVING."},
+{id:"sq05",l:"SQL",t:"MCQ",d:"Easy",tags:["NULL","three-valued logic"],
+ q:"What does `NULL = NULL` evaluate to in SQL?",
+ o:["TRUE","FALSE","NULL","1"],c:2,xp:10,
+ e:"NULL means 'unknown'. `NULL = NULL` is NULL — not TRUE. Use `IS NULL` to check for null values."},
+{id:"sq06",l:"SQL",t:"MCQ",d:"Hard",tags:["CTE","WITH","recursive"],
+ q:"What is a CTE (Common Table Expression)?",
+ o:["A type of index","A named temporary result set defined with WITH","A stored procedure","A trigger"],c:1,xp:25,
+ e:"CTEs (`WITH name AS (...)`) create named reusable subqueries. Recursive CTEs can traverse trees and hierarchical data."},
+{id:"sq07",l:"SQL",t:"MCQ",d:"Medium",tags:["ACID","transactions"],
+ q:"What does the 'I' in ACID stand for?",
+ o:["Integration","Isolation","Immutability","Indexing"],c:1,xp:15,
+ e:"ACID: Atomicity, Consistency, **Isolation**, Durability. Isolation ensures concurrent transactions don't see each other's partial changes."},
+{id:"sq08",l:"SQL",t:"MCQ",d:"Hard",tags:["EXPLAIN","query plan"],
+ q:"What does the `EXPLAIN` command do in SQL?",
+ o:["Safely deletes data","Shows the query execution plan (indexes, costs, join types)","Documents the schema","Auto-optimizes the query"],c:1,xp:25,
+ e:"`EXPLAIN` reveals the query planner's decisions — what indexes it uses, join strategies, estimated costs. Essential for optimization."},
+
+// ── HTML/CSS (7 questions) ───────────────────
+{id:"cs01",l:"HTML/CSS",t:"MCQ",d:"Easy",tags:["specificity","cascade"],
+ q:"Which selector has the highest CSS specificity?",
+ o:["div p {}",".container {}","#header {}","* {}"],c:2,xp:10,
+ e:"Specificity: ID (0,1,0,0) > class (0,0,1,0) > element (0,0,0,1) > universal (0,0,0,0). Inline styles beat all."},
+{id:"cs02",l:"HTML/CSS",t:"MCQ",d:"Medium",tags:["flexbox","space-between"],
+ q:"What does `justify-content: space-between` do?",
+ o:["Centers all items","First/last at edges, equal space between","Equal margins around each item","Stretches items"],c:1,xp:15,
+ e:"space-between: first item flush start, last flush end, equal gaps between. space-around adds equal margin on both sides."},
+{id:"cs03",l:"HTML/CSS",t:"MCQ",d:"Hard",tags:["CSS Grid","auto-fill","minmax"],
+ q:"What does `repeat(auto-fill, minmax(200px, 1fr))` create?",
+ o:["Exactly 3 columns","As many 200px+ columns as fit, growing to fill","A single flexible column","Columns only when content exists"],c:1,xp:25,
+ e:"`auto-fill + minmax` = responsive grid with no media queries. As many columns as fit, each at least 200px, growing proportionally."},
+{id:"cs04",l:"HTML/CSS",t:"MCQ",d:"Medium",tags:["box model","border-box"],
+ q:"With `box-sizing: border-box`, `width: 300px` includes:",
+ o:["Only content","Content + padding","Content + padding + border","Content + padding + border + margin"],c:2,xp:15,
+ e:"`border-box` width = content + padding + border. Margin is NEVER included in width/height. Most developers prefer this model."},
+{id:"cs05",l:"HTML/CSS",t:"MCQ",d:"Easy",tags:["position","absolute"],
+ q:"An element with `position: absolute` is positioned relative to:",
+ o:["Viewport always","Nearest positioned ancestor (not static)","Document body","Its sibling element"],c:1,xp:10,
+ e:"Absolute positioning uses the nearest ancestor with `position` set to anything other than `static`. If none exists, uses the initial containing block."},
+{id:"cs06",l:"HTML/CSS",t:"MCQ",d:"Hard",tags:["stacking context","opacity"],
+ q:"Which CSS property automatically creates a new stacking context?",
+ o:["display: block","z-index: 0 on any element","opacity: 0.99","margin: auto"],c:2,xp:25,
+ e:"`opacity < 1` creates a stacking context. Others: transform, filter, will-change, isolation: isolate, position + z-index (non-auto)."},
+{id:"cs07",l:"HTML/CSS",t:"MCQ",d:"Medium",tags:["pseudo-class","pseudo-element"],
+ q:"Difference between `:hover` and `::before`?",
+ o:["Same thing","`:hover` is a pseudo-class (state); `::before` is a pseudo-element (virtual element)","`:hover` is CSS4","Double colon is for class selectors"],c:1,xp:15,
+ e:"Pseudo-classes (`:hover`, `:focus`) target state. Pseudo-elements (`::before`, `::after`) create virtual DOM elements."},
+];
+
+// ─────────────────────────────────────────────
+//  CONSTANTS & STATE
+// ─────────────────────────────────────────────
+const LANGS=[...new Set(Q.map(q=>q.l))].sort();
+const CIRC=131.9; // 2πr for r=21
+
+let ST={
+  qs:[],curQ:0,score:0,combo:0,maxCombo:0,xp:0,
+  answered:false,selected:null,answers:[],answerMap:{},
+  timerSec:90,timerInt:null,
+  soundOn: localStorage.getItem('cqm_snd')!=='false',
+  langFilter: safeParseJSON(localStorage.getItem('cqm_lang'),[]),
+  theme: localStorage.getItem('cqm_thm')||'dark',
+};
+
+function safeParseJSON(str,fallback){try{return JSON.parse(str)||fallback;}catch{return fallback;}}
+
+// ─────────────────────────────────────────────
+//  THEME TOGGLE (dark ↔ light)
+// ─────────────────────────────────────────────
+function applyTheme(t){
+  document.documentElement.setAttribute('data-theme',t);
+  const icon=t==='dark'?'🌙':'☀️';
+  document.querySelectorAll('#thm-btn,[onclick="toggleTheme()"]').forEach(b=>b.textContent=icon);
+}
+function toggleTheme(){
+  ST.theme=ST.theme==='dark'?'light':'dark';
+  localStorage.setItem('cqm_thm',ST.theme);
+  applyTheme(ST.theme);
+}
+
+// ─────────────────────────────────────────────
+//  SEEDED DAILY ROTATION
+//  Seed = YYYYMMDD UTC → changes every midnight
+// ─────────────────────────────────────────────
+function todaySeed(){
+  const d=new Date();
+  return d.getUTCFullYear()*10000+(d.getUTCMonth()+1)*100+d.getUTCDate();
+}
+function mkRng(seed){
+  let s=seed>>>0;
+  return()=>{s=(s*1664525+1013904223)>>>0;return s/0x100000000;};
+}
+function shuffled(arr,seed){
+  const a=[...arr],rng=mkRng(seed);
+  for(let i=a.length-1;i>0;i--){
+    const j=Math.floor(rng()*(i+1));
+    [a[i],a[j]]=[a[j],a[i]];
+  }
+  return a;
+}
+function todayStr(){
+  return new Date().toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+}
+
+// ─────────────────────────────────────────────
+//  COUNTDOWN — updates every second
+//  Auto-reloads page at midnight UTC
+// ─────────────────────────────────────────────
+function msUntilMidnight(){
+  const now=Date.now(),m=new Date();m.setUTCHours(24,0,0,0);
+  return Math.max(0,m.getTime()-now);
+}
+function fmtMs(ms){
+  const s=Math.floor(ms/1000),h=Math.floor(s/3600),m=Math.floor((s%3600)/60),sc=s%60;
+  return`${p2(h)}:${p2(m)}:${p2(sc)}`;
+}
+function p2(n){return String(n).padStart(2,'0');}
+
+let cdInt=null;
+function startCountdown(){
+  function tick(){
+    const ms=msUntilMidnight(),txt=fmtMs(ms);
+    document.querySelectorAll('.cd-val').forEach(el=>el.textContent=txt);
+    if(ms===0){
+      clearInterval(cdInt);
+      document.querySelectorAll('.cd-lbl').forEach(el=>el.textContent='🎉 New questions ready! Refreshing…');
+      setTimeout(()=>location.reload(),1800);
+    }
+  }
+  tick();cdInt=setInterval(tick,1000);
+  setTimeout(()=>location.reload(),msUntilMidnight()+2000); // hard reload fallback
+}
+
+// ─────────────────────────────────────────────
+//  SOUND (Web Audio API — zero files needed)
+// ─────────────────────────────────────────────
+let _ac=null;
+function ac(){if(!_ac)_ac=new(window.AudioContext||window.webkitAudioContext)();return _ac;}
+function snd(type){
+  if(!ST.soundOn)return;
+  try{
+    const ctx=ac(),t=ctx.currentTime;
+    if(type==='ok'){
+      [[523,0],[659,.12],[784,.24]].forEach(([f,d])=>{
+        const o=ctx.createOscillator(),g=ctx.createGain();o.connect(g);g.connect(ctx.destination);
+        o.frequency.value=f;g.gain.setValueAtTime(.22,t+d);g.gain.exponentialRampToValueAtTime(.001,t+d+.25);
+        o.start(t+d);o.stop(t+d+.25);
+      });
+    }else if(type==='ng'){
+      const o=ctx.createOscillator(),g=ctx.createGain();o.type='sawtooth';o.connect(g);g.connect(ctx.destination);
+      o.frequency.setValueAtTime(300,t);o.frequency.exponentialRampToValueAtTime(100,t+.35);
+      g.gain.setValueAtTime(.14,t);g.gain.exponentialRampToValueAtTime(.001,t+.35);
+      o.start();o.stop(t+.35);
+    }else if(type==='win'){
+      [523,659,784,1047].forEach((f,i)=>{
+        const o=ctx.createOscillator(),g=ctx.createGain();o.connect(g);g.connect(ctx.destination);
+        o.frequency.value=f;g.gain.setValueAtTime(.2,t+i*.13);g.gain.exponentialRampToValueAtTime(.001,t+i*.13+.22);
+        o.start(t+i*.13);o.stop(t+i*.13+.22);
+      });
+    }else if(type==='tick'){
+      const o=ctx.createOscillator(),g=ctx.createGain();o.connect(g);g.connect(ctx.destination);
+      o.frequency.value=900;g.gain.setValueAtTime(.04,t);g.gain.exponentialRampToValueAtTime(.001,t+.04);
+      o.start();o.stop(t+.04);
+    }
+  }catch(_){}
+}
+function toggleSound(){
+  ST.soundOn=!ST.soundOn;
+  localStorage.setItem('cqm_snd',String(ST.soundOn));
+  syncSndIcons();
+}
+function syncSndIcons(){
+  const icon=ST.soundOn?'🔊':'🔇';
+  document.querySelectorAll('#snd-btn,#snd-btn2').forEach(b=>b.textContent=icon);
+  // highlight active state
+  document.querySelectorAll('#snd-btn,#snd-btn2').forEach(b=>b.classList.toggle('active',ST.soundOn));
+}
+
+// ─────────────────────────────────────────────
+//  CONFETTI
+// ─────────────────────────────────────────────
+const cvs=document.getElementById('cc'),ctx2=cvs.getContext('2d');
+const PCOLS=['#6366f1','#818cf8','#c7d2fe','#34d399','#38bdf8','#fbbf24','#f472b6','#fb923c'];
+let parts=[],animId=null;
+function confetti(n=200){
+  cvs.width=innerWidth;cvs.height=innerHeight;
+  parts=Array.from({length:n},()=>({
+    x:Math.random()*cvs.width,y:-10-Math.random()*100,
+    vx:(Math.random()-.5)*5,vy:Math.random()*3+2,
+    col:PCOLS[Math.floor(Math.random()*PCOLS.length)],
+    sz:Math.random()*7+3,rot:Math.random()*360,dr:(Math.random()-.5)*8,
+  }));
+  if(animId)cancelAnimationFrame(animId);
+  (function loop(){
+    ctx2.clearRect(0,0,cvs.width,cvs.height);
+    parts.forEach(p=>{
+      p.x+=p.vx;p.y+=p.vy;p.vy+=.06;p.rot+=p.dr;
+      ctx2.save();ctx2.translate(p.x,p.y);ctx2.rotate(p.rot*Math.PI/180);
+      ctx2.fillStyle=p.col;ctx2.fillRect(-p.sz/2,-p.sz/4,p.sz,p.sz/2);
+      ctx2.restore();
+    });
+    parts=parts.filter(p=>p.y<cvs.height+20);
+    if(parts.length)animId=requestAnimationFrame(loop);else ctx2.clearRect(0,0,cvs.width,cvs.height);
+  })();
+  setTimeout(()=>{parts=[];ctx2.clearRect(0,0,cvs.width,cvs.height);},5500);
+}
+
+// ─────────────────────────────────────────────
+//  TIMER RING
+// ─────────────────────────────────────────────
+function startTimer(){
+  ST.timerSec=90;renderTimer();
+  ST.timerInt=setInterval(()=>{
+    ST.timerSec--;
+    if(ST.timerSec<=10)snd('tick');
+    renderTimer();
+    if(ST.timerSec<=0){clearInterval(ST.timerInt);timeUp();}
+  },1000);
+}
+function renderTimer(){
+  const arc=document.getElementById('t-arc'),txt=document.getElementById('t-txt');
+  if(!arc||!txt)return;
+  arc.style.strokeDashoffset=CIRC*(1-ST.timerSec/90);
+  arc.style.stroke=ST.timerSec<=10?'#ef4444':ST.timerSec<=20?'#f59e0b':'#6366f1';
+  txt.textContent=ST.timerSec;
+  txt.style.color=ST.timerSec<=10?'#ef4444':'';
+}
+function timeUp(){
+  if(ST.answered)return;
+  ST.answered=true;ST.answers.push(false);
+  if(ST.combo>ST.maxCombo)ST.maxCombo=ST.combo;ST.combo=0;
+  markOpts(ST.qs[ST.curQ],-1);
+  showExpl('⏰ Time up! '+ST.qs[ST.curQ].e);
+  setBtn(ST.curQ<ST.qs.length-1?'Next →':'See Results →');
+}
+
+// ─────────────────────────────────────────────
+//  LANGUAGE FILTER
+// ─────────────────────────────────────────────
+function buildLangGrid(){
+  const g=document.getElementById('lang-grid');g.innerHTML='';
+  LANGS.forEach(l=>{
+    const b=document.createElement('button');
+    b.className='lang-btn'+(ST.langFilter.includes(l)?' on':'');
+    b.textContent=l;
+    b.onclick=()=>{
+      const i=ST.langFilter.indexOf(l);
+      if(i<0){ST.langFilter.push(l);b.classList.add('on');}
+      else{ST.langFilter.splice(i,1);b.classList.remove('on');}
+      localStorage.setItem('cqm_lang',JSON.stringify(ST.langFilter));
+    };
+    g.appendChild(b);
+  });
+}
+function clearLang(){
+  ST.langFilter=[];localStorage.setItem('cqm_lang','[]');
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('on'));
+}
+
+// ─────────────────────────────────────────────
+//  QUIZ FLOW
+// ─────────────────────────────────────────────
+function startQuiz(){
+  const seed=todaySeed();
+  const pool=ST.langFilter.length?Q.filter(q=>ST.langFilter.includes(q.l)):Q;
+  if(!pool.length){alert('No questions for selected languages. Resetting filter.');clearLang();return;}
+  ST.qs=shuffled(pool,seed).slice(0,Math.min(10,pool.length));
+  Object.assign(ST,{curQ:0,score:0,combo:0,maxCombo:0,xp:0,answered:false,selected:null,answers:[],answerMap:{}});
+  show('s-quiz');renderQ();startTimer();
+}
+function renderQ(){
+  const q=ST.qs[ST.curQ],tot=ST.qs.length;
+  document.getElementById('q-header').textContent=`Q ${ST.curQ+1} / ${tot}`;
+  document.getElementById('q-ctr').textContent=`${ST.curQ+1} / ${tot}`;
+  document.getElementById('score-live').textContent=`Score: ${ST.score}`;
+  document.getElementById('prg').style.width=`${(ST.curQ/tot)*100}%`;
+  const DC={Easy:'bg',Medium:'ba',Hard:'br2c'};
+  const db=document.getElementById('q-diff-b');db.className='badge '+(DC[q.d]||'bv');db.textContent=q.d;
+  document.getElementById('q-type-b').textContent=q.t;
+  document.getElementById('q-lang-b').textContent=q.l;
+  const cb=document.getElementById('combo-b');
+  if(ST.combo>=3){cb.style.display='';cb.textContent=`🔥 ${ST.combo}× Combo!`;}else cb.style.display='none';
+  document.getElementById('q-txt').textContent=q.q;
+  const ce=document.getElementById('q-code');
+  if(q.code){ce.style.display='block';ce.textContent=q.code;}else ce.style.display='none';
+  const optsEl=document.getElementById('opts');optsEl.innerHTML='';
+  q.o.forEach((opt,i)=>{
+    const b=document.createElement('button');b.className='opt';
+    b.innerHTML=`<span class="opt-l">${'ABCD'[i]}</span>${esc(opt)}`;
+    b.onclick=()=>pick(i);
+    optsEl.appendChild(b);
+  });
+  document.getElementById('expl').style.display='none';
+  document.getElementById('q-tags').innerHTML=(q.tags||[]).map(t=>`<span class="tag">${esc(t)}</span>`).join('');
+  ST.answered=false;ST.selected=null;
+  const btn=document.getElementById('btn-act');btn.textContent='Confirm';btn.disabled=true;
+  const card=document.getElementById('q-card');
+  card.classList.remove('fade');void card.offsetWidth;card.classList.add('fade');
+}
+function pick(i){
+  if(ST.answered)return;
+  ST.selected=i;
+  document.querySelectorAll('.opt').forEach((el,idx)=>el.classList.toggle('sel',idx===i));
+  document.getElementById('btn-act').disabled=false;
+}
+function handleAction(){if(!ST.answered)confirm_ans();else nextQ();}
+function confirm_ans(){
+  if(ST.selected===null)return;
+  clearInterval(ST.timerInt);ST.answered=true;
+  const q=ST.qs[ST.curQ],ok=ST.selected===q.c;
+  if(ok){
+    ST.score++;ST.combo++;if(ST.combo>ST.maxCombo)ST.maxCombo=ST.combo;
+    ST.xp+=q.xp+Math.floor(ST.timerSec/10)+(ST.combo>2?5*(ST.combo-2):0);
+    snd('ok');
+  }else{if(ST.combo>ST.maxCombo)ST.maxCombo=ST.combo;ST.combo=0;snd('ng');}
+  ST.answers.push(ok);ST.answerMap[ST.curQ]={q,sel:ST.selected,ok};
+  markOpts(q,ST.selected);
+  showExpl((ok?'✅ ':'❌ ')+q.e);
+  setBtn(ST.curQ<ST.qs.length-1?'Next →':'See Results →');
+}
+function markOpts(q,sel){
+  document.querySelectorAll('.opt').forEach((el,i)=>{
+    el.classList.add('dis');el.classList.remove('sel');
+    if(i===q.c)el.classList.add('cor');
+    else if(i===sel&&i!==q.c)el.classList.add('wrg');
+  });
+}
+function showExpl(txt){const e=document.getElementById('expl');e.textContent=txt;e.style.display='block';}
+function setBtn(txt){const b=document.getElementById('btn-act');b.textContent=txt;b.disabled=false;}
+function nextQ(){ST.curQ++;if(ST.curQ>=ST.qs.length)showResults();else{renderQ();startTimer();}}
+
+// ─────────────────────────────────────────────
+//  RESULTS
+// ─────────────────────────────────────────────
+function showResults(){
+  clearInterval(ST.timerInt);saveToday();show('s-res');
+  const tot=ST.qs.length,pct=Math.round(ST.score/tot*100);
+  const GRADES=[[100,'S','🏆','Perfect! Legendary!'],[90,'A+','🥇','Outstanding!'],[80,'A','⭐','Excellent!'],[70,'B','👍','Great job!'],[60,'C','🎯','Good effort!'],[0,'D','📚','Keep practicing!']];
+  const [,letter,,msg]=GRADES.find(([min])=>pct>=min);
+  document.getElementById('r-grade').textContent=letter;
+  document.getElementById('r-msg').textContent=msg;
+  document.getElementById('r-sub').textContent=`${ST.score}/${tot} correct (${pct}%) — ${todayStr()}`;
+  document.getElementById('r-date').textContent=todayStr();
+  renderDots(document.getElementById('r-dots'),ST.answers);
+  document.getElementById('rs-score').textContent=`${ST.score}/${tot}`;
+  document.getElementById('rs-pct').textContent=pct+'%';
+  document.getElementById('rs-xp').textContent='+'+ST.xp;
+  document.getElementById('rs-combo').textContent=ST.maxCombo+'×';
+  // Language breakdown
+  const lbMap={};
+  ST.qs.forEach((q,i)=>{if(!lbMap[q.l])lbMap[q.l]={ok:0,tot:0};lbMap[q.l].tot++;if(ST.answers[i])lbMap[q.l].ok++;});
+  const lbGrid=document.getElementById('lb-grid');lbGrid.innerHTML='';
+  Object.entries(lbMap).sort().forEach(([lang,{ok,tot}])=>{
+    const p=Math.round(ok/tot*100),col=p>=80?'#4ade80':p>=60?'#fbbf24':'#f87171';
+    const row=document.createElement('div');row.className='lb-row';
+    row.innerHTML=`<span style="font-size:13px;font-weight:600;min-width:88px">${esc(lang)}</span>
+      <div class="lb-bar-bg"><div class="lb-bar-fill" style="width:${p}%;background:${col}"></div></div>
+      <span style="font-size:12px;color:var(--mu);min-width:30px;text-align:right">${ok}/${tot}</span>`;
+    lbGrid.appendChild(row);
+  });
+  if(pct>=80){snd('win');setTimeout(()=>confetti(pct===100?380:200),250);}
+  else snd('ok');
+}
+function showReview(){
+  const list=document.getElementById('review-list');list.innerHTML='';
+  Object.values(ST.answerMap).forEach(({q,sel,ok})=>{
+    const el=document.createElement('div');
+    el.style.cssText='background:var(--s1);border:1px solid var(--br);border-radius:16px;padding:18px;position:relative;z-index:1';
+    const optsHtml=q.o.map((opt,i)=>{
+      let cls='opt dis ';if(i===q.c)cls+='cor';else if(i===sel&&i!==q.c)cls+='wrg';
+      return`<button class="${cls}" style="cursor:default"><span class="opt-l">${'ABCD'[i]}</span>${esc(opt)}</button>`;
+    }).join('');
+    el.innerHTML=`<div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px">
+      <span class="badge ${ok?'bg':'br2c'}">${ok?'✅ Correct':'❌ Wrong'}</span>
+      <span class="badge bb">${esc(q.t)}</span>
+      <span class="pill">${esc(q.l)}</span>
+    </div>
+    <p style="font-size:14px;font-weight:600;margin-bottom:6px;line-height:1.5">${esc(q.q)}</p>
+    ${q.code?`<pre class="code">${esc(q.code)}</pre>`:''}
+    <div class="opts" style="margin-bottom:12px">${optsHtml}</div>
+    <div class="expl">${esc(q.e)}</div>`;
+    list.appendChild(el);
+  });
+  show('s-review');
+}
+
+// ─────────────────────────────────────────────
+//  PERSISTENCE
+// ─────────────────────────────────────────────
+const SKEY='cqm_r_';
+function saveToday(){localStorage.setItem(SKEY+todaySeed(),JSON.stringify({score:ST.score,total:ST.qs.length,answers:ST.answers,xp:ST.xp}));}
+function loadToday(){try{return JSON.parse(localStorage.getItem(SKEY+todaySeed()));}catch{return null;}}
+function renderDots(el,answers){el.innerHTML=answers.map(a=>`<div class="dot ${a?'d1':'d2'}"></div>`).join('');}
+
+// ─────────────────────────────────────────────
+//  SHARE
+// ─────────────────────────────────────────────
+function shareResult(){
+  const pct=Math.round(ST.score/ST.qs.length*100);
+  const icon=pct===100?'💎':pct>=80?'🏆':pct>=60?'⭐':'🎯';
+  const dots=ST.answers.map(a=>a?'🟢':'🔴').join('');
+  const langs=[...new Set(ST.qs.map(q=>q.l))].join(', ');
+  const text=`${icon} Daily Coding Quiz — ${new Date().toLocaleDateString()}\nScore: ${ST.score}/${ST.qs.length} (${pct}%) | ${langs}\n${dots}\n\n⚡ Coding Quiz Master — Master Code. Not Tutorials.`;
+  if(navigator.share)navigator.share({title:'Coding Quiz Master',text}).catch(()=>clip(text));
+  else clip(text);
+}
+function clip(t){navigator.clipboard.writeText(t).then(()=>alert('Copied to clipboard! Paste anywhere to share.'),()=>prompt('Copy this:',t));}
+
+// ─────────────────────────────────────────────
+//  DOWNLOAD (self-download this html file)
+// ─────────────────────────────────────────────
+function downloadMe(){
+  const html=document.documentElement.outerHTML;
+  const blob=new Blob(['<!DOCTYPE html>\n'+html],{type:'text/html'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url;a.download='daily-quiz.html';a.click();
+  setTimeout(()=>URL.revokeObjectURL(url),3000);
+}
+
+// ─────────────────────────────────────────────
+//  UTILITIES
+// ─────────────────────────────────────────────
+function show(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
+}
+function esc(s){
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ─────────────────────────────────────────────
+//  KEYBOARD SHORTCUTS
+// ─────────────────────────────────────────────
+document.addEventListener('keydown',e=>{
+  if(['INPUT','TEXTAREA','SELECT'].includes(e.target.tagName))return;
+  const onIntro=document.getElementById('s-intro').classList.contains('active');
+  const onQuiz=document.getElementById('s-quiz').classList.contains('active');
+  if(onIntro&&(e.key==='Enter'||e.key===' ')){e.preventDefault();startQuiz();return;}
+  if(!onQuiz)return;
+  if(!e.repeat&&['1','2','3','4'].includes(e.key)&&!ST.answered){pick(+e.key-1);}
+  if(!e.repeat&&(e.key==='Enter'||e.key==='ArrowRight'))handleAction();
+  if(e.key==='m'||e.key==='M')toggleSound();
+  if(e.key==='t'||e.key==='T')toggleTheme();
+});
+
+// ─────────────────────────────────────────────
+//  BOOT
+// ─────────────────────────────────────────────
+(function boot(){
+  // Apply saved theme
+  applyTheme(ST.theme);
+  // Sync sound icons
+  syncSndIcons();
+  // Date label
+  document.getElementById('i-date').textContent=todayStr();
+  // Build language filter grid
+  buildLangGrid();
+  // Start countdown
+  startCountdown();
+  // Show previous result if exists
+  const prev=loadToday();
+  if(prev){
+    const wrap=document.getElementById('prev-wrap');wrap.style.display='block';
+    renderDots(document.getElementById('prev-dots'),prev.answers);
+    document.getElementById('prev-score').textContent=`${prev.score}/${prev.total} correct · +${prev.xp} XP`;
+  }
+})();
+</script>
+<script src="https://replit-cdn.com/replit-pill/replit-pill.global.js" data-repl-id="b7eb66cd-3707-462a-bd9f-30cdc29209b8"></script>
+
+<div id="replit-pill-host"></div></body></html>
