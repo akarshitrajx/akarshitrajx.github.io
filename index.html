@@ -465,6 +465,7 @@
         <div class="stat-item"><span class="stat-number">1500+</span><div class="stat-label">Hours</div></div>
         <div class="stat-item"><span class="stat-number">1M+</span><div class="stat-label">Students</div></div>
     </div>
+    
     <section id="about" class="animate-on-scroll">
         <div class="section-header">
             <div class="section-tag">About Me</div>
@@ -519,7 +520,7 @@
                 and strengthen your logic through hands-on exercises. Consistent practice transforms beginners into 
                 confident developers. Start your journey today and level up your skills one challenge at a time!
             </p>
-            <a href="practice.html" class="neon-btn" style="font-size:1.1rem;padding:16px 40px;">Practice Here</a>
+            <a href="practice-daily.html" class="neon-btn" style="font-size:1.1rem;padding:16px 40px;">Practice Here</a>
         </div>
     </section>
         <section id="courses" class="animate-on-scroll">
@@ -534,13 +535,38 @@
             </a>
         </div>
 
-        <div class="section-header">
+<div class="section-header">
             <div class="section-tag">My Courses</div>
-            <h2 class="section-title">20+ Programming Courses</h2>
-            <p class="section-subtitle">Choose your language and start learning today</p>
+        <div class="course-grid" id="coursesGrid">
+                    <div class="course-card" data-name="python">
+                <div class="course-image"><img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600&h=400&fit=crop" alt="Python course"><div class="course-overlay"><button class="luxury-btn" onclick="openModal('https://www.youtube.com/embed/videoseries?list=PLu0W_9lII9agwh1XjRt242xIpHhPT2llg')"><span>&#9654;</span></button></div></div>
+                <div class="course-content"><div class="course-meta"><span class="course-tag" style="background:rgba(6,182,212,0.15);color:#06b6d4;">Python</span><span class="course-rating">Rating: 4.9</span></div><h3 class="course-title">Complete Python Mastery</h3><p class="course-desc">Learn Python from basics to advanced.</p><div class="course-footer"><div class="course-stats"><span>Duration: 20h</span><span>Videos: 50+</span></div><a href="https://youtube.com/playlist?list=PLu0W_9lII9agwh1XjRt242xIpHhPT2llg" target="_blank" rel="noopener noreferrer" class="neon-btn">Watch</a></div><a href="tutorials.html" class="tutorial-link">Read Tutorials &rarr;</a></div>
+            </div>
+            <div class="course-card" data-name="c++">
+                <div class="course-image"><img src="https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=600&h=400&fit=crop" alt="C++ course"><div class="course-overlay"><button class="luxury-btn" onclick="openModal('https://www.youtube.com/embed/videoseries?list=PLxCzCOWd7aiF6yRNI5OHQsnUJQfl7Geqj')"><span>&#9654;</span></button></div></div>
+                <div class="course-content"><div class="course-meta"><span class="course-tag" style="background:rgba(59,130,246,0.15);color:#3b82f6;">C++</span><span class="course-rating">Rating: 4.8</span></div><h3 class="course-title">C++ Programming Guide</h3><p class="course-desc">Master C++ programming.</p><div class="course-footer"><div class="course-stats"><span>Duration: 18h</span><span>Videos: 40+</span></div><a href="https://youtube.com/playlist?list=PLxCzCOWd7aiF6yRNI5OHQsnUJQfl7Geqj" target="_blank" rel="noopener noreferrer" class="neon-btn">Watch</a></div><a href="tutorials.html" class="tutorial-link">Read Tutorials &rarr;</a></div>
+            </div>
+            <div class="course-card" data-name="javascript">
+                <div class="course-image"><img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=600&h=400&fit=crop" alt="JavaScript course"><div class="course-overlay"><button class="luxury-btn" onclick="openModal('https://www.youtube.com/embed/videoseries?list=PLu0W_9lII9ahR1blWXxgSlL4y9iQBnLpR')"><span>&#9654;</span></button></div></div>
+                <div class="course-content"><div class="course-meta"><span class="course-tag" style="background:rgba(234,179,8,0.15);color:#eab308;">JavaScript</span><span class="course-rating">Rating: 4.9</span></div><h3 class="course-title">JavaScript Complete</h3><p class="course-desc">Learn JS from scratch.</p><div class="course-footer"><div class="course-stats"><span>Duration: 25h</span><span>Videos: 60+</span></div><a href="https://youtube.com/playlist?list=PLu0W_9lII9ahR1blWXxgSlL4y9iQBnLpR" target="_blank" rel="noopener noreferrer" class="neon-btn">Watch</a></div><a href="tutorials.html" class="tutorial-link">Read Tutorials &rarr;</a></div>
+            </div>
+            <div class="course-card" data-name="typescript">
+                <div class="course-image"><img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=400&fit=crop" alt="TypeScript course"><div class="course-overlay"><button class="luxury-btn" onclick="openModal('https://www.youtube.com/embed/videoseries?list=PL8p2I9GklV44fWXJGEsBvR_ylJClgdVAN')"><span>&#9654;</span></button></div></div>
+                <div class="course-content"><div class="course-meta"><span class="course-tag" style="background:rgba(99,102,241,0.15);color:#6366f1;">TypeScript</span><span class="course-rating">Rating: 4.7</span></div><h3 class="course-title">TypeScript Masterclass</h3><p class="course-desc">Learn TypeScript with React.</p><div class="course-footer"><div class="course-stats"><span>Duration: 15h</span><span>Videos: 35+</span></div><a href="https://youtube.com/playlist?list=PL8p2I9GklV44fWXJGEsBvR_ylJClgdVAN" target="_blank" rel="noopener noreferrer" class="neon-btn">Watch</a></div><a href="tutorials.html" class="tutorial-link">Read Tutorials &rarr;</a></div>
+            </div>
+            <div class="course-card" data-name="sql">
+                <div class="course-image"><img src="https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=600&h=400&fit=crop" alt="SQL course"><div class="course-overlay"><button class="luxury-btn" onclick="openModal('https://www.youtube.com/embed/yE6tIle64tU')"><span>&#9654;</span></button></div></div>
+                <div class="course-content"><div class="course-meta"><span class="course-tag" style="background:rgba(16,185,129,0.15);color:#10b981;">SQL</span><span class="course-rating">Rating: 4.8</span></div><h3 class="course-title">SQL Database Mastery</h3><p class="course-desc">Learn SQL from scratch.</p><div class="course-footer"><div class="course-stats"><span>Duration: 12h</span><span>Videos: 25+</span></div><a href="https://youtu.be/yE6tIle64tU" target="_blank" rel="noopener noreferrer" class="neon-btn">Watch</a></div><a href="tutorials.html" class="tutorial-link">Read Tutorials &rarr;</a></div>
+            </div>
+            <div class="course-card" data-name="html">
+                <div class="course-image"><img src="https://images.unsplash.com/photo-1621839673705-6617adf9e890?w=600&h=400&fit=crop" alt="HTML course"><div class="course-overlay"><button class="luxury-btn" onclick="openModal('https://www.youtube.com/embed/zysUIv0-xak')"><span>&#9654;</span></button></div></div>
+                <div class="course-content"><div class="course-meta"><span class="course-tag" style="background:rgba(249,115,22,0.15);color:#f97316;">HTML</span><span class="course-rating">Rating: 4.9</span></div><h3 class="course-title">HTML Complete Guide</h3><p class="course-desc">Learn HTML from scratch.</p><div class="course-footer"><div class="course-stats"><span>Duration: 10h</span><span>Videos: 20+</span></div><a href="https://youtu.be/zysUIv0-xak" target="_blank" rel="noopener noreferrer" class="neon-btn">Watch</a></div><a href="tutorials.html" class="tutorial-link">Read Tutorials &rarr;</a></div>
+            </div>
         </div>
+    </section>
 
-        <div class="course-grid" id="coursesGrid"><section id="contact" class="animate-on-scroll">
+    
+    <section id="contact" class="animate-on-scroll">
         <div class="section-header">
             <div class="section-tag">Contact</div>
             <h2 class="section-title" style="font-size:2.5rem;font-weight:800;background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Contact</h2>
@@ -566,8 +592,7 @@
             </form>
             <div id="formResult" style="text-align:center;margin-top:1rem;font-weight:600;display:none;"></div>
         </div>
-    </section>
-    <footer style="text-align:center;padding:3rem 5%;border-top:1px solid rgba(255,255,255,0.05);margin-top:3rem;">
+    </section><footer style="text-align:center;padding:3rem 5%;border-top:1px solid rgba(255,255,255,0.05);margin-top:3rem;">
         <div style="font-size:1.5rem;font-weight:800;background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:1rem;">AR.</div>
         <p style="color:var(--gray);font-size:0.9rem;margin-bottom:1rem;">Akarshit Raj - Programming Educator</p>
         <p style="color:var(--primary);font-weight:600;font-size:0.9rem;margin-bottom:1.5rem;">PM SHRI Jawahar Navodaya Vidyalaya, Khairabad, Sitapur</p>
