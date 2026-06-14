@@ -373,9 +373,9 @@
             <button class="sidebar-close" onclick="toggleSidebar()">&times;</button>
         </div>
         <ul class="sidebar-nav">
-            <li onclick="goToSection('home')"><span class="sidebar-icon">H</span> Home</li>
-            <li onclick="goToSection('about')"><span class="sidebar-icon">A</span> About</li>
-            <li onclick="goToSection('code-practice')"><span class="sidebar-icon">P</span> Practice</li>
+            <li onclick="window.location.href='index.html'"><span class="sidebar-icon">H</span> Home</li>
+            <li onclick="window.location.href='index.html#about'"><span class="sidebar-icon">A</span> About</li>
+            <li onclick="window.location.href='practice.html'"><span class="sidebar-icon">P</span> Practice</li>
             <li onclick="window.location.href='tutorials.html'"><span class="sidebar-icon">T</span> Tutorials</li>
         </ul>
     </aside>
@@ -390,9 +390,9 @@
             <input type="text" class="nav-search-input" placeholder="Search courses, tutorials, topics..." id="navSearch" onkeyup="handleSearch()">
         </div>
         <ul class="nav-links" id="navLinks">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#code-practice">Practice</a></li>
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="practice.html">Practice</a></li>
             <li><a href="tutorials.html">Tutorials</a></li>
         </ul>
     </nav>
@@ -411,8 +411,8 @@
                 </h1>
                 <p class="hero-subtitle">Learn programming from YouTube videos and practice coding online — completely free.</p>
                 <div class="hero-buttons">
-                    <a href="#code-practice" class="neon-btn">Start Coding</a>
-                    <a href="#courses" class="neon-btn">Explore Courses</a>
+                    <a href="practice.html" class="neon-btn">Start Coding</a>
+                    <a href="courses.html" class="neon-btn">Explore Courses</a>
                 </div>
             </div>
             <div class="hero-visual">
@@ -498,7 +498,7 @@
             </div>
         </div>
     </section>
-    <section id="code-practice" class="animate-on-scroll">
+        <section id="code-practice" class="animate-on-scroll">
         <div class="section-header">
             <div class="section-tag">Code Practice</div>
             <div style="display:flex;justify-content:center;">
@@ -513,172 +513,58 @@
             </div>
             <p class="section-subtitle">Learn from videos, then practice here. Use online compilers for all programming languages.</p>
         </div>
-        <div class="code-practice-section">
-            <div class="code-practice-header">
-                <h3>Online Code Compiler</h3>
-                <p>Practice what you learned. Select a language and start coding.</p>
-            </div>
-            <div class="language-selector">
-                <button class="lang-btn active" onclick="selectLang(this,'python')">Python</button>
-                <button class="lang-btn" onclick="selectLang(this,'cpp')">C++</button>
-                <button class="lang-btn" onclick="selectLang(this,'javascript')">JavaScript</button>
-                <button class="lang-btn" onclick="selectLang(this,'java')">Java</button>
-                <button class="lang-btn" onclick="selectLang(this,'csharp')">C#</button>
-                <button class="lang-btn" onclick="selectLang(this,'html')">HTML/CSS</button>
-                <button class="lang-btn" onclick="selectLang(this,'sql')">SQL</button>
-                <button class="lang-btn" onclick="selectLang(this,'php')">PHP</button>
-                <button class="lang-btn" onclick="selectLang(this,'kotlin')">Kotlin</button>
-                <button class="lang-btn" onclick="selectLang(this,'swift')">Swift</button>
-                <button class="lang-btn" onclick="selectLang(this,'go')">Go</button>
-                <button class="lang-btn" onclick="selectLang(this,'rust')">Rust</button>
-            </div>
-            <div class="file-actions">
-                <button class="file-btn" onclick="saveCodeFile()">Save</button>
-                <button class="file-btn" onclick="document.getElementById('fileInput').click()">Open</button>
-                <button class="file-btn" onclick="copyCode()">Copy</button>
-                <button class="file-btn" onclick="clearCode()">Clear</button>
-                <input type="file" id="fileInput" accept=".py,.cpp,.js,.java,.cs,.html,.sql,.php,.kt,.swift,.go,.rs,.txt" onchange="loadCodeFile(this)">
-            </div>
-            <div class="code-editor-wrapper">
-                <div class="code-input-area">
-                    <div class="code-header"><span>Write Your Code</span><span style="font-size:0.75rem;color:var(--gray);">Click Run to execute</span></div>
-                    <textarea class="code-textarea" id="codeInput" placeholder="# Write your Python code here..."># Write your Python code here...
-print('Hello, World!')
-name = 'Akarshit'
-print(f'Welcome, {name}!')</textarea>
-                </div>
-                <div class="code-output-area">
-                    <div class="code-header"><span>Output</span><span style="font-size:0.75rem;color:var(--gray);">Result will appear here</span></div>
-                    <div class="output-content" id="codeOutput"><span style="color:var(--gray);">Click "Run Code" to see output...</span></div>
-                </div>
-            </div>
-            <button class="neon-btn" style="width:100%;margin-bottom:1rem;" onclick="runCodeReal()" id="runBtn">Run Code</button>
-
-            <!-- BIG PROFESSIONAL COMPILERS SECTION -->
-            <div class="big-compilers-section">
-                <div style="display:flex;justify-content:center;margin-bottom:1.5rem;">
-                    <h4 class="pro-heading">
-                        <span>O</span><span>r</span><span class="space"></span>
-                        <span>U</span><span>s</span><span>e</span><span class="space"></span>
-                        <span>T</span><span>h</span><span>e</span><span>s</span><span>e</span><span class="space"></span>
-                        <span>P</span><span>r</span><span>o</span><span>f</span><span>e</span><span>s</span><span>s</span><span>i</span><span>o</span><span>n</span><span>a</span><span>l</span><span class="space"></span>
-                        <span>O</span><span>n</span><span>l</span><span>i</span><span>n</span><span>e</span><span class="space"></span>
-                        <span>C</span><span>o</span><span>m</span><span>p</span><span>i</span><span>l</span><span>e</span><span>r</span><span>s</span>
-                    </h4>
-                </div>
-                <p class="big-compilers-subtitle">Verified & working online compilers for every programming language</p>
-                <div class="compiler-links">
-                    <a href="https://www.programiz.com/python-programming/online-compiler/" target="_blank" rel="noopener noreferrer" class="square-btn"><span>Py</span></a>
-                    <a href="https://www.programiz.com/cpp-programming/online-compiler/" target="_blank" rel="noopener noreferrer" class="square-btn"><span>C++</span></a>
-                    <a href="https://www.programiz.com/javascript/online-compiler/" target="_blank" rel="noopener noreferrer" class="square-btn"><span>JS</span></a>
-                    <a href="https://www.programiz.com/java-programming/online-compiler/" target="_blank" rel="noopener noreferrer" class="square-btn"><span>Java</span></a>
-                    <a href="https://www.programiz.com/csharp-programming/online-compiler/" target="_blank" rel="noopener noreferrer" class="square-btn"><span>C#</span></a>
-                    <a href="https://www.programiz.com/html/online-compiler/" target="_blank" rel="noopener noreferrer" class="square-btn"><span>Web</span></a>
-                    <a href="https://www.programiz.com/sql/online-compiler/" target="_blank" rel="noopener noreferrer" class="square-btn"><span>SQL</span></a>
-                    <a href="https://www.programiz.com/php-programming/online-compiler/" target="_blank" rel="noopener noreferrer" class="square-btn"><span>PHP</span></a>
-                    <a href="https://www.programiz.com/kotlin-programming/online-compiler/" target="_blank" rel="noopener noreferrer" class="square-btn"><span>Kt</span></a>
-                    <a href="https://www.programiz.com/swift-programming/online-compiler/" target="_blank" rel="noopener noreferrer" class="square-btn"><span>Sw</span></a>
-                    <a href="https://www.programiz.com/golang/online-compiler/" target="_blank" rel="noopener noreferrer" class="square-btn"><span>Go</span></a>
-                    <a href="https://www.programiz.com/rust-programming/online-compiler/" target="_blank" rel="noopener noreferrer" class="square-btn"><span>Rs</span></a>
-                </div>
-            </div>
-
-            <div style="margin-top:2rem;">
-                <h4 style="text-align:center;margin-bottom:1rem;color:var(--gray);font-size:1rem;">Practice Problems</h4>
-                <div class="practice-links">
-                    <a href="https://www.hackerrank.com/" target="_blank" rel="noopener noreferrer" class="practice-card"><div class="practice-icon">HR</div><div class="practice-text"><div class="practice-name">HackerRank</div><div class="practice-desc">Coding challenges & competitions</div></div></a>
-                    <a href="https://leetcode.com/" target="_blank" rel="noopener noreferrer" class="practice-card"><div class="practice-icon">LC</div><div class="practice-text"><div class="practice-name">LeetCode</div><div class="practice-desc">Interview preparation</div></div></a>
-                    <a href="https://www.codewars.com/" target="_blank" rel="noopener noreferrer" class="practice-card"><div class="practice-icon">CW</div><div class="practice-text"><div class="practice-name">CodeWars</div><div class="practice-desc">Kata training</div></div></a>
-                    <a href="https://www.freecodecamp.org/" target="_blank" rel="noopener noreferrer" class="practice-card"><div class="practice-icon">FC</div><div class="practice-text"><div class="practice-name">freeCodeCamp</div><div class="practice-desc">Free coding curriculum</div></div></a>
-                </div>
-            </div>
+        <div class="code-practice-section" style="text-align:center;padding:3rem 2rem;">
+            <p style="color:var(--gray);font-size:1rem;line-height:1.8;max-width:600px;margin:0 auto 2rem;">
+                Practice is the key to mastering programming. Solve daily coding challenges, build real projects, 
+                and strengthen your logic through hands-on exercises. Consistent practice transforms beginners into 
+                confident developers. Start your journey today and level up your skills one challenge at a time!
+            </p>
+            <a href="practice.html" class="neon-btn" style="font-size:1.1rem;padding:16px 40px;">Practice Here</a>
         </div>
     </section>
-    <section id="courses" class="animate-on-scroll">
+        <section id="courses" class="animate-on-scroll">
+
+        <!-- DAILY QUIZ - ABOVE HEADING -->
+        <div style="text-align:center;margin-bottom:1.5rem;padding:2rem 1rem;background:var(--card-bg);border-radius:24px;border:1px solid rgba(255,255,255,0.08);max-width:800px;margin-left:auto;margin-right:auto;">
+            <p style="color:var(--gray);font-size:0.95rem;line-height:1.8;max-width:700px;margin:0 auto 1.5rem;">
+                Test your programming knowledge every single day with our exclusive Daily Quiz! Challenge yourself with questions from Python, C++, JavaScript, Java, SQL, and many more languages. Compete with your friends, track your daily progress, and build winning streaks. Regular practice sharpens your coding skills, boosts your confidence, and prepares you for real-world projects and interviews. Whether you are a complete beginner or an advanced learner, there is always something new
+            </p>
+            <a href="daily-quiz.html" class="neon-btn" style="font-size:1rem;padding:14px 36px;">
+                <span style="margin-right:0.5rem;">&#128218;</span> Daily Quiz
+            </a>
+        </div>
+
         <div class="section-header">
             <div class="section-tag">My Courses</div>
             <h2 class="section-title">20+ Programming Courses</h2>
             <p class="section-subtitle">Choose your language and start learning today</p>
         </div>
-        <div class="course-grid" id="coursesGrid">
-                    <div class="course-card" data-name="python">
-                <div class="course-image"><img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600&h=400&fit=crop" alt="Python course"><div class="course-overlay"><button class="luxury-btn" onclick="openModal('https://www.youtube.com/embed/videoseries?list=PLu0W_9lII9agwh1XjRt242xIpHhPT2llg')"><span>&#9654;</span></button></div></div>
-                <div class="course-content"><div class="course-meta"><span class="course-tag" style="background:rgba(6,182,212,0.15);color:#06b6d4;">Python</span><span class="course-rating">Rating: 4.9</span></div><h3 class="course-title">Complete Python Mastery</h3><p class="course-desc">Learn Python from basics to advanced.</p><div class="course-footer"><div class="course-stats"><span>Duration: 20h</span><span>Videos: 50+</span></div><a href="https://youtube.com/playlist?list=PLu0W_9lII9agwh1XjRt242xIpHhPT2llg" target="_blank" rel="noopener noreferrer" class="neon-btn">Watch</a></div><a href="tutorials.html" class="tutorial-link">Read Tutorials &rarr;</a></div>
-            </div>
-            <div class="course-card" data-name="c++">
-                <div class="course-image"><img src="https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=600&h=400&fit=crop" alt="C++ course"><div class="course-overlay"><button class="luxury-btn" onclick="openModal('https://www.youtube.com/embed/videoseries?list=PLxCzCOWd7aiF6yRNI5OHQsnUJQfl7Geqj')"><span>&#9654;</span></button></div></div>
-                <div class="course-content"><div class="course-meta"><span class="course-tag" style="background:rgba(59,130,246,0.15);color:#3b82f6;">C++</span><span class="course-rating">Rating: 4.8</span></div><h3 class="course-title">C++ Programming Guide</h3><p class="course-desc">Master C++ programming.</p><div class="course-footer"><div class="course-stats"><span>Duration: 18h</span><span>Videos: 40+</span></div><a href="https://youtube.com/playlist?list=PLxCzCOWd7aiF6yRNI5OHQsnUJQfl7Geqj" target="_blank" rel="noopener noreferrer" class="neon-btn">Watch</a></div><a href="tutorials.html" class="tutorial-link">Read Tutorials &rarr;</a></div>
-            </div>
-            <div class="course-card" data-name="javascript">
-                <div class="course-image"><img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=600&h=400&fit=crop" alt="JavaScript course"><div class="course-overlay"><button class="luxury-btn" onclick="openModal('https://www.youtube.com/embed/videoseries?list=PLu0W_9lII9ahR1blWXxgSlL4y9iQBnLpR')"><span>&#9654;</span></button></div></div>
-                <div class="course-content"><div class="course-meta"><span class="course-tag" style="background:rgba(234,179,8,0.15);color:#eab308;">JavaScript</span><span class="course-rating">Rating: 4.9</span></div><h3 class="course-title">JavaScript Complete</h3><p class="course-desc">Learn JS from scratch.</p><div class="course-footer"><div class="course-stats"><span>Duration: 25h</span><span>Videos: 60+</span></div><a href="https://youtube.com/playlist?list=PLu0W_9lII9ahR1blWXxgSlL4y9iQBnLpR" target="_blank" rel="noopener noreferrer" class="neon-btn">Watch</a></div><a href="tutorials.html" class="tutorial-link">Read Tutorials &rarr;</a></div>
-            </div>
-            <div class="course-card" data-name="typescript">
-                <div class="course-image"><img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=400&fit=crop" alt="TypeScript course"><div class="course-overlay"><button class="luxury-btn" onclick="openModal('https://www.youtube.com/embed/videoseries?list=PL8p2I9GklV44fWXJGEsBvR_ylJClgdVAN')"><span>&#9654;</span></button></div></div>
-                <div class="course-content"><div class="course-meta"><span class="course-tag" style="background:rgba(99,102,241,0.15);color:#6366f1;">TypeScript</span><span class="course-rating">Rating: 4.7</span></div><h3 class="course-title">TypeScript Masterclass</h3><p class="course-desc">Learn TypeScript with React.</p><div class="course-footer"><div class="course-stats"><span>Duration: 15h</span><span>Videos: 35+</span></div><a href="https://youtube.com/playlist?list=PL8p2I9GklV44fWXJGEsBvR_ylJClgdVAN" target="_blank" rel="noopener noreferrer" class="neon-btn">Watch</a></div><a href="tutorials.html" class="tutorial-link">Read Tutorials &rarr;</a></div>
-            </div>
-            <div class="course-card" data-name="sql">
-                <div class="course-image"><img src="https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=600&h=400&fit=crop" alt="SQL course"><div class="course-overlay"><button class="luxury-btn" onclick="openModal('https://www.youtube.com/embed/yE6tIle64tU')"><span>&#9654;</span></button></div></div>
-                <div class="course-content"><div class="course-meta"><span class="course-tag" style="background:rgba(16,185,129,0.15);color:#10b981;">SQL</span><span class="course-rating">Rating: 4.8</span></div><h3 class="course-title">SQL Database Mastery</h3><p class="course-desc">Learn SQL from scratch.</p><div class="course-footer"><div class="course-stats"><span>Duration: 12h</span><span>Videos: 25+</span></div><a href="https://youtu.be/yE6tIle64tU" target="_blank" rel="noopener noreferrer" class="neon-btn">Watch</a></div><a href="tutorials.html" class="tutorial-link">Read Tutorials &rarr;</a></div>
-            </div>
-            <div class="course-card" data-name="html">
-                <div class="course-image"><img src="https://images.unsplash.com/photo-1621839673705-6617adf9e890?w=600&h=400&fit=crop" alt="HTML course"><div class="course-overlay"><button class="luxury-btn" onclick="openModal('https://www.youtube.com/embed/zysUIv0-xak')"><span>&#9654;</span></button></div></div>
-                <div class="course-content"><div class="course-meta"><span class="course-tag" style="background:rgba(249,115,22,0.15);color:#f97316;">HTML</span><span class="course-rating">Rating: 4.9</span></div><h3 class="course-title">HTML Complete Guide</h3><p class="course-desc">Learn HTML from scratch.</p><div class="course-footer"><div class="course-stats"><span>Duration: 10h</span><span>Videos: 20+</span></div><a href="https://youtu.be/zysUIv0-xak" target="_blank" rel="noopener noreferrer" class="neon-btn">Watch</a></div><a href="tutorials.html" class="tutorial-link">Read Tutorials &rarr;</a></div>
-            </div>
-        </div>
-    </section>
 
-    <section id="personal-info" class="animate-on-scroll">
-        <div class="section-header"><div class="section-tag">Personal Information</div><h2 class="section-title">About the Owner</h2><p class="section-subtitle">Get to know more about me</p></div>
-        <div class="glass-card" style="max-width:800px;margin:0 auto;">
-            <div style="text-align:center;margin-bottom:2rem;">
-                <div style="width:100px;height:100px;border-radius:50%;margin:0 auto 1rem;overflow:hidden;border:3px solid var(--primary);box-shadow:0 8px 30px rgba(6,182,212,0.4);">
-                    <img src="file_000000004984720882e69f4dad44966a.png" alt="Akarshit Raj" style="width:100%;height:100%;object-fit:cover;">
-                </div>
-                <h3 style="font-size:1.8rem;font-weight:700;margin-bottom:0.5rem;background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Akarshit Raj</h3>
-                <p style="color:var(--gray);">Programming Educator & Student</p>
-            </div>
-            <div style="display:grid;gap:1rem;margin-bottom:2rem;" class="personal-info-grid">
-                <div class="info-card">
-                    <div class="info-icon">S</div>
-                    <div style="flex:1;">
-                        <div class="info-label">School / Institution</div>
-                        <div class="info-value">PM SHRI Jawahar Navodaya Vidyalaya, Khairabad, Sitapur</div>
-                    </div>
-                </div>
-                <div class="info-card">
-                    <div class="info-icon">E</div>
-                    <div style="flex:1;">
-                        <div class="info-label">Email Address</div>
-                        <div class="info-value">akarshitraj43@gmail.com</div>
-                    </div>
-                    <a href="mailto:akarshitraj43@gmail.com" class="neon-btn">Email</a>
-                </div>
-                <div class="info-card">
-                    <div class="info-icon">IG</div>
-                    <div style="flex:1;">
-                        <div class="info-label">Instagram ID</div>
-                        <div class="info-value">@lg_444_x</div>
-                    </div>
-                    <a href="https://instagram.com/lg_444_x" target="_blank" rel="noopener noreferrer" class="neon-btn">Follow</a>
-                </div>
-            </div>
-            <div style="background:rgba(255,255,255,0.02);border-radius:16px;padding:1.5rem;border:1px solid rgba(255,255,255,0.05);">
-                <h4 style="font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;color:var(--light);">About Me</h4>
-                <p style="color:var(--gray);font-size:0.95rem;line-height:1.7;">I am a passionate programming educator and student dedicated to making quality coding education accessible to everyone. With over 2 years of teaching experience, I have created 20+ free programming courses on YouTube covering languages like Python, C++, JavaScript, Java, and more. My teaching style focuses on project-based learning with content available in both Hindi and English.</p>
-            </div>
-            <div style="margin-top:1.5rem;">
-                <h4 style="font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;color:var(--light);">Skills & Interests</h4>
-                <div style="display:flex;flex-wrap:wrap;gap:0.5rem;">
-                    <span style="padding:0.4rem 1rem;background:rgba(6,182,212,0.1);color:var(--primary);border-radius:50px;font-size:0.85rem;font-weight:500;border:1px solid rgba(6,182,212,0.2);">Python</span>
-                    <span style="padding:0.4rem 1rem;background:rgba(6,182,212,0.1);color:var(--primary);border-radius:50px;font-size:0.85rem;font-weight:500;border:1px solid rgba(6,182,212,0.2);">C++</span>
-                    <span style="padding:0.4rem 1rem;background:rgba(6,182,212,0.1);color:var(--primary);border-radius:50px;font-size:0.85rem;font-weight:500;border:1px solid rgba(6,182,212,0.2);">JavaScript</span>
-                    <span style="padding:0.4rem 1rem;background:rgba(6,182,212,0.1);color:var(--primary);border-radius:50px;font-size:0.85rem;font-weight:500;border:1px solid rgba(6,182,212,0.2);">Web Development</span>
-                    <span style="padding:0.4rem 1rem;background:rgba(6,182,212,0.1);color:var(--primary);border-radius:50px;font-size:0.85rem;font-weight:500;border:1px solid rgba(6,182,212,0.2);">App Development</span>
-                    <span style="padding:0.4rem 1rem;background:rgba(6,182,212,0.1);color:var(--primary);border-radius:50px;font-size:0.85rem;font-weight:500;border:1px solid rgba(6,182,212,0.2);">Teaching</span>
-                    <span style="padding:0.4rem 1rem;background:rgba(6,182,212,0.1);color:var(--primary);border-radius:50px;font-size:0.85rem;font-weight:500;border:1px solid rgba(6,182,212,0.2);">Content Creation</span>
-                </div>
-            </div>
+        <div class="course-grid" id="coursesGrid"><section id="contact" class="animate-on-scroll">
+        <div class="section-header">
+            <div class="section-tag">Contact</div>
+            <h2 class="section-title" style="font-size:2.5rem;font-weight:800;background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Contact</h2>
+            <p class="section-subtitle">Get in touch with me</p>
+        </div>
+        <div class="glass-card" style="max-width:600px;margin:0 auto;padding:2.5rem;">
+            <form id="contactForm" action="https://api.web3forms.com/submit" method="POST" style="display:grid;gap:1.25rem;">
+                <input type="hidden" name="access_key" value="191fa555-1c3a-44f0-b457-e79cabf0a578">
+                <input type="checkbox" name="botcheck" style="display:none;">
+
+                <input type="text" name="name" placeholder="Your Name" required
+                    style="width:100%;padding:1rem 1.25rem;background:rgba(30,41,59,0.6);border:1px solid rgba(255,255,255,0.08);border-radius:14px;color:var(--light);font-size:1rem;outline:none;font-family:inherit;">
+
+                <input type="email" name="email" placeholder="Your Email" required
+                    style="width:100%;padding:1rem 1.25rem;background:rgba(30,41,59,0.6);border:1px solid rgba(255,255,255,0.08);border-radius:14px;color:var(--light);font-size:1rem;outline:none;font-family:inherit;">
+
+                <textarea name="message" placeholder="Your Message" rows="5" required
+                    style="width:100%;padding:1rem 1.25rem;background:rgba(30,41,59,0.6);border:1px solid rgba(255,255,255,0.08);border-radius:14px;color:var(--light);font-size:1rem;outline:none;font-family:inherit;resize:vertical;"></textarea>
+
+                <button type="submit" class="neon-btn" style="width:100%;font-size:1.1rem;padding:16px 40px;margin-top:0.5rem;">
+                    Send Message
+                </button>
+            </form>
+            <div id="formResult" style="text-align:center;margin-top:1rem;font-weight:600;display:none;"></div>
         </div>
     </section>
     <footer style="text-align:center;padding:3rem 5%;border-top:1px solid rgba(255,255,255,0.05);margin-top:3rem;">
@@ -1054,6 +940,44 @@ print(f'Welcome, {name}!')</textarea>
                 }
             }
         }
-    </script>
+    
+        // Contact Form Handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const form = this;
+            const result = document.getElementById('formResult');
+            const btn = form.querySelector('button[type="submit"]');
+            btn.disabled = true;
+            btn.innerHTML = 'Sending...';
+            const formData = new FormData(form);
+            const object = Object.fromEntries(formData);
+            const json = JSON.stringify(object);
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: json
+            })
+            .then(async (response) => {
+                let json = await response.json();
+                if(response.status == 200) {
+                    result.innerHTML = '<span style="color:var(--success);">✓ Message sent successfully!</span>';
+                    result.style.display = 'block';
+                    form.reset();
+                } else {
+                    result.innerHTML = '<span style="color:var(--error);">✗ ' + json.message + '</span>';
+                    result.style.display = 'block';
+                }
+            })
+            .catch(error => {
+                result.innerHTML = '<span style="color:var(--error);">✗ Something went wrong!</span>';
+                result.style.display = 'block';
+            })
+            .then(function() {
+                btn.disabled = false;
+                btn.innerHTML = 'Send Message';
+                setTimeout(() => { result.style.display = 'none'; }, 5000);
+            });
+        });
+</script>
 </body>
 </html>
