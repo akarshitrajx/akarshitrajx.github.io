@@ -143,9 +143,9 @@ kbd{font-size:10px;padding:2px 6px;border-radius:4px;background:var(--s2);border
   <div class="topbar">
     <div class="logo"><div class="logo-i">⚡</div>Coding Quiz Master</div>
     <div class="topbar-right">
+      <a href="index.html" class="btn btn-o" style="padding:7px 14px;font-size:12px;text-decoration:none">← Back to Coding Master</a>
       <button class="ico-btn active" id="snd-btn" onclick="toggleSound()" title="Toggle sound">🔊</button>
-      <button class="ico-btn" id="thm-btn" onclick="toggleTheme()" title="Toggle theme">🌙</button>
-      <button class="btn btn-p" onclick="downloadMe()" style="padding:7px 14px;font-size:12px" title="Download this file">⬇ Download</button>
+      <button class="ico-btn" id="thm-btn" onclick="toggleTheme()" title="Toggle theme">🌙</button>      
     </div>
   </div>
 
@@ -200,6 +200,7 @@ kbd{font-size:10px;padding:2px 6px;border-radius:4px;background:var(--s2);border
       <div class="prg-t"><div class="prg-f" id="prg" style="width:0"></div></div>
     </div>
     <div style="display:flex;align-items:center;gap:6px">
+      <a href="index.html" class="btn btn-o" style="padding:7px 14px;font-size:12px;text-decoration:none">← Back</a>
       <div class="tmr-w">
         <svg class="tmr-s" width="50" height="50" viewBox="0 0 50 50">
           <circle class="tmr-r" cx="25" cy="25" r="21"></circle>
@@ -244,6 +245,7 @@ kbd{font-size:10px;padding:2px 6px;border-radius:4px;background:var(--s2);border
 ════════════════════════════════════════════ -->
 <div id="s-res" class="screen">
   <div class="topbar">
+    <a href="index.html" class="btn btn-o" style="padding:7px 14px;font-size:12px;text-decoration:none">← Back to Coding Master</a>
     <div class="logo"><div class="logo-i">⚡</div>Results</div>
     <div class="topbar-right">
       <button class="ico-btn" onclick="toggleSound()">🔊</button>
@@ -280,27 +282,16 @@ kbd{font-size:10px;padding:2px 6px;border-radius:4px;background:var(--s2);border
     <!-- Action buttons -->
     <div style="display:flex;gap:9px;flex-wrap:wrap;justify-content:center">
       <button class="btn btn-p" onclick="shareResult()">📤 Share</button>
-      <button class="btn btn-o" onclick="show('s-intro')">🏠 Home</button>
+      <a href="index.html" class="btn btn-o" style="text-decoration:none">🏠 Home</a>      
       <button class="btn btn-g" onclick="showReview()">📖 Review Answers</button>
     </div>
-
-    <!-- Download banner -->
-    <div class="divider"></div>
-    <div class="dl-banner">
-      <div style="text-align:left">
-        <p style="font-size:13px;font-weight:700;margin-bottom:4px">📥 Download Standalone File</p>
-        <p style="font-size:12px;color:var(--mu)">This whole quiz is a single .html file — upload to GitHub Pages and share with anyone!</p>
-      </div>
-      <button class="btn btn-p" onclick="downloadMe()" style="white-space:nowrap;flex-shrink:0">⬇ Download</button>
-    </div>
-  </div>
-</div>
 
 <!-- ══════════════════════════════════════════
      SCREEN: REVIEW
 ════════════════════════════════════════════ -->
 <div id="s-review" class="screen">
   <div class="topbar">
+    <a href="index.html" class="btn btn-o" style="padding:7px 14px;font-size:12px;text-decoration:none">← Back to Coding Master</a>
     <div class="logo"><div class="logo-i">⚡</div>Answer Review</div>
     <div class="topbar-right">
       <button class="ico-btn" onclick="toggleSound()">🔊</button>
@@ -1000,16 +991,7 @@ function shareResult(){
 function clip(t){navigator.clipboard.writeText(t).then(()=>alert('Copied to clipboard! Paste anywhere to share.'),()=>prompt('Copy this:',t));}
 
 // ─────────────────────────────────────────────
-//  DOWNLOAD (self-download this html file)
 // ─────────────────────────────────────────────
-function downloadMe(){
-  const html=document.documentElement.outerHTML;
-  const blob=new Blob(['<!DOCTYPE html>\n'+html],{type:'text/html'});
-  const url=URL.createObjectURL(blob);
-  const a=document.createElement('a');
-  a.href=url;a.download='daily-quiz.html';a.click();
-  setTimeout(()=>URL.revokeObjectURL(url),3000);
-}
 
 // ─────────────────────────────────────────────
 //  UTILITIES
