@@ -51,8 +51,14 @@
 
 <!-- LOADING SCREEN -->
 <div id="loadingScreen">
-  <div class="loader-logo">AR.</div>
-  <div class="loader-bar-wrap"><div class="loader-bar" id="loaderBar"></div></div>
+  <div class="loader-logo">
+    <img src="file_000000004984720882e69f4dad44966a.png" alt="AK.R Logo">
+  </div>
+
+  <div class="loader-bar-wrap">
+    <div class="loader-bar" id="loaderBar"></div>
+  </div>
+
   <p class="loader-text" id="loaderText">Initializing Platform...</p>
 </div>
 
@@ -943,14 +949,6 @@
           <div><div class="contact-item-label">Name</div><div class="contact-item-value">Akarshit Raj</div></div>
         </div>
         <div class="contact-item">
-          <div class="contact-icon-box">🏫</div>
-          <div><div class="contact-item-label">School</div><div class="contact-item-value">PM SHRI JNV Khairabad, Sitapur (UP)</div></div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-icon-box">📺</div>
-          <div><div class="contact-item-label">YouTube</div><div class="contact-item-value">@AkarshitRaj</div></div>
-        </div>
-        <div class="contact-item">
           <div class="contact-icon-box">🤖</div>
           <div><div class="contact-item-label">AI Assistant</div><div class="contact-item-value">Available 24/7 for instant answers</div></div>
         </div>
@@ -981,7 +979,7 @@
 <footer>
   <div class="footer-grid">
     <div>
-      <div class="footer-brand-logo">AR. Coding Platform</div>
+      <div class="footer-brand-logo">AK.R Coding Platform</div>
       <div class="footer-brand-desc">Free programming education for everyone. 20+ courses, AI-powered tools, daily challenges, and a growing community of 50,000+ learners.</div>
       <div class="footer-socials">
         <a href="https://youtube.com/@AkarshitRaj" target="_blank" class="social-icon-btn" title="YouTube">📺</a>
@@ -1048,7 +1046,7 @@
   <div class="ai-modal-header">
     <div class="ai-modal-avatar">🤖</div>
     <div class="ai-modal-title-wrap">
-      <div class="ai-modal-title">AR-AI — Your Coding Mentor</div>
+      <div class="ai-modal-title">AI — Your Coding Mentor</div>
       <div class="ai-modal-status">Online • Ready to help</div>
     </div>
     <button class="ai-modal-close" onclick="closeAIChat()">✕</button>
@@ -1080,7 +1078,7 @@
 
 <!-- FLOATING AI BUTTON -->
 <button class="ai-float-btn" onclick="openAIChat()" title="Open AI Mentor">🤖</button>
-<div class="ai-float-tooltip">Chat with AR-AI</div>
+<div class="ai-float-tooltip">Chat with AI</div>
 
 <!-- SCROLL TOP -->
 <button class="scroll-top" id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
@@ -1094,7 +1092,7 @@
 <div class="ar-modal-overlay" id="authModalOverlay" onclick="closeAuthModal()"></div>
 <div class="ar-modal" id="authModal">
   <button class="ar-modal-close" onclick="closeAuthModal()">✕</button>
-  <div class="auth-logo">AR.</div>
+  <div class="auth-logo">AK.R</div>
   <div class="auth-tabs">
     <button class="auth-tab active" id="loginTab" onclick="switchAuthTab('login')">🔐 Login</button>
     <button class="auth-tab" id="signupTab" onclick="switchAuthTab('signup')">✨ Sign Up</button>
@@ -1224,6 +1222,7 @@
 
 <script src="script.js"></script>
 <!-- Firebase Auth + Firestore (ES Module) -->
-<script type="module" src="firebase-auth.js"></script>
+<script type="module" src="./leaderboard-handler.js"></script>
+<script type="module" src="./chatbot-handler.js"></script>
 </body>
 </html>
