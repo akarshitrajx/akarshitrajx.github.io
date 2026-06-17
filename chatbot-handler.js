@@ -1,6 +1,6 @@
 // chatbot-handler.js - Real AI Chatbot
 // ============================================
-const GEMINI_API_KEY = 'YOUR_GEMINI_API_KEY'; // Replace with your key
+const GEMINI_API_KEY = 'AQ.Ab8RN6KRBGq3CE4NwnEwRThduy5V4hB4thzgWGRSQLDXlDu-aA'; // Replace with your key
 const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent';
 
 let chatHistory = [];
