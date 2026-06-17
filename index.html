@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/png" href="file_000000004984720882e69f4dad44966a.png">
+  <meta name="google-site-verification" content="uuGs6LF2wJNRxdUerOQ4bxWY3GAazSrGeq21JnEdtDE" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Akarshit Raj — Free Programming Courses & AI Coding Platform</title>
+  <meta name="description" content="Learn programming for free with Akarshit Raj. 20+ YouTube courses, 200+ videos, AI-powered coding platform, online code compiler, daily challenges. Python, C++, JavaScript, Java, SQL & more.">
+  <meta name="keywords" content="Akarshit Raj, programming courses, free coding classes, Python tutorial, C++ tutorial, JavaScript tutorial, online compiler, YouTube programming, learn coding free, AI coding platform, coding challenges, DSA practice">
+  <meta name="author" content="Akarshit Raj">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <link rel="canonical" href="https://akarshitrajx.github.io/">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Akarshit Raj — Free Programming Courses & AI Coding Platform">
+  <meta property="og:description" content="20+ free programming courses on YouTube. AI-powered coding platform, live code editor, daily challenges, leaderboards. Learn Python, C++, JavaScript & more!">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://akarshitrajx.github.io/">
+  <meta property="og:site_name" content="Akarshit Raj">
+  <meta property="og:image" content="https://akarshitrajx.github.io/og-image.png">
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Akarshit Raj — Free Programming Courses & AI Coding">
+  <meta name="twitter:description" content="20+ free courses. AI mentor, live editor, daily challenges. Learn & practice coding online for free!">
+  <meta name="twitter:image" content="https://akarshitrajx.github.io/og-image.png">
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"EducationalOrganization","name":"Akarshit Raj Coding Platform","url":"https://akarshitrajx.github.io/","description":"Free programming courses, AI coding assistant, online compiler, and coding challenges.","founder":{"@type":"Person","name":"Akarshit Raj"},"offers":{"@type":"Offer","price":"0","priceCurrency":"INR","availability":"https://schema.org/InStock"}}
+  </script>
+  <!-- Preload fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#06b6d4">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <script>
+    if('serviceWorker' in navigator) {
+      window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js').catch(()=>{}));
+    }
+  </script>
+  <!-- Firebase loaded as ES module via firebase-auth.js -->
+</head>
+<body>
+
+<!-- CURSOR -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- LOADING SCREEN -->
+<div id="loadingScreen">
+  <div class="loader-logo">AR.</div>
+  <div class="loader-bar-wrap"><div class="loader-bar" id="loaderBar"></div></div>
+  <p class="loader-text" id="loaderText">Initializing Platform...</p>
+</div>
+
+<!-- PARTICLE CANVAS -->
+<canvas id="particleCanvas"></canvas>
+
+<!-- BACKGROUND ORBS -->
+<div class="bg-orbs">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+  <div class="orb orb-4"></div>
+</div>
+
+<!-- ACHIEVEMENT POPUP -->
+<div class="achievement-popup" id="achievementPopup">
+  <div class="ach-icon">🏆</div>
+  <div><div class="ach-title">Achievement Unlocked</div><div class="ach-name">Welcome!</div></div>
+</div>
+
+<!-- SIDEBAR OVERLAY -->
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <div class="sidebar-logo">AR. Platform</div>
+    <button class="sidebar-close" onclick="closeSidebar()">✕</button>
+  </div>
+  <p class="sidebar-section-label">Navigation</p>
+  <ul class="sidebar-nav">
+    <li><a onclick="goToSection('hero')"><span class="sidebar-icon">🏠</span> Home</a></li>
+    <li><a onclick="goToSection('features')"><span class="sidebar-icon">⚡</span> Features <span class="sidebar-badge">26+</span></a></li>
+    <li><a onclick="goToSection('editor')"><span class="sidebar-icon">💻</span> Code Editor</a></li>
+    <li><a onclick="goToSection('courses')"><span class="sidebar-icon">📚</span> Courses</a></li>
+    <li><a onclick="goToSection('ai-section')"><span class="sidebar-icon">🤖</span> AI Tools <span class="sidebar-badge">AI</span></a></li>
+    <li><a onclick="goToSection('gamification')"><span class="sidebar-icon">🎮</span> Gamification</a></li>
+    <li><a onclick="goToSection('compilers')"><span class="sidebar-icon">🔧</span> Compilers</a></li>
+    <li><a onclick="goToSection('testimonials')"><span class="sidebar-icon">💬</span> Reviews</a></li>
+    <li><a onclick="goToSection('faq')"><span class="sidebar-icon">❓</span> FAQ</a></li>
+    <li><a onclick="goToSection('contact')"><span class="sidebar-icon">✉️</span> Contact</a></li>
+  </ul>
+  <p class="sidebar-section-label">External Links</p>
+  <ul class="sidebar-nav">
+    <li><a href="https://youtube.com/@AkarshitRaj" target="_blank"><span class="sidebar-icon">📺</span> YouTube Channel</a></li>
+    <li><a href="tutorials.html"><span class="sidebar-icon">📖</span> All Tutorials</a></li>
+    <li><a href="privacy-policy.html"><span class="sidebar-icon">🔒</span> Privacy Policy</a></li>
+  </ul>
+  <p class="sidebar-section-label">Keyboard Shortcuts</p>
+  <ul class="sidebar-nav" style="font-size:0.78rem;">
+    <li><a style="cursor:default;"><span class="sidebar-icon">⌨️</span> Ctrl+Enter → Run Code</a></li>
+    <li><a style="cursor:default;"><span class="sidebar-icon">⌨️</span> Ctrl+S → Save File</a></li>
+    <li><a style="cursor:default;"><span class="sidebar-icon">⌨️</span> Esc → Close Modal</a></li>
+  </ul>
+</aside>
+
+<!-- WELCOME BANNER -->
+<div class="welcome-banner">
+  <h1>🎓 Akarshit Raj — Free Coding Education for Everyone 🚀</h1>
+</div>
+
+<!-- NAVBAR -->
+<nav id="mainNav">
+  <div class="nav-left">
+    <button class="hamburger-btn" onclick="toggleSidebar()" aria-label="Menu">☰</button>
+    <a href="#" class="nav-brand">AR.</a>
+  </div>
+  <div class="nav-search-wrap">
+    <span class="nav-search-icon">🔍</span>
+    <input type="text" class="nav-search-input" id="navSearch" placeholder="Search courses, features...">
+  </div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#features">Features</a></li>
+    <li><a href="#editor">Editor</a></li>
+    <li><a href="#courses">Courses</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="https://youtube.com/@AkarshitRaj" target="_blank" class="nav-icon-btn" title="YouTube">📺</a>
+    <button class="nav-icon-btn" onclick="openAIChat()" title="AI Assistant">🤖</button>
+    <button class="nav-icon-btn" id="themeToggleBtn" onclick="toggleTheme()" title="Toggle Theme">🌙</button>
+    <button class="nav-icon-btn" id="bookmarksBtn" onclick="openBookmarks()" title="Bookmarks">🔖</button>
+    <button class="nav-icon-btn" id="notesBtn" onclick="openNotes()" title="My Notes">📒</button>
+    <button class="nav-icon-btn" id="pwaInstallBtn" onclick="installPWA()" title="Install App" style="display:none;">📲</button>
+    <button class="mobile-menu-btn" onclick="toggleMobileNav()">☰</button>
+    <div id="navAuthArea">
+      <button class="nav-cta" onclick="openAuthModal('login')"><span>🔐</span><span>Login</span></button>
+    </div>
+  </div>
+</nav>
+
+<!-- ============================================================
+     HERO SECTION
+     ============================================================ -->
+<section class="hero" id="hero">
+  <div class="hero-container">
+    <div class="hero-content">
+      <div class="hero-badge"><div class="hero-badge-dot"></div> India's Free Coding Platform — Est. 2024</div>
+      <h1>
+        <span class="normal-text">Learn to Code with<br></span>
+        <div class="name-container">
+          <span class="gold-name">Akarshit Raj</span>
+        </div>
+      </h1>
+      <p class="hero-subtitle">
+        <strong>20+ free courses</strong>, an AI-powered code editor, daily challenges, gamification & a world-class community — all completely <strong>free</strong>.
+      </p>
+      <div class="hero-actions">
+        <a href="#courses" class="btn-gold">🎓 Start Learning</a>
+        <a href="#editor" class="btn-outline">💻 Try Code Editor</a>
+        <button class="btn-outline" onclick="openAIChat()">🤖 Ask AI</button>
+      </div>
+      <div class="hero-stats">
+        <div><span class="h-stat-num counter" data-target="50000" data-suffix="+">50K+</span><span class="h-stat-lbl">Students</span></div>
+        <div><span class="h-stat-num counter" data-target="200" data-suffix="+">200+</span><span class="h-stat-lbl">Videos</span></div>
+        <div><span class="h-stat-num counter" data-target="20" data-suffix="+">20+</span><span class="h-stat-lbl">Courses</span></div>
+        <div><span class="h-stat-num">⭐ 4.9</span><span class="h-stat-lbl">Rating</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card-wrap">
+        <div class="floating-card fc1">✅ 1,247 solved today!</div>
+        <div class="floating-card fc2">🔥 42 day streak 🔥</div>
+        <div class="hero-main-card">
+          <div class="profile-section">
+            <img src="https://i.ibb.co/7NxY3Pb/profile.jpg" alt="Akarshit Raj" class="profile-img" loading="lazy" onerror="this.style.background='linear-gradient(135deg,#06b6d4,#3b82f6)';this.src='';this.alt='AR'">
+            <div class="profile-name">Akarshit Raj</div>
+            <div class="profile-role">Programming Educator & Developer</div>
+            <div class="profile-badges">
+              <span class="p-badge">🎓 Educator</span>
+              <span class="p-badge">💻 Developer</span>
+              <span class="p-badge">🏫 NVS Student</span>
+            </div>
+          </div>
+          <div class="hero-info-grid">
+            <a href="https://youtube.com/@AkarshitRaj" target="_blank" class="info-row">
+              <div class="info-icon-box">📺</div>
+              <div><div class="info-label">YouTube Channel</div><div class="info-val">@AkarshitRaj — 20+ Courses</div></div>
+            </a>
+            <a href="#courses" class="info-row">
+              <div class="info-icon-box">📚</div>
+              <div><div class="info-label">Free Courses</div><div class="info-val">Python, C++, JS, Java & More</div></div>
+            </a>
+            <a href="#editor" class="info-row">
+              <div class="info-icon-box">💻</div>
+              <div><div class="info-label">Live Code Editor</div><div class="info-val">12+ Languages Supported</div></div>
+            </a>
+            <div class="info-row">
+              <div class="info-icon-box">🏫</div>
+              <div><div class="info-label">School</div><div class="info-val">PM SHRI JNV Khairabad, Sitapur</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-item"><span class="stat-number counter" data-target="50000" data-suffix="+">50K+</span><div class="stat-label">Active Students</div></div>
+  <div class="stat-sep"></div>
+  <div class="stat-item"><span class="stat-number counter" data-target="200" data-suffix="+">200+</span><div class="stat-label">Video Lessons</div></div>
+  <div class="stat-sep"></div>
+  <div class="stat-item"><span class="stat-number counter" data-target="98" data-suffix="%">98%</span><div class="stat-label">Success Rate</div></div>
+  <div class="stat-sep"></div>
+  <div class="stat-item"><span class="stat-number counter" data-target="20" data-suffix="+">20+</span><div class="stat-label">Free Courses</div></div>
+  <div class="stat-sep"></div>
+  <div class="stat-item"><span class="stat-number">⭐ 4.9</span><div class="stat-label">Average Rating</div></div>
+</div>
+<div style="text-align:center;padding:1.5rem 5%;background:rgba(15,23,42,0.6);">
+  <div class="trust-logos">
+    <span class="trust-logo">🐍 Python</span>
+    <span class="trust-logo">⚡ C++</span>
+    <span class="trust-logo">🌐 JavaScript</span>
+    <span class="trust-logo">☕ Java</span>
+    <span class="trust-logo">🗄️ SQL</span>
+    <span class="trust-logo">📺 YouTube</span>
+    <span class="trust-logo">🤖 AI-Powered</span>
+    <span class="trust-logo">🆓 100% Free</span>
+  </div>
+</div>
+
+<!-- ============================================================
+     FEATURES SECTION
+     ============================================================ -->
+<section id="features">
+  <div class="section-wrap">
+    <div class="section-header anim">
+      <div class="section-tag">⚡ Platform Features</div>
+      <h2 class="section-title">Everything You Need to <span class="gradient-text">Master Coding</span></h2>
+      <p class="section-subtitle">A complete AI-powered learning ecosystem — from beginner to pro, all in one place.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card anim anim-delay-1">
+        <div class="feature-icon">🤖</div>
+        <h3>AI Coding Assistant</h3>
+        <p>Chat with AR-AI anytime. Get explanations, code examples, debugging help, and personalized guidance instantly.</p>
+        <span class="feature-tag ai">AI</span>
+      </div>
+      <div class="feature-card anim anim-delay-2">
+        <div class="feature-icon">🎯</div>
+        <h3>Daily Coding Challenges</h3>
+        <p>Fresh problems every day across difficulty levels. Solve, learn, earn XP and climb the leaderboard.</p>
+        <span class="feature-tag new">New</span>
+      </div>
+      <div class="feature-card anim anim-delay-3">
+        <div class="feature-icon">💻</div>
+        <h3>Live Code Editor</h3>
+        <p>Run Python, C++, JavaScript, Java, PHP, Go, Rust, Swift and more — directly in your browser. No setup needed.</p>
+        <span class="feature-tag">Live</span>
+      </div>
+      <div class="feature-card anim anim-delay-4">
+        <div class="feature-icon">⚔️</div>
+        <h3>Multiplayer Coding Battles</h3>
+        <p>Challenge friends or strangers in real-time coding duels. First to solve wins — who's the fastest coder?</p>
+        <span class="feature-tag coming">Coming Soon</span>
+      </div>
+      <div class="feature-card anim">
+        <div class="feature-icon">✨</div>
+        <h3>XP & Level System</h3>
+        <p>Earn XP for every problem solved, course completed, and challenge won. Level up from Beginner to Legend.</p>
+        <span class="feature-tag">Gamified</span>
+      </div>
+      <div class="feature-card anim anim-delay-1">
+        <div class="feature-icon">🔥</div>
+        <h3>Daily Streak System</h3>
+        <p>Build your coding habit with daily streaks. Don't break the chain — consistent practice is the key to mastery.</p>
+        <span class="feature-tag">Motivation</span>
+      </div>
+      <div class="feature-card anim anim-delay-2">
+        <div class="feature-icon">🏆</div>
+        <h3>Achievements & Badges</h3>
+        <p>Unlock 50+ unique badges as you progress. Show off your achievements on your public coding profile.</p>
+        <span class="feature-tag">Rewards</span>
+      </div>
+      <div class="feature-card anim anim-delay-3">
+        <div class="feature-icon">📊</div>
+        <h3>Global Leaderboards</h3>
+        <p>Compete globally and locally. Weekly, monthly, and all-time rankings across different categories.</p>
+        <span class="feature-tag new">New</span>
+      </div>
+      <div class="feature-card anim anim-delay-4">
+        <div class="feature-icon">📈</div>
+        <h3>Progress Tracking</h3>
+        <p>Visual dashboards showing your coding journey — problems solved, languages mastered, time invested.</p>
+        <span class="feature-tag">Analytics</span>
+      </div>
+      <div class="feature-card anim">
+        <div class="feature-icon">🔍</div>
+        <h3>AI Code Review</h3>
+        <p>Submit your code for instant AI-powered review. Get suggestions for optimization, best practices, and bugs.</p>
+        <span class="feature-tag ai">AI</span>
+      </div>
+      <div class="feature-card anim anim-delay-1">
+        <div class="feature-icon">💡</div>
+        <h3>AI Hints System</h3>
+        <p>Stuck on a problem? Get progressive hints from AI that guide you to the solution without giving it away.</p>
+        <span class="feature-tag ai">AI</span>
+      </div>
+      <div class="feature-card anim anim-delay-2">
+        <div class="feature-icon">📝</div>
+        <h3>Topic-wise Practice</h3>
+        <p>Practice by topic — Arrays, Linked Lists, Trees, DP, Graphs. Master each concept before moving forward.</p>
+        <span class="feature-tag">Structured</span>
+      </div>
+      <div class="feature-card anim anim-delay-3">
+        <div class="feature-icon">🗺️</div>
+        <h3>Coding Roadmaps</h3>
+        <p>Follow structured learning paths for Web Dev, DSA, ML, Android, Backend and more. Never feel lost again.</p>
+        <span class="feature-tag">Guided</span>
+      </div>
+      <div class="feature-card anim anim-delay-4">
+        <div class="feature-icon">🚀</div>
+        <h3>Project Section</h3>
+        <p>Build real-world projects guided by step-by-step tutorials. Add them to your portfolio and impress recruiters.</p>
+        <span class="feature-tag new">New</span>
+      </div>
+      <div class="feature-card anim">
+        <div class="feature-icon">🧠</div>
+        <h3>Quiz System</h3>
+        <p>Test your knowledge with timed quizzes after each topic. MCQs, true/false, and code-completion challenges.</p>
+        <span class="feature-tag">Practice</span>
+      </div>
+      <div class="feature-card anim anim-delay-1">
+        <div class="feature-icon">🎓</div>
+        <h3>Certifications</h3>
+        <p>Earn verifiable certificates on completing courses and challenges. Shareable on LinkedIn and your resume.</p>
+        <span class="feature-tag coming">Coming Soon</span>
+      </div>
+      <div class="feature-card anim anim-delay-2">
+        <div class="feature-icon">🎤</div>
+        <h3>AI Interview Practice</h3>
+        <p>Simulate real coding interviews with AI. Practice behavioral and technical questions with instant feedback.</p>
+        <span class="feature-tag ai">AI</span>
+      </div>
+      <div class="feature-card anim anim-delay-3">
+        <div class="feature-icon">🏁</div>
+        <h3>Contest Mode</h3>
+        <p>Join timed coding contests every week. Compete, climb ranks, and win recognition in the community.</p>
+        <span class="feature-tag coming">Coming Soon</span>
+      </div>
+      <div class="feature-card anim anim-delay-4">
+        <div class="feature-icon">💬</div>
+        <h3>Community Discussion</h3>
+        <p>Ask questions, share solutions, discuss concepts with thousands of learners in our active community.</p>
+        <span class="feature-tag">Social</span>
+      </div>
+      <div class="feature-card anim">
+        <div class="feature-icon">👤</div>
+        <h3>Profile Dashboard</h3>
+        <p>Your personalized coding dashboard with stats, activity heatmap, earned badges, and solved problems.</p>
+        <span class="feature-tag">Personal</span>
+      </div>
+      <div class="feature-card anim anim-delay-1">
+        <div class="feature-icon">☁️</div>
+        <h3>Cloud Save Progress</h3>
+        <p>Never lose your work. All your solutions, notes, and progress are automatically saved to the cloud.</p>
+        <span class="feature-tag">Sync</span>
+      </div>
+      <div class="feature-card anim anim-delay-2">
+        <div class="feature-icon">📒</div>
+        <h3>Notes System</h3>
+        <p>Take notes while learning. Organize them by topic, tag, and course. Your personal coding notebook.</p>
+        <span class="feature-tag">Productivity</span>
+      </div>
+      <div class="feature-card anim anim-delay-3">
+        <div class="feature-icon">🔖</div>
+        <h3>Bookmarks</h3>
+        <p>Bookmark problems, videos, and articles for later. Build your personal library of learning resources.</p>
+        <span class="feature-tag">Organize</span>
+      </div>
+      <div class="feature-card anim anim-delay-4">
+        <div class="feature-icon">🌙</div>
+        <h3>Dark / Light Mode</h3>
+        <p>Choose your preferred theme. Easy on the eyes for those long coding sessions at night.</p>
+        <span class="feature-tag">UI</span>
+      </div>
+      <div class="feature-card anim">
+        <div class="feature-icon">🔔</div>
+        <h3>Smart Notifications</h3>
+        <p>Daily challenge reminders, streak alerts, new content notifications — stay on track without being spammed.</p>
+        <span class="feature-tag">Alerts</span>
+      </div>
+      <div class="feature-card anim anim-delay-1">
+        <div class="feature-icon">🔭</div>
+        <h3>Global Search</h3>
+        <p>Instantly search courses, problems, solutions, topics across the entire platform with smart filters.</p>
+        <span class="feature-tag">Smart</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     LIVE CODE EDITOR
+     ============================================================ -->
+<section class="editor-section-bg" id="editor">
+  <div class="section-wrap">
+    <div class="section-header anim">
+      <div class="section-tag">💻 Code Editor</div>
+      <h2 class="section-title">Write, Run & <span class="gradient-text">Test Code</span> Instantly</h2>
+      <p class="section-subtitle">A professional-grade multi-language editor powered by the Piston execution engine. No login required.</p>
+    </div>
+    <div class="code-platform anim">
+      <div class="editor-topbar">
+        <div class="editor-dots">
+          <div class="editor-dot red"></div>
+          <div class="editor-dot yellow"></div>
+          <div class="editor-dot green"></div>
+        </div>
+        <div class="editor-title">ar-editor.js — Akarshit Raj Coding Platform</div>
+        <div class="lang-selector">
+          <button class="lang-btn active" data-lang="python" onclick="selectLang('python')">Python</button>
+          <button class="lang-btn" data-lang="cpp" onclick="selectLang('cpp')">C++</button>
+          <button class="lang-btn" data-lang="javascript" onclick="selectLang('javascript')">JavaScript</button>
+          <button class="lang-btn" data-lang="java" onclick="selectLang('java')">Java</button>
+          <button class="lang-btn" data-lang="csharp" onclick="selectLang('csharp')">C#</button>
+          <button class="lang-btn" data-lang="php" onclick="selectLang('php')">PHP</button>
+          <button class="lang-btn" data-lang="go" onclick="selectLang('go')">Go</button>
+          <button class="lang-btn" data-lang="rust" onclick="selectLang('rust')">Rust</button>
+          <button class="lang-btn" data-lang="kotlin" onclick="selectLang('kotlin')">Kotlin</button>
+          <button class="lang-btn" data-lang="html" onclick="selectLang('html')">HTML</button>
+        </div>
+      </div>
+      <div class="editor-body">
+        <div class="editor-pane">
+          <div class="editor-pane-header">
+            <div class="editor-pane-title">📝 Code Input</div>
+            <div style="display:flex;gap:.4rem;">
+              <button class="file-btn" onclick="copyCode()">📋 Copy</button>
+              <button class="file-btn" onclick="clearCode()">🗑️ Reset</button>
+            </div>
+          </div>
+          <textarea class="code-textarea" id="codeInput" spellcheck="false" placeholder="// Write your code here..."></textarea>
+        </div>
+        <div class="editor-pane">
+          <div class="editor-pane-header">
+            <div class="editor-pane-title">📤 Output Console</div>
+            <div class="online-badge"><span class="online-dot"></span><span style="font-size:.75rem;color:var(--gray);">Piston Engine</span></div>
+          </div>
+          <div class="output-area" id="codeOutput"><span style="color:#475569;">// Output will appear here after running code...</span></div>
+        </div>
+      </div>
+      <div class="editor-footer">
+        <button class="run-btn" id="runBtn" onclick="runCode()"><span>▶</span> Run Code</button>
+        <input type="file" id="fileInput" accept=".py,.cpp,.js,.java,.cs,.php,.go,.rs,.kt,.html,.txt" onchange="loadCodeFile(this)">
+        <button class="file-btn" onclick="document.getElementById('fileInput').click()">📂 Load File</button>
+        <button class="file-btn" onclick="saveCodeFile()">💾 Save File</button>
+        <button class="file-btn" onclick="openAIChat()">🤖 AI Help</button>
+        <div class="editor-status"><span style="color:var(--success);">✓</span> Ctrl+Enter to run</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     COURSES SECTION
+     ============================================================ -->
+<section id="courses">
+  <div class="section-wrap">
+    <div class="section-header anim">
+      <div class="section-tag">📚 Free Courses</div>
+      <h2 class="section-title">Learn from <span class="gold-text">20+ Free Courses</span></h2>
+      <p class="section-subtitle">All courses available completely free on YouTube. Structured, beginner-friendly, and constantly updated.</p>
+    </div>
+    <div class="course-grid">
+      <!-- Python -->
+      <div class="course-card anim">
+        <div class="course-img">
+          <img src="https://images.unsplash.com/photo-1526379095098-d400fd0bf935?w=400&q=80" alt="Python Course" loading="lazy">
+          <div class="course-overlay"></div>
+        </div>
+        <div class="course-body">
+          <div class="course-meta">
+            <span class="course-tag tag-python">Python</span>
+            <span class="course-rating">⭐ 4.9</span>
+          </div>
+          <div class="course-title">Python Full Course — Zero to Hero</div>
+          <div class="course-desc">Complete Python programming from basics to OOP, file handling, libraries & real-world projects.</div>
+          <div class="course-footer">
+            <div class="course-stats"><span>📹 40+ Videos</span><span>🆓 Free</span></div>
+            <a href="https://youtube.com/@AkarshitRaj" target="_blank" class="course-btn">▶ Watch</a>
+          </div>
+        </div>
+      </div>
+      <!-- C++ -->
+      <div class="course-card anim anim-delay-1">
+        <div class="course-img">
+          <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&q=80" alt="C++ Course" loading="lazy">
+          <div class="course-overlay"></div>
+        </div>
+        <div class="course-body">
+          <div class="course-meta">
+            <span class="course-tag tag-cpp">C++</span>
+            <span class="course-rating">⭐ 4.8</span>
+          </div>
+          <div class="course-title">C++ Full Course — Competitive Coding</div>
+          <div class="course-desc">Master C++ from syntax to STL, OOP, pointers, and competitive programming techniques.</div>
+          <div class="course-footer">
+            <div class="course-stats"><span>📹 35+ Videos</span><span>🆓 Free</span></div>
+            <a href="https://youtube.com/@AkarshitRaj" target="_blank" class="course-btn">▶ Watch</a>
+          </div>
+        </div>
+      </div>
+      <!-- JavaScript -->
+      <div class="course-card anim anim-delay-2">
+        <div class="course-img">
+          <img src="https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=400&q=80" alt="JavaScript Course" loading="lazy">
+          <div class="course-overlay"></div>
+        </div>
+        <div class="course-body">
+          <div class="course-meta">
+            <span class="course-tag tag-js">JavaScript</span>
+            <span class="course-rating">⭐ 4.9</span>
+          </div>
+          <div class="course-title">JavaScript — Modern ES6+ Complete Guide</div>
+          <div class="course-desc">Learn modern JavaScript including ES6+, DOM manipulation, fetch API, async/await, and more.</div>
+          <div class="course-footer">
+            <div class="course-stats"><span>📹 30+ Videos</span><span>🆓 Free</span></div>
+            <a href="https://youtube.com/@AkarshitRaj" target="_blank" class="course-btn">▶ Watch</a>
+          </div>
+        </div>
+      </div>
+      <!-- Web Dev -->
+      <div class="course-card anim">
+        <div class="course-img">
+          <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?w=400&q=80" alt="Web Dev" loading="lazy">
+          <div class="course-overlay"></div>
+        </div>
+        <div class="course-body">
+          <div class="course-meta">
+            <span class="course-tag tag-web">Web Dev</span>
+            <span class="course-rating">⭐ 4.9</span>
+          </div>
+          <div class="course-title">HTML & CSS — Build Real Websites</div>
+          <div class="course-desc">Full web development course covering HTML5, CSS3, responsive design, flexbox, grid and animations.</div>
+          <div class="course-footer">
+            <div class="course-stats"><span>📹 25+ Videos</span><span>🆓 Free</span></div>
+            <a href="https://youtube.com/@AkarshitRaj" target="_blank" class="course-btn">▶ Watch</a>
+          </div>
+        </div>
+      </div>
+      <!-- Java -->
+      <div class="course-card anim anim-delay-1">
+        <div class="course-img">
+          <img src="https://images.unsplash.com/photo-1617040619263-41c5a9ca7521?w=400&q=80" alt="Java Course" loading="lazy">
+          <div class="course-overlay"></div>
+        </div>
+        <div class="course-body">
+          <div class="course-meta">
+            <span class="course-tag tag-java">Java</span>
+            <span class="course-rating">⭐ 4.8</span>
+          </div>
+          <div class="course-title">Java Full Course — OOP Mastery</div>
+          <div class="course-desc">Java from basics to advanced OOP, collections, exception handling, and real-world application development.</div>
+          <div class="course-footer">
+            <div class="course-stats"><span>📹 28+ Videos</span><span>🆓 Free</span></div>
+            <a href="https://youtube.com/@AkarshitRaj" target="_blank" class="course-btn">▶ Watch</a>
+          </div>
+        </div>
+      </div>
+      <!-- DSA -->
+      <div class="course-card anim anim-delay-2">
+        <div class="course-img">
+          <img src="https://images.unsplash.com/photo-1509228468518-180dd4864904?w=400&q=80" alt="DSA Course" loading="lazy">
+          <div class="course-overlay"></div>
+        </div>
+        <div class="course-body">
+          <div class="course-meta">
+            <span class="course-tag tag-dsa">DSA</span>
+            <span class="course-rating">⭐ 5.0</span>
+          </div>
+          <div class="course-title">Data Structures & Algorithms — Interview Prep</div>
+          <div class="course-desc">Complete DSA course: Arrays, Linked Lists, Trees, Graphs, DP, Sorting, Searching and interview problems.</div>
+          <div class="course-footer">
+            <div class="course-stats"><span>📹 50+ Videos</span><span>🆓 Free</span></div>
+            <a href="https://youtube.com/@AkarshitRaj" target="_blank" class="course-btn">▶ Watch</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2.5rem;">
+      <a href="https://youtube.com/@AkarshitRaj" target="_blank" class="btn-primary">📺 View All Courses on YouTube</a>
+    </div>
+    <!-- LANGUAGE GRID -->
+    <div style="margin-top:4rem;">
+      <div class="section-header">
+        <div class="section-tag">🔧 Language Practice</div>
+        <h3 class="section-title" style="font-size:1.8rem;">Practice <span class="gradient-text">Any Language</span></h3>
+      </div>
+      <button onclick="toggleLanguageSection()" id="langToggleBtn" style="display:flex;align-items:center;gap:.75rem;margin:0 auto 1rem;padding:.85rem 2rem;background:rgba(255,215,0,0.08);border:1px solid rgba(255,215,0,0.3);border-radius:12px;color:var(--gold);font-weight:700;font-size:.95rem;cursor:pointer;font-family:inherit;transition:all .3s;">
+        <span>📚</span><span>View All Languages & Compilers</span><span id="toggleArrow" style="transition:transform .3s;">▼</span>
+      </button>
+      <div id="languagesDropdown" style="max-height:0;overflow:hidden;opacity:0;transition:all .45s ease;" data-open="0">
+        <div class="skill-grid">
+          <a href="#editor" onclick="selectLang('python')" class="skill-card"><div class="skill-icon">🐍</div><div class="skill-name">Python</div><div class="skill-desc">Run in Editor</div></a>
+          <a href="#editor" onclick="selectLang('cpp')" class="skill-card"><div class="skill-icon">⚡</div><div class="skill-name">C++</div><div class="skill-desc">Run in Editor</div></a>
+          <a href="#editor" onclick="selectLang('javascript')" class="skill-card"><div class="skill-icon">🌐</div><div class="skill-name">JavaScript</div><div class="skill-desc">Run in Editor</div></a>
+          <a href="#editor" onclick="selectLang('java')" class="skill-card"><div class="skill-icon">☕</div><div class="skill-name">Java</div><div class="skill-desc">Run in Editor</div></a>
+          <a href="#editor" onclick="selectLang('csharp')" class="skill-card"><div class="skill-icon">💜</div><div class="skill-name">C#</div><div class="skill-desc">Run in Editor</div></a>
+          <a href="#editor" onclick="selectLang('php')" class="skill-card"><div class="skill-icon">🐘</div><div class="skill-name">PHP</div><div class="skill-desc">Run in Editor</div></a>
+          <a href="#editor" onclick="selectLang('go')" class="skill-card"><div class="skill-icon">🏃</div><div class="skill-name">Go</div><div class="skill-desc">Run in Editor</div></a>
+          <a href="#editor" onclick="selectLang('rust')" class="skill-card"><div class="skill-icon">🦀</div><div class="skill-name">Rust</div><div class="skill-desc">Run in Editor</div></a>
+          <a href="#editor" onclick="selectLang('kotlin')" class="skill-card"><div class="skill-icon">🎯</div><div class="skill-name">Kotlin</div><div class="skill-desc">Run in Editor</div></a>
+          <a href="#editor" onclick="selectLang('html')" class="skill-card"><div class="skill-icon">🌐</div><div class="skill-name">HTML/CSS</div><div class="skill-desc">Preview in Editor</div></a>
+          <a href="https://www.programiz.com/sql/online-compiler/" target="_blank" class="skill-card"><div class="skill-icon">🗄️</div><div class="skill-name">SQL</div><div class="skill-desc">External Compiler</div></a>
+          <a href="https://dart.dev/tools/dartpad" target="_blank" class="skill-card"><div class="skill-icon">🎯</div><div class="skill-name">Dart</div><div class="skill-desc">DartPad</div></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     AI FEATURES SECTION
+     ============================================================ -->
+<section id="ai-section" style="background:linear-gradient(135deg,rgba(139,92,246,0.04),rgba(2,6,23,0));border-top:1px solid var(--border);">
+  <div class="section-wrap">
+    <div class="section-header anim">
+      <div class="section-tag">🤖 AI Powered</div>
+      <h2 class="section-title">Your Personal <span style="background:linear-gradient(135deg,var(--purple),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">AI Mentor</span></h2>
+      <p class="section-subtitle">8 cutting-edge AI tools built to make you a better programmer — faster than ever before.</p>
+    </div>
+    <div class="ai-grid">
+      <div class="ai-card anim" onclick="openAIChat()">
+        <div class="ai-card-icon">🧑‍🏫</div>
+        <div class="ai-card-title">AI Mentor</div>
+        <div class="ai-card-desc">Get personalized guidance on any programming topic. Like having a senior developer by your side 24/7.</div>
+        <div class="ai-badge">Chat Now</div>
+      </div>
+      <div class="ai-card anim anim-delay-1" onclick="openAIChat()">
+        <div class="ai-card-icon">🐛</div>
+        <div class="ai-card-title">AI Bug Fixer</div>
+        <div class="ai-card-desc">Paste your buggy code and let AI diagnose and fix issues instantly with clear explanations.</div>
+        <div class="ai-badge">Try It</div>
+      </div>
+      <div class="ai-card anim anim-delay-2" onclick="openAIChat()">
+        <div class="ai-card-icon">⚡</div>
+        <div class="ai-card-title">AI Challenge Generator</div>
+        <div class="ai-card-desc">Get fresh, custom coding challenges based on your skill level and the topic you want to practice.</div>
+        <div class="ai-badge">Generate</div>
+      </div>
+      <div class="ai-card anim anim-delay-3" onclick="openAIChat()">
+        <div class="ai-card-icon">🗺️</div>
+        <div class="ai-card-title">AI Roadmap Builder</div>
+        <div class="ai-card-desc">Tell AI your goal (Web Dev, ML, DSA...) and get a week-by-week personalized learning roadmap.</div>
+        <div class="ai-badge">Build Roadmap</div>
+      </div>
+      <div class="ai-card anim" onclick="openAIChat()">
+        <div class="ai-card-icon">💡</div>
+        <div class="ai-card-title">AI Project Ideas</div>
+        <div class="ai-card-desc">Running out of project ideas? AI generates unique, portfolio-worthy project concepts for your level.</div>
+        <div class="ai-badge">Get Ideas</div>
+      </div>
+      <div class="ai-card anim anim-delay-1" onclick="openAIChat()">
+        <div class="ai-card-icon">⚙️</div>
+        <div class="ai-card-title">Code Optimizer</div>
+        <div class="ai-card-desc">Paste your working code and AI rewrites it to be faster, cleaner, and follow best practices.</div>
+        <div class="ai-badge">Optimize</div>
+      </div>
+      <div class="ai-card anim anim-delay-2" onclick="openAIChat()">
+        <div class="ai-card-icon">🔬</div>
+        <div class="ai-card-title">AI Debugger</div>
+        <div class="ai-card-desc">Advanced debugging assistant that traces through your logic, identifies root causes, and explains fixes.</div>
+        <div class="ai-badge">Debug</div>
+      </div>
+      <div class="ai-card anim anim-delay-3" onclick="openAIChat()">
+        <div class="ai-card-icon">🎯</div>
+        <div class="ai-card-title">Interview Simulator</div>
+        <div class="ai-card-desc">Practice real coding interview questions with AI feedback on your approach, complexity, and code quality.</div>
+        <div class="ai-badge">Practice</div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2.5rem;">
+      <button class="btn-primary" onclick="openAIChat()" style="background:linear-gradient(135deg,var(--purple),var(--primary));">🤖 Chat with AR-AI Now</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     GAMIFICATION SECTION
+     ============================================================ -->
+<section id="gamification">
+  <div class="section-wrap">
+    <div class="section-header anim">
+      <div class="section-tag">🎮 Gamification</div>
+      <h2 class="section-title">Make Coding <span class="gradient-text">Addictively Fun</span></h2>
+      <p class="section-subtitle">XP, streaks, badges, leaderboards — coding has never felt this rewarding.</p>
+    </div>
+    <div class="gamification-wrap">
+      <div class="anim-left">
+        <div class="xp-card" style="margin-bottom:1.25rem;">
+          <div class="xp-header">
+            <div class="xp-title">🎮 Your Progress</div>
+            <div class="xp-level">Level 12 — Gold</div>
+          </div>
+          <div style="font-size:.82rem;color:var(--gray);margin-bottom:.5rem;">XP Progress: 6,800 / 10,000</div>
+          <div class="xp-bar-wrap"><div class="xp-bar" style="width:0;" data-width="68%"></div></div>
+          <div class="xp-labels"><span>6,800 XP</span><span>10,000 XP to Level 13</span></div>
+          <div style="margin-top:1.5rem;font-size:.85rem;font-weight:600;margin-bottom:.5rem;">🔥 Weekly Streak</div>
+          <div class="streak-row">
+            <div class="streak-day done">M</div><div class="streak-day done">T</div>
+            <div class="streak-day done">W</div><div class="streak-day done">T</div>
+            <div class="streak-day today">F</div><div class="streak-day">S</div>
+            <div class="streak-day">S</div>
+          </div>
+          <div style="margin-top:1rem;font-size:.78rem;color:var(--warning);">🔥 42-day streak! Keep it going!</div>
+        </div>
+        <div class="progress-card">
+          <div style="font-size:.9rem;font-weight:700;margin-bottom:1.25rem;">📊 Topic Progress</div>
+          <div class="progress-row"><div class="progress-label"><span>Python</span><span>85%</span></div><div class="progress-bar-bg"><div class="progress-bar pb-blue" style="width:0;" data-width="85%"></div></div></div>
+          <div class="progress-row"><div class="progress-label"><span>C++</span><span>72%</span></div><div class="progress-bar-bg"><div class="progress-bar pb-gold" style="width:0;" data-width="72%"></div></div></div>
+          <div class="progress-row"><div class="progress-label"><span>DSA</span><span>60%</span></div><div class="progress-bar-bg"><div class="progress-bar pb-purple" style="width:0;" data-width="60%"></div></div></div>
+          <div class="progress-row"><div class="progress-label"><span>Web Dev</span><span>90%</span></div><div class="progress-bar-bg"><div class="progress-bar pb-green" style="width:0;" data-width="90%"></div></div></div>
+        </div>
+        <div class="xp-card" style="margin-top:1.25rem;">
+          <div style="font-size:.9rem;font-weight:700;margin-bottom:1rem;">🏆 Badges Earned</div>
+          <div class="badges-grid">
+            <div class="badge-item"><span class="badge-emoji">🔥</span><div class="badge-name">Streak 30</div></div>
+            <div class="badge-item"><span class="badge-emoji">⭐</span><div class="badge-name">Top Solver</div></div>
+            <div class="badge-item"><span class="badge-emoji">🐍</span><div class="badge-name">Python Pro</div></div>
+            <div class="badge-item"><span class="badge-emoji">⚡</span><div class="badge-name">Speed Coder</div></div>
+            <div class="badge-item"><span class="badge-emoji">🎓</span><div class="badge-name">Course Done</div></div>
+            <div class="badge-item"><span class="badge-emoji">🌍</span><div class="badge-name">Global Top 50</div></div>
+            <div class="badge-item locked"><span class="badge-emoji">💎</span><div class="badge-name">Diamond</div></div>
+            <div class="badge-item locked"><span class="badge-emoji">👑</span><div class="badge-name">Legend</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="anim-right">
+        <div class="leaderboard-card">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;">
+            <div style="font-size:1.05rem;font-weight:700;">🏆 Global Leaderboard</div>
+            <select style="background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:8px;color:var(--gray);padding:.35rem .75rem;font-size:.78rem;cursor:pointer;outline:none;font-family:inherit;">
+              <option>This Week</option><option>This Month</option><option>All Time</option>
+            </select>
+          </div>
+          <div class="lb-row"><div class="lb-rank gold">🥇</div><div class="lb-avatar">AK</div><div class="lb-name">Akarshit Raj</div><div class="lb-xp">12,450 XP</div><div class="lb-streak">🔥42</div></div>
+          <div class="lb-row"><div class="lb-rank silver">🥈</div><div class="lb-avatar" style="background:linear-gradient(135deg,#8b5cf6,#ec4899);">RK</div><div class="lb-name">Rohit Kumar</div><div class="lb-xp">11,200 XP</div><div class="lb-streak">🔥38</div></div>
+          <div class="lb-row"><div class="lb-rank bronze">🥉</div><div class="lb-avatar" style="background:linear-gradient(135deg,#10b981,#06b6d4);">PS</div><div class="lb-name">Priya Sharma</div><div class="lb-xp">10,800 XP</div><div class="lb-streak">🔥35</div></div>
+          <div class="lb-row"><div class="lb-rank" style="color:var(--gray);">4</div><div class="lb-avatar" style="background:linear-gradient(135deg,#f59e0b,#ef4444);">AV</div><div class="lb-name">Aryan Verma</div><div class="lb-xp">9,600 XP</div><div class="lb-streak">🔥29</div></div>
+          <div class="lb-row"><div class="lb-rank" style="color:var(--gray);">5</div><div class="lb-avatar" style="background:linear-gradient(135deg,#06b6d4,#3b82f6);">SM</div><div class="lb-name">Sneha Mishra</div><div class="lb-xp">8,900 XP</div><div class="lb-streak">🔥27</div></div>
+          <div class="lb-row"><div class="lb-rank" style="color:var(--gray);">6</div><div class="lb-avatar" style="background:linear-gradient(135deg,#8b5cf6,#06b6d4);">DJ</div><div class="lb-name">Dev Joshi</div><div class="lb-xp">8,200 XP</div><div class="lb-streak">🔥22</div></div>
+          <div class="lb-row"><div class="lb-rank" style="color:var(--gray);">7</div><div class="lb-avatar" style="background:linear-gradient(135deg,#ec4899,#f59e0b);">NG</div><div class="lb-name">Nisha Gupta</div><div class="lb-xp">7,500 XP</div><div class="lb-streak">🔥18</div></div>
+          <div style="text-align:center;margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--border);">
+            <div style="font-size:.8rem;color:var(--gray);margin-bottom:.75rem;">Your Rank: <strong style="color:var(--primary);">#1</strong></div>
+            <button class="btn-outline" style="font-size:.82rem;padding:.6rem 1.5rem;" onclick="triggerAchievement('🏆','Top Ranker!','#1 on Leaderboard')">View Full Leaderboard</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     COMPILERS SECTION
+     ============================================================ -->
+<section id="compilers" style="border-top:1px solid var(--border);">
+  <div class="section-wrap">
+    <div class="section-header anim">
+      <div class="section-tag">🔧 Pro Compilers</div>
+      <h2 class="section-title">External <span class="gradient-text">Compiler Tools</span></h2>
+      <p class="section-subtitle">Use our built-in editor or access these professional online IDEs for advanced features.</p>
+    </div>
+    <div class="compiler-grid">
+      <a href="https://www.programiz.com/python-programming/online-compiler/" target="_blank" class="compiler-card anim"><div class="compiler-icon">🐍</div><div class="compiler-name">Python</div><div class="compiler-desc">Programiz Online</div></a>
+      <a href="https://www.programiz.com/cpp-programming/online-compiler/" target="_blank" class="compiler-card anim anim-delay-1"><div class="compiler-icon">⚡</div><div class="compiler-name">C++</div><div class="compiler-desc">Programiz Online</div></a>
+      <a href="https://jsfiddle.net/" target="_blank" class="compiler-card anim anim-delay-2"><div class="compiler-icon">🌐</div><div class="compiler-name">JavaScript</div><div class="compiler-desc">JSFiddle</div></a>
+      <a href="https://www.programiz.com/java-programming/online-compiler/" target="_blank" class="compiler-card anim anim-delay-3"><div class="compiler-icon">☕</div><div class="compiler-name">Java</div><div class="compiler-desc">Programiz Online</div></a>
+      <a href="https://www.programiz.com/sql/online-compiler/" target="_blank" class="compiler-card anim"><div class="compiler-icon">🗄️</div><div class="compiler-name">SQL</div><div class="compiler-desc">Programiz SQL</div></a>
+      <a href="https://replit.com/" target="_blank" class="compiler-card anim anim-delay-1"><div class="compiler-icon">💻</div><div class="compiler-name">Replit</div><div class="compiler-desc">Full IDE Online</div></a>
+      <a href="https://codepen.io/" target="_blank" class="compiler-card anim anim-delay-2"><div class="compiler-icon">🖊️</div><div class="compiler-name">CodePen</div><div class="compiler-desc">HTML/CSS/JS</div></a>
+      <a href="https://leetcode.com/" target="_blank" class="compiler-card anim anim-delay-3"><div class="compiler-icon">🏆</div><div class="compiler-name">LeetCode</div><div class="compiler-desc">DSA Practice</div></a>
+      <a href="https://www.hackerrank.com/" target="_blank" class="compiler-card anim"><div class="compiler-icon">⭐</div><div class="compiler-name">HackerRank</div><div class="compiler-desc">Coding Challenges</div></a>
+      <a href="https://codeforces.com/" target="_blank" class="compiler-card anim anim-delay-1"><div class="compiler-icon">🔥</div><div class="compiler-name">Codeforces</div><div class="compiler-desc">Competitive</div></a>
+      <a href="https://www.geeksforgeeks.org/" target="_blank" class="compiler-card anim anim-delay-2"><div class="compiler-icon">📘</div><div class="compiler-name">GeeksForGeeks</div><div class="compiler-desc">Learn & Practice</div></a>
+      <a href="https://codesandbox.io/" target="_blank" class="compiler-card anim anim-delay-3"><div class="compiler-icon">📦</div><div class="compiler-name">CodeSandbox</div><div class="compiler-desc">React/Node.js</div></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TESTIMONIALS
+     ============================================================ -->
+<section id="testimonials" style="border-top:1px solid var(--border);">
+  <div class="section-wrap">
+    <div class="section-header anim">
+      <div class="section-tag">💬 Student Reviews</div>
+      <h2 class="section-title">What <span class="gradient-text">Students Say</span></h2>
+      <p class="section-subtitle">Real feedback from real learners who transformed their coding skills.</p>
+    </div>
+    <div class="testimonials-wrap anim">
+      <div class="testimonials-track" id="testimonialTrack">
+        <div class="testimonial-card">
+          <div class="t-stars">⭐⭐⭐⭐⭐</div>
+          <div class="t-text">"Akarshit Raj's Python course changed my life! I got my first internship 3 months after starting. The explanations are so clear and the live editor on this platform is amazing."</div>
+          <div class="t-author"><div class="t-avatar">RK</div><div><div class="t-name">Rohit Kumar</div><div class="t-role">Software Intern, Noida</div></div></div>
+        </div>
+        <div class="testimonial-card">
+          <div class="t-stars">⭐⭐⭐⭐⭐</div>
+          <div class="t-text">"The C++ course is the best I've found for competitive programming. I went from zero to solving Codeforces problems in 2 months. The AI mentor is incredibly helpful!"</div>
+          <div class="t-author"><div class="t-avatar" style="background:linear-gradient(135deg,#8b5cf6,#ec4899);">PS</div><div><div class="t-name">Priya Sharma</div><div class="t-role">CS Student, Delhi</div></div></div>
+        </div>
+        <div class="testimonial-card">
+          <div class="t-stars">⭐⭐⭐⭐⭐</div>
+          <div class="t-text">"I was struggling with DSA for months. After following the roadmap here and practicing daily challenges, I cracked my placement interview at a top MNC. Truly grateful!"</div>
+          <div class="t-author"><div class="t-avatar" style="background:linear-gradient(135deg,#10b981,#06b6d4);">AV</div><div><div class="t-name">Aryan Verma</div><div class="t-role">Placed at TCS, Lucknow</div></div></div>
+        </div>
+        <div class="testimonial-card">
+          <div class="t-stars">⭐⭐⭐⭐⭐</div>
+          <div class="t-text">"The gamification system kept me motivated every single day. My 50-day streak badge is my proudest achievement! Free courses of this quality are unbelievable."</div>
+          <div class="t-author"><div class="t-avatar" style="background:linear-gradient(135deg,#f59e0b,#ef4444);">SM</div><div><div class="t-name">Sneha Mishra</div><div class="t-role">Class 12, Kanpur</div></div></div>
+        </div>
+        <div class="testimonial-card">
+          <div class="t-stars">⭐⭐⭐⭐⭐</div>
+          <div class="t-text">"The AI coding assistant explained recursion to me in 5 minutes when I'd been struggling for weeks. This platform is a game changer for self-learners in India."</div>
+          <div class="t-author"><div class="t-avatar" style="background:linear-gradient(135deg,#06b6d4,#3b82f6);">DJ</div><div><div class="t-name">Dev Joshi</div><div class="t-role">Engineering Student, Pune</div></div></div>
+        </div>
+        <div class="testimonial-card">
+          <div class="t-stars">⭐⭐⭐⭐⭐</div>
+          <div class="t-text">"Built my first website using the HTML/CSS course and hosted it on GitHub Pages. Now I freelance and earn from my skill. Thank you Akarshit for making this free!"</div>
+          <div class="t-author"><div class="t-avatar" style="background:linear-gradient(135deg,#ec4899,#8b5cf6);">NG</div><div><div class="t-name">Nisha Gupta</div><div class="t-role">Freelancer, Jaipur</div></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="slider-controls">
+      <button class="slider-btn" onclick="slideTestimonials(-1)">◀</button>
+      <button class="slider-btn" onclick="slideTestimonials(1)">▶</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     COMMUNITY SECTION
+     ============================================================ -->
+<section style="border-top:1px solid var(--border);">
+  <div class="section-wrap">
+    <div class="section-header anim">
+      <div class="section-tag">🌍 Community</div>
+      <h2 class="section-title">Join Our <span class="gradient-text">Growing Community</span></h2>
+      <p class="section-subtitle">50,000+ learners growing together. Ask questions, share projects, celebrate wins.</p>
+    </div>
+    <div class="community-grid">
+      <div class="community-card anim-left">
+        <span class="community-icon">📺</span>
+        <h3>YouTube Community</h3>
+        <p>Subscribe to get free course updates, coding tips, project tutorials and live sessions. New videos every week!</p>
+        <a href="https://youtube.com/@AkarshitRaj" target="_blank" class="btn-primary">📺 Subscribe on YouTube</a>
+      </div>
+      <div class="community-card anim-right">
+        <span class="community-icon">💬</span>
+        <h3>Discussion Forum</h3>
+        <p>Ask doubts, share your code solutions, help fellow learners, and grow together in our active coding community.</p>
+        <a href="#contact" class="btn-outline">💬 Join Discussion</a>
+      </div>
+    </div>
+    <div class="glass-card anim" style="margin-top:2rem;text-align:center;padding:2.5rem;">
+      <h3 style="font-size:1.4rem;margin-bottom:.5rem;">🎉 Community Milestones</h3>
+      <p style="color:var(--gray);margin-bottom:2rem;font-size:.9rem;">Together we've achieved incredible things</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1.5rem;">
+        <div><span class="stat-number counter" data-target="50000" data-suffix="+">50K+</span><div class="stat-label">Students</div></div>
+        <div><span class="stat-number counter" data-target="500000" data-suffix="+">500K+</span><div class="stat-label">Problems Solved</div></div>
+        <div><span class="stat-number counter" data-target="1000000" data-suffix="+">1M+</span><div class="stat-label">Lines of Code</div></div>
+        <div><span class="stat-number counter" data-target="5000" data-suffix="+">5K+</span><div class="stat-label">Jobs Landed</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FAQ SECTION
+     ============================================================ -->
+<section id="faq" style="border-top:1px solid var(--border);">
+  <div class="section-wrap">
+    <div class="section-header anim">
+      <div class="section-tag">❓ FAQ</div>
+      <h2 class="section-title">Frequently Asked <span class="gradient-text">Questions</span></h2>
+      <p class="section-subtitle">Everything you need to know about the platform and courses.</p>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question">Are all courses completely free? <span class="faq-arrow">▼</span></button>
+        <div class="faq-answer"><p>Yes! 100% free. All 20+ courses are available on YouTube at no cost whatsoever. No hidden fees, no premium tiers — just free, high-quality coding education for everyone.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">What languages can I run in the code editor? <span class="faq-arrow">▼</span></button>
+        <div class="faq-answer"><p>The built-in editor supports Python, C++, JavaScript, Java, C#, PHP, Go, Rust, Kotlin, Swift, and HTML/CSS — 12+ languages powered by the Piston execution engine. No installation needed!</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">Is the AI assistant really free? <span class="faq-arrow">▼</span></button>
+        <div class="faq-answer"><p>Yes! The AR-AI coding assistant is completely free. It can help you with programming concepts, debugging, roadmaps, code explanations, and interview preparation — all at no cost.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">Which course should I start with as a beginner? <span class="faq-arrow">▼</span></button>
+        <div class="faq-answer"><p>Start with the Python Full Course — it's the most beginner-friendly language with clean syntax. After Python, move to DSA for problem-solving, then pick a specialization (Web Dev, Android, etc.).</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">How does the XP and gamification system work? <span class="faq-arrow">▼</span></button>
+        <div class="faq-answer"><p>Earn XP by solving problems, maintaining daily streaks, completing quizzes, and finishing courses. XP helps you level up — from Beginner (Level 1) all the way to Legend (Level 50). Earn badges and climb the leaderboard!</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">Can I use the platform on my mobile phone? <span class="faq-arrow">▼</span></button>
+        <div class="faq-answer"><p>Absolutely! The platform is fully responsive and works perfectly on all screen sizes — mobile, tablet, and desktop. The code editor works well on mobile too, though a desktop gives you more screen space.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">How do I contact Akarshit Raj directly? <span class="faq-arrow">▼</span></button>
+        <div class="faq-answer"><p>Use the contact form below, or reach out via YouTube comments on any video. For quick questions, our community discussion forum and the AI assistant are the fastest options.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CONTACT SECTION
+     ============================================================ -->
+<section id="contact" style="border-top:1px solid var(--border);">
+  <div class="section-wrap">
+    <div class="section-header anim">
+      <div class="section-tag">✉️ Contact</div>
+      <h2 class="section-title">Get In <span class="gradient-text">Touch</span></h2>
+      <p class="section-subtitle">Have a question, feedback, or collaboration idea? I'd love to hear from you!</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info anim-left">
+        <div class="contact-item">
+          <div class="contact-icon-box">👤</div>
+          <div><div class="contact-item-label">Name</div><div class="contact-item-value">Akarshit Raj</div></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon-box">🏫</div>
+          <div><div class="contact-item-label">School</div><div class="contact-item-value">PM SHRI JNV Khairabad, Sitapur (UP)</div></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon-box">📺</div>
+          <div><div class="contact-item-label">YouTube</div><div class="contact-item-value">@AkarshitRaj</div></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon-box">🤖</div>
+          <div><div class="contact-item-label">AI Assistant</div><div class="contact-item-value">Available 24/7 for instant answers</div></div>
+        </div>
+        <div style="margin-top:.5rem;">
+          <button class="btn-primary" onclick="openAIChat()" style="width:100%;justify-content:center;">🤖 Ask AI Instead (Instant Reply)</button>
+        </div>
+      </div>
+      <div class="contact-form anim-right">
+        <h3 style="font-size:1.1rem;font-weight:700;margin-bottom:1.5rem;">✉️ Send a Message</h3>
+        <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="191fa555-1c3a-44f0-b457-e79cabf0a578">
+          <input type="checkbox" name="botcheck" style="display:none;">
+          <div class="form-group"><input type="text" name="name" class="form-input" placeholder="Your Name" required></div>
+          <div class="form-group"><input type="email" name="email" class="form-input" placeholder="Your Email" required></div>
+          <div class="form-group"><input type="text" name="subject" class="form-input" placeholder="Subject (e.g. Python doubt, collaboration)"></div>
+          <div class="form-group"><textarea name="message" class="form-textarea" placeholder="Your message..." required></textarea></div>
+          <button type="submit" class="btn-primary" style="width:100%;justify-content:center;font-size:1rem;">Send Message ✉️</button>
+        </form>
+        <div id="formResult" style="display:none;text-align:center;margin-top:1rem;font-weight:600;padding:.75rem;border-radius:10px;"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-logo">AR. Coding Platform</div>
+      <div class="footer-brand-desc">Free programming education for everyone. 20+ courses, AI-powered tools, daily challenges, and a growing community of 50,000+ learners.</div>
+      <div class="footer-socials">
+        <a href="https://youtube.com/@AkarshitRaj" target="_blank" class="social-icon-btn" title="YouTube">📺</a>
+        <a href="#" class="social-icon-btn" title="GitHub">🐙</a>
+        <a href="#" class="social-icon-btn" title="Twitter">🐦</a>
+        <a href="#" class="social-icon-btn" title="LinkedIn">💼</a>
+        <a href="#" class="social-icon-btn" title="Instagram">📸</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Platform</h4>
+      <ul class="footer-links-list">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#editor">Code Editor</a></li>
+        <li><a href="#courses">Courses</a></li>
+        <li><a href="#ai-section">AI Tools</a></li>
+        <li><a href="#gamification">Gamification</a></li>
+        <li><a href="#compilers">Compilers</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Learn</h4>
+      <ul class="footer-links-list">
+        <li><a href="https://youtube.com/@AkarshitRaj" target="_blank">Python Course</a></li>
+        <li><a href="https://youtube.com/@AkarshitRaj" target="_blank">C++ Course</a></li>
+        <li><a href="https://youtube.com/@AkarshitRaj" target="_blank">JavaScript</a></li>
+        <li><a href="https://youtube.com/@AkarshitRaj" target="_blank">Java Course</a></li>
+        <li><a href="https://youtube.com/@AkarshitRaj" target="_blank">DSA Course</a></li>
+        <li><a href="tutorials.html">All Tutorials</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Newsletter</h4>
+      <p style="font-size:.82rem;color:var(--gray);margin-bottom:.75rem;">Get new course alerts and coding tips weekly!</p>
+      <div class="newsletter-input-wrap">
+        <input type="email" id="newsletterInput" class="newsletter-input" placeholder="your@email.com">
+        <button class="newsletter-btn" onclick="subscribeNewsletter()">→</button>
+      </div>
+      <div style="margin-top:1.25rem;">
+        <h4>Legal</h4>
+        <ul class="footer-links-list" style="margin-top:.5rem;">
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="disclaimer.html">Disclaimer</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>Made with ❤️ by <strong>Akarshit Raj</strong> for learners everywhere &bull; &copy; <span id="year">2026</span> All rights reserved.</p>
+    <div class="footer-bottom-links">
+      <a href="privacy-policy.html">Privacy</a>
+      <a href="disclaimer.html">Disclaimer</a>
+      <a href="tutorials.html">Tutorials</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================
+     AI CHAT MODAL
+     ============================================================ -->
+<div class="ai-chat-modal" id="aiChatModal">
+  <div class="ai-modal-header">
+    <div class="ai-modal-avatar">🤖</div>
+    <div class="ai-modal-title-wrap">
+      <div class="ai-modal-title">AR-AI — Your Coding Mentor</div>
+      <div class="ai-modal-status">Online • Ready to help</div>
+    </div>
+    <button class="ai-modal-close" onclick="closeAIChat()">✕</button>
+  </div>
+  <div class="ai-body" id="aiBody"><div class="ai-body-inner"></div></div>
+  <div class="ai-quick-wrap">
+    <button class="ai-quick-btn" onclick="sendAIMessage('Python tutorial')">🐍 Python</button>
+    <button class="ai-quick-btn" onclick="sendAIMessage('C++ tips')">⚡ C++</button>
+    <button class="ai-quick-btn" onclick="sendAIMessage('DSA roadmap')">📊 DSA Roadmap</button>
+    <button class="ai-quick-btn" onclick="sendAIMessage('Interview preparation tips')">🎯 Interview Prep</button>
+    <button class="ai-quick-btn" onclick="sendAIMessage('GitHub Pages tutorial')">🐙 GitHub</button>
+    <button class="ai-quick-btn" onclick="sendAIMessage('how to debug code')">🔍 Debug Help</button>
+  </div>
+  <div class="ai-input-area">
+    <div class="ai-input-wrap">
+      <input type="text" class="ai-chat-input" id="aiInput" placeholder="Ask me anything about programming..." onkeydown="handleAIInput(event)">
+      <button class="ai-send-btn" onclick="sendAIMessage()">Send →</button>
+    </div>
+  </div>
+</div>
+
+<!-- VIDEO MODAL -->
+<div class="modal" id="videoModal">
+  <div class="modal-inner">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <iframe id="videoFrame" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+</div>
+
+<!-- FLOATING AI BUTTON -->
+<button class="ai-float-btn" onclick="openAIChat()" title="Open AI Mentor">🤖</button>
+<div class="ai-float-tooltip">Chat with AR-AI</div>
+
+<!-- SCROLL TOP -->
+<button class="scroll-top" id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<!-- NOTIFICATION -->
+<div class="notification" id="notification">Notification</div>
+
+<!-- ============================================================
+     AUTH MODAL (LOGIN / SIGNUP)
+     ============================================================ -->
+<div class="ar-modal-overlay" id="authModalOverlay" onclick="closeAuthModal()"></div>
+<div class="ar-modal" id="authModal">
+  <button class="ar-modal-close" onclick="closeAuthModal()">✕</button>
+  <div class="auth-logo">AR.</div>
+  <div class="auth-tabs">
+    <button class="auth-tab active" id="loginTab" onclick="switchAuthTab('login')">🔐 Login</button>
+    <button class="auth-tab" id="signupTab" onclick="switchAuthTab('signup')">✨ Sign Up</button>
+  </div>
+  <!-- LOGIN FORM -->
+  <form id="loginForm" onsubmit="handleLogin(event)">
+    <div class="auth-group">
+      <label class="auth-label">Email</label>
+      <input type="email" id="loginEmail" class="auth-input" placeholder="your@email.com" required>
+    </div>
+    <div class="auth-group">
+      <label class="auth-label">Password</label>
+      <div class="auth-pass-wrap">
+        <input type="password" id="loginPass" class="auth-input" placeholder="Enter password" required>
+        <button type="button" class="auth-pass-toggle" onclick="togglePassView('loginPass', this)">👁️</button>
+      </div>
+    </div>
+    <div id="loginError" class="auth-error"></div>
+    <button type="submit" class="auth-submit">🔐 Login to Platform</button>
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.4rem;">
+      <p class="auth-switch">Don't have an account? <button type="button" onclick="switchAuthTab('signup')" class="auth-link">Sign Up Free</button></p>
+      <button type="button" onclick="handlePasswordReset()" class="auth-link" style="font-size:.82rem;">🔑 Forgot Password?</button>
+    </div>
+  </form>
+  <!-- SIGNUP FORM -->
+  <form id="signupForm" style="display:none;" onsubmit="handleSignup(event)">
+    <div class="auth-group">
+      <label class="auth-label">Full Name</label>
+      <input type="text" id="signupName" class="auth-input" placeholder="Akarshit Raj" required minlength="2">
+    </div>
+    <div class="auth-group">
+      <label class="auth-label">Email</label>
+      <input type="email" id="signupEmail" class="auth-input" placeholder="your@email.com" required>
+    </div>
+    <div class="auth-group">
+      <label class="auth-label">Password</label>
+      <div class="auth-pass-wrap">
+        <input type="password" id="signupPass" class="auth-input" placeholder="Min 6 characters" required minlength="6">
+        <button type="button" class="auth-pass-toggle" onclick="togglePassView('signupPass', this)">👁️</button>
+      </div>
+    </div>
+    <div class="auth-pass-strength" id="passStrength"></div>
+    <div id="signupError" class="auth-error"></div>
+    <button type="submit" class="auth-submit" style="background:linear-gradient(135deg,#10b981,#059669);">✨ Create Free Account</button>
+    <p class="auth-switch">Already have an account? <button type="button" onclick="switchAuthTab('login')" class="auth-link">Login</button></p>
+  </form>
+</div>
+
+<!-- ============================================================
+     USER PROFILE DROPDOWN
+     ============================================================ -->
+<div class="profile-dropdown" id="profileDropdown">
+  <div class="pd-header">
+    <div class="pd-avatar" id="pdAvatar">A</div>
+    <div>
+      <div class="pd-name" id="pdName">User</div>
+      <div class="pd-email" id="pdEmail">user@email.com</div>
+    </div>
+  </div>
+  <div class="pd-stats">
+    <div class="pd-stat"><span class="pd-stat-val" id="pdXP">0</span><span class="pd-stat-lbl">XP</span></div>
+    <div class="pd-stat"><span class="pd-stat-val" id="pdLevel">1</span><span class="pd-stat-lbl">Level</span></div>
+    <div class="pd-stat"><span class="pd-stat-val" id="pdStreak">0</span><span class="pd-stat-lbl">🔥 Streak</span></div>
+  </div>
+  <div class="pd-xp-bar-wrap"><div class="pd-xp-bar" id="pdXpBar"></div></div>
+  <div class="pd-menu">
+    <button class="pd-item" onclick="openNotes(); closeProfileDropdown()">📒 My Notes</button>
+    <button class="pd-item" onclick="openBookmarks(); closeProfileDropdown()">🔖 Bookmarks</button>
+    <button class="pd-item" onclick="openAIChat(); closeProfileDropdown()">🤖 AI Mentor</button>
+    <button class="pd-item logout" onclick="handleLogout()">🚪 Logout</button>
+  </div>
+</div>
+
+<!-- ============================================================
+     NOTES MODAL
+     ============================================================ -->
+<div class="ar-modal-overlay" id="notesOverlay" onclick="closeNotes()"></div>
+<div class="ar-panel" id="notesPanel">
+  <div class="panel-header">
+    <div class="panel-title">📒 My Notes</div>
+    <button class="ar-modal-close" onclick="closeNotes()">✕</button>
+  </div>
+  <div class="panel-body">
+    <div class="note-add-form">
+      <input type="text" id="noteTitleInput" class="auth-input" placeholder="Note title..." style="margin-bottom:.6rem;">
+      <textarea id="noteContentInput" class="auth-input" placeholder="Write your note here..." style="height:90px;resize:vertical;"></textarea>
+      <div style="display:flex;gap:.6rem;margin-top:.6rem;">
+        <select id="noteTagSelect" class="auth-input" style="flex:1;">
+          <option value="general">📌 General</option>
+          <option value="python">🐍 Python</option>
+          <option value="cpp">⚡ C++</option>
+          <option value="javascript">🌐 JavaScript</option>
+          <option value="dsa">📊 DSA</option>
+          <option value="webdev">🌍 Web Dev</option>
+        </select>
+        <button class="auth-submit" style="flex:1;padding:.6rem;" onclick="addNote()">➕ Add Note</button>
+      </div>
+    </div>
+    <div id="notesList" class="notes-list"></div>
+  </div>
+</div>
+
+<!-- ============================================================
+     BOOKMARKS MODAL
+     ============================================================ -->
+<div class="ar-modal-overlay" id="bookmarksOverlay" onclick="closeBookmarks()"></div>
+<div class="ar-panel" id="bookmarksPanel">
+  <div class="panel-header">
+    <div class="panel-title">🔖 My Bookmarks</div>
+    <button class="ar-modal-close" onclick="closeBookmarks()">✕</button>
+  </div>
+  <div class="panel-body">
+    <div style="display:flex;gap:.5rem;margin-bottom:1rem;flex-wrap:wrap;" id="bookmarkFilters">
+      <button class="lang-btn active" data-bfilter="all" onclick="filterBookmarks('all')">All</button>
+      <button class="lang-btn" data-bfilter="course" onclick="filterBookmarks('course')">📚 Courses</button>
+      <button class="lang-btn" data-bfilter="tool" onclick="filterBookmarks('tool')">🔧 Tools</button>
+      <button class="lang-btn" data-bfilter="custom" onclick="filterBookmarks('custom')">⭐ Custom</button>
+    </div>
+    <div class="note-add-form" style="margin-bottom:1rem;">
+      <input type="text" id="bmTitleInput" class="auth-input" placeholder="Bookmark title..." style="margin-bottom:.5rem;">
+      <input type="url" id="bmUrlInput" class="auth-input" placeholder="https://..." style="margin-bottom:.5rem;">
+      <button class="auth-submit" style="padding:.6rem;" onclick="addCustomBookmark()">➕ Add Bookmark</button>
+    </div>
+    <div id="bookmarksList" class="notes-list"></div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+<!-- Firebase Auth + Firestore (ES Module) -->
+<script type="module" src="firebase-auth.js"></script>
+</body>
+</html>
