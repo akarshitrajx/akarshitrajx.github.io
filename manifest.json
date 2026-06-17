@@ -1,0 +1,20 @@
+{
+  "name": "Akarshit Raj — Coding Platform",
+  "short_name": "AR. Coding",
+  "description": "Free AI-powered coding platform by Akarshit Raj. Learn Python, C++, JavaScript and more.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#020617",
+  "theme_color": "#06b6d4",
+  "orientation": "any",
+  "icons": [
+    { "src": "file_000000004984720882e69f4dad44966a.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "file_000000004984720882e69f4dad44966a.png", "sizes": "512x512", "type": "image/png" }
+  ],
+  "categories": ["education", "productivity"],
+  "shortcuts": [
+    { "name": "Code Editor", "url": "/#editor", "description": "Open the live code editor" },
+    { "name": "AI Mentor", "url": "/#ai-section", "description": "Chat with AR-AI" },
+    { "name": "Courses", "url": "/#courses", "description": "Browse free courses" }
+  ]
+}
