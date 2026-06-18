@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn CSS - Coding Master</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        .tutorial-nav {
+            position: fixed;
+            top: 56px;
+            left: 230px;
+            right: 0;
+            background: #1d2a35;
+            padding: 10px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 99;
+        }
+        .tutorial-nav h2 {
+            color: white;
+            font-size: 20px;
+        }
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        .nav-btn {
+            padding: 8px 20px;
+            background: #04AA6D;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .nav-btn:disabled {
+            background: #555;
+            cursor: not-allowed;
+        }
+        .tutorial-content {
+            padding: 120px 40px 40px;
+            max-width: 900px;
+        }
+        .tutorial-content h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+        .tutorial-content h2 {
+            font-size: 28px;
+            margin: 40px 0 15px;
+            color: #282A35;
+        }
+        .tutorial-content p {
+            font-size: 17px;
+            line-height: 1.7;
+            margin-bottom: 15px;
+            color: #3c3c3c;
+        }
+        .tutorial-content ul {
+            margin: 15px 0 15px 30px;
+        }
+        .tutorial-content li {
+            font-size: 17px;
+            line-height: 1.7;
+            margin-bottom: 8px;
+        }
+        .example-box {
+            background: #E7E9EB;
+            border-radius: 8px;
+            margin: 25px 0;
+            overflow: hidden;
+        }
+        .example-header {
+            background: #04AA6D;
+            color: white;
+            padding: 12px 20px;
+            font-weight: 600;
+        }
+        .example-code {
+            background: white;
+            padding: 20px;
+            font-family: 'Consolas', monospace;
+            font-size: 15px;
+            line-height: 1.6;
+            overflow-x: auto;
+        }
+        .example-output {
+            background: white;
+            padding: 20px;
+            border-top: 1px solid #ddd;
+        }
+        .try-btn {
+            display: inline-block;
+            padding: 10px 25px;
+            background: #04AA6D;
+            color: white;
+            border-radius: 25px;
+            font-weight: 600;
+            margin: 15px 20px;
+            transition: background 0.2s;
+        }
+        .try-btn:hover {
+            background: #059862;
+        }
+        .note-box {
+            background: #ffffcc;
+            border-left: 5px solid #ffeb3b;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .note-box strong {
+            color: #856404;
+        }
+        .tip-box {
+            background: #d9eee1;
+            border-left: 5px solid #04AA6D;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .tip-box strong {
+            color: #04AA6D;
+        }
+        .progress-tracker {
+            position: fixed;
+            right: 20px;
+            top: 150px;
+            width: 200px;
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .progress-tracker h4 {
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+        .progress-tracker .progress-bar {
+            height: 8px;
+            background: #e7e9eb;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .progress-tracker .progress-fill {
+            height: 100%;
+            background: #04AA6D;
+            width: 10%;
+            transition: width 0.3s;
+        }
+        .progress-tracker .lessons {
+            margin-top: 15px;
+        }
+        .progress-tracker .lesson-item {
+            padding: 8px 0;
+            font-size: 14px;
+            border-bottom: 1px solid #f1f1f1;
+            cursor: pointer;
+        }
+        .progress-tracker .lesson-item:hover {
+            color: #04AA6D;
+        }
+        .progress-tracker .lesson-item.active {
+            color: #04AA6D;
+            font-weight: 600;
+        }
+        @media (max-width: 1200px) {
+            .progress-tracker { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="nav-left">
+            <a href="index.html" class="logo">
+                <i class="fas fa-code"></i>
+                <span>CodingMaster</span>
+            </a>
+        </div>
+        <div class="nav-links">
+            <a href="tutorials.html" class="nav-link">Tutorials</a>
+            <a href="practice.html" class="nav-link">Practice</a>
+            <a href="references.html" class="nav-link">References</a>
+            <a href="daily-quiz.html" class="nav-link">Quiz</a>
+            <a href="daily-challenges.html" class="nav-link">Challenges</a>
+        </div>
+        <div class="nav-right">
+            <a href="#" class="nav-icon"><i class="fas fa-search"></i></a>
+            <a href="#" class="nav-icon"><i class="fas fa-user"></i></a>
+        </div>
+    </nav>
+
+    <aside class="sidebar">
+        <h4>CSS Tutorial</h4>
+        <a href="#intro" class="sidebar-link">CSS Introduction</a>
+        <a href="#syntax" class="sidebar-link">CSS Syntax</a>
+        <a href="#selectors" class="sidebar-link">CSS Selectors</a>
+        <a href="#colors" class="sidebar-link">CSS Colors</a>
+        <a href="#backgrounds" class="sidebar-link">CSS Backgrounds</a>
+        <a href="#borders" class="sidebar-link">CSS Borders</a>
+        <a href="#margins" class="sidebar-link">CSS Margins</a>
+        <a href="#padding" class="sidebar-link">CSS Padding</a>
+        <a href="#boxmodel" class="sidebar-link">CSS Box Model</a>
+        <a href="#flexbox" class="sidebar-link">CSS Flexbox</a>
+        <a href="#grid" class="sidebar-link">CSS Grid</a>
+        <a href="#mediaqueries" class="sidebar-link">CSS Media Queries</a>
+        <h4>CSS Advanced</h4>
+        <a href="#" class="sidebar-link">CSS Animations</a>
+        <a href="#" class="sidebar-link">CSS Transitions</a>
+        <a href="#" class="sidebar-link">CSS Variables</a>
+        <a href="#" class="sidebar-link">CSS Grid Layout</a>
+    </aside>
+
+    <div class="tutorial-nav">
+        <h2><i class="fab fa-css3-alt" style="color:#264de4;"></i> CSS Tutorial</h2>
+        <div class="nav-buttons">
+            <button class="nav-btn" onclick="window.location.href='html-tutorial.html'"><i class="fas fa-chevron-left"></i> Previous</button>
+            <button class="nav-btn" onclick="alert('Next lesson coming soon!')">Next <i class="fas fa-chevron-right"></i></button>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <div class="tutorial-content">
+            <h1 id="intro">CSS Introduction</h1>
+            <p>CSS is the language we use to style an HTML document.</p>
+
+            <h2>What is CSS?</h2>
+            <ul>
+                <li>CSS stands for Cascading Style Sheets</li>
+                <li>CSS describes how HTML elements are to be displayed on screen, paper, or in other media</li>
+                <li>CSS saves a lot of work. It can control the layout of multiple web pages all at once</li>
+                <li>External stylesheets are stored in CSS files</li>
+            </ul>
+
+            <div class="example-box">
+                <div class="example-header"><i class="fas fa-code"></i> Example</div>
+                <div class="example-code">
+body {
+  background-color: lightblue;
+}
+
+h1 {
+  color: white;
+  text-align: center;
+}
+
+p {
+  font-family: verdana;
+  font-size: 20px;
+}</div>
+                <div class="example-output">
+                    <div style="background:lightblue;padding:20px;border-radius:4px;">
+                        <h1 style="color:white;text-align:center;margin:0;">Hello World!</h1>
+                        <p style="font-family:verdana;font-size:20px;text-align:center;">This is a paragraph.</p>
+                    </div>
+                </div>
+                <a href="compiler.html?lang=css" class="try-btn"><i class="fas fa-play"></i> Try it Yourself</a>
+            </div>
+
+            <h2 id="syntax">CSS Syntax</h2>
+            <p>A CSS rule consists of a selector and a declaration block:</p>
+            <div class="example-box">
+                <div class="example-header"><i class="fas fa-code"></i> Syntax</div>
+                <div class="example-code">
+p {
+  color: red;
+  text-align: center;
+}</div>
+            </div>
+            <ul>
+                <li><strong>Selector:</strong> The HTML element you want to style (e.g., p)</li>
+                <li><strong>Declaration:</strong> Each declaration includes a CSS property name and a value, separated by a colon</li>
+                <li><strong>Property:</strong> The style attribute you want to change (e.g., color)</li>
+                <li><strong>Value:</strong> The value of the property (e.g., red)</li>
+            </ul>
+
+            <h2 id="selectors">CSS Selectors</h2>
+            <p>CSS selectors are used to "find" (or select) the HTML elements you want to style.</p>
+
+            <div class="example-box">
+                <div class="example-header"><i class="fas fa-code"></i> Example - Element Selector</div>
+                <div class="example-code">
+p {
+  text-align: center;
+  color: red;
+}</div>
+            </div>
+
+            <div class="example-box">
+                <div class="example-header"><i class="fas fa-code"></i> Example - ID Selector</div>
+                <div class="example-code">
+#para1 {
+  text-align: center;
+  color: red;
+}</div>
+            </div>
+
+            <div class="example-box">
+                <div class="example-header"><i class="fas fa-code"></i> Example - Class Selector</div>
+                <div class="example-code">
+.center {
+  text-align: center;
+  color: red;
+}</div>
+            </div>
+            <a href="compiler.html?lang=css" class="try-btn"><i class="fas fa-play"></i> Try it Yourself</a>
+
+            <h2 id="colors">CSS Colors</h2>
+            <p>Colors are specified using predefined color names, or RGB, HEX, HSL, RGBA, HSLA values.</p>
+
+            <div class="example-box">
+                <div class="example-header"><i class="fas fa-code"></i> Example</div>
+                <div class="example-code">
+h1 {
+  background-color: DodgerBlue;
+}
+
+h2 {
+  background-color: #ff6347;
+}
+
+p {
+  background-color: rgb(255, 99, 71);
+}</div>
+                <div class="example-output">
+                    <h1 style="background:DodgerBlue;color:white;padding:10px;">DodgerBlue</h1>
+                    <h2 style="background:#ff6347;color:white;padding:10px;">Tomato (#ff6347)</h2>
+                    <p style="background:rgb(255,99,71);color:white;padding:10px;">RGB(255, 99, 71)</p>
+                </div>
+                <a href="compiler.html?lang=css" class="try-btn"><i class="fas fa-play"></i> Try it Yourself</a>
+            </div>
+
+            <h2 id="flexbox">CSS Flexbox</h2>
+            <p>Before the Flexbox Layout module, there were four layout modes:</p>
+            <ul>
+                <li>Block, for sections in a webpage</li>
+                <li>Inline, for text</li>
+                <li>Table, for two-dimensional table data</li>
+                <li>Positioned, for explicit position of an element</li>
+            </ul>
+            <p>The Flexible Box Layout Module, makes it easier to design flexible responsive layout structure.</p>
+
+            <div class="example-box">
+                <div class="example-header"><i class="fas fa-code"></i> Example</div>
+                <div class="example-code">
+.flex-container {
+  display: flex;
+  background-color: DodgerBlue;
+}
+
+.flex-container > div {
+  background-color: #f1f1f1;
+  margin: 10px;
+  padding: 20px;
+  font-size: 30px;
+}</div>
+                <div class="example-output">
+                    <div style="display:flex;background:DodgerBlue;padding:10px;border-radius:4px;">
+                        <div style="background:#f1f1f1;margin:10px;padding:20px;font-size:20px;">1</div>
+                        <div style="background:#f1f1f1;margin:10px;padding:20px;font-size:20px;">2</div>
+                        <div style="background:#f1f1f1;margin:10px;padding:20px;font-size:20px;">3</div>
+                    </div>
+                </div>
+                <a href="compiler.html?lang=css" class="try-btn"><i class="fas fa-play"></i> Try it Yourself</a>
+            </div>
+
+            <h2 id="grid">CSS Grid</h2>
+            <p>The CSS Grid Layout Module offers a grid-based layout system, with rows and columns, making it easier to design web pages.</p>
+
+            <div class="example-box">
+                <div class="example-header"><i class="fas fa-code"></i> Example</div>
+                <div class="example-code">
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  background-color: #2196F3;
+  padding: 10px;
+}
+
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+}</div>
+                <div class="example-output">
+                    <div style="display:grid;grid-template-columns:auto auto auto;background:#2196F3;padding:10px;gap:10px;border-radius:4px;">
+                        <div style="background:rgba(255,255,255,0.8);padding:15px;text-align:center;font-size:18px;">1</div>
+                        <div style="background:rgba(255,255,255,0.8);padding:15px;text-align:center;font-size:18px;">2</div>
+                        <div style="background:rgba(255,255,255,0.8);padding:15px;text-align:center;font-size:18px;">3</div>
+                        <div style="background:rgba(255,255,255,0.8);padding:15px;text-align:center;font-size:18px;">4</div>
+                        <div style="background:rgba(255,255,255,0.8);padding:15px;text-align:center;font-size:18px;">5</div>
+                        <div style="background:rgba(255,255,255,0.8);padding:15px;text-align:center;font-size:18px;">6</div>
+                    </div>
+                </div>
+                <a href="compiler.html?lang=css" class="try-btn"><i class="fas fa-play"></i> Try it Yourself</a>
+            </div>
+
+            <div class="tip-box">
+                <strong>Tip:</strong> Use CSS Grid for two-dimensional layouts (rows AND columns) and Flexbox for one-dimensional layouts (rows OR columns).
+            </div>
+        </div>
+    </main>
+
+    <div class="progress-tracker">
+        <h4>Your Progress</h4>
+        <div class="progress-bar">
+            <div class="progress-fill"></div>
+        </div>
+        <span style="font-size:13px;color:#666;">10% Complete</span>
+        <div class="lessons">
+            <div class="lesson-item active">1. CSS Introduction</div>
+            <div class="lesson-item">2. CSS Syntax</div>
+            <div class="lesson-item">3. CSS Selectors</div>
+            <div class="lesson-item">4. CSS Colors</div>
+            <div class="lesson-item">5. CSS Backgrounds</div>
+        </div>
+    </div>
+
+    <footer class="main-footer" style="margin-left:230px;">
+        <div class="footer-bottom">
+            <p>Copyright 2024 by Coding Master. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
