@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TypeScript Tutorial - Coding Master</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #1e1e1e; color: #fff; }
+
+/* Top Nav */
+.top-nav { background: #fff; display: flex; align-items: center; padding: 0 20px; height: 60px; border-bottom: 1px solid #ddd; position: fixed; top: 0; left: 0; right: 0; z-index: 1000; }
+.top-nav .logo { font-size: 24px; font-weight: bold; color: #04AA6D; text-decoration: none; margin-right: 30px; }
+.top-nav .nav-links { display: flex; gap: 0; flex: 1; }
+.top-nav .nav-links a { color: #333; text-decoration: none; padding: 0 20px; height: 60px; display: flex; align-items: center; font-weight: 500; transition: 0.2s; }
+.top-nav .nav-links a:hover { background: #04AA6D; color: #fff; }
+.top-nav .nav-links a.active { background: #04AA6D; color: #fff; }
+.top-nav .search-box { display: flex; align-items: center; margin-left: auto; }
+.top-nav .search-box input { border: 1px solid #ddd; border-radius: 25px; padding: 8px 15px; width: 200px; outline: none; }
+.top-nav .sign-in { background: #04AA6D; color: #fff; border: none; padding: 10px 25px; border-radius: 25px; margin-left: 15px; cursor: pointer; font-weight: 600; }
+
+/* Sub Nav */
+.sub-nav { background: #282A35; display: flex; padding: 0 20px; height: 45px; align-items: center; position: fixed; top: 60px; left: 0; right: 0; z-index: 999; overflow-x: auto; }
+.sub-nav a { color: #fff; text-decoration: none; padding: 0 18px; font-size: 14px; white-space: nowrap; }
+.sub-nav a:hover { color: #04AA6D; }
+
+/* Layout */
+.main-container { display: flex; margin-top: 105px; min-height: calc(100vh - 105px); }
+
+/* Left Sidebar */
+.sidebar { width: 220px; background: #E7E9EB; overflow-y: auto; height: calc(100vh - 105px); position: fixed; left: 0; top: 105px; }
+.sidebar h3 { padding: 15px 20px 10px; color: #333; font-size: 16px; border-bottom: 1px solid #ccc; }
+.sidebar a { display: block; padding: 10px 20px; color: #333; text-decoration: none; font-size: 14px; transition: 0.2s; }
+.sidebar a:hover { background: #ccc; }
+.sidebar a.active { background: #04AA6D; color: #fff; }
+
+/* Content */
+.content { margin-left: 220px; flex: 1; padding: 30px 40px; max-width: 900px; }
+.content h1 { font-size: 42px; margin-bottom: 20px; color: #fff; }
+.content h2 { font-size: 28px; margin: 30px 0 15px; color: #04AA6D; border-bottom: 2px solid #04AA6D; padding-bottom: 10px; }
+.content p { font-size: 16px; line-height: 1.8; margin-bottom: 15px; color: #ddd; }
+.content ul { margin: 15px 0 15px 30px; color: #ddd; }
+.content ul li { margin-bottom: 8px; line-height: 1.6; }
+
+/* Code Block */
+.code-block { background: #fff; color: #333; border-radius: 8px; margin: 20px 0; overflow: hidden; border-left: 4px solid #04AA6D; }
+.code-block .code-header { background: #f1f1f1; padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; }
+.code-block .code-header span { font-weight: 600; color: #333; font-size: 14px; }
+.code-block .code-header button { background: #04AA6D; color: #fff; border: none; padding: 6px 15px; border-radius: 4px; cursor: pointer; font-size: 13px; }
+.code-block pre { padding: 15px; overflow-x: auto; font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.6; background: #fff; }
+.code-block code { font-family: 'Courier New', monospace; }
+
+/* Try It Editor */
+.tryit-container { background: #fff; border-radius: 8px; margin: 20px 0; overflow: hidden; border: 1px solid #ddd; }
+.tryit-header { background: #f1f1f1; padding: 12px 15px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; }
+.tryit-header h4 { color: #333; font-size: 16px; }
+.tryit-header .run-btn { background: #04AA6D; color: #fff; border: none; padding: 8px 20px; border-radius: 4px; cursor: pointer; font-weight: 600; }
+.tryit-body { display: flex; height: 350px; }
+.tryit-editor { flex: 1; display: flex; flex-direction: column; }
+.tryit-editor textarea { flex: 1; border: none; padding: 15px; font-family: 'Courier New', monospace; font-size: 14px; resize: none; outline: none; background: #1e1e1e; color: #d4d4d4; line-height: 1.6; }
+.tryit-preview { flex: 1; border-left: 1px solid #ddd; background: #fff; }
+.tryit-preview iframe { width: 100%; height: 100%; border: none; }
+
+/* Note Box */
+.note { background: #ffffcc; border-left: 4px solid #ffeb3b; padding: 15px 20px; margin: 20px 0; border-radius: 0 8px 8px 0; }
+.note p { color: #333; margin: 0; }
+.note strong { color: #000; }
+
+/* Tip Box */
+.tip { background: #e7f3ff; border-left: 4px solid #2196F3; padding: 15px 20px; margin: 20px 0; border-radius: 0 8px 8px 0; }
+.tip p { color: #333; margin: 0; }
+
+/* Exercise Box */
+.exercise { background: #282A35; border-radius: 8px; padding: 25px; margin: 25px 0; }
+.exercise h3 { color: #04AA6D; margin-bottom: 15px; }
+.exercise p { color: #ddd; margin-bottom: 15px; }
+.exercise .check-btn { background: #04AA6D; color: #fff; border: none; padding: 10px 25px; border-radius: 4px; cursor: pointer; font-weight: 600; margin-top: 10px; }
+.exercise .result { margin-top: 15px; padding: 15px; border-radius: 4px; display: none; }
+.exercise .result.correct { background: #d4edda; color: #155724; display: block; }
+.exercise .result.wrong { background: #f8d7da; color: #721c24; display: block; }
+
+/* Mobile */
+@media (max-width: 768px) {
+    .sidebar { display: none; }
+    .content { margin-left: 0; padding: 20px; }
+    .top-nav .nav-links { display: none; }
+    .tryit-body { flex-direction: column; height: 500px; }
+    .tryit-preview { border-left: none; border-top: 1px solid #ddd; }
+}
+</style>
+
+</head>
+<body>
+<!-- Top Navigation -->
+<nav class="top-nav">
+<a href="index.html" class="logo">&lt;/&gt; Coding Master</a>
+<div class="nav-links">
+<a href="html-tutorial.html">HTML</a>
+<a href="css-tutorial.html">CSS</a>
+<a href="js-tutorial.html" class="active">JAVASCRIPT</a>
+<a href="sql-tutorial.html">SQL</a>
+<a href="python-tutorial.html">PYTHON</a>
+<a href="php-tutorial.html">PHP</a>
+<a href="bootstrap-tutorial.html">BOOTSTRAP</a>
+<a href="react-tutorial.html">REACT</a>
+<a href="nodejs-tutorial.html">NODEJS</a>
+<a href="java-tutorial.html">JAVA</a>
+<a href="tailwind-tutorial.html">TAILWIND</a>
+<a href="typescript-tutorial.html">TYPESCRIPT</a>
+</div>
+<div class="search-box">
+<input type="text" placeholder="Search...">
+</div>
+<a href="index.html"><button class="sign-in">Home</button></a>
+</nav>
+
+<!-- Sub Navigation -->
+<div class="sub-nav">
+<a href="index.html">Home</a>
+<a href="daily-quiz.html">Daily Quiz</a>
+<a href="practice-daily.html">Practice</a>
+<a href="daily-challenges.html">Challenges</a>
+<a href="leaderboard.html">Leaderboard</a>
+<a href="news.html">News</a>
+<a href="contact.html">Contact</a>
+</div>
+
+<div class="main-container">
+<!-- Left Sidebar -->
+<aside class="sidebar">
+<h3>TypeScript Tutorial</h3>
+<a href="#topic-0" class active>TypeScript Intro</a>
+<a href="#topic-1" class>TS Types</a>
+<a href="#topic-2" class>TS Interfaces</a>
+<a href="#topic-3" class>TS Classes</a>
+<a href="#topic-4" class>TS Functions</a>
+<a href="#topic-5" class>TS Generics</a>
+<a href="#topic-6" class>TS Enums</a>
+<a href="#topic-7" class>TS Modules</a>
+<a href="#topic-8" class>TS Decorators</a>
+<a href="#topic-9" class>TS Config</a>
+
+</aside>
+
+<!-- Main Content -->
+<main class="content">
+<h1>TypeScript Tutorial</h1>
+<p>Learn TypeScript with our comprehensive tutorial. Practice with live code examples and exercises.</p>
+
+<h2 id="topic-0">TypeScript Introduction</h2>
+<p>TypeScript is a typed superset of JavaScript that compiles to plain JavaScript. It adds optional static typing, classes, and interfaces to JavaScript. TypeScript is developed and maintained by Microsoft. It helps catch errors early and improves code quality.</p>
+<div class="code-block">
+<div class="code-header"><span>TypeScript Example</span><button onclick="copyCode(this)">Copy</button></div>
+<pre><code>// TypeScript with types
+let name: string = "Alice";
+let age: number = 25;
+let isActive: boolean = true;
+
+// Function with types
+function greet(name: string): string {
+  return "Hello, " + name;
+}
+
+console.log(greet("Bob"));</code></pre>
+</div>
+<div class="tryit-container">
+<div class="tryit-header"><h4>🚀 Try It Yourself</h4><button class="run-btn" onclick="runCode('editor-0', 'preview-0')">Run ❯</button></div>
+<div class="tryit-body">
+<div class="tryit-editor"><textarea id="editor-0"><!DOCTYPE html>
+<html>
+<head>
+<script src="https://unpkg.com/typescript@latest/lib/typescript.js"></script>
+<style>
+body { font-family: Arial; padding: 20px; background: #1e1e1e; color: #fff; }
+pre { background: #2d2d2d; padding: 15px; border-radius: 8px; overflow-x: auto; }
+</style>
+</head>
+<body>
+<h2>TypeScript Demo (Compiled to JavaScript)</h2>
+<p>TypeScript code compiles to JavaScript. Here's an example:</p>
+<pre>
+// TypeScript:
+let message: string = "Hello TypeScript!";
+let count: number = 42;
+let items: string[] = ["Apple", "Banana"];
+
+function greet(name: string): string {
+    return `Hello, ${name}!`;
+}
+
+console.log(greet("Alice"));
+
+// Compiled JavaScript:
+// var message = "Hello TypeScript!";
+// var count = 42;
+// var items = ["Apple", "Banana"];
+// function greet(name) {
+//     return "Hello, " + name + "!";
+// }
+// console.log(greet("Alice"));
+</pre>
+<div id="output" style="margin-top:20px;padding:15px;background:#04AA6D;border-radius:8px;"></div>
+<script>
+// Simulating TypeScript compiled output
+function greet(name) {
+    return "Hello, " + name + "!";
+}
+var message = "Hello TypeScript!";
+var count = 42;
+
+document.getElementById("output").innerHTML = 
+    "<strong>Output:</strong><br>" +
+    greet("Alice") + "<br>" +
+    "Message: " + message + "<br>" +
+    "Count: " + count;
+</script>
+</body>
+</html></textarea></div>
+<div class="tryit-preview"><iframe id="preview-0"></iframe></div>
+</div>
+</div>
+<div class="exercise">
+<h3>✏️ Exercise: What symbol is used for type annotations in TypeScript?</h3>
+<p>It's a colon</p>
+<input type="text" id="answer-0" placeholder="Type your answer here..." style="padding:10px;width:300px;border-radius:4px;border:1px solid #555;background:#333;color:#fff;">
+<button class="check-btn" onclick="checkAnswer(0, ':')">Check Answer</button>
+<div id="result-0" class="result"></div>
+</div>
+<h2 id="topic-1">TypeScript Interfaces & Types</h2>
+<p>Interfaces define the structure of an object. They are a powerful way to define contracts within your code. Type aliases create a new name for a type. Both help with type checking and code documentation.</p>
+<div class="code-block">
+<div class="code-header"><span>TypeScript Example</span><button onclick="copyCode(this)">Copy</button></div>
+<pre><code>// Interface
+interface Person {
+  name: string;
+  age: number;
+  email?: string;  // optional
+}
+
+// Type alias
+type ID = string | number;
+
+// Using interface
+const user: Person = {
+  name: "Alice",
+  age: 25
+};
+
+// Function with interface
+function printPerson(p: Person): void {
+  console.log(p.name, p.age);
+}</code></pre>
+</div>
+<div class="tryit-container">
+<div class="tryit-header"><h4>🚀 Try It Yourself</h4><button class="run-btn" onclick="runCode('editor-1', 'preview-1')">Run ❯</button></div>
+<div class="tryit-body">
+<div class="tryit-editor"><textarea id="editor-1"><!DOCTYPE html>
+<html>
+<head>
+<style>
+body { font-family: Arial; padding: 20px; background: #1e1e1e; color: #fff; }
+.card { background: #2d2d2d; padding: 20px; border-radius: 8px; margin: 10px 0; }
+</style>
+</head>
+<body>
+<h2>TypeScript Interfaces</h2>
+<div class="card">
+<pre style="color:#d4d4d4;">
+interface User {
+  id: number;
+  name: string;
+  email: string;
+  isActive: boolean;
+}
+
+const user: User = {
+  id: 1,
+  name: "Alice",
+  email: "alice@email.com",
+  isActive: true
+};
+
+// Compiled JavaScript:
+// var user = {
+//   id: 1,
+//   name: "Alice",
+//   email: "alice@email.com",
+//   isActive: true
+// };
+</pre>
+</div>
+<div id="result" style="padding:15px;background:#04AA6D;border-radius:8px;margin-top:10px;"></div>
+<script>
+var user = {
+  id: 1,
+  name: "Alice",
+  email: "alice@email.com",
+  isActive: true
+};
+
+document.getElementById("result").innerHTML = 
+  "<strong>User Object:</strong><br>" +
+  "ID: " + user.id + "<br>" +
+  "Name: " + user.name + "<br>" +
+  "Email: " + user.email + "<br>" +
+  "Active: " + user.isActive;
+</script>
+</body>
+</html></textarea></div>
+<div class="tryit-preview"><iframe id="preview-1"></iframe></div>
+</div>
+</div>
+<div class="exercise">
+<h3>✏️ Exercise: What keyword defines an interface in TypeScript?</h3>
+<p>It starts with 'i' and has 9 letters</p>
+<input type="text" id="answer-1" placeholder="Type your answer here..." style="padding:10px;width:300px;border-radius:4px;border:1px solid #555;background:#333;color:#fff;">
+<button class="check-btn" onclick="checkAnswer(1, 'interface')">Check Answer</button>
+<div id="result-1" class="result"></div>
+</div>
+<h2 id="topic-2">TypeScript Classes & Generics</h2>
+<p>TypeScript supports classes with inheritance, access modifiers (public, private, protected), and more. Generics provide a way to create reusable components that work with multiple types rather than a single one.</p>
+<div class="code-block">
+<div class="code-header"><span>TypeScript Example</span><button onclick="copyCode(this)">Copy</button></div>
+<pre><code>// Class with types
+class Animal {
+  private name: string;
+  
+  constructor(name: string) {
+    this.name = name;
+  }
+  
+  move(distance: number): void {
+    console.log(`${this.name} moved ${distance}m`);
+  }
+}
+
+// Generic function
+function identity<T>(arg: T): T {
+  return arg;
+}
+
+let output = identity<string>("myString");</code></pre>
+</div>
+<div class="tryit-container">
+<div class="tryit-header"><h4>🚀 Try It Yourself</h4><button class="run-btn" onclick="runCode('editor-2', 'preview-2')">Run ❯</button></div>
+<div class="tryit-body">
+<div class="tryit-editor"><textarea id="editor-2"><!DOCTYPE html>
+<html>
+<head>
+<style>
+body { font-family: Arial; padding: 20px; background: #1e1e1e; color: #fff; }
+pre { background: #2d2d2d; padding: 15px; border-radius: 8px; }
+</style>
+</head>
+<body>
+<h2>TypeScript Classes & Generics</h2>
+<pre>
+class Student {
+  private name: string;
+  private grade: number;
+  
+  constructor(name: string, grade: number) {
+    this.name = name;
+    this.grade = grade;
+  }
+  
+  getInfo(): string {
+    return `${this.name}: Grade ${this.grade}`;
+  }
+}
+
+// Generic Array
+function getFirst&lt;T&gt;(arr: T[]): T {
+  return arr[0];
+}
+
+const numbers: number[] = [10, 20, 30];
+const first = getFirst(numbers); // 10
+</pre>
+<div id="demo" style="padding:15px;background:#04AA6D;border-radius:8px;margin-top:10px;"></div>
+<script>
+// Simulated compiled output
+function Student(name, grade) {
+  this.name = name;
+  this.grade = grade;
+}
+Student.prototype.getInfo = function() {
+  return this.name + ": Grade " + this.grade;
+};
+
+var student = new Student("Alice", 95);
+var numbers = [10, 20, 30];
+
+document.getElementById("demo").innerHTML = 
+  "<strong>Class Output:</strong><br>" +
+  student.getInfo() + "<br><br>" +
+  "<strong>Generic Output:</strong><br>" +
+  "First number: " + numbers[0];
+</script>
+</body>
+</html></textarea></div>
+<div class="tryit-preview"><iframe id="preview-2"></iframe></div>
+</div>
+</div>
+<div class="exercise">
+<h3>✏️ Exercise: What symbol is used for generic type parameters?</h3>
+<p>It's angle brackets with a letter</p>
+<input type="text" id="answer-2" placeholder="Type your answer here..." style="padding:10px;width:300px;border-radius:4px;border:1px solid #555;background:#333;color:#fff;">
+<button class="check-btn" onclick="checkAnswer(2, '<T>')">Check Answer</button>
+<div id="result-2" class="result"></div>
+</div>
+
+
+<div style="margin-top:50px;padding:30px;background:#282A35;border-radius:8px;text-align:center;">
+<h2 style="color:#04AA6D;border:none;">🎓 Next Steps</h2>
+<p style="margin:15px 0;">Practice what you learned with our interactive exercises!</p>
+<a href="practice-daily.html"><button style="background:#04AA6D;color:#fff;border:none;padding:12px 30px;border-radius:25px;font-size:16px;cursor:pointer;font-weight:600;">Start Practicing</button></a>
+<a href="daily-quiz.html"><button style="background:#FFC0C7;color:#333;border:none;padding:12px 30px;border-radius:25px;font-size:16px;cursor:pointer;font-weight:600;margin-left:10px;">Take Quiz</button></a>
+</div>
+</main>
+</div>
+
+
+<script>
+// Run code in iframe
+function runCode(editorId, previewId) {
+    const code = document.getElementById(editorId).value;
+    const preview = document.getElementById(previewId);
+    const doc = preview.contentDocument || preview.contentWindow.document;
+    doc.open();
+    doc.write(code);
+    doc.close();
+}
+
+// Copy code
+function copyCode(btn) {
+    const pre = btn.closest('.code-block').querySelector('pre');
+    navigator.clipboard.writeText(pre.innerText);
+    btn.innerText = 'Copied!';
+    setTimeout(() => btn.innerText = 'Copy', 2000);
+}
+
+// Check exercise
+function checkAnswer(exerciseNum, correctAnswer) {
+    const input = document.getElementById('answer-' + exerciseNum).value.trim().toLowerCase();
+    const result = document.getElementById('result-' + exerciseNum);
+    if (input === correctAnswer.toLowerCase()) {
+        result.className = 'result correct';
+        result.innerHTML = '✅ Correct! Well done!';
+    } else {
+        result.className = 'result wrong';
+        result.innerHTML = '❌ Try again! Hint: ' + correctAnswer;
+    }
+}
+
+// Auto-run on load
+window.addEventListener('load', function() {
+    document.querySelectorAll('.tryit-container').forEach((container, index) => {
+        const editor = container.querySelector('textarea');
+        const preview = container.querySelector('iframe');
+        if (editor && preview) {
+            runCode(editor.id, preview.id);
+        }
+    });
+});
+</script>
+
+</body>
+</html>
