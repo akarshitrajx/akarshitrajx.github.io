@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Python Tutorial - Coding Master</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #1e1e1e; color: #fff; }
+
+/* Top Nav */
+.top-nav { background: #fff; display: flex; align-items: center; padding: 0 20px; height: 60px; border-bottom: 1px solid #ddd; position: fixed; top: 0; left: 0; right: 0; z-index: 1000; }
+.top-nav .logo { font-size: 24px; font-weight: bold; color: #04AA6D; text-decoration: none; margin-right: 30px; }
+.top-nav .nav-links { display: flex; gap: 0; flex: 1; }
+.top-nav .nav-links a { color: #333; text-decoration: none; padding: 0 20px; height: 60px; display: flex; align-items: center; font-weight: 500; transition: 0.2s; }
+.top-nav .nav-links a:hover { background: #04AA6D; color: #fff; }
+.top-nav .nav-links a.active { background: #04AA6D; color: #fff; }
+.top-nav .search-box { display: flex; align-items: center; margin-left: auto; }
+.top-nav .search-box input { border: 1px solid #ddd; border-radius: 25px; padding: 8px 15px; width: 200px; outline: none; }
+.top-nav .sign-in { background: #04AA6D; color: #fff; border: none; padding: 10px 25px; border-radius: 25px; margin-left: 15px; cursor: pointer; font-weight: 600; }
+
+/* Sub Nav */
+.sub-nav { background: #282A35; display: flex; padding: 0 20px; height: 45px; align-items: center; position: fixed; top: 60px; left: 0; right: 0; z-index: 999; overflow-x: auto; }
+.sub-nav a { color: #fff; text-decoration: none; padding: 0 18px; font-size: 14px; white-space: nowrap; }
+.sub-nav a:hover { color: #04AA6D; }
+
+/* Layout */
+.main-container { display: flex; margin-top: 105px; min-height: calc(100vh - 105px); }
+
+/* Left Sidebar */
+.sidebar { width: 220px; background: #E7E9EB; overflow-y: auto; height: calc(100vh - 105px); position: fixed; left: 0; top: 105px; }
+.sidebar h3 { padding: 15px 20px 10px; color: #333; font-size: 16px; border-bottom: 1px solid #ccc; }
+.sidebar a { display: block; padding: 10px 20px; color: #333; text-decoration: none; font-size: 14px; transition: 0.2s; }
+.sidebar a:hover { background: #ccc; }
+.sidebar a.active { background: #04AA6D; color: #fff; }
+
+/* Content */
+.content { margin-left: 220px; flex: 1; padding: 30px 40px; max-width: 900px; }
+.content h1 { font-size: 42px; margin-bottom: 20px; color: #fff; }
+.content h2 { font-size: 28px; margin: 30px 0 15px; color: #04AA6D; border-bottom: 2px solid #04AA6D; padding-bottom: 10px; }
+.content p { font-size: 16px; line-height: 1.8; margin-bottom: 15px; color: #ddd; }
+.content ul { margin: 15px 0 15px 30px; color: #ddd; }
+.content ul li { margin-bottom: 8px; line-height: 1.6; }
+
+/* Code Block */
+.code-block { background: #fff; color: #333; border-radius: 8px; margin: 20px 0; overflow: hidden; border-left: 4px solid #04AA6D; }
+.code-block .code-header { background: #f1f1f1; padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; }
+.code-block .code-header span { font-weight: 600; color: #333; font-size: 14px; }
+.code-block .code-header button { background: #04AA6D; color: #fff; border: none; padding: 6px 15px; border-radius: 4px; cursor: pointer; font-size: 13px; }
+.code-block pre { padding: 15px; overflow-x: auto; font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.6; background: #fff; }
+.code-block code { font-family: 'Courier New', monospace; }
+
+/* Try It Editor */
+.tryit-container { background: #fff; border-radius: 8px; margin: 20px 0; overflow: hidden; border: 1px solid #ddd; }
+.tryit-header { background: #f1f1f1; padding: 12px 15px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; }
+.tryit-header h4 { color: #333; font-size: 16px; }
+.tryit-header .run-btn { background: #04AA6D; color: #fff; border: none; padding: 8px 20px; border-radius: 4px; cursor: pointer; font-weight: 600; }
+.tryit-body { display: flex; height: 350px; }
+.tryit-editor { flex: 1; display: flex; flex-direction: column; }
+.tryit-editor textarea { flex: 1; border: none; padding: 15px; font-family: 'Courier New', monospace; font-size: 14px; resize: none; outline: none; background: #1e1e1e; color: #d4d4d4; line-height: 1.6; }
+.tryit-preview { flex: 1; border-left: 1px solid #ddd; background: #fff; }
+.tryit-preview iframe { width: 100%; height: 100%; border: none; }
+
+/* Note Box */
+.note { background: #ffffcc; border-left: 4px solid #ffeb3b; padding: 15px 20px; margin: 20px 0; border-radius: 0 8px 8px 0; }
+.note p { color: #333; margin: 0; }
+.note strong { color: #000; }
+
+/* Tip Box */
+.tip { background: #e7f3ff; border-left: 4px solid #2196F3; padding: 15px 20px; margin: 20px 0; border-radius: 0 8px 8px 0; }
+.tip p { color: #333; margin: 0; }
+
+/* Exercise Box */
+.exercise { background: #282A35; border-radius: 8px; padding: 25px; margin: 25px 0; }
+.exercise h3 { color: #04AA6D; margin-bottom: 15px; }
+.exercise p { color: #ddd; margin-bottom: 15px; }
+.exercise .check-btn { background: #04AA6D; color: #fff; border: none; padding: 10px 25px; border-radius: 4px; cursor: pointer; font-weight: 600; margin-top: 10px; }
+.exercise .result { margin-top: 15px; padding: 15px; border-radius: 4px; display: none; }
+.exercise .result.correct { background: #d4edda; color: #155724; display: block; }
+.exercise .result.wrong { background: #f8d7da; color: #721c24; display: block; }
+
+/* Mobile */
+@media (max-width: 768px) {
+    .sidebar { display: none; }
+    .content { margin-left: 0; padding: 20px; }
+    .top-nav .nav-links { display: none; }
+    .tryit-body { flex-direction: column; height: 500px; }
+    .tryit-preview { border-left: none; border-top: 1px solid #ddd; }
+}
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt-stdlib.js"></script>
+</head>
+<body>
+<nav class="top-nav">
+<a href="index.html" class="logo">&lt;/&gt; Coding Master</a>
+<div class="nav-links">
+<a href="html-tutorial.html">HTML</a>
+<a href="css-tutorial.html">CSS</a>
+<a href="js-tutorial.html">JAVASCRIPT</a>
+<a href="sql-tutorial.html">SQL</a>
+<a href="python-tutorial.html">PYTHON</a>
+<a href="php-tutorial.html">PHP</a>
+<a href="bootstrap-tutorial.html">BOOTSTRAP</a>
+<a href="react-tutorial.html">REACT</a>
+<a href="nodejs-tutorial.html">NODEJS</a>
+<a href="java-tutorial.html">JAVA</a>
+<a href="tailwind-tutorial.html">TAILWIND</a>
+<a href="typescript-tutorial.html">TYPESCRIPT</a>
+</div>
+<div class="search-box">
+<input type="text" placeholder="Search...">
+</div>
+<a href="index.html"><button class="sign-in">Home</button></a>
+</nav>
+
+<div class="sub-nav">
+<a href="index.html">Home</a>
+<a href="daily-quiz.html">Daily Quiz</a>
+<a href="practice-daily.html">Practice</a>
+<a href="daily-challenges.html">Challenges</a>
+<a href="leaderboard.html">Leaderboard</a>
+<a href="news.html">News</a>
+<a href="contact.html">Contact</a>
+</div>
+
+<div class="main-container">
+<aside class="sidebar">
+<h3>Python Tutorial</h3>
+<a href="#topic-0" class active>Python Intro</a>
+<a href="#topic-1" class>Python Syntax</a>
+<a href="#topic-2" class>Python Variables</a>
+<a href="#topic-3" class>Python Data Types</a>
+<a href="#topic-4" class>Python If...Else</a>
+<a href="#topic-5" class>Python Loops</a>
+<a href="#topic-6" class>Python Functions</a>
+<a href="#topic-7" class>Python Lists</a>
+<a href="#topic-8" class>Python Dictionaries</a>
+<a href="#topic-9" class>Python File Handling</a>
+
+</aside>
+
+<main class="content">
+<h1>Python Tutorial</h1>
+<p>Learn Python with live code execution! Write code and run it directly in your browser.</p>
+
+<div class="note">
+<p><strong>💡 Live Execution:</strong> This tutorial includes an in-browser Python interpreter. Click "Run Python" to execute code instantly!</p>
+</div>
+
+<h2 id="topic-0">Python Introduction</h2>
+<p>Python is the world's most popular programming language. It is used for web development, data science, AI, automation, and more. Python has a simple syntax similar to English. Below is a live Python interpreter - write code and run it!</p>
+<div class="code-block">
+<div class="code-header"><span>Python Example</span><button onclick="copyCode(this)">Copy</button></div>
+<pre><code>print('Hello, World!')
+
+# Variables
+name = 'John'
+age = 30
+print(name, age)</code></pre>
+</div>
+<div class="tryit-container">
+<div class="tryit-header"><h4>🚀 Try It Yourself - Python</h4><button class="run-btn" onclick="runPython('editor-0', 'output-0')">Run Python ❯</button></div>
+<div class="tryit-body" style="flex-direction:column;height:auto;">
+<div class="tryit-editor" style="height:200px;"><textarea id="editor-0" class="backend"># Try Python code here!
+print('Hello from Python!')
+
+name = 'Alice'
+age = 25
+print('Name:', name)
+print('Age:', age)
+
+# Math operations
+x = 10
+y = 3
+print('Sum:', x + y)
+print('Product:', x * y)</textarea></div>
+<div id="output-0" style="background:#1e1e1e;color:#fff;padding:15px;border-top:1px solid #333;min-height:50px;font-family:monospace;">Click "Run Python" to see output...</div>
+</div>
+</div>
+<div class="exercise">
+<h3>✏️ Exercise: What function outputs text in Python?</h3>
+<p>It starts with 'p' and has 5 letters</p>
+<input type="text" id="answer-0" placeholder="Type your answer here..." style="padding:10px;width:300px;border-radius:4px;border:1px solid #555;background:#333;color:#fff;">
+<button class="check-btn" onclick="checkAnswer(0, 'print')">Check Answer</button>
+<div id="result-0" class="result"></div>
+</div>
+<h2 id="topic-1">Python Variables & Data Types</h2>
+<p>Variables are containers for storing data. Python has no command for declaring a variable - it is created when you first assign a value to it. Use type() to check the data type.</p>
+<div class="code-block">
+<div class="code-header"><span>Python Example</span><button onclick="copyCode(this)">Copy</button></div>
+<pre><code>x = 5           # int
+y = 'Hello'     # str
+z = 3.14        # float
+is_valid = True # bool
+
+print(type(x))
+print(type(y))</code></pre>
+</div>
+<div class="tryit-container">
+<div class="tryit-header"><h4>🚀 Try It Yourself - Python</h4><button class="run-btn" onclick="runPython('editor-1', 'output-1')">Run Python ❯</button></div>
+<div class="tryit-body" style="flex-direction:column;height:auto;">
+<div class="tryit-editor" style="height:200px;"><textarea id="editor-1" class="backend"># Variables and Types
+integer = 42
+floating = 3.14
+text = 'Hello Python'
+flag = True
+
+print('Integer:', integer, type(integer))
+print('Float:', floating, type(floating))
+print('String:', text, type(text))
+print('Boolean:', flag, type(flag))
+
+# Multiple assignment
+a, b, c = 1, 2, 3
+print('a=', a, 'b=', b, 'c=', c)</textarea></div>
+<div id="output-1" style="background:#1e1e1e;color:#fff;padding:15px;border-top:1px solid #333;min-height:50px;font-family:monospace;">Click "Run Python" to see output...</div>
+</div>
+</div>
+<div class="exercise">
+<h3>✏️ Exercise: What function checks the data type?</h3>
+<p>It starts with 't' and has 4 letters</p>
+<input type="text" id="answer-1" placeholder="Type your answer here..." style="padding:10px;width:300px;border-radius:4px;border:1px solid #555;background:#333;color:#fff;">
+<button class="check-btn" onclick="checkAnswer(1, 'type')">Check Answer</button>
+<div id="result-1" class="result"></div>
+</div>
+<h2 id="topic-2">Python If...Else</h2>
+<p>Python supports logical conditions from mathematics. Use if, elif, and else for decision making. Python uses indentation (whitespace) to define code blocks.</p>
+<div class="code-block">
+<div class="code-header"><span>Python Example</span><button onclick="copyCode(this)">Copy</button></div>
+<pre><code>a = 200
+b = 33
+
+if b > a:
+  print('b is greater')
+elif a == b:
+  print('equal')
+else:
+  print('a is greater')</code></pre>
+</div>
+<div class="tryit-container">
+<div class="tryit-header"><h4>🚀 Try It Yourself - Python</h4><button class="run-btn" onclick="runPython('editor-2', 'output-2')">Run Python ❯</button></div>
+<div class="tryit-body" style="flex-direction:column;height:auto;">
+<div class="tryit-editor" style="height:200px;"><textarea id="editor-2" class="backend"># If-Else Example
+age = 18
+
+if age < 13:
+    print('Child')
+elif age < 20:
+    print('Teenager')
+else:
+    print('Adult')
+
+print('---')
+
+# Grade checker
+score = 85
+if score >= 90:
+    print('Grade A')
+elif score >= 80:
+    print('Grade B')
+elif score >= 70:
+    print('Grade C')
+else:
+    print('Grade F')</textarea></div>
+<div id="output-2" style="background:#1e1e1e;color:#fff;padding:15px;border-top:1px solid #333;min-height:50px;font-family:monospace;">Click "Run Python" to see output...</div>
+</div>
+</div>
+<div class="exercise">
+<h3>✏️ Exercise: What is 'else if' called in Python?</h3>
+<p>It combines else and if</p>
+<input type="text" id="answer-2" placeholder="Type your answer here..." style="padding:10px;width:300px;border-radius:4px;border:1px solid #555;background:#333;color:#fff;">
+<button class="check-btn" onclick="checkAnswer(2, 'elif')">Check Answer</button>
+<div id="result-2" class="result"></div>
+</div>
+<h2 id="topic-3">Python Loops</h2>
+<p>Python has for loops and while loops. For loops iterate over sequences. While loops run while a condition is true. The range() function generates number sequences.</p>
+<div class="code-block">
+<div class="code-header"><span>Python Example</span><button onclick="copyCode(this)">Copy</button></div>
+<pre><code># For loop
+for i in range(5):
+  print(i)
+
+# While loop
+i = 0
+while i < 5:
+  print(i)
+  i += 1</code></pre>
+</div>
+<div class="tryit-container">
+<div class="tryit-header"><h4>🚀 Try It Yourself - Python</h4><button class="run-btn" onclick="runPython('editor-3', 'output-3')">Run Python ❯</button></div>
+<div class="tryit-body" style="flex-direction:column;height:auto;">
+<div class="tryit-editor" style="height:200px;"><textarea id="editor-3" class="backend"># For loop with range
+print('For loop:')
+for i in range(5):
+    print('Number:', i)
+
+print('---')
+
+# Loop through list
+fruits = ['Apple', 'Banana', 'Cherry']
+print('Fruits:')
+for fruit in fruits:
+    print('-', fruit)
+
+print('---')
+
+# While loop
+print('While loop:')
+count = 1
+while count <= 3:
+    print('Count:', count)
+    count += 1</textarea></div>
+<div id="output-3" style="background:#1e1e1e;color:#fff;padding:15px;border-top:1px solid #333;min-height:50px;font-family:monospace;">Click "Run Python" to see output...</div>
+</div>
+</div>
+<div class="exercise">
+<h3>✏️ Exercise: What function generates number sequences?</h3>
+<p>It starts with 'r' and has 5 letters</p>
+<input type="text" id="answer-3" placeholder="Type your answer here..." style="padding:10px;width:300px;border-radius:4px;border:1px solid #555;background:#333;color:#fff;">
+<button class="check-btn" onclick="checkAnswer(3, 'range')">Check Answer</button>
+<div id="result-3" class="result"></div>
+</div>
+<h2 id="topic-4">Python Functions</h2>
+<p>A function is a block of code that runs when called. Functions can take parameters and return values. Use the def keyword to define a function.</p>
+<div class="code-block">
+<div class="code-header"><span>Python Example</span><button onclick="copyCode(this)">Copy</button></div>
+<pre><code>def greet(name):
+  return 'Hello, ' + name
+
+print(greet('Alice'))
+
+# Default parameter
+def power(base, exp=2):
+  return base ** exp
+
+print(power(3))
+print(power(2, 3))</code></pre>
+</div>
+<div class="tryit-container">
+<div class="tryit-header"><h4>🚀 Try It Yourself - Python</h4><button class="run-btn" onclick="runPython('editor-4', 'output-4')">Run Python ❯</button></div>
+<div class="tryit-body" style="flex-direction:column;height:auto;">
+<div class="tryit-editor" style="height:200px;"><textarea id="editor-4" class="backend"># Functions
+def add(a, b):
+    return a + b
+
+def multiply(a, b):
+    return a * b
+
+print('Add 5 + 3 =', add(5, 3))
+print('Multiply 4 * 7 =', multiply(4, 7))
+
+print('---')
+
+# Function with default
+def greet(name, greeting='Hello'):
+    return greeting + ', ' + name + '!'
+
+print(greet('Alice'))
+print(greet('Bob', 'Hi'))</textarea></div>
+<div id="output-4" style="background:#1e1e1e;color:#fff;padding:15px;border-top:1px solid #333;min-height:50px;font-family:monospace;">Click "Run Python" to see output...</div>
+</div>
+</div>
+<div class="exercise">
+<h3>✏️ Exercise: What keyword defines a function?</h3>
+<p>It has 3 letters and starts with 'd'</p>
+<input type="text" id="answer-4" placeholder="Type your answer here..." style="padding:10px;width:300px;border-radius:4px;border:1px solid #555;background:#333;color:#fff;">
+<button class="check-btn" onclick="checkAnswer(4, 'def')">Check Answer</button>
+<div id="result-4" class="result"></div>
+</div>
+
+
+<div style="margin-top:50px;padding:30px;background:#282A35;border-radius:8px;text-align:center;">
+<h2 style="color:#04AA6D;border:none;">🎓 Next Steps</h2>
+<p style="margin:15px 0;">Practice what you learned with our interactive exercises!</p>
+<a href="practice-daily.html"><button style="background:#04AA6D;color:#fff;border:none;padding:12px 30px;border-radius:25px;font-size:16px;cursor:pointer;font-weight:600;">Start Practicing</button></a>
+<a href="daily-quiz.html"><button style="background:#FFC0C7;color:#333;border:none;padding:12px 30px;border-radius:25px;font-size:16px;cursor:pointer;font-weight:600;margin-left:10px;">Take Quiz</button></a>
+</div>
+</main>
+</div>
+
+
+<script>
+// ========== LIVE CODE EXECUTION ENGINE ==========
+
+// 1. FRONTEND LANGUAGES (Run in iframe)
+function runCode(editorId, previewId) {
+    const code = document.getElementById(editorId).value;
+    const preview = document.getElementById(previewId);
+    const doc = preview.contentDocument || preview.contentWindow.document;
+    doc.open();
+    doc.write(code);
+    doc.close();
+}
+
+// 2. PYTHON (Skulpt Interpreter)
+function runPython(editorId, outputId) {
+    const code = document.getElementById(editorId).value;
+    const output = document.getElementById(outputId);
+    output.innerHTML = '<div style="color:#04AA6D;">⏳ Running Python...</div>';
+
+    try {
+        Sk.configure({
+            output: function(text) {
+                output.innerHTML += text.replace(/
+/g, '<br>');
+            },
+            read: function(x) { return ''; }
+        });
+        Sk.misceval.asyncToPromise(function() {
+            return Sk.importMainWithBody("<stdin>", false, code, true);
+        }).then(function() {
+            output.innerHTML = '<div style="color:#04AA6D;">✅ Output:</div><pre style="background:#1e1e1e;padding:10px;border-radius:4px;">' + output.innerHTML + '</pre>';
+        }).catch(function(err) {
+            output.innerHTML = '<div style="color:#ff6b6b;">❌ Error: ' + err.toString() + '</div>';
+        });
+    } catch(e) {
+        output.innerHTML = '<div style="color:#ff6b6b;">❌ Error: ' + e.message + '</div>';
+    }
+}
+
+// 3. SQL (SQL.js - SQLite in Browser)
+let sqlDB = null;
+function initSQL() {
+    if (!sqlDB) {
+        sqlDB = new SQL.Database();
+        sqlDB.run(`CREATE TABLE Users (id INTEGER, name TEXT, email TEXT, age INTEGER);
+                   INSERT INTO Users VALUES (1, 'Alice', 'alice@email.com', 25);
+                   INSERT INTO Users VALUES (2, 'Bob', 'bob@email.com', 30);
+                   INSERT INTO Users VALUES (3, 'Charlie', 'charlie@email.com', 35);
+                   CREATE TABLE Products (id INTEGER, name TEXT, price REAL, category TEXT);
+                   INSERT INTO Products VALUES (1, 'Laptop', 999.99, 'Electronics');
+                   INSERT INTO Products VALUES (2, 'Mouse', 29.99, 'Electronics');
+                   INSERT INTO Products VALUES (3, 'Keyboard', 79.99, 'Electronics');
+                   CREATE TABLE Orders (id INTEGER, user_id INTEGER, total REAL, order_date TEXT);
+                   INSERT INTO Orders VALUES (1, 1, 250.00, '2024-01-15');
+                   INSERT INTO Orders VALUES (2, 2, 180.00, '2024-02-20');`);
+    }
+    return sqlDB;
+}
+
+function runSQL(editorId, outputId) {
+    const code = document.getElementById(editorId).value;
+    const output = document.getElementById(outputId);
+
+    try {
+        const db = initSQL();
+        const results = db.exec(code);
+
+        let html = '<div style="color:#04AA6D;">✅ Query executed successfully!</div>';
+
+        if (results.length === 0) {
+            html += '<div style="color:#888;margin-top:10px;">Query executed (no results to display)</div>';
+        } else {
+            results.forEach(result => {
+                html += '<table style="width:100%;border-collapse:collapse;margin-top:10px;background:#1e1e1e;">';
+                html += '<tr style="background:#04AA6D;color:#fff;">';
+                result.columns.forEach(col => {
+                    html += '<th style="padding:8px;border:1px solid #333;text-align:left;">' + col + '</th>';
+                });
+                html += '</tr>';
+                result.values.forEach(row => {
+                    html += '<tr>';
+                    row.forEach(val => {
+                        html += '<td style="padding:8px;border:1px solid #333;">' + val + '</td>';
+                    });
+                    html += '</tr>';
+                });
+                html += '</table>';
+            });
+        }
+        output.innerHTML = html;
+    } catch(e) {
+        output.innerHTML = '<div style="color:#ff6b6b;">❌ SQL Error: ' + e.message + '</div>';
+    }
+}
+
+// 4. PHP (Browser Simulation)
+function runPHP(editorId, outputId) {
+    const code = document.getElementById(editorId).value;
+    const output = document.getElementById(outputId);
+    output.innerHTML = '<div style="color:#04AA6D;">⏳ Running PHP...</div>';
+
+    let result = '';
+    let vars = {};
+
+    // Extract variables
+    code.replace(/\$(\w+)\s*=\s*['"](.+?)['"]\s*;/g, function(m, name, val) {
+        vars[name] = val;
+        return m;
+    });
+    code.replace(/\$(\w+)\s*=\s*(\d+(?:\.\d+)?)\s*;/g, function(m, name, val) {
+        vars[name] = val;
+        return m;
+    });
+
+    // Handle echo statements
+    let echoPattern = /echo\s+(.+?)\s*;/g;
+    let match;
+    while ((match = echoPattern.exec(code)) !== null) {
+        let line = match[1];
+
+        // Replace variables
+        for (let v in vars) {
+            line = line.replace(new RegExp('\$' + v, 'g'), vars[v]);
+        }
+
+        // Handle string concatenation
+        line = line.replace(/\./g, '');
+        line = line.replace(/['"]/g, '');
+        line = line.replace(/<br\s*\/?>/gi, '<br>');
+
+        result += line + '<br>';
+    }
+
+    if (result === '') {
+        result = '⚠️ No echo statement found. Try: echo "Hello World!";';
+    }
+
+    output.innerHTML = '<div style="color:#04AA6D;">✅ PHP Output:</div><pre style="background:#1e1e1e;padding:10px;border-radius:4px;">' + result + '</pre>';
+}
+
+// 5. JAVA (Browser Simulation)
+function runJava(editorId, outputId) {
+    const code = document.getElementById(editorId).value;
+    const output = document.getElementById(outputId);
+    output.innerHTML = '<div style="color:#04AA6D;">⏳ Running Java...</div>';
+
+    let outputs = [];
+    let vars = {};
+
+    // Extract variables
+    code.replace(/(?:int|String|double|boolean|float)\s+(\w+)\s*=\s*(.+?)\s*;/g, function(m, name, val) {
+        vars[name] = val.replace(/['"]/g, '').trim();
+        return m;
+    });
+
+    // Extract System.out.println
+    let logPattern = /System\.out\.println\((.+?)\)\s*;/g;
+    let match;
+    while ((match = logPattern.exec(code)) !== null) {
+        let line = match[1];
+
+        // Replace variables
+        for (let v in vars) {
+            line = line.replace(new RegExp('\b' + v + '\b', 'g'), vars[v]);
+        }
+
+        line = line.replace(/\+/g, '');
+        line = line.replace(/['"]/g, '');
+
+        outputs.push(line);
+    }
+
+    if (outputs.length === 0) {
+        output.innerHTML = '<div style="color:#ff6b6b;">⚠️ No System.out.println() found. Try: System.out.println("Hello");</div>';
+    } else {
+        output.innerHTML = '<div style="color:#04AA6D;">✅ Java Output:</div><pre style="background:#1e1e1e;padding:10px;border-radius:4px;">' + outputs.join('<br>') + '</pre>';
+    }
+}
+
+// 6. NODE.JS (Browser Simulation)
+function runNodeJS(editorId, outputId) {
+    const code = document.getElementById(editorId).value;
+    const output = document.getElementById(outputId);
+    output.innerHTML = '<div style="color:#04AA6D;">⏳ Running Node.js...</div>';
+
+    let outputs = [];
+    let vars = {};
+
+    // Extract variables
+    code.replace(/(?:const|let|var)\s+(\w+)\s*=\s*(.+?)\s*;/g, function(m, name, val) {
+        vars[name] = val.replace(/['"`]/g, '').trim();
+        return m;
+    });
+
+    // Handle console.log
+    let logPattern = /console\.log\((.+?)\)\s*;/g;
+    let match;
+    while ((match = logPattern.exec(code)) !== null) {
+        let line = match[1];
+
+        for (let v in vars) {
+            line = line.replace(new RegExp('\b' + v + '\b', 'g'), vars[v]);
+        }
+
+        line = line.replace(/['"`]/g, '');
+        line = line.replace(/\+/g, '');
+
+        outputs.push(line);
+    }
+
+    // Handle res.send
+    let sendPattern = /res\.send\(['"](.+?)['"]\)\s*;/g;
+    while ((match = sendPattern.exec(code)) !== null) {
+        outputs.push('Server Response: ' + match[1]);
+    }
+
+    // Handle res.json
+    let jsonPattern = /res\.json\((.+?)\)\s*;/g;
+    while ((match = jsonPattern.exec(code)) !== null) {
+        outputs.push('JSON Response: ' + match[1]);
+    }
+
+    if (outputs.length === 0) {
+        output.innerHTML = '<div style="color:#ff6b6b;">⚠️ No console.log() or res.send() found</div>';
+    } else {
+        output.innerHTML = '<div style="color:#04AA6D;">✅ Node.js Output:</div><pre style="background:#1e1e1e;padding:10px;border-radius:4px;">' + outputs.join('<br>') + '</pre>';
+    }
+}
+
+// Copy code
+function copyCode(btn) {
+    const pre = btn.closest('.code-block').querySelector('pre');
+    navigator.clipboard.writeText(pre.innerText);
+    btn.innerText = 'Copied!';
+    setTimeout(() => btn.innerText = 'Copy', 2000);
+}
+
+// Check exercise
+function checkAnswer(exerciseNum, correctAnswer) {
+    const input = document.getElementById('answer-' + exerciseNum).value.trim().toLowerCase();
+    const result = document.getElementById('result-' + exerciseNum);
+    if (input === correctAnswer.toLowerCase()) {
+        result.className = 'result correct';
+        result.innerHTML = '✅ Correct! Well done!';
+    } else {
+        result.className = 'result wrong';
+        result.innerHTML = '❌ Try again! Hint: ' + correctAnswer;
+    }
+}
+
+// Auto-run frontend on load
+window.addEventListener('load', function() {
+    document.querySelectorAll('.tryit-container').forEach((container, index) => {
+        const editor = container.querySelector('textarea');
+        const preview = container.querySelector('iframe');
+        if (editor && preview && !editor.classList.contains('backend')) {
+            runCode(editor.id, preview.id);
+        }
+    });
+});
+</script>
+
+</body>
+</html>
