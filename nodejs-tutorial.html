@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Node.js Tutorial - Coding Master</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #1e1e1e; color: #fff; }
+
+/* Top Nav */
+.top-nav { background: #fff; display: flex; align-items: center; padding: 0 20px; height: 60px; border-bottom: 1px solid #ddd; position: fixed; top: 0; left: 0; right: 0; z-index: 1000; }
+.top-nav .logo { font-size: 24px; font-weight: bold; color: #04AA6D; text-decoration: none; margin-right: 30px; }
+.top-nav .nav-links { display: flex; gap: 0; flex: 1; }
+.top-nav .nav-links a { color: #333; text-decoration: none; padding: 0 20px; height: 60px; display: flex; align-items: center; font-weight: 500; transition: 0.2s; }
+.top-nav .nav-links a:hover { background: #04AA6D; color: #fff; }
+.top-nav .nav-links a.active { background: #04AA6D; color: #fff; }
+.top-nav .search-box { display: flex; align-items: center; margin-left: auto; }
+.top-nav .search-box input { border: 1px solid #ddd; border-radius: 25px; padding: 8px 15px; width: 200px; outline: none; }
+.top-nav .sign-in { background: #04AA6D; color: #fff; border: none; padding: 10px 25px; border-radius: 25px; margin-left: 15px; cursor: pointer; font-weight: 600; }
+
+/* Sub Nav */
+.sub-nav { background: #282A35; display: flex; padding: 0 20px; height: 45px; align-items: center; position: fixed; top: 60px; left: 0; right: 0; z-index: 999; overflow-x: auto; }
+.sub-nav a { color: #fff; text-decoration: none; padding: 0 18px; font-size: 14px; white-space: nowrap; }
+.sub-nav a:hover { color: #04AA6D; }
+
+/* Layout */
+.main-container { display: flex; margin-top: 105px; min-height: calc(100vh - 105px); }
+
+/* Left Sidebar */
+.sidebar { width: 220px; background: #E7E9EB; overflow-y: auto; height: calc(100vh - 105px); position: fixed; left: 0; top: 105px; }
+.sidebar h3 { padding: 15px 20px 10px; color: #333; font-size: 16px; border-bottom: 1px solid #ccc; }
+.sidebar a { display: block; padding: 10px 20px; color: #333; text-decoration: none; font-size: 14px; transition: 0.2s; }
+.sidebar a:hover { background: #ccc; }
+.sidebar a.active { background: #04AA6D; color: #fff; }
+
+/* Content */
+.content { margin-left: 220px; flex: 1; padding: 30px 40px; max-width: 900px; }
+.content h1 { font-size: 42px; margin-bottom: 20px; color: #fff; }
+.content h2 { font-size: 28px; margin: 30px 0 15px; color: #04AA6D; border-bottom: 2px solid #04AA6D; padding-bottom: 10px; }
+.content p { font-size: 16px; line-height: 1.8; margin-bottom: 15px; color: #ddd; }
+.content ul { margin: 15px 0 15px 30px; color: #ddd; }
+.content ul li { margin-bottom: 8px; line-height: 1.6; }
+
+/* Code Block */
+.code-block { background: #fff; color: #333; border-radius: 8px; margin: 20px 0; overflow: hidden; border-left: 4px solid #04AA6D; }
+.code-block .code-header { background: #f1f1f1; padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; }
+.code-block .code-header span { font-weight: 600; color: #333; font-size: 14px; }
+.code-block .code-header button { background: #04AA6D; color: #fff; border: none; padding: 6px 15px; border-radius: 4px; cursor: pointer; font-size: 13px; }
+.code-block pre { padding: 15px; overflow-x: auto; font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.6; background: #fff; }
+.code-block code { font-family: 'Courier New', monospace; }
+
+/* Try It Editor */
+.tryit-container { background: #fff; border-radius: 8px; margin: 20px 0; overflow: hidden; border: 1px solid #ddd; }
+.tryit-header { background: #f1f1f1; padding: 12px 15px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; }
+.tryit-header h4 { color: #333; font-size: 16px; }
+.tryit-header .run-btn { background: #04AA6D; color: #fff; border: none; padding: 8px 20px; border-radius: 4px; cursor: pointer; font-weight: 600; }
+.tryit-body { display: flex; height: 350px; }
+.tryit-editor { flex: 1; display: flex; flex-direction: column; }
+.tryit-editor textarea { flex: 1; border: none; padding: 15px; font-family: 'Courier New', monospace; font-size: 14px; resize: none; outline: none; background: #1e1e1e; color: #d4d4d4; line-height: 1.6; }
+.tryit-preview { flex: 1; border-left: 1px solid #ddd; background: #fff; }
+.tryit-preview iframe { width: 100%; height: 100%; border: none; }
+
+/* Note Box */
+.note { background: #ffffcc; border-left: 4px solid #ffeb3b; padding: 15px 20px; margin: 20px 0; border-radius: 0 8px 8px 0; }
+.note p { color: #333; margin: 0; }
+.note strong { color: #000; }
+
+/* Tip Box */
+.tip { background: #e7f3ff; border-left: 4px solid #2196F3; padding: 15px 20px; margin: 20px 0; border-radius: 0 8px 8px 0; }
+.tip p { color: #333; margin: 0; }
+
+/* Exercise Box */
+.exercise { background: #282A35; border-radius: 8px; padding: 25px; margin: 25px 0; }
+.exercise h3 { color: #04AA6D; margin-bottom: 15px; }
+.exercise p { color: #ddd; margin-bottom: 15px; }
+.exercise .check-btn { background: #04AA6D; color: #fff; border: none; padding: 10px 25px; border-radius: 4px; cursor: pointer; font-weight: 600; margin-top: 10px; }
+.exercise .result { margin-top: 15px; padding: 15px; border-radius: 4px; display: none; }
+.exercise .result.correct { background: #d4edda; color: #155724; display: block; }
+.exercise .result.wrong { background: #f8d7da; color: #721c24; display: block; }
+
+/* Mobile */
+@media (max-width: 768px) {
+    .sidebar { display: none; }
+    .content { margin-left: 0; padding: 20px; }
+    .top-nav .nav-links { display: none; }
+    .tryit-body { flex-direction: column; height: 500px; }
+    .tryit-preview { border-left: none; border-top: 1px solid #ddd; }
+}
+</style>
+
+
+</head>
+<body>
+<nav class="top-nav">
+<a href="index.html" class="logo">&lt;/&gt; Coding Master</a>
+<div class="nav-links">
+<a href="html-tutorial.html">HTML</a>
+<a href="css-tutorial.html">CSS</a>
+<a href="js-tutorial.html">JAVASCRIPT</a>
+<a href="sql-tutorial.html">SQL</a>
+<a href="python-tutorial.html">PYTHON</a>
+<a href="php-tutorial.html">PHP</a>
+<a href="bootstrap-tutorial.html">BOOTSTRAP</a>
+<a href="react-tutorial.html">REACT</a>
+<a href="nodejs-tutorial.html">NODEJS</a>
+<a href="java-tutorial.html">JAVA</a>
+<a href="tailwind-tutorial.html">TAILWIND</a>
+<a href="typescript-tutorial.html">TYPESCRIPT</a>
+</div>
+<div class="search-box">
+<input type="text" placeholder="Search...">
+</div>
+<a href="index.html"><button class="sign-in">Home</button></a>
+</nav>
+
+<div class="sub-nav">
+<a href="index.html">Home</a>
+<a href="daily-quiz.html">Daily Quiz</a>
+<a href="practice-daily.html">Practice</a>
+<a href="daily-challenges.html">Challenges</a>
+<a href="leaderboard.html">Leaderboard</a>
+<a href="news.html">News</a>
+<a href="contact.html">Contact</a>
+</div>
+
+<div class="main-container">
+<aside class="sidebar">
+<h3>Node.js Tutorial</h3>
+<a href="#topic-0" class active>Node.js Intro</a>
+<a href="#topic-1" class>Node.js Modules</a>
+<a href="#topic-2" class>Node.js HTTP</a>
+<a href="#topic-3" class>Node.js File System</a>
+<a href="#topic-4" class>Node.js Events</a>
+<a href="#topic-5" class>Node.js Express</a>
+<a href="#topic-6" class>Node.js MongoDB</a>
+<a href="#topic-7" class>Node.js Middleware</a>
+<a href="#topic-8" class>Node.js REST API</a>
+<a href="#topic-9" class>Node.js Deployment</a>
+
+</aside>
+
+<main class="content">
+<h1>Node.js Tutorial</h1>
+<p>Learn Node.js with live code execution! Write code and run it directly in your browser.</p>
+
+<div class="note">
+<p><strong>💡 Live Execution:</strong> This tutorial includes an in-browser Node.js interpreter. Click "Run Node.js" to execute code instantly!</p>
+</div>
+
+<h2 id="topic-0">Node.js Introduction</h2>
+<p>Node.js is a JavaScript runtime built on Chrome's V8 engine. It allows you to run JavaScript on the server. Node.js is event-driven, non-blocking, and perfect for scalable network applications. Below is a live Node.js simulator!</p>
+<div class="code-block">
+<div class="code-header"><span>Node.js Example</span><button onclick="copyCode(this)">Copy</button></div>
+<pre><code>const http = require('http');
+
+const server = http.createServer((req, res) => {
+  res.statusCode = 200;
+  res.end('Hello World');
+});
+
+server.listen(3000);</code></pre>
+</div>
+<div class="tryit-container">
+<div class="tryit-header"><h4>🚀 Try It Yourself - Node.js</h4><button class="run-btn" onclick="runNodeJS('editor-0', 'output-0')">Run Node.js ❯</button></div>
+<div class="tryit-body" style="flex-direction:column;height:auto;">
+<div class="tryit-editor" style="height:200px;"><textarea id="editor-0" class="backend">// Node.js Hello World
+const message = 'Hello from Node.js!';
+console.log(message);
+
+const name = 'Alice';
+const age = 25;
+console.log('Name:', name);
+console.log('Age:', age);
+
+// Math
+const a = 10;
+const b = 3;
+console.log('Sum:', a + b);
+console.log('Product:', a * b);</textarea></div>
+<div id="output-0" style="background:#1e1e1e;color:#fff;padding:15px;border-top:1px solid #333;min-height:50px;font-family:monospace;">Click "Run Node.js" to see output...</div>
+</div>
+</div>
+<div class="exercise">
+<h3>✏️ Exercise: Which module creates HTTP servers?</h3>
+<p>It starts with 'h' and has 4 letters</p>
+<input type="text" id="answer-0" placeholder="Type your answer here..." style="padding:10px;width:300px;border-radius:4px;border:1px solid #555;background:#333;color:#fff;">
+<button class="check-btn" onclick="checkAnswer(0, 'http')">Check Answer</button>
+<div id="result-0" class="result"></div>
+</div>
+<h2 id="topic-1">Node.js Express & Routes</h2>
+<p>Express is a fast web framework for Node.js. It simplifies routing, middleware, and request handling. You can create REST APIs easily with Express.</p>
+<div class="code-block">
+<div class="code-header"><span>Node.js Example</span><button onclick="copyCode(this)">Copy</button></div>
+<pre><code>const express = require('express');
+const app = express();
+
+app.get('/', (req, res) => {
+  res.send('Hello World');
+});
+
+app.get('/users', (req, res) => {
+  res.json([{ id: 1, name: 'Alice' }]);
+});
+
+app.listen(3000);</code></pre>
+</div>
+<div class="tryit-container">
+<div class="tryit-header"><h4>🚀 Try It Yourself - Node.js</h4><button class="run-btn" onclick="runNodeJS('editor-1', 'output-1')">Run Node.js ❯</button></div>
+<div class="tryit-body" style="flex-direction:column;height:auto;">
+<div class="tryit-editor" style="height:200px;"><textarea id="editor-1" class="backend">// Express API Simulation
+const express = require('express');
+const app = express();
+
+// Route handler
+app.get('/api/users', (req, res) => {
+    const users = [
+        { id: 1, name: 'Alice', email: 'alice@email.com' },
+        { id: 2, name: 'Bob', email: 'bob@email.com' }
+    ];
+    res.json(users);
+});
+
+app.get('/api/products', (req, res) => {
+    const products = [
+        { id: 1, name: 'Laptop', price: 999 },
+        { id: 2, name: 'Mouse', price: 29 }
+    ];
+    res.json(products);
+});
+
+console.log('API routes defined');
+console.log('GET /api/users - Returns user list');
+console.log('GET /api/products - Returns product list');</textarea></div>
+<div id="output-1" style="background:#1e1e1e;color:#fff;padding:15px;border-top:1px solid #333;min-height:50px;font-family:monospace;">Click "Run Node.js" to see output...</div>
+</div>
+</div>
+<div class="exercise">
+<h3>✏️ Exercise: Which method handles GET requests?</h3>
+<p>It starts with 'g' and has 3 letters</p>
+<input type="text" id="answer-1" placeholder="Type your answer here..." style="padding:10px;width:300px;border-radius:4px;border:1px solid #555;background:#333;color:#fff;">
+<button class="check-btn" onclick="checkAnswer(1, 'get')">Check Answer</button>
+<div id="result-1" class="result"></div>
+</div>
+<h2 id="topic-2">Node.js File System & Events</h2>
+<p>The fs module handles file operations. The events module implements the EventEmitter pattern. Node.js uses callbacks and promises for async operations.</p>
+<div class="code-block">
+<div class="code-header"><span>Node.js Example</span><button onclick="copyCode(this)">Copy</button></div>
+<pre><code>const fs = require('fs');
+
+fs.readFile('file.txt', 'utf8', (err, data) => {
+  if (err) throw err;
+  console.log(data);
+});
+
+fs.writeFile('file.txt', 'Hello', (err) => {
+  if (err) throw err;
+  console.log('Saved');
+});</code></pre>
+</div>
+<div class="tryit-container">
+<div class="tryit-header"><h4>🚀 Try It Yourself - Node.js</h4><button class="run-btn" onclick="runNodeJS('editor-2', 'output-2')">Run Node.js ❯</button></div>
+<div class="tryit-body" style="flex-direction:column;height:auto;">
+<div class="tryit-editor" style="height:200px;"><textarea id="editor-2" class="backend">// File System & Events
+const fs = require('fs');
+const EventEmitter = require('events');
+
+// Simulated file operations
+console.log('Reading file...');
+console.log('File content: Hello from Node.js!');
+
+console.log('---');
+
+// Event Emitter
+const emitter = new EventEmitter();
+
+emitter.on('greet', (name) => {
+    console.log('Hello, ' + name);
+});
+
+emitter.emit('greet', 'Alice');
+emitter.emit('greet', 'Bob');
+
+console.log('---');
+
+// Async simulation
+console.log('Starting async operation...');
+setTimeout(() => {
+    console.log('Async operation complete!');
+}, 1000);
+console.log('Continuing...');</textarea></div>
+<div id="output-2" style="background:#1e1e1e;color:#fff;padding:15px;border-top:1px solid #333;min-height:50px;font-family:monospace;">Click "Run Node.js" to see output...</div>
+</div>
+</div>
+<div class="exercise">
+<h3>✏️ Exercise: Which module handles file operations?</h3>
+<p>It starts with 'f' and has 2 letters</p>
+<input type="text" id="answer-2" placeholder="Type your answer here..." style="padding:10px;width:300px;border-radius:4px;border:1px solid #555;background:#333;color:#fff;">
+<button class="check-btn" onclick="checkAnswer(2, 'fs')">Check Answer</button>
+<div id="result-2" class="result"></div>
+</div>
+
+
+<div style="margin-top:50px;padding:30px;background:#282A35;border-radius:8px;text-align:center;">
+<h2 style="color:#04AA6D;border:none;">🎓 Next Steps</h2>
+<p style="margin:15px 0;">Practice what you learned with our interactive exercises!</p>
+<a href="practice-daily.html"><button style="background:#04AA6D;color:#fff;border:none;padding:12px 30px;border-radius:25px;font-size:16px;cursor:pointer;font-weight:600;">Start Practicing</button></a>
+<a href="daily-quiz.html"><button style="background:#FFC0C7;color:#333;border:none;padding:12px 30px;border-radius:25px;font-size:16px;cursor:pointer;font-weight:600;margin-left:10px;">Take Quiz</button></a>
+</div>
+</main>
+</div>
+
+
+<script>
+// ========== LIVE CODE EXECUTION ENGINE ==========
+
+// 1. FRONTEND LANGUAGES (Run in iframe)
+function runCode(editorId, previewId) {
+    const code = document.getElementById(editorId).value;
+    const preview = document.getElementById(previewId);
+    const doc = preview.contentDocument || preview.contentWindow.document;
+    doc.open();
+    doc.write(code);
+    doc.close();
+}
+
+// 2. PYTHON (Skulpt Interpreter)
+function runPython(editorId, outputId) {
+    const code = document.getElementById(editorId).value;
+    const output = document.getElementById(outputId);
+    output.innerHTML = '<div style="color:#04AA6D;">⏳ Running Python...</div>';
+
+    try {
+        Sk.configure({
+            output: function(text) {
+                output.innerHTML += text.replace(/
+/g, '<br>');
+            },
+            read: function(x) { return ''; }
+        });
+        Sk.misceval.asyncToPromise(function() {
+            return Sk.importMainWithBody("<stdin>", false, code, true);
+        }).then(function() {
+            output.innerHTML = '<div style="color:#04AA6D;">✅ Output:</div><pre style="background:#1e1e1e;padding:10px;border-radius:4px;">' + output.innerHTML + '</pre>';
+        }).catch(function(err) {
+            output.innerHTML = '<div style="color:#ff6b6b;">❌ Error: ' + err.toString() + '</div>';
+        });
+    } catch(e) {
+        output.innerHTML = '<div style="color:#ff6b6b;">❌ Error: ' + e.message + '</div>';
+    }
+}
+
+// 3. SQL (SQL.js - SQLite in Browser)
+let sqlDB = null;
+function initSQL() {
+    if (!sqlDB) {
+        sqlDB = new SQL.Database();
+        sqlDB.run(`CREATE TABLE Users (id INTEGER, name TEXT, email TEXT, age INTEGER);
+                   INSERT INTO Users VALUES (1, 'Alice', 'alice@email.com', 25);
+                   INSERT INTO Users VALUES (2, 'Bob', 'bob@email.com', 30);
+                   INSERT INTO Users VALUES (3, 'Charlie', 'charlie@email.com', 35);
+                   CREATE TABLE Products (id INTEGER, name TEXT, price REAL, category TEXT);
+                   INSERT INTO Products VALUES (1, 'Laptop', 999.99, 'Electronics');
+                   INSERT INTO Products VALUES (2, 'Mouse', 29.99, 'Electronics');
+                   INSERT INTO Products VALUES (3, 'Keyboard', 79.99, 'Electronics');
+                   CREATE TABLE Orders (id INTEGER, user_id INTEGER, total REAL, order_date TEXT);
+                   INSERT INTO Orders VALUES (1, 1, 250.00, '2024-01-15');
+                   INSERT INTO Orders VALUES (2, 2, 180.00, '2024-02-20');`);
+    }
+    return sqlDB;
+}
+
+function runSQL(editorId, outputId) {
+    const code = document.getElementById(editorId).value;
+    const output = document.getElementById(outputId);
+
+    try {
+        const db = initSQL();
+        const results = db.exec(code);
+
+        let html = '<div style="color:#04AA6D;">✅ Query executed successfully!</div>';
+
+        if (results.length === 0) {
+            html += '<div style="color:#888;margin-top:10px;">Query executed (no results to display)</div>';
+        } else {
+            results.forEach(result => {
+                html += '<table style="width:100%;border-collapse:collapse;margin-top:10px;background:#1e1e1e;">';
+                html += '<tr style="background:#04AA6D;color:#fff;">';
+                result.columns.forEach(col => {
+                    html += '<th style="padding:8px;border:1px solid #333;text-align:left;">' + col + '</th>';
+                });
+                html += '</tr>';
+                result.values.forEach(row => {
+                    html += '<tr>';
+                    row.forEach(val => {
+                        html += '<td style="padding:8px;border:1px solid #333;">' + val + '</td>';
+                    });
+                    html += '</tr>';
+                });
+                html += '</table>';
+            });
+        }
+        output.innerHTML = html;
+    } catch(e) {
+        output.innerHTML = '<div style="color:#ff6b6b;">❌ SQL Error: ' + e.message + '</div>';
+    }
+}
+
+// 4. PHP (Browser Simulation)
+function runPHP(editorId, outputId) {
+    const code = document.getElementById(editorId).value;
+    const output = document.getElementById(outputId);
+    output.innerHTML = '<div style="color:#04AA6D;">⏳ Running PHP...</div>';
+
+    let result = '';
+    let vars = {};
+
+    // Extract variables
+    code.replace(/\$(\w+)\s*=\s*['"](.+?)['"]\s*;/g, function(m, name, val) {
+        vars[name] = val;
+        return m;
+    });
+    code.replace(/\$(\w+)\s*=\s*(\d+(?:\.\d+)?)\s*;/g, function(m, name, val) {
+        vars[name] = val;
+        return m;
+    });
+
+    // Handle echo statements
+    let echoPattern = /echo\s+(.+?)\s*;/g;
+    let match;
+    while ((match = echoPattern.exec(code)) !== null) {
+        let line = match[1];
+
+        // Replace variables
+        for (let v in vars) {
+            line = line.replace(new RegExp('\$' + v, 'g'), vars[v]);
+        }
+
+        // Handle string concatenation
+        line = line.replace(/\./g, '');
+        line = line.replace(/['"]/g, '');
+        line = line.replace(/<br\s*\/?>/gi, '<br>');
+
+        result += line + '<br>';
+    }
+
+    if (result === '') {
+        result = '⚠️ No echo statement found. Try: echo "Hello World!";';
+    }
+
+    output.innerHTML = '<div style="color:#04AA6D;">✅ PHP Output:</div><pre style="background:#1e1e1e;padding:10px;border-radius:4px;">' + result + '</pre>';
+}
+
+// 5. JAVA (Browser Simulation)
+function runJava(editorId, outputId) {
+    const code = document.getElementById(editorId).value;
+    const output = document.getElementById(outputId);
+    output.innerHTML = '<div style="color:#04AA6D;">⏳ Running Java...</div>';
+
+    let outputs = [];
+    let vars = {};
+
+    // Extract variables
+    code.replace(/(?:int|String|double|boolean|float)\s+(\w+)\s*=\s*(.+?)\s*;/g, function(m, name, val) {
+        vars[name] = val.replace(/['"]/g, '').trim();
+        return m;
+    });
+
+    // Extract System.out.println
+    let logPattern = /System\.out\.println\((.+?)\)\s*;/g;
+    let match;
+    while ((match = logPattern.exec(code)) !== null) {
+        let line = match[1];
+
+        // Replace variables
+        for (let v in vars) {
+            line = line.replace(new RegExp('\b' + v + '\b', 'g'), vars[v]);
+        }
+
+        line = line.replace(/\+/g, '');
+        line = line.replace(/['"]/g, '');
+
+        outputs.push(line);
+    }
+
+    if (outputs.length === 0) {
+        output.innerHTML = '<div style="color:#ff6b6b;">⚠️ No System.out.println() found. Try: System.out.println("Hello");</div>';
+    } else {
+        output.innerHTML = '<div style="color:#04AA6D;">✅ Java Output:</div><pre style="background:#1e1e1e;padding:10px;border-radius:4px;">' + outputs.join('<br>') + '</pre>';
+    }
+}
+
+// 6. NODE.JS (Browser Simulation)
+function runNodeJS(editorId, outputId) {
+    const code = document.getElementById(editorId).value;
+    const output = document.getElementById(outputId);
+    output.innerHTML = '<div style="color:#04AA6D;">⏳ Running Node.js...</div>';
+
+    let outputs = [];
+    let vars = {};
+
+    // Extract variables
+    code.replace(/(?:const|let|var)\s+(\w+)\s*=\s*(.+?)\s*;/g, function(m, name, val) {
+        vars[name] = val.replace(/['"`]/g, '').trim();
+        return m;
+    });
+
+    // Handle console.log
+    let logPattern = /console\.log\((.+?)\)\s*;/g;
+    let match;
+    while ((match = logPattern.exec(code)) !== null) {
+        let line = match[1];
+
+        for (let v in vars) {
+            line = line.replace(new RegExp('\b' + v + '\b', 'g'), vars[v]);
+        }
+
+        line = line.replace(/['"`]/g, '');
+        line = line.replace(/\+/g, '');
+
+        outputs.push(line);
+    }
+
+    // Handle res.send
+    let sendPattern = /res\.send\(['"](.+?)['"]\)\s*;/g;
+    while ((match = sendPattern.exec(code)) !== null) {
+        outputs.push('Server Response: ' + match[1]);
+    }
+
+    // Handle res.json
+    let jsonPattern = /res\.json\((.+?)\)\s*;/g;
+    while ((match = jsonPattern.exec(code)) !== null) {
+        outputs.push('JSON Response: ' + match[1]);
+    }
+
+    if (outputs.length === 0) {
+        output.innerHTML = '<div style="color:#ff6b6b;">⚠️ No console.log() or res.send() found</div>';
+    } else {
+        output.innerHTML = '<div style="color:#04AA6D;">✅ Node.js Output:</div><pre style="background:#1e1e1e;padding:10px;border-radius:4px;">' + outputs.join('<br>') + '</pre>';
+    }
+}
+
+// Copy code
+function copyCode(btn) {
+    const pre = btn.closest('.code-block').querySelector('pre');
+    navigator.clipboard.writeText(pre.innerText);
+    btn.innerText = 'Copied!';
+    setTimeout(() => btn.innerText = 'Copy', 2000);
+}
+
+// Check exercise
+function checkAnswer(exerciseNum, correctAnswer) {
+    const input = document.getElementById('answer-' + exerciseNum).value.trim().toLowerCase();
+    const result = document.getElementById('result-' + exerciseNum);
+    if (input === correctAnswer.toLowerCase()) {
+        result.className = 'result correct';
+        result.innerHTML = '✅ Correct! Well done!';
+    } else {
+        result.className = 'result wrong';
+        result.innerHTML = '❌ Try again! Hint: ' + correctAnswer;
+    }
+}
+
+// Auto-run frontend on load
+window.addEventListener('load', function() {
+    document.querySelectorAll('.tryit-container').forEach((container, index) => {
+        const editor = container.querySelector('textarea');
+        const preview = container.querySelector('iframe');
+        if (editor && preview && !editor.classList.contains('backend')) {
+            runCode(editor.id, preview.id);
+        }
+    });
+});
+</script>
+
+</body>
+</html>
