@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Editor - Coding Master</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        .compiler-hero {
+            background: linear-gradient(135deg, #282A35 0%, #1d2a35 100%);
+            color: white;
+            padding: 80px 40px 30px;
+            text-align: center;
+        }
+        .compiler-hero h1 {
+            font-size: 42px;
+            font-weight: 900;
+            margin-bottom: 10px;
+        }
+        .compiler-hero p {
+            font-size: 18px;
+            color: #04AA6D;
+        }
+        .editor-container {
+            padding: 30px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .lang-selector {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .lang-btn {
+            padding: 10px 25px;
+            border: 2px solid #e7e9eb;
+            background: white;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .lang-btn.active, .lang-btn:hover {
+            background: #04AA6D;
+            color: white;
+            border-color: #04AA6D;
+        }
+        .editor-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            height: 600px;
+        }
+        .editor-panel {
+            background: #1e1e1e;
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .panel-header {
+            background: #333;
+            color: white;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .panel-header h3 {
+            font-size: 16px;
+            font-weight: 600;
+        }
+        .run-btn {
+            padding: 8px 20px;
+            background: #04AA6D;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+        .run-btn:hover {
+            background: #059862;
+        }
+        .code-textarea {
+            flex: 1;
+            background: #1e1e1e;
+            color: #d4d4d4;
+            border: none;
+            padding: 20px;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 15px;
+            line-height: 1.6;
+            resize: none;
+            outline: none;
+        }
+        .preview-panel {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #e7e9eb;
+        }
+        .preview-frame {
+            flex: 1;
+            border: none;
+            width: 100%;
+            background: white;
+        }
+        .console-output {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 15px 20px;
+            font-family: monospace;
+            font-size: 14px;
+            min-height: 100px;
+            max-height: 150px;
+            overflow-y: auto;
+            border-top: 1px solid #333;
+        }
+        .console-output .error {
+            color: #f48771;
+        }
+        .console-output .success {
+            color: #7ee787;
+        }
+        @media (max-width: 992px) {
+            .editor-wrapper {
+                grid-template-columns: 1fr;
+                height: auto;
+            }
+            .editor-panel, .preview-panel {
+                height: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="nav-left">
+            <a href="index.html" class="logo">
+                <i class="fas fa-code"></i>
+                <span>CodingMaster</span>
+            </a>
+        </div>
+        <div class="nav-links">
+            <a href="tutorials.html" class="nav-link">Tutorials</a>
+            <a href="practice.html" class="nav-link">Practice</a>
+            <a href="references.html" class="nav-link">References</a>
+            <a href="daily-quiz.html" class="nav-link">Quiz</a>
+            <a href="daily-challenges.html" class="nav-link">Challenges</a>
+        </div>
+        <div class="nav-right">
+            <a href="#" class="nav-icon"><i class="fas fa-search"></i></a>
+            <a href="#" class="nav-icon"><i class="fas fa-user"></i></a>
+        </div>
+    </nav>
+
+    <aside class="sidebar">
+        <h4>Practice</h4>
+        <a href="practice.html" class="sidebar-link">Code Editor</a>
+        <a href="daily-quiz.html" class="sidebar-link">Daily Quiz</a>
+        <a href="daily-challenges.html" class="sidebar-link">Daily Challenges</a>
+        <a href="compiler.html" class="sidebar-link">Online Compiler</a>
+    </aside>
+
+    <main class="main-content">
+        <section class="compiler-hero">
+            <h1>Online Code Editor</h1>
+            <p>Write, run, and test your code in real-time</p>
+        </section>
+
+        <section class="editor-container">
+            <div class="lang-selector">
+                <button class="lang-btn active" data-lang="html">HTML/CSS/JS</button>
+                <button class="lang-btn" data-lang="python">Python</button>
+                <button class="lang-btn" data-lang="js">JavaScript</button>
+                <button class="lang-btn" data-lang="sql">SQL</button>
+            </div>
+
+            <div class="editor-wrapper">
+                <div class="editor-panel">
+                    <div class="panel-header">
+                        <h3><i class="fas fa-code"></i> Code Editor</h3>
+                        <button class="run-btn" onclick="runCode()"><i class="fas fa-play"></i> Run</button>
+                    </div>
+                    <textarea class="code-textarea" id="codeEditor" placeholder="Write your code here...">
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { 
+      font-family: Arial; 
+      padding: 20px;
+      background: #f0f0f0;
+    }
+    h1 { color: #04AA6D; }
+    .box {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h1>Hello World!</h1>
+    <p>Welcome to Coding Master Editor</p>
+    <button onclick="alert('You clicked me!')">Click Me</button>
+  </div>
+</body>
+</html></textarea>
+                </div>
+                <div class="preview-panel">
+                    <div class="panel-header">
+                        <h3><i class="fas fa-eye"></i> Output</h3>
+                        <button class="run-btn" style="background:#555;" onclick="clearOutput()"><i class="fas fa-trash"></i> Clear</button>
+                    </div>
+                    <iframe class="preview-frame" id="previewFrame"></iframe>
+                    <div class="console-output" id="consoleOutput">
+                        <span style="color:#666;">// Console output will appear here...</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-bottom">
+            <p>Copyright 2024 by Coding Master. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="scripts.js"></script>
+    <script>
+        const codeEditor = document.getElementById('codeEditor');
+        const previewFrame = document.getElementById('previewFrame');
+        const consoleOutput = document.getElementById('consoleOutput');
+        const langBtns = document.querySelectorAll('.lang-btn');
+
+        const codeTemplates = {
+            html: `<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { 
+      font-family: Arial; 
+      padding: 20px;
+      background: #f0f0f0;
+    }
+    h1 { color: #04AA6D; }
+    .box {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h1>Hello World!</h1>
+    <p>Welcome to Coding Master Editor</p>
+    <button onclick="alert('You clicked me!')">Click Me</button>
+  </div>
+</body>
+</html>`,
+            python: `# Python Example
+name = "Coding Master"
+print(f"Welcome to {name}!")
+
+# List example
+fruits = ["Apple", "Banana", "Cherry"]
+for fruit in fruits:
+    print(f"- {fruit}")
+
+# Function example
+def greet(name):
+    return f"Hello, {name}!"
+
+print(greet("Student"))`,
+            js: `// JavaScript Example
+console.log("Welcome to Coding Master!");
+
+// Array methods
+const numbers = [1, 2, 3, 4, 5];
+const doubled = numbers.map(n => n * 2);
+console.log("Doubled:", doubled);
+
+// DOM manipulation (run in browser)
+document.body.innerHTML = '<h1 style="color:#04AA6D">Hello from JS!</h1>';`,
+            sql: `-- SQL Example
+SELECT * FROM Users
+WHERE Age > 18
+ORDER BY Name;
+
+-- Join example
+SELECT 
+    Orders.OrderID,
+    Customers.CustomerName
+FROM Orders
+INNER JOIN Customers 
+    ON Orders.CustomerID = Customers.CustomerID;`
+        };
+
+        let currentLang = 'html';
+
+        langBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                langBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentLang = btn.dataset.lang;
+                codeEditor.value = codeTemplates[currentLang];
+            });
+        });
+
+        function runCode() {
+            const code = codeEditor.value;
+            consoleOutput.innerHTML = '';
+
+            if (currentLang === 'html') {
+                const blob = new Blob([code], { type: 'text/html' });
+                previewFrame.src = URL.createObjectURL(blob);
+                consoleOutput.innerHTML = '<span class="success">HTML rendered successfully!</span>';
+            } else if (currentLang === 'js') {
+                try {
+                    const blob = new Blob([`
+                        <script>
+                            const oldLog = console.log;
+                            console.log = function(...args) {
+                                oldLog(...args);
+                                window.parent.postMessage({type: 'log', data: args.join(' ')}, '*');
+                            };
+                            try {
+                                ${code}
+                            } catch(e) {
+                                window.parent.postMessage({type: 'error', data: e.message}, '*');
+                            }
+                        <\/script>
+                    `], { type: 'text/html' });
+                    previewFrame.src = URL.createObjectURL(blob);
+                } catch (e) {
+                    consoleOutput.innerHTML = `<span class="error">Error: ${e.message}</span>`;
+                }
+            } else if (currentLang === 'python' || currentLang === 'sql') {
+                consoleOutput.innerHTML = `<span class="success">${currentLang.toUpperCase()} code is ready!</span><br><span style="color:#666;">Note: ${currentLang.toUpperCase()} requires a backend server to execute. This is a preview mode.</span>`;
+            }
+        }
+
+        function clearOutput() {
+            previewFrame.src = 'about:blank';
+            consoleOutput.innerHTML = '<span style="color:#666;">// Console output cleared...</span>';
+        }
+
+        window.addEventListener('message', (e) => {
+            if (e.data.type === 'log') {
+                consoleOutput.innerHTML += `<div>${e.data.data}</div>`;
+            } else if (e.data.type === 'error') {
+                consoleOutput.innerHTML += `<div class="error">${e.data.data}</div>`;
+            }
+        });
+
+        // Run on load
+        runCode();
+    </script>
+</body>
+</html>
