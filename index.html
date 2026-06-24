@@ -28,19 +28,31 @@
         *{margin:0;padding:0;box-sizing:border-box}
         :root{--primary:#06b6d4;--primary-dark:#0891b2;--secondary:#3b82f6;--accent:#22d3ee;--dark:#0f172a;--darker:#020617;--light:#f8fafc;--gray:#94a3b8;--card-bg:rgba(30,41,59,0.5);--glass:rgba(255,255,255,0.03);--success:#10b981;--error:#ef4444;--warning:#f59e0b}
         body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--darker);color:var(--light);min-height:100vh;overflow-x:hidden;line-height:1.6}
-        .bg-animation{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;overflow:hidden}
-        .bg-animation .orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:0.15;animation:float 20s infinite ease-in-out}
-        .bg-animation .orb:nth-child(1){width:400px;height:400px;background:var(--primary);top:-200px;left:-100px}
-        .bg-animation .orb:nth-child(2){width:300px;height:300px;background:var(--secondary);top:40%;right:-100px;animation-delay:5s}
-        .bg-animation .orb:nth-child(3){width:250px;height:250px;background:var(--accent);bottom:-100px;left:40%;animation-delay:10s}
+        .bg-animation{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;overflow:hidden;background:radial-gradient(ellipse at bottom,#0d1b2a 0%,#020617 50%,#000000 100%)}
+        .bg-animation .orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:0.12;animation:float 20s infinite ease-in-out}
+        .bg-animation .orb:nth-child(1){width:500px;height:500px;background:#1a3a5c;top:-200px;left:-150px}
+        .bg-animation .orb:nth-child(2){width:400px;height:400px;background:#0d2847;top:30%;right:-150px;animation-delay:5s}
+        .bg-animation .orb:nth-child(3){width:350px;height:350px;background:#1a4a6e;bottom:-150px;left:30%;animation-delay:10s}
+        .bg-animation .orb:nth-child(4){width:200px;height:200px;background:#0a2a4a;top:60%;left:10%;animation-delay:3s;opacity:0.08}
+        .bg-animation .orb:nth-child(5){width:280px;height:280px;background:#1a3a5c;top:10%;left:60%;animation-delay:7s;opacity:0.1}
+        .star{position:absolute;width:2px;height:2px;background:white;border-radius:50%;opacity:0.8;animation:twinkle 3s infinite ease-in-out}
+        .star:nth-child(6){top:10%;left:20%;animation-delay:0s}
+        .star:nth-child(7){top:25%;left:80%;animation-delay:0.5s}
+        .star:nth-child(8){top:40%;left:15%;animation-delay:1s}
+        .star:nth-child(9){top:55%;left:70%;animation-delay:1.5s}
+        .star:nth-child(10){top:70%;left:30%;animation-delay:2s}
+        .star:nth-child(11){top:15%;left:50%;animation-delay:0.3s}
+        .star:nth-child(12){top:35%;left:90%;animation-delay:0.8s}
+        .star:nth-child(13){top:60%;left:5%;animation-delay:1.2s}
+        .star:nth-child(14){top:80%;left:60%;animation-delay:1.8s}
+        .star:nth-child(15){top:5%;left:75%;animation-delay:2.2s}
+        .star:nth-child(16){top:45%;left:40%;animation-delay:0.7s}
+        .star:nth-child(17){top:20%;left:10%;animation-delay:1.4s}
+        .star:nth-child(18){top:65%;left:85%;animation-delay:2.5s}
+        .star:nth-child(19){top:85%;left:45%;animation-delay:0.2s}
+        .star:nth-child(20){top:30%;left:55%;animation-delay:1.6s}
         @keyframes float{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(30px,-50px) scale(1.1)}66%{transform:translate(-30px,30px) scale(0.9)}}
-
-        /* WELCOME BANNER - GOLD SHINE - RESPONSIVE */
-        .welcome-banner{position:fixed;top:0;left:0;width:100%;z-index:2005;height:60px;display:flex;justify-content:center;align-items:center;text-align:center;background:linear-gradient(135deg, #000000, #1a1a1a, #000000);background-size:300% 300%;animation:bgMove 6s ease infinite;border-bottom:1px solid rgba(255,215,0,0.2);box-shadow:0 4px 20px rgba(255,215,0,0.15)}
-        .welcome-banner h1{white-space:nowrap;font-size:clamp(12px, 3vw, 30px);font-weight:900;letter-spacing:5px;text-transform:uppercase;background:linear-gradient(90deg, #3b2a00, #6e4d00, #b8860b, #ffd700, #b8860b, #6e4d00, #3b2a00);background-size:400%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:goldMove 6s linear infinite, bannerFloat 4s ease-in-out infinite;text-shadow:0 0 18px rgba(255,215,0,0.15);padding:0 12px}
-        @keyframes bgMove{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-        @keyframes goldMove{0%{background-position:0%}100%{background-position:400%}}
-        @keyframes bannerFloat{0%,100%{transform:translateY(0px)}50%{transform:translateY(-4px)}}
+        @keyframes twinkle{0%,100%{opacity:0.3;transform:scale(1)}50%{opacity:1;transform:scale(1.5)}}
 
         .sidebar-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);z-index:2000;backdrop-filter:blur(5px)}
         .sidebar-overlay.active{display:block}
@@ -55,8 +67,7 @@
         .sidebar-nav a{color:inherit;text-decoration:none;display:flex;align-items:center;gap:0.75rem;width:100%}
         .sidebar-icon{font-size:1.2rem;width:24px;text-align:center}
 
-        /* NAVBAR - ONLY LEFT HAMBURGER */
-        nav{position:fixed;top:60px;width:100%;padding:0.8rem 5%;background:rgba(2,6,23,0.9);backdrop-filter:blur(20px);z-index:1000;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,0.08);gap:1.5rem}
+        nav{position:fixed;top:0;width:100%;padding:0.8rem 5%;background:rgba(2,6,23,0.9);backdrop-filter:blur(20px);z-index:1000;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,0.08);gap:1.5rem}
         .nav-left{display:flex;align-items:center;gap:1rem;flex-shrink:0}
         .nav-search-wrapper{flex:1;max-width:500px;position:relative}
         .nav-search-input{width:100%;padding:0.65rem 1rem 0.65rem 2.8rem;background:rgba(30,41,59,0.6);border:1px solid rgba(6,182,212,0.2);border-radius:50px;color:var(--light);font-size:0.9rem;outline:none;transition:all 0.3s;font-family:inherit}
@@ -70,38 +81,30 @@
         .nav-links a:hover::after{width:100%}
         .mobile-menu-btn{display:none;background:none;border:none;color:var(--light);font-size:1.5rem;cursor:pointer;z-index:1001}
 
-        .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:11rem 5% 3rem}
+        .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:7rem 5% 3rem}
         .hero-container{max-width:1200px;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
         .hero-content{animation:fadeInLeft 1s ease}
         .badge{display:inline-flex;align-items:center;gap:0.5rem;padding:0.5rem 1rem;background:var(--glass);border:1px solid rgba(6,182,212,0.2);border-radius:50px;font-size:0.85rem;color:var(--primary);margin-bottom:1.5rem}
-
-        /* HERO H1 - GOLD WINGS STYLE */
         .hero h1{font-size:3.5rem;font-weight:800;line-height:1.2;margin-bottom:1.5rem}
         .hero h1 .normal-text{color:var(--light);display:inline}
         .name-container{position:relative;display:inline-block}
         .hero h1 .gold-name{font-family:'Cinzel',serif;font-size:3.8rem;letter-spacing:8px;text-transform:uppercase;background:linear-gradient(90deg, #5a3e00, #ffd700, #fff6c7, #b8860b, #5a3e00);background-size:800%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shine 6s linear infinite;display:inline;text-shadow:0 0 50px rgba(255,215,0,0.12);position:relative}
-        .left-wing, .right-wing{position:absolute;width:420px;height:240px;top:50%;border-radius:100% 0 100% 0;filter:blur(2px);opacity:0;pointer-events:none;z-index:0}
+        .left-wing,.right-wing{position:absolute;width:420px;height:240px;top:50%;border-radius:100% 0 100% 0;filter:blur(2px);opacity:0;pointer-events:none;z-index:0}
         .left-wing{left:-500px;background:radial-gradient(circle at right, rgba(255,215,0,0.55), transparent 70%);animation:leftFly 4s ease-in-out infinite}
         .right-wing{right:-500px;border-radius:0 100% 0 100%;background:radial-gradient(circle at left, rgba(255,215,0,0.55), transparent 70%);animation:rightFly 4s ease-in-out infinite}
         @keyframes leftFly{0%{left:-500px;opacity:0;transform:translateY(-50%) rotate(-25deg) scale(0.4)}40%{opacity:1}70%{left:22%;transform:translateY(-52%) rotate(-5deg) scale(1)}100%{left:31%;opacity:0.15;transform:translateY(-50%) rotate(0deg) scale(0.85)}}
         @keyframes rightFly{0%{right:-500px;opacity:0;transform:translateY(-50%) rotate(25deg) scale(0.4)}40%{opacity:1}70%{right:22%;transform:translateY(-52%) rotate(5deg) scale(1)}100%{right:31%;opacity:0.15;transform:translateY(-50%) rotate(0deg) scale(0.85)}}
         .hero-subtitle{font-size:1.25rem;color:var(--gray);margin-bottom:2rem}
-
-        /* NEON BUTTONS - RECTANGULAR */
         .neon-btn{position:relative;padding:15px 36px;border:none;border-radius:12px;background:#111827;color:#00ffff;font-size:1rem;font-weight:700;font-family:'Poppins',sans-serif;cursor:pointer;overflow:hidden;box-shadow:0 0 10px #00ffff, 0 0 25px rgba(0,255,255,0.4);transition:.3s;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:0.5rem}
         .neon-btn::before{content:"";position:absolute;bottom:0;left:-40%;width:40%;height:3px;border-radius:20px;background:#00ffff;box-shadow:0 0 10px #00ffff, 0 0 20px #00ffff;animation:runLine 2s linear infinite}
         @keyframes runLine{100%{left:100%}}
         .neon-btn:hover{transform:scale(1.05);box-shadow:0 0 15px #00ffff, 0 0 35px rgba(0,255,255,0.5)}
-
-        /* LUXURY CIRCULAR BUTTONS */
         .luxury-btn{position:relative;width:120px;height:120px;border:none;border-radius:50%;cursor:pointer;display:flex;justify-content:center;align-items:center;font-size:2.2rem;font-weight:900;color:#f5d77a;background:radial-gradient(circle at top, #2a2a2a, #0b0b0b 75%);overflow:hidden;box-shadow:inset 0 0 15px rgba(255,255,255,0.05), 0 0 25px rgba(212,175,55,0.15), 0 0 50px rgba(0,0,0,0.6);transition:.4s ease}
         .luxury-btn::before{content:"";position:absolute;width:160px;height:160px;border-radius:50%;background:conic-gradient(transparent, rgba(212,175,55,0.9), transparent 30%);animation:rotateRing 4s linear infinite}
         .luxury-btn::after{content:"";position:absolute;inset:6px;border-radius:50%;background:radial-gradient(circle at top, #1a1a1a, #050505 85%);box-shadow:inset 0 0 10px rgba(255,255,255,0.04);z-index:1}
-        .luxury-btn span, .luxury-btn{isolation:isolate;z-index:2}
+        .luxury-btn span,.luxury-btn{isolation:isolate;z-index:2}
         .luxury-btn:hover{transform:scale(1.08);box-shadow:0 0 30px rgba(212,175,55,0.25), 0 0 60px rgba(212,175,55,0.12), 0 0 90px rgba(0,0,0,0.7)}
         @keyframes rotateRing{100%{transform:rotate(360deg)}}
-
-        /* SHINE BUTTON - TUTORIALS */
         .shine-btn{display:inline-flex;align-items:center;gap:0.5rem;padding:15px 36px;font-size:16px;font-weight:bold;letter-spacing:2px;text-decoration:none;color:black;border-radius:40px;background:linear-gradient(90deg, #b8860b, #ffd700, #fff8dc, #ffd700, #b8860b);background-size:300%;animation:shine 3s linear infinite, pulse 3s ease-in-out infinite;box-shadow:0 0 25px rgba(255,215,0,0.25);transition:0.3s;position:relative;overflow:hidden}
         .shine-btn .text{display:inline-block;animation:floatRotate 3s ease-in-out infinite;text-shadow:0 0 12px rgba(255,215,0,0.5)}
         .shine-btn:hover{transform:scale(1.14);box-shadow:0 0 60px rgba(255,215,0,0.7)}
@@ -111,7 +114,6 @@
         .shine-btn::after{content:"";position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(120deg, transparent, rgba(255,255,255,0.4), transparent)}
         .shine-btn:hover::after{animation:shineWave 0.8s ease}
         @keyframes shineWave{0%{left:-100%}100%{left:100%}}
-
         .hero-visual{animation:fadeInRight 1s ease}
         .hero-card{background:var(--card-bg);border-radius:24px;padding:2rem;border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(20px);box-shadow:0 8px 32px rgba(0,0,0,0.3)}
         .profile-section{text-align:center;margin-bottom:2rem}
@@ -127,11 +129,7 @@
         .section-tag{display:inline-block;padding:0.4rem 1rem;background:rgba(6,182,212,0.1);color:var(--primary);border-radius:50px;font-size:0.85rem;font-weight:600;margin-bottom:1rem;border:1px solid rgba(6,182,212,0.2)}
         .section-title{font-size:2.5rem;font-weight:800;margin-bottom:1rem}
         .section-subtitle{color:var(--gray);max-width:600px;margin:0 auto}
-
-        /* GLASS CARDS */
         .glass-card{background:var(--card-bg);border-radius:24px;padding:3rem;border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(20px);box-shadow:0 8px 32px rgba(0,0,0,0.2)}
-
-        /* WHO AM I HEADING */
         .who-heading{position:relative;font-size:clamp(38px,8vw,90px);font-weight:700;letter-spacing:10px;text-transform:uppercase;color:#d4af37;text-shadow:0 0 10px rgba(255,215,0,0.25), 0 0 25px rgba(255,215,0,0.15);animation:mainFloat 5s ease-in-out infinite;font-family:'Cinzel', serif;text-align:center}
         .who-heading span{display:inline-block;position:relative;animation:wordFloat 3s ease-in-out infinite}
         .who-heading span:nth-child(1){animation-delay:0s}
@@ -141,20 +139,15 @@
         @keyframes wordFloat{0%,100%{transform:translateY(0px)}50%{transform:translateY(-14px)}}
         @keyframes mainFloat{0%,100%{transform:translateY(0px)}50%{transform:translateY(-5px)}}
         @keyframes lineGlow{0%{opacity:0.2;transform:scaleX(0.6)}50%{opacity:1;transform:scaleX(1)}100%{opacity:0.2;transform:scaleX(0.6)}}
-
-        /* PRACTICE CODING ONLINE HEADING */
         .heading-box{position:relative;display:inline-flex;justify-content:center;align-items:center;padding:35px 45px;border-radius:25px;overflow:hidden;background:radial-gradient(circle at top,#1b2735,#090a0f 75%);box-shadow:0 0 25px rgba(0,0,0,0.5), 0 0 40px rgba(212,175,55,0.12)}
         .heading-box .stars{position:absolute;width:200%;height:200%;background-image:radial-gradient(2px 2px at 20px 30px,#fff,transparent),radial-gradient(2px 2px at 80px 60px,#d4af37,transparent),radial-gradient(1.5px 1.5px at 140px 100px,#fff,transparent),radial-gradient(2px 2px at 200px 50px,#fff6cc,transparent);background-size:250px 250px;animation:moveStars 80s linear infinite;opacity:.7}
         @keyframes moveStars{from{transform:translateY(0)}to{transform:translateY(-300px)}}
-
         .hero-heading{position:relative;z-index:2;display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:14px;font-size:clamp(2rem,6vw,4.5rem);font-weight:900;text-align:center;letter-spacing:3px;text-transform:uppercase;font-family:'Poppins',sans-serif}
         .hero-heading span{display:inline-block;background:linear-gradient(135deg, #fff6cc, #d4af37, #8b6914);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 0 10px rgba(212,175,55,0.6), 0 0 20px rgba(212,175,55,0.3);animation:bounceWord 2s ease-in-out infinite}
         .hero-heading span:nth-child(1){animation-delay:0s}
         .hero-heading span:nth-child(2){animation-delay:.3s}
         .hero-heading span:nth-child(3){animation-delay:.6s}
         @keyframes bounceWord{0%,100%{transform:translateY(0)}25%{transform:translateY(-15px)}50%{transform:translateY(0)}}
-
-        /* PROFESSIONAL COMPILERS HEADING */
         .pro-heading{position:relative;display:inline-flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:2px;padding:18px 28px;border-radius:22px;background:radial-gradient(circle at top, #1c2b3a, #0a0f17 80%);overflow:hidden;font-size:clamp(1.4rem,4.8vw,3rem);font-weight:900;text-transform:uppercase;letter-spacing:2px;font-family:'Poppins',sans-serif;box-shadow:0 0 20px rgba(0,0,0,0.5), 0 0 35px rgba(212,175,55,0.12)}
         .pro-heading::before{content:"";position:absolute;inset:0;background-image:radial-gradient(2px 2px at 20px 30px,#fff,transparent),radial-gradient(2px 2px at 80px 60px,#d4af37,transparent),radial-gradient(1.5px 1.5px at 160px 90px,#fff,transparent),radial-gradient(2px 2px at 240px 40px,#fff6cc,transparent);background-size:250px 250px;opacity:.7;animation:starsMove 80s linear infinite}
         @keyframes starsMove{from{transform:translateY(0)}to{transform:translateY(-250px)}}
@@ -166,16 +159,12 @@
         .pro-heading span:nth-child(5){animation-delay:.15s}
         .pro-heading span:nth-child(6){animation-delay:.2s}
         @keyframes wave{0%,100%{transform:translateY(0)}25%{transform:translateY(-12px) scale(1.08)}50%{transform:translateY(0)}}
-
-        /* SQUARE BUTTONS - LANGUAGE/COMPILER */
         .square-btn{position:relative;width:90px;height:90px;border:none;outline:none;cursor:pointer;border-radius:18px;background:radial-gradient(circle at top, #1c2b3a, #0a0f17 80%);color:#d4af37;font-size:2rem;font-weight:900;font-family:'Poppins',sans-serif;display:flex;justify-content:center;align-items:center;overflow:hidden;box-shadow:0 0 18px rgba(0,0,0,0.5), 0 0 30px rgba(212,175,55,0.12);transition:.35s ease;text-decoration:none}
         .square-btn::before{content:"";position:absolute;inset:-2px;border-radius:20px;background:linear-gradient(45deg, transparent, #d4af37, transparent);animation:rotateGlow 3s linear infinite;z-index:0}
         .square-btn::after{content:"";position:absolute;inset:3px;border-radius:16px;background:radial-gradient(circle at top, #16202c, #0a0f17 85%);z-index:1}
-        .square-btn span, .square-btn{isolation:isolate;z-index:2}
+        .square-btn span,.square-btn{isolation:isolate;z-index:2}
         .square-btn:hover{transform:translateY(-6px) scale(1.05);box-shadow:0 0 25px rgba(212,175,55,0.3), 0 0 40px rgba(212,175,55,0.15)}
         @keyframes rotateGlow{100%{transform:rotate(360deg)}}
-
-        /* NEON HEADING - START LEARNING NOW */
         .neon-heading{position:relative;display:inline-flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:3px;padding:18px 28px;border-radius:22px;background:linear-gradient(145deg, #0f1722, #1b2735);overflow:hidden;font-size:clamp(1.8rem,6vw,4rem);font-weight:900;text-transform:uppercase;letter-spacing:2px;font-family:'Poppins',sans-serif;box-shadow:0 0 20px rgba(0,0,0,0.5), 0 0 35px rgba(0,255,255,0.08)}
         .neon-heading::before{content:"";position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg, transparent, rgba(0,255,255,0.2), transparent);animation:shine 4s linear infinite}
         .neon-heading span{position:relative;z-index:2;display:inline-block;color:#00ffff;text-shadow:0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 20px rgba(0,255,255,0.7);animation:wave 2s ease-in-out infinite}
@@ -185,8 +174,6 @@
         .neon-heading span:nth-child(3){animation-delay:.1s}
         .neon-heading span:nth-child(4){animation-delay:.15s}
         .neon-heading span:nth-child(5){animation-delay:.2s}
-
-        /* CODE PRACTICE SECTION */
         .code-practice-section{background:var(--card-bg);border-radius:24px;padding:3rem;border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(20px);max-width:1000px;margin:0 auto;box-shadow:0 8px 32px rgba(0,0,0,0.2)}
         .code-practice-header{text-align:center;margin-bottom:2rem}
         .code-practice-header h3{font-size:1.8rem;font-weight:700;margin-bottom:0.5rem;background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
@@ -312,12 +299,15 @@
         .lang-tag{display:inline-flex;align-items:center;justify-content:center;width:45px;height:45px;border-radius:10px;font-size:0.85rem;font-weight:700;background:rgba(6,182,212,0.1);color:var(--primary);border:1px solid rgba(6,182,212,0.2)}
         .youtube-tag{display:inline-flex;align-items:center;justify-content:center;padding:0.4rem 1rem;border-radius:50px;font-size:0.85rem;font-weight:500;background:rgba(239,68,68,0.1);color:#ef4444;border:1px solid rgba(239,68,68,0.2);transition:all 0.3s}
         .youtube-tag:hover{background:rgba(239,68,68,0.2);transform:translateY(-2px)}
-
-        /* BIG PROFESSIONAL COMPILERS SECTION */
         .big-compilers-section{margin-top:2.5rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.08)}
         .big-compilers-title{text-align:center;margin-bottom:1.5rem;font-size:1.6rem;font-weight:800;background:linear-gradient(135deg,var(--primary),var(--accent),var(--secondary));-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-transform:uppercase;letter-spacing:3px}
         .big-compilers-subtitle{text-align:center;color:var(--gray);font-size:0.9rem;margin-bottom:1.5rem}
-
+        .lang-card:hover{background:rgba(255,255,255,0.08)!important;border-color:rgba(6,182,212,0.3)!important;transform:translateY(-3px);box-shadow:0 8px 25px rgba(0,0,0,0.3),0 0 15px rgba(6,182,212,0.1)}
+        @media(max-width:600px){
+            .lang-cards-grid{grid-template-columns:repeat(3,1fr)!important;gap:0.4rem!important}
+            .lang-card{padding:0.5rem 0.2rem!important;min-height:55px!important}
+            .lang-card span{font-size:0.65rem!important}
+        }
         @media(max-width:968px){
             .hero-container{grid-template-columns:1fr;text-align:center}
             .hero h1{font-size:2.5rem}
@@ -329,9 +319,7 @@
             .stats-bar{gap:1.5rem}
             .ai-message-bubble{max-width:90%}
             .nav-search-wrapper{max-width:200px}
-            .welcome-banner{height:50px}
-            .welcome-banner h1{font-size:1.3rem;letter-spacing:8px}
-            .hero{padding-top:10rem}
+            .hero{padding-top:6rem}
             nav{top:50px}
         }
         @media(max-width:600px){
@@ -342,9 +330,7 @@
             .ai-chat-body{padding:1rem}
             .ai-chat-header{padding:1rem}
             .nav-search-wrapper{display:none}
-            .welcome-banner{height:45px}
-            .welcome-banner h1{font-size:1.1rem;letter-spacing:5px}
-            .hero{padding-top:9rem}
+            .hero{padding-top:5rem}
             nav{top:45px}
             .luxury-btn{width:95px;height:95px;font-size:1.8rem}
             .luxury-btn::before{width:130px;height:130px}
@@ -362,15 +348,18 @@
         ::-webkit-scrollbar-track{background:var(--darker)}
         ::-webkit-scrollbar-thumb{background:var(--primary);border-radius:4px}
     </style>
-    
 </head>
 <body>
-    <!-- WELCOME BANNER -->
-    <div class="welcome-banner">
-        <h1>Welcome to Official Website</h1>
+
+    <!-- ===== BACKGROUND ANIMATION ===== -->
+    <div class="bg-animation">
+        <div class="orb"></div><div class="orb"></div><div class="orb"></div><div class="orb"></div><div class="orb"></div>
+        <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+        <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+        <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
     </div>
 
-    <div class="bg-animation"><div class="orb"></div><div class="orb"></div><div class="orb"></div></div>
+    <!-- ===== SIDEBAR ===== -->
     <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
     <aside class="sidebar" id="sidebar">
         <div class="sidebar-header">
@@ -381,12 +370,12 @@
             <li onclick="window.location.href='index.html'"><span class="sidebar-icon">H</span> Home</li>
             <li onclick="window.location.href='index.html#about'"><span class="sidebar-icon">A</span> About</li>
             <li onclick="window.location.href='practice.html'"><span class="sidebar-icon">P</span> Practice</li>
-                        <li onclick="window.location.href='news.html'"><span class="sidebar-icon">N</span> News</li>
-<li onclick="window.location.href='tutorials.html'"><span class="sidebar-icon">T</span> Tutorials</li>
+            <li onclick="window.location.href='news.html'"><span class="sidebar-icon">N</span> News</li>
+            <li onclick="window.location.href='tutorials.html'"><span class="sidebar-icon">T</span> Tutorials</li>
         </ul>
     </aside>
 
-    <!-- NAVBAR - ONLY LEFT HAMBURGER -->
+    <!-- ===== NAVBAR ===== -->
     <nav>
         <div class="nav-left">
             <button class="mobile-menu-btn" onclick="toggleSidebar()" style="display:block;margin-right:0.5rem">&#9776;</button>
@@ -401,9 +390,11 @@
             <li><a href="practice.html">Practice</a></li>
             <li><a href="tutorials.html">Tutorials</a></li>
             <li><a href="news.html">News</a></li>
+            <li><a href="#" onclick="openLoginModal(); return false;">Login</a></li>
         </ul>
     </nav>
 
+    <!-- ===== HERO SECTION ===== -->
     <section class="hero" id="home">
         <div class="hero-container">
             <div class="hero-content">
@@ -434,45 +425,153 @@
                             <span class="text">Tutorials</span>
                         </a>
                     </div>
-
-                    <!-- DAILY CHALLENGES SECTION -->
-                    <div style="margin-top:1.5rem;text-align:center;">
-                        <!-- GOLD HEADING -->
-                        <div style="display:flex;justify-content:center;margin-bottom:1rem;">
-                            <h2 style="position:relative;display:inline-flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:2px;padding:14px 22px;border-radius:18px;background:radial-gradient(circle at top, #1c2b3a, #0a0f17 80%);overflow:hidden;font-size:clamp(1rem,3.5vw,2rem);font-weight:900;text-transform:uppercase;letter-spacing:1px;font-family:'Poppins',sans-serif;box-shadow:0 0 15px rgba(0,0,0,0.5), 0 0 25px rgba(212,175,55,0.12);">
-                                <span style="position:relative;z-index:2;display:inline-block;background:linear-gradient(135deg, #fff6cc, #d4af37, #8b6914);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 0 10px rgba(212,175,55,0.6), 0 0 20px rgba(212,175,55,0.3);animation:wave 2s ease-in-out infinite;">D</span>
-                                <span style="position:relative;z-index:2;display:inline-block;background:linear-gradient(135deg, #fff6cc, #d4af37, #8b6914);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 0 10px rgba(212,175,55,0.6), 0 0 20px rgba(212,175,55,0.3);animation:wave 2s ease-in-out infinite;animation-delay:.05s;">a</span>
-                                <span style="position:relative;z-index:2;display:inline-block;background:linear-gradient(135deg, #fff6cc, #d4af37, #8b6914);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 0 10px rgba(212,175,55,0.6), 0 0 20px rgba(212,175,55,0.3);animation:wave 2s ease-in-out infinite;animation-delay:.1s;">i</span>
-                                <span style="position:relative;z-index:2;display:inline-block;background:linear-gradient(135deg, #fff6cc, #d4af37, #8b6914);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 0 10px rgba(212,175,55,0.6), 0 0 20px rgba(212,175,55,0.3);animation:wave 2s ease-in-out infinite;animation-delay:.15s;">l</span>
-                                <span style="position:relative;z-index:2;display:inline-block;background:linear-gradient(135deg, #fff6cc, #d4af37, #8b6914);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 0 10px rgba(212,175,55,0.6), 0 0 20px rgba(212,175,55,0.3);animation:wave 2s ease-in-out infinite;animation-delay:.2s;">y</span>
-                                <span style="width:12px;"></span>
-                                <span style="position:relative;z-index:2;display:inline-block;background:linear-gradient(135deg, #fff6cc, #d4af37, #8b6914);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 0 10px rgba(212,175,55,0.6), 0 0 20px rgba(212,175,55,0.3);animation:wave 2s ease-in-out infinite;animation-delay:.25s;">C</span>
-                                <span style="position:relative;z-index:2;display:inline-block;background:linear-gradient(135deg, #fff6cc, #d4af37, #8b6914);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 0 10px rgba(212,175,55,0.6), 0 0 20px rgba(212,175,55,0.3);animation:wave 2s ease-in-out infinite;animation-delay:.3s;">h</span>
-                                <span style="position:relative;z-index:2;display:inline-block;background:linear-gradient(135deg, #fff6cc, #d4af37, #8b6914);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 0 10px rgba(212,175,55,0.6), 0 0 20px rgba(212,175,55,0.3);animation:wave 2s ease-in-out infinite;animation-delay:.35s;">a</span>
-                                <span style="position:relative;z-index:2;display:inline-block;background:linear-gradient(135deg, #fff6cc, #d4af37, #8b6914);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 0 10px rgba(212,175,55,0.6), 0 0 20px rgba(212,175,55,0.3);animation:wave 2s ease-in-out infinite;animation-delay:.4s;">l</span>
-                                <span style="position:relative;z-index:2;display:inline-block;background:linear-gradient(135deg, #fff6cc, #d4af37, #8b6914);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 0 10px rgba(212,175,55,0.6), 0 0 20px rgba(212,175,55,0.3);animation:wave 2s ease-in-out infinite;animation-delay:.45s;">l</span>
-                                <span style="position:relative;z-index:2;display:inline-block;background:linear-gradient(135deg, #fff6cc, #d4af37, #8b6914);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 0 10px rgba(212,175,55,0.6), 0 0 20px rgba(212,175,55,0.3);animation:wave 2s ease-in-out infinite;animation-delay:.5s;">e</span>
-                                <span style="position:relative;z-index:2;display:inline-block;background:linear-gradient(135deg, #fff6cc, #d4af37, #8b6914);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 0 10px rgba(212,175,55,0.6), 0 0 20px rgba(212,175,55,0.3);animation:wave 2s ease-in-out infinite;animation-delay:.55s;">n</span>
-                                <span style="position:relative;z-index:2;display:inline-block;background:linear-gradient(135deg, #fff6cc, #d4af37, #8b6914);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 0 10px rgba(212,175,55,0.6), 0 0 20px rgba(212,175,55,0.3);animation:wave 2s ease-in-out infinite;animation-delay:.6s;">g</span>
-                                <span style="position:relative;z-index:2;display:inline-block;background:linear-gradient(135deg, #fff6cc, #d4af37, #8b6914);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 0 10px rgba(212,175,55,0.6), 0 0 20px rgba(212,175,55,0.3);animation:wave 2s ease-in-out infinite;animation-delay:.65s;">e</span>
-                                <span style="position:relative;z-index:2;display:inline-block;background:linear-gradient(135deg, #fff6cc, #d4af37, #8b6914);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 0 10px rgba(212,175,55,0.6), 0 0 20px rgba(212,175,55,0.3);animation:wave 2s ease-in-out infinite;animation-delay:.7s;">s</span>
-                            </h2>
+                    <!-- LANGUAGE CARDS GRID -->
+                    <div style="margin-top:1.5rem;">
+                        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0.6rem;" class="lang-cards-grid">
+                            <a href="htmlx.html" class="lang-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0.7rem 0.3rem;background:rgba(30,41,59,0.6);border:1px solid rgba(255,255,255,0.08);border-radius:12px;text-decoration:none;color:var(--light);transition:all 0.3s;text-align:center;min-height:70px;">
+                                <span style="font-size:0.75rem;font-weight:700;color:#e34c26;margin-bottom:0.3rem;">HTML</span>
+                            </a>
+                            <a href="cssx.html" class="lang-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0.7rem 0.3rem;background:rgba(30,41,59,0.6);border:1px solid rgba(255,255,255,0.08);border-radius:12px;text-decoration:none;color:var(--light);transition:all 0.3s;text-align:center;min-height:70px;">
+                                <span style="font-size:0.75rem;font-weight:700;color:#264de4;margin-bottom:0.3rem;">CSS</span>
+                            </a>
+                            <a href="jsx.html" class="lang-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0.7rem 0.3rem;background:rgba(30,41,59,0.6);border:1px solid rgba(255,255,255,0.08);border-radius:12px;text-decoration:none;color:var(--light);transition:all 0.3s;text-align:center;min-height:70px;">
+                                <span style="font-size:0.75rem;font-weight:700;color:#f7df1e;margin-bottom:0.3rem;">JavaScript</span>
+                            </a>
+                            <a href="sqlx.html" class="lang-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0.7rem 0.3rem;background:rgba(30,41,59,0.6);border:1px solid rgba(255,255,255,0.08);border-radius:12px;text-decoration:none;color:var(--light);transition:all 0.3s;text-align:center;min-height:70px;">
+                                <span style="font-size:0.75rem;font-weight:700;color:#00758f;margin-bottom:0.3rem;">SQL</span>
+                            </a>
+                            <a href="pythonx.html" class="lang-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0.7rem 0.3rem;background:rgba(30,41,59,0.6);border:1px solid rgba(255,255,255,0.08);border-radius:12px;text-decoration:none;color:var(--light);transition:all 0.3s;text-align:center;min-height:70px;">
+                                <span style="font-size:0.75rem;font-weight:700;color:#3776ab;margin-bottom:0.3rem;">Python</span>
+                            </a>
+                            <a href="phpx.html" class="lang-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0.7rem 0.3rem;background:rgba(30,41,59,0.6);border:1px solid rgba(255,255,255,0.08);border-radius:12px;text-decoration:none;color:var(--light);transition:all 0.3s;text-align:center;min-height:70px;">
+                                <span style="font-size:0.75rem;font-weight:700;color:#777bb4;margin-bottom:0.3rem;">PHP</span>
+                            </a>
+                            <a href="javax.html" class="lang-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0.7rem 0.3rem;background:rgba(30,41,59,0.6);border:1px solid rgba(255,255,255,0.08);border-radius:12px;text-decoration:none;color:var(--light);transition:all 0.3s;text-align:center;min-height:70px;">
+                                <span style="font-size:0.75rem;font-weight:700;color:#b07219;margin-bottom:0.3rem;">Java</span>
+                            </a>
+                            <a href="cx.html" class="lang-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0.7rem 0.3rem;background:rgba(30,41,59,0.6);border:1px solid rgba(255,255,255,0.08);border-radius:12px;text-decoration:none;color:var(--light);transition:all 0.3s;text-align:center;min-height:70px;">
+                                <span style="font-size:0.75rem;font-weight:700;color:#555555;margin-bottom:0.3rem;">C</span>
+                            </a>
+                            <a href="cppx.html" class="lang-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0.7rem 0.3rem;background:rgba(30,41,59,0.6);border:1px solid rgba(255,255,255,0.08);border-radius:12px;text-decoration:none;color:var(--light);transition:all 0.3s;text-align:center;min-height:70px;">
+                                <span style="font-size:0.75rem;font-weight:700;color:#f34b7d;margin-bottom:0.3rem;">C++</span>
+                            </a>
+                            <a href="csharp.html" class="lang-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0.7rem 0.3rem;background:rgba(30,41,59,0.6);border:1px solid rgba(255,255,255,0.08);border-radius:12px;text-decoration:none;color:var(--light);transition:all 0.3s;text-align:center;min-height:70px;">
+                                <span style="font-size:0.75rem;font-weight:700;color:#178600;margin-bottom:0.3rem;">C#</span>
+                            </a>
+                            <a href="rx.html" class="lang-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0.7rem 0.3rem;background:rgba(30,41,59,0.6);border:1px solid rgba(255,255,255,0.08);border-radius:12px;text-decoration:none;color:var(--light);transition:all 0.3s;text-align:center;min-height:70px;">
+                                <span style="font-size:0.75rem;font-weight:700;color:#198ce7;margin-bottom:0.3rem;">R</span>
+                            </a>
+                            <a href="kotlinx.html" class="lang-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0.7rem 0.3rem;background:rgba(30,41,59,0.6);border:1px solid rgba(255,255,255,0.08);border-radius:12px;text-decoration:none;color:var(--light);transition:all 0.3s;text-align:center;min-height:70px;">
+                                <span style="font-size:0.75rem;font-weight:700;color:#A97BFF;margin-bottom:0.3rem;">Kotlin</span>
+                            </a>
+                            <a href="gox.html" class="lang-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0.7rem 0.3rem;background:rgba(30,41,59,0.6);border:1px solid rgba(255,255,255,0.08);border-radius:12px;text-decoration:none;color:var(--light);transition:all 0.3s;text-align:center;min-height:70px;">
+                                <span style="font-size:0.75rem;font-weight:700;color:#00ADD8;margin-bottom:0.3rem;">Go</span>
+                            </a>
+                            <a href="tsx.html" class="lang-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0.7rem 0.3rem;background:rgba(30,41,59,0.6);border:1px solid rgba(255,255,255,0.08);border-radius:12px;text-decoration:none;color:var(--light);transition:all 0.3s;text-align:center;min-height:70px;">
+                                <span style="font-size:0.75rem;font-weight:700;color:#2b7489;margin-bottom:0.3rem;">TypeScript</span>
+                            </a>
+                            <a href="bootstrapx.html" class="lang-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0.7rem 0.3rem;background:rgba(30,41,59,0.6);border:1px solid rgba(255,255,255,0.08);border-radius:12px;text-decoration:none;color:var(--light);transition:all 0.3s;text-align:center;min-height:70px;">
+                                <span style="font-size:0.75rem;font-weight:700;color:#563d7c;margin-bottom:0.3rem;">Bootstrap</span>
+                            </a>
+                            <a href="jqueryx.html" class="lang-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0.7rem 0.3rem;background:rgba(30,41,59,0.6);border:1px solid rgba(255,255,255,0.08);border-radius:12px;text-decoration:none;color:var(--light);transition:all 0.3s;text-align:center;min-height:70px;">
+                                <span style="font-size:0.75rem;font-weight:700;color:#0769ad;margin-bottom:0.3rem;">jQuery</span>
+                            </a>
+                            <a href="reactx.html" class="lang-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0.7rem 0.3rem;background:rgba(30,41,59,0.6);border:1px solid rgba(255,255,255,0.08);border-radius:12px;text-decoration:none;color:var(--light);transition:all 0.3s;text-align:center;min-height:70px;">
+                                <span style="font-size:0.75rem;font-weight:700;color:#61dafb;margin-bottom:0.3rem;">React</span>
+                            </a>
+                            <a href="angularx.html" class="lang-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0.7rem 0.3rem;background:rgba(30,41,59,0.6);border:1px solid rgba(255,255,255,0.08);border-radius:12px;text-decoration:none;color:var(--light);transition:all 0.3s;text-align:center;min-height:70px;">
+                                <span style="font-size:0.75rem;font-weight:700;color:#dd0031;margin-bottom:0.3rem;">Angular</span>
+                            </a>
+                            <a href="nodejsx.html" class="lang-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0.7rem 0.3rem;background:rgba(30,41,59,0.6);border:1px solid rgba(255,255,255,0.08);border-radius:12px;text-decoration:none;color:var(--light);transition:all 0.3s;text-align:center;min-height:70px;">
+                                <span style="font-size:0.75rem;font-weight:700;color:#339933;margin-bottom:0.3rem;">Node.js</span>
+                            </a>
+                            <a href="expressx.html" class="lang-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0.7rem 0.3rem;background:rgba(30,41,59,0.6);border:1px solid rgba(255,255,255,0.08);border-radius:12px;text-decoration:none;color:var(--light);transition:all 0.3s;text-align:center;min-height:70px;">
+                                <span style="font-size:0.75rem;font-weight:700;color:#404040;margin-bottom:0.3rem;">Express.js</span>
+                            </a>
+                            <a href="mongodb.html" class="lang-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0.7rem 0.3rem;background:rgba(30,41,59,0.6);border:1px solid rgba(255,255,255,0.08);border-radius:12px;text-decoration:none;color:var(--light);transition:all 0.3s;text-align:center;min-height:70px;">
+                                <span style="font-size:0.75rem;font-weight:700;color:#47A248;margin-bottom:0.3rem;">MongoDB</span>
+                            </a>
+                            <a href="mysqlx.html" class="lang-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0.7rem 0.3rem;background:rgba(30,41,59,0.6);border:1px solid rgba(255,255,255,0.08);border-radius:12px;text-decoration:none;color:var(--light);transition:all 0.3s;text-align:center;min-height:70px;">
+                                <span style="font-size:0.75rem;font-weight:700;color:#4479A1;margin-bottom:0.3rem;">MySQL</span>
+                            </a>
+                            <a href="jsonx.html" class="lang-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0.7rem 0.3rem;background:rgba(30,41,59,0.6);border:1px solid rgba(255,255,255,0.08);border-radius:12px;text-decoration:none;color:var(--light);transition:all 0.3s;text-align:center;min-height:70px;">
+                                <span style="font-size:0.75rem;font-weight:700;color:#000000;margin-bottom:0.3rem;">JSON</span>
+                            </a>
+                            <a href="ajaxx.html" class="lang-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0.7rem 0.3rem;background:rgba(30,41,59,0.6);border:1px solid rgba(255,255,255,0.08);border-radius:12px;text-decoration:none;color:var(--light);transition:all 0.3s;text-align:center;min-height:70px;">
+                                <span style="font-size:0.75rem;font-weight:700;color:#3b82f6;margin-bottom:0.3rem;">AJAX</span>
+                            </a>
+                            <a href="xmlx.html" class="lang-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0.7rem 0.3rem;background:rgba(30,41,59,0.6);border:1px solid rgba(255,255,255,0.08);border-radius:12px;text-decoration:none;color:var(--light);transition:all 0.3s;text-align:center;min-height:70px;">
+                                <span style="font-size:0.75rem;font-weight:700;color:#ff6600;margin-bottom:0.3rem;">XML</span>
+                            </a>
+                            <a href="svgx.html" class="lang-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0.7rem 0.3rem;background:rgba(30,41,59,0.6);border:1px solid rgba(255,255,255,0.08);border-radius:12px;text-decoration:none;color:var(--light);transition:all 0.3s;text-align:center;min-height:70px;">
+                                <span style="font-size:0.75rem;font-weight:700;color:#ffb13b;margin-bottom:0.3rem;">SVG</span>
+                            </a>
+                            <a href="canvasx.html" class="lang-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0.7rem 0.3rem;background:rgba(30,41,59,0.6);border:1px solid rgba(255,255,255,0.08);border-radius:12px;text-decoration:none;color:var(--light);transition:all 0.3s;text-align:center;min-height:70px;">
+                                <span style="font-size:0.75rem;font-weight:700;color:#e44d26;margin-bottom:0.3rem;">Canvas</span>
+                            </a>
+                            <a href="gitx.html" class="lang-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0.7rem 0.3rem;background:rgba(30,41,59,0.6);border:1px solid rgba(255,255,255,0.08);border-radius:12px;text-decoration:none;color:var(--light);transition:all 0.3s;text-align:center;min-height:70px;">
+                                <span style="font-size:0.75rem;font-weight:700;color:#f05032;margin-bottom:0.3rem;">Git</span>
+                            </a>
+                            <a href="excelx.html" class="lang-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0.7rem 0.3rem;background:rgba(30,41,59,0.6);border:1px solid rgba(255,255,255,0.08);border-radius:12px;text-decoration:none;color:var(--light);transition:all 0.3s;text-align:center;min-height:70px;">
+                                <span style="font-size:0.75rem;font-weight:700;color:#217346;margin-bottom:0.3rem;">Excel</span>
+                            </a>
+                            <a href="numpyx.html" class="lang-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0.7rem 0.3rem;background:rgba(30,41,59,0.6);border:1px solid rgba(255,255,255,0.08);border-radius:12px;text-decoration:none;color:var(--light);transition:all 0.3s;text-align:center;min-height:70px;">
+                                <span style="font-size:0.75rem;font-weight:700;color:#013243;margin-bottom:0.3rem;">NumPy</span>
+                            </a>
+                            <a href="pandasx.html" class="lang-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0.7rem 0.3rem;background:rgba(30,41,59,0.6);border:1px solid rgba(255,255,255,0.08);border-radius:12px;text-decoration:none;color:var(--light);transition:all 0.3s;text-align:center;min-height:70px;">
+                                <span style="font-size:0.75rem;font-weight:700;color:#150458;margin-bottom:0.3rem;">Pandas</span>
+                            </a>
+                            <a href="mlx.html" class="lang-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0.7rem 0.3rem;background:rgba(30,41,59,0.6);border:1px solid rgba(255,255,255,0.08);border-radius:12px;text-decoration:none;color:var(--light);transition:all 0.3s;text-align:center;min-height:70px;">
+                                <span style="font-size:0.75rem;font-weight:700;color:#ff6f00;margin-bottom:0.3rem;">Machine Learning</span>
+                            </a>
+                            <a href="aix.html" class="lang-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0.7rem 0.3rem;background:rgba(30,41,59,0.6);border:1px solid rgba(255,255,255,0.08);border-radius:12px;text-decoration:none;color:var(--light);transition:all 0.3s;text-align:center;min-height:70px;">
+                                <span style="font-size:0.75rem;font-weight:700;color:#00d4ff;margin-bottom:0.3rem;">AI</span>
+                            </a>
+                            <a href="cyberx.html" class="lang-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0.7rem 0.3rem;background:rgba(30,41,59,0.6);border:1px solid rgba(255,255,255,0.08);border-radius:12px;text-decoration:none;color:var(--light);transition:all 0.3s;text-align:center;min-height:70px;">
+                                <span style="font-size:0.75rem;font-weight:700;color:#00ff88;margin-bottom:0.3rem;">Cyber Security</span>
+                            </a>
                         </div>
-                        <p style="color:var(--gray);font-size:0.9rem;margin-bottom:1rem;max-width:400px;margin-left:auto;margin-right:auto;">60-day coding challenge cycle. One new challenge every day in your favorite language. Build your streak!</p>
-                        <a href="daily-challenges.html" class="neon-btn">Start Daily Challenge</a>
-                    </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- ===== DAILY CHALLENGES SECTION ===== -->
+    <section id="daily-challenges" style="padding:3rem 5%;max-width:1200px;margin:0 auto;text-align:center;">
+        <div style="display:flex;justify-content:center;margin-bottom:1rem;">
+            <h2 style="position:relative;display:inline-flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:2px;padding:14px 22px;border-radius:18px;background:radial-gradient(circle at top, #1c2b3a, #0a0f17 80%);overflow:hidden;font-size:clamp(1rem,3.5vw,2rem);font-weight:900;text-transform:uppercase;letter-spacing:1px;font-family:'Poppins',sans-serif;box-shadow:0 0 15px rgba(0,0,0,0.5), 0 0 25px rgba(212,175,55,0.12);">
+                <span style="position:relative;z-index:2;display:inline-block;background:linear-gradient(135deg, #fff6cc, #d4af37, #8b6914);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 0 10px rgba(212,175,55,0.6), 0 0 20px rgba(212,175,55,0.3);animation:wave 2s ease-in-out infinite;">D</span>
+                <span style="position:relative;z-index:2;display:inline-block;background:linear-gradient(135deg, #fff6cc, #d4af37, #8b6914);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 0 10px rgba(212,175,55,0.6), 0 0 20px rgba(212,175,55,0.3);animation:wave 2s ease-in-out infinite;animation-delay:.05s;">a</span>
+                <span style="position:relative;z-index:2;display:inline-block;background:linear-gradient(135deg, #fff6cc, #d4af37, #8b6914);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 0 10px rgba(212,175,55,0.6), 0 0 20px rgba(212,175,55,0.3);animation:wave 2s ease-in-out infinite;animation-delay:.1s;">i</span>
+                <span style="position:relative;z-index:2;display:inline-block;background:linear-gradient(135deg, #fff6cc, #d4af37, #8b6914);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 0 10px rgba(212,175,55,0.6), 0 0 20px rgba(212,175,55,0.3);animation:wave 2s ease-in-out infinite;animation-delay:.15s;">l</span>
+                <span style="position:relative;z-index:2;display:inline-block;background:linear-gradient(135deg, #fff6cc, #d4af37, #8b6914);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 0 10px rgba(212,175,55,0.6), 0 0 20px rgba(212,175,55,0.3);animation:wave 2s ease-in-out infinite;animation-delay:.2s;">y</span>
+                <span style="width:12px;"></span>
+                <span style="position:relative;z-index:2;display:inline-block;background:linear-gradient(135deg, #fff6cc, #d4af37, #8b6914);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 0 10px rgba(212,175,55,0.6), 0 0 20px rgba(212,175,55,0.3);animation:wave 2s ease-in-out infinite;animation-delay:.25s;">C</span>
+                <span style="position:relative;z-index:2;display:inline-block;background:linear-gradient(135deg, #fff6cc, #d4af37, #8b6914);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 0 10px rgba(212,175,55,0.6), 0 0 20px rgba(212,175,55,0.3);animation:wave 2s ease-in-out infinite;animation-delay:.3s;">h</span>
+                <span style="position:relative;z-index:2;display:inline-block;background:linear-gradient(135deg, #fff6cc, #d4af37, #8b6914);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 0 10px rgba(212,175,55,0.6), 0 0 20px rgba(212,175,55,0.3);animation:wave 2s ease-in-out infinite;animation-delay:.35s;">a</span>
+                <span style="position:relative;z-index:2;display:inline-block;background:linear-gradient(135deg, #fff6cc, #d4af37, #8b6914);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 0 10px rgba(212,175,55,0.6), 0 0 20px rgba(212,175,55,0.3);animation:wave 2s ease-in-out infinite;animation-delay:.4s;">l</span>
+                <span style="position:relative;z-index:2;display:inline-block;background:linear-gradient(135deg, #fff6cc, #d4af37, #8b6914);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 0 10px rgba(212,175,55,0.6), 0 0 20px rgba(212,175,55,0.3);animation:wave 2s ease-in-out infinite;animation-delay:.45s;">l</span>
+                <span style="position:relative;z-index:2;display:inline-block;background:linear-gradient(135deg, #fff6cc, #d4af37, #8b6914);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 0 10px rgba(212,175,55,0.6), 0 0 20px rgba(212,175,55,0.3);animation:wave 2s ease-in-out infinite;animation-delay:.5s;">e</span>
+                <span style="position:relative;z-index:2;display:inline-block;background:linear-gradient(135deg, #fff6cc, #d4af37, #8b6914);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 0 10px rgba(212,175,55,0.6), 0 0 20px rgba(212,175,55,0.3);animation:wave 2s ease-in-out infinite;animation-delay:.55s;">n</span>
+                <span style="position:relative;z-index:2;display:inline-block;background:linear-gradient(135deg, #fff6cc, #d4af37, #8b6914);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 0 10px rgba(212,175,55,0.6), 0 0 20px rgba(212,175,55,0.3);animation:wave 2s ease-in-out infinite;animation-delay:.6s;">g</span>
+                <span style="position:relative;z-index:2;display:inline-block;background:linear-gradient(135deg, #fff6cc, #d4af37, #8b6914);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 0 10px rgba(212,175,55,0.6), 0 0 20px rgba(212,175,55,0.3);animation:wave 2s ease-in-out infinite;animation-delay:.65s;">e</span>
+                <span style="position:relative;z-index:2;display:inline-block;background:linear-gradient(135deg, #fff6cc, #d4af37, #8b6914);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 0 10px rgba(212,175,55,0.6), 0 0 20px rgba(212,175,55,0.3);animation:wave 2s ease-in-out infinite;animation-delay:.7s;">s</span>
+            </h2>
+        </div>
+        <p style="color:var(--gray);font-size:0.9rem;margin-bottom:1.5rem;max-width:500px;margin-left:auto;margin-right:auto;">60-day coding challenge cycle. One new challenge every day in your favorite language. Build your streak!</p>
+        <a href="daily-challenges.html" class="neon-btn">Start Daily Challenge</a>
+    </section>
+
+    <!-- ===== STATS BAR ===== -->
     <div class="stats-bar">
         <div class="stat-item"><span class="stat-number">20+</span><div class="stat-label">Courses</div></div>
         <div class="stat-item"><span class="stat-number">50+</span><div class="stat-label">Videos</div></div>
         <div class="stat-item"><span class="stat-number">1500+</span><div class="stat-label">Hours</div></div>
         <div class="stat-item"><span class="stat-number">1M+</span><div class="stat-label">Students</div></div>
     </div>
-    
+
+    <!-- ===== ABOUT SECTION ===== -->
     <section id="about" class="animate-on-scroll">
         <div class="section-header">
             <div class="section-tag">About Me</div>
@@ -506,7 +605,9 @@
             </div>
         </div>
     </section>
-        <section id="code-practice" class="animate-on-scroll">
+
+    <!-- ===== CODE PRACTICE SECTION ===== -->
+    <section id="code-practice" class="animate-on-scroll">
         <div class="section-header">
             <div class="section-tag">Code Practice</div>
             <div style="display:flex;justify-content:center;">
@@ -530,53 +631,58 @@
             <a href="practice-daily.html" class="neon-btn" style="font-size:1.1rem;padding:16px 40px;">Practice Here</a>
         </div>
     </section>
-        <section id="courses" class="animate-on-scroll">
 
+    <!-- ===== COURSES SECTION ===== -->
+    <section id="courses" class="animate-on-scroll">
         <!-- DAILY QUIZ - ABOVE HEADING -->
         <div style="text-align:center;margin-bottom:1.5rem;padding:2rem 1rem;background:var(--card-bg);border-radius:24px;border:1px solid rgba(255,255,255,0.08);max-width:800px;margin-left:auto;margin-right:auto;">
             <p style="color:var(--gray);font-size:0.95rem;line-height:1.8;max-width:700px;margin:0 auto 1.5rem;">
                 Test your programming knowledge every single day with our exclusive Daily Quiz! Challenge yourself with questions from Python, C++, JavaScript, Java, SQL, and many more languages. Compete with your friends, track your daily progress, and build winning streaks. Regular practice sharpens your coding skills, boosts your confidence, and prepares you for real-world projects and interviews. Whether you are a complete beginner or an advanced learner, there is always something new
             </p>
             <a href="daily-quiz.html" class="neon-btn" style="font-size:1rem;padding:14px 36px;">
-                <span style="margin-right:0.5rem;">&#128218;</span> Daily Quiz
+                Daily Quiz
             </a>
         </div>
 
-<div class="section-header">
+        <div class="section-header">
             <div class="section-tag">My Courses</div>
+        </div>
+
         <div class="course-grid" id="coursesGrid">
-                    <div class="course-card" data-name="python">
-                <div class="course-image"><img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600&h=400&fit=crop" alt="Python course"><div class="course-overlay"><button class="luxury-btn" onclick="openModal('https://www.youtube.com/embed/videoseries?list=PLu0W_9lII9agwh1XjRt242xIpHhPT2llg')"><span>&#9654;</span></button></div></div>
+            <!-- Python Course -->
+            <div class="course-card" data-name="python">
+                <div class="course-image"><img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600&h=400&fit=crop" alt="Python course"><div class="course-overlay"><button class="luxury-btn" onclick="openModal('https://www.youtube.com/embed/videoseries?list=PLu0W_9lII9agwh1XjRt242xIpHhPT2llg')"><span>Play</span></button></div></div>
                 <div class="course-content"><div class="course-meta"><span class="course-tag" style="background:rgba(6,182,212,0.15);color:#06b6d4;">Python</span><span class="course-rating">Rating: 4.9</span></div><h3 class="course-title">Complete Python Mastery</h3><p class="course-desc">Learn Python from basics to advanced.</p><div class="course-footer"><div class="course-stats"><span>Duration: 20h</span><span>Videos: 50+</span></div><a href="https://youtube.com/playlist?list=PLu0W_9lII9agwh1XjRt242xIpHhPT2llg" target="_blank" rel="noopener noreferrer" class="neon-btn">Watch</a></div><a href="tutorials.html" class="tutorial-link">Read Tutorials &rarr;</a></div>
             </div>
+            <!-- C++ Course -->
             <div class="course-card" data-name="c++">
-                <div class="course-image"><img src="https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=600&h=400&fit=crop" alt="C++ course"><div class="course-overlay"><button class="luxury-btn" onclick="openModal('https://www.youtube.com/embed/videoseries?list=PLxCzCOWd7aiF6yRNI5OHQsnUJQfl7Geqj')"><span>&#9654;</span></button></div></div>
+                <div class="course-image"><img src="https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=600&h=400&fit=crop" alt="C++ course"><div class="course-overlay"><button class="luxury-btn" onclick="openModal('https://www.youtube.com/embed/videoseries?list=PLxCzCOWd7aiF6yRNI5OHQsnUJQfl7Geqj')"><span>Play</span></button></div></div>
                 <div class="course-content"><div class="course-meta"><span class="course-tag" style="background:rgba(59,130,246,0.15);color:#3b82f6;">C++</span><span class="course-rating">Rating: 4.8</span></div><h3 class="course-title">C++ Programming Guide</h3><p class="course-desc">Master C++ programming.</p><div class="course-footer"><div class="course-stats"><span>Duration: 18h</span><span>Videos: 40+</span></div><a href="https://youtube.com/playlist?list=PLxCzCOWd7aiF6yRNI5OHQsnUJQfl7Geqj" target="_blank" rel="noopener noreferrer" class="neon-btn">Watch</a></div><a href="tutorials.html" class="tutorial-link">Read Tutorials &rarr;</a></div>
             </div>
+            <!-- JavaScript Course -->
             <div class="course-card" data-name="javascript">
-                <div class="course-image"><img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=600&h=400&fit=crop" alt="JavaScript course"><div class="course-overlay"><button class="luxury-btn" onclick="openModal('https://www.youtube.com/embed/videoseries?list=PLu0W_9lII9ahR1blWXxgSlL4y9iQBnLpR')"><span>&#9654;</span></button></div></div>
+                <div class="course-image"><img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=600&h=400&fit=crop" alt="JavaScript course"><div class="course-overlay"><button class="luxury-btn" onclick="openModal('https://www.youtube.com/embed/videoseries?list=PLu0W_9lII9ahR1blWXxgSlL4y9iQBnLpR')"><span>Play</span></button></div></div>
                 <div class="course-content"><div class="course-meta"><span class="course-tag" style="background:rgba(234,179,8,0.15);color:#eab308;">JavaScript</span><span class="course-rating">Rating: 4.9</span></div><h3 class="course-title">JavaScript Complete</h3><p class="course-desc">Learn JS from scratch.</p><div class="course-footer"><div class="course-stats"><span>Duration: 25h</span><span>Videos: 60+</span></div><a href="https://youtube.com/playlist?list=PLu0W_9lII9ahR1blWXxgSlL4y9iQBnLpR" target="_blank" rel="noopener noreferrer" class="neon-btn">Watch</a></div><a href="tutorials.html" class="tutorial-link">Read Tutorials &rarr;</a></div>
             </div>
+            <!-- TypeScript Course -->
             <div class="course-card" data-name="typescript">
-                <div class="course-image"><img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=400&fit=crop" alt="TypeScript course"><div class="course-overlay"><button class="luxury-btn" onclick="openModal('https://www.youtube.com/embed/videoseries?list=PL8p2I9GklV44fWXJGEsBvR_ylJClgdVAN')"><span>&#9654;</span></button></div></div>
+                <div class="course-image"><img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=400&fit=crop" alt="TypeScript course"><div class="course-overlay"><button class="luxury-btn" onclick="openModal('https://www.youtube.com/embed/videoseries?list=PL8p2I9GklV44fWXJGEsBvR_ylJClgdVAN')"><span>Play</span></button></div></div>
                 <div class="course-content"><div class="course-meta"><span class="course-tag" style="background:rgba(99,102,241,0.15);color:#6366f1;">TypeScript</span><span class="course-rating">Rating: 4.7</span></div><h3 class="course-title">TypeScript Masterclass</h3><p class="course-desc">Learn TypeScript with React.</p><div class="course-footer"><div class="course-stats"><span>Duration: 15h</span><span>Videos: 35+</span></div><a href="https://youtube.com/playlist?list=PL8p2I9GklV44fWXJGEsBvR_ylJClgdVAN" target="_blank" rel="noopener noreferrer" class="neon-btn">Watch</a></div><a href="tutorials.html" class="tutorial-link">Read Tutorials &rarr;</a></div>
             </div>
+            <!-- SQL Course -->
             <div class="course-card" data-name="sql">
-                <div class="course-image"><img src="https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=600&h=400&fit=crop" alt="SQL course"><div class="course-overlay"><button class="luxury-btn" onclick="openModal('https://www.youtube.com/embed/yE6tIle64tU')"><span>&#9654;</span></button></div></div>
+                <div class="course-image"><img src="https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=600&h=400&fit=crop" alt="SQL course"><div class="course-overlay"><button class="luxury-btn" onclick="openModal('https://www.youtube.com/embed/yE6tIle64tU')"><span>Play</span></button></div></div>
                 <div class="course-content"><div class="course-meta"><span class="course-tag" style="background:rgba(16,185,129,0.15);color:#10b981;">SQL</span><span class="course-rating">Rating: 4.8</span></div><h3 class="course-title">SQL Database Mastery</h3><p class="course-desc">Learn SQL from scratch.</p><div class="course-footer"><div class="course-stats"><span>Duration: 12h</span><span>Videos: 25+</span></div><a href="https://youtu.be/yE6tIle64tU" target="_blank" rel="noopener noreferrer" class="neon-btn">Watch</a></div><a href="tutorials.html" class="tutorial-link">Read Tutorials &rarr;</a></div>
             </div>
+            <!-- HTML Course -->
             <div class="course-card" data-name="html">
-                <div class="course-image"><img src="https://images.unsplash.com/photo-1621839673705-6617adf9e890?w=600&h=400&fit=crop" alt="HTML course"><div class="course-overlay"><button class="luxury-btn" onclick="openModal('https://www.youtube.com/embed/zysUIv0-xak')"><span>&#9654;</span></button></div></div>
+                <div class="course-image"><img src="https://images.unsplash.com/photo-1621839673705-6617adf9e890?w=600&h=400&fit=crop" alt="HTML course"><div class="course-overlay"><button class="luxury-btn" onclick="openModal('https://www.youtube.com/embed/zysUIv0-xak')"><span>Play</span></button></div></div>
                 <div class="course-content"><div class="course-meta"><span class="course-tag" style="background:rgba(249,115,22,0.15);color:#f97316;">HTML</span><span class="course-rating">Rating: 4.9</span></div><h3 class="course-title">HTML Complete Guide</h3><p class="course-desc">Learn HTML from scratch.</p><div class="course-footer"><div class="course-stats"><span>Duration: 10h</span><span>Videos: 20+</span></div><a href="https://youtu.be/zysUIv0-xak" target="_blank" rel="noopener noreferrer" class="neon-btn">Watch</a></div><a href="tutorials.html" class="tutorial-link">Read Tutorials &rarr;</a></div>
             </div>
         </div>
     </section>
 
-    
-
-
-    
-    <!-- CODING NEWS SECTION -->
+    <!-- ===== CODING NEWS SECTION ===== -->
     <section id="news" class="animate-on-scroll">
         <div class="section-header">
             <div class="section-tag">Latest Updates</div>
@@ -602,8 +708,8 @@
             </a>
         </div>
     </section>
-    
 
+    <!-- ===== CONTACT SECTION ===== -->
     <section id="contact" class="animate-on-scroll">
         <div class="section-header">
             <div class="section-tag">Contact</div>
@@ -614,24 +720,16 @@
             <form id="contactForm" action="https://api.web3forms.com/submit" method="POST" style="display:grid;gap:1.25rem;">
                 <input type="hidden" name="access_key" value="191fa555-1c3a-44f0-b457-e79cabf0a578">
                 <input type="checkbox" name="botcheck" style="display:none;">
-
-                <input type="text" name="name" placeholder="Your Name" required
-                    style="width:100%;padding:1rem 1.25rem;background:rgba(30,41,59,0.6);border:1px solid rgba(255,255,255,0.08);border-radius:14px;color:var(--light);font-size:1rem;outline:none;font-family:inherit;">
-
-                <input type="email" name="email" placeholder="Your Email" required
-                    style="width:100%;padding:1rem 1.25rem;background:rgba(30,41,59,0.6);border:1px solid rgba(255,255,255,0.08);border-radius:14px;color:var(--light);font-size:1rem;outline:none;font-family:inherit;">
-
-                <textarea name="message" placeholder="Your Message" rows="5" required
-                    style="width:100%;padding:1rem 1.25rem;background:rgba(30,41,59,0.6);border:1px solid rgba(255,255,255,0.08);border-radius:14px;color:var(--light);font-size:1rem;outline:none;font-family:inherit;resize:vertical;"></textarea>
-
-                <button type="submit" class="neon-btn" style="width:100%;font-size:1.1rem;padding:16px 40px;margin-top:0.5rem;">
-                    Send Message
-                </button>
+                <input type="text" name="name" placeholder="Your Name" required style="width:100%;padding:1rem 1.25rem;background:rgba(30,41,59,0.6);border:1px solid rgba(255,255,255,0.08);border-radius:14px;color:var(--light);font-size:1rem;outline:none;font-family:inherit;">
+                <input type="email" name="email" placeholder="Your Email" required style="width:100%;padding:1rem 1.25rem;background:rgba(30,41,59,0.6);border:1px solid rgba(255,255,255,0.08);border-radius:14px;color:var(--light);font-size:1rem;outline:none;font-family:inherit;">
+                <textarea name="message" placeholder="Your Message" rows="5" required style="width:100%;padding:1rem 1.25rem;background:rgba(30,41,59,0.6);border:1px solid rgba(255,255,255,0.08);border-radius:14px;color:var(--light);font-size:1rem;outline:none;font-family:inherit;resize:vertical;"></textarea>
+                <button type="submit" class="neon-btn" style="width:100%;font-size:1.1rem;padding:16px 40px;margin-top:0.5rem;">Send Message</button>
             </form>
             <div id="formResult" style="text-align:center;margin-top:1rem;font-weight:600;display:none;"></div>
         </div>
     </section>
 
+    <!-- ===== FOOTER ===== -->
     <footer style="text-align:center;padding:3rem 5%;border-top:1px solid rgba(255,255,255,0.05);margin-top:3rem;">
         <div style="font-size:1.5rem;font-weight:800;background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:1rem;">AR.</div>
         <p style="color:var(--gray);font-size:0.9rem;margin-bottom:1rem;">Akarshit Raj - Programming Educator</p>
@@ -644,6 +742,7 @@
         </div>
     </footer>
 
+    <!-- ===== VIDEO MODAL ===== -->
     <div class="modal" id="videoModal">
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal()">&times;</button>
@@ -651,330 +750,77 @@
         </div>
     </div>
 
+    <!-- ===== LOGIN MODAL ===== -->
+    <div class="modal" id="loginModal" style="z-index:4000;">
+        <div class="glass-card" style="max-width:420px;width:90%;padding:2.5rem;position:relative;margin:auto;">
+            <button class="modal-close" onclick="closeLoginModal()" style="position:absolute;top:1rem;right:1rem;font-size:2rem;background:none;border:none;color:white;cursor:pointer;">&times;</button>
+            <h3 style="font-size:1.8rem;font-weight:800;text-align:center;margin-bottom:0.5rem;background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Welcome Back</h3>
+            <p style="text-align:center;color:var(--gray);margin-bottom:1.5rem;font-size:0.9rem;">Sign in to access your account</p>
+            <form id="loginForm" style="display:grid;gap:1rem;">
+                <input type="email" id="loginEmail" placeholder="Email Address" required style="width:100%;padding:1rem 1.25rem;background:rgba(30,41,59,0.6);border:1px solid rgba(255,255,255,0.08);border-radius:14px;color:var(--light);font-size:1rem;outline:none;font-family:inherit;">
+                <input type="password" id="loginPassword" placeholder="Password" required style="width:100%;padding:1rem 1.25rem;background:rgba(30,41,59,0.6);border:1px solid rgba(255,255,255,0.08);border-radius:14px;color:var(--light);font-size:1rem;outline:none;font-family:inherit;">
+                <button type="submit" class="neon-btn" style="width:100%;font-size:1rem;padding:14px 30px;">Sign In</button>
+            </form>
+            <div style="text-align:center;margin-top:1.5rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.05);">
+                <p style="color:var(--gray);font-size:0.85rem;margin-bottom:0.75rem;">Or continue with</p>
+                <div style="display:flex;gap:0.75rem;justify-content:center;">
+                    <button class="social-btn" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);padding:0.6rem 1.2rem;font-size:0.85rem;">Google</button>
+                    <button class="social-btn" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);padding:0.6rem 1.2rem;font-size:0.85rem;">GitHub</button>
+                </div>
+            </div>
+            <p style="text-align:center;color:var(--gray);font-size:0.85rem;margin-top:1rem;">Don't have an account? <a href="#" style="color:var(--primary);text-decoration:none;font-weight:600;">Sign Up</a></p>
+        </div>
+    </div>
+
+    <!-- ===== NOTIFICATION ===== -->
     <div class="notification" id="notification">Notification</div>
 
+    <!-- ===== SCROLL TOP BUTTON ===== -->
     <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&uarr;</button>
 
+    <!-- ============================================================ -->
+    <!-- ===================== JAVASCRIPT ============================ -->
+    <!-- ============================================================ -->
+
     <script>
-            const PISTON_API = 'https://emkc.org/api/v2/piston/execute';
-        const pistonLangMap = {
-            python: { language: 'python', version: '3.10.0' },
-            cpp: { language: 'cpp', version: '10.2.0' },
-            javascript: { language: 'javascript', version: '18.15.0' },
-            java: { language: 'java', version: '15.0.2' },
-            csharp: { language: 'csharp', version: '6.12.0' },
-            html: { language: 'html', version: 'latest' },
-            php: { language: 'php', version: '8.2.0' },
-            kotlin: { language: 'kotlin', version: '1.8.20' },
-            swift: { language: 'swift', version: '5.3.3' },
-            go: { language: 'go', version: '1.18.0' },
-            rust: { language: 'rust', version: '1.68.2' },
-            sql: { language: 'sql', version: 'latest' }
-        };
-
-        const webResponses = {
-            website: "Creating a Website - Step by Step:<br><br><strong>Step 1: HTML Structure</strong><br>Create a file named index.html:<br><div class='ai-code-block'><pre>&lt;!DOCTYPE html&gt;\n&lt;html lang='en'&gt;\n&lt;head&gt;\n  &lt;meta charset='UTF-8'&gt;\n  &lt;meta name='viewport' content='width=device-width, initial-scale=1.0'&gt;\n  &lt;title&gt;My Website&lt;/title&gt;\n  &lt;style&gt;\n    body { font-family: 'Segoe UI', sans-serif; background: #0f172a; color: white; text-align: center; padding: 50px; }\n    h1 { color: #06b6d4; }\n    .btn { padding: 12px 24px; background: linear-gradient(135deg, #06b6d4, #0891b2); color: white; text-decoration: none; border-radius: 8px; }\n  &lt;/style&gt;\n&lt;/head&gt;\n&lt;body&gt;\n  &lt;h1&gt;Hello World!&lt;/h1&gt;\n  &lt;p&gt;Welcome to my website.&lt;/p&gt;\n  &lt;a href='#' class='btn'&gt;Get Started&lt;/a&gt;\n&lt;/body&gt;\n&lt;/html&gt;</pre></div><br><strong>Step 2:</strong> Save and open in browser.<br><strong>Step 3:</strong> Use <strong>GitHub Pages</strong> or <strong>Netlify</strong> for free hosting.",
-            github: "Publishing on GitHub Pages - Free Hosting:<br><br><strong>Step 1:</strong> Create a GitHub account.<br><strong>Step 2:</strong> Create a new repository named <code>yourusername.github.io</code>.<br><strong>Step 3:</strong> Upload your HTML/CSS/JS files.<br><strong>Step 4:</strong> Go to Settings &gt; Pages.<br><strong>Step 5:</strong> Select main branch and save.<br><br>Your site will be live at <code>https://yourusername.github.io</code> within 2 minutes.<br><br><strong>Pro Tip:</strong> Use a custom domain by adding a CNAME file.",
-            htmlcssjs: "What is HTML, CSS, and JavaScript?<br><br><strong>HTML (HyperText Markup Language)</strong> - The skeleton/structure of a webpage. Uses tags like &lt;div&gt;, &lt;p&gt;, &lt;h1&gt;.<br><br><strong>CSS (Cascading Style Sheets)</strong> - The skin/styling. Controls colors, fonts, layout, animations.<br><br><strong>JavaScript</strong> - The brain/interactivity. Handles clicks, API calls, dynamic content, logic.<br><br><strong>Analogy:</strong> HTML is the body, CSS is the clothes, JS is the brain.",
-            hosting: "Free Hosting Options for Websites:<br><br>1. <strong>GitHub Pages</strong> - Best for static sites, custom domains, unlimited bandwidth.<br>2. <strong>Netlify</strong> - Drag and drop deployment, form handling, serverless functions.<br>3. <strong>Vercel</strong> - Excellent for React/Next.js, automatic deployments.<br>4. <strong>Surge.sh</strong> - Simple CLI deployment for static sites.<br>5. <strong>Firebase Hosting</strong> - Fast CDN, SSL included, good for SPAs.<br><br>All of these are completely free for beginners and small projects.",
-            responsive: "How to Make Responsive Design:<br><br><strong>1. Use Viewport Meta Tag:</strong><br><code>&lt;meta name='viewport' content='width=device-width, initial-scale=1.0'&gt;</code><br><br><strong>2. CSS Media Queries:</strong><br><div class='ai-code-block'><pre>@media (max-width: 768px) {\n  .container { grid-template-columns: 1fr; }\n  h1 { font-size: 2rem; }\n}</pre></div><br><strong>3. Use Flexbox & Grid:</strong> They automatically adapt to screen size.<br><strong>4. Relative Units:</strong> Use %, rem, em instead of px.<br><strong>5. Test:</strong> Use Chrome DevTools (F12) to test different screen sizes.",
-            portfolio: "Complete Portfolio Website Code:<br><div class='ai-code-block'><pre>&lt;!DOCTYPE html&gt;\n&lt;html&gt;\n&lt;head&gt;\n  &lt;style&gt;\n    * { margin: 0; padding: 0; box-sizing: border-box; }\n    body { font-family: 'Segoe UI', sans-serif; background: #0f172a; color: white; }\n    nav { display: flex; justify-content: space-between; padding: 2rem 5%; }\n    .hero { text-align: center; padding: 100px 5%; }\n    .hero h1 { font-size: 3.5rem; background: linear-gradient(135deg, #06b6d4, #22d3ee); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }\n    .btn { padding: 1rem 2rem; background: linear-gradient(135deg, #06b6d4, #0891b2); color: white; text-decoration: none; border-radius: 12px; font-weight: 600; }\n    .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; padding: 3rem 5%; }\n    .skill-card { background: rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 16px; text-align: center; border: 1px solid rgba(255,255,255,0.1); }\n  &lt;/style&gt;\n&lt;/head&gt;\n&lt;body&gt;\n  &lt;nav&gt;&lt;div style='font-weight:800;font-size:1.5rem;'&gt;Portfolio&lt;/div&gt;&lt;div&gt;&lt;a href='#skills' style='color:white;text-decoration:none;'&gt;Skills&lt;/a&gt;&lt;/div&gt;&lt;/nav&gt;\n  &lt;div class='hero'&gt;\n    &lt;h1&gt;John Doe&lt;/h1&gt;\n    &lt;p style='color:#94a3b8;margin:1rem 0;'&gt;Full Stack Developer&lt;/p&gt;\n    &lt;a href='mailto:email@example.com' class='btn'&gt;Hire Me&lt;/a&gt;\n  &lt;/div&gt;\n  &lt;div class='skills' id='skills'&gt;\n    &lt;div class='skill-card'&gt;&lt;h3&gt;HTML/CSS&lt;/h3&gt;&lt;/div&gt;\n    &lt;div class='skill-card'&gt;&lt;h3&gt;JavaScript&lt;/h3&gt;&lt;/div&gt;\n    &lt;div class='skill-card'&gt;&lt;h3&gt;React&lt;/h3&gt;&lt;/div&gt;\n  &lt;/div&gt;\n&lt;/body&gt;\n&lt;/html&gt;</pre></div><br>Just save as index.html and open in browser!",
-            default: "I can help you with Web Development:<br><br><strong>Topics I cover:</strong><br>&bull; HTML5, CSS3, JavaScript (ES6+)<br>&bull; Responsive Design with Bootstrap & Tailwind<br>&bull; React.js & modern frameworks<br>&bull; GitHub Pages & free hosting<br>&bull; Domain setup & deployment<br>&bull; Portfolio & business websites<br>&bull; SEO optimization basics<br><br><strong>Ask me anything specific like:</strong><br>&bull; 'How to create a website?'<br>&bull; 'Portfolio website code'<br>&bull; 'Responsive design tutorial'<br>&bull; 'Free hosting options'"
-        };
-
-        const appResponses = {
-            android: "How to Create an Android App:<br><br><strong>Step 1: Install Android Studio</strong><br>Download from developer.android.com/studio<br><br><strong>Step 2: Create New Project</strong><br>Select 'Empty Activity' and choose Kotlin.<br><br><strong>Step 3: Basic Kotlin Code:</strong><br><div class='ai-code-block'><pre>// MainActivity.kt\npackage com.example.myapp\n\nimport android.os.Bundle\nimport androidx.appcompat.app.AppCompatActivity\n\nclass MainActivity : AppCompatActivity() {\n    override fun onCreate(savedInstanceState: Bundle?) {\n        super.onCreate(savedInstanceState)\n        setContentView(R.layout.activity_main)\n    }\n}</pre></div><br><strong>Step 4: Design Layout</strong> in res/layout/activity_main.xml using drag-and-drop.<br><strong>Step 5:</strong> Click Run to test on emulator or real device.",
-            playstore: "How to Publish on Play Store:<br><br><strong>Step 1:</strong> Create a Google Play Developer account ($25 one-time fee).<br><strong>Step 2:</strong> Build a signed APK/AAB in Android Studio (Build &gt; Generate Signed Bundle).<br><strong>Step 3:</strong> Go to Play Console &gt; Create App.<br><strong>Step 4:</strong> Fill store listing (title, description, screenshots, icon).<br><strong>Step 5:</strong> Upload your AAB file.<br><strong>Step 6:</strong> Set up pricing and distribution.<br><strong>Step 7:</strong> Submit for review (usually 1-3 days).<br><br><strong>Tip:</strong> Make sure your app follows Play Store policies.",
-            kotlinvsflutter: "Kotlin vs Flutter - Which is Better?<br><br><strong>Kotlin (Native Android):</strong><br>&bull; Official Android language<br>&bull; Best performance<br>&bull; Full access to Android APIs<br>&bull; Steeper learning curve<br>&bull; Only Android (need Swift for iOS)<br><br><strong>Flutter (Cross-Platform):</strong><br>&bull; One codebase for Android + iOS<br>&bull; Fast development with Hot Reload<br>&bull; Beautiful UI with widgets<br>&bull; Good performance (Dart compiles to native)<br>&bull; Growing community<br><br><strong>My Recommendation:</strong> Start with Kotlin for native Android basics, then learn Flutter for cross-platform projects.",
-            apk: "How to Build an APK File:<br><br><strong>In Android Studio:</strong><br>1. Go to <strong>Build</strong> &gt; <strong>Generate Signed Bundle / APK</strong><br>2. Select <strong>APK</strong><br>3. Create a new keystore (or use existing)<br>4. Fill keystore password and key alias<br>5. Click <strong>Next</strong> then <strong>Finish</strong><br><br>Your APK will be in <code>app/release/app-release.apk</code><br><br><strong>Install on Phone:</strong><br>Transfer APK to phone and tap to install (enable 'Unknown Sources' in settings).",
-            calculator: "Calculator App Code in Kotlin:<br><div class='ai-code-block'><pre>// MainActivity.kt\npackage com.example.calculator\n\nimport android.os.Bundle\nimport android.widget.Button\nimport android.widget.TextView\nimport androidx.appcompat.app.AppCompatActivity\n\nclass MainActivity : AppCompatActivity() {\n    private lateinit var resultText: TextView\n    private var currentInput = \"\"\n    \n    override fun onCreate(savedInstanceState: Bundle?) {\n        super.onCreate(savedInstanceState)\n        setContentView(R.layout.activity_main)\n        \n        resultText = findViewById(R.id.resultText)\n        \n        val buttons = listOf(R.id.btn0, R.id.btn1, R.id.btn2, R.id.btn3, R.id.btn4,\n                            R.id.btn5, R.id.btn6, R.id.btn7, R.id.btn8, R.id.btn9)\n        \n        buttons.forEachIndexed { index, id ->\n            findViewById&lt;Button&gt;(id).setOnClickListener {\n                currentInput += index.toString()\n                resultText.text = currentInput\n            }\n        }\n        \n        findViewById&lt;Button&gt;(R.id.btnPlus).setOnClickListener { currentInput += \"+\"; resultText.text = currentInput }\n        findViewById&lt;Button&gt;(R.id.btnEqual).setOnClickListener { calculate() }\n    }\n    \n    private fun calculate() {\n        val parts = currentInput.split(\"+\")\n        if(parts.size == 2) {\n            val result = parts[0].toInt() + parts[1].toInt()\n            resultText.text = result.toString()\n            currentInput = result.toString()\n        }\n    }\n}</pre></div><br>Create corresponding XML layout with buttons and a TextView for display.",
-            androidstudio: "What is Android Studio?<br><br><strong>Android Studio</strong> is the official Integrated Development Environment (IDE) for Android app development.<br><br><strong>Features:</strong><br>&bull; Visual Layout Editor (drag-and-drop UI design)<br>&bull; APK Analyzer (reduce app size)<br>&bull; Fast Emulator (test without real device)<br>&bull; Intelligent Code Editor (autocomplete, refactoring)<br>&bull; Firebase Integration<br>&bull; GitHub Integration<br><br><strong>System Requirements:</strong><br>&bull; Windows 10/11, macOS, or Linux<br>&bull; 8GB RAM minimum (16GB recommended)<br>&bull; 8GB disk space<br><br>Download: <code>developer.android.com/studio</code>",
-            default: "I can help you with App Development:<br><br><strong>Topics I cover:</strong><br>&bull; Android (Kotlin/Java) development<br>&bull; Flutter & Dart cross-platform<br>&bull; React Native<br>&bull; Play Store publishing<br>&bull; APK building & signing<br>&bull; UI/UX with Material Design<br>&bull; Firebase backend integration<br>&bull; App architecture (MVVM)<br><br><strong>Ask me anything specific like:</strong><br>&bull; 'How to create an Android app?'<br>&bull; 'Kotlin vs Flutter'<br>&bull; 'Play Store publishing steps'<br>&bull; 'Calculator app code'"
-        };
-
-        function getWebResponse(q) {
-            const lower = q.toLowerCase();
-            if (lower.includes('website') || lower.includes('create') || lower.includes('make') || lower.includes('build')) return webResponses.website;
-            if (lower.includes('github') || lower.includes('publish') || lower.includes('host') || lower.includes('deploy')) return webResponses.github;
-            if (lower.includes('html') || lower.includes('css') || lower.includes('js') || lower.includes('javascript') || lower.includes('what is')) return webResponses.htmlcssjs;
-            if (lower.includes('hosting') || lower.includes('free') || lower.includes('netlify') || lower.includes('vercel')) return webResponses.hosting;
-            if (lower.includes('responsive') || lower.includes('mobile') || lower.includes('media query')) return webResponses.responsive;
-            if (lower.includes('portfolio') || lower.includes('template')) return webResponses.portfolio;
-            return webResponses.default;
-        }
-
-        function getAppResponse(q) {
-            const lower = q.toLowerCase();
-            if (lower.includes('android') || lower.includes('app') || lower.includes('create') || lower.includes('make') || lower.includes('start')) return appResponses.android;
-            if (lower.includes('play store') || lower.includes('publish') || lower.includes('google play')) return appResponses.playstore;
-            if (lower.includes('kotlin') || lower.includes('flutter') || lower.includes('vs') || lower.includes('compare') || lower.includes('which')) return appResponses.kotlinvsflutter;
-            if (lower.includes('apk') || lower.includes('build') || lower.includes('generate')) return appResponses.apk;
-            if (lower.includes('calculator') || lower.includes('example') || lower.includes('code')) return appResponses.calculator;
-            if (lower.includes('android studio') || lower.includes('ide') || lower.includes('install')) return appResponses.androidstudio;
-            return appResponses.default;
-        }
-
+        // ===== SIDEBAR TOGGLE =====
         function toggleSidebar() {
             document.getElementById('sidebar').classList.toggle('active');
             document.getElementById('sidebarOverlay').classList.toggle('active');
         }
-        function goToSection(id) {
-            toggleSidebar();
-            const el = document.getElementById(id);
-            if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+
+        // ===== LOGIN MODAL =====
+        function openLoginModal() {
+            document.getElementById('loginModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
         }
-
-        function saveCodeFile() {
-            const code = document.getElementById('codeInput').value;
-            const lang = currentLang || 'python';
-            const extMap = { python: 'py', cpp: 'cpp', javascript: 'js', java: 'java', csharp: 'cs', html: 'html', sql: 'sql', php: 'php', kotlin: 'kt', swift: 'swift', go: 'go', rust: 'rs' };
-            const ext = extMap[lang] || 'txt';
-            const blob = new Blob([code], { type: 'text/plain' });
-            const a = document.createElement('a');
-            a.href = URL.createObjectURL(blob);
-            a.download = 'code.' + ext;
-            a.click();
-            URL.revokeObjectURL(a.href);
-            showNotification('File saved!');
+        function closeLoginModal() {
+            document.getElementById('loginModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
         }
-        function loadCodeFile(input) {
-            const file = input.files[0];
-            if(!file) return;
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                document.getElementById('codeInput').value = e.target.result;
-                showNotification('File loaded: ' + file.name);
-            };
-            reader.readAsText(file);
-            input.value = '';
-        }
-        function copyCode() {
-            const code = document.getElementById('codeInput');
-            code.select();
-            document.execCommand('copy');
-            showNotification('Code copied!');
-        }
-        function clearCode() {
-            document.getElementById('codeInput').value = '';
-            document.getElementById('codeOutput').innerHTML = '<span style="color:var(--gray);">Code cleared. Start fresh!</span>';
-            showNotification('Code cleared!');
-        }
-
-        let currentLang = 'python';
-        function runCodeReal() {
-            const o = document.getElementById('codeOutput');
-            const b = document.getElementById('runBtn');
-            const c = document.getElementById('codeInput').value;
-
-            b.disabled = true;
-            b.innerHTML = 'Running...';
-
-            if (currentLang === 'javascript') {
-                try {
-                    let logs = [];
-                    const mockConsole = {
-                        log: (...args) => logs.push(args.join(' ')),
-                        error: (...args) => logs.push('Error: ' + args.join(' ')),
-                        warn: (...args) => logs.push('Warning: ' + args.join(' '))
-                    };
-                    const func = new Function('console', c);
-                    func(mockConsole);
-                    o.innerHTML = '<pre style="margin:0;color:#d4d4d4;white-space:pre-wrap;">' + (logs.join('\\n') || 'Code executed successfully (no output)') + '</pre>';
-                } catch(e) {
-                    o.innerHTML = '<pre style="margin:0;color:var(--error);">Error: ' + e.message + '</pre>';
-                }
-                b.disabled = false;
-                b.innerHTML = 'Run Code';
-            } else if (currentLang === 'html') {
-                const iframe = document.createElement('iframe');
-                iframe.style.width = '100%';
-                iframe.style.height = '100%';
-                iframe.style.border = 'none';
-                iframe.srcdoc = c;
-                o.innerHTML = '';
-                o.appendChild(iframe);
-                b.disabled = false;
-                b.innerHTML = 'Run Code';
-            } else if (currentLang === 'sql') {
-                o.innerHTML = '<div style="color:#94a3b8;text-align:center;padding:2rem;">' +
-                    '<p style="margin-bottom:1rem;">SQL requires an online database environment.</p>' +
-                    '<a href="https://www.programiz.com/sql/online-compiler/" target="_blank" style="color:#06b6d4;text-decoration:none;font-weight:600;">Open in Programiz SQL Editor &rarr;</a>' +
-                    '</div>';
-                b.disabled = false;
-                b.innerHTML = 'Run Code';
-            } else {
-                const pistonConfig = pistonLangMap[currentLang];
-                if (!pistonConfig) {
-                    o.innerHTML = '<pre style="margin:0;color:var(--error);">Error: Language not supported</pre>';
-                    b.disabled = false;
-                    b.innerHTML = 'Run Code';
-                    return;
-                }
-
-                fetch(PISTON_API, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        language: pistonConfig.language,
-                        version: pistonConfig.version,
-                        files: [{ content: c }]
-                    })
-                })
-                .then(res => res.json())
-                .then(data => {
-                    if (data.run) {
-                        let output = '';
-                        if (data.run.stdout) output += data.run.stdout;
-                        if (data.run.stderr) output += '<span style="color:var(--error);">' + data.run.stderr + '</span>';
-                        if (!output) output = 'Code executed successfully (no output)';
-                        o.innerHTML = '<pre style="margin:0;color:#d4d4d4;white-space:pre-wrap;">' + output + '</pre>';
-                    } else if (data.message) {
-                        o.innerHTML = '<pre style="margin:0;color:var(--error);">Error: ' + data.message + '</pre>';
-                    } else {
-                        o.innerHTML = '<pre style="margin:0;color:var(--error);">Error: Unknown error occurred</pre>';
-                    }
-                    b.disabled = false;
-                    b.innerHTML = 'Run Code';
-                })
-                .catch(err => {
-                    o.innerHTML = '<pre style="margin:0;color:var(--error);">Error: ' + err.message + '</pre>';
-                    b.disabled = false;
-                    b.innerHTML = 'Run Code';
-                });
-            }
-        }
-
-        function toggleMenu(){document.getElementById('navLinks').classList.toggle('active')}
-        document.querySelectorAll('.nav-links a').forEach(link=>{link.addEventListener('click',()=>{document.getElementById('navLinks').classList.remove('active')})})
-        function toggleLanguages(){const d=document.getElementById('languagesDropdown'),b=document.getElementById('youtubeToggleBtn'),a=document.getElementById('toggleArrow');if(d.style.maxHeight==='2000px'){d.style.maxHeight='0';d.style.opacity='0';d.style.marginTop='0';a.style.transform='rotate(0deg)';b.querySelector('span:nth-child(2)').textContent='View All Languages'}else{d.style.maxHeight='2000px';d.style.opacity='1';d.style.marginTop='2rem';a.style.transform='rotate(180deg)';b.querySelector('span:nth-child(2)').textContent='Hide Languages'}}
-
-        const codeTemplates={
-            python:`# Write your Python code here...\nprint('Hello, World!')\nname = 'Akarshit'\nprint(f'Welcome, {name}!')`,
-            cpp:`// Write your C++ code here...\n#include <iostream>\nusing namespace std;\n\nint main() {\n    cout << "Hello, World!" << endl;\n    string name = "Akarshit";\n    cout << "Welcome, " << name << "!" << endl;\n    return 0;\n}`,
-            javascript:`// Write your JavaScript code here...\nconsole.log('Hello, World!');\nlet name = 'Akarshit';\nconsole.log('Welcome, ' + name + '!');`,
-            java:`// Write your Java code here...\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println("Hello, World!");\n        String name = "Akarshit";\n        System.out.println("Welcome, " + name + "!");\n    }\n}`,
-            csharp:`// Write your C# code here...\nusing System;\n\nclass Program {\n    static void Main() {\n        Console.WriteLine("Hello, World!");\n        string name = "Akarshit";\n        Console.WriteLine("Welcome, " + name + "!");\n    }\n}`,
-            html:`<!-- Write your HTML code here... -->\n<!DOCTYPE html>\n<html>\n<head>\n    <title>My Page</title>\n    <style>\n        body { font-family: Arial; background: #0f172a; color: white; text-align: center; padding: 50px; }\n        h1 { color: #06b6d4; }\n    </style>\n</head>\n<body>\n    <h1>Hello, World!</h1>\n    <p>Welcome to my website!</p>\n</body>\n</html>`,
-            sql:`-- Write your SQL code here...\nCREATE TABLE users (\n    id INT PRIMARY KEY,\n    name VARCHAR(50),\n    email VARCHAR(100)\n);\n\nINSERT INTO users VALUES (1, 'Akarshit', 'akarshit@example.com');\nSELECT * FROM users;`,
-            php:`<?php\n// Write your PHP code here...\necho "Hello, World!\\n";\n$name = "Akarshit";\necho "Welcome, " . $name . "!";\n?>`,
-            kotlin:`// Write your Kotlin code here...\nfun main() {\n    println("Hello, World!")\n    val name = "Akarshit"\n    println("Welcome, $name!")\n}`,
-            swift:`// Write your Swift code here...\nprint("Hello, World!")\nlet name = "Akarshit"\nprint("Welcome, \\name)!")`,
-            go:`// Write your Go code here...\npackage main\nimport "fmt"\n\nfunc main() {\n    fmt.Println("Hello, World!")\n    name := "Akarshit"\n    fmt.Printf("Welcome, %s!\\n", name)\n}`,
-            rust:`// Write your Rust code here...\nfn main() {\n    println!("Hello, World!");\n    let name = "Akarshit";\n    println!("Welcome, {}!", name);\n}`
-        }
-
-        function selectLang(btn,lang){currentLang=lang;document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.getElementById('codeInput').value=codeTemplates[lang]||codeTemplates['python']}
-
-        const observer=new IntersectionObserver((entries)=>{
-            entries.forEach(entry=>{
-                if(entry.isIntersecting){
-                    entry.target.classList.add('visible');
-                }
-            });
-        },{threshold:0.1});
-        document.querySelectorAll('.animate-on-scroll').forEach(el=>observer.observe(el));
-
-        function openModal(videoUrl){document.getElementById('videoFrame').src=videoUrl;document.getElementById('videoModal').classList.add('active');document.body.style.overflow='hidden'}
-        function closeModal(){document.getElementById('videoModal').classList.remove('active');document.getElementById('videoFrame').src='';document.body.style.overflow='auto'}
-        document.getElementById('videoModal').addEventListener('click',function(e){if(e.target===this)closeModal()})
-
-        document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
-            anchor.addEventListener('click',function(e){
-                e.preventDefault();
-                const t=document.querySelector(this.getAttribute('href'));
-                if(t)t.scrollIntoView({behavior:'smooth',block:'start'});
-            });
+        document.getElementById('loginModal').addEventListener('click', function(e) {
+            if (e.target === this) closeLoginModal();
         });
 
-        document.getElementById('year').textContent=new Date().getFullYear();
-
-        window.addEventListener('scroll',()=>{
-            const s=window.pageYOffset;
-            document.querySelectorAll('.orb').forEach((orb,i)=>{
-                const speed=0.3+(i*0.1);
-                orb.style.transform=`translateY(${s*speed}px)`;
-            });
-            const nav=document.querySelector('nav');
-            if(window.scrollY>50){nav.style.background='rgba(2,6,23,0.95)'}
-            else{nav.style.background='rgba(2,6,23,0.9)'}
-
-            const scrollTop = document.getElementById('scrollTop');
-            if(window.scrollY > 500) scrollTop.classList.add('visible');
-            else scrollTop.classList.remove('visible');
+        // ===== VIDEO MODAL =====
+        function openModal(videoUrl) {
+            document.getElementById('videoFrame').src = videoUrl;
+            document.getElementById('videoModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeModal() {
+            document.getElementById('videoModal').classList.remove('active');
+            document.getElementById('videoFrame').src = '';
+            document.body.style.overflow = 'auto';
+        }
+        document.getElementById('videoModal').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
         });
 
-        function showNotification(msg){
-            const n = document.getElementById('notification');
-            n.textContent = msg;
-            n.classList.add('show');
-            setTimeout(()=>n.classList.remove('show'), 3000);
-        }
-
-        let currentAIType='';
-
-        function openAIChat(type){
-            currentAIType=type;
-            document.getElementById(type+'AIChat').classList.add('active');
-            document.body.style.overflow='hidden';
-        }
-
-        function closeAIChat(){
-            document.querySelectorAll('.ai-chat-modal').forEach(m=>m.classList.remove('active'));
-            document.body.style.overflow='auto';
-            currentAIType='';
-        }
-
-        function sendAIQuestion(type, question){
-            const inputId = type + 'ChatInput';
-            const bodyId = type + 'ChatBody';
-            const sendBtnId = type + 'SendBtn';
-            const inputEl = document.getElementById(inputId);
-            const bodyEl = document.getElementById(bodyId);
-            const sendBtn = document.getElementById(sendBtnId);
-
-            let q = question || inputEl.value.trim();
-            if(!q) return;
-
-            if(!question) inputEl.value = '';
-
-            const userMsg = document.createElement('div');
-            userMsg.className = 'ai-message user';
-            userMsg.innerHTML = `<div class="ai-message-avatar">You</div><div class="ai-message-bubble">${q}</div>`;
-            bodyEl.appendChild(userMsg);
-            bodyEl.scrollTop = bodyEl.scrollHeight;
-
-            sendBtn.disabled = true;
-            sendBtn.textContent = '...';
-
-            const typingId = 'typing-' + Date.now();
-            const typingMsg = document.createElement('div');
-            typingMsg.className = 'ai-message ai';
-            typingMsg.id = typingId;
-            typingMsg.innerHTML = `<div class="ai-message-avatar" style="background:rgba(6,182,212,0.15);border-color:var(--primary)">AI</div><div class="ai-message-bubble"><div class="ai-typing"><div class="ai-typing-dot"></div><div class="ai-typing-dot"></div><div class="ai-typing-dot"></div></div></div>`;
-            bodyEl.appendChild(typingMsg);
-            bodyEl.scrollTop = bodyEl.scrollHeight;
-
-            setTimeout(() => {
-                document.getElementById(typingId).remove();
-
-                let responseText = type === 'web' ? getWebResponse(q) : getAppResponse(q);
-
-                const aiMsg = document.createElement('div');
-                aiMsg.className = 'ai-message ai';
-                aiMsg.innerHTML = `<div class="ai-message-avatar" style="background:rgba(6,182,212,0.15);border-color:var(--primary)">AI</div><div class="ai-message-bubble">${responseText}</div>`;
-                bodyEl.appendChild(aiMsg);
-                bodyEl.scrollTop = bodyEl.scrollHeight;
-
-                sendBtn.disabled = false;
-                sendBtn.textContent = 'Send';
-            }, 800);
-        }
-
-        // Search functionality
+        // ===== SEARCH FUNCTION =====
         function handleSearch() {
             const query = document.getElementById('navSearch').value.toLowerCase();
-            if(!query) return;
-
+            if (!query) return;
             const keywords = {
                 'python': 'code-practice',
                 'cpp': 'code-practice',
@@ -984,29 +830,29 @@
                 'compiler': 'code-practice',
                 'code': 'code-practice',
                 'practice': 'code-practice',
-                'youtube': 'youtube-channel',
-                'video': 'youtube-channel',
+                'youtube': 'courses',
+                'video': 'courses',
                 'course': 'courses',
                 'tutorial': 'tutorials.html',
                 'about': 'about',
-                'contact': 'personal-info',
-                'email': 'personal-info',
-                'instagram': 'personal-info'
+                'contact': 'contact',
+                'email': 'contact',
+                'news': 'news'
             };
-
-            for(let key in keywords) {
-                if(query.includes(key)) {
-                    if(keywords[key].includes('.html')) {
+            for (let key in keywords) {
+                if (query.includes(key)) {
+                    if (keywords[key].includes('.html')) {
                         window.location.href = keywords[key];
                     } else {
-                        document.getElementById(keywords[key]).scrollIntoView({behavior:'smooth',block:'start'});
+                        const el = document.getElementById(keywords[key]);
+                        if (el) el.scrollIntoView({behavior: 'smooth', block: 'start'});
                     }
                     return;
                 }
             }
         }
-    
-        // Contact Form Handling
+
+        // ===== CONTACT FORM =====
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const form = this;
@@ -1024,7 +870,7 @@
             })
             .then(async (response) => {
                 let json = await response.json();
-                if(response.status == 200) {
+                if (response.status == 200) {
                     result.innerHTML = '<span style="color:var(--success);">✓ Message sent successfully!</span>';
                     result.style.display = 'block';
                     form.reset();
@@ -1043,6 +889,54 @@
                 setTimeout(() => { result.style.display = 'none'; }, 5000);
             });
         });
-</script>
+
+        // ===== SCROLL OBSERVER =====
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+
+        // ===== SCROLL TO TOP =====
+        window.addEventListener('scroll', function() {
+            const scrollTop = document.getElementById('scrollTop');
+            if (window.scrollY > 500) scrollTop.classList.add('visible');
+            else scrollTop.classList.remove('visible');
+        });
+
+        // ===== CURRENT YEAR =====
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // ===== SMOOTH SCROLL FOR ANCHOR LINKS =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const t = document.querySelector(this.getAttribute('href'));
+                if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        // ===== NAVBAR SCROLL EFFECT =====
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.background = 'rgba(2,6,23,0.95)';
+            } else {
+                nav.style.background = 'rgba(2,6,23,0.9)';
+            }
+        });
+
+        // ===== NOTIFICATION =====
+        function showNotification(msg) {
+            const n = document.getElementById('notification');
+            n.textContent = msg;
+            n.classList.add('show');
+            setTimeout(() => n.classList.remove('show'), 3000);
+        }
+    </script>
+
 </body>
 </html>
