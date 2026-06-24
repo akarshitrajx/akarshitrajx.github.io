@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTMLX — Complete HTML Guide (All W3Schools Topics)</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f4f9;
+            color: #1e293b;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .container {
+            max-width: 1300px;
+            margin: auto;
+            background: #ffffff;
+            padding: 40px 50px;
+            border-radius: 30px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.07);
+        }
+        h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #2563eb, #7c3aed, #db2777);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+        .subhead {
+            font-size: 1.2rem;
+            color: #475569;
+            border-left: 6px solid #2563eb;
+            padding-left: 20px;
+            margin: 10px 0 30px 0;
+        }
+        .badge {
+            background: #dbeafe;
+            color: #1e40af;
+            padding: 5px 18px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            display: inline-block;
+        }
+        h2 {
+            font-size: 2rem;
+            margin-top: 45px;
+            margin-bottom: 15px;
+            color: #0f172a;
+            border-bottom: 4px solid #e2e8f0;
+            padding-bottom: 12px;
+        }
+        h3 {
+            font-size: 1.4rem;
+            margin-top: 30px;
+            margin-bottom: 10px;
+            color: #1e293b;
+        }
+        h4 {
+            font-size: 1.1rem;
+            margin-top: 20px;
+            color: #334155;
+        }
+        p {
+            margin-bottom: 12px;
+            color: #334155;
+        }
+        ul,
+        ol {
+            margin-left: 28px;
+            margin-bottom: 16px;
+        }
+        li {
+            margin-bottom: 6px;
+        }
+        code {
+            background: #f1f5f9;
+            padding: 3px 12px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            color: #b91c1c;
+            font-weight: 500;
+        }
+        pre {
+            background: #0f172a;
+            color: #e2e8f0;
+            padding: 20px 26px;
+            border-radius: 16px;
+            overflow-x: auto;
+            margin: 18px 0;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            position: relative;
+        }
+        pre code {
+            background: transparent;
+            color: #facc15;
+            padding: 0;
+            font-weight: 400;
+        }
+        .note {
+            background: #fef9c3;
+            border-left: 6px solid #eab308;
+            padding: 16px 22px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .tip {
+            background: #dcfce7;
+            border-left: 6px solid #22c55e;
+            padding: 16px 22px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .warning {
+            background: #fee2e2;
+            border-left: 6px solid #ef4444;
+            padding: 16px 22px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .table-wrap {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+        }
+        th {
+            background: #1e293b;
+            color: white;
+            padding: 14px 18px;
+            text-align: left;
+        }
+        td {
+            padding: 12px 18px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        tr:hover {
+            background: #f8fafc;
+        }
+        .btn {
+            display: inline-block;
+            background: #2563eb;
+            color: white;
+            padding: 12px 35px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: 0.3s;
+        }
+        .btn:hover {
+            background: #1d4ed8;
+            transform: scale(1.03);
+        }
+        .footer {
+            margin-top: 50px;
+            padding-top: 25px;
+            border-top: 2px solid #e2e8f0;
+            text-align: center;
+            color: #64748b;
+            font-size: 0.95rem;
+        }
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        @media (max-width: 700px) {
+            .container {
+                padding: 20px 16px;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+            pre {
+                font-size: 0.8rem;
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- ===== HEADER ===== -->
+        <span class="badge">📘 W3Schools Complete Reference</span>
+        <h1>🌐 HTMLX — Ultimate HTML Guide</h1>
+        <div class="subhead">
+            All topics · All examples · All references — Nothing missed!
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- ===================== HTML BASICS =========================== -->
+        <!-- ============================================================ -->
+
+        <section>
+            <h2>📌 1. HTML BASICS</h2>
+
+            <!-- HTML HOME -->
+            <h3>🏠 HTML HOME</h3>
+            <p>Welcome to the complete HTML guide. HTML is the standard markup language for Web pages.</p>
+
+            <!-- HTML Introduction -->
+            <h3>📖 HTML Introduction</h3>
+            <p><strong>HTML</strong> = HyperText Markup Language. It describes the structure of a web page.</p>
+            <ul>
+                <li>HTML elements tell the browser how to display content</li>
+                <li>HTML consists of a series of elements</li>
+                <li>HTML elements are represented by tags</li>
+            </ul>
+
+            <!-- HTML Editors -->
+            <h3>✏️ HTML Editors</h3>
+            <p>You can write HTML using:</p>
+            <ul>
+                <li><strong>VS Code</strong> (recommended)</li>
+                <li>Notepad++</li>
+                <li>Sublime Text</li>
+                <li>Atom</li>
+                <li>Online editors: CodePen, JSFiddle</li>
+            </ul>
+
+            <!-- HTML Basic -->
+            <h3>📄 HTML Basic</h3>
+            <p>A simple HTML document:</p>
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;My First Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Hello World!&lt;/h1&gt;
+    &lt;p&gt;This is my first paragraph.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+            <!-- HTML Elements -->
+            <h3>🧩 HTML Elements</h3>
+            <p>An HTML element is everything from the start tag to the end tag:</p>
+            <pre><code>&lt;tagname&gt;Content goes here...&lt;/tagname&gt;</code></pre>
+            <ul>
+                <li><code>&lt;h1&gt;Heading&lt;/h1&gt;</code> — heading element</li>
+                <li><code>&lt;p&gt;Paragraph&lt;/p&gt;</code> — paragraph element</li>
+                <li>Empty elements (no closing tag): <code>&lt;br&gt;</code>, <code>&lt;hr&gt;</code></li>
+            </ul>
+
+            <!-- HTML Attributes -->
+            <h3>🏷️ HTML Attributes</h3>
+            <p>Attributes provide additional information about elements:</p>
+            <pre><code>&lt;a href="https://example.com"&gt;Link&lt;/a&gt;
+&lt;img src="photo.jpg" alt="My Photo" width="300" height="200"&gt;
+&lt;p class="intro" id="para1"&gt;This is a paragraph.&lt;/p&gt;</code></pre>
+            <ul>
+                <li><code>href</code> — link destination</li>
+                <li><code>src</code> — image source</li>
+                <li><code>alt</code> — alternative text</li>
+                <li><code>width</code> / <code>height</code> — size</li>
+                <li><code>class</code> — CSS class</li>
+                <li><code>id</code> — unique identifier</li>
+                <li><code>style</code> — inline CSS</li>
+            </ul>
+
+            <!-- HTML Headings -->
+            <h3>🔤 HTML Headings</h3>
+            <pre><code>&lt;h1&gt;Heading 1 (largest)&lt;/h1&gt;
+&lt;h2&gt;Heading 2&lt;/h2&gt;
+&lt;h3&gt;Heading 3&lt;/h3&gt;
+&lt;h4&gt;Heading 4&lt;/h4&gt;
+&lt;h5&gt;Heading 5&lt;/h5&gt;
+&lt;h6&gt;Heading 6 (smallest)&lt;/h6&gt;</code></pre>
+
+            <!-- HTML Paragraphs -->
+            <h3>📝 HTML Paragraphs</h3>
+            <pre><code>&lt;p&gt;This is a paragraph.&lt;/p&gt;
+&lt;p&gt;This is another paragraph.&lt;/p&gt;</code></pre>
+            <p>Use <code>&lt;br&gt;</code> for line breaks:</p>
+            <pre><code>&lt;p&gt;Line 1&lt;br&gt;Line 2&lt;br&gt;Line 3&lt;/p&gt;</code></pre>
+
+            <!-- HTML Styles -->
+            <h3>🎨 HTML Styles</h3>
+            <p>Use the <code>style</code> attribute for inline CSS:</p>
+            <pre><code>&lt;h1 style="color:blue;"&gt;Blue Heading&lt;/h1&gt;
+&lt;p style="font-size:20px; background:yellow;"&gt;Styled paragraph.&lt;/p&gt;</code></pre>
+
+            <!-- HTML Formatting -->
+            <h3>💅 HTML Formatting</h3>
+            <pre><code>&lt;b&gt;Bold text&lt;/b&gt;
+&lt;strong&gt;Important text (bold)&lt;/strong&gt;
+&lt;i&gt;Italic text&lt;/i&gt;
+&lt;em&gt;Emphasized text (italic)&lt;/em&gt;
+&lt;u&gt;Underlined text&lt;/u&gt;
+&lt;mark&gt;Highlighted text&lt;/mark&gt;
+&lt;small&gt;Smaller text&lt;/small&gt;
+&lt;del&gt;Deleted text&lt;/del&gt;
+&lt;ins&gt;Inserted text (underline)&lt;/ins&gt;
+&lt;sub&gt;Subscript&lt;/sub&gt;
+&lt;sup&gt;Superscript&lt;/sup&gt;</code></pre>
+
+            <!-- HTML Quotations -->
+            <h3>💬 HTML Quotations</h3>
+            <pre><code>&lt;blockquote&gt;Long quotation with indentation.&lt;/blockquote&gt;
+&lt;q&gt;Short inline quotation.&lt;/q&gt;
+&lt;abbr title="World Health Organization"&gt;WHO&lt;/abbr&gt;
+&lt;address&gt;123 Main St, City, Country&lt;/address&gt;
+&lt;cite&gt;The Art of War&lt;/cite&gt;
+&lt;bdo dir="rtl"&gt;Right-to-left text&lt;/bdo&gt;</code></pre>
+
+            <!-- HTML Comments -->
+            <h3>💬 HTML Comments</h3>
+            <pre><code>&lt;!-- This is a comment --&gt;
+&lt;p&gt;This text is visible.&lt;/p&gt;
+&lt;!-- Comments are not displayed in browser --&gt;</code></pre>
+
+            <!-- HTML Colors -->
+            <h3>🎨 HTML Colors</h3>
+            <p>Colors can be defined by:</p>
+            <ul>
+                <li><strong>Color names:</strong> <code>red</code>, <code>blue</code>, <code>green</code>, <code>tomato</code></li>
+                <li><strong>HEX:</strong> <code>#FF0000</code>, <code>#00FF00</code>, <code>#0000FF</code></li>
+                <li><strong>RGB:</strong> <code>rgb(255,0,0)</code>, <code>rgb(0,255,0)</code></li>
+                <li><strong>RGBA:</strong> <code>rgba(255,0,0,0.5)</code></li>
+                <li><strong>HSL:</strong> <code>hsl(0,100%,50%)</code></li>
+            </ul>
+
+            <!-- HTML CSS -->
+            <h3>📦 HTML CSS</h3>
+            <p>Three ways to add CSS:</p>
+            <ul>
+                <li><strong>Inline:</strong> <code>&lt;h1 style="color:red;"&gt;</code></li>
+                <li><strong>Internal:</strong> <code>&lt;style&gt;</code> inside <code>&lt;head&gt;</code></li>
+                <li><strong>External:</strong> <code>&lt;link rel="stylesheet" href="style.css"&gt;</code></li>
+            </ul>
+            <pre><code>&lt;!-- External CSS --&gt;
+&lt;link rel="stylesheet" href="styles.css"&gt;
+
+&lt;!-- Internal CSS --&gt;
+&lt;style&gt;
+    body { background: #f0f0f0; }
+    h1 { color: navy; }
+&lt;/style&gt;</code></pre>
+
+            <!-- HTML Links -->
+            <h3>🔗 HTML Links</h3>
+            <pre><code>&lt;a href="https://google.com"&gt;Go to Google&lt;/a&gt;
+&lt;a href="https://example.com" target="_blank"&gt;Open in new tab&lt;/a&gt;
+&lt;a href="#section2"&gt;Jump to Section 2&lt;/a&gt;
+&lt;a href="mailto:email@example.com"&gt;Send Email&lt;/a&gt;
+&lt;a href="tel:+1234567890"&gt;Call Us&lt;/a&gt;</code></pre>
+
+            <!-- HTML Images -->
+            <h3>🖼️ HTML Images</h3>
+            <pre><code>&lt;img src="photo.jpg" alt="Description" width="400" height="300"&gt;
+&lt;img src="https://example.com/image.png" alt="Online image"&gt;</code></pre>
+            <ul>
+                <li>Use <code>alt</code> for accessibility and broken images</li>
+                <li>Always specify width & height to prevent layout shift</li>
+            </ul>
+
+            <!-- HTML Favicon -->
+            <h3>⭐ HTML Favicon</h3>
+            <pre><code>&lt;link rel="icon" type="image/x-icon" href="favicon.ico"&gt;</code></pre>
+            <p>Supported formats: .ico, .png, .jpg, .svg</p>
+
+            <!-- HTML Page Title -->
+            <h3>📛 HTML Page Title</h3>
+            <pre><code>&lt;title&gt;My Awesome Website&lt;/title&gt;</code></pre>
+            <p>This appears in the browser tab.</p>
+
+            <!-- HTML Tables -->
+            <h3>📊 HTML Tables</h3>
+            <pre><code>&lt;table&gt;
+    &lt;tr&gt;
+        &lt;th&gt;Name&lt;/th&gt;
+        &lt;th&gt;Age&lt;/th&gt;
+        &lt;th&gt;City&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Akarshit&lt;/td&gt;
+        &lt;td&gt;22&lt;/td&gt;
+        &lt;td&gt;Sitapur&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Raj&lt;/td&gt;
+        &lt;td&gt;23&lt;/td&gt;
+        &lt;td&gt;Lucknow&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+            <p>Table attributes: <code>border</code>, <code>cellpadding</code>, <code>cellspacing</code>, <code>colspan</code>, <code>rowspan</code></p>
+
+            <!-- HTML Lists -->
+            <h3>📋 HTML Lists</h3>
+            <h4>Unordered List (bullet points):</h4>
+            <pre><code>&lt;ul&gt;
+    &lt;li&gt;Item 1&lt;/li&gt;
+    &lt;li&gt;Item 2&lt;/li&gt;
+    &lt;li&gt;Item 3&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+            <h4>Ordered List (numbers):</h4>
+            <pre><code>&lt;ol&gt;
+    &lt;li&gt;First&lt;/li&gt;
+    &lt;li&gt;Second&lt;/li&gt;
+    &lt;li&gt;Third&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+            <h4>Description List:</h4>
+            <pre><code>&lt;dl&gt;
+    &lt;dt&gt;HTML&lt;/dt&gt;
+    &lt;dd&gt;HyperText Markup Language&lt;/dd&gt;
+    &lt;dt&gt;CSS&lt;/dt&gt;
+    &lt;dd&gt;Cascading Style Sheets&lt;/dd&gt;
+&lt;/dl&gt;</code></pre>
+
+            <!-- HTML Block & Inline -->
+            <h3>📦 Block vs Inline</h3>
+            <p><strong>Block-level:</strong> Takes full width, starts new line</p>
+            <p><code>&lt;div&gt;, &lt;h1&gt;, &lt;p&gt;, &lt;ul&gt;, &lt;table&gt;, &lt;form&gt;</code></p>
+            <p><strong>Inline:</strong> Takes only needed width, stays in line</p>
+            <p><code>&lt;span&gt;, &lt;a&gt;, &lt;img&gt;, &lt;strong&gt;, &lt;em&gt;, &lt;input&gt;</code></p>
+
+            <!-- HTML Div -->
+            <h3>📐 HTML Div</h3>
+            <pre><code>&lt;div style="background:lightblue; padding:20px;"&gt;
+    &lt;h2&gt;Section Heading&lt;/h2&gt;
+    &lt;p&gt;This content is inside a div.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+
+            <!-- HTML Classes -->
+            <h3>📌 HTML Classes</h3>
+            <pre><code>&lt;style&gt;
+    .city { background: #f0f0f0; padding: 10px; }
+    .main { color: navy; font-weight: bold; }
+&lt;/style&gt;
+
+&lt;div class="city main"&gt;This div has two classes.&lt;/div&gt;</code></pre>
+
+            <!-- HTML Id -->
+            <h3>🆔 HTML Id</h3>
+            <pre><code>&lt;h1 id="header"&gt;This has a unique ID&lt;/h1&gt;
+&lt;div id="section1"&gt;Unique section&lt;/div&gt;</code></pre>
+            <div class="warning">
+                <strong>⚠️ Important:</strong> Each ID must be unique on the page.
+            </div>
+
+            <!-- HTML Iframes -->
+            <h3>🖼️ HTML Iframes</h3>
+            <pre><code>&lt;iframe src="https://akarshitrajx.github.io" width="100%" height="400"&gt;&lt;/iframe&gt;
+&lt;iframe src="https://w3schools.com" style="border:2px solid blue;"&gt;&lt;/iframe&gt;</code></pre>
+
+            <!-- HTML JavaScript -->
+            <h3>⚡ HTML JavaScript</h3>
+            <pre><code>&lt;script&gt;
+    document.getElementById("demo").innerHTML = "Hello JavaScript!";
+&lt;/script&gt;
+
+&lt;button onclick="alert('Hi!')"&gt;Click Me&lt;/button&gt;</code></pre>
+            <p>Use <code>&lt;script&gt;</code> tag to add JavaScript. Can be placed in <code>&lt;head&gt;</code> or <code>&lt;body&gt;</code>.</p>
+
+            <!-- HTML File Paths -->
+            <h3>📂 HTML File Paths</h3>
+            <ul>
+                <li><strong>Absolute path:</strong> <code>https://example.com/images/photo.jpg</code></li>
+                <li><strong>Relative path:</strong> <code>images/photo.jpg</code></li>
+                <li><strong>Same folder:</strong> <code>photo.jpg</code></li>
+                <li><strong>Parent folder:</strong> <code>../photo.jpg</code></li>
+            </ul>
+
+            <!-- HTML Head -->
+            <h3>🧠 HTML Head</h3>
+            <pre><code>&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;meta name="description" content="Free HTML guide"&gt;
+    &lt;title&gt;Page Title&lt;/title&gt;
+    &lt;link rel="stylesheet" href="style.css"&gt;
+    &lt;script src="script.js"&gt;&lt;/script&gt;
+    &lt;style&gt; /* internal CSS */ &lt;/style&gt;
+&lt;/head&gt;</code></pre>
+
+            <!-- HTML Layout -->
+            <h3>🏗️ HTML Layout</h3>
+            <pre><code>&lt;header&gt;Header content&lt;/header&gt;
+&lt;nav&gt;Navigation links&lt;/nav&gt;
+&lt;main&gt;
+    &lt;article&gt;Main article&lt;/article&gt;
+    &lt;aside&gt;Sidebar&lt;/aside&gt;
+&lt;/main&gt;
+&lt;footer&gt;Footer content&lt;/footer&gt;</code></pre>
+
+            <!-- HTML Responsive -->
+            <h3>📱 HTML Responsive</h3>
+            <pre><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code></pre>
+            <p>Add this meta tag to make your website mobile-friendly.</p>
+
+            <!-- HTML Computercode -->
+            <h3>💻 HTML Computercode</h3>
+            <pre><code>&lt;code&gt;var x = 10;&lt;/code&gt;
+&lt;kbd&gt;Ctrl + C&lt;/kbd&gt;
+&lt;samp&gt;Error 404: Not Found&lt;/samp&gt;
+&lt;var&gt;y&lt;/var&gt; = variable
+&lt;pre&gt;Preserves   whitespace
+and line breaks&lt;/pre&gt;</code></pre>
+
+            <!-- HTML Semantics -->
+            <h3>🧠 HTML Semantics</h3>
+            <p>Semantic elements clearly describe their meaning to browser and developer:</p>
+            <ul>
+                <li><code>&lt;header&gt;</code> — Introduction / top</li>
+                <li><code>&lt;nav&gt;</code> — Navigation links</li>
+                <li><code>&lt;main&gt;</code> — Main content</li>
+                <li><code>&lt;article&gt;</code> — Independent content</li>
+                <li><code>&lt;section&gt;</code> — Thematic grouping</li>
+                <li><code>&lt;aside&gt;</code> — Sidebar</li>
+                <li><code>&lt;footer&gt;</code> — Bottom / credits</li>
+                <li><code>&lt;figure&gt;</code> — Image with caption</li>
+                <li><code>&lt;figcaption&gt;</code> — Caption for figure</li>
+                <li><code>&lt;time&gt;</code> — Date/time</li>
+                <li><code>&lt;mark&gt;</code> — Highlighted text</li>
+            </ul>
+
+            <!-- HTML Style Guide -->
+            <h3>📏 HTML Style Guide</h3>
+            <ul>
+                <li>✅ Use lowercase tag names</li>
+                <li>✅ Always close tags</li>
+                <li>✅ Use double quotes for attributes</li>
+                <li>✅ Indent your code for readability</li>
+                <li>✅ Use <code>alt</code> for images</li>
+                <li>✅ Add <code>lang</code> attribute to <code>&lt;html&gt;</code></li>
+                <li>✅ Add <code>viewport</code> meta tag</li>
+            </ul>
+
+            <!-- HTML Entities -->
+            <h3>🔣 HTML Entities</h3>
+            <div class="table-wrap">
+                <table>
+                    <tr><th>Result</th><th>Entity</th></tr>
+                    <tr><td>&lt;</td><td><code>&amp;lt;</code></td></tr>
+                    <tr><td>&gt;</td><td><code>&amp;gt;</code></td></tr>
+                    <tr><td>&amp;</td><td><code>&amp;amp;</code></td></tr>
+                    <tr><td>&quot;</td><td><code>&amp;quot;</code></td></tr>
+                    <tr><td>&apos;</td><td><code>&amp;apos;</code></td></tr>
+                    <tr><td>&nbsp;</td><td><code>&amp;nbsp;</code></td></tr>
+                    <tr><td>&copy;</td><td><code>&amp;copy;</code></td></tr>
+                    <tr><td>&reg;</td><td><code>&amp;reg;</code></td></tr>
+                    <tr><td>&trade;</td><td><code>&amp;trade;</code></td></tr>
+                </table>
+            </div>
+
+            <!-- HTML Symbols -->
+            <h3>🔣 HTML Symbols</h3>
+            <div class="table-wrap">
+                <table>
+                    <tr><th>Symbol</th><th>Entity</th></tr>
+                    <tr><td>€</td><td><code>&amp;euro;</code></td></tr>
+                    <tr><td>£</td><td><code>&amp;pound;</code></td></tr>
+                    <tr><td>¥</td><td><code>&amp;yen;</code></td></tr>
+                    <tr><td>©</td><td><code>&amp;copy;</code></td></tr>
+                    <tr><td>®</td><td><code>&amp;reg;</code></td></tr>
+                    <tr><td>♥</td><td><code>&amp;hearts;</code></td></tr>
+                    <tr><td>♦</td><td><code>&amp;diams;</code></td></tr>
+                    <tr><td>♠</td><td><code>&amp;spades;</code></td></tr>
+                </table>
+            </div>
+
+            <!-- HTML Emojis -->
+            <h3>😊 HTML Emojis</h3>
+            <p>Use Unicode characters or emoji codes:</p>
+            <pre><code>&lt;p&gt;😀 😁 😂 🤣 😊 😍 ❤️ 🔥 🚀&lt;/p&gt;
+&lt;p&gt;&amp;#128512; &amp;#128513; &amp;#128514;&lt;/p&gt;</code></pre>
+
+            <!-- HTML Charsets -->
+            <h3>🔤 HTML Charsets</h3>
+            <pre><code>&lt;meta charset="UTF-8"&gt;</code></pre>
+            <ul>
+                <li><strong>UTF-8:</strong> Universal character set (recommended)</li>
+                <li><strong>ASCII:</strong> Basic English letters</li>
+                <li><strong>ISO-8859-1:</strong> Western European</li>
+            </ul>
+
+            <!-- HTML URL Encode -->
+            <h3>🔗 HTML URL Encode</h3>
+            <p>URL encoding replaces unsafe characters:</p>
+            <div class="table-wrap">
+                <table>
+                    <tr><th>Character</th><th>Encoded</th></tr>
+                    <tr><td>space</td><td><code>%20</code></td></tr>
+                    <tr><td>!</td><td><code>%21</code></td></tr>
+                    <tr><td>"</td><td><code>%22</code></td></tr>
+                    <tr><td>#</td><td><code>%23</code></td></tr>
+                    <tr><td>$</td><td><code>%24</code></td></tr>
+                    <tr><td>%</td><td><code>%25</code></td></tr>
+                    <tr><td>&</td><td><code>%26</code></td></tr>
+                    <tr><td>+</td><td><code>%2B</code></td></tr>
+                    <tr><td>/</td><td><code>%2F</code></td></tr>
+                    <tr><td>=</td><td><code>%3D</code></td></tr>
+                    <tr><td>?</td><td><code>%3F</code></td></tr>
+                </table>
+            </div>
+
+            <!-- HTML vs XHTML -->
+            <h3>⚖️ HTML vs XHTML</h3>
+            <ul>
+                <li><strong>HTML:</strong> More flexible, case-insensitive, forgiving</li>
+                <li><strong>XHTML:</strong> Stricter, XML-based, all tags must close, lowercase</li>
+                <li>XHTML requires <code>&lt;br /&gt;</code> instead of <code>&lt;br&gt;</code></li>
+                <li>Modern websites use HTML5 (not XHTML)</li>
+            </ul>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- ===================== HTML FORMS ============================ -->
+        <!-- ============================================================ -->
+
+        <section>
+            <h2>📝 2. HTML FORMS</h2>
+
+            <!-- HTML Forms -->
+            <h3>📋 HTML Forms</h3>
+            <pre><code>&lt;form action="/submit" method="POST"&gt;
+    &lt;label for="name"&gt;Name:&lt;/label&gt;
+    &lt;input type="text" id="name" name="name"&gt;
+    &lt;input type="submit" value="Submit"&gt;
+&lt;/form&gt;</code></pre>
+
+            <!-- HTML Form Attributes -->
+            <h3>⚙️ HTML Form Attributes</h3>
+            <ul>
+                <li><code>action</code> — where to send the data</li>
+                <li><code>method</code> — <code>GET</code> or <code>POST</code></li>
+                <li><code>target</code> — <code>_blank</code>, <code>_self</code>, etc.</li>
+                <li><code>enctype</code> — for file uploads</li>
+                <li><code>autocomplete</code> — on/off</li>
+                <li><code>novalidate</code> — disable validation</li>
+            </ul>
+
+            <!-- HTML Form Elements -->
+            <h3>🧩 HTML Form Elements</h3>
+            <pre><code>&lt;input type="text"&gt;
+&lt;input type="password"&gt;
+&lt;input type="email"&gt;
+&lt;input type="number"&gt;
+&lt;input type="date"&gt;
+&lt;input type="checkbox"&gt;
+&lt;input type="radio"&gt;
+&lt;input type="file"&gt;
+&lt;input type="submit"&gt;
+&lt;input type="reset"&gt;
+&lt;input type="button"&gt;
+&lt;input type="hidden"&gt;
+&lt;input type="color"&gt;
+&lt;input type="range"&gt;
+&lt;input type="search"&gt;
+&lt;input type="tel"&gt;
+&lt;input type="url"&gt;
+&lt;input type="time"&gt;
+&lt;input type="datetime-local"&gt;
+&lt;input type="month"&gt;
+&lt;input type="week"&gt;
+&lt;textarea rows="4" cols="50"&gt;&lt;/textarea&gt;
+&lt;select&gt;
+    &lt;option&gt;Option 1&lt;/option&gt;
+    &lt;option&gt;Option 2&lt;/option&gt;
+&lt;/select&gt;
+&lt;button&gt;Click&lt;/button&gt;</code></pre>
+
+            <!-- HTML Input Types -->
+            <h3>🔢 HTML Input Types</h3>
+            <ul>
+                <li><code>text</code> — single line text</li>
+                <li><code>password</code> — masked text</li>
+                <li><code>email</code> — email format validation</li>
+                <li><code>number</code> — numeric input with arrows</li>
+                <li><code>date</code> — date picker</li>
+                <li><code>checkbox</code> — multiple selection</li>
+                <li><code>radio</code> — single selection (same name)</li>
+                <li><code>file</code> — file upload</li>
+                <li><code>submit</code> — submit button</li>
+                <li><code>reset</code> — reset form</li>
+                <li><code>button</code> — clickable button</li>
+                <li><code>color</code> — color picker</li>
+                <li><code>range</code> — slider</li>
+                <li><code>search</code> — search field with clear</li>
+                <li><code>tel</code> — telephone number</li>
+                <li><code>url</code> — URL format validation</li>
+                <li><code>time</code> — time picker</li>
+                <li><code>datetime-local</code> — date + time</li>
+            </ul>
+
+            <!-- HTML Input Attributes -->
+            <h3>🏷️ HTML Input Attributes</h3>
+            <ul>
+                <li><code>value</code> — default value</li>
+                <li><code>placeholder</code> — hint text</li>
+                <li><code>required</code> — must be filled</li>
+                <li><code>readonly</code> — cannot be changed</li>
+                <li><code>disabled</code> — cannot be used</li>
+                <li><code>size</code> — width in characters</li>
+                <li><code>maxlength</code> — max characters</li>
+                <li><code>min</code> / <code>max</code> — for numbers</li>
+                <li><code>step</code> — increment step</li>
+                <li><code>pattern</code> — regex validation</li>
+                <li><code>autofocus</code> — auto focus on load</li>
+                <li><code>autocomplete</code> — on/off</li>
+                <li><code>multiple</code> — multiple file/email</li>
+                <li><code>checked</code> — pre-checked (checkbox/radio)</li>
+                <li><code>selected</code> — pre-selected (option)</li>
+            </ul>
+
+            <!-- Input Form Attributes -->
+            <h3>⚙️ Input Form Attributes</h3>
+            <ul>
+                <li><code>formaction</code> — override action URL</li>
+                <li><code>formenctype</code> — override encoding</li>
+                <li><code>formmethod</code> — override method</li>
+                <li><code>formtarget</code> — override target</li>
+                <li><code>formnovalidate</code> — bypass validation</li>
+            </ul>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- ===================== HTML GRAPHICS ========================= -->
+        <!-- ============================================================ -->
+
+        <section>
+            <h2>🎨 3. HTML GRAPHICS</h2>
+
+            <!-- HTML Canvas -->
+            <h3>🖌️ HTML Canvas</h3>
+            <pre><code>&lt;canvas id="myCanvas" width="400" height="200"&gt;&lt;/canvas&gt;
+
+&lt;script&gt;
+    const canvas = document.getElementById("myCanvas");
+    const ctx = canvas.getContext("2d");
+    ctx.fillStyle = "red";
+    ctx.fillRect(20, 20, 150, 100);
+    ctx.fillStyle = "blue";
+    ctx.fillRect(200, 20, 150, 100);
+&lt;/script&gt;</code></pre>
+            <ul>
+                <li>Used for drawing with JavaScript</li>
+                <li>Supports: rectangles, circles, text, gradients, images</li>
+            </ul>
+
+            <!-- HTML SVG -->
+            <h3>📐 HTML SVG</h3>
+            <pre><code>&lt;svg width="400" height="200"&gt;
+    &lt;rect x="20" y="20" width="150" height="100" fill="red" /&gt;
+    &lt;circle cx="300" cy="80" r="50" fill="blue" /&gt;
+    &lt;text x="20" y="170" font-size="20" fill="green"&gt;SVG Text&lt;/text&gt;
+&lt;/svg&gt;</code></pre>
+            <ul>
+                <li>Vector graphics (scalable)</li>
+                <li>XML-based, works like HTML elements</li>
+                <li>Supports: shapes, text, paths, gradients</li>
+            </ul>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- ===================== HTML MEDIA ============================ -->
+        <!-- ============================================================ -->
+
+        <section>
+            <h2>🎵 4. HTML MEDIA</h2>
+
+            <!-- HTML Media -->
+            <h3>📺 HTML Media</h3>
+            <p>HTML supports audio, video, and embedded media content.</p>
+
+            <!-- HTML Video -->
+            <h3>🎬 HTML Video</h3>
+            <pre><code>&lt;video width="400" controls&gt;
+    &lt;source src="movie.mp4" type="video/mp4"&gt;
+    &lt;source src="movie.ogg" type="video/ogg"&gt;
+    Your browser does not support video.
+&lt;/video&gt;</code></pre>
+            <ul>
+                <li><code>controls</code> — show play/pause buttons</li>
+                <li><code>autoplay</code> — start automatically</li>
+                <li><code>loop</code> — repeat video</li>
+                <li><code>muted</code> — muted by default</li>
+                <li><code>poster</code> — thumbnail image</li>
+            </ul>
+
+            <!-- HTML Audio -->
+            <h3>🎵 HTML Audio</h3>
+            <pre><code>&lt;audio controls&gt;
+    &lt;source src="song.mp3" type="audio/mpeg"&gt;
+    &lt;source src="song.ogg" type="audio/ogg"&gt;
+    Your browser does not support audio.
+&lt;/audio&gt;</code></pre>
+
+            <!-- HTML Plug-ins -->
+            <h3>🔌 HTML Plug-ins</h3>
+            <pre><code>&lt;object data="file.pdf" type="application/pdf" width="500" height="400"&gt;&lt;/object&gt;
+&lt;embed src="file.pdf" width="500" height="400"&gt;</code></pre>
+
+            <!-- HTML YouTube -->
+            <h3>▶️ HTML YouTube</h3>
+            <pre><code>&lt;iframe width="560" height="315"
+    src="https://www.youtube.com/embed/VIDEO_ID"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen&gt;
+&lt;/iframe&gt;</code></pre>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- ===================== HTML APIs ============================= -->
+        <!-- ============================================================ -->
+
+        <section>
+            <h2>⚡ 5. HTML APIs</h2>
+
+            <!-- HTML Web APIs -->
+            <h3>🌐 HTML Web APIs</h3>
+            <p>JavaScript APIs that work with HTML:</p>
+            <ul>
+                <li><strong>Geolocation</strong> — user location</li>
+                <li><strong>Drag/Drop</strong> — drag elements</li>
+                <li><strong>Web Storage</strong> — localStorage, sessionStorage</li>
+                <li><strong>Web Workers</strong> — background scripts</li>
+                <li><strong>SSE</strong> — Server-Sent Events</li>
+            </ul>
+
+            <!-- HTML Geolocation -->
+            <h3>📍 HTML Geolocation</h3>
+            <pre><code>&lt;button onclick="getLocation()"&gt;Get Location&lt;/button&gt;
+&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        }
+    }
+    function showPosition(position) {
+        document.getElementById("demo").innerHTML =
+            "Latitude: " + position.coords.latitude +
+            " Longitude: " + position.coords.longitude;
+    }
+&lt;/script&gt;</code></pre>
+
+            <!-- HTML Drag/Drop -->
+            <h3>🔄 HTML Drag/Drop</h3>
+            <pre><code>&lt;div id="dropzone" ondragover="allowDrop(event)" ondrop="drop(event)"&gt;
+    Drop here
+&lt;/div&gt;
+&lt;img id="dragme" src="photo.jpg" draggable="true" ondragstart="drag(event)"&gt;
+
+&lt;script&gt;
+    function allowDrop(e) { e.preventDefault(); }
+    function drag(e) { e.dataTransfer.setData("text", e.target.id); }
+    function drop(e) {
+        e.preventDefault();
+        const data = e.dataTransfer.getData("text");
+        e.target.appendChild(document.getElementById(data));
+    }
+&lt;/script&gt;</code></pre>
+
+            <!-- HTML Web Storage -->
+            <h3>💾 HTML Web Storage</h3>
+            <pre><code>// localStorage — persists even after browser closes
+localStorage.setItem("name", "Akarshit");
+localStorage.getItem("name");
+localStorage.removeItem("name");
+
+// sessionStorage — persists only for the session
+sessionStorage.setItem("theme", "dark");
+sessionStorage.getItem("theme");</code></pre>
+
+            <!-- HTML Web Workers -->
+            <h3>👷 HTML Web Workers</h3>
+            <pre><code>&lt;script&gt;
+    const worker = new Worker("worker.js");
+    worker.postMessage("Hello Worker!");
+    worker.onmessage = function(event) {
+        console.log("Received: " + event.data);
+    };
+&lt;/script&gt;</code></pre>
+
+            <!-- HTML SSE -->
+            <h3>📡 HTML SSE (Server-Sent Events)</h3>
+            <pre><code>&lt;script&gt;
+    const source = new EventSource("server.php");
+    source.onmessage = function(event) {
+        document.getElementById("result").innerHTML = event.data;
+    };
+&lt;/script&gt;</code></pre>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- ===================== REFERENCES ============================ -->
+        <!-- ============================================================ -->
+
+        <section>
+            <h2>📚 6. HTML REFERENCES</h2>
+
+            <!-- HTML Tag List -->
+            <h3>📋 HTML Tag List (A-Z)</h3>
+            <div class="table-wrap">
+                <table>
+                    <tr><th>Tag</th><th>Description</th></tr>
+                    <tr><td><code>&lt;!-- --&gt;</code></td><td>Comment</td></tr>
+                    <tr><td><code>&lt;!DOCTYPE&gt;</code></td><td>Document type</td></tr>
+                    <tr><td><code>&lt;a&gt;</code></td><td>Hyperlink</td></tr>
+                    <tr><td><code>&lt;abbr&gt;</code></td><td>Abbreviation</td></tr>
+                    <tr><td><code>&lt;address&gt;</code></td><td>Contact info</td></tr>
+                    <tr><td><code>&lt;article&gt;</code></td><td>Article</td></tr>
+                    <tr><td><code>&lt;aside&gt;</code></td><td>Sidebar</td></tr>
+                    <tr><td><code>&lt;audio&gt;</code></td><td>Audio content</td></tr>
+                    <tr><td><code>&lt;b&gt;</code></td><td>Bold text</td></tr>
+                    <tr><td><code>&lt;blockquote&gt;</code></td><td>Long quotation</td></tr>
+                    <tr><td><code>&lt;body&gt;</code></td><td>Document body</td></tr>
+                    <tr><td><code>&lt;br&gt;</code></td><td>Line break</td></tr>
+                    <tr><td><code>&lt;button&gt;</code></td><td>Clickable button</td></tr>
+                    <tr><td><code>&lt;canvas&gt;</code></td><td>Drawing area</td></tr>
+                    <tr><td><code>&lt;caption&gt;</code></td><td>Table caption</td></tr>
+                    <tr><td><code>&lt;cite&gt;</code></td><td>Citation</td></tr>
+                    <tr><td><code>&lt;code&gt;</code></td><td>Code snippet</td></tr>
+                    <tr><td><code>&lt;col&gt;</code></td><td>Table column</td></tr>
+                    <tr><td><code>&lt;colgroup&gt;</code></td><td>Column group</td></tr>
+                    <tr><td><code>&lt;data&gt;</code></td><td>Machine-readable data</td></tr>
+                    <tr><td><code>&lt;datalist&gt;</code></td><td>Dropdown list for input</td></tr>
+                    <tr><td><code>&lt;dd&gt;</code></td><td>Description in dl</td></tr>
+                    <tr><td><code>&lt;del&gt;</code></td><td>Deleted text</td></tr>
+                    <tr><td><code>&lt;details&gt;</code></td><td>Expandable details</td></tr>
+                    <tr><td><code>&lt;dfn&gt;</code></td><td>Definition</td></tr>
+                    <tr><td><code>&lt;dialog&gt;</code></td><td>Dialog box</td></tr>
+                    <tr><td><code>&lt;div&gt;</code></td><td>Block container</td></tr>
+                    <tr><td><code>&lt;dl&gt;</code></td><td>Description list</td></tr>
+                    <tr><td><code>&lt;dt&gt;</code></td><td>Term in dl</td></tr>
+                    <tr><td><code>&lt;em&gt;</code></td><td>Emphasized text</td></tr>
+                    <tr><td><code>&lt;embed&gt;</code></td><td>Embedded content</td></tr>
+                    <tr><td><code>&lt;fieldset&gt;</code></td><td>Group form elements</td></tr>
+                    <tr><td><code>&lt;figcaption&gt;</code></td><td>Figure caption</td></tr>
+                    <tr><td><code>&lt;figure&gt;</code></td><td>Image with caption</td></tr>
+                    <tr><td><code>&lt;footer&gt;</code></td><td>Page footer</td></tr>
+                    <tr><td><code>&lt;form&gt;</code></td><td>Form</td></tr>
+                    <tr><td><code>&lt;h1&gt;-&lt;h6&gt;</code></td><td>Headings</td></tr>
+                    <tr><td><code>&lt;head&gt;</code></td><td>Document head</td></tr>
+                    <tr><td><code>&lt;header&gt;</code></td><td>Page header</td></tr>
+                    <tr><td><code>&lt;hr&gt;</code></td><td>Horizontal rule</td></tr>
+                    <tr><td><code>&lt;html&gt;</code></td><td>HTML root</td></tr>
+                    <tr><td><code>&lt;i&gt;</code></td><td>Italic text</td></tr>
+                    <tr><td><code>&lt;iframe&gt;</code></td><td>Inline frame</td></tr>
+                    <tr><td><code>&lt;img&gt;</code></td><td>Image</td></tr>
+                    <tr><td><code>&lt;input&gt;</code></td><td>Input field</td></tr>
+                    <tr><td><code>&lt;ins&gt;</code></td><td>Inserted text</td></tr>
+                    <tr><td><code>&lt;kbd&gt;</code></td><td>Keyboard input</td></tr>
+                    <tr><td><code>&lt;label&gt;</code></td><td>Label for input</td></tr>
+                    <tr><td><code>&lt;legend&gt;</code></td><td>Fieldset legend</td></tr>
+                    <tr><td><code>&lt;li&gt;</code></td><td>List item</td></tr>
+                    <tr><td><code>&lt;link&gt;</code></td><td>External resource</td></tr>
+                    <tr><td><code>&lt;main&gt;</code></td><td>Main content</td></tr>
+                    <tr><td><code>&lt;map&gt;</code></td><td>Image map</td></tr>
+                    <tr><td><code>&lt;mark&gt;</code></td><td>Highlighted text</td></tr>
+                    <tr><td><code>&lt;meta&gt;</code></td><td>Metadata</td></tr>
+                    <tr><td><code>&lt;meter&gt;</code></td><td>Gauge / meter</td></tr>
+                    <tr><td><code>&lt;nav&gt;</code></td><td>Navigation</td></tr>
+                    <tr><td><code>&lt;noscript&gt;</code></td><td>No script fallback</td></tr>
+                    <tr><td><code>&lt;object&gt;</code></td><td>Embedded object</td></tr>
+                    <tr><td><code>&lt;ol&gt;</code></td><td>Ordered list</td></tr>
+                    <tr><td><code>&lt;optgroup&gt;</code></td><td>Option group</td></tr>
+                    <tr><td><code>&lt;option&gt;</code></td><td>Option in select</td></tr>
+                    <tr><td><code>&lt;output&gt;</code></td><td>Result output</td></tr>
+                    <tr><td><code>&lt;p&gt;</code></td><td>Paragraph</td></tr>
+                    <tr><td><code>&lt;param&gt;</code></td><td>Object parameter</td></tr>
+                    <tr><td><code>&lt;picture&gt;</code></td><td>Responsive images</td></tr>
+                    <tr><td><code>&lt;pre&gt;</code></td><td>Preformatted text</td></tr>
+                    <tr><td><code>&lt;progress&gt;</code></td><td>Progress bar</td></tr>
+                    <tr><td><code>&lt;q&gt;</code></td><td>Short quotation</td></tr>
+                    <tr><td><code>&lt;s&gt;</code></td><td>Strikethrough</td></tr>
+                    <tr><td><code>&lt;samp&gt;</code></td><td>Sample output</td></tr>
+                    <tr><td><code>&lt;script&gt;</code></td><td>JavaScript</td></tr>
+                    <tr><td><code>&lt;section&gt;</code></td><td>Section</td></tr>
+                    <tr><td><code>&lt;select&gt;</code></td><td>Dropdown</td></tr>
+                    <tr><td><code>&lt;small&gt;</code></td><td>Small text</td></tr>
+                    <tr><td><code>&lt;source&gt;</code></td><td>Media source</td></tr>
+                    <tr><td><code>&lt;span&gt;</code></td><td>Inline container</td></tr>
+                    <tr><td><code>&lt;strong&gt;</code></td><td>Important text</td></tr>
+                    <tr><td><code>&lt;style&gt;</code></td><td>CSS styles</td></tr>
+                    <tr><td><code>&lt;sub&gt;</code></td><td>Subscript</td></tr>
+                    <tr><td><code>&lt;summary&gt;</code></td><td>Details summary</td></tr>
+                    <tr><td><code>&lt;sup&gt;</code></td><td>Superscript</td></tr>
+                    <tr><td><code>&lt;svg&gt;</code></td><td>SVG graphics</td></tr>
+                    <tr><td><code>&lt;table&gt;</code></td><td>Table</td></tr>
+                    <tr><td><code>&lt;tbody&gt;</code></td><td>Table body</td></tr>
+                    <tr><td><code>&lt;td&gt;</code></td><td>Table data</td></tr>
+                    <tr><td><code>&lt;template&gt;</code></td><td>Hidden template</td></tr>
+                    <tr><td><code>&lt;textarea&gt;</code></td><td>Multi-line text</td></tr>
+                    <tr><td><code>&lt;tfoot&gt;</code></td><td>Table footer</td></tr>
+                    <tr><td><code>&lt;th&gt;</code></td><td>Table header</td></tr>
+                    <tr><td><code>&lt;thead&gt;</code></td><td>Table head</td></tr>
+                    <tr><td><code>&lt;time&gt;</code></td><td>Date/time</td></tr>
+                    <tr><td><code>&lt;title&gt;</code></td><td>Page title</td></tr>
+                    <tr><td><code>&lt;tr&gt;</code></td><td>Table row</td></tr>
+                    <tr><td><code>&lt;u&gt;</code></td><td>Underlined text</td></tr>
+                    <tr><td><code>&lt;ul&gt;</code></td><td>Unordered list</td></tr>
+                    <tr><td><code>&lt;var&gt;</code></td><td>Variable</td></tr>
+                    <tr><td><code>&lt;video&gt;</code></td><td>Video</td></tr>
+                    <tr><td><code>&lt;wbr&gt;</code></td><td>Word break opportunity</td></tr>
+                </table>
+            </div>
+
+            <!-- HTML Attributes Reference -->
+            <h3>🏷️ HTML Attributes Reference</h3>
+            <div class="table-wrap">
+                <table>
+                    <tr><th>Attribute</th><th>Used On</th><th>Description</th></tr>
+                    <tr><td><code>accept</code></td><td>input</td><td>Allowed file types</td></tr>
+                    <tr><td><code>action</code></td><td>form</td><td>Where to send data</td></tr>
+                    <tr><td><code>alt</code></td><td>img, area</td><td>Alternative text</td></tr>
+                    <tr><td><code>autocomplete</code></td><td>form, input</td><td>Auto-fill on/off</td></tr>
+                    <tr><td><code>autofocus</code></td><td>input, button</td><td>Auto focus on load</td></tr>
+                    <tr><td><code>checked</code></td><td>input (checkbox/radio)</td><td>Pre-checked</td></tr>
+                    <tr><td><code>class</code></td><td>All elements</td><td>CSS class(es)</td></tr>
+                    <tr><td><code>contenteditable</code></td><td>All elements</td><td>Editable content</td></tr>
+                    <tr><td><code>dir</code></td><td>All elements</td><td>Text direction</td></tr>
+                    <tr><td><code>disabled</code></td><td>input, button</td><td>Disabled element</td></tr>
+                    <tr><td><code>href</code></td><td>a, link</td><td>Link destination</td></tr>
+                    <tr><td><code>id</code></td><td>All elements</td><td>Unique identifier</td></tr>
+                    <tr><td><code>lang</code></td><td>html, all elements</td><td>Language</td></tr>
+                    <tr><td><code>max</code></td><td>input, progress</td><td>Maximum value</td></tr>
+                    <tr><td><code>maxlength</code></td><td>input, textarea</td><td>Max characters</td></tr>
+                    <tr><td><code>method</code></td><td>form</td><td>GET or POST</td></tr>
+                    <tr><td><code>min</code></td><td>input</td><td>Minimum value</td></tr>
+                    <tr><td><code>multiple</code></td><td>input, select</td><td>Multiple selection</td></tr>
+                    <tr><td><code>name</code></td><td>form, input, etc.</td><td>Element name</td></tr>
+                    <tr><td><code>pattern</code></td><td>input</td><td>Regex validation</td></tr>
+                    <tr><td><code>placeholder</code></td><td>input, textarea</td><td>Hint text</td></tr>
+                    <tr><td><code>readonly</code></td><td>input, textarea</td><td>Read-only</td></tr>
+                    <tr><td><code>required</code></td><td>input, select</td><td>Required field</td></tr>
+                    <tr><td><code>src</code></td><td>img, script, iframe</td><td>Source URL</td></tr>
+                    <tr><td><code>style</code></td><td>All elements</td><td>Inline CSS</td></tr>
+                    <tr><td><code>target</code></td><td>a, form</td><td>_blank, _self, etc.</td></tr>
+                    <tr><td><code>title</code></td><td>All elements</td><td>Tooltip text</td></tr>
+                    <tr><td><code>type</code></td><td>input, script, style</td><td>Element type</td></tr>
+                    <tr><td><code>value</code></td><td>input, button, option</td><td>Element value</td></tr>
+                    <tr><td><code>width</code></td><td>img, canvas, table</td><td>Width in pixels</td></tr>
+                    <tr><td><code>height</code></td><td>img, canvas, table</td><td>Height in pixels</td></tr>
+                </table>
+            </div>
+
+            <!-- HTML Global Attributes -->
+            <h3>🌍 HTML Global Attributes</h3>
+            <ul>
+                <li><code>accesskey</code> — keyboard shortcut</li>
+                <li><code>class</code> — CSS class</li>
+                <li><code>contenteditable</code> — editable content</li>
+                <li><code>dir</code> — text direction</li>
+                <li><code>draggable</code> — draggable element</li>
+                <li><code>hidden</code> — hidden element</li>
+                <li><code>id</code> — unique identifier</li>
+                <li><code>lang</code> — language</li>
+                <li><code>spellcheck</code> — spell check</li>
+                <li><code>style</code> — inline CSS</li>
+                <li><code>tabindex</code> — tab order</li>
+                <li><code>title</code> — tooltip</li>
+                <li><code>translate</code> — translatable content</li>
+            </ul>
+
+            <!-- HTML Events -->
+            <h3>🔄 HTML Events</h3>
+            <div class="table-wrap">
+                <table>
+                    <tr><th>Event</th><th>Trigger</th></tr>
+                    <tr><td><code>onclick</code></td><td>Click</td></tr>
+                    <tr><td><code>ondblclick</code></td><td>Double click</td></tr>
+                    <tr><td><code>onmouseover</code></td><td>Mouse enters</td></tr>
+                    <tr><td><code>onmouseout</code></td><td>Mouse leaves</td></tr>
+                    <tr><td><code>onchange</code></td><td>Value changes</td></tr>
+                    <tr><td><code>onfocus</code></td><td>Element gets focus</td></tr>
+                    <tr><td><code>onblur</code></td><td>Element loses focus</td></tr>
+                    <tr><td><code>onsubmit</code></td><td>Form submitted</td></tr>
+                    <tr><td><code>onload</code></td><td>Page loaded</td></tr>
+                    <tr><td><code>onunload</code></td><td>Page unloaded</td></tr>
+                    <tr><td><code>onkeydown</code></td><td>Key pressed</td></tr>
+                    <tr><td><code>onkeyup</code></td><td>Key released</td></tr>
+                    <tr><td><code>onscroll</code></td><td>Scrolled</td></tr>
+                    <tr><td><code>onresize</code></td><td>Window resized</td></tr>
+                </table>
+            </div>
+
+            <!-- HTML Colors Reference -->
+            <h3>🎨 HTML Colors Reference</h3>
+            <div class="grid-2">
+                <div>
+                    <h4>Color Names</h4>
+                    <ul>
+                        <li><code>red</code>, <code>blue</code>, <code>green</code></li>
+                        <li><code>yellow</code>, <code>orange</code>, <code>purple</code></li>
+                        <li><code>black</code>, <code>white</code>, <code>gray</code></li>
+                        <li><code>tomato</code>, <code>gold</code>, <code>navy</code></li>
+                        <li><code>indigo</code>, <code>violet</code>, <code>pink</code></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>HEX Values</h4>
+                    <ul>
+                        <li><code>#000000</code> — Black</li>
+                        <li><code>#FFFFFF</code> — White</li>
+                        <li><code>#FF0000</code> — Red</li>
+                        <li><code>#00FF00</code> — Green</li>
+                        <li><code>#0000FF</code> — Blue</li>
+                        <li><code>#FFFF00</code> — Yellow</li>
+                        <li><code>#FF00FF</code> — Magenta</li>
+                        <li><code>#00FFFF</code> — Cyan</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- HTML Doctypes -->
+            <h3>📄 HTML Doctypes</h3>
+            <pre><code>&lt;!DOCTYPE html&gt;  &lt;!-- HTML5 --&gt;
+&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"&gt;  &lt;!-- HTML 4.01 Strict --&gt;
+&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"&gt;  &lt;!-- HTML 4.01 Transitional --&gt;
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;  &lt;!-- XHTML 1.0 --&gt;</code></pre>
+
+            <!-- HTML Lang Codes -->
+            <h3>🌐 HTML Lang Codes</h3>
+            <div class="grid-2">
+                <div>
+                    <ul>
+                        <li><code>en</code> — English</li>
+                        <li><code>hi</code> — Hindi</li>
+                        <li><code>es</code> — Spanish</li>
+                        <li><code>fr</code> — French</li>
+                        <li><code>de</code> — German</li>
+                    </ul>
+                </div>
+                <div>
+                    <ul>
+                        <li><code>ar</code> — Arabic</li>
+                        <li><code>bn</code> — Bengali</li>
+                        <li><code>ja</code> — Japanese</li>
+                        <li><code>zh</code> — Chinese</li>
+                        <li><code>ru</code> — Russian</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- HTTP Messages -->
+            <h3>📨 HTTP Messages</h3>
+            <h4>HTTP Status Codes:</h4>
+            <ul>
+                <li><strong>1xx:</strong> Information (100 Continue)</li>
+                <li><strong>2xx:</strong> Success (200 OK, 201 Created)</li>
+                <li><strong>3xx:</strong> Redirection (301 Moved, 304 Not Modified)</li>
+                <li><strong>4xx:</strong> Client Error (404 Not Found, 403 Forbidden)</li>
+                <li><strong>5xx:</strong> Server Error (500 Internal Server Error, 502 Bad Gateway)</li>
+            </ul>
+
+            <!-- HTTP Methods -->
+            <h3>🔧 HTTP Methods</h3>
+            <ul>
+                <li><strong>GET:</strong> Request data from server</li>
+                <li><strong>POST:</strong> Send data to server</li>
+                <li><strong>PUT:</strong> Update data</li>
+                <li><strong>DELETE:</strong> Delete data</li>
+                <li><strong>PATCH:</strong> Partial update</li>
+                <li><strong>HEAD:</strong> Headers only</li>
+                <li><strong>OPTIONS:</strong> Supported methods</li>
+            </ul>
+
+            <!-- Keyboard Shortcuts -->
+            <h3>⌨️ VS Code Keyboard Shortcuts</h3>
+            <ul>
+                <li><code>Ctrl + S</code> — Save</li>
+                <li><code>Ctrl + Z</code> — Undo</li>
+                <li><code>Ctrl + Shift + Z</code> — Redo</li>
+                <li><code>Ctrl + /</code> — Toggle comment</li>
+                <li><code>Ctrl + D</code> — Select next occurrence</li>
+                <li><code>Ctrl + F</code> — Find</li>
+                <li><code>Ctrl + H</code> — Replace</li>
+                <li><code>! + Tab</code> — HTML boilerplate</li>
+            </ul>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- ===================== TRY IT YOURSELF ======================= -->
+        <!-- ============================================================ -->
+
+        <section>
+            <h2>✏️ 7. Try It Yourself</h2>
+            <p>Practice HTML on these platforms:</p>
+            <ul>
+                <li>🔗 <a href="https://www.w3schools.com/html/" target="_blank">W3Schools HTML Tutorial</a></li>
+                <li>🔗 <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank">MDN HTML Docs</a></li>
+                <li>🔗 <a href="https://www.codecademy.com/learn/learn-html" target="_blank">Codecademy HTML</a></li>
+                <li>🔗 <a href="https://www.freecodecamp.org/learn/2022/responsive-web-design/" target="_blank">freeCodeCamp HTML</a></li>
+                <li>🔗 <a href="https://codepen.io/" target="_blank">CodePen (Online Editor)</a></li>
+                <li>🔗 <a href="https://jsfiddle.net/" target="_blank">JSFiddle</a></li>
+            </ul>
+
+            <div class="note">
+                <strong>💡 Tip:</strong> Create a new HTML file, copy-paste any example from above, and open it in your browser!
+            </div>
+
+            <div class="tip">
+                <strong>✅ Pro Tip:</strong> Use <code>! + Tab</code> in VS Code to generate a complete HTML boilerplate instantly.
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- ===================== FOOTER ================================ -->
+        <!-- ============================================================ -->
+
+        <div style="text-align:center; margin: 40px 0 10px;">
+            <a href="#" class="btn">🚀 Start Building Your Website Now</a>
+        </div>
+
+        <div class="footer">
+            Made with ❤️ by <strong>Akarshit Raj</strong> · YouTube Educator · 20+ Programming Courses
+            <br>
+            <small>Complete HTML Reference — Every W3Schools Topic Covered</small>
+            <br>
+            <small>© 2026 · Free for everyone</small>
+            <br>
+            <small>GitHub: <a href="https://akarshitrajx.github.io" target="_blank">akarshitrajx.github.io</a></small>
+        </div>
+
+    </div>
+
+</body>
+</html>
