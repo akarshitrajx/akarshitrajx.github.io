@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coding Master - AI-Powered Learning Platform</title>
+    <title>Coding World - AI-Powered Learning Platform</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -69,7 +69,7 @@
             transform: scale(1);
         }
 
-        /* Navigation */
+        /* Navigation - LOGO HATAYA */
         .navbar {
             position: fixed;
             top: 0;
@@ -77,7 +77,7 @@
             right: 0;
             z-index: 1000;
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-end;
             align-items: center;
             padding: 20px 60px;
             background: transparent;
@@ -92,16 +92,6 @@
             backdrop-filter: blur(25px);
             border-bottom: 1px solid rgba(0, 212, 255, 0.08);
             box-shadow: 0 5px 30px rgba(0, 0, 0, 0.5);
-        }
-
-        .nav-logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #00d4ff, #0099ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: 2px;
         }
 
         .nav-links {
@@ -140,22 +130,23 @@
             width: 100%;
         }
 
-        /* Hero Section */
+        /* Hero Section - Full Screen */
         .hero-section {
             position: relative;
             width: 100%;
             min-height: 100vh;
             display: flex;
             align-items: center;
+            justify-content: center;
             overflow: hidden;
             background: radial-gradient(ellipse at 50% 100%, #0a1a2e 0%, #050508 60%);
         }
 
         #canvas-container {
             position: absolute;
-            right: -10%;
             top: 0;
-            width: 70%;
+            left: 0;
+            width: 100%;
             height: 100%;
             z-index: 1;
         }
@@ -163,8 +154,9 @@
         .hero-content {
             position: relative;
             z-index: 2;
-            padding: 0 80px;
-            max-width: 50%;
+            text-align: center;
+            max-width: 800px;
+            padding: 0 20px;
             pointer-events: none;
         }
 
@@ -216,7 +208,9 @@
             font-size: 1.1rem;
             line-height: 1.8;
             margin-bottom: 45px;
-            max-width: 480px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
             animation: fadeInUp 1s ease-out 0.4s both;
         }
 
@@ -280,7 +274,7 @@
         /* Stats Section */
         .stats-section {
             padding: 100px 60px;
-            background: linear-gradient(180deg, #050508 0%, #0a0a12 100%);
+            background: radial-gradient(ellipse at bottom, #0d1b2a 0%, #050508 100%);
             position: relative;
         }
 
@@ -338,7 +332,7 @@
         /* Features Section */
         .features-section {
             padding: 120px 60px;
-            background: #0a0a12;
+            background: radial-gradient(ellipse at center, #0d1b2a 0%, #050508 100%);
             position: relative;
         }
 
@@ -450,7 +444,7 @@
         /* Courses Section */
         .courses-section {
             padding: 120px 60px;
-            background: linear-gradient(180deg, #0a0a12 0%, #050508 100%);
+            background: radial-gradient(ellipse at top, #0d1b2a 0%, #050508 100%);
         }
 
         .courses-grid {
@@ -501,7 +495,7 @@
         /* How It Works Section */
         .how-section {
             padding: 120px 60px;
-            background: #050508;
+            background: radial-gradient(ellipse at center, #0d1b2a 0%, #050508 100%);
         }
 
         .steps-container {
@@ -557,7 +551,7 @@
         /* Testimonials Section */
         .testimonials-section {
             padding: 120px 60px;
-            background: linear-gradient(180deg, #050508 0%, #0a0a12 100%);
+            background: radial-gradient(ellipse at bottom, #0d1b2a 0%, #050508 100%);
         }
 
         .testimonials-grid {
@@ -785,12 +779,6 @@
 
         /* Responsive */
         @media (max-width: 1024px) {
-            .hero-content {
-                max-width: 100%;
-                padding: 0 30px;
-                text-align: center;
-            }
-            .hero-title { font-size: 2.8rem; }
             .navbar { padding: 18px 25px; }
             .navbar.scrolled { padding: 12px 25px; }
             .nav-links { display: none; }
@@ -799,6 +787,7 @@
             .courses-grid { grid-template-columns: repeat(2, 1fr); }
             .testimonials-grid { grid-template-columns: 1fr; }
             .footer-grid { grid-template-columns: 1fr 1fr; }
+            .hero-title { font-size: 2.8rem; }
         }
 
         @media (max-width: 768px) {
@@ -810,19 +799,23 @@
             .steps-container { flex-direction: column; }
             .footer-grid { grid-template-columns: 1fr; }
         }
+
+        @media (max-width: 480px) {
+            .hero-title { font-size: 1.8rem; }
+            .hero-desc { font-size: 0.85rem; }
+            .hero-btn { padding: 12px 24px; font-size: 0.75rem; }
+        }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
+    <!-- Navigation - LOGO HATAYA -->
     <nav class="navbar" id="navbar">
-        <div class="nav-logo">CODING MASTER</div>
         <ul class="nav-links">
             <li><a href="#hero">Home</a></li>
             <li><a href="#features">Features</a></li>
             <li><a href="#courses">Courses</a></li>
             <li><a href="#testimonials">Reviews</a></li>
         </ul>
-        <div></div>
     </nav>
 
     <!-- Hero Section -->
@@ -839,7 +832,6 @@
             <p class="hero-desc">
                 Coding Master is where you turn challenges into opportunities. Build your skills with our interactive, data-centric learning environment designed for modern developers.
             </p>
-            <!-- ✅ LINK ADDED: main.html -->
             <a href="main.html" class="hero-btn">
                 Get Started <i class="fas fa-arrow-right"></i>
             </a>
@@ -1050,7 +1042,6 @@
         <div class="cta-content reveal">
             <h2 class="cta-title">Ready to Start Your Coding Journey?</h2>
             <p class="cta-desc">Join 50,000+ developers who are already learning with Coding Master. Start for free today and unlock your potential.</p>
-            <!-- ✅ LINK ADDED: main.html -->
             <a href="main.html" class="cta-btn">
                 Get Started Free <i class="fas fa-arrow-right"></i>
             </a>
@@ -1098,7 +1089,7 @@
     </footer>
 
     <script>
-        // Three.js - FAN STYLE TWISTED SWIRL (Screenshot Jaisa)
+        // Three.js - FAN STYLE TWISTED SWIRL
         const container = document.getElementById('canvas-container');
         const scene = new THREE.Scene();
         scene.fog = new THREE.FogExp2(0x050508, 0.02);
@@ -1112,8 +1103,6 @@
         renderer.setClearColor(0x050508, 1);
         container.appendChild(renderer.domElement);
 
-        // ===== MAIN TWISTED SWIRL (Fan Style) =====
-        // Create multiple twisted rings that rotate like a fan
         const swirlGroup = new THREE.Group();
 
         function createTwistedRing(radius, tubeRadius, segments, twistAmount, color) {
@@ -1131,28 +1120,21 @@
             });
             const ring = new THREE.Mesh(geometry, material);
             
-            // Twist the ring vertices
             const positions = geometry.attributes.position.array;
             for (let i = 0; i < positions.length; i += 3) {
                 const x = positions[i];
                 const y = positions[i + 1];
                 const z = positions[i + 2];
-                
-                // Calculate angle and twist
                 const angle = Math.atan2(y, x);
                 const twist = angle * twistAmount;
-                
-                // Apply twist
                 positions[i] = x * Math.cos(twist) - z * Math.sin(twist);
                 positions[i + 2] = x * Math.sin(twist) + z * Math.cos(twist);
             }
             geometry.attributes.position.needsUpdate = true;
             geometry.computeVertexNormals();
-            
             return ring;
         }
 
-        // Create multiple rings for the swirl effect
         const ringConfigs = [
             { radius: 1.0, tube: 0.12, segments: 80, twist: 3, color: 0x00aaff, speed: 0.008 },
             { radius: 1.3, tube: 0.10, segments: 100, twist: 4, color: 0x0088ff, speed: 0.006 },
@@ -1171,12 +1153,10 @@
                 config.color
             );
             ring.userData.speed = config.speed;
-            ring.userData.initialRotation = i * 0.3;
             swirlGroup.add(ring);
             rings.push(ring);
         });
 
-        // Inner glow sphere
         const glowGeo = new THREE.SphereGeometry(0.6, 32, 32);
         const glowMat = new THREE.MeshBasicMaterial({
             color: 0x00d4ff,
@@ -1187,7 +1167,6 @@
         const glowSphere = new THREE.Mesh(glowGeo, glowMat);
         swirlGroup.add(glowSphere);
 
-        // Center core
         const coreGeo = new THREE.SphereGeometry(0.25, 32, 32);
         const coreMat = new THREE.MeshPhysicalMaterial({
             color: 0x00d4ff,
@@ -1201,7 +1180,6 @@
 
         scene.add(swirlGroup);
 
-        // ===== PARTICLE FIELD =====
         const particlesGeo = new THREE.BufferGeometry();
         const particlesCount = 800;
         const posArray = new Float32Array(particlesCount * 3);
@@ -1212,12 +1190,9 @@
             const angle = Math.random() * Math.PI * 2;
             const radius = 2.5 + Math.random() * 3;
             const height = (Math.random() - 0.5) * 2;
-            
             posArray[i3] = Math.cos(angle) * radius;
             posArray[i3 + 1] = Math.sin(angle) * radius;
             posArray[i3 + 2] = height;
-
-            // Blue-white colors
             const intensity = 0.5 + Math.random() * 0.5;
             colorArray[i3] = 0.2 * intensity;
             colorArray[i3 + 1] = 0.6 * intensity;
@@ -1238,7 +1213,6 @@
         const particles = new THREE.Points(particlesGeo, particlesMat);
         scene.add(particles);
 
-        // ===== LIGHTING =====
         const ambientLight = new THREE.AmbientLight(0x001133, 3);
         scene.add(ambientLight);
 
@@ -1254,7 +1228,6 @@
         backLight.position.set(0, 0, -5);
         scene.add(backLight);
 
-        // ===== MOUSE INTERACTION =====
         let mouseX = 0;
         let mouseY = 0;
 
@@ -1263,45 +1236,33 @@
             mouseY = (event.clientY / window.innerHeight - 0.5) * 2;
         });
 
-        // ===== ANIMATION LOOP - FAN STYLE =====
         const clock = new THREE.Clock();
 
         function animate() {
             requestAnimationFrame(animate);
             const elapsedTime = clock.getElapsedTime();
 
-            // Fan-style rotation - smooth and continuous like a ceiling fan
             rings.forEach((ring, i) => {
-                // Each ring rotates at different speed (fan blades effect)
                 ring.rotation.z += ring.userData.speed;
                 ring.rotation.x = Math.sin(elapsedTime * 0.3 + i * 0.5) * 0.1;
                 ring.rotation.y = Math.cos(elapsedTime * 0.2 + i * 0.3) * 0.05;
-                
-                // Gentle pulse
                 ring.material.emissiveIntensity = 0.15 + Math.sin(elapsedTime * 2 + i) * 0.05;
             });
 
-            // Core glow pulse
             coreMat.emissiveIntensity = 0.5 + Math.sin(elapsedTime * 3) * 0.2;
             core.scale.setScalar(1 + Math.sin(elapsedTime * 4) * 0.05);
-            
-            // Inner glow pulse
             glowMat.opacity = 0.06 + Math.sin(elapsedTime * 2) * 0.03;
             glowSphere.scale.setScalar(1 + Math.sin(elapsedTime * 1.5) * 0.1);
 
-            // Swirl group gentle tilt (like a fan tilting)
             swirlGroup.rotation.x = Math.sin(elapsedTime * 0.4) * 0.15;
             swirlGroup.rotation.y = Math.sin(elapsedTime * 0.3) * 0.1;
 
-            // Mouse parallax - smooth follow
             swirlGroup.rotation.x += (mouseY * 0.1 - swirlGroup.rotation.x) * 0.02;
             swirlGroup.rotation.y += (mouseX * 0.1 - swirlGroup.rotation.y) * 0.02;
 
-            // Particles orbit slowly
             particles.rotation.z = elapsedTime * 0.02;
             particles.rotation.x = Math.sin(elapsedTime * 0.1) * 0.05;
 
-            // Camera subtle movement
             camera.position.x += (mouseX * 0.3 - camera.position.x) * 0.02;
             camera.position.y += (-mouseY * 0.2 - camera.position.y) * 0.02;
             camera.lookAt(0, 0, 0);
@@ -1311,7 +1272,6 @@
 
         animate();
 
-        // Resize handler
         window.addEventListener('resize', () => {
             const width = container.clientWidth;
             const height = container.clientHeight;
