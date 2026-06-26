@@ -1,0 +1,2257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>CSS Tutorial - All in one guide</title>
+    <style>
+        /* ============================
+                   RESET & BASE
+                ============================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            background: #0a0a1a;
+            background-image:
+                radial-gradient(ellipse at 10% 20%, rgba(233, 69, 96, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 90% 80%, rgba(245, 166, 35, 0.06) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(15, 52, 96, 0.2) 0%, transparent 70%);
+            color: #e4e4f0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* ============================
+                   HEADER
+                ============================ */
+        .main-header {
+            text-align: center;
+            padding: 45px 30px 35px;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .main-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 40%, rgba(233, 69, 96, 0.04), transparent 60%);
+            animation: rotateGlow 30s linear infinite;
+        }
+
+        @keyframes rotateGlow {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .main-header h1 {
+            font-size: 3.2rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #e94560, #f5a623, #e94560);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradShift 4s ease infinite;
+            position: relative;
+            z-index: 1;
+            letter-spacing: 1px;
+        }
+
+        @keyframes gradShift {
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .main-header .sub {
+            color: #8899bb;
+            font-size: 1.05rem;
+            letter-spacing: 2px;
+            margin-top: 6px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 20px 35px;
+            flex-wrap: wrap;
+            margin-top: 18px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stats-bar .pill {
+            background: rgba(255, 255, 255, 0.04);
+            padding: 6px 24px;
+            border-radius: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            font-size: 0.95rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .stats-bar .pill strong {
+            color: #e94560;
+            font-size: 1.1rem;
+        }
+
+        .progress-wrap {
+            width: 100%;
+            max-width: 500px;
+            margin: 16px auto 0;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 40px;
+            height: 8px;
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .progress-wrap .bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #e94560, #f5a623);
+            border-radius: 40px;
+            transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .share-btn-header {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: #fff;
+            padding: 8px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: 0.3s;
+            position: relative;
+            z-index: 1;
+        }
+
+        .share-btn-header:hover {
+            background: rgba(233, 69, 96, 0.15);
+            border-color: #e94560;
+        }
+
+        /* ============================
+                   TOPIC CARD
+                ============================ */
+        .topic-card {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 30px 30px 28px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            margin-bottom: 30px;
+            transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+            opacity: 0.25;
+            pointer-events: none;
+            filter: blur(2px) grayscale(0.5);
+            transform: scale(0.97);
+        }
+
+        .topic-card.active {
+            opacity: 1;
+            pointer-events: auto;
+            filter: blur(0) grayscale(0);
+            transform: scale(1);
+            border-color: rgba(233, 69, 96, 0.15);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.03);
+        }
+
+        .topic-card.completed {
+            opacity: 0.7;
+            pointer-events: none;
+            filter: grayscale(0.3);
+            border-color: rgba(46, 204, 113, 0.2);
+        }
+
+        .topic-card .topic-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px 16px;
+            margin-bottom: 4px;
+        }
+
+        .topic-card .topic-head h2 {
+            font-size: 1.7rem;
+            color: #f5a623;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .topic-card .topic-head .badge {
+            background: rgba(233, 69, 96, 0.2);
+            color: #e94560;
+            font-size: 0.7rem;
+            padding: 2px 16px;
+            border-radius: 40px;
+            font-weight: 700;
+            border: 1px solid rgba(233, 69, 96, 0.1);
+        }
+
+        .topic-card .topic-head .status-badge {
+            font-size: 0.8rem;
+            background: rgba(255, 255, 255, 0.04);
+            padding: 4px 18px;
+            border-radius: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            color: #8899bb;
+        }
+
+        .topic-card .topic-head .status-badge.active-status {
+            color: #f5a623;
+            border-color: rgba(245, 166, 35, 0.15);
+        }
+
+        .topic-card .topic-head .status-badge.done-status {
+            color: #2ecc71;
+            border-color: rgba(46, 204, 113, 0.15);
+        }
+
+        /* ----- Explanation Box ----- */
+        .explanation-box {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 16px;
+            padding: 20px 24px;
+            margin: 14px 0 20px;
+            border-left: 3px solid #e94560;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-left-width: 4px;
+        }
+
+        .explanation-box .exp-title {
+            color: #f5a623;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .explanation-box .exp-content {
+            color: #c8d0e8;
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        .explanation-box .exp-content code {
+            background: rgba(233, 69, 96, 0.1);
+            padding: 2px 10px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            color: #f5a623;
+            font-family: 'Consolas', monospace;
+        }
+
+        .explanation-box .exp-content .highlight {
+            color: #e94560;
+            font-weight: 600;
+        }
+
+        .explanation-box .exp-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 8px 0;
+        }
+
+        .explanation-box .exp-content ul li {
+            padding: 4px 0 4px 24px;
+            position: relative;
+        }
+
+        .explanation-box .exp-content ul li::before {
+            content: '▸';
+            color: #e94560;
+            position: absolute;
+            left: 0;
+        }
+
+        /* ----- Sub-topics ----- */
+        .sub-topics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 10px;
+            margin-bottom: 16px;
+        }
+
+        .sub-topics span {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 3px 14px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            color: #99aacd;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        /* ----- Questions ----- */
+        .q-section {
+            display: grid;
+            gap: 14px;
+            margin-top: 16px;
+        }
+
+        .q-block {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 14px;
+            padding: 16px 20px;
+            border-left: 3px solid rgba(255, 255, 255, 0.05);
+            transition: 0.3s;
+        }
+
+        .q-block.correct {
+            border-left-color: #2ecc71;
+            background: rgba(46, 204, 113, 0.04);
+        }
+
+        .q-block.wrong {
+            border-left-color: #e74c3c;
+            background: rgba(231, 76, 60, 0.04);
+        }
+
+        .q-block .q-text {
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .q-block .q-text .q-type {
+            font-size: 0.6rem;
+            background: rgba(255, 255, 255, 0.04);
+            padding: 1px 12px;
+            border-radius: 30px;
+            font-weight: 500;
+            color: #8899bb;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .q-block .options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 18px;
+            margin-top: 4px;
+        }
+
+        .q-block .options label {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            padding: 3px 10px;
+            border-radius: 30px;
+            transition: 0.15s;
+        }
+
+        .q-block .options label:hover {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .q-block input[type="radio"],
+        .q-block input[type="checkbox"] {
+            accent-color: #e94560;
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+        }
+
+        .q-block .fill-input {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 300px;
+            font-size: 0.95rem;
+            transition: 0.2s;
+        }
+
+        .q-block .fill-input:focus {
+            border-color: rgba(233, 69, 96, 0.3);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(233, 69, 96, 0.05);
+        }
+
+        .q-block .fill-input.correct {
+            border-color: #2ecc71;
+            background: rgba(46, 204, 113, 0.04);
+        }
+
+        .q-block .fill-input.wrong {
+            border-color: #e74c3c;
+            background: rgba(231, 76, 60, 0.04);
+        }
+
+        .q-block .feedback {
+            margin-top: 8px;
+            font-size: 0.9rem;
+            display: none;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .q-block .feedback.show {
+            display: flex;
+        }
+
+        .q-block .feedback .icon {
+            font-size: 1.1rem;
+        }
+
+        .q-block .feedback .msg {
+            color: #99aacd;
+        }
+
+        .q-block .feedback .msg strong {
+            color: #fff;
+        }
+
+        /* ----- Buttons ----- */
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 12px 20px;
+            margin-top: 22px;
+            padding-top: 18px;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .btn {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            color: #fff;
+            padding: 10px 28px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.1);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, rgba(233, 69, 96, 0.2), rgba(192, 57, 43, 0.2));
+            border-color: rgba(233, 69, 96, 0.15);
+            color: #e94560;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, rgba(233, 69, 96, 0.3), rgba(192, 57, 43, 0.3));
+            border-color: rgba(233, 69, 96, 0.25);
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, rgba(46, 204, 113, 0.15), rgba(39, 174, 96, 0.15));
+            border-color: rgba(46, 204, 113, 0.15);
+            color: #2ecc71;
+        }
+
+        .btn-success:hover {
+            background: linear-gradient(135deg, rgba(46, 204, 113, 0.25), rgba(39, 174, 96, 0.25));
+            border-color: rgba(46, 204, 113, 0.25);
+        }
+
+        .btn-share {
+            background: rgba(52, 152, 219, 0.1);
+            border-color: rgba(52, 152, 219, 0.1);
+            color: #5dade2;
+        }
+
+        .btn-share:hover {
+            background: rgba(52, 152, 219, 0.2);
+            border-color: rgba(52, 152, 219, 0.2);
+        }
+
+        .btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            transform: none !important;
+            filter: none !important;
+        }
+
+        .btn .count-badge {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0 12px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+        }
+
+        .score-display {
+            font-size: 0.9rem;
+            color: #8899bb;
+            margin-left: auto;
+        }
+
+        .score-display strong {
+            color: #f5a623;
+        }
+
+        /* ============================
+                   RESPONSIVE
+                ============================ */
+        @media (max-width: 700px) {
+            .main-header h1 {
+                font-size: 2rem;
+            }
+            .topic-card .topic-head h2 {
+                font-size: 1.3rem;
+            }
+            .topic-card {
+                padding: 20px 18px;
+            }
+            .q-block {
+                padding: 14px 16px;
+            }
+            .q-block .options {
+                gap: 4px 10px;
+            }
+            .btn-group {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .btn {
+                justify-content: center;
+            }
+            .score-display {
+                margin-left: 0;
+                text-align: center;
+            }
+            .explanation-box {
+                padding: 16px 18px;
+            }
+        }
+
+        /* ============================
+                   TOAST
+                ============================ */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(20px);
+            padding: 14px 28px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            color: #fff;
+            font-size: 0.95rem;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+            z-index: 999;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.02);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(233, 69, 96, 0.3);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(233, 69, 96, 0.5);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="app">
+
+        <!-- ===== HEADER ===== -->
+        <header class="main-header">
+            <h1>🎨 CSS Tutorial — All in one guide</h1>
+            <p class="sub">50 Topics · 20 Questions Each · Learn &amp; Master CSS</p>
+            <div class="stats-bar">
+                <span class="pill">📘 <strong id="totalTopics">50</strong> Topics</span>
+                <span class="pill">📝 <strong id="totalQuestions">1000</strong> Questions</span>
+                <span class="pill">✅ <strong id="completedTopics">0</strong> / 50 Done</span>
+                <button class="share-btn-header" onclick="shareProgress()">📤 Share Progress</button>
+            </div>
+            <div class="progress-wrap">
+                <div class="bar" id="progressBar" style="width:0%;"></div>
+            </div>
+        </header>
+
+        <!-- ===== TOPICS RENDER ===== -->
+        <div id="topicContainer"></div>
+
+        <!-- ===== TOAST ===== -->
+        <div class="toast" id="toast"></div>
+    </div>
+
+    <script>
+        // ============================================================
+        //  DATA — 50 TOPICS with DEEP EXPLANATIONS (Pure English)
+        // ============================================================
+
+        const TOPICS = [{
+            id: 1,
+            name: 'CSS Fundamentals',
+            subs: ['Intro', 'Syntax', 'Ways to Add CSS', 'Selectors', 'Universal', 'Type', 'Class', 'ID', 'Grouping',
+                'Best Practices'
+            ],
+            explanation: `
+                        <p><strong>CSS (Cascading Style Sheets)</strong> is a styling language used to make HTML elements beautiful and attractive. Without CSS, websites look like plain text documents.</p>
+                        <p><strong>CSS Syntax:</strong> <code>selector { property: value; }</code></p>
+                        <p><strong>Three Ways to Add CSS:</strong></p>
+                        <ul>
+                            <li><strong>Inline CSS:</strong> Directly inside HTML tag — <code>&lt;h1 style="color: blue;"&gt;Hello&lt;/h1&gt;</code> — ✅ Fast, ❌ Not reusable</li>
+                            <li><strong>Internal CSS:</strong> Inside <code>&lt;style&gt;</code> tag in <code>&lt;head&gt;</code> — ✅ Best for single page, ❌ Doesn't work across multiple pages</li>
+                            <li><strong>External CSS:</strong> Separate <code>.css</code> file linked — <code>&lt;link rel="stylesheet" href="style.css"&gt;</code> — ✅ Best practice, reusable, maintainable</li>
+                        </ul>
+                        <p><strong>Types of Selectors:</strong></p>
+                        <ul>
+                            <li><strong>Universal Selector (*):</strong> Selects ALL elements — <code>* { margin: 0; }</code></li>
+                            <li><strong>Type Selector (element):</strong> Selects specific tag — <code>p { color: red; }</code></li>
+                            <li><strong>Class Selector (.class):</strong> Selects elements with class — <code>.box { border: 1px solid; }</code></li>
+                            <li><strong>ID Selector (#id):</strong> Selects element with unique ID — <code>#header { background: black; }</code></li>
+                            <li><strong>Grouping Selector (,):</strong> Multiple selectors together — <code>h1, h2, h3 { color: blue; }</code></li>
+                        </ul>
+                        <p><strong>Specificity Hierarchy:</strong> Inline Style > ID > Class > Type > Universal</p>
+                        <p><strong>Cascading Rule:</strong> If two styles target same element, the later style wins (last one wins) and the more specific style wins.</p>
+                        <p>💡 <strong>Best Practices:</strong> Use external CSS, prefer classes over IDs, keep selectors simple, avoid <code>!important</code>, and always test on multiple browsers.</p>
+                    `
+        }, {
+            id: 2,
+            name: 'CSS Combinators',
+            subs: ['Descendant', 'Child', 'Adjacent Sibling', 'General Sibling', 'Attribute Selectors', 'Value', 'Contains', 'Starts With', 'Ends With', 'Substring'],
+            explanation: `
+                        <p><strong>CSS Combinators</strong> define the relationship between selectors. They help you target elements based on their position in the HTML structure.</p>
+                        <p><strong>Types of Combinators:</strong></p>
+                        <ul>
+                            <li><strong>Descendant Selector (space):</strong> Selects all elements inside a parent — <code>div p { color: red; }</code> — all <code>&lt;p&gt;</code> inside any <code>&lt;div&gt;</code></li>
+                            <li><strong>Child Selector (&gt;):</strong> Selects direct children only — <code>div &gt; p { color: blue; }</code> — only direct <code>&lt;p&gt;</code> children of <code>&lt;div&gt;</code></li>
+                            <li><strong>Adjacent Sibling Selector (+):</strong> Selects the immediate next sibling — <code>h1 + p { margin-top: 0; }</code> — <code>&lt;p&gt;</code> immediately after <code>&lt;h1&gt;</code></li>
+                            <li><strong>General Sibling Selector (~):</strong> Selects all next siblings — <code>h1 ~ p { color: gray; }</code> — all <code>&lt;p&gt;</code> after <code>&lt;h1&gt;</code></li>
+                        </ul>
+                        <p><strong>Attribute Selectors:</strong></p>
+                        <ul>
+                            <li><strong>Exact Match:</strong> <code>[type="text"]</code> — selects elements with exact attribute value</li>
+                            <li><strong>Contains Word:</strong> <code>[class~="box"]</code> — selects elements where class contains "box"</li>
+                            <li><strong>Starts With:</strong> <code>[href^="https"]</code> — selects links starting with "https"</li>
+                            <li><strong>Ends With:</strong> <code>[src$=".jpg"]</code> — selects images ending with ".jpg"</li>
+                            <li><strong>Contains Substring:</strong> <code>[title*="hello"]</code> — selects elements with "hello" in title</li>
+                        </ul>
+                        <p>💡 <strong>Tip:</strong> Use combinators to write clean, specific CSS without adding extra classes. Child selectors are more performant than descendant selectors.</p>
+                    `
+        }, {
+            id: 3,
+            name: 'Colors Complete',
+            subs: ['Named Colors', 'Hex Codes', 'RGB', 'RGBA', 'HSL', 'HSLA', 'currentColor', 'transparent', 'color-mix()', 'color-contrast()'],
+            explanation: `
+                        <p><strong>Colors</strong> in CSS can be defined in multiple ways. Each method has its own use case and benefits.</p>
+                        <p><strong>Color Formats:</strong></p>
+                        <ul>
+                            <li><strong>Named Colors:</strong> Pre-defined color names — <code>red, blue, tomato, skyblue, coral</code> — Easy to use but limited options</li>
+                            <li><strong>Hex Codes:</strong> <code>#FF0000</code> (red), <code>#00FF00</code> (green), <code>#0000FF</code> (blue) — Most common in design</li>
+                            <li><strong>Hex Shorthand:</strong> <code>#F00</code> (red), <code>#0F0</code> (green) — when each pair is same</li>
+                            <li><strong>RGB:</strong> <code>rgb(255, 0, 0)</code> — values 0-255, good for dynamic colors</li>
+                            <li><strong>RGBA:</strong> <code>rgba(255, 0, 0, 0.5)</code> — RGB with alpha/opacity (0 = transparent, 1 = solid)</li>
+                            <li><strong>HSL:</strong> <code>hsl(0, 100%, 50%)</code> — Hue (0-360), Saturation (0-100%), Lightness (0-100%) — <span class="highlight">Easier to manipulate</span></li>
+                            <li><strong>HSLA:</strong> <code>hsla(0, 100%, 50%, 0.5)</code> — HSL with alpha/opacity</li>
+                            <li><strong>currentColor:</strong> Uses the current text color — <code>border-color: currentColor;</code></li>
+                            <li><strong>transparent:</strong> Fully transparent — <code>background: transparent;</code></li>
+                            <li><strong>color-mix():</strong> Mix two colors — <code>color-mix(in srgb, red, blue 50%)</code> — modern CSS feature</li>
+                            <li><strong>color-contrast():</strong> Automatically choose contrasting color — <code>color-contrast(black vs white, yellow)</code></li>
+                        </ul>
+                        <p>💡 <strong>Pro Tip:</strong> Use <span class="highlight">HSL</span> for easier color manipulation. To darken a color, decrease lightness; to saturate, increase saturation.</p>
+                    `
+        }, {
+            id: 4,
+            name: 'Backgrounds',
+            subs: ['Background Color', 'Background Image', 'Background Repeat', 'Background Position', 'Background Size', 'Background Attachment', 'Background Origin', 'Background Clip', 'Background Blend Mode', 'Background Shorthand'],
+            explanation: `
+                        <p><strong>Background</strong> properties control the background of an element. They can add colors, images, and effects.</p>
+                        <p><strong>Background Properties:</strong></p>
+                        <ul>
+                            <li><strong>background-color:</strong> Sets a solid color — <code>background-color: #e94560;</code></li>
+                            <li><strong>background-image:</strong> Sets an image — <code>background-image: url('image.jpg');</code></li>
+                            <li><strong>background-repeat:</strong> Controls if image repeats — <code>repeat</code>, <code>no-repeat</code>, <code>space</code>, <code>round</code></li>
+                            <li><strong>background-position:</strong> Positions the image — <code>top</code>, <code>center</code>, <code>bottom</code>, <code>left</code>, <code>right</code>, <code>%</code>, <code>px</code></li>
+                            <li><strong>background-size:</strong> Controls image size — <code>cover</code> (fills container), <code>contain</code> (fits inside), <code>auto</code>, <code>%</code>, <code>px</code></li>
+                            <li><strong>background-attachment:</strong> Controls scrolling behavior — <code>scroll</code> (default), <code>fixed</code> (stays in place), <code>local</code></li>
+                            <li><strong>background-origin:</strong> Where background starts — <code>padding-box</code>, <code>border-box</code>, <code>content-box</code></li>
+                            <li><strong>background-clip:</strong> Where background extends — <code>border-box</code>, <code>padding-box</code>, <code>content-box</code>, <code>text</code></li>
+                            <li><strong>background-blend-mode:</strong> Blends background layers — <code>multiply</code>, <code>screen</code>, <code>overlay</code></li>
+                        </ul>
+                        <p><strong>Shorthand:</strong> <code>background: color image repeat position / size attachment;</code></p>
+                        <p>💡 <strong>Pro Tip:</strong> Use <code>background: linear-gradient(...)</code> for gradients instead of images — they load faster and are more flexible.</p>
+                    `
+        }, {
+            id: 5,
+            name: 'Gradients',
+            subs: ['Linear Gradients', 'Radial Gradients', 'Conic Gradients', 'Repeating Linear', 'Repeating Radial', 'Repeating Conic', 'Direction', 'Color Stops', 'Angle', 'Shape'],
+            explanation: `
+                        <p><strong>Gradients</strong> create smooth transitions between colors. They can replace images for modern, vibrant backgrounds.</p>
+                        <p><strong>Types of Gradients:</strong></p>
+                        <ul>
+                            <li><strong>Linear Gradient:</strong> Colors in a straight line — <code>linear-gradient(to right, red, blue)</code> — direction can be <code>to top</code>, <code>to bottom</code>, <code>to left</code>, <code>to right</code>, <code>to top left</code>, etc.</li>
+                            <li><strong>Radial Gradient:</strong> Colors from center outward — <code>radial-gradient(circle, red, blue)</code> — shape can be <code>circle</code> or <code>ellipse</code></li>
+                            <li><strong>Conic Gradient:</strong> Colors around a circle — <code>conic-gradient(red, yellow, green)</code> — like a color wheel</li>
+                            <li><strong>Repeating Linear:</strong> Repeats linear gradient — <code>repeating-linear-gradient(red 0%, blue 10%)</code></li>
+                            <li><strong>Repeating Radial:</strong> Repeats radial gradient — <code>repeating-radial-gradient(circle, red 0%, blue 10%)</code></li>
+                            <li><strong>Repeating Conic:</strong> Repeats conic gradient — <code>repeating-conic-gradient(red 0%, blue 25%)</code></li>
+                        </ul>
+                        <p><strong>Color Stops:</strong> Define where colors change — <code>linear-gradient(red 20%, blue 80%)</code> — red at 20%, blue at 80%.</p>
+                        <p>💡 <strong>Pro Tip:</strong> Use <span class="highlight">gradients</span> for buttons, hero sections, and cards. They're lightweight and look professional.</p>
+                    `
+        }, {
+            id: 6,
+            name: 'Fonts Complete',
+            subs: ['Font Family', 'Font Size', 'Font Weight', 'Font Style', 'Font Variant', 'Font Stretch', '@font-face', 'Google Fonts', 'Shorthand', 'System Fonts'],
+            explanation: `
+                        <p><strong>Fonts</strong> control the appearance of text. Choosing the right font improves readability and brand identity.</p>
+                        <p><strong>Font Properties:</strong></p>
+                        <ul>
+                            <li><strong>font-family:</strong> Specifies font — <code>font-family: 'Arial', sans-serif;</code> — always add fallback fonts</li>
+                            <li><strong>font-size:</strong> Controls text size — <code>font-size: 16px;</code>, <code>1rem</code>, <code>1.2em</code></li>
+                            <li><strong>font-weight:</strong> Controls boldness — <code>font-weight: 400</code> (normal), <code>700</code> (bold), values 100-900</li>
+                            <li><strong>font-style:</strong> Controls italic — <code>normal</code>, <code>italic</code>, <code>oblique</code></li>
+                            <li><strong>font-variant:</strong> Controls small-caps — <code>small-caps</code> or <code>normal</code></li>
+                            <li><strong>font-stretch:</strong> Controls width — <code>condensed</code>, <code>expanded</code>, <code>ultra-expanded</code></li>
+                            <li><strong>@font-face:</strong> Load custom fonts from files — <code>@font-face { font-family: 'MyFont'; src: url('font.woff2'); }</code></li>
+                            <li><strong>Google Fonts:</strong> Import from Google — <code>@import url('https://fonts.googleapis.com/css2?family=Roboto');</code></li>
+                            <li><strong>System Fonts:</strong> Use OS fonts — <code>font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;</code> — fastest loading</li>
+                        </ul>
+                        <p><strong>Shorthand:</strong> <code>font: style weight size/line-height family;</code></p>
+                        <p>💡 <strong>Pro Tip:</strong> Use <span class="highlight">system fonts</span> for better performance. Use <code>rem</code> for font sizes to respect user preferences.</p>
+                    `
+        }, {
+            id: 7,
+            name: 'Text Styling',
+            subs: ['Text Align', 'Text Decoration', 'Text Transform', 'Text Indent', 'Text Shadow', 'Letter Spacing', 'Word Spacing', 'Line Height', 'White Space', 'Word Break'],
+            explanation: `
+                        <p><strong>Text</strong> properties style the text inside elements. They improve readability and visual appeal.</p>
+                        <p><strong>Text Properties:</strong></p>
+                        <ul>
+                            <li><strong>text-align:</strong> Aligns text — <code>left</code>, <code>center</code>, <code>right</code>, <code>justify</code></li>
+                            <li><strong>text-decoration:</strong> Adds lines — <code>underline</code>, <code>overline</code>, <code>line-through</code>, <code>none</code></li>
+                            <li><strong>text-transform:</strong> Changes case — <code>uppercase</code>, <code>lowercase</code>, <code>capitalize</code></li>
+                            <li><strong>text-indent:</strong> Indents first line — <code>text-indent: 2em;</code></li>
+                            <li><strong>text-shadow:</strong> Adds shadow to text — <code>text-shadow: 2px 2px 4px rgba(0,0,0,0.3);</code></li>
+                            <li><strong>letter-spacing:</strong> Space between letters — <code>letter-spacing: 2px;</code> (tracking)</li>
+                            <li><strong>word-spacing:</strong> Space between words — <code>word-spacing: 4px;</code></li>
+                            <li><strong>line-height:</strong> Space between lines — <code>line-height: 1.6;</code> (leading) — improves readability</li>
+                            <li><strong>white-space:</strong> Controls whitespace — <code>nowrap</code>, <code>pre</code>, <code>pre-wrap</code></li>
+                            <li><strong>word-break:</strong> Controls word breaking — <code>break-all</code>, <code>keep-all</code></li>
+                            <li><strong>overflow-wrap:</strong> Controls wrapping — <code>break-word</code>, <code>normal</code>, <code>anywhere</code></li>
+                        </ul>
+                        <p>💡 <strong>Pro Tip:</strong> Use <code>line-height: 1.6</code> for body text — it's the most readable. Use <code>text-shadow</code> sparingly for headings.</p>
+                    `
+        }, {
+            id: 8,
+            name: 'Box Model',
+            subs: ['Content', 'Padding', 'Margin', 'Border', 'Width', 'Height', 'Box-sizing', 'Min/Max', 'Margin Collapse', 'Shorthand'],
+            explanation: `
+                        <p>The <strong>Box Model</strong> is the foundation of CSS layout. Every HTML element is a rectangular box.</p>
+                        <p><strong>Box Model Parts:</strong></p>
+                        <ul>
+                            <li><strong>Content:</strong> The actual text, images, or other content</li>
+                            <li><strong>Padding:</strong> Space <span class="highlight">inside</span> the border — <code>padding: 10px;</code></li>
+                            <li><strong>Border:</strong> Line around the padding — <code>border: 1px solid black;</code></li>
+                            <li><strong>Margin:</strong> Space <span class="highlight">outside</span> the border — <code>margin: 20px;</code></li>
+                            <li><strong>Width / Height:</strong> Size of content area — <code>width: 300px; height: 200px;</code></li>
+                            <li><strong>Box-sizing:</strong> Changes how width/height is calculated — <code>box-sizing: border-box;</code> (includes padding and border in width)</li>
+                            <li><strong>Min/Max Width/Height:</strong> Restrict element size — <code>min-width: 200px; max-width: 600px;</code></li>
+                            <li><strong>Margin Collapse:</strong> Vertical margins of adjacent elements merge — the larger margin wins</li>
+                            <li><strong>Shorthand:</strong> <code>margin: top right bottom left;</code> — <code>margin: 10px 20px;</code> (top/bottom, right/left)</li>
+                        </ul>
+                        <p>💡 <strong>Pro Tip:</strong> Always use <code>box-sizing: border-box</code> for predictable sizing. Use <code>* { box-sizing: border-box; }</code> globally.</p>
+                    `
+        }, {
+            id: 9,
+            name: 'Borders Complete',
+            subs: ['Border Style', 'Border Width', 'Border Color', 'Border Radius', 'Border Image', 'Border Source', 'Border Slice', 'Border Width', 'Border Outset', 'Shorthand'],
+            explanation: `
+                        <p><strong>Borders</strong> are lines around elements. They can be styled in many ways for visual separation.</p>
+                        <p><strong>Border Properties:</strong></p>
+                        <ul>
+                            <li><strong>border-style:</strong> Line style — <code>solid</code>, <code>dashed</code>, <code>dotted</code>, <code>double</code>, <code>groove</code>, <code>ridge</code>, <code>inset</code>, <code>outset</code></li>
+                            <li><strong>border-width:</strong> Thickness — <code>thin</code>, <code>medium</code>, <code>thick</code>, <code>px</code></li>
+                            <li><strong>border-color:</strong> Color of border — any color value</li>
+                            <li><strong>border-radius:</strong> Rounded corners — <code>border-radius: 10px;</code>, <code>50%</code> (circle)</li>
+                            <li><strong>border-image:</strong> Use image as border — <code>border-image: url('border.png') 30 stretch;</code></li>
+                            <li><strong>border-source:</strong> Source of border image</li>
+                            <li><strong>border-slice:</strong> Slicing the border image — <code>border-image-slice: 30;</code></li>
+                            <li><strong>border-outset:</strong> Extends border outward</li>
+                            <li><strong>Shorthand:</strong> <code>border: width style color;</code> — <code>border: 2px solid #e94560;</code></li>
+                        </ul>
+                        <p><strong>Individual Sides:</strong> <code>border-top</code>, <code>border-right</code>, <code>border-bottom</code>, <code>border-left</code></p>
+                        <p>💡 <strong>Pro Tip:</strong> Use <code>border-radius: 50%</code> to make <span class="highlight">circles</span> from squares. Use <code>border-radius: 8px</code> for modern rounded cards.</p>
+                    `
+        }, {
+            id: 10,
+            name: 'Sizing Units',
+            subs: ['px', '%', 'em', 'rem', 'vw', 'vh', 'vmin', 'vmax', 'ex', 'calc()'],
+            explanation: `
+                        <p><strong>Units</strong> define the size of elements. Choosing the right unit is crucial for responsive design.</p>
+                        <p><strong>CSS Units:</strong></p>
+                        <ul>
+                            <li><strong>px (pixels):</strong> Fixed size — <code>font-size: 16px;</code> — doesn't scale, use for borders and small elements</li>
+                            <li><strong>% (percent):</strong> Relative to parent — <code>width: 50%;</code> — half of parent's width</li>
+                            <li><strong>em:</strong> Relative to parent's font-size — <code>font-size: 1.2em;</code> — 1.2 × parent font-size</li>
+                            <li><strong>rem:</strong> Relative to root (html) font-size — <code>font-size: 1.2rem;</code> — <span class="highlight">preferred for accessibility</span></li>
+                            <li><strong>vw (viewport width):</strong> Relative to viewport width — <code>width: 50vw;</code> — 50% of screen width</li>
+                            <li><strong>vh (viewport height):</strong> Relative to viewport height — <code>height: 100vh;</code> — full screen height</li>
+                            <li><strong>vmin:</strong> Smaller of vw or vh — <code>font-size: 5vmin;</code></li>
+                            <li><strong>vmax:</strong> Larger of vw or vh — <code>font-size: 5vmax;</code></li>
+                            <li><strong>ex:</strong> Height of 'x' character — rarely used</li>
+                            <li><strong>calc():</strong> Mathematical operations — <code>width: calc(100% - 20px);</code></li>
+                        </ul>
+                        <p>💡 <strong>Pro Tip:</strong> Use <span class="highlight">rem</span> for font sizes, <span class="highlight">%</span> for layouts, <span class="highlight">vh/vw</span> for full-screen elements, and <code>clamp()</code> for fluid typography.</p>
+                    `
+        }, {
+            id: 11,
+            name: 'Display Property',
+            subs: ['Block', 'Inline', 'Inline-block', 'None', 'Contents', 'Flex', 'Grid', 'Table', 'List-item', 'Run-in'],
+            explanation: `
+                        <p><strong>Display</strong> defines how an element behaves in the layout. It's one of the most important CSS properties.</p>
+                        <p><strong>Display Values:</strong></p>
+                        <ul>
+                            <li><strong>block:</strong> Takes full width, starts new line — <code>div</code>, <code>p</code>, <code>h1</code></li>
+                            <li><strong>inline:</strong> Flows with text, width = content — <code>span</code>, <code>a</code>, <code>strong</code></li>
+                            <li><strong>inline-block:</strong> Inline but can set width/height — best for buttons and cards</li>
+                            <li><strong>none:</strong> Completely removed from layout (not visible, no space)</li>
+                            <li><strong>contents:</strong> Removes element but keeps children — useful for layout</li>
+                            <li><strong>flex:</strong> Enables Flexbox — <span class="highlight">modern 1D layout</span></li>
+                            <li><strong>grid:</strong> Enables Grid — <span class="highlight">modern 2D layout</span></li>
+                            <li><strong>table:</strong> Behaves like a table — <code>table</code>, <code>table-cell</code></li>
+                            <li><strong>list-item:</strong> Behaves like list item — with bullet markers</li>
+                            <li><strong>run-in:</strong> Behaves like inline or block depending on context</li>
+                        </ul>
+                        <p>💡 <strong>Pro Tip:</strong> Use <code>display: none</code> to hide elements; use <code>visibility: hidden</code> if you want to keep the space.</p>
+                    `
+        }, {
+            id: 12,
+            name: 'Positioning',
+            subs: ['Static', 'Relative', 'Absolute', 'Fixed', 'Sticky', 'Top', 'Right', 'Bottom', 'Left', 'Stacking Context'],
+            explanation: `
+                        <p><strong>Position</strong> controls how elements are placed on the page. It's essential for complex layouts.</p>
+                        <p><strong>Position Values:</strong></p>
+                        <ul>
+                            <li><strong>static:</strong> Default — element stays in normal flow</li>
+                            <li><strong>relative:</strong> Offset from normal position — <code>position: relative; top: 10px;</code></li>
+                            <li><strong>absolute:</strong> Removed from flow, positioned relative to nearest positioned ancestor — <code>position: absolute; top: 0; left: 0;</code></li>
+                            <li><strong>fixed:</strong> Removed from flow, positioned relative to viewport — <code>position: fixed; top: 0;</code> (stays on scroll)</li>
+                            <li><strong>sticky:</strong> Hybrid of relative + fixed — <code>position: sticky; top: 0;</code> (scrolls until reaches top, then sticks)</li>
+                            <li><strong>Top / Right / Bottom / Left:</strong> Offset values — <code>top: 20px; left: 30px;</code></li>
+                            <li><strong>Stacking Context:</strong> z-index creates stacking context — elements with higher z-index appear on top</li>
+                        </ul>
+                        <p>💡 <strong>Pro Tip:</strong> Use <span class="highlight">position: sticky</span> for sticky headers and navigation bars. Use <code>position: absolute</code> with <code>transform</code> for centering.</p>
+                    `
+        }, {
+            id: 13,
+            name: 'Z-Index & Overflow',
+            subs: ['Z-Index', 'Overflow', 'Overflow-X', 'Overflow-Y', 'Clip', 'Ellipsis', 'Auto', 'Hidden', 'Scroll', 'Visible'],
+            explanation: `
+                        <p><strong>Z-Index</strong> controls stacking order of elements. <strong>Overflow</strong> controls content that exceeds the element's box.</p>
+                        <p><strong>Z-Index:</strong></p>
+                        <ul>
+                            <li><strong>z-index:</strong> Integer value — <code>z-index: 10;</code> (higher number = on top)</li>
+                            <li>Only works on positioned elements (relative, absolute, fixed, sticky)</li>
+                            <li>Creates stacking context — children are stacked within parent</li>
+                        </ul>
+                        <p><strong>Overflow:</strong></p>
+                        <ul>
+                            <li><strong>visible:</strong> Default — content overflows and is visible</li>
+                            <li><strong>hidden:</strong> Content is cut off (clipped)</li>
+                            <li><strong>scroll:</strong> Always shows scrollbar</li>
+                            <li><strong>auto:</strong> Shows scrollbar only when needed</li>
+                            <li><strong>overflow-x:</strong> Horizontal overflow only</li>
+                            <li><strong>overflow-y:</strong> Vertical overflow only</li>
+                            <li><strong>text-overflow: ellipsis:</strong> Adds "..." when text overflows — <code>text-overflow: ellipsis;</code> (requires <code>white-space: nowrap</code> and <code>overflow: hidden</code>)</li>
+                        </ul>
+                        <p>💡 <strong>Pro Tip:</strong> Use <code>overflow: auto</code> for scrollable containers. Use <code>text-overflow: ellipsis</code> for text that's too long.</p>
+                    `
+        }, {
+            id: 14,
+            name: 'Float & Clear',
+            subs: ['Float Left', 'Float Right', 'None', 'Clear Left', 'Clear Right', 'Both', 'Clearfix', 'Legacy Layout', 'Modern Alternatives'],
+            explanation: `
+                        <p><strong>Float</strong> makes elements wrap around each other. It was used for layouts before Flexbox and Grid.</p>
+                        <p><strong>Float Values:</strong></p>
+                        <ul>
+                            <li><strong>float: left;</strong> — Element floats to left, text wraps around right</li>
+                            <li><strong>float: right;</strong> — Element floats to right, text wraps around left</li>
+                            <li><strong>float: none;</strong> — Default, no floating</li>
+                        </ul>
+                        <p><strong>Clear:</strong> Prevents floating on sides</p>
+                        <ul>
+                            <li><strong>clear: left;</strong> — No floating elements on left</li>
+                            <li><strong>clear: right;</strong> — No floating elements on right</li>
+                            <li><strong>clear: both;</strong> — No floating elements on either side</li>
+                        </ul>
+                        <p><strong>Clearfix:</strong> Technique to contain floated children — <code>.clearfix::after { content: ''; display: table; clear: both; }</code></p>
+                        <p>💡 <strong>Pro Tip:</strong> <span class="highlight">Use Flexbox or Grid</span> instead of float for modern layouts. Float is now mainly used for text wrapping around images.</p>
+                    `
+        }, {
+            id: 15,
+            name: 'Flexbox Container',
+            subs: ['display', 'flex-direction', 'flex-wrap', 'flex-flow', 'gap', 'justify-content', 'align-items', 'align-content', 'place-items', 'place-content'],
+            explanation: `
+                        <p><strong>Flexbox</strong> is a 1D layout system for arranging items in rows or columns. It's the most used CSS layout system today.</p>
+                        <p><strong>Flex Container Properties:</strong></p>
+                        <ul>
+                            <li><strong>display: flex;</strong> — Enables Flexbox</li>
+                            <li><strong>flex-direction:</strong> Direction of items — <code>row</code> (default), <code>row-reverse</code>, <code>column</code>, <code>column-reverse</code></li>
+                            <li><strong>flex-wrap:</strong> Allow wrapping — <code>nowrap</code> (default), <code>wrap</code>, <code>wrap-reverse</code></li>
+                            <li><strong>flex-flow:</strong> Shorthand for direction + wrap — <code>flex-flow: row wrap;</code></li>
+                            <li><strong>gap:</strong> Space between items — <code>gap: 10px;</code> (row-gap and column-gap)</li>
+                            <li><strong>justify-content:</strong> Aligns items on main axis — <code>flex-start</code>, <code>center</code>, <code>flex-end</code>, <code>space-between</code>, <code>space-around</code>, <code>space-evenly</code></li>
+                            <li><strong>align-items:</strong> Aligns items on cross axis — <code>stretch</code> (default), <code>flex-start</code>, <code>center</code>, <code>flex-end</code>, <code>baseline</code></li>
+                            <li><strong>align-content:</strong> Aligns multiple rows on cross axis — same values as justify-content</li>
+                            <li><strong>place-items:</strong> Shorthand for align-items + justify-items — <code>place-items: center;</code></li>
+                            <li><strong>place-content:</strong> Shorthand for align-content + justify-content</li>
+                        </ul>
+                        <p>💡 <strong>Pro Tip:</strong> Use <code>display: flex</code> for modern, responsive layouts. <code>justify-content: center</code> + <code>align-items: center</code> = perfect centering.</p>
+                    `
+        }, {
+            id: 16,
+            name: 'Flexbox Items',
+            subs: ['order', 'flex-grow', 'flex-shrink', 'flex-basis', 'flex shorthand', 'align-self', 'margin: auto', 'min/max', 'flex-basis: auto', 'flex-wrap'],
+            explanation: `
+                        <p><strong>Flex Item</strong> properties control individual items inside a flex container.</p>
+                        <p><strong>Flex Item Properties:</strong></p>
+                        <ul>
+                            <li><strong>order:</strong> Visually reorder items — <code>order: 2;</code> (higher number = later)</li>
+                            <li><strong>flex-grow:</strong> How much item grows — <code>flex-grow: 1;</code> (1 = takes available space, 0 = doesn't grow)</li>
+                            <li><strong>flex-shrink:</strong> How much item shrinks — <code>flex-shrink: 1;</code> (default, 0 = doesn't shrink)</li>
+                            <li><strong>flex-basis:</strong> Initial size before growing/shrinking — <code>flex-basis: 200px;</code>, <code>auto</code> (default)</li>
+                            <li><strong>flex shorthand:</strong> <code>flex: grow shrink basis;</code> — <code>flex: 1 0 auto;</code></li>
+                            <li><strong>flex: 1;</strong> — shorthand for <code>flex: 1 1 0;</code> — item takes equal space</li>
+                            <li><strong>align-self:</strong> Override align-items for one item — <code>align-self: center;</code></li>
+                            <li><strong>margin: auto;</strong> — Pushes item to the edge — <code>margin-left: auto;</code> (pushes to right)</li>
+                        </ul>
+                        <p>💡 <strong>Pro Tip:</strong> Use <code>flex: 1</code> to equally distribute space among items. Use <code>margin-left: auto</code> for creating separators (like pushing a button to the right).</p>
+                    `
+        }, {
+            id: 17,
+            name: 'Grid Container',
+            subs: ['display: grid', 'grid-template-columns', 'grid-template-rows', 'grid-template-areas', 'gap', 'justify-items', 'align-items', 'place-items', 'grid-auto-flow', 'grid-auto-density'],
+            explanation: `
+                        <p><strong>CSS Grid</strong> is a 2D layout system for arranging items in rows and columns. It's the most powerful layout system in CSS.</p>
+                        <p><strong>Grid Container Properties:</strong></p>
+                        <ul>
+                            <li><strong>display: grid;</strong> — Enables Grid</li>
+                            <li><strong>grid-template-columns:</strong> Defines columns — <code>grid-template-columns: 1fr 1fr 1fr;</code> (3 equal columns)</li>
+                            <li><strong>grid-template-rows:</strong> Defines rows — <code>grid-template-rows: 100px auto 50px;</code></li>
+                            <li><strong>grid-template-areas:</strong> Named areas — <code>grid-template-areas: 'header header' 'sidebar main' 'footer footer';</code></li>
+                            <li><strong>gap:</strong> Space between cells — <code>gap: 10px;</code> (row-gap and column-gap)</li>
+                            <li><strong>justify-items:</strong> Aligns items horizontally — <code>start</code>, <code>center</code>, <code>end</code>, <code>stretch</code> (default)</li>
+                            <li><strong>align-items:</strong> Aligns items vertically — same values as justify-items</li>
+                            <li><strong>place-items:</strong> Shorthand for align-items + justify-items — <code>place-items: center;</code></li>
+                            <li><strong>grid-auto-flow:</strong> Controls auto-placement — <code>row</code> (default), <code>column</code>, <code>dense</code></li>
+                        </ul>
+                        <p>💡 <strong>Pro Tip:</strong> Use <span class="highlight">Grid</span> for complex layouts, Flexbox for simpler ones. <code>grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));</code> creates responsive columns.</p>
+                    `
+        }, {
+            id: 18,
+            name: 'Grid Items',
+            subs: ['grid-column', 'grid-row', 'grid-area', 'align-self', 'justify-self', 'place-self', 'span', 'named lines', 'auto-placement', 'order'],
+            explanation: `
+                        <p><strong>Grid Item</strong> properties place items inside the grid.</p>
+                        <p><strong>Grid Item Properties:</strong></p>
+                        <ul>
+                            <li><strong>grid-column:</strong> Column placement — <code>grid-column: 1 / 3;</code> (starts at 1, ends at 3)</li>
+                            <li><strong>grid-row:</strong> Row placement — <code>grid-row: 1 / 2;</code></li>
+                            <li><strong>grid-area:</strong> Named area or row/column — <code>grid-area: header;</code> or <code>grid-area: 1 / 1 / 3 / 3;</code></li>
+                            <li><strong>span:</strong> Take multiple cells — <code>grid-column: span 2;</code> (takes 2 columns)</li>
+                            <li><strong>align-self:</strong> Override align-items for one item — <code>align-self: center;</code></li>
+                            <li><strong>justify-self:</strong> Override justify-items for one item — <code>justify-self: center;</code></li>
+                            <li><strong>place-self:</strong> Shorthand for align-self + justify-self</li>
+                            <li><strong>Named lines:</strong> Define custom line names — <code>grid-template-columns: [main-start] 1fr [main-end];</code></li>
+                            <li><strong>auto-placement:</strong> Items placed automatically based on order</li>
+                        </ul>
+                        <p>💡 <strong>Pro Tip:</strong> Use <code>grid-column: span 2</code> to make an item wider. Use <code>grid-area</code> with named areas for clean, semantic layout.</p>
+                    `
+        }, {
+            id: 19,
+            name: 'Grid Advanced',
+            subs: ['auto-fill', 'auto-fit', 'minmax()', 'repeat()', 'subgrid', 'dense', 'masonry', 'named areas', 'nested grid', 'implicit grid'],
+            explanation: `
+                        <p><strong>Advanced Grid</strong> techniques for powerful, responsive layouts.</p>
+                        <p><strong>Advanced Features:</strong></p>
+                        <ul>
+                            <li><strong>auto-fill:</strong> Creates as many columns as fit — <code>repeat(auto-fill, minmax(200px, 1fr));</code></li>
+                            <li><strong>auto-fit:</strong> Same as auto-fill but collapses empty columns — creates responsive grid</li>
+                            <li><strong>minmax():</strong> Sets minimum and maximum size — <code>minmax(200px, 1fr)</code></li>
+                            <li><strong>repeat():</strong> Repeats patterns — <code>repeat(3, 1fr)</code></li>
+                            <li><strong>subgrid:</strong> Inherits grid from parent — <code>grid-template-rows: subgrid;</code></li>
+                            <li><strong>dense:</strong> Pack items tightly — <code>grid-auto-flow: dense;</code></li>
+                            <li><strong>masonry:</strong> Pinterest-style layout — <code>grid-template-rows: masonry;</code></li>
+                            <li><strong>Named areas:</strong> Create named grid areas for semantic layout</li>
+                            <li><strong>Nested grid:</strong> Grid inside a grid item</li>
+                            <li><strong>Implicit grid:</strong> Auto-created rows/columns when items exceed defined grid</li>
+                        </ul>
+                        <p>💡 <strong>Pro Tip:</strong> <code>repeat(auto-fit, minmax(250px, 1fr))</code> is the <span class="highlight">holy grail</span> of responsive grids! It creates flexible columns that adjust to screen size.</p>
+                    `
+        }, {
+            id: 20,
+            name: 'Pseudo Classes — Hover & States',
+            subs: [':hover', ':active', ':focus', ':focus-visible', ':focus-within', ':visited', ':link', ':any-link', ':target', ':root'],
+            explanation: `
+                        <p><strong>Pseudo-classes</strong> apply styles based on element state or position. They make interactions dynamic.</p>
+                        <p><strong>Interactive Pseudo-classes:</strong></p>
+                        <ul>
+                            <li><strong>:hover</strong> — Mouse over element — <code>button:hover { background: red; }</code></li>
+                            <li><strong>:active</strong> — When clicked — <code>button:active { transform: scale(0.95); }</code></li>
+                            <li><strong>:focus</strong> — When focused (keyboard/tab) — <code>input:focus { border-color: blue; }</code></li>
+                            <li><strong>:focus-visible</strong> — Focus indicator (accessibility) — <code>button:focus-visible { outline: 2px solid blue; }</code></li>
+                            <li><strong>:focus-within</strong> — When any child is focused — <code>form:focus-within { border-color: blue; }</code></li>
+                            <li><strong>:visited</strong> — Visited links — <code>a:visited { color: purple; }</code></li>
+                            <li><strong>:link</strong> — Unvisited links — <code>a:link { color: blue; }</code></li>
+                            <li><strong>:any-link</strong> — Matches any link (visited or unvisited)</li>
+                            <li><strong>:target</strong> — Element targeted by URL hash — <code>#section:target { background: yellow; }</code></li>
+                            <li><strong>:root</strong> — The <code>&lt;html&gt;</code> element — used for CSS variables</li>
+                        </ul>
+                        <p>💡 <strong>Pro Tip:</strong> Use <code>:focus-visible</code> for accessible focus styles. Never remove <code>outline</code> without replacing it with a visible focus indicator.</p>
+                    `
+        }, {
+            id: 21,
+            name: 'Pseudo Classes — Child',
+            subs: [':first-child', ':last-child', ':nth-child()', ':nth-last-child()', ':only-child', ':first-of-type', ':last-of-type', ':nth-of-type()', ':nth-last-of-type()', ':only-of-type'],
+            explanation: `
+                        <p><strong>Child pseudo-classes</strong> target elements based on their position among siblings.</p>
+                        <p><strong>Child Pseudo-classes:</strong></p>
+                        <ul>
+                            <li><strong>:first-child</strong> — First child of parent — <code>li:first-child { color: red; }</code></li>
+                            <li><strong>:last-child</strong> — Last child of parent — <code>li:last-child { border: none; }</code></li>
+                            <li><strong>:nth-child(n)</strong> — Every nth child — <code>li:nth-child(2n) { background: #f0f0f0; }</code> (even rows)</li>
+                            <li><strong>:nth-child(odd/even)</strong> — Odd or even children — <code>li:nth-child(odd) { background: white; }</code></li>
+                            <li><strong>:nth-child(3n+1)</strong> — Every 3rd starting at 1 — custom patterns</li>
+                            <li><strong>:nth-last-child()</strong> — From the end — <code>li:nth-last-child(2) { color: red; }</code></li>
+                            <li><strong>:only-child</strong> — Only child of parent — <code>p:only-child { font-size: 20px; }</code></li>
+                            <li><strong>:first-of-type</strong> — First of its type — <code>p:first-of-type { color: blue; }</code></li>
+                            <li><strong>:last-of-type</strong> — Last of its type — <code>p:last-of-type { color: blue; }</code></li>
+                            <li><strong>:nth-of-type()</strong> — Nth of its type — <code>p:nth-of-type(2) { color: blue; }</code></li>
+                            <li><strong>:only-of-type</strong> — Only of its type — <code>p:only-of-type { color: blue; }</code></li>
+                        </ul>
+                        <p>💡 <strong>Pro Tip:</strong> Use <code>li:nth-child(odd)</code> for <span class="highlight">zebra striping</span> tables and lists. Use <code>:nth-of-type</code> when elements have different types.</p>
+                    `
+        }, {
+            id: 22,
+            name: 'Pseudo Classes — Logical',
+            subs: [':not()', ':is()', ':where()', ':has()', ':empty', ':blank', ':scope', ':defined', ':host', ':host-context()'],
+            explanation: `
+                        <p><strong>Logical pseudo-classes</strong> enable complex, powerful selections.</p>
+                        <p><strong>Logical Pseudo-classes:</strong></p>
+                        <ul>
+                            <li><strong>:not(selector)</strong> — Exclude elements — <code>p:not(.special) { color: red; }</code> (all p without class "special")</li>
+                            <li><strong>:is(selectors)</strong> — Match any selector in list — <code>:is(h1, h2, h3) { color: blue; }</code></li>
+                            <li><strong>:where(selectors)</strong> — Same as :is but <span class="highlight">zero specificity</span> — <code>:where(.btn, .button) { color: white; }</code></li>
+                            <li><strong>:has(selector)</strong> — Parent selector — <code>article:has(img) { padding: 20px; }</code> (articles with images)</li>
+                            <li><strong>:empty</strong> — Elements with no children — <code>div:empty { display: none; }</code></li>
+                            <li><strong>:blank</strong> — Similar to :empty but also whitespace</li>
+                            <li><strong>:scope</strong> — The local scope element</li>
+                            <li><strong>:defined</strong> — Custom elements that are defined</li>
+                            <li><strong>:host</strong> — Shadow DOM host element</li>
+                            <li><strong>:host-context()</strong> — Shadow DOM host with context</li>
+                        </ul>
+                        <p>💡 <strong>Pro Tip:</strong> <code>:has()</code> is a <span class="highlight">game changer</span>! It allows parent selection — e.g., <code>.card:has(img) { border-radius: 10px; }</code></p>
+                    `
+        }, {
+            id: 23,
+            name: 'Pseudo Classes — Form',
+            subs: [':enabled', ':disabled', ':checked', ':indeterminate', ':valid', ':invalid', ':in-range', ':out-of-range', ':required', ':optional'],
+            explanation: `
+                        <p><strong>Form pseudo-classes</strong> style form elements based on their state.</p>
+                        <p><strong>Form Pseudo-classes:</strong></p>
+                        <ul>
+                            <li><strong>:enabled</strong> — Enabled form elements — <code>input:enabled { background: white; }</code></li>
+                            <li><strong>:disabled</strong> — Disabled form elements — <code>input:disabled { opacity: 0.5; }</code></li>
+                            <li><strong>:checked</strong> — Checked checkbox/radio — <code>input:checked { accent-color: red; }</code></li>
+                            <li><strong>:indeterminate</strong> — Indeterminate state (checkbox)</li>
+                            <li><strong>:valid</strong> — Valid input — <code>input:valid { border-color: green; }</code></li>
+                            <li><strong>:invalid</strong> — Invalid input — <code>input:invalid { border-color: red; }</code></li>
+                            <li><strong>:in-range</strong> — Value within range — <code>input:in-range { border-color: green; }</code></li>
+                            <li><strong>:out-of-range</strong> — Value outside range — <code>input:out-of-range { border-color: red; }</code></li>
+                            <li><strong>:required</strong> — Required field — <code>input:required { border-color: blue; }</code></li>
+                            <li><strong>:optional</strong> — Optional field — <code>input:optional { opacity: 0.8; }</code></li>
+                        </ul>
+                        <p>💡 <strong>Pro Tip:</strong> Use <code>input:valid</code> and <code>input:invalid</code> for <span class="highlight">real-time form validation</span> feedback!</p>
+                    `
+        }, {
+            id: 24,
+            name: 'Pseudo Elements',
+            subs: ['::before', '::after', '::first-letter', '::first-line', '::selection', '::marker', '::placeholder', '::backdrop', '::file-selector-button', '::spelling-error'],
+            explanation: `
+                        <p><strong>Pseudo-elements</strong> style specific parts of an element. They use double colon <code>::</code>.</p>
+                        <p><strong>Pseudo-elements:</strong></p>
+                        <ul>
+                            <li><strong>::before</strong> — Insert content <span class="highlight">before</span> element — <code>h1::before { content: '⭐'; }</code></li>
+                            <li><strong>::after</strong> — Insert content <span class="highlight">after</span> element — <code>h1::after { content: ' ✨'; }</code></li>
+                            <li><strong>::first-letter</strong> — First letter of text — <code>p::first-letter { font-size: 2em; color: red; }</code></li>
+                            <li><strong>::first-line</strong> — First line of text — <code>p::first-line { font-weight: bold; }</code></li>
+                            <li><strong>::selection</strong> — Selected text — <code>::selection { background: yellow; color: black; }</code></li>
+                            <li><strong>::marker</strong> — List item marker — <code>li::marker { color: red; }</code></li>
+                            <li><strong>::placeholder</strong> — Input placeholder — <code>input::placeholder { color: gray; }</code></li>
+                            <li><strong>::backdrop</strong> — Fullscreen backdrop — <code>video::backdrop { background: black; }</code></li>
+                            <li><strong>::file-selector-button</strong> — File input button — <code>input::file-selector-button { background: blue; }</code></li>
+                            <li><strong>::spelling-error</strong> — Spelling errors — <code>::spelling-error { text-decoration: wavy red; }</code></li>
+                        </ul>
+                        <p>💡 <strong>Pro Tip:</strong> Use <code>::before</code> and <code>::after</code> with <code>content: ''</code> to add <span class="highlight">decorative elements</span> like icons, badges, and ribbons.</p>
+                    `
+        }, {
+            id: 25,
+            name: 'Transitions',
+            subs: ['transition-property', 'transition-duration', 'transition-timing-function', 'transition-delay', 'shorthand', 'all', 'multiple', 'steps()', 'cubic-bezier()', 'easing'],
+            explanation: `
+                        <p><strong>Transitions</strong> smoothly animate property changes over time. They make interactions feel natural.</p>
+                        <p><strong>Transition Properties:</strong></p>
+                        <ul>
+                            <li><strong>transition-property:</strong> Which property to animate — <code>transition-property: background-color;</code></li>
+                            <li><strong>transition-duration:</strong> How long it takes — <code>transition-duration: 0.3s;</code></li>
+                            <li><strong>transition-timing-function:</strong> Easing — <code>ease</code>, <code>linear</code>, <code>ease-in</code>, <code>ease-out</code>, <code>ease-in-out</code></li>
+                            <li><strong>transition-delay:</strong> Wait before starting — <code>transition-delay: 0.2s;</code></li>
+                            <li><strong>Shorthand:</strong> <code>transition: property duration timing delay;</code> — <code>transition: all 0.3s ease;</code></li>
+                            <li><strong>all:</strong> Animate all animatable properties — <code>transition: all 0.3s;</code></li>
+                            <li><strong>Multiple:</strong> <code>transition: background 0.3s, transform 0.5s;</code></li>
+                            <li><strong>steps():</strong> Frame-by-frame animation — <code>transition-timing-function: steps(4);</code></li>
+                            <li><strong>cubic-bezier():</strong> Custom easing — <code>cubic-bezier(0.25, 0.1, 0.25, 1)</code></li>
+                        </ul>
+                        <p>💡 <strong>Pro Tip:</strong> Use <code>transition: all 0.3s ease</code> for <span class="highlight">smooth hover effects</span>. Avoid animating <code>width</code> and <code>height</code> for performance.</p>
+                    `
+        }, {
+            id: 26,
+            name: 'Transforms 2D',
+            subs: ['translate()', 'translateX()', 'translateY()', 'rotate()', 'scale()', 'scaleX()', 'scaleY()', 'skew()', 'skewX()', 'matrix()'],
+            explanation: `
+                        <p><strong>2D Transforms</strong> change the position, size, and shape of elements.</p>
+                        <p><strong>2D Transform Functions:</strong></p>
+                        <ul>
+                            <li><strong>translate(x, y):</strong> Move element — <code>transform: translate(50px, 100px);</code></li>
+                            <li><strong>translateX(x):</strong> Move horizontally — <code>transform: translateX(50px);</code></li>
+                            <li><strong>translateY(y):</strong> Move vertically — <code>transform: translateY(50px);</code></li>
+                            <li><strong>rotate(deg):</strong> Rotate element — <code>transform: rotate(45deg);</code></li>
+                            <li><strong>scale(x, y):</strong> Resize element — <code>transform: scale(1.5, 1.5);</code></li>
+                            <li><strong>scaleX(x):</strong> Resize horizontally — <code>transform: scaleX(2);</code></li>
+                            <li><strong>scaleY(y):</strong> Resize vertically — <code>transform: scaleY(2);</code></li>
+                            <li><strong>skew(deg, deg):</strong> Skew element — <code>transform: skew(10deg, 10deg);</code></li>
+                            <li><strong>skewX(deg):</strong> Skew horizontally — <code>transform: skewX(10deg);</code></li>
+                            <li><strong>matrix(a, b, c, d, e, f):</strong> Combine all transforms — rarely used directly</li>
+                        </ul>
+                        <p>💡 <strong>Pro Tip:</strong> Use <code>transform: translate(-50%, -50%)</code> for <span class="highlight">perfect centering</span> with <code>position: absolute</code>.</p>
+                    `
+        }, {
+            id: 27,
+            name: 'Transforms 3D',
+            subs: ['translate3d()', 'translateZ()', 'rotateX()', 'rotateY()', 'rotateZ()', 'scale3d()', 'scaleZ()', 'perspective()', 'transform-origin', 'transform-style'],
+            explanation: `
+                        <p><strong>3D Transforms</strong> create 3D effects like depth, flips, and rotations in space.</p>
+                        <p><strong>3D Transform Functions:</strong></p>
+                        <ul>
+                            <li><strong>translate3d(x, y, z):</strong> Move in 3D space — <code>transform: translate3d(50px, 100px, 20px);</code></li>
+                            <li><strong>translateZ(z):</strong> Move on Z-axis — <code>transform: translateZ(50px);</code></li>
+                            <li><strong>rotateX(deg):</strong> Rotate on X-axis — <code>transform: rotateX(45deg);</code></li>
+                            <li><strong>rotateY(deg):</strong> Rotate on Y-axis — <code>transform: rotateY(45deg);</code></li>
+                            <li><strong>rotateZ(deg):</strong> Rotate on Z-axis — <code>transform: rotateZ(45deg);</code></li>
+                            <li><strong>scale3d(x, y, z):</strong> Scale in 3D — <code>transform: scale3d(1.5, 1.5, 1.2);</code></li>
+                            <li><strong>scaleZ(z):</strong> Scale on Z-axis — <code>transform: scaleZ(1.5);</code></li>
+                            <li><strong>perspective():</strong> Depth effect — <code>transform: perspective(800px) rotateY(45deg);</code></li>
+                            <li><strong>transform-origin:</strong> Where transform originates — <code>transform-origin: center center;</code></li>
+                            <li><strong>transform-style: preserve-3d;</strong> — Keeps 3D space for children</li>
+                        </ul>
+                        <p>💡 <strong>Pro Tip:</strong> Combine <code>perspective</code> with <code>rotateY</code> for <span class="highlight">3D card flips</span>! <code>transform-style: preserve-3d</code> is essential for nested 3D.</p>
+                    `
+        }, {
+            id: 28,
+            name: 'Animations Basics',
+            subs: ['@keyframes', 'animation-name', 'animation-duration', 'animation-timing-function', 'animation-delay', 'animation-iteration-count', 'animation-direction', 'animation-fill-mode', 'animation-play-state', 'shorthand'],
+            explanation: `
+                        <p><strong>Animations</strong> create complex, repeatable motion. They're more powerful than transitions.</p>
+                        <p><strong>Animation Components:</strong></p>
+                        <ul>
+                            <li><strong>@keyframes:</strong> Define animation steps — <code>@keyframes slideIn { 0% { transform: translateX(-100%); } 100% { transform: translateX(0); } }</code></li>
+                            <li><strong>animation-name:</strong> Name of keyframes — <code>animation-name: slideIn;</code></li>
+                            <li><strong>animation-duration:</strong> Total time — <code>animation-duration: 1s;</code></li>
+                            <li><strong>animation-timing-function:</strong> Easing — <code>ease</code>, <code>linear</code>, <code>ease-in-out</code></li>
+                            <li><strong>animation-delay:</strong> Wait before start — <code>animation-delay: 0.5s;</code></li>
+                            <li><strong>animation-iteration-count:</strong> Number of times — <code>infinite</code> or number</li>
+                            <li><strong>animation-direction:</strong> Direction — <code>normal</code>, <code>reverse</code>, <code>alternate</code>, <code>alternate-reverse</code></li>
+                            <li><strong>animation-fill-mode:</strong> Styles after animation — <code>forwards</code>, <code>backwards</code>, <code>both</code></li>
+                            <li><strong>animation-play-state:</strong> Pause/resume — <code>running</code>, <code>paused</code></li>
+                            <li><strong>Shorthand:</strong> <code>animation: name duration timing delay count direction fill-mode;</code></li>
+                        </ul>
+                        <p>💡 <strong>Pro Tip:</strong> Use <code>animation: slideIn 1s ease forwards</code> for <span class="highlight">entry animations</span>. Use <code>infinite</code> for continuous animations like loading spinners.</p>
+                    `
+        }, {
+            id: 29,
+            name: 'Animations Advanced',
+            subs: ['multiple animations', 'keyframes selectors', 'steps()', 'reverse', 'alternate', 'forwards', 'backwards', 'event listeners', 'performance', 'will-change'],
+            explanation: `
+                        <p><strong>Advanced animations</strong> for complex effects and better performance.</p>
+                        <p><strong>Advanced Features:</strong></p>
+                        <ul>
+                            <li><strong>Multiple animations:</strong> <code>animation: slideIn 1s ease, fadeIn 2s ease;</code></li>
+                            <li><strong>Keyframes selectors:</strong> Use <code>%</code> or <code>from</code>/<code>to</code> — <code>0% { opacity: 0; } 50% { opacity: 0.5; } 100% { opacity: 1; }</code></li>
+                            <li><strong>steps():</strong> Frame-by-frame animation — <code>animation-timing-function: steps(4);</code> — sprite animations</li>
+                            <li><strong>Alternate:</strong> <code>animation-direction: alternate;</code> — goes forward then backward</li>
+                            <li><strong>Forwards:</strong> <code>animation-fill-mode: forwards;</code> — retains final state</li>
+                            <li><strong>Backwards:</strong> <code>animation-fill-mode: backwards;</code> — applies start state before delay</li>
+                            <li><strong>Event listeners:</strong> <code>animationstart</code>, <code>animationend</code>, <code>animationiteration</code> — JavaScript events</li>
+                            <li><strong>Performance:</strong> Animate <code>transform</code> and <code>opacity</code> only — they're GPU-accelerated</li>
+                            <li><strong>will-change:</strong> Hint browser to optimize — <code>will-change: transform, opacity;</code></li>
+                        </ul>
+                        <p>💡 <strong>Pro Tip:</strong> Use <span class="highlight"><code>will-change</code></span> for animations that are heavy or continuous. Always animate <code>transform</code> and <code>opacity</code> for 60fps performance.</p>
+                    `
+        }, {
+            id: 30,
+            name: 'Media Queries',
+            subs: ['max-width', 'min-width', 'orientation', 'aspect-ratio', 'resolution', 'device-width', 'device-height', 'print', 'prefers-color-scheme', 'scripting'],
+            explanation: `
+                        <p><strong>Media Queries</strong> make your site responsive. They apply styles based on device characteristics.</p>
+                        <p><strong>Media Query Features:</strong></p>
+                        <ul>
+                            <li><strong>max-width:</strong> Apply below this width — <code>@media (max-width: 768px) { ... }</code></li>
+                            <li><strong>min-width:</strong> Apply above this width — <code>@media (min-width: 769px) { ... }</code></li>
+                            <li><strong>orientation:</strong> Portrait or landscape — <code>@media (orientation: portrait) { ... }</code></li>
+                            <li><strong>aspect-ratio:</strong> Screen ratio — <code>@media (aspect-ratio: 16/9) { ... }</code></li>
+                            <li><strong>resolution:</strong> DPI / DPPX — <code>@media (resolution: 2dppx) { ... }</code></li>
+                            <li><strong>device-width:</strong> Device width (use min-width instead)</li>
+                            <li><strong>device-height:</strong> Device height (use min-height instead)</li>
+                            <li><strong>print:</strong> Print styles — <code>@media print { .no-print { display: none; } }</code></li>
+                            <li><strong>prefers-color-scheme:</strong> Dark or light mode — <code>@media (prefers-color-scheme: dark) { ... }</code></li>
+                            <li><strong>scripting:</strong> JavaScript enabled/disabled — <code>@media (scripting: enabled) { ... }</code></li>
+                        </ul>
+                        <p>💡 <strong>Pro Tip:</strong> Use <span class="highlight">Mobile First</span> approach — write styles for mobile first, then use <code>min-width</code> for larger screens.</p>
+                    `
+        }, {
+            id: 31,
+            name: 'Responsive Design',
+            subs: ['Mobile First', 'Desktop First', 'Breakpoints', 'Viewport', 'vw/vh', 'rem/em', 'Fluid Typography', 'Grid/Flex', 'Images', 'Media Features'],
+            explanation: `
+                        <p><strong>Responsive Design</strong> ensures your site works on all devices — from phones to desktops.</p>
+                        <p><strong>Responsive Strategies:</strong></p>
+                        <ul>
+                            <li><strong>Mobile First:</strong> Start with mobile styles, add desktop styles with <code>min-width</code> queries</li>
+                            <li><strong>Desktop First:</strong> Start with desktop styles, add mobile styles with <code>max-width</code> queries</li>
+                            <li><strong>Common breakpoints:</strong> 480px (phones), 768px (tablets), 1024px (laptops), 1200px (desktops)</li>
+                            <li><strong>Viewport:</strong> <code>&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;</code> — essential for mobile</li>
+                            <li><strong>Fluid Typography:</strong> <code>font-size: clamp(1rem, 2.5vw, 2rem);</code> — scales automatically</li>
+                            <li><strong>Responsive Images:</strong> <code>img { max-width: 100%; height: auto; }</code></li>
+                            <li><strong>Grid/Flex:</strong> Use <code>repeat(auto-fit, minmax(250px, 1fr))</code> for responsive grids</li>
+                            <li><strong>Media Features:</strong> <code>prefers-reduced-motion</code>, <code>prefers-color-scheme</code></li>
+                        </ul>
+                        <p>💡 <strong>Pro Tip:</strong> Use <span class="highlight"><code>clamp()</code></span> for fluid typography — <code>font-size: clamp(16px, 2vw, 24px)</code>. Always test on real devices!</p>
+                    `
+        }, {
+            id: 32,
+            name: 'CSS Variables',
+            subs: ['custom properties', 'var()', 'fallback', 'scope', 'global', 'local', 'inheritance', 'calc() with variables', 'dynamic theming', 'JavaScript'],
+            explanation: `
+                        <p><strong>CSS Variables</strong> (Custom Properties) store reusable values. They make theming and maintenance easy.</p>
+                        <p><strong>CSS Variables:</strong></p>
+                        <ul>
+                            <li><strong>Declare:</strong> <code>--primary-color: #e94560;</code> — always start with <code>--</code></li>
+                            <li><strong>Use:</strong> <code>color: var(--primary-color);</code> — use <code>var()</code> function</li>
+                            <li><strong>Fallback:</strong> <code>color: var(--primary-color, red);</code> — fallback if variable doesn't exist</li>
+                            <li><strong>Global scope:</strong> Declare in <code>:root { --color: blue; }</code> — accessible everywhere</li>
+                            <li><strong>Local scope:</strong> Declare in a selector — only accessible in that selector and children</li>
+                            <li><strong>Inheritance:</strong> Variables inherit like normal properties</li>
+                            <li><strong>calc() with variables:</strong> <code>width: calc(100% - var(--spacing));</code></li>
+                            <li><strong>Dynamic theming:</strong> Change variables with JavaScript — <code>document.documentElement.style.setProperty('--color', 'red');</code></li>
+                            <li><strong>Accessibility:</strong> Use variables for consistent theming</li>
+                        </ul>
+                        <p>💡 <strong>Pro Tip:</strong> Use CSS variables for <span class="highlight">easy light/dark mode</span>! Change variables with JavaScript or media queries.</p>
+                    `
+        }, {
+            id: 33,
+            name: 'CSS Functions',
+            subs: ['calc()', 'min()', 'max()', 'clamp()', 'attr()', 'var()', 'url()', 'rgb()', 'hsl()', 'counter()'],
+            explanation: `
+                        <p><strong>CSS Functions</strong> provide dynamic values and calculations.</p>
+                        <p><strong>CSS Functions:</strong></p>
+                        <ul>
+                            <li><strong>calc():</strong> Mathematical operations — <code>width: calc(100% - 20px);</code> — supports +, -, *, /</li>
+                            <li><strong>min():</strong> Choose smaller value — <code>width: min(100%, 800px);</code></li>
+                            <li><strong>max():</strong> Choose larger value — <code>font-size: max(16px, 2vw);</code></li>
+                            <li><strong>clamp():</strong> Clamp between min and max — <code>font-size: clamp(16px, 2vw, 24px);</code> — <span class="highlight">best for responsive</span></li>
+                            <li><strong>attr():</strong> Use attribute value — <code>content: attr(data-tooltip);</code></li>
+                            <li><strong>var():</strong> Use CSS variable — <code>color: var(--primary-color);</code></li>
+                            <li><strong>url():</strong> Use image URL — <code>background-image: url('image.jpg');</code></li>
+                            <li><strong>rgb() / rgba():</strong> RGB color — <code>color: rgb(255, 0, 0);</code></li>
+                            <li><strong>hsl() / hsla():</strong> HSL color — <code>color: hsl(0, 100%, 50%);</code></li>
+                            <li><strong>counter():</strong> Auto-numbering — <code>content: counter(list);</code></li>
+                        </ul>
+                        <p>💡 <strong>Pro Tip:</strong> Use <span class="highlight"><code>clamp()</code></span> for font sizes, widths, and spacing — it's the most powerful responsive tool!</p>
+                    `
+        }, {
+            id: 34,
+            name: 'Filters',
+            subs: ['blur()', 'brightness()', 'contrast()', 'grayscale()', 'invert()', 'hue-rotate()', 'opacity()', 'saturate()', 'sepia()', 'drop-shadow()'],
+            explanation: `
+                        <p><strong>Filters</strong> apply visual effects to images and elements.</p>
+                        <p><strong>Filter Functions:</strong></p>
+                        <ul>
+                            <li><strong>blur(px):</strong> Blur effect — <code>filter: blur(5px);</code></li>
+                            <li><strong>brightness(%):</strong> Lighten/darken — <code>filter: brightness(150%);</code></li>
+                            <li><strong>contrast(%):</strong> Increase/decrease contrast — <code>filter: contrast(200%);</code></li>
+                            <li><strong>grayscale(%):</strong> Black & white — <code>filter: grayscale(100%);</code> (1 = full black & white)</li>
+                            <li><strong>invert(%):</strong> Invert colors — <code>filter: invert(100%);</code></li>
+                            <li><strong>hue-rotate(deg):</strong> Rotate hue — <code>filter: hue-rotate(180deg);</code></li>
+                            <li><strong>opacity(%):</strong> Transparency — <code>filter: opacity(50%);</code></li>
+                            <li><strong>saturate(%):</strong> Color intensity — <code>filter: saturate(200%);</code></li>
+                            <li><strong>sepia(%):</strong> Sepia tone — <code>filter: sepia(100%);</code></li>
+                            <li><strong>drop-shadow():</strong> Shadow effect — <code>filter: drop-shadow(2px 4px 6px black);</code></li>
+                        </ul>
+                        <p>💡 <strong>Pro Tip:</strong> Use <code>filter: grayscale(1)</code> for <span class="highlight">black & white images</span>. Multiple filters: <code>filter: blur(2px) brightness(0.8);</code></p>
+                    `
+        }, {
+            id: 35,
+            name: 'Backdrop Filters',
+            subs: ['blur()', 'brightness()', 'contrast()', 'grayscale()', 'invert()', 'hue-rotate()', 'opacity()', 'saturate()', 'sepia()', 'drop-shadow()'],
+            explanation: `
+                        <p><strong>Backdrop Filters</strong> apply effects to the area behind an element, creating stunning visual effects.</p>
+                        <p><strong>Backdrop Filter Functions:</strong></p>
+                        <ul>
+                            <li><strong>backdrop-filter: blur(10px);</strong> — <span class="highlight">Frosted glass</span> effect</li>
+                            <li><strong>backdrop-filter: brightness(0.5);</strong> — Darken the background</li>
+                            <li><strong>backdrop-filter: contrast(2);</strong> — Increase contrast behind</li>
+                            <li><strong>backdrop-filter: grayscale(0.5);</strong> — Desaturate background</li>
+                            <li><strong>backdrop-filter: invert(0.5);</strong> — Partial invert</li>
+                            <li><strong>backdrop-filter: hue-rotate(180deg);</strong> — Rotate hue of background</li>
+                            <li><strong>backdrop-filter: saturate(2);</strong> — More colorful background</li>
+                            <li><strong>backdrop-filter: sepia(0.5);</strong> — Sepia tone background</li>
+                            <li><strong>backdrop-filter: drop-shadow(...);</strong> — Shadow on background</li>
+                            <li><strong>Multiple:</strong> <code>backdrop-filter: blur(10px) brightness(0.8);</code></li>
+                        </ul>
+                        <p>💡 <strong>Pro Tip:</strong> Combine <code>backdrop-filter: blur(10px)</code> with <code>background: rgba(255,255,255,0.1)</code> for <span class="highlight">glassmorphism</span> — the most popular design trend!</p>
+                    `
+        }, {
+            id: 36,
+            name: 'Shadows Complete',
+            subs: ['box-shadow', 'text-shadow', 'multiple shadows', 'inset', 'spread', 'drop-shadow filter', 'neon effect', 'depth', 'floating', 'accessibility'],
+            explanation: `
+                        <p><strong>Shadows</strong> add depth, dimension, and visual hierarchy to elements.</p>
+                        <p><strong>Shadow Properties:</strong></p>
+                        <ul>
+                            <li><strong>box-shadow:</strong> Adds shadow to box — <code>box-shadow: 2px 4px 8px rgba(0,0,0,0.3);</code></li>
+                            <li><strong>text-shadow:</strong> Adds shadow to text — <code>text-shadow: 2px 2px 4px rgba(0,0,0,0.3);</code></li>
+                            <li><strong>Multiple shadows:</strong> <code>box-shadow: 2px 2px 4px red, 4px 4px 8px blue;</code></li>
+                            <li><strong>inset:</strong> Inner shadow — <code>box-shadow: inset 2px 2px 4px rgba(0,0,0,0.3);</code></li>
+                            <li><strong>spread:</strong> Shadow expansion — <code>box-shadow: 2px 4px 8px 4px rgba(0,0,0,0.3);</code></li>
+                            <li><strong>drop-shadow() filter:</strong> Shadow filter — <code>filter: drop-shadow(2px 4px 6px black);</code></li>
+                            <li><strong>Neon effect:</strong> Colored glow — <code>text-shadow: 0 0 10px #e94560, 0 0 20px #e94560;</code></li>
+                            <li><strong>Depth:</strong> <code>box-shadow: 0 10px 40px rgba(0,0,0,0.2);</code> — elevated cards</li>
+                            <li><strong>Floating:</strong> <code>box-shadow: 0 20px 60px rgba(0,0,0,0.15);</code></li>
+                            <li><strong>Accessibility:</strong> Ensure sufficient contrast with text-shadow</li>
+                        </ul>
+                        <p>💡 <strong>Pro Tip:</strong> Use <code>box-shadow: 0 10px 40px rgba(0,0,0,0.2)</code> for <span class="highlight">elevated cards</span>. Use <code>text-shadow: 0 0 10px #color</code> for neon effects.</p>
+                    `
+        }, {
+            id: 37,
+            name: 'Outlines',
+            subs: ['outline-style', 'outline-width', 'outline-color', 'outline-offset', 'shorthand', 'auto', 'different sides', 'outline-radius', 'focus outline', 'accessibility'],
+            explanation: `
+                        <p><strong>Outlines</strong> are similar to borders but they don't affect layout. They're often used for focus indicators.</p>
+                        <p><strong>Outline Properties:</strong></p>
+                        <ul>
+                            <li><strong>outline-style:</strong> <code>solid</code>, <code>dashed</code>, <code>dotted</code>, <code>double</code></li>
+                            <li><strong>outline-width:</strong> <code>thin</code>, <code>medium</code>, <code>thick</code>, <code>px</code></li>
+                            <li><strong>outline-color:</strong> Any color value</li>
+                            <li><strong>outline-offset:</strong> Space between border and outline — <code>outline-offset: 2px;</code></li>
+                            <li><strong>Shorthand:</strong> <code>outline: width style color;</code></li>
+                            <li><strong>outline: auto;</strong> — Browser default focus ring (accessibility)</li>
+                            <li><strong>Different sides:</strong> Use individual sides with <code>outline-top</code> etc. (limited support)</li>
+                            <li><strong>outline-radius:</strong> Rounded corners for outline (limited support)</li>
+                            <li><strong>Focus outline:</strong> Essential for keyboard navigation — <code>:focus { outline: 2px solid blue; }</code></li>
+                        </ul>
+                        <p>⚠️ <strong>Accessibility:</strong> Never remove <code>outline</code> without adding a visible focus indicator. Use <code>outline: 2px solid #e94560;</code> for accessible focus.</p>
+                    `
+        }, {
+            id: 38,
+            name: 'Lists & Tables',
+            subs: ['list-style-type', 'list-style-position', 'list-style-image', 'marker', 'table-layout', 'border-collapse', 'border-spacing', 'caption', 'empty-cells', 'table-cell'],
+            explanation: `
+                        <p><strong>Lists</strong> and <strong>Tables</strong> have specialized styling properties for structure and presentation.</p>
+                        <p><strong>List Properties:</strong></p>
+                        <ul>
+                            <li><strong>list-style-type:</strong> Marker style — <code>disc</code>, <code>circle</code>, <code>square</code>, <code>decimal</code>, <code>lower-alpha</code>, <code>upper-roman</code></li>
+                            <li><strong>list-style-position:</strong> Marker position — <code>inside</code> or <code>outside</code></li>
+                            <li><strong>list-style-image:</strong> Custom marker — <code>list-style-image: url('icon.png');</code></li>
+                            <li><strong>::marker:</strong> Pseudo-element for markers — <code>li::marker { color: red; }</code></li>
+                        </ul>
+                        <p><strong>Table Properties:</strong></p>
+                        <ul>
+                            <li><strong>border-collapse:</strong> Merge borders — <code>collapse</code> or <code>separate</code></li>
+                            <li><strong>border-spacing:</strong> Space between cells — <code>border-spacing: 10px;</code></li>
+                            <li><strong>table-layout:</strong> Table layout algorithm — <code>auto</code> or <code>fixed</code></li>
+                            <li><strong>caption:</strong> Table caption — <code>caption-side: bottom;</code></li>
+                            <li><strong>empty-cells:</strong> Show/hide empty cells — <code>show</code> or <code>hide</code></li>
+                            <li><strong>table-cell:</strong> Display as table cell — <code>display: table-cell;</code></li>
+                        </ul>
+                        <p>💡 <strong>Pro Tip:</strong> Use <code>border-collapse: collapse</code> for <span class="highlight">clean table designs</span>. Use <code>list-style-type: none</code> for custom list styling.</p>
+                    `
+        }, {
+            id: 39,
+            name: 'Clip Path & Masking',
+            subs: ['basic shapes', 'polygon()', 'path()', 'box', 'circle()', 'ellipse()', 'inset()', 'mask-image', 'mask-mode', 'mask-size'],
+            explanation: `
+                        <p><strong>Clip Path</strong> and <strong>Masking</strong> create custom shapes and hide parts of elements.</p>
+                        <p><strong>Clip Path:</strong></p>
+                        <ul>
+                            <li><strong>circle():</strong> <code>clip-path: circle(50%);</code> — perfect circle</li>
+                            <li><strong>ellipse():</strong> <code>clip-path: ellipse(50% 30%);</code> — elliptical shape</li>
+                            <li><strong>inset():</strong> <code>clip-path: inset(20px);</code> — inner rectangle</li>
+                            <li><strong>polygon():</strong> Custom polygon — <code>clip-path: polygon(0% 0%, 100% 0%, 50% 100%);</code> — triangle</li>
+                            <li><strong>path():</strong> SVG path — <code>clip-path: path('M0 0 L100 0 L50 100 Z');</code></li>
+                            <li><strong>box:</strong> <code>clip-path: content-box;</code> — clip to content</li>
+                        </ul>
+                        <p><strong>Masking:</strong></p>
+                        <ul>
+                            <li><strong>mask-image:</strong> Image mask — <code>mask-image: url('mask.png');</code></li>
+                            <li><strong>mask-mode:</strong> <code>alpha</code> (transparency) or <code>luminance</code> (brightness)</li>
+                            <li><strong>mask-size:</strong> Size of mask — <code>cover</code>, <code>contain</code>, <code>%</code></li>
+                            <li><strong>mask-repeat:</strong> Repeat mask — same as background-repeat</li>
+                            <li><strong>mask-position:</strong> Position mask — same as background-position</li>
+                        </ul>
+                        <p>💡 <strong>Pro Tip:</strong> Use <code>clip-path: polygon(0% 0%, 100% 0%, 50% 100%)</code> for <span class="highlight">triangle shapes</span>. Use masking for <span class="highlight">creative image effects</span>.</p>
+                    `
+        }, {
+            id: 40,
+            name: 'Blend Modes',
+            subs: ['mix-blend-mode', 'background-blend-mode', 'multiply', 'screen', 'overlay', 'darken', 'lighten', 'color-dodge', 'saturation', 'luminosity'],
+            explanation: `
+                        <p><strong>Blend Modes</strong> control how elements blend with their background. They create creative visual effects.</p>
+                        <p><strong>Blend Modes:</strong></p>
+                        <ul>
+                            <li><strong>multiply:</strong> Darkens — like ink on paper — <code>mix-blend-mode: multiply;</code></li>
+                            <li><strong>screen:</strong> Lightens — like a projector — <code>mix-blend-mode: screen;</code></li>
+                            <li><strong>overlay:</strong> Combines multiply and screen — <code>mix-blend-mode: overlay;</code></li>
+                            <li><strong>darken:</strong> Uses darker pixels — <code>mix-blend-mode: darken;</code></li>
+                            <li><strong>lighten:</strong> Uses lighter pixels — <code>mix-blend-mode: lighten;</code></li>
+                            <li><strong>color-dodge:</strong> Brightens with color — <code>mix-blend-mode: color-dodge;</code></li>
+                            <li><strong>saturation:</strong> Uses saturation of top layer — <code>mix-blend-mode: saturation;</code></li>
+                            <li><strong>luminosity:</strong> Uses brightness of top layer — <code>mix-blend-mode: luminosity;</code></li>
+                            <li><strong>background-blend-mode:</strong> For backgrounds — <code>background-blend-mode: multiply;</code></li>
+                        </ul>
+                        <p>💡 <strong>Pro Tip:</strong> Use <code>mix-blend-mode: multiply</code> for <span class="highlight">creative overlays</span> on images. Use <code>background-blend-mode</code> for gradient + image blends.</p>
+                    `
+        }, {
+            id: 41,
+            name: 'Object-Fit & Position',
+            subs: ['object-fit: fill', 'contain', 'cover', 'none', 'scale-down', 'object-position', 'replaced elements', 'images', 'video', 'canvas'],
+            explanation: `
+                        <p><strong>Object-fit</strong> and <strong>object-position</strong> control how replaced elements (images, video, canvas) fit inside their container.</p>
+                        <p><strong>Object-fit Values:</strong></p>
+                        <ul>
+                            <li><strong>fill:</strong> Stretches to fill container (distorts ratio) — default</li>
+                            <li><strong>contain:</strong> Fits inside container, preserves ratio (may leave empty space)</li>
+                            <li><strong>cover:</strong> Fills container, preserves ratio (cropped) — <span class="highlight">most common for images</span></li>
+                            <li><strong>none:</strong> Uses natural size (may overflow)</li>
+                            <li><strong>scale-down:</strong> Uses smaller of 'none' or 'contain'</li>
+                            <li><strong>object-position:</strong> Position the image — <code>object-position: 50% 50%;</code> (center), <code>top left</code></li>
+                            <li>Works on <code>&lt;img&gt;</code>, <code>&lt;video&gt;</code>, <code>&lt;canvas&gt;</code></li>
+                        </ul>
+                        <p>💡 <strong>Pro Tip:</strong> Use <code>object-fit: cover</code> for <span class="highlight">full-width hero images</span>. Use <code>object-position</code> to control which part of the image is visible.</p>
+                    `
+        }, {
+            id: 42,
+            name: 'Aspect Ratio',
+            subs: ['aspect-ratio', 'auto', 'ratio values', 'box-sizing', 'padding hack', 'image aspect', 'video aspect', 'container', 'modern approach', 'legacy methods'],
+            explanation: `
+                        <p><strong>Aspect Ratio</strong> maintains element proportions. It's essential for responsive images, videos, and containers.</p>
+                        <p><strong>Aspect Ratio Methods:</strong></p>
+                        <ul>
+                            <li><strong>Modern method:</strong> <code>aspect-ratio: 16 / 9;</code> — clean and simple</li>
+                            <li><strong>auto:</strong> Uses natural aspect ratio — <code>aspect-ratio: auto;</code></li>
+                            <li><strong>Ratio values:</strong> <code>1 / 1</code> (square), <code>4 / 3</code>, <code>16 / 9</code>, <code>21 / 9</code></li>
+                            <li><strong>Legacy padding hack:</strong> <code>padding-bottom: 56.25%;</code> (16:9), <code>padding-bottom: 75%;</code> (4:3)</li>
+                            <li><strong>Video aspect:</strong> <code>aspect-ratio: 16/9;</code> for YouTube embeds</li>
+                            <li><strong>Image aspect:</strong> <code>aspect-ratio: auto 1/1;</code> — uses natural size if available</li>
+                            <li><strong>Container:</strong> Use <code>aspect-ratio</code> on any block-level element</li>
+                            <li><strong>Responsive:</strong> Aspect ratio makes responsive designs much easier</li>
+                        </ul>
+                        <p>💡 <strong>Pro Tip:</strong> Use <code>aspect-ratio: 1/1</code> for <span class="highlight">perfect squares</span>. Use <code>aspect-ratio: 16/9</code> for video containers. It's the modern, clean approach!</p>
+                    `
+        }, {
+            id: 43,
+            name: 'Column Layout',
+            subs: ['column-count', 'column-gap', 'column-rule', 'column-span', 'column-fill', 'column-width', 'break-inside', 'balancing', 'magazine layout', 'responsive columns'],
+            explanation: `
+                        <p><strong>Column Layout</strong> creates magazine-style multi-column text layouts.</p>
+                        <p><strong>Column Properties:</strong></p>
+                        <ul>
+                            <li><strong>column-count:</strong> Number of columns — <code>column-count: 3;</code></li>
+                            <li><strong>column-gap:</strong> Space between columns — <code>column-gap: 40px;</code></li>
+                            <li><strong>column-rule:</strong> Line between columns — <code>column-rule: 1px solid #ccc;</code></li>
+                            <li><strong>column-span:</strong> Span across columns — <code>column-span: all;</code> (like a heading)</li>
+                            <li><strong>column-fill:</strong> How columns are filled — <code>auto</code> or <code>balance</code></li>
+                            <li><strong>column-width:</strong> Preferred width — <code>column-width: 200px;</code> (creates responsive columns)</li>
+                            <li><strong>break-inside:</strong> Prevent column breaks — <code>break-inside: avoid;</code></li>
+                            <li><strong>Balancing:</strong> Columns automatically balance content</li>
+                            <li><strong>Responsive:</strong> Use <code>column-width</code> for responsive columns</li>
+                        </ul>
+                        <p>💡 <strong>Pro Tip:</strong> Use <code>column-count: 3</code> with <code>column-gap: 30px</code> for <span class="highlight">magazine-style layouts</span>. Use <code>column-span: all</code> for headings that span all columns.</p>
+                    `
+        }, {
+            id: 44,
+            name: 'Container Queries',
+            subs: ['@container', 'size queries', 'style queries', 'container-name', 'container-type', 'inline-size', 'block-size', 'state queries', 'nesting', 'fallbacks'],
+            explanation: `
+                        <p><strong>Container Queries</strong> are a revolutionary feature that allows styling based on parent container size, not just viewport size.</p>
+                        <p><strong>Container Query Features:</strong></p>
+                        <ul>
+                            <li><strong>container-type:</strong> Defines container type — <code>container-type: inline-size;</code> (responds to width changes)</li>
+                            <li><strong>container-name:</strong> Names the container — <code>container-name: sidebar;</code></li>
+                            <li><strong>@container:</strong> Query the container — <code>@container sidebar (width > 400px) { .card { display: flex; } }</code></li>
+                            <li><strong>Size queries:</strong> Query width, height, aspect-ratio</li>
+                            <li><strong>Style queries:</strong> Query CSS variables — <code>@container style(--theme: dark) { ... }</code></li>
+                            <li><strong>Inline-size:</strong> Respond to inline-size changes</li>
+                            <li><strong>Block-size:</strong> Respond to block-size changes</li>
+                            <li><strong>Nesting:</strong> Nest container queries inside each other</li>
+                            <li><strong>Fallbacks:</strong> Use media queries as fallback for older browsers</li>
+                        </ul>
+                        <p>💡 <strong>Pro Tip:</strong> Container queries enable <span class="highlight">truly reusable components</span>! A card can change layout based on its container size, not screen size.</p>
+                    `
+        }, {
+            id: 45,
+            name: 'CSS Nesting',
+            subs: ['& selector', 'nested rules', 'parent selector', 'direct nesting', 'deep nesting', '@media inside', '@layer inside', 'best practices', 'specificity', 'limitations'],
+            explanation: `
+                        <p><strong>CSS Nesting</strong> reduces repetition and makes CSS more readable by grouping related selectors.</p>
+                        <p><strong>CSS Nesting Features:</strong></p>
+                        <ul>
+                            <li><strong>& selector:</strong> Refers to parent selector — <code>.card { & .title { color: red; } }</code></li>
+                            <li><strong>Nested rules:</strong> Write rules inside other rules — <code>.container { .item { color: blue; } }</code></li>
+                            <li><strong>Direct nesting:</strong> Parent directly contains child — <code>article { p { font-size: 1rem; } }</code></li>
+                            <li><strong>Deep nesting:</strong> Can nest multiple levels, but keep it shallow (3-4 levels)</li>
+                            <li><strong>@media inside:</strong> Nest media queries — <code>.container { @media (max-width: 768px) { ... } }</code></li>
+                            <li><strong>@layer inside:</strong> Nest layers</li>
+                            <li><strong>Best practices:</strong> Keep nesting shallow, avoid over-specificity</li>
+                            <li><strong>Specificity:</strong> Nesting increases specificity</li>
+                            <li><strong>Limitations:</strong> Not all selectors can be nested (e.g., pseudo-classes)</li>
+                        </ul>
+                        <p>💡 <strong>Pro Tip:</strong> Use nesting for <span class="highlight">cleaner, organized CSS</span>. Keep nesting to 3 levels maximum to avoid over-specificity.</p>
+                    `
+        }, {
+            id: 46,
+            name: 'Cascade Layers',
+            subs: ['@layer', 'layer order', 'unlayered', 'specificity', 'import', 'nested layers', 'framework layers', 'reset layers', 'best practices', 'browser support'],
+            explanation: `
+                        <p><strong>Cascade Layers</strong> control CSS specificity and order. They're a better alternative to <code>!important</code>.</p>
+                        <p><strong>Cascade Layer Features:</strong></p>
+                        <ul>
+                            <li><strong>@layer:</strong> Define a layer — <code>@layer base, components, utilities;</code></li>
+                            <li><strong>Layer order:</strong> Later layers override earlier ones — <code>@layer base { ... } @layer components { ... }</code></li>
+                            <li><strong>Unlayered:</strong> Outside any layer — has highest specificity</li>
+                            <li><strong>Import:</strong> Import CSS into a layer — <code>@import 'reset.css' layer(reset);</code></li>
+                            <li><strong>Nested layers:</strong> Layers inside layers — <code>@layer components { @layer button { ... } }</code></li>
+                            <li><strong>Framework layers:</strong> Wrap framework CSS in a layer</li>
+                            <li><strong>Reset layers:</strong> Put resets in a low-priority layer</li>
+                            <li><strong>Best practices:</strong> Use layers instead of <code>!important</code></li>
+                            <li><strong>Browser support:</strong> Supported in all modern browsers</li>
+                        </ul>
+                        <p>💡 <strong>Pro Tip:</strong> Use layers to <span class="highlight">control specificity without !important</span>. Put reset CSS in a low layer, utilities in a high layer.</p>
+                    `
+        }, {
+            id: 47,
+            name: 'Scroll Features',
+            subs: ['scroll-behavior', 'scroll-margin', 'scroll-padding', 'scroll-snap-type', 'scroll-snap-align', 'scroll-snap-stop', 'overflow', 'scrollbar', 'smooth scrolling', 'accessibility'],
+            explanation: `
+                        <p><strong>Scroll Features</strong> control scrolling behavior and improve user experience.</p>
+                        <p><strong>Scroll Properties:</strong></p>
+                        <ul>
+                            <li><strong>scroll-behavior:</strong> Smooth scrolling — <code>scroll-behavior: smooth;</code></li>
+                            <li><strong>scroll-margin:</strong> Offset when scrolling to element — <code>scroll-margin-top: 80px;</code> (for fixed headers)</li>
+                            <li><strong>scroll-padding:</strong> Padding inside scroll container — <code>scroll-padding: 80px;</code></li>
+                            <li><strong>scroll-snap-type:</strong> Enable snap scrolling — <code>scroll-snap-type: y mandatory;</code></li>
+                            <li><strong>scroll-snap-align:</strong> Where to snap — <code>start</code>, <code>center</code>, <code>end</code></li>
+                            <li><strong>scroll-snap-stop:</strong> Stop behavior — <code>always</code> or <code>normal</code></li>
+                            <li><strong>scrollbar-width:</strong> Scrollbar size — <code>thin</code> or <code>none</code></li>
+                            <li><strong>scrollbar-color:</strong> Scrollbar colors — <code>scrollbar-color: #e94560 #1a1a3a;</code></li>
+                            <li><strong>Accessibility:</strong> Ensure scroll-snap doesn't trap users</li>
+                        </ul>
+                        <p>💡 <strong>Pro Tip:</strong> Use <code>scroll-behavior: smooth</code> for <span class="highlight">nice navigation</span>. Use <code>scroll-margin</code> for fixed headers so content doesn't get hidden behind them.</p>
+                    `
+        }, {
+            id: 48,
+            name: 'Modern Features 1',
+            subs: ['color-mix()', 'color-contrast()', '@property', 'accent-color', 'color-scheme', 'light-dark()', 'view-transitions', 'initial-letter', 'image-set()', 'contain'],
+            explanation: `
+                        <p><strong>Modern CSS Features</strong> from 2023-2026. These are the latest additions to CSS.</p>
+                        <p><strong>New Features:</strong></p>
+                        <ul>
+                            <li><strong>color-mix():</strong> Mix two colors — <code>color-mix(in srgb, red, blue 50%);</code></li>
+                            <li><strong>color-contrast():</strong> Choose best contrasting color — <code>color-contrast(black vs white, yellow);</code></li>
+                            <li><strong>@property:</strong> Register custom properties — <code>@property --color { syntax: '<color>'; initial-value: red; }</code></li>
+                            <li><strong>accent-color:</strong> Style form controls — <code>accent-color: #e94560;</code></li>
+                            <li><strong>color-scheme:</strong> Light/dark mode — <code>color-scheme: light dark;</code></li>
+                            <li><strong>light-dark():</strong> Light/dark values — <code>color: light-dark(black, white);</code></li>
+                            <li><strong>view-transitions:</strong> Page transitions — <code>view-transition-name: page;</code></li>
+                            <li><strong>initial-letter:</strong> Drop caps — <code>initial-letter: 3 2;</code></li>
+                            <li><strong>image-set():</strong> Responsive images in CSS — <code>background-image: image-set('img@2x.jpg' 2x);</code></li>
+                            <li><strong>contain:</strong> Performance optimization — <code>contain: layout paint;</code></li>
+                        </ul>
+                        <p>💡 <strong>Pro Tip:</strong> Use <code>color-mix()</code> for <span class="highlight">dynamic colors</span>. Use <code>light-dark()</code> for easy dark mode. These features are the future of CSS!</p>
+                    `
+        }, {
+            id: 49,
+            name: 'Modern Features 2',
+            subs: ['sin()', 'cos()', 'tan()', 'pow()', 'sqrt()', 'abs()', 'sign()', 'container style queries', 'anchor positioning', 'houdini'],
+            explanation: `
+                        <p><strong>Cutting-edge CSS</strong> features for advanced developers.</p>
+                        <p><strong>Advanced Mathematical Functions:</strong></p>
+                        <ul>
+                            <li><strong>sin() / cos() / tan():</strong> Trigonometric — <code>transform: rotate(calc(sin(45deg) * 100px));</code></li>
+                            <li><strong>pow() / sqrt():</strong> Exponential — <code>width: calc(pow(2, 3) * 1px);</code></li>
+                            <li><strong>abs() / sign():</strong> Absolute value and sign — <code>width: calc(abs(-10px));</code></li>
+                            <li><strong>Container style queries:</strong> Query CSS variables — <code>@container style(--theme: dark) { ... }</code></li>
+                            <li><strong>Anchor positioning:</strong> Position one element relative to another — <code>anchor-position: --anchor;</code></li>
+                            <li><strong>Houdini:</strong> CSS Paint API — <code>background-image: paint(myPaint);</code></li>
+                            <li><strong>Custom functions:</strong> Create custom functions with Houdini</li>
+                            <li><strong>Browser support:</strong> These are bleeding-edge features</li>
+                        </ul>
+                        <p>💡 <strong>Pro Tip:</strong> Use <code>sin()</code> and <code>cos()</code> for <span class="highlight">creative animations</span> and positioning. Anchor positioning will revolutionize how we position elements!</p>
+                    `
+        }, {
+            id: 50,
+            name: 'Special Properties',
+            subs: ['resize', 'user-select', 'pointer-events', 'cursor', 'direction', 'unicode-bidi', 'writing-mode', 'text-orientation', 'hyphens', 'tab-size'],
+            explanation: `
+                        <p><strong>Special Properties</strong> provide unique behaviors and control over user interaction.</p>
+                        <p><strong>Special Properties:</strong></p>
+                        <ul>
+                            <li><strong>resize:</strong> Allow element resizing — <code>both</code>, <code>horizontal</code>, <code>vertical</code>, <code>none</code></li>
+                            <li><strong>user-select:</strong> Control text selection — <code>none</code>, <code>text</code>, <code>all</code></li>
+                            <li><strong>pointer-events:</strong> Control mouse events — <code>none</code> (click-through), <code>auto</code></li>
+                            <li><strong>cursor:</strong> Custom cursor — <code>pointer</code>, <code>wait</code>, <code>move</code>, <code>grab</code>, <code>zoom-in</code>, <code>not-allowed</code></li>
+                            <li><strong>direction:</strong> Text direction — <code>ltr</code> (left-to-right), <code>rtl</code> (right-to-left)</li>
+                            <li><strong>unicode-bidi:</strong> Control bidirectional text — <code>embed</code>, <code>bidi-override</code></li>
+                            <li><strong>writing-mode:</strong> Text direction — <code>horizontal-tb</code>, <code>vertical-rl</code>, <code>vertical-lr</code></li>
+                            <li><strong>text-orientation:</strong> Orientation of vertical text — <code>mixed</code>, <code>upright</code>, <code>sideways</code></li>
+                            <li><strong>hyphens:</strong> Word hyphenation — <code>auto</code>, <code>manual</code>, <code>none</code></li>
+                            <li><strong>tab-size:</strong> Width of tab character — <code>tab-size: 4;</code></li>
+                        </ul>
+                        <p>💡 <strong>Pro Tip:</strong> Use <code>cursor: pointer</code> for <span class="highlight">clickable elements</span>. Use <code>pointer-events: none</code> to make elements click-through.</p>
+                    `
+        }];
+
+        // ============================================================
+        //  QUESTION BUILDER
+        // ============================================================
+
+        function buildQuestionsForTopic(topicId) {
+            const qs = [];
+
+            // 10 MCQ
+            for (let i = 0; i < 10; i++) {
+                const correct = Math.floor(Math.random() * 4);
+                const mcqQuestions = [
+                    { q: 'What is CSS used for?', opts: ['Styling HTML', 'Creating HTML', 'Making databases', 'Server logic'],
+                        ans: 0 },
+                    { q: 'Which CSS property changes text color?', opts: ['color', 'background', 'font-style',
+                            'text-decoration'
+                        ], ans: 0 },
+                    { q: 'What does "display: flex" do?', opts: ['Enables Flexbox', 'Hides element',
+                            'Makes element inline', 'Makes element block'
+                        ], ans: 0 },
+                    { q: 'Which unit is recommended for accessibility?', opts: ['px', 'rem', 'em', 'pt'], ans: 1 },
+                    { q: 'What is the specificity order?', opts: ['ID > Class > Type', 'Type > Class > ID',
+                            'Class > ID > Type', 'ID > Type > Class'
+                        ], ans: 0 },
+                    { q: 'Which property creates rounded corners?', opts: ['border-radius', 'border-style',
+                            'border-color', 'border-width'
+                        ], ans: 0 },
+                    { q: 'What does "position: sticky" do?', opts: ['Scrolls then sticks', 'Always fixed',
+                            'Always relative', 'Always absolute'
+                        ], ans: 0 },
+                    { q: 'Which property makes an element transparent?', opts: ['opacity', 'visibility', 'display',
+                            'position'
+                        ], ans: 0 },
+                    { q: 'What is the best practice for adding CSS?', opts: ['External', 'Inline', 'Internal',
+                            'All are equal'
+                        ], ans: 0 },
+                    { q: 'Which pseudo-element creates content before?', opts: ['::before', '::after', ':before',
+                            ':after'
+                        ], ans: 0 }
+                ];
+                const idx = i % mcqQuestions.length;
+                const q = mcqQuestions[idx];
+                qs.push({
+                    type: 'mcq',
+                    question: q.q,
+                    options: q.opts,
+                    correct: q.ans
+                });
+            }
+
+            // 5 True/False
+            const tfData = [
+                { q: 'CSS stands for Cascading Style Sheets.', ans: true },
+                { q: 'The "margin" property adds space inside the border.', ans: false },
+                { q: '"display: flex" is used for Flexbox layout.', ans: true },
+                { q: '"position: fixed" keeps an element relative to the viewport.', ans: true },
+                { q: '"z-index" only works on static positioned elements.', ans: false },
+                { q: 'CSS variables start with two hyphens (--).', ans: true },
+                { q: 'The "padding" property adds space outside the border.', ans: false },
+                { q: '"grid-template-columns" defines columns in Grid.', ans: true },
+                { q: '"::before" is a pseudo-class, not a pseudo-element.', ans: false },
+                { q: '"box-sizing: border-box" includes padding and border in width.', ans: true }
+            ];
+            for (let i = 0; i < 5; i++) {
+                const d = tfData[i % tfData.length];
+                qs.push({ type: 'tf', question: d.q, correct: d.ans });
+            }
+
+            // 5 Fill in the blank
+            const fillData = [
+                { q: 'The _____ property adds space inside the element.', ans: 'padding' },
+                { q: 'The _____ property adds space outside the element.', ans: 'margin' },
+                { q: '_____ is used to create 2D layouts with rows and columns.', ans: 'grid' },
+                { q: '_____ is used to create 1D flexible layouts.', ans: 'flexbox' },
+                { q: 'The _____ property sets the font size of an element.', ans: 'font-size' },
+                { q: 'The _____ property sets the background color.', ans: 'background-color' },
+                { q: '_____ creates rounded corners on elements.', ans: 'border-radius' },
+                { q: 'The _____ property controls the stacking order.', ans: 'z-index' },
+                { q: '_____ is the best practice for adding CSS.', ans: 'external' },
+                { q: 'The _____ selector selects all elements.', ans: '*' }
+            ];
+            for (let i = 0; i < 5; i++) {
+                const d = fillData[i % fillData.length];
+                qs.push({ type: 'fill', question: d.q, correct: d.ans.toLowerCase() });
+            }
+
+            // Shuffle
+            for (let i = qs.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [qs[i], qs[j]] = [qs[j], qs[i]];
+            }
+            return qs;
+        }
+
+        // ============================================================
+        //  APP STATE (localStorage)
+        // ============================================================
+
+        function getDefaultState() {
+            return {
+                currentTopic: 0,
+                completedTopics: [],
+                topicStatus: {}
+            };
+        }
+
+        let state;
+
+        function loadState() {
+            const saved = localStorage.getItem('cssx_state');
+            if (saved) {
+                try {
+                    const parsed = JSON.parse(saved);
+                    state = parsed;
+                    TOPICS.forEach(t => {
+                        if (!state.topicStatus[t.id]) {
+                            state.topicStatus[t.id] = { answers: [], score: 0, checked: false };
+                        }
+                    });
+                    return;
+                } catch (e) {}
+            }
+            state = getDefaultState();
+            TOPICS.forEach(t => {
+                state.topicStatus[t.id] = { answers: [], score: 0, checked: false };
+            });
+            saveState();
+        }
+
+        function saveState() {
+            localStorage.setItem('cssx_state', JSON.stringify(state));
+        }
+
+        // ============================================================
+        //  RENDER
+        // ============================================================
+
+        const container = document.getElementById('topicContainer');
+        const progressBar = document.getElementById('progressBar');
+        const completedSpan = document.getElementById('completedTopics');
+
+        function render() {
+            container.innerHTML = '';
+            let completedCount = state.completedTopics.length;
+
+            TOPICS.forEach((topic, idx) => {
+                const isCompleted = state.completedTopics.includes(topic.id);
+                const isActive = (idx === state.currentTopic && !isCompleted);
+                const isLocked = (idx > state.currentTopic) && !isCompleted;
+
+                const card = document.createElement('div');
+                card.className = 'topic-card';
+                if (isActive) card.classList.add('active');
+                if (isCompleted) card.classList.add('completed');
+
+                let statusLabel = '🔒 Locked';
+                let statusClass = '';
+                if (isCompleted) { statusLabel = '✅ Completed';
+                    statusClass = 'done-status'; } else if (isActive) { statusLabel = '📖 Active';
+                    statusClass = 'active-status'; }
+
+                // Build explanation HTML
+                let expHTML = topic.explanation || '<p>Explanation not available.</p>';
+
+                card.innerHTML = `
+                        <div class="topic-head">
+                            <h2>
+                                <span>${topic.id}.</span>
+                                ${topic.name}
+                                <span class="badge">20 Q</span>
+                            </h2>
+                            <span class="status-badge ${statusClass}">${statusLabel}</span>
+                        </div>
+                        <div class="sub-topics">
+                            ${topic.subs.map(s => `<span>${s}</span>`).join(' ')}
+                        </div>
+                        <div class="explanation-box">
+                            <div class="exp-title">📖 What you'll learn:</div>
+                            <div class="exp-content">${expHTML}</div>
+                        </div>
+                        <div class="q-section" id="qSection-${topic.id}"></div>
+                        <div class="btn-group">
+                            <button class="btn btn-primary" id="checkBtn-${topic.id}" ${!isActive ? 'disabled' : ''}>
+                                ✅ Check Answers
+                            </button>
+                            <button class="btn btn-success" id="unlockBtn-${topic.id}" disabled>
+                                🔓 Unlock Next Topic
+                            </button>
+                            <button class="btn btn-share" id="shareBtn-${topic.id}" ${!isCompleted ? 'disabled' : ''}>
+                                📤 Share
+                            </button>
+                            <span class="score-display" id="scoreDisplay-${topic.id}">
+                                Score: <strong>0</strong> / 20
+                            </span>
+                        </div>
+                    `;
+
+                container.appendChild(card);
+
+                // --- render questions ---
+                const qSection = card.querySelector(`#qSection-${topic.id}`);
+                const saved = state.topicStatus[topic.id] || { answers: [], score: 0, checked: false };
+
+                // Build questions if not built yet
+                if (!topic.questions || topic.questions.length === 0) {
+                    topic.questions = buildQuestionsForTopic(topic.id);
+                }
+                const qs = topic.questions;
+
+                qs.forEach((q, qi) => {
+                    let block = document.createElement('div');
+                    block.className = 'q-block';
+                    block.dataset.qidx = qi;
+                    block.dataset.qType = q.type;
+
+                    let qText = document.createElement('div');
+                    qText.className = 'q-text';
+                    qText.innerHTML = `
+                            <span>Q${qi+1}.</span>
+                            ${q.question}
+                            <span class="q-type">${q.type.toUpperCase()}</span>
+                        `;
+                    block.appendChild(qText);
+
+                    if (q.type === 'mcq') {
+                        let optDiv = document.createElement('div');
+                        optDiv.className = 'options';
+                        q.options.forEach((opt, oi) => {
+                            let label = document.createElement('label');
+                            let radio = document.createElement('input');
+                            radio.type = 'radio';
+                            radio.name = `mcq_${topic.id}_${qi}`;
+                            radio.value = oi;
+                            if (saved.answers[qi] === oi) radio.checked = true;
+                            label.appendChild(radio);
+                            label.appendChild(document.createTextNode(opt));
+                            optDiv.appendChild(label);
+                        });
+                        block.appendChild(optDiv);
+                    } else if (q.type === 'tf') {
+                        let optDiv = document.createElement('div');
+                        optDiv.className = 'options';
+                        ['True', 'False'].forEach((val, oi) => {
+                            let label = document.createElement('label');
+                            let radio = document.createElement('input');
+                            radio.type = 'radio';
+                            radio.name = `tf_${topic.id}_${qi}`;
+                            radio.value = oi === 0 ? 'true' : 'false';
+                            if (saved.answers[qi] === (oi === 0 ? true : false)) radio.checked = true;
+                            label.appendChild(radio);
+                            label.appendChild(document.createTextNode(val));
+                            optDiv.appendChild(label);
+                        });
+                        block.appendChild(optDiv);
+                    } else if (q.type === 'fill') {
+                        let inp = document.createElement('input');
+                        inp.type = 'text';
+                        inp.className = 'fill-input';
+                        inp.placeholder = 'Type your answer...';
+                        if (saved.answers[qi] !== undefined && saved.answers[qi] !== null) {
+                            inp.value = saved.answers[qi];
+                        }
+                        block.appendChild(inp);
+                    }
+
+                    // Feedback
+                    let feedback = document.createElement('div');
+                    feedback.className = 'feedback';
+                    feedback.innerHTML = `
+                            <span class="icon"></span>
+                            <span class="msg"></span>
+                        `;
+                    block.appendChild(feedback);
+
+                    // If already checked
+                    if (saved.checked) {
+                        const userAns = saved.answers[qi];
+                        const isCorrect = (userAns !== undefined && userAns !== null && userAns === q.correct);
+                        block.classList.add(isCorrect ? 'correct' : 'wrong');
+                        feedback.classList.add('show');
+                        feedback.querySelector('.icon').textContent = isCorrect ? '✅' : '❌';
+                        let rightAns = q.correct;
+                        if (q.type === 'tf') rightAns = q.correct ? 'True' : 'False';
+                        else if (q.type === 'fill') rightAns = q.correct;
+                        feedback.querySelector('.msg').innerHTML = isCorrect ?
+                            `<strong>Correct!</strong> ✓` :
+                            `<strong>Incorrect.</strong> Right answer: <strong>${rightAns}</strong>`;
+                        // disable inputs
+                        block.querySelectorAll('input').forEach(inp => inp.disabled = true);
+                        if (block.querySelector('.fill-input')) {
+                            const finp = block.querySelector('.fill-input');
+                            finp.disabled = true;
+                            finp.classList.add(isCorrect ? 'correct' : 'wrong');
+                        }
+                    }
+
+                    qSection.appendChild(block);
+                });
+
+                // --- attach events ---
+                const checkBtn = card.querySelector(`#checkBtn-${topic.id}`);
+                const unlockBtn = card.querySelector(`#unlockBtn-${topic.id}`);
+                const shareBtn = card.querySelector(`#shareBtn-${topic.id}`);
+                const scoreSpan = card.querySelector(`#scoreDisplay-${topic.id}`);
+
+                if (isActive) {
+                    checkBtn.addEventListener('click', () => checkTopic(topic.id, card));
+                }
+
+                if (isCompleted) {
+                    checkBtn.disabled = true;
+                    unlockBtn.disabled = true;
+                    const s = state.topicStatus[topic.id];
+                    if (s) scoreSpan.innerHTML = `Score: <strong>${s.score}</strong> / 20`;
+                    shareBtn.addEventListener('click', () => shareTopic(topic.id));
+                }
+
+                // if already checked but not completed
+                if (saved.checked && !isCompleted && isActive) {
+                    const s2 = state.topicStatus[topic.id];
+                    if (s2) {
+                        scoreSpan.innerHTML = `Score: <strong>${s2.score}</strong> / 20`;
+                        if (s2.score === 20) {
+                            unlockBtn.disabled = false;
+                        }
+                    }
+                }
+
+                // unlock button
+                unlockBtn.addEventListener('click', () => {
+                    if (state.completedTopics.includes(topic.id)) return;
+                    const s = state.topicStatus[topic.id];
+                    if (s && s.score === 20) {
+                        state.completedTopics.push(topic.id);
+                        let next = idx + 1;
+                        while (next < TOPICS.length && state.completedTopics.includes(TOPICS[next].id)) next++;
+                        if (next < TOPICS.length) {
+                            state.currentTopic = next;
+                        } else {
+                            state.currentTopic = TOPICS.length;
+                        }
+                        saveState();
+                        render();
+                        updateProgress();
+                        showToast(`🎉 Topic "${topic.name}" completed! Moving to next...`);
+                    }
+                });
+
+                // Initialize score display
+                if (!isCompleted && saved.score > 0) {
+                    scoreSpan.innerHTML = `Score: <strong>${saved.score}</strong> / 20`;
+                }
+
+                if (saved.checked && saved.score === 20 && !isCompleted) {
+                    unlockBtn.disabled = false;
+                }
+
+                if (!state.topicStatus[topic.id]) {
+                    state.topicStatus[topic.id] = { answers: [], score: 0, checked: false };
+                }
+            });
+
+            updateProgress();
+            if (state.completedTopics.length === TOPICS.length) {
+                document.querySelector('.main-header h1').innerHTML = '🏆 CSS Master! All 50 Topics Done! 🎉';
+                showToast('🎉 Congratulations! You\'ve completed all 50 topics!');
+            }
+        }
+
+        // ============================================================
+        //  CHECK TOPIC
+        // ============================================================
+
+        function checkTopic(topicId, card) {
+            const topic = TOPICS.find(t => t.id === topicId);
+            if (!topic) return;
+            const qs = topic.questions;
+            const qBlocks = card.querySelectorAll('.q-block');
+            let correctCount = 0;
+            const answers = [];
+
+            qBlocks.forEach((block, idx) => {
+                const q = qs[idx];
+                if (!q) return;
+                let userAns = null;
+                const feedback = block.querySelector('.feedback');
+                const isFill = block.dataset.qType === 'fill';
+
+                if (isFill) {
+                    const inp = block.querySelector('.fill-input');
+                    if (inp) {
+                        userAns = inp.value.trim().toLowerCase();
+                        inp.classList.remove('correct', 'wrong');
+                    }
+                } else {
+                    const selected = block.querySelector('input:checked');
+                    if (selected) {
+                        if (q.type === 'mcq') userAns = parseInt(selected.value);
+                        else if (q.type === 'tf') userAns = selected.value === 'true' ? true : false;
+                    }
+                }
+
+                answers[idx] = userAns;
+
+                const isCorrect = (userAns !== null && userAns !== undefined && userAns === q.correct);
+                if (isCorrect) correctCount++;
+
+                block.classList.remove('correct', 'wrong');
+                block.classList.add(isCorrect ? 'correct' : 'wrong');
+
+                feedback.classList.add('show');
+                feedback.querySelector('.icon').textContent = isCorrect ? '✅' : '❌';
+                let rightAns = q.correct;
+                if (q.type === 'tf') rightAns = q.correct ? 'True' : 'False';
+                else if (q.type === 'fill') rightAns = q.correct;
+                feedback.querySelector('.msg').innerHTML = isCorrect ?
+                    `<strong>Correct!</strong> ✓` :
+                    `<strong>Incorrect.</strong> Right answer: <strong>${rightAns}</strong>`;
+
+                block.querySelectorAll('input').forEach(inp => inp.disabled = true);
+                if (isFill) {
+                    const inp = block.querySelector('.fill-input');
+                    if (inp) {
+                        inp.disabled = true;
+                        inp.classList.add(isCorrect ? 'correct' : 'wrong');
+                    }
+                }
+            });
+
+            state.topicStatus[topicId] = {
+                answers: answers,
+                score: correctCount,
+                checked: true
+            };
+
+            const scoreSpan = card.querySelector(`#scoreDisplay-${topicId}`);
+            if (scoreSpan) scoreSpan.innerHTML = `Score: <strong>${correctCount}</strong> / 20`;
+
+            const unlockBtn = card.querySelector(`#unlockBtn-${topicId}`);
+            if (unlockBtn && correctCount === 20) {
+                unlockBtn.disabled = false;
+                unlockBtn.textContent = '🔓 Unlock Next Topic';
+                showToast(`🎉 Perfect score! You can unlock the next topic.`);
+            } else if (unlockBtn) {
+                unlockBtn.disabled = true;
+                showToast(`❌ You got ${correctCount}/20. Need 20/20 to unlock. Try again!`);
+                const checkBtn = card.querySelector(`#checkBtn-${topicId}`);
+                if (checkBtn) {
+                    checkBtn.disabled = false;
+                    checkBtn.textContent = '🔄 Retry';
+                }
+                qBlocks.forEach((block) => {
+                    block.querySelectorAll('input').forEach(inp => inp.disabled = false);
+                    const feedback = block.querySelector('.feedback');
+                    feedback.classList.remove('show');
+                    block.classList.remove('correct', 'wrong');
+                    if (block.querySelector('.fill-input')) {
+                        const finp = block.querySelector('.fill-input');
+                        finp.disabled = false;
+                        finp.classList.remove('correct', 'wrong');
+                    }
+                });
+                state.topicStatus[topicId].checked = false;
+                state.topicStatus[topicId].answers = [];
+                state.topicStatus[topicId].score = 0;
+                saveState();
+                return;
+            }
+
+            const checkBtn = card.querySelector(`#checkBtn-${topicId}`);
+            if (checkBtn && correctCount === 20) {
+                checkBtn.disabled = true;
+            }
+
+            saveState();
+            updateProgress();
+        }
+
+        // ============================================================
+        //  SHARE
+        // ============================================================
+
+        function shareTopic(topicId) {
+            const topic = TOPICS.find(t => t.id === topicId);
+            if (!topic) return;
+            const s = state.topicStatus[topicId];
+            const text =
+                `🎨 I completed "${topic.name}" in CSS Tutorial!\n📊 Score: ${s.score}/20\n📚 Progress: ${state.completedTopics.length}/${TOPICS.length} topics done!\n\nLearn CSS with me! 🚀`;
+            if (navigator.share) {
+                navigator.share({
+                    title: 'CSS Tutorial Progress',
+                    text: text,
+                    url: window.location.href
+                }).catch(() => {});
+            } else {
+                navigator.clipboard.writeText(text).then(() => {
+                    showToast('📤 Progress copied to clipboard! Share it!');
+                }).catch(() => {
+                    showToast('📤 Share: ' + text);
+                });
+            }
+        }
+
+        function shareProgress() {
+            const text =
+                `🎨 My CSS Tutorial Progress:\n📚 ${state.completedTopics.length}/${TOPICS.length} topics completed!\n💪 Learning CSS one topic at a time!\n\nStart learning today! 🚀`;
+            if (navigator.share) {
+                navigator.share({
+                    title: 'CSS Tutorial Progress',
+                    text: text,
+                    url: window.location.href
+                }).catch(() => {});
+            } else {
+                navigator.clipboard.writeText(text).then(() => {
+                    showToast('📤 Progress copied to clipboard!');
+                }).catch(() => {
+                    showToast('📤 ' + text);
+                });
+            }
+        }
+
+        // ============================================================
+        //  PROGRESS
+        // ============================================================
+
+        function updateProgress() {
+            const total = TOPICS.length;
+            const done = state.completedTopics.length;
+            const pct = Math.round((done / total) * 100);
+            progressBar.style.width = pct + '%';
+            completedSpan.textContent = done;
+            document.getElementById('totalTopics').textContent = total;
+            document.getElementById('totalQuestions').textContent = total * 20;
+        }
+
+        // ============================================================
+        //  TOAST
+        // ============================================================
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            toast.textContent = msg;
+            toast.classList.add('show');
+            clearTimeout(toast._timer);
+            toast._timer = setTimeout(() => {
+                toast.classList.remove('show');
+            }, 4000);
+        }
+
+        // ============================================================
+        //  INIT
+        // ============================================================
+
+        loadState();
+
+        TOPICS.forEach(topic => {
+            if (!topic.questions || topic.questions.length === 0) {
+                topic.questions = buildQuestionsForTopic(topic.id);
+            }
+        });
+
+        render();
+
+        console.log('🔥 CSSX.html loaded — 50 topics with deep explanations, 20 questions each!');
+        console.log('💾 Data saved in localStorage automatically!');
+    </script>
+</body>
+</html>
