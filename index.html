@@ -28,6 +28,139 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* ===== LOADING SCREEN ===== */
+        .loading-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #050505;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 99999;
+            transition: opacity 0.8s ease-out, visibility 0.8s;
+        }
+        .loading-wrapper.active { display: flex; }
+        .loading-wrapper.hidden { opacity: 0; visibility: hidden; }
+        .loading-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .loading-container::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px; height: 400px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 150, 255, 0.08) 0%, transparent 60%);
+            animation: ambientPulse 3s ease-in-out infinite;
+        }
+        @keyframes ambientPulse {
+            0%, 100% { opacity: 0.3; transform: translate(-50%, -50%) scale(0.9); }
+            50% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+        }
+        .ring-svg {
+            position: absolute;
+            width: 260px; height: 260px;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+        }
+        .ring-bg { fill: none; stroke: #0a1628; stroke-width: 3; }
+        .ring-progress {
+            fill: none;
+            stroke: url(#ringGradient);
+            stroke-width: 3;
+            stroke-linecap: round;
+            stroke-dasharray: 1005;
+            stroke-dashoffset: 1005;
+            filter: drop-shadow(0 0 12px rgba(0, 150, 255, 0.6));
+        }
+        .ring-progress.animate { animation: ringFill 2.5s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+        @keyframes ringFill { 0% { stroke-dashoffset: 1005; } 100% { stroke-dashoffset: 0; } }
+        .logo-img {
+            position: relative;
+            z-index: 2;
+            width: 200px; height: 200px;
+            object-fit: contain;
+            opacity: 0;
+            transform: scale(0.5);
+        }
+        .logo-img.animate {
+            animation: logoReveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards,
+                       logoGlow 2s ease-in-out 1.5s infinite;
+        }
+        @keyframes logoReveal { 0% { opacity: 0; transform: scale(0.5); } 100% { opacity: 1; transform: scale(1); } }
+        @keyframes logoGlow { 0%, 100% { filter: drop-shadow(0 0 20px rgba(0, 150, 255, 0.3)); } 50% { filter: drop-shadow(0 0 40px rgba(0, 150, 255, 0.6)); } }
+        .shine-overlay {
+            position: absolute;
+            top: 0; left: -150%;
+            width: 80%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+            pointer-events: none;
+            z-index: 3;
+        }
+        .shine-overlay.animate { animation: shineMove 1s ease-in-out 2.2s forwards; }
+        @keyframes shineMove { 0% { left: -150%; } 100% { left: 200%; } }
+        .complete-ring {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 220px; height: 220px;
+            border-radius: 50%;
+            border: 2px solid rgba(0, 150, 255, 0.5);
+            opacity: 0;
+        }
+        .complete-ring.animate { animation: expandRing 0.8s ease-out 2.5s forwards; }
+        @keyframes expandRing { 0% { opacity: 1; transform: translate(-50%, -50%) scale(0.8); } 100% { opacity: 0; transform: translate(-50%, -50%) scale(1.5); } }
+        .particle {
+            position: absolute;
+            width: 6px; height: 6px;
+            background: #0096ff;
+            border-radius: 50%;
+            opacity: 0;
+            box-shadow: 0 0 12px #0096ff, 0 0 24px #0096ff;
+            z-index: 4;
+        }
+        .particle.animate:nth-child(1) { top: 20%; left: 50%; animation: burstUp 0.7s ease-out 2.3s forwards; }
+        .particle.animate:nth-child(2) { top: 50%; left: 20%; animation: burstLeft 0.7s ease-out 2.4s forwards; }
+        .particle.animate:nth-child(3) { top: 50%; left: 80%; animation: burstRight 0.7s ease-out 2.5s forwards; }
+        .particle.animate:nth-child(4) { top: 80%; left: 50%; animation: burstDown 0.7s ease-out 2.6s forwards; }
+        .particle.animate:nth-child(5) { top: 25%; left: 25%; animation: burstDiag1 0.7s ease-out 2.35s forwards; }
+        .particle.animate:nth-child(6) { top: 25%; left: 75%; animation: burstDiag2 0.7s ease-out 2.45s forwards; }
+        .particle.animate:nth-child(7) { top: 75%; left: 25%; animation: burstDiag3 0.7s ease-out 2.55s forwards; }
+        .particle.animate:nth-child(8) { top: 75%; left: 75%; animation: burstDiag4 0.7s ease-out 2.65s forwards; }
+        @keyframes burstUp { 0% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: scale(0) translateY(-60px); } }
+        @keyframes burstDown { 0% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: scale(0) translateY(60px); } }
+        @keyframes burstLeft { 0% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: scale(0) translateX(-60px); } }
+        @keyframes burstRight { 0% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: scale(0) translateX(60px); } }
+        @keyframes burstDiag1 { 0% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: scale(0) translate(-40px, -40px); } }
+        @keyframes burstDiag2 { 0% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: scale(0) translate(40px, -40px); } }
+        @keyframes burstDiag3 { 0% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: scale(0) translate(-40px, 40px); } }
+        @keyframes burstDiag4 { 0% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: scale(0) translate(40px, 40px); } }
+        .loading-text {
+            position: absolute;
+            bottom: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #0096ff;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            letter-spacing: 4px;
+            opacity: 0;
+        }
+        .loading-text.animate { animation: textFade 0.5s ease-out 0.5s forwards; }
+        .loading-text::after { content: '...'; animation: dots 1.5s steps(4, end) infinite; }
+        @keyframes textFade { to { opacity: 0.7; } }
+        @keyframes dots { 0% { content: ''; } 25% { content: '.'; } 50% { content: '..'; } 75% { content: '...'; } }
+
         * {
             margin: 0;
             padding: 0;
@@ -373,8 +506,7 @@
             font-weight: 600;
             letter-spacing: 2px;
             text-transform: uppercase;
-            margin-bottom: 20px;
-        }
+            margin-bottom: 20px;        }
 
         .section-title {
             font-size: 3rem;
@@ -829,6 +961,35 @@
     </style>
 </head>
 <body>
+    <!-- ===== LOADING SCREEN ===== -->
+    <div class="loading-wrapper" id="loader">
+        <div class="loading-container">
+            <div class="particle" id="p1"></div>
+            <div class="particle" id="p2"></div>
+            <div class="particle" id="p3"></div>
+            <div class="particle" id="p4"></div>
+            <div class="particle" id="p5"></div>
+            <div class="particle" id="p6"></div>
+            <div class="particle" id="p7"></div>
+            <div class="particle" id="p8"></div>
+            <div class="shine-overlay" id="shine"></div>
+            <div class="complete-ring" id="completeRing"></div>
+            <svg class="ring-svg" viewBox="0 0 340 340" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="ringGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:#0096ff;stop-opacity:0.3" />
+                        <stop offset="50%" style="stop-color:#00b4ff;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#00d4ff;stop-opacity:0.3" />
+                    </linearGradient>
+                </defs>
+                <circle class="ring-bg" cx="170" cy="170" r="160"/>
+                <circle class="ring-progress" id="ringProgress" cx="170" cy="170" r="160" transform="rotate(-90 170 170)"/>
+            </svg>
+            <img src="1000108670.jpg" alt="AKR Logo" class="logo-img" id="logoImg">
+            <div class="loading-text" id="loadText">LOADING</div>
+        </div>
+    </div>
+
     <!-- Navigation - LOGO HATAYA -->
     <nav class="navbar" id="navbar">
         <ul class="nav-links">
@@ -853,8 +1014,7 @@
             <p class="hero-desc">
                 Coding world is where you turn challenges into opportunities. Build your skills with our interactive, data-centric learning environment designed for modern developers.
             </p>
-            <a href="main.html" class="hero-btn">
-                Get Started <i class="fas fa-arrow-right"></i>
+            <a href="#" onclick="showLoaderAndRedirect('main.html'); return false;" class="hero-btn">                Get Started <i class="fas fa-arrow-right"></i>
             </a>
         </div>
 
@@ -1022,9 +1182,9 @@
                 </div>
                 <p class="testimonial-text">"Coding World completely changed how I learn programming. The AI tutor helped me debug issues instantly, and the daily challenges kept me motivated every single day."</p>
                 <div class="testimonial-author">
-                    <div class="author-avatar">RK</div>
+                    <div class="author-avatar">UT</div>
                     <div>
-                        <div class="author-name">Ayush </div>
+                        <div class="author-name">Utkarsh kumar</div>
                         <div class="author-role">Full Stack Developer</div>
                     </div>
                 </div>
@@ -1035,9 +1195,9 @@
                 </div>
                 <p class="testimonial-text">"I went from zero coding knowledge to landing my dream job as a frontend developer in just 6 months. The structured courses and hands-on projects were game-changers."</p>
                 <div class="testimonial-author">
-                    <div class="author-avatar">PS</div>
+                    <div class="author-avatar">AV</div>
                     <div>
-                        <div class="author-name">Anshu verma </div>
+                        <div class="author-name">Anshu Verma </div>
                         <div class="author-role">Frontend Developer</div>
                     </div>
                 </div>
@@ -1048,7 +1208,7 @@
                 </div>
                 <p class="testimonial-text">"The best coding platform I have ever used. The live code editor, AI assistance, and community support make learning to code feel effortless and enjoyable."</p>
                 <div class="testimonial-author">
-                    <div class="author-avatar">AV</div>
+                    <div class="author-avatar">PR</div>
                     <div>
                         <div class="author-name">Praveen Rana</div>
                         <div class="author-role">Software Engineer</div>
@@ -1063,7 +1223,7 @@
         <div class="cta-content reveal">
             <h2 class="cta-title">Ready to Start Your Coding Journey?</h2>
             <p class="cta-desc">Join 50,000+ developers who are already learning with Coding Master. Start for free today and unlock your potential.</p>
-            <a href="main.html" class="cta-btn">
+            <a href="#" onclick="showLoaderAndRedirect('main.html'); return false;" class="cta-btn">
                 Get Started Free <i class="fas fa-arrow-right"></i>
             </a>
         </div>
@@ -1328,6 +1488,39 @@
                 navbar.classList.remove('scrolled');
             }
         });
+        // ===== LOADING SCREEN FUNCTION =====
+        function showLoaderAndRedirect(targetUrl) {
+            const loader = document.getElementById('loader');
+            const ringProgress = document.getElementById('ringProgress');
+            const logoImg = document.getElementById('logoImg');
+            const shine = document.getElementById('shine');
+            const completeRing = document.getElementById('completeRing');
+            const loadText = document.getElementById('loadText');
+            const particles = document.querySelectorAll('.particle');
+
+            loader.classList.add('active');
+            ringProgress.classList.add('animate');
+            logoImg.classList.add('animate');
+            shine.classList.add('animate');
+            completeRing.classList.add('animate');
+            loadText.classList.add('animate');
+            particles.forEach(p => p.classList.add('animate'));
+
+            setTimeout(() => {
+                loader.classList.add('hidden');
+                setTimeout(() => {
+                    loader.classList.remove('active', 'hidden');
+                    ringProgress.classList.remove('animate');
+                    logoImg.classList.remove('animate');
+                    shine.classList.remove('animate');
+                    completeRing.classList.remove('animate');
+                    loadText.classList.remove('animate');
+                    particles.forEach(p => p.classList.remove('animate'));
+                    window.location.href = targetUrl;
+                }, 800);
+            }, 3500);
+        }
+
     </script>
 </body>
 </html>
